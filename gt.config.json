@@ -3,7 +3,29 @@
   "files": {
     "json": {
       "include": [
-        "./docs.json"
+        "./docs.json",
+        "./admin-openapi.json",
+        "./analytics.openapi.json",
+        "./discovery-openapi.json",
+        "./openapi.json"
+      ],
+      "transform": [
+        {
+          "match": "^admin-openapi.json$",
+          "replace": "{locale}/admin-openapi.json"
+        },
+        {
+          "match": "^analytics.openapi.json$",
+          "replace": "{locale}/analytics.openapi.json"
+        },
+        {
+          "match": "^discovery-openapi.json$",
+          "replace": "{locale}/discovery-openapi.json"
+        },
+        {
+          "match": "^openapi.json$",
+          "replace": "{locale}/openapi.json"
+        }
       ]
     },
     "mdx": {
@@ -70,6 +92,18 @@
             }
           }
         }
+      },
+      "./admin-openapi.json": {
+        "preset": "openapi"
+      },
+      "./analytics.openapi.json": {
+        "preset": "openapi"
+      },
+      "./discovery-openapi.json": {
+        "preset": "openapi"
+      },
+      "./openapi.json": {
+        "preset": "openapi"
       }
     },
     "docsUrlPattern": "/[locale]",
@@ -82,7 +116,15 @@
     "experimentalAddHeaderAnchorIds": "mintlify",
     "experimentalClearLocaleDirs": true,
     "mintlify": {
-      "inferTitleFromFilename": true
+      "inferTitleFromFilename": true,
+      "openapi": {
+        "files": [
+          "./admin-openapi.json",
+          "./analytics.openapi.json",
+          "./discovery-openapi.json",
+          "./openapi.json"
+        ]
+      }
     },
     "experimentalLocalizeRelativeAssets": true
   }

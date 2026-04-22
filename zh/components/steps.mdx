@@ -1,41 +1,40 @@
 ---
-title: "步骤"
-description: "使用 steps 组件创建带编号的分步流程，引导用户完成顺序任务、教程和设置工作流。"
-keywords: ["sequence", "numbered steps", "procedures", "tutorial steps"]
+title: "Steps"
+description: "使用 Steps 组件创建带编号的分步流程，引导用户完成顺序任务、教程和设置工作流。"
+keywords: ["顺序", "编号步骤", "操作流程", "教程步骤"]
 ---
 
 import IconsOptional from "/snippets/zh/icons-optional.mdx";
 
-使用步骤来展示一系列按顺序进行的操作或事件。你可以根据需要添加任意多的步骤。
+使用步骤来展示一系列按顺序进行的操作或事件。你可以根据需要添加任意数量的步骤。
 
 <Steps>
   <Step title="第一步">
-    以下仅适用于第一步的说明或内容。
+    这些说明或内容仅适用于第一步。
   </Step>
 
   <Step title="第二步">
-    以下仅适用于第二步的说明或内容。
+    这些说明或内容仅适用于第二步。
   </Step>
 
   <Step title="第三步">
-    以下仅适用于第三步的说明或内容。
+    这些说明或内容仅适用于第三步。
   </Step>
 </Steps>
 
 ```mdx Steps example
 <Steps>
-  <Step title="第一步">
-    以下仅适用于第一步的说明或内容。
+  <Step title="First Step">
+    These are instructions or content that only pertain to the first step.
   </Step>
-  <Step title="第二步">
-    以下仅适用于第二步的说明或内容。
+  <Step title="Second Step">
+    These are instructions or content that only pertain to the second step.
   </Step>
-  <Step title="第三步">
-    以下仅适用于第三步的说明或内容。
+  <Step title="Third Step">
+    These are instructions or content that only pertain to the third step.
   </Step>
 </Steps>
 ```
-
 
 <div id="steps-properties">
   ## Steps 属性
@@ -46,19 +45,19 @@ import IconsOptional from "/snippets/zh/icons-optional.mdx";
 </ResponseField>
 
 <ResponseField name="titleSize" type="string" default="p">
-  步骤标题的字号。可选值为 `p`、`h2`、`h3` 和 `h4`。
+  步骤标题的尺寸。可选值包括 `p`、`h2`、`h3` 和 `h4`。
 </ResponseField>
 
 <div id="individual-step-properties">
-  ## 单个步骤属性
+  ## 单个步骤的属性
 </div>
 
 <ResponseField name="title" type="string" required>
-  标题是该步骤的主要文本，显示在指示器旁边。
+  标题是步骤的主要文本，显示在指示器旁边。
 </ResponseField>
 
 <ResponseField name="children" type="string | ReactNode">
-  步骤的内容，可以是纯文本或组件。
+  步骤的内容，可以是纯文本，也可以是组件。
 </ResponseField>
 
 <IconsOptional />
@@ -68,7 +67,7 @@ import IconsOptional from "/snippets/zh/icons-optional.mdx";
 </ResponseField>
 
 <ResponseField name="titleSize" type="string" default="p">
-  步骤标题的字号。可选值为 `p`、`h2`、`h3` 和 `h4`。
+  步骤标题的大小。可选值包括 `p`、`h2`、`h3` 和 `h4`。
 </ResponseField>
 
 <ResponseField name="id" type="string">

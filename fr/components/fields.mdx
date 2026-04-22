@@ -1,24 +1,24 @@
 ---
 title: "Champs"
-description: "Utilisez les composants ParamField et ResponseField pour documenter les paramètres de requête et de réponse de l’API avec les types, les valeurs par défaut et les règles de validation."
-keywords: ["ParamField", "ResponseField", "request parameters", "response documentation"]
+description: "Utilisez les composants ParamField et ResponseField pour documenter les paramètres de requête et de réponse de l’API avec leurs types, valeurs par défaut et règles de validation."
+keywords: ["ParamField", "ResponseField", "paramètres de requête", "documentation des réponses"]
 ---
 
-Utilisez des champs pour documenter les paramètres et les réponses d’API. Il existe deux types de champs : les champs de paramètres et les champs de réponse.
+Utilisez les champs pour documenter les paramètres et les réponses de l’API. Il existe deux types de champs : les champs de paramètres et les champs de réponse.
 
 <div id="parameter-field">
   ## Champ de paramètre
 </div>
 
-Utilisez le composant `<ParamField>` pour définir des paramètres pour vos API ou SDK. L’ajout d’un `ParamField` ajoute automatiquement un [bac à sable d’API](/fr/api-playground/overview).
+Utilisez le composant `<ParamField>` pour définir les paramètres de vos API ou SDK. L&#39;ajout d&#39;un `ParamField` crée automatiquement un [bac à sable API](/fr/api-playground/overview).
 
 <ParamField path="param" type="string" required>
-  Exemple de champ de paramètre
+  Un exemple de champ de paramètre
 </ParamField>
 
 ```mdx
 <ParamField path="param" type="string" required>
-  Un exemple de champ de paramètre
+  An example of a parameter field
 </ParamField>
 ```
 
@@ -27,7 +27,7 @@ Utilisez le composant `<ParamField>` pour définir des paramètres pour vos API 
 </div>
 
 <ParamField body="query, path, body, or header" type="string">
-  Indique si le paramètre est une requête, un chemin, un corps ou un en-tête. Puis le
+  Indique si le paramètre correspond à un `query`, `path`, `body` ou `header`. Il est suivi du
   nom du paramètre.
 </ParamField>
 
@@ -36,42 +36,42 @@ Utilisez le composant `<ParamField>` pour définir des paramètres pour vos API 
 
   Prend en charge `number`, `string`, `boolean`, `object`.
 
-  Définissez les tableaux avec le suffixe `[]`. Par exemple `string[]`.
+  Définissez les tableaux avec le suffixe `[]`. Par exemple, `string[]`.
 </ParamField>
 
 <ParamField body="required" type="boolean">
-  Indique si vous exigez le paramètre.
+  Indique si le paramètre est requis.
 </ParamField>
 
 <ParamField body="deprecated" type="boolean">
-  Indique si vous avez marqué le paramètre comme obsolète.
+  Indique si le paramètre est déprécié.
 </ParamField>
 
 <ParamField body="default" type="any">
-  Valeur par défaut utilisée lorsque la valeur de la requête est vide.
+  Valeur par défaut utilisée lorsque la valeur de la requête est vide
 </ParamField>
 
 <ParamField body="placeholder" type="string">
-  Texte de remplacement pour le champ dans l’aire d’essai.
+  Texte d’espace réservé du champ de saisie dans le playground.
 </ParamField>
 
 <ParamField body="children" type="string">
-  Description du paramètre (Markdown activé).
+  Description du paramètre (compatible Markdown).
 </ParamField>
 
 <div id="response-field">
   ## Champ de réponse
 </div>
 
-Le composant `<ResponseField>` définit les valeurs de retour d’une API.
+Le composant `<ResponseField>` définit les valeurs renvoyées par une API.
 
 <ResponseField name="response" type="string" required>
-  Exemple de champ de réponse
+  Un exemple de champ de réponse
 </ResponseField>
 
 ```mdx
 <ResponseField name="response" type="string" required>
-  Un exemple de champ de réponse
+  A response field example
 </ResponseField>
 ```
 
@@ -84,7 +84,7 @@ Le composant `<ResponseField>` définit les valeurs de retour d’une API.
 </ResponseField>
 
 <ResponseField name="type" type="string" required>
-  Type attendu pour la valeur de réponse. Il peut s’agir de n’importe quelle chaîne arbitraire.
+  Type attendu de la valeur de réponse. Il peut s’agir de n’importe quelle chaîne de caractères.
 </ResponseField>
 
 <ResponseField name="default" type="string">
@@ -92,17 +92,17 @@ Le composant `<ResponseField>` définit les valeurs de retour d’une API.
 </ResponseField>
 
 <ResponseField name="required" type="boolean">
-  Indique si vous exigez la réponse.
+  Indique si la réponse est obligatoire.
 </ResponseField>
 
 <ResponseField name="deprecated" type="boolean">
-  Indique si vous avez marqué un champ comme obsolète.
+  Indique si un champ est déprécié.
 </ResponseField>
 
 <ResponseField name="pre" type="string[]">
-  Étiquettes qui apparaissent avant le nom du champ.
+  Libellés qui apparaissent avant le nom du champ.
 </ResponseField>
 
 <ResponseField name="post" type="string[]">
-  Étiquettes qui apparaissent après le nom du champ.
+  Libellés qui apparaissent après le nom du champ.
 </ResponseField>

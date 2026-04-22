@@ -1,50 +1,53 @@
 ---
-title: "将 Notion 连接到 agent"
-description: "将 Notion 连接到 Mintlify agent，使其在创建文档更新时能够引用工作区页面和数据库作为上下文。"
-keywords: ["Notion", "integration", "knowledge base", "context"]
+title: "将 Notion 连接到智能体"
+description: "将 Notion 连接到 Mintlify 智能体，让它在创建文档更新时能够参考你工作区中的页面和数据库作为上下文。"
+keywords: ["Notion", "集成", "知识库", "上下文"]
 ---
 
-将你的 Notion 工作区连接到 agent，使其能够搜索你的 Notion 内容，并在创建文档更新时将其用作上下文。来自团队知识库、产品规格说明和存储在 Notion 中的内部文档的额外上下文，有助于 agent 创建更准确、更完整的文档。
+将你的 Notion 工作区连接到智能体，让它能够搜索你的 Notion 内容，并在创建文档更新时将其用作上下文。团队知识库、产品规范以及存储在 Notion 中的内部文档所提供的额外上下文，有助于智能体生成更准确、更完整的文档。
 
 <div id="connect-your-notion-workspace">
   ## 连接你的 Notion 工作区
 </div>
 
-1. 在控制台中进入 [Agent](https://dashboard.mintlify.com/products/agent) 页面。
-2. 在 "Agent settings" 部分，点击 **Install Notion app**。
-  <Frame>
-    <img src="/images/agent/install-apps-light.png" alt="应用设置区域，包含 Slack、Linear 和 Notion 安装按钮。" className="block dark:hidden" />
-    <img src="/images/agent/install-apps-dark.png" alt="应用设置区域，包含 Slack、Linear 和 Notion 安装按钮。" className="hidden dark:block" />
-  </Frame>
+1. 前往仪表板中的 [智能体](https://dashboard.mintlify.com/products/agent) 页面。
+2. 在“智能体设置”部分中，点击 **安装 Notion 应用**。
+
+<Frame>
+  <img src="/images/agent/install-apps-light.png" alt="应用设置部分，其中包含 Slack、Linear 和 Notion 的安装按钮。" className="block dark:hidden" />
+
+  <img src="/images/agent/install-apps-dark.png" alt="应用设置部分，其中包含 Slack、Linear 和 Notion 的安装按钮。" className="hidden dark:block" />
+</Frame>
+
 3. 按照提示授权 Mintlify 访问你的 Notion 工作区。
-4. 在 Notion 的授权页面上，选择要与 Mintlify 共享的页面和数据库。
+4. 在 Notion 的授权界面中，选择要与 Mintlify 共享的页面和数据库。
 
 <div id="what-the-agent-can-do-with-notion">
-  ## agent 可以用 Notion 做什么
+  ## 智能体可在 Notion 中执行的操作
 </div>
 
-Notion 集成使用 Notion 的 [MCP 工具](https://developers.notion.com/guides/mcp/mcp-supported-tools#mcp-tools) 来搜索和读取你工作区中的内容。
+Notion 集成使用 Notion 的 [MCP tools](https://developers.notion.com/guides/mcp/mcp-supported-tools#mcp-tools) 来搜索和读取你工作区中的内容。
 
-你在 Notion 中的内容将成为 agent 生成文档时可使用的额外上下文。
+Notion 中的内容会成为智能体在生成文档时可使用的额外上下文。
 
-当 agent 可以访问你的 Notion 工作区时，它可以：
+当智能体有权访问你的 Notion 工作区时，它可以：
 
-- **搜索 Notion**：根据你请求的上下文，在已连接的 Notion 工作区中查找相关页面和数据库。
-- **阅读 Notion 页面**：访问 Notion 页面的内容，将其作为生成文档时的参考资料。
-- **查询数据库**：从 Notion 数据库中提取结构化数据，为文档更新提供依据。
+* **搜索 Notion**：根据你的请求上下文，在已连接的 Notion 工作区中查找相关页面和数据库。
+* **读取 Notion 页面**：访问 Notion 页面的内容，并在生成文档时将其用作参考资料。
+* **引用数据库**：从 Notion 数据库中提取结构化数据，为更新文档提供依据。
 
 <div id="use-cases">
   ## 使用场景
 </div>
 
-- **将产品规格同步到文档**：在编写功能文档时，引用存储在 Notion 中的产品需求文档和设计规格。
-- **根据会议记录编写文档**：将 agent 指向 Notion 中的会议记录或决策日志，基于团队讨论起草文档。
-- **利用内部知识库**：将 Notion 中的内部 wiki 和知识库作为面向公众的文档的素材来源。
+* **将规范同步到文档中**：在编写功能文档时，引用存储在 Notion 中的产品需求文档和设计规范。
+* **根据会议记录编写文档**：让智能体参考 Notion 中的会议记录或决策日志，基于团队讨论起草文档。
+* **从内部知识库取材**：将 Notion 中的内部 wiki 和知识库作为面向公众文档的来源材料。
 
 <div id="best-practices">
   ## 最佳实践
 </div>
 
-- **谨慎控制访问范围**：仅授予 agent 对包含与你文档相关信息的 Notion 页面和数据库的访问权限。
-- **提供具体引用**：在给 agent 下达指令时，提及你希望它参考的具体 Notion 页面或数据库，以获得最佳效果。
-- **审查生成的内容**：始终审查拉取请求，确保来自 Notion 的信息已被恰当地调整，适用于你的公开文档。
+* **谨慎控制访问范围**：仅授予对包含与文档相关信息的 Notion 页面和数据库的访问权限。
+* **提供具体参考**：向智能体发出提示时，请明确说明你希望它参考的 Notion 页面或数据库，以获得最佳效果。
+* **审查生成的内容**：始终审查拉取请求 (PR) ，确保来自 Notion 的信息已妥善调整后再用于公开文档。

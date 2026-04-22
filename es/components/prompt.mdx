@@ -1,40 +1,39 @@
 ---
 title: "Prompt"
-description: "Muestra prompts de IA prediseñados con botones de copia con un clic e integración con Cursor para que los usuarios puedan usarlos rápidamente en sus herramientas de IA."
-keywords: ["prompt", "IA", "Cursor", "copiar", "tarjeta de prompt"]
+description: "Muestra prompts de IA predefinidos con botones para copiarlos con un clic y con integración con Cursor, para que los usuarios puedan usarlos rápidamente en sus herramientas de IA."
+keywords: ["prompt", "AI", "cursor", "copy", "prompt card"]
 ---
 
 import IconsOptional from "/snippets/es/icons-optional.mdx";
 
-Usa el componente Prompt para mostrar prompts de IA predefinidos que los usuarios pueden copiar al portapapeles o abrir directamente en [Cursor](https://www.cursor.com).
-
+Usa el componente Prompt para mostrar prompts de IA ya preparados que los usuarios pueden copiar a su portapapeles o abrir directamente en [Cursor](https://www.cursor.com).
 
 <div id="examples">
   ## Ejemplos
 </div>
 
 <Prompt description="Genera documentación clara y concisa.">
-  Eres un **assistant de redacción técnica**. Escribe documentación clara, precisa y concisa.
+  Eres un **asistente de redacción técnica**. Escribe documentación clara, precisa y concisa.
 
-  * Utiliza la segunda persona («you») y verbos en voz activa.
-  * Comienza los procedimientos con un título orientado a un objetivo.
+  * Usa la segunda persona (&quot;tú&quot;) y verbos activos.
+  * Empieza los procedimientos con un encabezado orientado al objetivo.
   * Antes de escribir, haz preguntas aclaratorias sobre los usuarios finales de la documentación, sus objetivos y sus necesidades.
 </Prompt>
 
 ```mdx Basic prompt example
-<Prompt description="Genera documentación clara y concisa.">
-Eres un **asistente de redacción técnica**. Escribe documentación clara, precisa y concisa.
-- Usa la segunda persona ("tú") y verbos en voz activa.
-- Inicia los procedimientos con un encabezado orientado a objetivos.
-- Antes de escribir, haz preguntas aclaratorias sobre los usuarios finales de la documentación, sus objetivos y sus necesidades.
+<Prompt description="Generate clear, concise documentation.">
+You are a **technical writing assistant**. Write documentation that is clear, accurate, and concise.
+- Use second-person voice ("you") and active verbs.
+- Start procedures with a goal-oriented heading.
+- Before writing, ask clarifying questions about the end users of the documentation, their goals, and their needs.
 </Prompt>
 ```
 
 <Prompt description="Genera documentación **clara** y *concisa*." icon="paperclip" iconType="solid" actions={["copy", "cursor"]}>
-  Eres un **asistente de redacción técnica**. Escribe documentación que sea clara, precisa y concisa.
+  Eres un **asistente de redacción técnica**. Escribe documentación clara, precisa y concisa.
 
-  * Usa la segunda persona (&quot;you&quot;) y verbos en voz activa.
-  * Comienza los procedimientos con un encabezado orientado al objetivo.
+  * Usa la segunda persona (&quot;tú&quot;) y verbos activos.
+  * Empieza los procedimientos con un encabezado centrado en el objetivo.
   * Antes de escribir, haz preguntas aclaratorias sobre los usuarios finales de la documentación, sus objetivos y sus necesidades.
 </Prompt>
 
@@ -45,28 +44,27 @@ Eres un **asistente de redacción técnica**. Escribe documentación clara, prec
   iconType="solid"
   actions={["copy", "cursor"]}
 >
-Eres un **asistente de redacción técnica**. Escribe documentación clara, precisa y concisa.
-- Usa la segunda persona ("tú") y verbos activos.
-- Inicia los procedimientos con un encabezado orientado a objetivos.
-- Antes de escribir, haz preguntas aclaratorias sobre los usuarios finales de la documentación, sus objetivos y sus necesidades.
+You are a **technical writing assistant**. Write documentation that is clear, accurate, and concise.
+- Use second-person voice ("you") and active verbs.
+- Start procedures with a goal-oriented heading.
+- Before writing, ask clarifying questions about the end users of the documentation, their goals, and their needs.
 </Prompt>
 ```
-
 
 <div id="properties">
   ## Propiedades
 </div>
 
 <ResponseField name="description" type="string" required>
-  El texto que se muestra en la tarjeta del prompt. Admite formato Markdown.
+  El texto que se muestra en la tarjeta de prompt. Admite formato Markdown.
 </ResponseField>
 
 <ResponseField name="children" type="string" required>
   El contenido de texto del prompt. Es el texto que se copia al portapapeles o se abre en Cursor.
 </ResponseField>
 
-<ResponseField name="actions" type="array" default='["copy"]'>
-  Array de acciones disponibles. Los valores válidos son `"copy"` (copiar al portapapeles) y `"cursor"` (abrir en Cursor).
+<ResponseField name="actions" type="array" default="[&#x22;copy&#x22;]">
+  Lista de acciones disponibles. Los valores válidos son `"copy"` (copiar al portapapeles) y `"cursor"` (abrir en Cursor).
 </ResponseField>
 
 <IconsOptional />

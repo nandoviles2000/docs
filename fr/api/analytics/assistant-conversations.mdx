@@ -1,24 +1,24 @@
 ---
-title: "Récupérer les conversations de l'Assistant"
-description: "Récupérez l'historique des conversations de l'Assistant IA, y
+title: "Récupérer les conversations de l’assistant"
+description: "Récupérez l’historique des conversations de l’assistant IA, y
   compris les requêtes, les réponses, les sources citées et les catégories."
 openapi: /fr/analytics.openapi.json GET /v1/analytics/{projectId}/assistant
-keywords: [ "Analytics", "Assistant", "conversations", "export", "AI" ]
+keywords: [ "analyses", "assistant", "conversations", "exportation", "IA" ]
 ---
 
 <div id="usage">
   ## Utilisation
 </div>
 
-Utilisez cet endpoint pour exporter l’historique des conversations de l’Assistant IA à partir de votre documentation. Chaque conversation inclut la requête de l’utilisateur, la réponse de l’Assistant IA, les sources citées et la catégorie de la requête.
+Utilisez ce point de terminaison pour exporter l’historique des conversations de l’assistant IA de votre documentation. Chaque conversation comprend la requête de l’utilisateur, la réponse de l’assistant, les sources citées et la catégorie de la requête.
 
-Parcourez les résultats à l’aide du paramètre `cursor` renvoyé dans la réponse. Continuez à récupérer les données tant que `hasMore` vaut `true`.
+Utilisez le paramètre `cursor` renvoyé dans la réponse pour paginer les résultats. Continuez à récupérer d’autres résultats tant que `hasMore` est défini sur `true`.
 
 <div id="filtering">
   ## Filtrage
 </div>
 
-Filtrez les conversations par plage de dates à l'aide des paramètres `dateFrom` et `dateTo`.
+Filtrez les conversations par intervalle de dates à l’aide des paramètres `dateFrom` et `dateTo`.
 
 <div id="conversation-data">
   ## Données de conversation
@@ -26,7 +26,7 @@ Filtrez les conversations par plage de dates à l'aide des paramètres `dateFrom
 
 Chaque conversation comprend :
 
-- **query** : la question de l’utilisateur
-- **response** : la réponse de l’Assistant
-- **sources** : les pages référencées dans la réponse, avec leur title et leur URL
-- **queryCategory** : la classification du type de requête (si disponible)
+* **query**: La question de l&#39;utilisateur
+* **response**: La réponse de l&#39;assistant
+* **sources**: Les pages citées dans la réponse, avec leur titre et leur URL
+* **queryCategory**: La catégorie du type de requête (si disponible)

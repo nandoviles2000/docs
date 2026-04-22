@@ -1,17 +1,17 @@
 ---
-title: "Vue"
-description: "Utilisez le composant view pour créer des panneaux de contenu commutables pour différents langages de programmation, frameworks ou alternatives de configuration."
-keywords: ["sélecteur", "contenu spécifique à un langage", "changement de contenu"]
+title: "View"
+description: "Utilisez le composant View pour créer des panneaux de contenu interchangeables selon le langage de programmation, le framework ou l’option de configuration."
+keywords: ["sélecteur", "contenu spécifique au langage", "basculement de contenu"]
 ---
 
-Utilisez le composant `View` pour créer du contenu qui change en fonction de la vue sélectionnée dans un menu déroulant à vues multiples. C’est particulièrement utile pour afficher des exemples de code ou une documentation spécifique à différents langages de programmation ou frameworks.
+Utilisez le composant `View` pour créer du contenu qui change en fonction de la vue sélectionnée dans une liste déroulante à vues multiples. Cela est particulièrement utile pour afficher des exemples de code ou de la documentation propres à différents langages de programmation ou frameworks.
 
 <Tip>
-  Utilisez un composant `View` par langage et par page. Utilisez des [onglets](/fr/components/tabs) pour les procédures qui diffèrent selon le langage et des [groupes de code](/fr/components/code-groups) pour les exemples de code qui diffèrent selon le langage.
+  Utilisez un composant `View` par langage sur chaque page. Utilisez des [onglets](/fr/components/tabs) pour les procédures qui varient selon le langage, et des [groupes de code](/fr/components/code-groups) pour les exemples de code qui varient selon le langage.
 </Tip>
 
 <View title="JavaScript" icon="js">
-  Ce contenu est visible uniquement lorsque JavaScript est sélectionné.
+  Ce contenu n’est visible que lorsque JavaScript est sélectionné.
 
   ```javascript
   console.log("Hello from JavaScript!");
@@ -19,7 +19,7 @@ Utilisez le composant `View` pour créer du contenu qui change en fonction de la
 </View>
 
 <View title="Python" icon="python">
-  Ce contenu est visible uniquement lorsque Python est sélectionné.
+  Ce contenu n’est visible que lorsque Python est sélectionné.
 
   ```python
   print("Hello from Python!")
@@ -32,7 +32,7 @@ Utilisez le composant `View` pour créer du contenu qui change en fonction de la
 
 ````mdx JavaScript and Python views
 <View title="JavaScript" icon="js">
-  Ce contenu est visible uniquement lorsque JavaScript est sélectionné.
+  Ce contenu n'est visible que lorsque JavaScript est sélectionné.
 
   ```javascript
   console.log("Hello from JavaScript!");
@@ -40,7 +40,7 @@ Utilisez le composant `View` pour créer du contenu qui change en fonction de la
 </View>
 
 <View title="Python" icon="python">
-  Ce contenu est visible uniquement lorsque Python est sélectionné.
+  Ce contenu n'est visible que lorsque Python est sélectionné.
 
   ```python
   print("Hello from Python!")
@@ -52,22 +52,22 @@ Utilisez le composant `View` pour créer du contenu qui change en fonction de la
   ## Comportement de la table des matières
 </div>
 
-La table des matières se met à jour automatiquement pour n’afficher que les titres de la vue actuellement sélectionnée. Lorsque vous changez de vue à l’aide du menu déroulant multivues, la table des matières se rafraîchit pour afficher les titres pertinents pour cette vue.
+La table des matières se met automatiquement à jour pour n’afficher que les titres correspondant à la vue actuellement sélectionnée. Lorsque vous passez d’une vue à l’autre à l’aide de la liste déroulante à vues multiples, la table des matières s’actualise pour afficher les titres pertinents pour cette vue.
 
-Si vous avez des structures de titres différentes dans chaque vue, les utilisateurs ne voient que les titres pertinents pour la langue ou le framework qu’ils ont sélectionné.
+Si la structure des titres diffère d’une vue à l’autre, les utilisateurs ne voient que les titres pertinents pour la langue ou le framework sélectionné.
 
 <div id="properties">
   ## Propriétés
 </div>
 
 <ResponseField name="title" type="string" required>
-  Le titre qui identifie cette vue. Doit correspondre à l’une des options du menu déroulant multi‑vue.
+  Le titre qui identifie cette vue. Il doit correspondre à l’une des options du menu déroulant à vues multiples.
 </ResponseField>
 
 <ResponseField name="icon" type="string">
-  Une icône [Font Awesome](https://fontawesome.com/icons), une icône [Lucide](https://lucide.dev/icons), une URL d’icône, ou un chemin relatif vers une icône.
+  Une icône [Font Awesome](https://fontawesome.com/icons), une icône [Lucide](https://lucide.dev/icons), l’URL d’une icône ou le chemin relatif vers une icône.
 </ResponseField>
 
 <ResponseField name="iconType" type="string">
-  Pour les icônes Font Awesome uniquement : l'une de `regular`, `solid`, `light`, `thin`, `sharp-solid`, `duotone`, `brands`.
+  Pour les icônes Font Awesome uniquement : `regular`, `solid`, `light`, `thin`, `sharp-solid`, `duotone` ou `brands`.
 </ResponseField>

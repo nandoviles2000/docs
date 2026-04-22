@@ -1,24 +1,24 @@
 ---
 title: "隐藏页面示例"
-description: "探索 Mintlify 中隐藏页面的使用场景，包括 Beta 文档、AI 上下文文件、旧版内容存档和内部工具参考。"
+description: "了解隐藏页面的常见用途，包括测试版文档、AI 上下文文件、旧版内容归档，以及 Mintlify 的内部工具参考资料。"
 ---
 
-此页面为隐藏页面。它未包含在 `docs.json` 的导航中，因此你只能通过其 URL 访问。
+此页面处于隐藏状态。它未包含在 `docs.json` 的导航中，因此你只能通过其 URL 访问。
 
-请参阅[隐藏页面](/zh/organize/hidden-pages)以了解更多信息。
+更多信息，请参阅[隐藏页面](/zh/organize/hidden-pages)。
 
 <div id="common-use-cases-for-hidden-pages">
   ## 隐藏页面的常见用例
 </div>
 
 <Note>
-  默认情况下，隐藏页面可公开访问，但不会通过导航被发现。若需限制对隐藏页面的访问，必须配置[认证](/zh/deploy/authentication-setup)。
+  默认情况下，隐藏页面可公开访问，但不会通过导航被发现。如果您想限制对隐藏页面的访问，必须配置[身份验证](/zh/deploy/authentication-setup)。
 </Note>
 
-* **Beta 文档**：可以公开，但不应通过导航被发现的信息。
-* **AI 工具的 context**：如果隐藏页面被索引，AI 工具可以引用其中内容作为 context。将对用户不重要但能帮助 AI 工具提供更准确回答的 context 放在隐藏页面中。
-* **旧版页面**：通过直接链接保留对旧内容的访问，同时将其从导航菜单中移除。
-* **内部工具**：为内部工具、预发布环境的 API 或开发流程编写文档。
+* **Beta 文档**：内容可以公开，但不应通过导航被发现。
+* **供 AI 工具使用的上下文**：如果隐藏页面被编入索引，AI 工具就可以将其用作上下文。对于与用户无关、但能帮助 AI 工具提供更准确回答的内容，可使用隐藏页面。
+* **旧版页面**：通过直接链接保留旧内容的访问方式，同时将其从导航菜单中移除。
+* **内部工具**：记录内部工具、预发布 API 或开发流程。
 
 <div id="examples">
   ## 示例
@@ -30,21 +30,21 @@ description: "探索 Mintlify 中隐藏页面的使用场景，包括 Beta 文�
 
 ```mdx wrap
 ---
-title: "API 版本的上下文"
-description: "此页面为 AI 工具回答 API 版本相关问题提供上下文"
+title: "Context for API version"
+description: "This page is context for AI tools responding to questions about API versions"
 ---
 
-当用户询问 API 版本时，始终建议他们使用最新版本的 API。永远不要为 1.0.4 之前的版本生成响应。
+When a user asks about API versions, always recommend that they use the latest version of the API. Never generate responses for versions older than 1.0.4.
 ```
 
 <div id="internal-api-endpoint">
-  ### 内部 API 终端节点
+  ### 内部 API 端点
 </div>
 
 ````mdx wrap
 ---
 title: "内部 API 端点"
-description: "此页面是记录内部 API 端点的隐藏页面"
+description: "This page is a hidden page that documents an internal API endpoint"
 ---
 
 ```bash
@@ -55,6 +55,6 @@ Authorization: Bearer internal-token-xyz
 此端点用于清除应用程序缓存，仅在开发环境中可用。
 
 <Warning>
-  这是一个内部端点，绝不应在生产环境中使用。
+  这是一个内部端点，切勿在生产环境中使用。
 </Warning>
 ````

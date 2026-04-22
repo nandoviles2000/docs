@@ -1,21 +1,21 @@
 ---
 title: "磁贴"
-description: "使用 tiles 组件在响应式网格布局中展示带有图片缩略图、标题和描述的视觉预览。"
-keywords: ["磁贴", "视觉预览", "网格", "展示"]
+description: "使用磁贴组件，在文档中以响应式网格布局展示带有图片缩略图、标题和描述的可视化预览。"
+keywords: ["tiles", "可视化预览", "网格", "展示"]
 ---
 
-使用磁贴来创建带有图案背景、标题和说明的视觉展示元素。磁贴非常适合在网格布局中展示组件预览、功能亮点或导航项。
+使用磁贴创建带有图案背景、标题和描述的可视化展示块。磁贴非常适合在网格布局中展示组件预览、功能亮点或导航项。
 
-<Tile href="/zh/components/accordions" title="折叠面板" description="两种变体">
-  <img src="/images/tiles/accordion-light.svg" alt="折叠面板组件预览" className="block dark:hidden" />
+<Tile href="/zh/components/accordions" title="Accordion" description="两种变体">
+  <img src="/images/tiles/accordion-light.svg" alt="Accordion 组件预览" className="block dark:hidden" />
 
-  <img src="/images/tiles/accordion-dark.svg" alt="折叠面板组件预览（深色模式）" className="hidden dark:block" />
+  <img src="/images/tiles/accordion-dark.svg" alt="Accordion 组件预览（深色模式）" className="hidden dark:block" />
 </Tile>
 
 ```mdx Tile example
-<Tile href="/components/accordions" title="折叠面板" description="两种变体">
-  <img src="/images/tiles/accordion-light.svg" alt="折叠面板组件预览" className="block dark:hidden" />
-  <img src="/images/tiles/accordion-dark.svg" alt="折叠面板组件预览(深色模式)" className="hidden dark:block" />
+<Tile href="/components/accordions" title="Accordion" description="两种变体">
+  <img src="/images/tiles/accordion-light.svg" alt="Accordion 组件预览" className="block dark:hidden" />
+  <img src="/images/tiles/accordion-dark.svg" alt="Accordion 组件预览（深色模式）" className="hidden dark:block" />
 </Tile>
 ```
 
@@ -23,22 +23,22 @@ keywords: ["磁贴", "视觉预览", "网格", "展示"]
   ## 网格布局
 </div>
 
-将卡片与 [Columns 组件](/zh/components/columns) 组合使用，以创建响应式预览网格。
+将磁贴与 [columns 组件](/zh/components/columns) 组合使用，创建一个响应式的可视化预览网格。
 
 <Columns cols={3}>
-  <Tile href="/zh/components/accordions" title="Accordion" description="两种样式">
+  <Tile href="/zh/components/accordions" title="Accordion" description="两种变体">
     <img src="/images/tiles/accordion-light.svg" alt="Accordion 组件预览" className="block dark:hidden" />
 
     <img src="/images/tiles/accordion-dark.svg" alt="Accordion 组件预览（深色模式）" className="hidden dark:block" />
   </Tile>
 
-  <Tile href="/zh/components/accordions" title="Accordion" description="两种样式">
+  <Tile href="/zh/components/accordions" title="Accordion" description="两种变体">
     <img src="/images/tiles/accordion-light.svg" alt="Accordion 组件预览" className="block dark:hidden" />
 
     <img src="/images/tiles/accordion-dark.svg" alt="Accordion 组件预览（深色模式）" className="hidden dark:block" />
   </Tile>
 
-  <Tile href="/zh/components/accordions" title="Accordion" description="两种样式">
+  <Tile href="/zh/components/accordions" title="Accordion" description="两种变体">
     <img src="/images/tiles/accordion-light.svg" alt="Accordion 组件预览" className="block dark:hidden" />
 
     <img src="/images/tiles/accordion-dark.svg" alt="Accordion 组件预览（深色模式）" className="hidden dark:block" />
@@ -47,17 +47,17 @@ keywords: ["磁贴", "视觉预览", "网格", "展示"]
 
 ```mdx Grid layout example
 <Columns cols={3}>
-  <Tile href="/components/accordions" title="折叠面板" description="两种样式">
-    <img src="/images/tiles/accordion-light.svg" alt="折叠面板组件预览" className="block dark:hidden" />
-    <img src="/images/tiles/accordion-dark.svg" alt="折叠面板组件预览（深色模式）" className="hidden dark:block" />
+  <Tile href="/components/accordions" title="Accordion" description="Two variants">
+    <img src="/images/tiles/accordion-light.svg" alt="Accordion component preview" className="block dark:hidden" />
+    <img src="/images/tiles/accordion-dark.svg" alt="Accordion component preview (dark mode)" className="hidden dark:block" />
   </Tile>
-  <Tile href="/components/accordions" title="折叠面板" description="两种样式">
-    <img src="/images/tiles/accordion-light.svg" alt="折叠面板组件预览" className="block dark:hidden" />
-    <img src="/images/tiles/accordion-dark.svg" alt="折叠面板组件预览（深色模式）" className="hidden dark:block" />
+  <Tile href="/components/accordions" title="Accordion" description="Two variants">
+    <img src="/images/tiles/accordion-light.svg" alt="Accordion component preview" className="block dark:hidden" />
+    <img src="/images/tiles/accordion-dark.svg" alt="Accordion component preview (dark mode)" className="hidden dark:block" />
   </Tile>
-  <Tile href="/components/accordions" title="折叠面板" description="两种样式">
-    <img src="/images/tiles/accordion-light.svg" alt="折叠面板组件预览" className="block dark:hidden" />
-    <img src="/images/tiles/accordion-dark.svg" alt="折叠面板组件预览（深色模式）" className="hidden dark:block" />
+  <Tile href="/components/accordions" title="Accordion" description="Two variants">
+    <img src="/images/tiles/accordion-light.svg" alt="Accordion component preview" className="block dark:hidden" />
+    <img src="/images/tiles/accordion-dark.svg" alt="Accordion component preview (dark mode)" className="hidden dark:block" />
   </Tile>
 </Columns>
 ```
@@ -67,17 +67,17 @@ keywords: ["磁贴", "视觉预览", "网格", "展示"]
 </div>
 
 <ResponseField name="href" type="string" required>
-  点击卡片时要跳转到的 URL。
+  点击磁贴时跳转到的 URL。
 </ResponseField>
 
 <ResponseField name="title" type="string">
-  显示在卡片预览下方的标题。
+  显示在磁贴预览下方的标题。
 </ResponseField>
 
 <ResponseField name="description" type="string">
-  显示在标题下方的简短说明。
+  显示在标题下方的简短描述。
 </ResponseField>
 
 <ResponseField name="children" type="React.ReactNode" required>
-  显示在卡片预览区域的内容，通常为图片或 SVG 图像。
+  显示在磁贴预览区域内的内容，通常为图片或 SVG。
 </ResponseField>

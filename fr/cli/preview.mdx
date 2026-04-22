@@ -1,54 +1,54 @@
 ---
-title: "Prévisualisation locale"
-description: "Lancez une prévisualisation locale de votre site de documentation Mintlify avec rechargement en direct, recherche plein texte et support de l'assistant IA via mint dev."
-keywords: ["mint dev", "prévisualisation locale", "localhost", "mint login", "recherche", "assistant"]
+title: "Prévisualiser en local"
+description: "Lancez un aperçu local de votre site de documentation Mintlify avec rechargement à chaud, recherche en texte intégral et prise en charge de l'assistant IA via mint dev."
+keywords: ["mint dev", "aperçu local", "localhost", "mint login", "recherche", "assistant"]
 ---
 
 <div id="start-the-local-preview">
-  ## Démarrer la prévisualisation locale
+  ## Démarrez l’aperçu local
 </div>
 
-Naviguez jusqu'au répertoire de votre documentation contenant votre fichier `docs.json` et exécutez :
+Accédez au répertoire de votre documentation contenant votre fichier `docs.json`, puis exécutez :
 
 ```bash
 mint dev
 ```
 
-La prévisualisation locale démarre à l'adresse `http://localhost:3000`. Au fur et à mesure que vous modifiez, les changements apparaissent en temps réel.
+L’aperçu local démarre à l’adresse `http://localhost:3000`. Vos modifications s’affichent en temps réel.
 
-Par défaut, la prévisualisation s'ouvre automatiquement dans votre navigateur. Pour empêcher l'ouverture du navigateur, utilisez le flag `--no-open` :
+Par défaut, l’aperçu s’ouvre automatiquement dans votre navigateur. Pour empêcher l’ouverture du navigateur, utilisez l’option `--no-open` :
 
 ```bash
 mint dev --no-open
 ```
 
-Pour générer une prévisualisation sans installer la CLI globalement, exécutez :
+Pour générer un aperçu sans installer la CLI de façon globale, exécutez :
 
 ```bash
 npx mint dev
 ```
 
 <div id="log-in-for-search-and-assistant">
-  ## Se connecter pour la recherche et l'assistant
+  ## Connectez-vous pour utiliser la recherche et l’assistant
 </div>
 
-Vous devez authentifier la CLI avec votre compte Mintlify pour activer la recherche et l'[assistant](/fr/assistant/index).
+Vous devez vous connecter au CLI avec votre compte Mintlify pour activer la recherche et l’[assistant](/fr/assistant/index).
 
 ```bash
 mint login
 ```
 
-Après vous être authentifié avec la commande `mint login`, la CLI stocke vos identifiants dans `~/.config/mintlify/config.json` afin que vous restiez connecté entre les sessions. La CLI vous invite également à sélectionner un projet par défaut, que des commandes comme `mint analytics` utilisent.
+Après vous être authentifié avec la commande `mint login`, le CLI enregistre vos identifiants dans `~/.config/mintlify/config.json` pour que vous restiez connecté d’une session à l’autre. Le CLI vous invite également à sélectionner un projet par défaut, utilisé par des commandes comme `mint analytics`.
 
-Une fois connecté, exécutez `mint dev` pour démarrer la prévisualisation locale avec la recherche et l'assistant activés. L'assistant utilise le même contenu indexé que votre site de documentation déployé.
+Une fois connecté, exécutez `mint dev` pour lancer l’aperçu local avec la recherche et l’assistant activés. L’assistant utilise le même contenu indexé que votre site de documentation déployé.
 
-Pour vérifier l'état de votre authentification, exécutez :
+Pour vérifier si vous êtes authentifié, exécutez :
 
 ```bash
 mint status
 ```
 
-Pour vous déconnecter, exécutez :
+Pour vous déconnecter, exécutez :
 
 ```bash
 mint logout
@@ -58,32 +58,32 @@ mint logout
   ## Ports personnalisés
 </div>
 
-Par défaut, la CLI utilise le port 3000. Pour utiliser un port différent, utilisez le flag `--port` :
+Par défaut, la CLI utilise le port 3000. Pour utiliser un autre port, utilisez l’option `--port` :
 
 ```bash
 mint dev --port 3333
 ```
 
-Si le port est déjà utilisé, la CLI essaie automatiquement le port disponible suivant.
+Si le port est déjà utilisé, le CLI tente automatiquement d’utiliser le port disponible suivant.
 
 <div id="skip-openapi-processing">
   ## Ignorer le traitement OpenAPI
 </div>
 
-Si vous avez de nombreux fichiers OpenAPI, ignorez le traitement OpenAPI pendant le développement local pour améliorer les performances avec le flag `--disable-openapi` :
+Si vous avez de nombreux fichiers OpenAPI, vous pouvez ignorer le traitement OpenAPI pendant le développement local afin d’améliorer les performances à l’aide de l’indicateur `--disable-openapi` :
 
 ```bash
 mint dev --disable-openapi
 ```
 
 <div id="preview-as-a-specific-group">
-  ## Prévisualiser en tant que groupe spécifique
+  ## Prévisualiser avec un groupe spécifique
 </div>
 
-Si vous utilisez le contrôle d'accès basé sur les groupes, prévisualisez en tant que groupe d'authentification spécifique avec le flag `--groups` :
+Si vous utilisez un contrôle d’accès basé sur les groupes, prévisualisez avec un groupe d’authentification spécifique à l’aide de l’indicateur `--groups` :
 
 ```bash
 mint dev --groups admin
 ```
 
-Consultez [Configuration de l'authentification](/fr/deploy/authentication-setup#control-access-with-groups) pour plus d'informations sur les groupes.
+Consultez [Configuration de l’authentification](/fr/deploy/authentication-setup#control-access-with-groups) pour en savoir plus sur les groupes.

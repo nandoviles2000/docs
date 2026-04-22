@@ -1,63 +1,63 @@
 ---
-title: "Encarts"
-description: "Ajoutez des composants d'encart de type info, note, tip, check, warning, danger et personnalisés pour mettre en avant des informations importantes dans votre documentation."
-keywords: ["callouts", "notes", "warnings", "info boxes", "tips", "emphasis", "highlight"]
+title: "Encadrés"
+description: "Ajoutez des encadrés d’information, de note, de conseil, de vérification, d’avertissement, de danger et des encadrés personnalisés pour mettre en avant les informations importantes dans votre documentation."
+keywords: ["encadrés", "notes", "avertissements", "encadrés d'information", "conseils", "mise en avant", "mise en évidence"]
 ---
 
 import IconsOptional from "/snippets/fr/icons-optional.mdx";
 
-Présentez les encarts sous forme de Note, Avertissement, Info, Conseil, Check, Danger, ou créez votre propre encart :
+Appliquez aux encadrés le style Note, Warning, Info, Tip, Check, Danger, ou créez votre propre encadré :
 
-<Note>Ajoute une note dans le contenu</Note>
-
-```mdx
-<Note>Ajoute une note dans le contenu</Note>
-```
-
-<Warning>Cela génère un avertissement à prendre en compte</Warning>
+<Note>Cela ajoute une note au contenu</Note>
 
 ```mdx
-<Warning>Cela génère un avertissement à prendre en compte</Warning>
+<Note>This adds a note in the content</Note>
 ```
 
-<Info>Met en avant des informations importantes</Info>
+<Warning>Cela affiche un avertissement à ne pas ignorer</Warning>
 
 ```mdx
-<Info>Met en avant des informations importantes</Info>
+<Warning>This raises a warning to watch out for</Warning>
 ```
 
-<Tip>Voici un conseil utile</Tip>
+<Info>Cela met en évidence des informations importantes</Info>
 
 ```mdx
-<Tip>Voici un conseil utile</Tip>
+<Info>This draws attention to important information</Info>
 ```
 
-<Check>Cela nous donne un statut validé</Check>
+<Tip>Cela indique une astuce utile</Tip>
 
 ```mdx
-<Check>Cela nous donne un statut validé</Check>
+<Tip>This suggests a helpful tip</Tip>
 ```
 
-<Danger>Ceci est une alerte de danger</Danger>
+<Check>On obtient ainsi un statut coché</Check>
 
 ```mdx
-<Danger>Ceci est une alerte de danger</Danger>
+<Check>Ceci indique un statut validé</Check>
 ```
 
-<Callout icon="key" color="#FFC107" iconType="regular"> C’est un encadré personnalisé</Callout>
+<Danger>Ceci est un encadré d&#39;avertissement</Danger>
+
+```mdx
+<Danger>This is a danger callout</Danger>
+```
+
+<Callout icon="key" color="#FFC107" iconType="regular"> Ceci est un encadré personnalisé</Callout>
 
 ```mdx wrap
-<Callout icon="key" color="#FFC107" iconType="regular">Ceci est un encadré personnalisé</Callout>
+<Callout icon="key" color="#FFC107" iconType="regular">This is a custom callout</Callout>
 ```
 
 <div id="custom-callout-properties">
-  ## Propriétés d'encart personnalisé
+  ## Propriétés personnalisées des encadrés
 </div>
 
-Le composant générique `Callout` prend en charge les icônes et couleurs personnalisées. Les encarts typés (`Note`, `Warning`, `Info`, `Tip`, `Check`, `Danger`) utilisent des icônes et couleurs prédéfinies et n'acceptent que `children`.
+Le composant générique `Callout` prend en charge des icônes et des couleurs personnalisées. Les encadrés typés (`Note`, `Warning`, `Info`, `Tip`, `Check`, `Danger`) utilisent des icônes et des couleurs prédéfinies et n’acceptent que `children`.
 
 <IconsOptional />
 
 <ResponseField name="color" type="string">
-  Couleur personnalisée sous forme de code hexadécimal (par exemple, `#FFC107`). Définit la bordure, la teinte de fond et la couleur du texte de l'encart.
+  Couleur personnalisée au format hexadécimal (par exemple, `#FFC107`). Définit la bordure, la teinte d’arrière-plan et la couleur du texte de l’encadré.
 </ResponseField>

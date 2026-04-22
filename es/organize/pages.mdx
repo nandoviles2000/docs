@@ -1,37 +1,37 @@
 ---
 title: "Páginas"
-description: "Configura metadatos, títulos, descripciones, iconos y modos de diseño de página usando propiedades YAML de frontmatter al inicio de tu documentación MDX."
-keywords: ["etiquetas", "etiqueta", "frontmatter", "metadata", "diseño"]
+description: "Configura los metadatos de la página, los títulos, las descripciones, los iconos y los modos de diseño mediante propiedades de frontmatter YAML al inicio de tu documentación MDX."
+keywords: ["etiquetas", "etiqueta", "frontmatter", "metadatos", "diseño"]
 ---
 
-Cada página es un archivo Markdown. Puedes usar tipos de archivo `.mdx` o `.md` para tus páginas. Recomendamos MDX, que combina Markdown con componentes de React para crear documentación enriquecida e interactiva. El Markdown plano (`.md`) puede agilizar la migración desde otras plataformas, pero cambiar a MDX habilita más funcionalidades.
+Cada página es un archivo Markdown. Puedes usar archivos `.mdx` o `.md` para tus páginas. Recomendamos MDX, que combina Markdown con componentes de React para crear documentación enriquecida e interactiva. Markdown sin formato (`.md`) puede agilizar la migración desde otras plataformas, pero pasarte a MDX te permite usar más funciones.
 
 <div id="page-metadata">
   ## Metadatos de la página
 </div>
 
-Cada página comienza con frontmatter, los metadatos YAML delimitados por `---` al inicio de un archivo. Estos metadatos controlan cómo aparece y se comporta tu página.
+Todas las páginas comienzan con frontmatter, es decir, los metadatos YAML delimitados por `---` en la parte superior del archivo. Estos metadatos controlan cómo aparece y se comporta tu página.
 
 Usa el frontmatter para controlar:
 
-* Títulos y descripciones de la página
-* Títulos de la barra lateral, iconos y etiquetas
-* Diseños de página
-* Metatags de SEO
-* Metadatos personalizados
+* Los títulos y las descripciones de las páginas
+* Los títulos, iconos y etiquetas de la barra lateral
+* Los diseños de página
+* Las etiquetas meta de SEO
+* Los metadatos personalizados
 
 <ResponseField name="title" type="string">
   El título de tu página que aparece en la navegación y en las pestañas del navegador.
 
-  Si se omite, Mintlify genera un título a partir de la ruta. El último segmento de la ruta se convierte en el título, con los guiones y guiones bajos reemplazados por espacios y la primera letra en mayúscula. Por ejemplo, `guides/getting-started.md` se convierte en **Primeros pasos**.
+  Si se omite, Mintlify genera un título a partir de la ruta. El último segmento de la ruta se convierte en el título, con los guiones y guiones bajos sustituidos por espacios y la primera letra en mayúscula. Por ejemplo, `guides/getting-started.md` se convierte en **Getting started**.
 </ResponseField>
 
 <ResponseField name="description" type="string">
-  Una breve descripción de lo que cubre esta página. Aparece debajo del título y mejora el SEO.
+  Una breve descripción de lo que trata esta página. Se muestra debajo del título y mejora el SEO.
 </ResponseField>
 
 <ResponseField name="sidebarTitle" type="string">
-  Un título corto que se muestra en la navegación de la barra lateral.
+  Un título breve que se muestra en la navegación de la barra lateral.
 </ResponseField>
 
 <ResponseField name="icon" type="string">
@@ -43,7 +43,7 @@ Usa el frontmatter para controlar:
   * nombre del [icono de Lucide](https://lucide.dev/icons)
   * nombre del [icono de Tabler](https://tabler.io/icons)
   * URL de un icono alojado externamente
-  * Ruta a un archivo de icono en tu proyecto
+  * ruta a un archivo de icono en tu proyecto
 </ResponseField>
 
 <ResponseField name="iconType" type="string">
@@ -57,27 +57,27 @@ Usa el frontmatter para controlar:
 </ResponseField>
 
 <ResponseField name="hidden" type="boolean">
-  Establécelo en `true` para eliminar la página de la navegación de la barra lateral. Los usuarios aún pueden acceder a la página mediante su URL, pero los motores de búsqueda no la indexan. Para hacer visible una página de nuevo, elimina este campo por completo. **No** lo establezcas en `false` ya que produce un comportamiento indefinido. Consulta [Páginas ocultas](/es/organize/hidden-pages) para más detalles.
+  Establécelo en `true` para quitar la página de la navegación de la barra lateral. Los usuarios podrán seguir accediendo a la página mediante su URL, pero los motores de búsqueda no la indexarán. Para volver a hacer visible una página, elimina este campo por completo. **No** lo establezcas en `false`, ya que produce un comportamiento indefinido. Consulta [Páginas ocultas](/es/organize/hidden-pages) para obtener más información.
 </ResponseField>
 
 <ResponseField name="noindex" type="boolean">
-  Establécelo en `true` para evitar que los motores de búsqueda indexen la página. Consulta [Deshabilitar la indexación](/es/optimize/seo#disable-indexing) para más detalles. Todas las páginas con `hidden: true` en su frontmatter reciben `noindex: true` automáticamente.
+  Establécelo en `true` para impedir que los motores de búsqueda indexen la página. Consulta [Deshabilitar indexación](/es/optimize/seo#disable-indexing) para obtener más información. Todas las páginas con `hidden: true` en su frontmatter reciben `noindex: true` automáticamente.
 </ResponseField>
 
 <ResponseField name="deprecated" type="boolean">
-  Establécelo en `true` para mostrar una etiqueta "en desuso" junto al título de la página. Úsalo para marcar contenido desactualizado o funciones heredadas sin dejar de mantener la página accesible.
+  Establécelo en `true` para mostrar la etiqueta &quot;deprecated&quot; junto al título de la página. Úsalo para marcar contenido desactualizado o funciones heredadas sin dejar de mantener la página accesible.
 </ResponseField>
 
 <ResponseField name="hideFooterPagination" type="boolean">
-  Establécelo en `true` para ocultar los enlaces de navegación de página anterior/siguiente en la parte inferior de la página. Úsalo para páginas independientes como páginas de destino o páginas de referencia donde la navegación secuencial no aplica.
+  Establécelo en `true` para ocultar los enlaces de navegación a la página anterior y siguiente en la parte inferior de la página. Úsalo en páginas independientes, como páginas de destino o páginas de referencia, donde la navegación secuencial no se aplica.
 </ResponseField>
 
 <ResponseField name="hideApiMarker" type="boolean">
-  Establécelo en `true` para ocultar la insignia del método HTTP (como GET o POST) junto al título de la página en la barra lateral. Úsalo para páginas de API donde desees una apariencia más limpia en la barra lateral.
+  Establécelo en `true` para ocultar la insignia del método HTTP (como GET o POST) junto al título de la página en la barra lateral. Úsalo en páginas de API en las que quieras un aspecto más limpio en la barra lateral.
 </ResponseField>
 
 <ResponseField name="groups" type="string[]">
-  Restringe la página a usuarios en grupos específicos. Los usuarios deben pertenecer a al menos uno de los grupos listados para acceder a la página. Primero debes configurar la [autenticación](/es/deploy/authentication-setup). Consulta [Controlar el acceso con grupos](/es/deploy/authentication-setup#control-access-with-groups) para más información.
+  Restringe la página a usuarios de grupos específicos. Los usuarios deben pertenecer al menos a uno de los grupos indicados para poder acceder a la página. Primero debes configurar la [autenticación](/es/deploy/authentication-setup). Consulta [Controlar el acceso con grupos](/es/deploy/authentication-setup#control-access-with-groups) para obtener más información.
 </ResponseField>
 
 <ResponseField name="<custom>" type="string">
@@ -86,8 +86,8 @@ Usa el frontmatter para controlar:
 
 ```yaml Example YAML frontmatter wrap
 ---
-title: "Acerca del frontmatter"
-description: "El frontmatter son los metadatos que controlan cómo aparece y se comporta tu página"
+title: "About frontmatter"
+description: "Frontmatter is the metadata that controls how your page appears and behaves"
 sidebarTitle: "Frontmatter"
 icon: "book"
 tag: "NEW"
@@ -98,17 +98,17 @@ tag: "NEW"
   ## Modo de página
 </div>
 
-Controla el diseño de tu página con el ajuste `mode`.
+Controla el diseño de tu página con la configuración `mode`.
 
 <div id="default">
-  ### Predeterminado
+  ### Por defecto
 </div>
 
-Si no defines ningún modo, la página utiliza un diseño estándar con una barra lateral de navegación y una tabla de contenidos.
+Si no defines un modo, la página usa un diseño estándar con navegación en la barra lateral y una tabla de contenido.
 
 ```yaml
 ---
-title: "Título de página predeterminado"
+title: "Default page title"
 ---
 ```
 
@@ -116,11 +116,11 @@ title: "Título de página predeterminado"
   ### Ancho
 </div>
 
-El modo ancho oculta la tabla de contenidos. Utiliza este modo para páginas sin encabezados o si quieres contar con espacio horizontal adicional. El modo ancho está disponible en todos los temas.
+El modo ancho oculta la tabla de contenido. Usa este modo en páginas sin encabezados o si quieres más espacio horizontal. Todos los temas admiten el modo ancho.
 
 ```yaml
 ---
-title: "Título de página amplia"
+title: "Wide page title"
 mode: "wide"
 ---
 ```
@@ -129,51 +129,50 @@ mode: "wide"
   ### Personalizado
 </div>
 
-El modo personalizado ofrece un diseño minimalista y elimina todos los elementos excepto la barra de navegación superior. La barra lateral, la tabla de contenidos y el pie de página están ocultos. Considera el modo personalizado como un lienzo en blanco para crear páginas de destino o diseños únicos con una navegación mínima. Todos los temas son compatibles con el modo personalizado.
+El modo personalizado ofrece un diseño minimalista y elimina todos los elementos excepto la barra de navegación superior. Este modo oculta la barra lateral, la tabla de contenido y el pie de página. Considera el modo personalizado como un lienzo en blanco para crear páginas de inicio o diseños únicos con una navegación mínima. Todos los temas son compatibles con el modo personalizado.
 
 ```yaml
 ---
-title: "Título de página personalizado"
+title: "Custom page title"
 mode: "custom"
 ---
 ```
 
 <Warning>
-  La propiedad `style` puede provocar un cambio en el diseño al cargar la página. Para evitar este problema, utiliza preferentemente [Tailwind CSS o CSS personalizado](/es/customize/custom-scripts).
+  La propiedad `style` puede provocar un cambio en el diseño al cargar la página. Usa [Tailwind CSS o CSS personalizado](/es/customize/custom-scripts) para evitar este problema.
 </Warning>
-
 
 <div id="frame">
   ### Frame
 </div>
 
-El modo Frame ofrece un diseño similar al modo personalizado, pero mantiene la barra lateral de navegación. Usa este modo para incluir HTML y componentes personalizados mientras preservas la experiencia de navegación predeterminada. Los temas Aspen, Almond, Luma y Sequoia son compatibles con el modo Frame.
+El modo Frame ofrece un diseño similar al modo personalizado, pero conserva la navegación en la barra lateral. Usa este modo para incluir HTML y componentes personalizados sin perder la experiencia de navegación predeterminada. Los temas Aspen, Almond, Luma y Sequoia son compatibles con el modo Frame.
 
 ```yaml
 ---
-title: "Título de página Frame"
+title: "Frame page title"
 mode: "frame"
 ---
 ```
 
 <div id="center">
-  ### Center
+  ### Centrado
 </div>
 
-El modo Center elimina la barra lateral y la tabla de contenidos, centrando el contenido. Usa el modo Center para las páginas de cambios u otras páginas donde quieras centrar la atención en el contenido. Los temas Mint, Linden, Willow y Maple son compatibles con el modo Center.
+El modo centrado elimina la barra lateral y la tabla de contenido, y centra el contenido. Usa el modo centrado para los registros de cambios u otras páginas en las que quieras centrar la atención en el contenido. Los temas Mint, Linden, Willow y Maple admiten el modo centrado.
 
 ```yaml
 ---
-title: "Centrar título de página"
+title: "Center page title"
 mode: "center"
 ---
 ```
 
 <div id="api-pages">
-  ## Páginas de la API
+  ## Páginas de API
 </div>
 
-Para crear un área de pruebas de la API interactiva, añade una especificación de la API a tu frontmatter configurando `api` o `openapi`.
+Para crear un entorno de pruebas de API interactivo, añade una especificación de API en tu frontmatter estableciendo `api` u `openapi`.
 
 ```yaml
 ---
@@ -187,23 +186,23 @@ Obtén más información sobre cómo crear [documentación de API](/es/api-playg
   ## Enlaces externos
 </div>
 
-Enlaza a sitios externos directamente desde tu navigation con la metadata `url`.
+Enlaza directamente a sitios externos desde la Navegación con los metadatos `url`.
 
 ```yaml
 ---
-title: "Paquete npm"
+title: "npm Package"
 url: "https://www.npmjs.com/package/mint"
 ---
 ```
 
 <div id="search-engine-optimization">
-  ## Optimización para motores de búsqueda (SEO)
+  ## Optimización para motores de búsqueda
 </div>
 
-Mintlify genera automáticamente la mayoría de las metaetiquetas de SEO. Puedes establecer manualmente las metaetiquetas de SEO para personalizar tu estrategia de SEO, la difusión en redes sociales y la compatibilidad con los navegadores.
+Mintlify genera automáticamente la mayoría de las etiquetas meta de SEO. Puedes configurar manualmente las etiquetas meta de SEO para personalizar tu estrategia de SEO, cómo se comparte en redes sociales y la compatibilidad con los navegadores.
 
 <Note>
-  Envuelve siempre entre comillas las metaetiquetas que incluyan dos puntos.
+  Pon siempre entre comillas las etiquetas meta que incluyan dos puntos.
 </Note>
 
 ```yaml
@@ -212,25 +211,25 @@ Mintlify genera automáticamente la mayoría de las metaetiquetas de SEO. Puedes
 ---
 ```
 
-Consulta [SEO](/es/optimize/seo) para conocer todas las opciones de metadata de SEO.
+Consulta [SEO](/es/optimize/seo) para ver la lista completa de opciones de metadatos SEO.
 
 <div id="internal-search-keywords">
   ## Palabras clave para la búsqueda interna
 </div>
 
-Ayuda a los usuarios a descubrir una página específica en los resultados de búsqueda añadiendo `keywords` en tu metadata. Estas palabras clave no aparecen en el contenido de la página. Si los usuarios buscan esas palabras clave, la página aparecerá en los resultados de búsqueda.
+Ayuda a los usuarios a encontrar una página específica en los resultados de búsqueda añadiendo `keywords` a tus metadatos. Estas palabras clave no aparecen en el contenido de la página. Si los usuarios buscan esas palabras clave, la página aparecerá en los resultados de búsqueda.
 
 ```yaml
 ---
-keywords: ['configuración', 'configuración inicial', 'primeros pasos']
+keywords: ['configuration', 'setup', 'getting started']
 ---
 ```
 
 <div id="last-modified-timestamp">
-  ## Marca de tiempo de la última modificación
+  ## Marca de tiempo de última modificación
 </div>
 
-Muestra una marca de tiempo «Última modificación el [fecha]» en todas las páginas activando `metadata.timestamp` en tu [configuración global](/es/organize/settings-seo#metadata).
+Muestra la marca de tiempo &quot;Última modificación el [date]&quot; en todas las páginas al habilitar `metadata.timestamp` en tu [configuración global](/es/organize/settings-seo#metadata).
 
 ```json docs.json
 "metadata": {
@@ -238,13 +237,13 @@ Muestra una marca de tiempo «Última modificación el [fecha]» en todas las p�
 }
 ```
 
-Para anular la configuración global de la marca de tiempo en una página individual, usa el campo `timestamp` del frontmatter. Usa este campo para mostrar u ocultar las marcas de tiempo en páginas específicas.
+Para anular la configuración global de la marca de tiempo en una página concreta, usa el campo de frontmatter `timestamp`. Usa este campo para mostrar u ocultar las marcas de tiempo en páginas específicas.
 
 ```yaml
 ---
-title: "Título de la página"
+title: "Page title"
 timestamp: false
 ---
 ```
 
-Si estableces `timestamp: true`, la página siempre muestra la marca de tiempo aunque la configuración global sea `false`. Si estableces `timestamp: false`, la página oculta la marca de tiempo aunque la configuración global sea `true`.
+Si estableces `timestamp: true`, la página siempre muestra la marca de tiempo, aunque la configuración global sea `false`. Si estableces `timestamp: false`, la página oculta la marca de tiempo, aunque la configuración global sea `true`.

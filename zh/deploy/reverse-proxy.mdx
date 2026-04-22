@@ -1,75 +1,75 @@
 ---
 title: "反向代理"
-description: "使用 Nginx、Apache 或 Caddy 配置自定义反向代理，在你自己的域名子路径上提供 Mintlify 文档服务。"
-keywords: ["反向代理配置", "nginx", "代理路由", "请求头转发"]
+description: "使用 Nginx、Apache 或 Caddy 配置自定义反向代理，在您自己的域名子路径下提供 Mintlify 文档。"
+keywords: ["反向代理配置","nginx","代理路由","请求头转发"]
 ---
 
 <Note>
-  反向代理配置仅适用于 [Enterprise 方案](https://mintlify.com/pricing?ref=reverse-proxy)。
+  反向代理配置仅支持 [企业版方案](https://mintlify.com/pricing?ref=reverse-proxy)。
 </Note>
 
-要通过自定义反向代理提供文档服务，你需要配置路由规则、缓存策略和请求头转发。
+要通过自定义反向代理提供文档，您必须配置路由规则、缓存策略和请求头转发。
 
-实施反向代理时，请留意可能出现的 domain 验证、SSL 证书签发、认证流程、性能以及 Analytics 跟踪等问题。
+实施反向代理时，请留意域名验证、SSL 证书签发、身份验证流程、性能和分析跟踪方面的潜在问题。
 
 <div id="choose-your-deployment-approach">
-  ## 选择你的部署方式
+  ## 选择部署方式
 </div>
 
-Mintlify 根据你的子路径需求支持两种反向代理配置。
+Mintlify 根据你的子路径需求，支持两种反向代理配置。
 
-- **在 `/docs` 下托管**：使用 `mintlify.dev` 作为代理目标。在控制台的 [Custom domain setup](https://dashboard.mintlify.com/settings/deployment/custom-domain) 页面中开启 **Host at `/docs`** 开关。这种方式路由更少，配置更简单。
-- **自定义子路径**：使用 `mintlify.app` 作为代理目标。这种方式支持任意子路径，但需要额外的路由规则。
+* **托管在 `/docs`**：使用 `mintlify.dev` 作为代理目标。在仪表板中的[自定义域名设置](https://dashboard.mintlify.com/settings/deployment/custom-domain)页面启用 **托管在 `/docs`** 开关。这种配置更简单，所需路由也更少。
+* **自定义子路径**：使用 `mintlify.app` 作为代理目标。这种方式支持任意子路径，但需要额外的路由规则。
 
 <div id="host-at-docs-subpath">
   ## 在 `/docs` 子路径下托管
 </div>
 
-当你希望在 domain 的 `/docs` 路径下提供文档时，使用此配置。
+如果你希望通过自己域名下的 `/docs` 路径提供文档，请使用此配置。
 
 在配置反向代理之前：
 
-1. 在控制台中前往 [自定义 domain 设置](https://dashboard.mintlify.com/settings/deployment/custom-domain)。
-2. 启用 **Host at `/docs`** 开关。
-3. 输入你的 domain 并选择 **Add domain**。
+1. 在仪表板中前往 [自定义域名设置](https://dashboard.mintlify.com/settings/deployment/custom-domain)。
+2. 打开 **Host at `/docs`** 切换开关。
+3. 输入你的域名，然后选择 **Add domain**。
 
 <Warning>
-  当你启用 **Host at `/docs`** 时，你的文档规范 URL 将变为 `<your-subdomain>.mintlify.dev`。在 `mintlify.app` 上的缓存失效将停止，你必须将代理指向 `mintlify.dev`，更新才会生效。
+  启用 **Host at `/docs`** 后，文档的规范 URL 将变为 `<your-subdomain>.mintlify.dev`。`mintlify.app` 上的缓存失效将停止生效，你必须代理到 `mintlify.dev`，更新才会显示。
 </Warning>
 
 <div id="routing-configuration">
   ### 路由配置
 </div>
 
-将以下路径代理到你的 Mintlify 子域：
+将这些路径代理到你的 Mintlify 子域名：
 
-| 路径                              | 目标地址                             | 缓存     |
-| --------------------------------- | ------------------------------------ | -------- |
-| `/docs`                           | `<your-subdomain>.mintlify.dev/docs` | No cache |
-| `/docs/*`                         | `<your-subdomain>.mintlify.dev/docs` | No cache |
-| `/.well-known/vercel/*`           | `<your-subdomain>.mintlify.dev`      | No cache |
-| `/.well-known/skills/*` (optional)        | `<your-subdomain>.mintlify.dev/docs` | No cache |
-| `/.well-known/agent-skills/*` (optional)  | `<your-subdomain>.mintlify.dev/docs` | No cache |
-| `/skill.md` (optional)                    | `<your-subdomain>.mintlify.dev/docs` | No cache |
-| `/llms.txt` (optional)            | `<your-subdomain>.mintlify.dev/docs` | No cache |
-| `/llms-full.txt` (optional)       | `<your-subdomain>.mintlify.dev/docs` | No cache |
+| 路径                                 | 目标                                   | 缓存  |
+| ---------------------------------- | ------------------------------------ | --- |
+| `/docs`                            | `<your-subdomain>.mintlify.dev/docs` | 不缓存 |
+| `/docs/*`                          | `<your-subdomain>.mintlify.dev/docs` | 不缓存 |
+| `/.well-known/vercel/*`            | `<your-subdomain>.mintlify.dev`      | 不缓存 |
+| `/.well-known/skills/*` (可选)       | `<your-subdomain>.mintlify.dev/docs` | 不缓存 |
+| `/.well-known/agent-skills/*` (可选) | `<your-subdomain>.mintlify.dev/docs` | 不缓存 |
+| `/skill.md` (可选)                   | `<your-subdomain>.mintlify.dev/docs` | 不缓存 |
+| `/llms.txt` (可选)                   | `<your-subdomain>.mintlify.dev/docs` | 不缓存 |
+| `/llms-full.txt` (可选)              | `<your-subdomain>.mintlify.dev/docs` | 不缓存 |
 
-`/.well-known/skills/*`、`/.well-known/agent-skills/*`、`/skill.md`、`/llms.txt` 和 `/llms-full.txt` 这些路由是可选的。只有当你希望在站点根路径（例如 `your-domain.com/llms.txt`）而不是在文档子路径下（例如 `your-domain.com/docs/llms.txt`）提供 AI 文件时，才需要包含它们。
+`/.well-known/skills/*`、`/.well-known/agent-skills/*`、`/skill.md`、`/llms.txt` 和 `/llms-full.txt` 这些路由是可选的。只有当你想在根路径 (例如 `your-domain.com/llms.txt`) 而不是文档子路径 (例如 `your-domain.com/docs/llms.txt`) 下提供 AI 文件时，才需要包含它们。
 
 <div id="required-header-configuration">
   ### 必需的请求头配置
 </div>
 
-按以下请求头要求配置你的反向代理：
+请按以下请求头要求配置反向代理：
 
-* **Origin**：包含目标子域 `<your-subdomain>.mintlify.dev`
+* **Origin**：包含目标子域名 `<your-subdomain>.mintlify.dev`
 * **X-Forwarded-For**：保留客户端 IP 信息
 * **X-Forwarded-Proto**：保留原始协议 (HTTP/HTTPS) 
-* **X-Real-IP**：转发真实的客户端 IP 地址
+* **X-Real-IP**：转发客户端的真实 IP 地址
 * **User-Agent**：转发用户代理
 
 <Warning>
-  确保不要转发 `Host` 请求头。
+  请确保不要转发 `Host` 请求头。
 </Warning>
 
 <div id="example-nginx-configuration">
@@ -105,7 +105,7 @@ server {
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # Agent-skills discovery paths
+    # 代理技能发现路径
     location ^~ /.well-known/agent-skills/ {
         proxy_pass https://<your-subdomain>.mintlify.dev/docs;
         proxy_set_header Origin <your-subdomain>.mintlify.dev;
@@ -117,7 +117,7 @@ server {
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # 技能清单(可选)
+    # 技能清单（可选）
     location = /skill.md {
         proxy_pass https://<your-subdomain>.mintlify.dev/docs;
         proxy_set_header Origin <your-subdomain>.mintlify.dev;
@@ -129,7 +129,7 @@ server {
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # LLM 索引文件(可选)
+    # LLM 索引文件（可选）
     location = /llms.txt {
         proxy_pass https://<your-subdomain>.mintlify.dev/docs;
         proxy_set_header Origin <your-subdomain>.mintlify.dev;
@@ -178,56 +178,57 @@ server {
 }
 ```
 
-
 <div id="custom-subpath">
   ## 自定义子路径
 </div>
 
-当你需要使用 `/docs` 之外的子路径（例如 `/help` 或 `/resources`）时，请使用以下路由配置。
+如果你需要使用 `/docs` 以外的子路径 (例如 `/help` 或 `/resources`) ，请使用以下路由配置。
 
-按以下缓存策略将这些路径代理到你的 Mintlify 子域：
+将这些路径代理到你的 Mintlify 子域名，并按指定的缓存策略进行配置：
 
-| Path                              | Destination                     | Caching       |
-| --------------------------------- | ------------------------------- | ------------- |
-| `/.well-known/vercel/*`           | `<your-subdomain>.mintlify.app` | 不缓存        |
-| `/.well-known/skills/*`           | `<your-subdomain>.mintlify.app` | 不缓存        |
-| `/.well-known/agent-skills/*`     | `<your-subdomain>.mintlify.app` | 不缓存        |
-| `/skill.md`                       | `<your-subdomain>.mintlify.app` | 不缓存        |
-| `/llms.txt`                       | `<your-subdomain>.mintlify.app` | 不缓存        |
-| `/llms-full.txt`                  | `<your-subdomain>.mintlify.app` | 不缓存        |
-| `/mintlify-assets/_next/static/*` | `<your-subdomain>.mintlify.app` | 启用缓存      |
-| `/_mintlify/*`                    | `<your-subdomain>.mintlify.app` | 不缓存        |
-| `/*`                              | `<your-subdomain>.mintlify.app` | 不缓存        |
-| `/`                               | `<your-subdomain>.mintlify.app` | 不缓存        |
+| Path                              | Destination                     | Caching |
+| --------------------------------- | ------------------------------- | ------- |
+| `/.well-known/vercel/*`           | `<your-subdomain>.mintlify.app` | 不缓存     |
+| `/.well-known/skills/*`           | `<your-subdomain>.mintlify.app` | 不缓存     |
+| `/.well-known/agent-skills/*`     | `<your-subdomain>.mintlify.app` | 不缓存     |
+| `/skill.md`                       | `<your-subdomain>.mintlify.app` | 不缓存     |
+| `/llms.txt`                       | `<your-subdomain>.mintlify.app` | 不缓存     |
+| `/llms-full.txt`                  | `<your-subdomain>.mintlify.app` | 不缓存     |
+| `/mintlify-assets/_next/static/*` | `<your-subdomain>.mintlify.app` | 启用缓存    |
+| `/_mintlify/*`                    | `<your-subdomain>.mintlify.app` | 不缓存     |
+| `/*`                              | `<your-subdomain>.mintlify.app` | 不缓存     |
+| `/`                               | `<your-subdomain>.mintlify.app` | 不缓存     |
 
 <Note>
-  Mintlify 在根路径提供 `llms.txt`、`llms-full.txt` 和 `skill.md`。如果你的文档位于子路径下（例如 `/help`），你也可以在该子路径下提供这些文件（例如 `/help/llms.txt`）。为此，请添加 location 块将子路径重写到根路径。请参阅下方的 nginx 示例了解这两种模式。
+  Mintlify 会在根路径下提供 `llms.txt`、`llms-full.txt` 和 `skill.md`。如果你的文档位于某个子路径下 (例如 `/help`) ，也可以在该子路径下提供这些文件 (例如 `/help/llms.txt`) 。为此，请添加 location 块，将该子路径重写到根路径。下面的 nginx 示例同时展示了这两种模式。
 </Note>
 
 <div id="required-header-configuration">
   ### 必需的请求头配置
 </div>
 
-按以下请求头要求配置你的反向代理：
+请按以下请求头要求配置反向代理：
 
-- **Origin**：包含目标子域 `<your-subdomain>.mintlify.app`
-- **X-Forwarded-For**：保留客户端 IP 信息
-- **X-Forwarded-Proto**：保留原始协议（HTTP/HTTPS）
-- **X-Real-IP**：转发真实的客户端 IP 地址
-- **User-Agent**：转发用户代理
+* **Origin**：包含目标子域名 `<your-subdomain>.mintlify.app`
+* **X-Forwarded-For**：保留客户端 IP 信息
+* **X-Forwarded-Proto**：保留原始协议 (HTTP/HTTPS) 
+* **X-Real-IP**：转发客户端的真实 IP 地址
+* **User-Agent**：转发用户代理
 
 <Warning>
   确保不要转发 `Host` 请求头
 </Warning>
 
-### Nginx 配置示例
+<div id="example-nginx-configuration">
+  ### nginx 配置示例
+</div>
 
 ```nginx
 server {
     listen 80;
     server_name <your-domain>.com;
 
-    # Vercel verification paths
+    # Vercel 验证路径
     location ~ ^/\.well-known/vercel/ {
         proxy_pass https://<your-subdomain>.mintlify.app;
         proxy_set_header Origin <your-subdomain>.mintlify.app;
@@ -236,11 +237,11 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header User-Agent $http_user_agent;
 
-        # Disable caching for verification paths
+        # 禁用验证路径的缓存
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # AI skills paths
+    # AI skills 路径
     location ^~ /.well-known/skills/ {
         proxy_pass https://<your-subdomain>.mintlify.app;
         proxy_set_header Origin <your-subdomain>.mintlify.app;
@@ -249,11 +250,11 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header User-Agent $http_user_agent;
 
-        # Disable caching for verification paths
+        # 禁用验证路径的缓存
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # Agent-skills discovery paths
+    # 代理技能发现路径
     location ^~ /.well-known/agent-skills/ {
         proxy_pass https://<your-subdomain>.mintlify.app;
         proxy_set_header Origin <your-subdomain>.mintlify.app;
@@ -262,11 +263,11 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header User-Agent $http_user_agent;
 
-        # Disable caching for agent-skills paths
+        # 禁用代理技能路径的缓存
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # Skill manifest
+    # Skill 清单
     location = /skill.md {
         proxy_pass https://<your-subdomain>.mintlify.app;
         proxy_set_header Origin <your-subdomain>.mintlify.app;
@@ -275,7 +276,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header User-Agent $http_user_agent;
 
-        # Disable caching for skill manifest
+        # 禁用 skill 清单的缓存
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
@@ -302,9 +303,9 @@ server {
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # 可选：在你的子路径下提供 AI 文件并进行路径重写。
-    # 将 "/help" 替换为你的子路径。这些块会重写子路径，
-    # 使 Mintlify 接收到它期望的根路径。
+    # 可选：通过路径重写在子路径下提供 AI 文件。
+    # 将 "/help" 替换为您的子路径。这些块会重写
+    # 子路径，使 Mintlify 接收到其期望的根路径。
     #
     # location = /help/llms.txt {
     #     proxy_pass https://<your-subdomain>.mintlify.app/llms.txt;
@@ -336,7 +337,7 @@ server {
     #     add_header Cache-Control "no-cache, no-store, must-revalidate";
     # }
 
-    # Static assets with caching
+    # 启用缓存的静态资源
     location ~ ^/mintlify-assets/_next/static/ {
         proxy_pass https://<your-subdomain>.mintlify.app;
         proxy_set_header Origin <your-subdomain>.mintlify.app;
@@ -345,11 +346,11 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header User-Agent $http_user_agent;
 
-        # Enable caching for static assets
+        # 为静态资源启用缓存
         add_header Cache-Control "public, max-age=86400";
     }
 
-    # Mintlify-specific paths
+    # Mintlify 专用路径
     location ~ ^/_mintlify/ {
         proxy_pass https://<your-subdomain>.mintlify.app;
         proxy_set_header Origin <your-subdomain>.mintlify.app;
@@ -358,11 +359,11 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header User-Agent $http_user_agent;
 
-        # Disable caching for Mintlify paths
+        # 禁用 Mintlify 路径的缓存
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # Root path
+    # 根路径
     location = / {
         proxy_pass https://<your-subdomain>.mintlify.app;
         proxy_set_header Origin <your-subdomain>.mintlify.app;
@@ -375,7 +376,7 @@ server {
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 
-    # All other documentation paths
+    # 所有其他文档路径
     location / {
         proxy_pass https://<your-subdomain>.mintlify.app;
         proxy_set_header Origin <your-subdomain>.mintlify.app;
@@ -390,40 +391,39 @@ server {
 }
 ```
 
-
 <div id="troubleshooting">
-  ## 疑难解答
+  ## 故障排查
 </div>
 
 <div id="changes-not-appearing">
-  ### 更改未显示
+  ### 更改未生效
 </div>
 
-**症状**：你发布了文档更新，但这些更改并没有在你的网站上显示出来。
+**症状**：你发布了文档更新，但这些更改没有显示在网站上。
 
-**原因**：你在控制台中启用了 **Host at `/docs`**，但你的反向代理指向的是 `mintlify.app` 而不是 `mintlify.dev`。
+**原因**：你在仪表板中启用了 **Host at `/docs`**，但反向代理指向了 `mintlify.app`，而不是 `mintlify.dev`。
 
-**解决方案**：将反向代理配置更新为指向 `<your-subdomain>.mintlify.dev`，而不是 `<your-subdomain>.mintlify.app`。
+**解决方案**：更新反向代理配置，使其指向 `<your-subdomain>.mintlify.dev`，而不是 `<your-subdomain>.mintlify.app`。
 
 <div id="404-error">
   ### 404 错误
 </div>
 
-**现象**：文档可以加载，但部分功能不可用。API 调用失败。
+**症状**：文档可以正常加载，但功能无法使用，API 调用失败。
 
-**原因**：反向代理转发了 `Host` 头，或缺少 `Origin` 头。
+**原因**：反向代理转发了 `Host` 请求头，或者未传递 `Origin` 请求头。
 
 **解决方案**：
 
-- 停止转发 `Host` 头
-- 将 `Origin` 头设置为你的 Mintlify 子域（对于 `/docs` 子路径使用 `mintlify.dev`，其他子路径使用 `mintlify.app`）
+* 移除 `Host` 请求头转发
+* 将 `Origin` 请求头设置为你的 Mintlify 子域名 (`/docs` 子路径使用 `mintlify.dev`，其他子路径使用 `mintlify.app`)
 
 <div id="performance-issues">
   ### 性能问题
 </div>
 
-**表现**：页面加载缓慢，出现布局位移。
+**症状**：页面加载缓慢，并出现布局偏移。
 
-**原因**：缓存配置不正确。
+**原因**：缓存配置不当。
 
-**解决方案**：对于自定义子路径配置，仅对 `/mintlify-assets/_next/static/*` 路径启用缓存。`/docs` 子路径配置会自动处理缓存。
+**解决方案**：如果使用自定义子路径配置，仅对 `/mintlify-assets/_next/static/*` 路径启用缓存。`/docs` 子路径配置会自动处理缓存。

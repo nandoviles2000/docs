@@ -1,82 +1,82 @@
 ---
 title: "skill.md"
-description: "Générez automatiquement des fichiers skill.md décrivant les capacités de votre produit pour les agents d'IA."
+description: "Rendez votre documentation compatible avec les agents grâce à des fichiers skill.md générés automatiquement qui décrivent les capacités de votre produit pour les agents IA."
 keywords: ["agents IA", "compétences", "compétences d'agent", "agents"]
 ---
 
-Mintlify héberge un fichier `skill.md` à la racine de votre projet qui décrit ce que les agents d'IA peuvent faire avec votre produit.
+Mintlify héberge un fichier `skill.md` à la racine de votre projet qui décrit ce que les agents IA peuvent faire avec votre produit.
 
-La [spécification skill.md](https://agentskills.io/specification) est un format structuré et lisible par les machines qui rend explicites les capacités, les entrées requises et les contraintes des produits afin que les agents puissent les utiliser de manière plus fiable.
+La [spécification skill.md](https://agentskills.io/specification) est un format structuré et lisible par machine qui explicite les capacités, les entrées requises et les contraintes des produits afin que les agents puissent les utiliser de manière plus fiable.
 
-Mintlify génère automatiquement un fichier `skill.md` pour votre projet en analysant votre documentation avec une boucle pilotée par des agents. Ce fichier reste à jour à mesure que vous mettez à jour votre documentation et ne nécessite aucune maintenance. Vous pouvez également ajouter un fichier `skill.md` personnalisé à la racine de votre projet qui remplace celui généré automatiquement.
+Mintlify génère automatiquement un fichier `skill.md` pour votre projet en analysant votre documentation à l&#39;aide d&#39;une boucle agentique. Ce fichier reste à jour à mesure que vous modifiez votre documentation et ne nécessite aucune maintenance. Vous pouvez également ajouter un fichier `skill.md` personnalisé à la racine de votre projet pour remplacer celui généré automatiquement.
 
-<Note>La génération ou la mise à jour d'un fichier `skill.md` peut prendre jusqu'à 24 heures.</Note>
+<Note>La génération ou la mise à jour d&#39;un fichier `skill.md` peut prendre jusqu&#39;à 24 heures.</Note>
 
-Affichez votre `skill.md` en ajoutant `/skill.md` à l'URL de votre site de documentation. Mintlify ne génère des fichiers `skill.md` que pour les sites de documentation publics.
+Consultez votre `skill.md` en ajoutant `/skill.md` à l&#39;URL de votre site de documentation. Mintlify génère uniquement des fichiers `skill.md` pour les sites de documentation publics.
 
 <PreviewButton href="https://mintlify.com/docs/skill.md">
-  Ouvrir le skill.md de ce site.
+  Ouvrir le skill.md de ce site
 </PreviewButton>
 
 <Tip>
-  Les fichiers `llms.txt` et `skill.md` aident tous deux les agents à travailler avec votre documentation, mais ils ont des objectifs différents.
+  Les fichiers `llms.txt` et `skill.md` aident tous deux les agents à exploiter votre documentation, mais ils ont des rôles différents.
 
-  - `llms.txt` est un index. Il répertorie toutes les pages de votre documentation avec des descriptions pour que les agents sachent où trouver l'information.
-  - `skill.md` est un résumé de capacités. Il indique aux agents ce qu'ils peuvent accomplir avec votre produit, quelles entrées sont nécessaires et quelles contraintes s'appliquent.
+  * `llms.txt` est un répertoire. Il liste toutes les pages de votre documentation avec leur description afin que les agents sachent où trouver les informations.
+  * `skill.md` est un résumé des capacités. Il indique aux agents ce qu&#39;ils peuvent accomplir avec votre produit, quelles entrées sont nécessaires et quelles contraintes s&#39;appliquent.
 </Tip>
 
 <div id="use-skillmd-files-with-agents">
-  ## Utiliser les fichiers `skill.md` avec des agents
+  ## Utiliser les fichiers `skill.md` avec les agents
 </div>
 
 <Note>
-  Si vous utilisez un [proxy inverse](/fr/deploy/reverse-proxy), configurez-le pour qu'il redirige les chemins `/skill.md`, `/.well-known/skills/*` et `/.well-known/agent-skills/*` vers votre sous-domaine Mintlify.
+  Si vous utilisez un [proxy inverse](/fr/deploy/reverse-proxy), configurez-le pour transférer les chemins `/skill.md`, `/.well-known/skills/*` et `/.well-known/agent-skills/*` vers votre sous-domaine Mintlify.
 </Note>
 
-Lorsque les utilisateurs se connectent à votre serveur MCP, leurs agents peuvent découvrir et utiliser vos fichiers `skill.md` en tant que [ressources MCP](/fr/ai/model-context-protocol#mcp-resources) sans installer les skills séparément.
+Lorsque les utilisateurs se connectent à votre serveur MCP, leurs agents peuvent découvrir et utiliser vos fichiers `skill.md` comme [ressources MCP](/fr/ai/model-context-protocol#mcp-resources), sans avoir à installer les compétences séparément.
 
-Pour ajouter vos skills au contexte d'un agent manuellement, utilisez la [CLI skills](https://www.npmjs.com/package/skills).
+Pour ajouter manuellement vos compétences au contexte d’un agent, utilisez la [CLI skills](https://www.npmjs.com/package/skills).
 
 ```bash
 npx skills add https://your-docs-domain.com
 ```
 
-Cela ajoute les capacités de votre produit au contexte de l'agent afin qu'il puisse effectuer des actions au nom des utilisateurs.
+Cela ajoute les capacités de votre produit au contexte de l’agent afin qu’il puisse agir pour le compte des utilisateurs.
 
 <Tip>
-  Expliquez à vos utilisateurs comment utiliser les fichiers `skill.md` avec des agents afin qu'ils obtiennent de meilleurs résultats en utilisant votre produit avec leurs outils d'IA.
+  Expliquez à vos utilisateurs comment utiliser les fichiers `skill.md` avec les agents afin qu’ils obtiennent de meilleurs résultats lorsqu’ils utilisent votre produit avec leurs outils d’IA.
 </Tip>
 
 <div id="skillmd-structure">
   ## Structure de `skill.md`
 </div>
 
-Mintlify génère un fichier `skill.md` selon la [spécification agentskills.io](https://agentskills.io/specification). Le fichier généré comprend :
+Mintlify génère un fichier `skill.md` conformément à la [spécification agentskills.io](https://agentskills.io/specification). Le fichier généré comprend :
 
-- **Metadata** : nom du projet, description et version.
-- **Capacités** : ce que les agents peuvent accomplir avec votre produit.
-- **Compétences** : actions spécifiques organisées par catégorie.
-- **Flux de travail** : procédures étape par étape pour les tâches courantes.
-- **Intégrations** : outils et services pris en charge.
-- **Contexte** : informations générales sur l'architecture de votre produit.
+* **Métadonnées** : nom du projet, description et version.
+* **Capacités** : ce que les agents peuvent accomplir avec votre produit.
+* **Compétences** : actions spécifiques organisées par catégorie.
+* **Flux de travail** : procédures étape par étape pour les tâches courantes.
+* **Intégration** : outils et services pris en charge.
+* **Contexte** : contexte sur l&#39;architecture de votre produit.
 
 <div id="custom-skill-files">
-  ## Fichiers de skill personnalisés
+  ## Fichiers de compétences personnalisés
 </div>
 
-Ajoutez des fichiers de skill personnalisés pour remplacer le `skill.md` généré automatiquement. Mintlify prend en charge l'hébergement d'un fichier de skill unique et d'un répertoire pour plusieurs skills. Si vous supprimez tous les fichiers de skill personnalisés, Mintlify génère un nouveau fichier `skill.md`.
+Ajoutez des fichiers de compétences personnalisés pour remplacer le fichier `skill.md` généré automatiquement. Mintlify permet d’héberger un fichier de compétences unique ainsi qu’un répertoire contenant plusieurs compétences. Si vous supprimez tous les fichiers de compétences personnalisés, Mintlify génère un nouveau fichier `skill.md`.
 
 <div id="single-skill-file">
-  ### Fichier de skill unique
+  ### Un seul fichier `skill`
 </div>
 
 Ajoutez un fichier `skill.md` à la racine de votre projet pour remplacer le fichier généré automatiquement.
 
 <div id="multiple-skill-files">
-  ### Fichiers de skill multiples
+  ### Plusieurs fichiers de compétences
 </div>
 
-Ajoutez plusieurs fichiers de skill au répertoire `.mintlify/skills/` de votre projet. Chaque skill doit se trouver dans son propre sous-répertoire avec un fichier `SKILL.md` :
+Ajoutez plusieurs fichiers de compétences dans le répertoire `.mintlify/skills/` de votre projet. Chaque compétence doit se trouver dans son propre sous-répertoire et contenir un fichier `SKILL.md` :
 
 ```
 .mintlify/
@@ -87,20 +87,20 @@ Ajoutez plusieurs fichiers de skill au répertoire `.mintlify/skills/` de votre 
       SKILL.md
 ```
 
-Lorsque vous disposez de plusieurs skills, l'endpoint `/skill.md` redirige vers l'endpoint de découverte `/.well-known/skills/index.json`, qui liste toutes les skills disponibles. Les endpoints de découverte rendent chaque skill accessible individuellement.
+Lorsque vous avez plusieurs compétences, le point de terminaison `/skill.md` redirige vers le point de terminaison de découverte `/.well-known/skills/index.json`, qui répertorie toutes les compétences disponibles. Les points de terminaison de découverte rendent chaque compétence accessible individuellement.
 
 <Note>
-  Vous pouvez combiner les deux approches avec un fichier `skill.md` à la racine et un répertoire `.mintlify/skills/`. L'index de découverte inclut toutes les skills.
+  Vous pouvez utiliser les deux approches ensemble avec un fichier `skill.md` à la racine et un répertoire `.mintlify/skills/`. L’index de découverte inclut toutes les compétences.
 </Note>
 
 <div id="use-symlinks-to-avoid-duplication">
-  ### Utiliser des liens symboliques pour éviter la duplication
+  ### Utilisez des liens symboliques pour éviter les doublons
 </div>
 
-Si vos fichiers de skill se trouvent ailleurs dans votre dépôt (par exemple, dans un répertoire `plugins/` ou `skills/`), vous pouvez créer un lien symbolique de `.mintlify/skills` vers cet emplacement au lieu de dupliquer les fichiers :
+Si vos fichiers de compétences se trouvent ailleurs dans votre dépôt (par exemple, dans un répertoire `plugins/` ou `skills/`), vous pouvez créer un lien symbolique de `.mintlify/skills` vers cet emplacement au lieu de dupliquer les fichiers :
 
 ```bash
-# Skills live in a top-level skills/ directory
+# Les skills se trouvent dans un répertoire skills/ à la racine du projet
 ln -s ../skills .mintlify/skills
 ```
 
@@ -116,29 +116,29 @@ project/
   docs.json
 ```
 
-Mintlify résout les liens symboliques lors du déploiement, de sorte que les fichiers de skill sont découverts et servis comme s'ils se trouvaient directement dans `.mintlify/skills/`. Cela fonctionne aussi bien avec les liens symboliques de répertoires qu'avec les liens symboliques de skills individuels.
+Mintlify résout les liens symboliques lors du déploiement, de sorte que les fichiers de compétence sont détectés et servis comme s’ils se trouvaient directement dans `.mintlify/skills/`. Cela fonctionne aussi bien avec des liens symboliques vers des répertoires qu’avec des liens symboliques vers des compétences individuelles.
 
 <div id="frontmatter-fields">
-  ### Champs de frontmatter
+  ### Champs de métadonnées d’en-tête
 </div>
 
-Les fichiers `skill.md` personnalisés doivent commencer par un frontmatter YAML.
+Les fichiers `skill.md` personnalisés doivent commencer par un bloc de métadonnées d’en-tête YAML.
 
-| Nom du champ    | Type   | Description                                                                                                                 |
-| --------------- | ------ | --------------------------------------------------------------------------------------------------------------------------- |
-| `name`          | string | Le nom de votre skill.                                                                                                      |
-| `description`   | string | Une brève description de ce que fait votre skill.                                                                           |
-| `license`       | string | La licence de votre skill (par exemple : `MIT` ou `Apache-2.0`).                                                            |
-| `compatibility` | string | Exigences ou notes de compatibilité (par exemple : dépendances d'exécution).                                                |
-| `metadata`      | object | Métadonnées supplémentaires sous forme de paires clé-valeur de chaînes de caractères (par exemple : `author` ou `version`). |
-| `allowed-tools` | string | Liste, séparée par des espaces, des outils préautorisés que le skill peut utiliser (expérimental).                          |
+| Champ           | Type   | Description                                                                                                                |
+| --------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- |
+| `name`          | string | Le nom de votre compétence.                                                                                                |
+| `description`   | string | Une brève description de ce que fait votre compétence.                                                                     |
+| `license`       | string | La licence de votre compétence (par exemple, `MIT` ou `Apache-2.0`).                                                       |
+| `compatibility` | string | Exigences ou notes de compatibilité (par exemple, dépendances d’exécution).                                                |
+| `metadata`      | object | Métadonnées supplémentaires sous forme de paires clé-valeur de chaînes de caractères (par exemple, `author` ou `version`). |
+| `allowed-tools` | string | Liste d’outils préapprouvés, séparés par des espaces, que la compétence peut utiliser (expérimental).                     |
 
 ```md Example frontmatter
 ---
 name: mintlify
-description: Créez et maintenez des sites de documentation avec Mintlify. À utiliser lors de la création de pages de documentation, de la configuration de la navigation, de l'ajout de composants ou de la mise en place de références API.
+description: Build and maintain documentation sites with Mintlify. Use when creating docs pages, configuring navigation, adding components, or setting up API references.
 license: MIT
-compatibility: Nécessite Node.js pour l'interface en ligne de commande (CLI). Fonctionne avec tout workflow basé sur Git.
+compatibility: Requires Node.js for CLI. Works with any Git-based workflow.
 metadata:
   author: mintlify
   version: "1.0"
@@ -146,18 +146,18 @@ metadata:
 ```
 
 <div id="skills-discovery-endpoints">
-  ## Endpoints de découverte des skills
+  ## Points de terminaison de découverte des compétences
 </div>
 
-Mintlify héberge des répertoires de skills à `/.well-known/skills/` et `/.well-known/agent-skills/` que les agents peuvent utiliser pour découvrir et récupérer vos fichiers de skills de manière programmatique.
+Mintlify héberge des répertoires de compétences à l’emplacement `/.well-known/skills/` et `/.well-known/agent-skills/`, que les agents peuvent utiliser pour découvrir et récupérer automatiquement vos fichiers de compétences.
 
-<div id="agent-skills-discovery">
-  ### Découverte agent-skills (recommandé)
+<div id="agent-skills-discovery-recommended">
+  ### Découverte des agent-skills (recommandée)
 </div>
 
-L'endpoint `/.well-known/agent-skills/` suit la [spécification agent-skills discovery 0.2.0](https://schemas.agentskills.io/discovery/0.2.0/schema.json) et inclut la vérification d'intégrité du contenu.
+Le point de terminaison `/.well-known/agent-skills/` suit la [spécification de découverte agent-skills 0.2.0](https://schemas.agentskills.io/discovery/0.2.0/schema.json) et comprend une vérification de l’intégrité du contenu.
 
-`GET /.well-known/agent-skills/index.json` renvoie un manifeste JSON listant toutes les skills disponibles :
+`GET /.well-known/agent-skills/index.json` renvoie un manifeste JSON qui répertorie toutes les compétences disponibles :
 
 ```json
 {
@@ -174,24 +174,24 @@ L'endpoint `/.well-known/agent-skills/` suit la [spécification agent-skills dis
 }
 ```
 
-| Champ         | Description                                                                                       |
-| ------------- | ------------------------------------------------------------------------------------------------- |
-| `$schema`     | URL du schéma pour la spécification agent-skills discovery 0.2.0.                                 |
-| `name`        | Un slug compatible URL dérivé du champ `name` dans le frontmatter de votre `skill.md`.            |
-| `type`        | Le format de la skill. Toujours `skill-md`.                                                       |
-| `description` | Une brève description issue du frontmatter de votre `skill.md`, tronquée à 1024 caractères.       |
-| `url`         | Le chemin pour récupérer le fichier de skill complet.                                             |
-| `digest`      | Un hash `sha256` du contenu du fichier de skill pour la vérification d'intégrité.                 |
+| Champ         | Description                                                                                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------------- |
+| `$schema`     | URL du schéma pour la spécification de découverte agent-skills 0.2.0.                                       |
+| `name`        | Un slug compatible avec les URL, dérivé du champ `name` dans les métadonnées d’en-tête de votre `skill.md`. |
+| `type`        | Le format de la compétence. Toujours `skill-md`.                                                            |
+| `description` | Une brève description issue des métadonnées d’en-tête de votre `skill.md`, tronquée à 1024 caractères.      |
+| `url`         | Le chemin permettant de récupérer le fichier de compétence complet.                                         |
+| `digest`      | Un hachage `sha256` du contenu du fichier de compétence pour vérifier son intégrité.                        |
 
-`GET /.well-known/agent-skills/{name}/SKILL.md` renvoie le fichier `skill.md` d'une skill spécifique identifiée par son nom slugifié depuis l'index.
+`GET /.well-known/agent-skills/{name}/SKILL.md` renvoie le fichier `skill.md` d’une compétence spécifique, identifiée par le slug de son nom dans l’index.
 
 <div id="skills-index">
-  ### Index des skills
+  ### Index des compétences
 </div>
 
-L'endpoint `/.well-known/skills/` est le format de découverte original.
+Le point de terminaison `/.well-known/skills/` correspond au format de découverte initial.
 
-`GET /.well-known/skills/index.json` renvoie un manifeste JSON listant toutes les skills disponibles :
+`GET /.well-known/skills/index.json` renvoie un manifeste JSON qui répertorie toutes les compétences disponibles :
 
 ```json
 {
@@ -205,10 +205,10 @@ L'endpoint `/.well-known/skills/` est le format de découverte original.
 }
 ```
 
-Le champ `name` est un slug compatible URL dérivé du champ `name` dans le frontmatter de votre `skill.md`.
+Le champ `name` est un slug utilisable dans une URL, dérivé du `name` dans les métadonnées d’en-tête de votre `skill.md`.
 
 <div id="individual-skill-files">
-  ### Fichiers de skills individuels
+  ### Fichiers de compétences individuels
 </div>
 
-`GET /.well-known/skills/{name}/skill.md` renvoie le fichier `skill.md` d'une skill spécifique identifiée par son nom slugifié depuis l'index.
+`GET /.well-known/skills/{name}/skill.md` renvoie le fichier `skill.md` d’une compétence spécifique, identifiée par son nom converti en slug dans l’index.

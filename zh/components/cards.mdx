@@ -1,47 +1,48 @@
 ---
 title: "卡片"
-description: "使用卡片组件创建包含图标、图片和链接的可视化容器，突出显示关键信息并组织导航。"
+description: "使用卡片组件创建包含图标、图片和链接的可视化容器，用于突出重点并组织导航。"
 keywords: ["卡片", "可视化容器"]
 ---
 
 import IconsOptional from "/snippets/zh/icons-optional.mdx";
 
-使用卡片为内容创建可视化容器。卡片是一种灵活的容器，可以包含文本、图标、图片和链接。
+使用卡片为内容创建可视化容器。卡片是一种灵活的容器，可包含文本、图标、图片和链接。
 
 <div id="basic-card">
-  ## 基础卡片
+  ## 基础 Card
 </div>
 
 <Card title="卡片标题" icon="text-align-start" href="/zh/components/columns">
-  这是带有图标和链接的卡片用法。点击此卡片
-  将跳转到 Columns 页面。
+  这就是带图标和链接的 Card 用法。点击此 Card
+  会跳转到 Columns 页面。
 </Card>
 
 ```mdx Card example
-<Card title="卡片标题" icon="text-align-start" href="/zh/components/columns">
-  这是使用带有图标和链接的卡片的示例。点击此卡片会跳转到列组件页面。
+<Card title="Card title" icon="text-align-start" href="/components/columns">
+  This is how you use a card with an icon and a link. Clicking on this card
+  brings you to the Columns page.
 </Card>
 ```
 
 <div id="card-variations">
-  ## 卡片样式变体
+  ## Card 的变体
 </div>
 
-卡片支持多种布局和样式选项，可满足不同的内容需求。
+卡片支持多种布局和样式选项，以满足不同的内容需求。
 
 <div id="horizontal-layout">
   ### 水平布局
 </div>
 
-添加 `horizontal` 属性，以更紧凑的水平布局显示卡片。
+添加 `horizontal` 属性，以更紧凑的横向布局显示卡片。
 
-<Card title="水平卡片" icon="text-align-start" horizontal>
-  这是一个水平卡片示例。
+<Card title="横向卡片" icon="text-align-start" horizontal>
+  这是一个横向卡片示例。
 </Card>
 
 ```mdx Horizontal card example
-<Card title="横向卡片" icon="text-align-start" horizontal>
-  这是横向卡片的示例。
+<Card title="Horizontal card" icon="text-align-start" horizontal>
+  This is an example of a horizontal card.
 </Card>
 ```
 
@@ -49,45 +50,45 @@ import IconsOptional from "/snippets/zh/icons-optional.mdx";
   ### 图片卡片
 </div>
 
-添加一个 `img` 属性即可在卡片顶部显示图片。
+添加 `img` 属性，以在卡片顶部显示图片。
 
 <Card title="图片卡片" img="https://mintlify-assets.b-cdn.net/yosemite.jpg">
-  这是一个带图片的卡片示例。
+  这是一个带有图片的卡片示例。
 </Card>
 
 ```mdx Image card example
-<Card title="图片卡片" img="/images/card-with-image.png">
-  这是一个带图片的卡片示例。
+<Card title="Image card" img="/images/card-with-image.png">
+  This is an example of a card with an image.
 </Card>
 ```
 
 <div id="link-cards-with-custom-ctas">
-  ### 带有自定义 CTA 的链接卡片
+  ### 带自定义 CTA 的链接卡片
 </div>
 
-你可以自定义号召性用语的文本，并控制是否显示箭头。默认情况下，箭头只会显示在外部链接上。
+你可以自定义行动按钮文本，并控制是否显示箭头。默认情况下，只有外部链接会显示箭头。
 
 <Card title="链接卡片" icon="link" href="/zh/components/columns" arrow="true" cta="点击这里">
-  这是一个带有图标和链接的卡片示例。点击此卡片会将你带到 Columns 页面。
+  这是一个带有图标和链接的卡片示例。点击此卡片即可前往 Columns 页面。
 </Card>
 
 ```mdx Link card example
 <Card
-  title="链接卡片"
+  title="Link card"
   icon="link"
-  href="/zh/components/columns"
+  href="/components/columns"
   arrow="true"
-  cta="点击这里"
+  cta="Click here"
 >
-  这是一个带有图标和链接的卡片示例。点击此卡片可跳转到列组件页面。
+  This is an example of a card with an icon and a link. Clicking on this card brings you to the Columns page.
 </Card>
 ```
 
 <div id="group-cards">
-  ## 分组卡片
+  ## 卡片分组
 </div>
 
-使用 [Columns 组件](/zh/components/columns) 将多个卡片并排展示。Columns 组件支持 1 到 4 列，并会自动适配小屏幕。
+使用 [Columns 组件](/zh/components/columns) 将多张卡片并排排列。Columns 组件支持一到四列，并会自动适配较小的屏幕。
 
 <Columns cols={2}>
   <Card title="第一张卡片" icon="panel-left-close">
@@ -101,11 +102,11 @@ import IconsOptional from "/snippets/zh/icons-optional.mdx";
 
 ```mdx Columns example
 <Columns cols={2}>
-  <Card title="第一张卡片" icon="panel-left-close">
-    这是第一张卡片。
+  <Card title="First card" icon="panel-left-close">
+    This is the first card.
   </Card>
-  <Card title="第二张卡片" icon="panel-right-close">
-    这是第二张卡片。
+  <Card title="Second card" icon="panel-right-close">
+    This is the second card.
   </Card>
 </Columns>
 ```
@@ -115,17 +116,17 @@ import IconsOptional from "/snippets/zh/icons-optional.mdx";
 </div>
 
 <ResponseField name="title" type="string">
-  显示在卡片上的标题。
+  卡片上显示的标题。
 </ResponseField>
 
 <IconsOptional />
 
 <ResponseField name="color" type="string">
-  图标颜色，使用十六进制色值 (例如 `#FF6B6B`) 。
+  图标颜色的十六进制值 (例如 `#FF6B6B`) 。
 </ResponseField>
 
 <ResponseField name="href" type="string">
-  卡片被点击时跳转到的 URL。
+  点击卡片后跳转到的 URL。
 </ResponseField>
 
 <ResponseField name="horizontal" type="boolean">
@@ -133,13 +134,13 @@ import IconsOptional from "/snippets/zh/icons-optional.mdx";
 </ResponseField>
 
 <ResponseField name="img" type="string">
-  在卡片顶部显示的图片 URL 或本地路径。
+  显示在卡片顶部的图片 URL 或本地路径。
 </ResponseField>
 
 <ResponseField name="cta" type="string">
-  操作按钮的自定义文本。
+  操作按钮的自定义文案。
 </ResponseField>
 
 <ResponseField name="arrow" type="boolean">
-  是否显示链接箭头图标。
+  显示或隐藏链接箭头图标。
 </ResponseField>

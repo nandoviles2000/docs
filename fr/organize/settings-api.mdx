@@ -1,167 +1,178 @@
 ---
-title: "Paramètres d'API"
-description: "Configurez les spécifications OpenAPI et AsyncAPI, le playground API interactif, les exemples de code SDK et les paramètres d'authentification dans votre fichier docs.json."
-keywords: ["api", "openapi", "asyncapi", "playground", "docs.json", "api reference"]
+title: "Paramètres de l’API"
+description: "Configurez les spécifications OpenAPI et AsyncAPI, le bac à sable API interactif, les exemples de code SDK et les paramètres d’authentification dans votre fichier docs.json."
+keywords: ["api", "OpenAPI", "AsyncAPI", "bac à sable", "docs.json", "Référence de l’API"]
 ---
 
-Utilisez le champ `api` dans `docs.json` pour configurer les spécifications d'API qui génèrent les pages d'API, le playground d'API interactif pour tester les endpoints, et comment générer et afficher les exemples de code.
+Utilisez le champ `api` dans `docs.json` pour définir quelles spécifications d’API servent à générer les pages d’API, le bac à sable API interactif pour tester les points de terminaison, ainsi que la manière de générer et d’afficher des exemples de code.
 
-## Paramètres
+<div id="settings">
+  ## Paramètres
+</div>
 
-### `api`
+<div id="api">
+  ### `api`
+</div>
 
-**Type :** `object`
+**Type :** `object`
 
-Définissez tous les paramètres liés à l'API sous la clé `api`.
+Définissez tous les paramètres liés à l’API sous la clé `api`.
 
 <ResponseField name="api.openapi" type="string or array or object">
-  Fichiers de spécification OpenAPI pour générer des pages de référence d'API. Accepte un chemin ou une URL unique, un tableau de chemins et d'URL, ou un objet spécifiant une source et un répertoire.
+  Fichiers de spécification OpenAPI servant à générer des pages de Référence de l’API. Accepte un chemin ou une URL unique, un tableau de chemins et d’URL, ou un objet qui spécifie une source et un répertoire.
 
-  <Expandable title="api.openapi object">
+  <Expandable title="objet api.openapi">
     <ResponseField name="source" type="string">
-      URL ou chemin vers votre fichier de spécification OpenAPI. Longueur minimale : 1.
+      URL ou chemin vers votre fichier de spécification OpenAPI. Longueur minimale : 1.
     </ResponseField>
+
     <ResponseField name="directory" type="string">
-      Répertoire dans lequel rechercher les fichiers OpenAPI. N'incluez pas de barre oblique initiale.
+      Répertoire dans lequel rechercher les fichiers OpenAPI. N’incluez pas de barre oblique au début.
     </ResponseField>
   </Expandable>
 
   <CodeGroup>
+    ```json Fichier unique
+    "openapi": "openapi.json"
+    ```
 
-  ```json Fichier unique
-  "openapi": "openapi.json"
-  ```
+    ```json Plusieurs fichiers
+    "openapi": [
+      "openapi/v1.json",
+      "openapi/v2.json",
+      "https://api.example.com/openapi.yaml"
+    ]
+    ```
 
-  ```json Fichiers multiples
-  "openapi": [
-    "openapi/v1.json",
-    "openapi/v2.json",
-    "https://api.example.com/openapi.yaml"
-  ]
-  ```
-
-  ```json Répertoire
-  "openapi": {
-    "source": "openapi.json",
-    "directory": "api-reference"
-  }
-  ```
-
+    ```json Répertoire
+    "openapi": {
+      "source": "openapi.json",
+      "directory": "api-reference"
+    }
+    ```
   </CodeGroup>
 </ResponseField>
 
 <ResponseField name="api.asyncapi" type="string or array or object">
-  Fichiers de spécification AsyncAPI pour générer des pages de référence d'API événementielles. Accepte un chemin ou une URL unique, un tableau de chemins et d'URL, ou un objet spécifiant une source et un répertoire.
+  Fichiers de spécification AsyncAPI servant à générer des pages de Référence de l’API orientées événements. Accepte un chemin ou une URL unique, un tableau de chemins et d’URL, ou un objet qui spécifie une source et un répertoire.
 
-  <Expandable title="api.asyncapi object">
+  <Expandable title="objet api.asyncapi">
     <ResponseField name="source" type="string">
-      URL ou chemin vers votre fichier de spécification AsyncAPI. Longueur minimale : 1.
+      URL ou chemin vers votre fichier de spécification AsyncAPI. Longueur minimale : 1.
     </ResponseField>
+
     <ResponseField name="directory" type="string">
-      Répertoire dans lequel rechercher les fichiers AsyncAPI. N'incluez pas de barre oblique initiale.
+      Répertoire dans lequel rechercher les fichiers AsyncAPI. N’incluez pas de barre oblique au début.
     </ResponseField>
   </Expandable>
 
   <CodeGroup>
+    ```json Fichier unique
+    "asyncapi": "asyncapi.json"
+    ```
 
-  ```json Fichier unique
-  "asyncapi": "asyncapi.json"
-  ```
+    ```json Plusieurs fichiers
+    "asyncapi": [
+      "asyncapi/events.yaml",
+      "asyncapi/webhooks.yaml"
+    ]
+    ```
 
-  ```json Fichiers multiples
-  "asyncapi": [
-    "asyncapi/events.yaml",
-    "asyncapi/webhooks.yaml"
-  ]
-  ```
-
-  ```json Répertoire
-  "asyncapi": {
-    "source": "asyncapi.json",
-    "directory": "websockets"
-  }
-  ```
-
+    ```json Répertoire
+    "asyncapi": {
+      "source": "asyncapi.json",
+      "directory": "websockets"
+    }
+    ```
   </CodeGroup>
 </ResponseField>
 
 <ResponseField name="api.playground" type="object">
-  Paramètres du playground d'API interactif.
+  Paramètres du bac à sable API interactif.
 
   <Expandable title="api.playground">
-    <ResponseField name="display" type='"interactive" | "simple" | "none" | "auth"'>
-      Le mode d'affichage du playground. Valeur par défaut : `interactive`.
+    <ResponseField name="display" type="&#x22;interactive&#x22; | &#x22;simple&#x22; | &#x22;none&#x22; | &#x22;auth&#x22;">
+      Mode d’affichage du bac à sable. La valeur par défaut est `interactive`.
 
-      - `interactive` — Playground interactif complet avec constructeur de requêtes
-      - `simple` — Vue simplifiée sans le constructeur de requêtes
-      - `none` — Masquer complètement le playground
-      - `auth` — Afficher le playground uniquement aux utilisateurs authentifiés
+      * `interactive` — Bac à sable interactif complet avec générateur de requêtes
+      * `simple` — Vue simplifiée sans générateur de requêtes
+      * `none` — Masquer entièrement le bac à sable
+      * `auth` — Afficher le bac à sable uniquement aux utilisateurs authentifiés
     </ResponseField>
+
     <ResponseField name="proxy" type="boolean">
-      Indique s'il faut router les requêtes d'API via un serveur proxy. Valeur par défaut : `true`.
+      Indique si les requêtes API doivent être acheminées via un serveur proxy. La valeur par défaut est `true`.
     </ResponseField>
+
     <ResponseField name="credentials" type="boolean">
-      Indique s'il faut inclure les cookies et les en-têtes d'authentification pour les requêtes cross-origin lorsque `proxy` est `false`. Valeur par défaut : `false`. N'a aucun effet lorsque `proxy` est `true`.
+      Indique s’il faut inclure les cookies et les en-têtes d’authentification pour les requêtes cross-origin lorsque `proxy` est `false`. La valeur par défaut est `false`. N’a aucun effet lorsque `proxy` est `true`.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="api.params" type="object">
-  Paramètres d'affichage des paramètres d'API.
+  Paramètres d’affichage des paramètres d’API.
 
   <Expandable title="api.params">
-    <ResponseField name="expanded" type='"all" | "closed"'>
-      Indique s'il faut développer tous les paramètres par défaut. Valeur par défaut : `closed`.
+    <ResponseField name="expanded" type="&#x22;all&#x22; | &#x22;closed&#x22;">
+      Indique si tous les paramètres doivent être développés par défaut. La valeur par défaut est `closed`.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-<ResponseField name="api.url" type='"full"'>
-  Mode d'affichage de l'URL de base dans l'en-tête de l'endpoint. Définissez sur `full` pour toujours afficher l'URL de base complète sur chaque page d'endpoint. Par défaut, l'URL de base n'est affichée que lorsqu'il y a plusieurs URL de base parmi lesquelles choisir.
+<ResponseField name="api.url" type="&#x22;full&#x22;">
+  Mode d’affichage de l’URL de base dans l’en-tête du point de terminaison. Définissez cette valeur sur `full` pour toujours afficher l’URL de base complète sur chaque page de point de terminaison. Par défaut, l’URL de base n’est affichée que lorsqu’il y en a plusieurs parmi lesquelles choisir.
 </ResponseField>
 
 <ResponseField name="api.examples" type="object">
-  Paramètres pour les exemples de code d'API générés automatiquement.
+  Paramètres des exemples de code d’API générés automatiquement.
 
   <Expandable title="api.examples">
     <ResponseField name="languages" type="array of string">
-      Langages pour les extraits de code générés automatiquement. Voir [langages pris en charge](/fr/api-playground/overview#all-supported-languages) pour la liste complète des langages et alias disponibles.
+      Langues des extraits de code générés automatiquement. Consultez les [langues prises en charge](/fr/api-playground/overview#all-supported-languages) pour obtenir la liste complète des langues et alias disponibles.
     </ResponseField>
-    <ResponseField name="defaults" type='"required" | "all"'>
-      Indique s'il faut inclure les paramètres facultatifs dans les exemples générés. Valeur par défaut : `all`.
+
+    <ResponseField name="defaults" type="&#x22;required&#x22; | &#x22;all&#x22;">
+      Indique s’il faut inclure les paramètres facultatifs dans les exemples générés. La valeur par défaut est `all`.
     </ResponseField>
+
     <ResponseField name="prefill" type="boolean">
-      Indique s'il faut préremplir le playground avec les valeurs d'exemple de votre spécification OpenAPI. Valeur par défaut : `false`.
+      Indique s’il faut préremplir le bac à sable avec les valeurs d’exemple de votre spécification OpenAPI. La valeur par défaut est `false`.
     </ResponseField>
+
     <ResponseField name="autogenerate" type="boolean">
-      Indique s'il faut générer des exemples de code pour les endpoints à partir de votre spécification d'API. Valeur par défaut : `true`. Lorsque défini sur `false`, seuls les exemples de code écrits manuellement (à partir de `x-codeSamples` dans OpenAPI ou des composants `<RequestExample>` dans MDX) apparaissent dans le playground.
+      Indique s’il faut générer des exemples de code pour les endpoints à partir de votre spécification d’API. La valeur par défaut est `true`. Lorsque cette option est définie sur `false`, seuls les exemples de code rédigés manuellement (issus de `x-codeSamples` dans OpenAPI ou des composants `<RequestExample>` dans MDX) apparaissent dans le bac à sable.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="api.mdx" type="object">
-  Paramètres pour les pages d'API construites à partir de fichiers MDX plutôt que de spécifications OpenAPI.
+  Paramètres des pages d’API créées à partir de fichiers MDX plutôt que de spécifications OpenAPI.
 
   <Expandable title="api.mdx">
     <ResponseField name="auth" type="object">
-      Configuration d'authentification pour les requêtes d'API basées sur MDX.
+      Configuration de l’authentification pour les requêtes d’API basées sur MDX.
 
       <Expandable title="auth">
-        <ResponseField name="method" type='"bearer" | "basic" | "key" | "cobo"'>
-          Méthode d'authentification pour les requêtes d'API.
+        <ResponseField name="method" type="&#x22;bearer&#x22; | &#x22;basic&#x22; | &#x22;key&#x22; | &#x22;cobo&#x22;">
+          Méthode d’authentification pour les requêtes d’API.
         </ResponseField>
+
         <ResponseField name="name" type="string">
-          Nom du paramètre d'authentification pour les requêtes d'API.
+          Nom du paramètre d’authentification pour les requêtes d’API.
         </ResponseField>
       </Expandable>
     </ResponseField>
+
     <ResponseField name="server" type="string or array">
-      URL de base ajoutée en préfixe aux chemins relatifs dans les champs frontmatter `api` au niveau de la page. Non utilisée lorsque le frontmatter contient une URL complète.
+      URL de base ajoutée en préfixe aux chemins relatifs dans les champs `api` des métadonnées d’en-tête au niveau de la page. N’est pas utilisée lorsque les métadonnées d’en-tête contiennent une URL complète.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-## Exemple
+<div id="example">
+  ## Exemple
+</div>
 
 ```json docs.json
 {

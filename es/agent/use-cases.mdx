@@ -1,56 +1,56 @@
 ---
 title: "Casos de uso"
-description: "Explora ejemplos del mundo real sobre cómo usar el agente de Mintlify para automatizar actualizaciones de documentación, capturar conocimiento y mantener documentación precisa."
-keywords: ["agent workflows", "documentation workflows", "automation examples"]
+description: "Explora ejemplos reales de cómo usar el agente de Mintlify para automatizar actualizaciones de documentación, capturar conocimiento y mantener la documentación precisa."
+keywords: ["flujos de trabajo con agentes", "flujos de trabajo de documentación", "ejemplos de automatización"]
 ---
 
-El agente ayuda con muchas tareas diferentes de documentación. Estos ejemplos muestran algunas de las formas en que puedes integrar el agente en tu proceso de documentación. Prueba un enfoque que encaje con la forma en que tu equipo trabaja actualmente y ajústalo a tus necesidades específicas.
+El agente te ayuda con muchas tareas de documentación diferentes. Estos ejemplos muestran algunas formas de integrar el agente en tu proceso de documentación. Prueba un enfoque que se adapte a la forma de trabajar actual de tu equipo y ajústalo a tus necesidades específicas.
 
 <div id="iterate-on-a-prompt-in-a-slack-thread">
-  ## Iterar una instrucción en un hilo de Slack
+  ## Itera sobre un prompt en un hilo de Slack
 </div>
 
-Envía una instrucción al agente y luego continúa mencionándolo con `@mintlify` en el mismo hilo para refinar e iterar sobre la solicitud de extracción que crea.
+Dale un prompt al agente y luego sigue mencionándolo con `@mintlify` en el mismo hilo para refinar e iterar la solicitud de extracción (pull request, PR) que cree.
 
-Por ejemplo: `@mintlify Nuestra guía de inicio rápido necesita una nueva sección sobre cómo invitar colaboradores`. Luego: `@mintlify La nueva sección debería llamarse "Inviting collaborators"`. Y después cualquier otra iteración que quieras hacer.
+Por ejemplo: `@mintlify Nuestra página de inicio rápido necesita una nueva sección sobre cómo invitar a colaboradores`. Luego, `@mintlify La nueva sección debe llamarse "Invitar a colaboradores"`. Después, puedes hacer cualquier otra iteración.
 
 <div id="start-with-the-agent-finish-manually">
   ## Empieza con el agente y termina manualmente
 </div>
 
-Indícale al agente que inicie un proyecto, luego cambia a la branch que cree y termina la tarea en tu entorno local o en el editor web. El agente puede ayudarte a empezar y luego tú puedes tomar el control para completar la tarea.
+Dale un prompt al agente para que inicie un proyecto, luego cámbiate a la rama que crea y termina la tarea en tu entorno local o en el editor web. El agente puede ayudarte a empezar y, después, puedes tomar el control para completar la tarea.
 
-Por ejemplo: `@mintlify Update the quickstart page to include information about inviting collaborators` y luego cambia a la branch para hacer cualquier cambio adicional usando el método que prefieras.
+Por ejemplo: `@mintlify Update the quickstart page to include information about inviting collaborators` y luego cámbiate a la rama para hacer cualquier cambio adicional con el método que prefieras.
 
 <div id="update-docs-when-merging-feature-changes">
-  ## Actualiza la documentación al fusionar cambios de funcionalidades
+  ## Actualiza la documentación al fusionar cambios de una funcionalidad
 </div>
 
-Cuando fusiones una solicitud de extracción de una funcionalidad, comparte el enlace del PR con el agente para actualizar la documentación relevante.
+Cuando fusiones una solicitud de extracción (pull request, PR) de una funcionalidad, comparte el enlace de la PR con el agente para actualizar la documentación relevante.
 
-Por ejemplo: `@mintlify Este PR agrega un nuevo método de autenticación. Actualiza la documentación para incluir el nuevo flujo de autenticación: [enlace del PR]`.
+Por ejemplo: `@mintlify Esta PR añade un nuevo método de autenticación. Actualiza la documentación para incluir el nuevo flujo de autenticación: [enlace de la PR]`.
 
 <div id="generate-release-notes-from-a-pull-request">
-  ## Generar notas de lanzamiento a partir de una solicitud de extracción
+  ## Genera notas de la versión a partir de una solicitud de extracción (pull request, PR)
 </div>
 
-Indícale al agente una solicitud de extracción específica para que genere notas de lanzamiento o actualizaciones del changelog basadas en el historial de confirmaciones.
+Dale al agente un prompt con una solicitud de extracción (pull request, PR) específica para que genere notas de la versión o actualizaciones del registro de cambios a partir del historial de commits.
 
 Por ejemplo: `@mintlify Generate release notes for this PR: [PR link]`.
 
 <div id="address-pull-request-review-feedback">
-  ## Atender comentarios de revisión de solicitudes de extracción
+  ## Atiende los comentarios de revisión de la solicitud de extracción (pull request, PR)
 </div>
 
-Comparte con el agente el enlace de la solicitud de extracción para atender los comentarios de los revisores y los comentarios de revisión de código en las solicitudes de extracción de documentación.
+Comparte con el agente un enlace a una solicitud de extracción (pull request, PR) para atender los comentarios del revisor y la retroalimentación de la revisión de código en las solicitudes de extracción de documentación.
 
 Por ejemplo: `@mintlify Address the review comments on this PR: [PR link]`.
 
 <div id="generate-code-examples">
-  ## Generar ejemplos de código
+  ## Genera ejemplos de código
 </div>
 
-Pídele al agente que genere ejemplos de código para funcionalidades en toda tu documentación o en páginas específicas.
+Dale un prompt al agente para que genere ejemplos de código para funciones en toda tu documentación o en páginas específicas.
 
 Por ejemplo: `@mintlify Generate a code example to make the authentication method easier to understand`.
 
@@ -58,31 +58,31 @@ Por ejemplo: `@mintlify Generate a code example to make the authentication metho
   ## Agrega imágenes o archivos a tu documentación
 </div>
 
-Adjunta archivos o imágenes directamente a tu mensaje de Slack cuando des instrucciones al agente. El agente procesa el archivo adjunto y lo incluye en la documentación.
+Adjunta archivos o imágenes directamente a tu mensaje de Slack al indicarle una instrucción al agente. El agente procesa el archivo adjunto y lo incluye en la documentación.
 
-Por ejemplo: `@mintlify Añade este diagrama a la página de visión general de la arquitectura` con la imagen adjunta al mensaje.
+Por ejemplo: `@mintlify Add this diagram to the architecture overview page` con la imagen adjunta al mensaje.
 
 <div id="review-existing-content">
-  ## Revisar el contenido existente
+  ## Revisa el contenido existente
 </div>
 
-Pide al agente que revise el contenido existente para comprobar la precisión técnica, el estilo, la gramática u otros posibles problemas.
+Dale un prompt al agente para que revise el contenido existente para comprobar la precisión técnica, el estilo, la gramática y otros posibles problemas.
 
-Por ejemplo: `@mintlify Revisa la sección de limitación de tasa de la API. Cambiamos los límites el mes pasado`.
+Por ejemplo: `@mintlify Review the API rate limiting section. We changed limits last month`.
 
 <div id="respond-to-user-feedback">
   ## Responde a los comentarios de los usuarios
 </div>
 
-Proporciona al agente los comentarios de tus usuarios para realizar actualizaciones puntuales en tu documentación.
+Dale al agente un prompt con los comentarios de tus usuarios para que haga cambios puntuales en tu documentación.
 
-Por ejemplo: `@mintlify Users are getting confused by step 3 in the setup guide. What might be making it unclear?`.
+Por ejemplo: `@mintlify Los usuarios se están confundiendo con el paso 3 de la guía de configuración. ¿Qué podría estar haciéndolo poco claro?`.
 
 <div id="automate-with-workflows">
   ## Automatiza con flujos de trabajo
 </div>
 
-Crea flujos de trabajo para automatizar tareas recurrentes y tareas de mantenimiento reactivo, como redactar cambios o actualizar contenido cuando agregas nuevas funcionalidades a tu producto.
+Crea flujos de trabajo para automatizar tareas recurrentes y tareas de mantenimiento en respuesta a cambios, como redactar registros de cambios o actualizar contenido cuando añades nuevas funciones a tu producto.
 
 Consulta [Workflows](/es/agent/workflows) para obtener más información.
 
@@ -90,10 +90,10 @@ Consulta [Workflows](/es/agent/workflows) para obtener más información.
   ## Automatiza con la API
 </div>
 
-Integra el agente en tus herramientas de automatización existentes para actualizar la documentación automáticamente cuando se produzcan cambios en el código, iniciar revisiones de contenido o sincronizar actualizaciones de documentación entre múltiples repositorios.
+Integra el agente en tus herramientas de automatización actuales para actualizar automáticamente la documentación cuando se produzcan cambios en el código, activar revisiones de contenido o sincronizar actualizaciones de la documentación entre varios repositorios.
 
-Usa los endpoints del agente para [crear tareas](/es/api/agent/v2/create-agent-job), [obtener el estado de una tarea](/es/api/agent/v2/get-agent-job) y [enviar mensajes](/es/api/agent/v2/send-message).
+Usa los endpoints del agente para [crear trabajos](/es/api/agent/v2/create-agent-job), [obtener el estado de un trabajo](/es/api/agent/v2/get-agent-job) y [enviar mensajes](/es/api/agent/v2/send-message).
 
-Al crear tareas mediante la API, puedes controlar si las solicitudes de extracción se abren en modo borrador usando el parámetro `asDraft` (su valor predeterminado es `false`). Establece `asDraft: true` para crear solicitudes de extracción en modo borrador, o mantén el valor predeterminado para crear solicitudes de extracción listas para revisión inmediata y fusión en flujos de trabajo automatizados.
+Al crear trabajos mediante la API, puedes controlar si las solicitudes de extracción (pull request, PR) se abren en modo borrador con el parámetro `asDraft` (su valor predeterminado es `false`). Establece `asDraft: true` para crear solicitudes de extracción (pull request, PR) en borrador, o deja el valor predeterminado para crear solicitudes de extracción (pull request, PR) listas para revisarse y fusionarse de inmediato en flujos de trabajo automatizados.
 
-Aprende cómo configurar la automatización con la API en el tutorial [Actualizar automáticamente la documentación cuando se fusiona el código](/es/guides/automate-agent).
+Aprende a configurar la automatización con la API en el tutorial [Actualizar automáticamente la documentación cuando se fusiona el código](/es/guides/automate-agent).

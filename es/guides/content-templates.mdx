@@ -1,26 +1,26 @@
 ---
-title: "Plantillas de contenido de documentación"
+title: "Plantillas de contenido para documentación"
 sidebarTitle: "Plantillas de contenido"
-description: "Copia y modifica plantillas MDX listas para usar para guías prácticas, tutoriales, explicaciones conceptuales y páginas de referencia de API en tu documentación."
-keywords: ["plantillas de documentación", "plantilla de guía práctica", "plantilla de tutorial", "plantilla de referencia", "plantillas MDX"]
+description: "Copia y adapta plantillas de MDX listas para usar para guías prácticas, tutoriales, explicaciones conceptuales y páginas de referencia de API en tu documentación."
+keywords: ["plantillas de documentación", "plantilla de guía práctica", "plantilla de tutorial", "plantilla de referencia", "plantillas de MDX"]
 ---
 
-Utiliza estas plantillas como punto de partida para crear documentación. Personaliza las plantillas para tu documentación y tu audiencia.
+Usa estas plantillas como punto de partida para crear documentación. Personalízalas según tu documentación y tu audiencia.
 
-1. Copia la plantilla que se corresponda con tu tipo de contenido.
-2. Reemplaza los marcadores de posición y el contenido de ejemplo con tu contenido real.
+1. Copia la plantilla que corresponda a tu tipo de contenido.
+2. Sustituye los marcadores de posición y el contenido de ejemplo por tu contenido real.
 3. Ajusta las secciones según sea necesario.
-4. Elimina las secciones que no sean relevantes.
+4. Elimina las secciones que no correspondan.
 
 <Tip>
-  ¿No estás seguro de qué plantilla usar? Lee sobre [tipos de contenido](/es/guides/content-types) para comprender cuándo utilizar cada uno.
+  ¿No sabes qué plantilla usar? Lee sobre [tipos de contenido](/es/guides/content-types) para entender cuándo usar cada una.
 </Tip>
 
 <div id="how-to-guide-template">
   ## Plantilla de guía práctica
 </div>
 
-Usa guías prácticas cuando los usuarios necesiten llevar a cabo una tarea específica y ya tengan cierta familiaridad con tu producto. Las guías prácticas están orientadas al objetivo y van directamente a la solución.
+Usa guías prácticas cuando los usuarios necesiten completar una tarea específica y ya tengan cierta familiaridad con tu producto. Las guías prácticas están orientadas a objetivos y van directo a la solución.
 
 ````mdx How-to guide template
 ---
@@ -38,17 +38,17 @@ List only what's necessary:
 - Permissions needed
 - Related features that should be configured first
 
-## [Encabezado orientado a la acción que describe la tarea]
+## [Action-oriented heading describing the task]
 
-Proporcione instrucciones directas enfocadas en lograr el objetivo.
+Provide direct instructions focused on achieving the goal.
 
-1. Abra [ubicación] y navegue a [lugar específico]
-2. Haga clic en [botón u opción]
-3. Ingrese [información requerida]
-4. Haga clic en [botón de confirmación]
+1. Open [location] and navigate to [specific place]
+2. Click [button or option]
+3. Enter [required information]
+4. Click [confirmation button]
 
 ```language
-// Include code examples that users can copy and modify
+// Incluye ejemplos de código que los usuarios puedan copiar y modificar
 ```
 
 <Tip>
@@ -75,186 +75,186 @@ Link to related how-to guides or next steps.
   ## Plantilla de tutorial
 </div>
 
-Usa tutoriales cuando quieras ayudar a usuarios nuevos a aprender mediante práctica directa. Los tutoriales guían a los usuarios paso a paso a través de una experiencia de aprendizaje completa con un resultado claro.
+Usa los tutoriales cuando quieras ayudar a usuarios nuevos a aprender mediante la práctica. Los tutoriales guían a los usuarios paso a paso a lo largo de una experiencia de aprendizaje completa con un resultado claro.
 
 ````mdx Tutorial template
 ---
 title: "[Action verb] [specific outcome]"
-description: "Aprende cómo [specific outcome] mediante [method or approach]."
+description: "Aprende a [specific outcome] mediante [method or approach]."
 ---
 
-Usa un párrafo de introducción para explicar qué pueden esperar aprender los usuarios y qué pueden hacer después de completar este tutorial.
+Usa un párrafo introductorio para explicar qué pueden esperar aprender los usuarios y qué podrán hacer al completar este tutorial.
 
 ## Requisitos previos
 
-Lista lo que los usuarios necesitan antes de comenzar:
+Enumera lo que los usuarios necesitan antes de comenzar:
 
-- Conocimientos o habilidades requeridos
+- Conocimientos o habilidades necesarios
 - Herramientas, cuentas o permisos
-- Compromiso de tiempo (opcional)
+- Tiempo estimado (opcional)
 
-## Step 1: [First action]
+## Paso 1: [First action]
 
 Proporciona instrucciones claras y específicas para el primer paso.
 
 ```language
-// Include code examples where helpful
+// Incluye ejemplos de código donde sea útil
 ```
 
 Explica qué logra este paso y por qué es importante.
 
-## Step 2: [Second action]
+## Paso 2: [Second action]
 
-Continúa con pasos secuenciales que se basan en el trabajo anterior.
+Continúa con pasos secuenciales que partan del trabajo anterior.
 
-Señala hitos y marcadores de progreso para que los usuarios sepan que van por buen camino.
+Señala hitos e indicadores de progreso para que los usuarios sepan que van por buen camino.
 
-## Step 3: [Third action]
+## Paso 3: [Third action]
 
-Mantén los pasos enfocados en acciones concretas en lugar de teoría.
+Mantén los pasos centrados en acciones concretas, no en teoría.
 
-Minimiza las elecciones que los usuarios necesitan tomar.
+Reduce al mínimo las decisiones que los usuarios deban tomar.
 
 ## Próximos pasos
 
-Resume lo que los usuarios aprendieron y sugiere próximos pasos lógicos:
+Resume lo que aprendieron los usuarios y sugiere los próximos pasos lógicos:
 
-- Tutoriales relacionados para probar
+- Tutoriales relacionados para explorar
 - Guías prácticas para tareas comunes
-- Recursos adicionales para profundizar en el aprendizaje
+- Recursos adicionales para profundizar
 ````
 
 <div id="explanation-template">
   ## Plantilla de explicación
 </div>
 
-Usa explicaciones cuando los usuarios necesiten comprender conceptos, decisiones de diseño o cómo funcionan las funciones complejas. Las explicaciones proporcionan contexto y profundizan la comprensión en lugar de dar instrucciones paso a paso.
+Usa explicaciones cuando los usuarios necesiten comprender conceptos, decisiones de diseño o cómo funcionan características complejas. Las explicaciones aportan contexto y favorecen una comprensión más profunda, en lugar de ofrecer instrucciones paso a paso.
 
 ```mdx Explanation template
 ---
-title: "About [concept or feature]"
-description: "Understand [concept] and how it works within [product or context]."
+title: "Acerca de [concepto o funcionalidad]"
+description: "Comprende [concepto] y cómo funciona dentro de [producto o contexto]."
 ---
 
-Start with a clear statement of what this explanation covers and why understanding it matters.
+Comienza con una declaración clara de lo que abarca esta explicación y por qué es importante comprenderlo.
 
-Define the concept in plain language. Explain what it is, what it does, and why it exists.
+Define el concepto en lenguaje sencillo. Explica qué es, qué hace y por qué existe.
 
-Use analogies or comparisons to familiar concepts when helpful.
+Usa analogías o comparaciones con conceptos conocidos cuando sea útil.
 
-## How [concept] works
+## Cómo funciona [concepto]
 
-Explain the underlying mechanics, architecture, or process.
+Explica la mecánica subyacente, la arquitectura o el proceso.
 
 <Frame>
-  <img src="/path/to/diagram.png" alt="Diagram showing how [concept] works" />
+  <img src="/path/to/diagram.png" alt="Diagrama que muestra cómo funciona [concepto]" />
 </Frame>
 
-Break down complex ideas into digestible sections.
+Divide las ideas complejas en secciones fáciles de asimilar.
 
-## Why [design decision or approach]
+## Por qué [decisión de diseño o enfoque]
 
-Provide context about why things work the way they do.
+Proporciona contexto sobre por qué las cosas funcionan como lo hacen.
 
-Discuss trade-offs, alternatives that were considered, or constraints that influenced the design.
+Analiza las ventajas y desventajas, las alternativas que se consideraron o las restricciones que influyeron en el diseño.
 
 ## Cuándo usar [concepto]
 
-Ayuda a los usuarios a entender cuándo este concepto o enfoque es más apropiado.
+Ayuda a los usuarios a entender cuándo este concepto o enfoque es más adecuado.
 
 - **Caso de uso 1**: Cuándo tiene sentido este enfoque
-- **Caso de uso 2**: Otro escenario donde esta es la opción correcta
-- **No recomendado para**: Situaciones donde las alternativas son mejores
+- **Caso de uso 2**: Otro escenario en el que esta es la opción correcta
+- **No recomendado para**: Situaciones en las que las alternativas son mejores
 
-## Relationship to other features
+## Relación con otras funcionalidades
 
-Draw connections to related concepts or features in your product.
+Establece conexiones con conceptos o funcionalidades relacionadas en tu producto.
 
-Explain how this concept fits into the broader system or workflow.
+Explica cómo encaja este concepto en el sistema o flujo de trabajo más amplio.
 
-## Common misconceptions
+## Conceptos erróneos frecuentes
 
-Address misunderstandings or clarify subtle distinctions.
+Aborda malentendidos o aclara distinciones sutiles.
 
-## Further reading
+## Lecturas adicionales
 
-Link to related explanations, tutorials, or reference documentation.
+Incluye enlaces a explicaciones relacionadas, tutoriales o documentación de referencia.
 ```
 
 <div id="reference-template">
   ## Plantilla de referencia
 </div>
 
-Utiliza documentación de referencia cuando los usuarios necesiten consultar detalles específicos sobre las características de tu producto. La documentación de referencia prioriza la precisión, la consistencia y la facilidad para revisarla rápidamente.
+Usa la documentación de referencia cuando los usuarios necesiten consultar detalles específicos sobre las funcionalidades de tu producto. La documentación de referencia prioriza la precisión, la coherencia y la facilidad de consulta.
 
 ````mdx Reference template
 ---
-title: "Referencia de [nombre de característica o API]"
-description: "Referencia completa de propiedades, parámetros y opciones de [característica o API]."
+title: "Referencia de [nombre de función o API]"
+description: "Referencia completa de propiedades, parámetros y opciones de [función o API]."
 ---
 
-Provide a one-sentence description of what this feature or API does.
+Escribe una descripción en una sola oración de lo que hace esta función o API.
 
-## Properties
+## Propiedades
 
 <ParamField body="property1" type="string" required>
-  Brief description of the property.
+  Descripción breve de la propiedad.
 </ParamField>
 
 <ParamField body="property2" type="number">
-  Brief description with default value if applicable.
+  Descripción breve con el valor predeterminado, si corresponde.
 </ParamField>
 
 <ParamField body="property3" type="boolean" default="false">
-  Brief description.
+  Descripción breve.
 </ParamField>
 
-## Parameters
+## Parámetros
 
 <ParamField body="parameterName" type="string">
-  Description of what this parameter does and when to use it.
+  Descripción de lo que hace este parámetro y cuándo usarlo.
 
 ```language
-// Example showing typical usage
+// Ejemplo que muestra el uso típico
 ```
 </ParamField>
 
 <ParamField body="anotherParameter" type="object">
-  Description of the parameter.
+  Descripción del parámetro.
 
-  Available options:
+  Opciones disponibles:
 
-  - `option1`: Description of this option.
-  - `option2`: Description of this option.
+  - `option1`: Descripción de esta opción.
+  - `option2`: Descripción de esta opción.
 </ParamField>
 
-## Examples
+## Ejemplos
 
-### Basic example
+### Ejemplo básico
 
 ```language title="Basic usage"
-// Minimal example showing common use case
+// Ejemplo mínimo que muestra el caso de uso más común
 ```
 
-### Advanced example
+### Ejemplo avanzado
 
 ```language title="Advanced configuration"
-// Example with multiple options configured
+// Ejemplo con múltiples opciones configuradas
 ```
 
-## Response
+## Respuesta
 
-If documenting an API, describe the response structure.
+Si estás documentando una API, describe la estructura de la respuesta.
 
 <ResponseField name="field1" type="string" required>
-  Description of the response field.
+  Descripción del campo de respuesta.
 </ResponseField>
 
 <ResponseField name="field2" type="number">
-  Description of another response field.
+  Descripción de otro campo de respuesta.
 </ResponseField>
 
-Example response:
+Ejemplo de respuesta:
 
 ```json
 {
@@ -263,9 +263,9 @@ Example response:
 }
 ```
 
-## Related references
+## Referencias relacionadas
 
-Link to related reference documentation.
+Incluye enlaces a la documentación de referencia relacionada.
 ````
 
 <div id="related-pages">
@@ -278,10 +278,10 @@ Link to related reference documentation.
   </Card>
 
   <Card title="Estilo y tono" icon="pen" href="/es/guides/style-and-tone">
-    Escribe documentación eficaz con un estilo coherente.
+    Redacta documentación eficaz con un estilo uniforme.
   </Card>
 
   <Card title="Dar formato al texto" icon="text" href="/es/create/text">
-    Aprende a dar formato al texto y a dar estilo al contenido.
+    Aprende a dar formato al texto y aplicar estilo al contenido.
   </Card>
 </CardGroup>

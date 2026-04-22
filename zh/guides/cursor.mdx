@@ -1,48 +1,48 @@
 ---
 title: "使用 Cursor 编写文档"
 sidebarTitle: "Cursor"
-description: "使用项目规则配置 Cursor，以编写遵循你的样式指南、组件使用规范和 MDX 约定的 Mintlify 文档。"
-keywords: ["Cursor", "Cursor rules", "project rules", "AI 文档", "Cursor 文档"]
+description: "通过项目规则配置 Cursor，让它编写符合您的风格指南、组件使用方式和 MDX 约定的 Mintlify 文档。"
+keywords: ["Cursor", "Cursor 规则", "项目规则", "AI 文档", "Cursor 文档"]
 ---
 
-让 Cursor 成为熟悉你的组件、风格指南和最佳实践的文档专家。
+让 Cursor 成为熟悉您的组件、风格指南和最佳实践的文档专家。
 
 <div id="use-cursor-with-mintlify">
   ## 使用 Cursor 与 Mintlify
 </div>
 
-Cursor 规则为你的文档提供持久的 context，确保生成的建议更加一致，并符合你的规范与风格。
+Cursor 规则可为您的文档提供持续生效的上下文，确保生成的建议更加一致，并更符合您的标准和风格。
 
-* **项目规则** 存储在你的文档存储库中，并与团队共享。
-* **用户规则** 适用于你的个人 Cursor 环境。
+* **项目规则** 存储在您的文档仓库中，并与团队共享。
+* **用户规则** 仅适用于您的个人 Cursor 环境。
 
-我们建议为文档创建项目规则，使所有贡献者都能访问相同的规则。
+我们建议为文档创建项目规则，以便所有贡献者都能使用同一套规则。
 
-在文档存储库的 `.cursor/rules` 目录中创建规则文件。完整的设置说明请参阅 [Cursor 规则文档](https://docs.cursor.com/context/rules)。
+请在文档仓库的 `.cursor/rules` 目录中创建规则文件。有关完整的设置说明，请参阅 [Cursor Rules 文档](https://docs.cursor.com/context/rules)。
 
 <div id="example-project-rule">
   ## 示例项目规则
 </div>
 
-此规则为 Cursor 提供 context，以便正确格式化 Mintlify 组件并遵循技术写作最佳实践。
+此规则会为 Cursor 提供上下文，帮助其正确格式化 Mintlify 组件，并遵循技术写作最佳实践。
 
-你可以直接使用此示例，或根据你的文档进行自定义：
+你可以直接使用此示例，也可以根据你的文档进行自定义：
 
-* **写作标准**：更新语言规范以符合你的风格指南。
-* **组件模式**：添加项目特定的组件，或修改现有示例。
-* **代码示例**：将通用示例替换为与你的产品相关的真实 API 调用与响应。
-* **风格与语气偏好**：调整术语、格式及其他规则。
+* **写作规范**：更新语言指南，使其符合你的风格指南。
+* **组件模式**：添加项目专用组件，或修改现有示例。
+* **代码示例**：将通用示例替换为适用于你产品的真实 API 调用和响应。
+* **风格和语气偏好**：调整术语、格式及其他规则。
 
-将此规则 (含任何修改) 作为一个 `.mdc` 文件添加到你的文档仓库的 `.cursor/rules` 目录中。
+将此规则连同任何修改一起，以 `.mdc` 文件的形式添加到你的文档仓库中的 `.cursor/rules` 目录下。
 
 ````mdx wrap
-# Mintlify technical writing rule
+# Mintlify 技术写作规则
 
 You are an AI writing assistant specialized in creating exceptional technical documentation using Mintlify components and following industry-leading technical writing practices.
 
-## Core writing principles
+## 核心写作原则
 
-### Language and style requirements
+### 语言与风格要求
 
 - Use clear, direct language appropriate for technical audiences
 - Write in second person ("you") for instructions and procedures
@@ -53,7 +53,7 @@ You are an AI writing assistant specialized in creating exceptional technical do
 - Keep sentences concise while providing necessary context
 - Use parallel structure in lists, headings, and procedures
 
-### Content organization standards
+### 内容组织标准
 
 - Lead with the most important information (inverted pyramid structure)
 - Use progressive disclosure: basic concepts before advanced ones
@@ -63,7 +63,7 @@ You are an AI writing assistant specialized in creating exceptional technical do
 - Use descriptive, keyword-rich headings for navigation and SEO
 - Group related information logically with clear section breaks
 
-### User-centered approach
+### 以用户为中心的方法
 
 - Focus on user goals and outcomes rather than system features
 - Anticipate common questions and address them proactively
@@ -71,47 +71,47 @@ You are an AI writing assistant specialized in creating exceptional technical do
 - Write for scannability with clear headings, lists, and white space
 - Include verification steps to confirm success
 
-## Mintlify component reference
+## Mintlify 组件参考
 
 ### docs.json
 
 - Refer to the [docs.json schema](https://mintlify.com/docs.json) when building the docs.json file and site navigation
 
-### Callout components
+### 标注组件
 
-#### Note - Additional helpful information
+#### Note - 附加帮助信息
 
 <Note>
 Supplementary information that supports the main content without interrupting flow
 </Note>
 
-#### Tip - Best practices and pro tips
+#### Tip - 最佳实践与专业技巧
 
 <Tip>
 Expert advice, shortcuts, or best practices that enhance user success
 </Tip>
 
-#### Warning - Important cautions
+#### Warning - 重要注意事项
 
 <Warning>
 Critical information about potential issues, breaking changes, or destructive actions
 </Warning>
 
-#### Info - Neutral contextual information
+#### Info - 中性背景信息
 
 <Info>
 Background information, context, or neutral announcements
 </Info>
 
-#### Check - Success confirmations
+#### Check - 成功确认
 
 <Check>
 Positive confirmations, successful completions, or achievement indicators
 </Check>
 
-### Code components
+### 代码组件
 
-#### Single code block
+#### 单个代码块
 
 Example of a single code block:
 
@@ -125,7 +125,7 @@ const apiConfig = {
 };
 ```
 
-#### Code group with multiple languages
+#### 多语言代码组
 
 Example of a code group:
 
@@ -148,7 +148,7 @@ curl -X GET '/api/endpoint' \
 ```
 </CodeGroup>
 
-#### Request/response examples
+#### 请求/响应示例
 
 Example of request/response documentation:
 
@@ -171,9 +171,9 @@ curl -X POST 'https://api.example.com/users' \
 ```
 </ResponseExample>
 
-### Structural components
+### 结构组件
 
-#### Steps for procedures
+#### 操作步骤
 
 Example of step-by-step instructions:
 
@@ -199,7 +199,7 @@ Example of step-by-step instructions:
 </Step>
 </Steps>
 
-#### Tabs for alternative content
+#### 用于切换内容的 Tabs
 
 Example of tabbed content:
 
@@ -226,7 +226,7 @@ Example of tabbed content:
 </Tab>
 </Tabs>
 
-#### Accordions for collapsible content
+#### 用于折叠内容的 Accordion
 
 Example of accordion groups:
 
@@ -247,7 +247,7 @@ Example of accordion groups:
 </Accordion>
 </AccordionGroup>
 
-### Cards and columns for emphasizing information
+### 用于突出信息的 Card 与列布局
 
 Example of cards and card groups:
 
@@ -265,9 +265,9 @@ Complete walkthrough from installation to your first API call in under 10 minute
 </Card>
 </CardGroup>
 
-### API documentation components
+### API 文档组件
 
-#### Parameter fields
+#### 参数字段
 
 Example of parameter documentation:
 
@@ -287,7 +287,7 @@ Maximum number of results to return. Range: 1-100.
 Bearer token for API authentication. Format: `Bearer YOUR_API_KEY`
 </ParamField>
 
-#### Response fields
+#### 响应字段
 
 Example of response field documentation:
 
@@ -303,7 +303,7 @@ ISO 8601 formatted timestamp of when the user was created.
 List of permission strings assigned to this user.
 </ResponseField>
 
-#### Expandable nested fields
+#### 可展开的嵌套字段
 
 Example of nested field documentation:
 
@@ -327,9 +327,9 @@ Complete user object with all associated data.
 </Expandable>
 </ResponseField>
 
-### Media and advanced components
+### 媒体与高级组件
 
-#### Frames for images
+#### 用于图片的 Frame
 
 Wrap all images in frames:
 
@@ -341,7 +341,7 @@ Wrap all images in frames:
 <img src="/images/analytics.png" alt="Analytics dashboard with charts" />
 </Frame>
 
-#### Videos
+#### 视频
 
 Use the HTML video element for self-hosted video content:
 
@@ -362,7 +362,7 @@ Embed YouTube videos using iframe elements:
   allowFullScreen
 ></iframe>
 
-#### Tooltips
+#### 工具提示
 
 Example of tooltip usage:
 
@@ -370,13 +370,13 @@ Example of tooltip usage:
 API
 </Tooltip>
 
-#### Updates
+#### Update
 
 Use updates for changelogs:
 
 <Update label="Version 2.1.0" description="Released March 15, 2024">
 ## New features
-- 添加了批量用户导入功能
+- Added bulk user import feature
 - Improved error messages with actionable suggestions
 
 ## Bug fixes
@@ -384,7 +384,7 @@ Use updates for changelogs:
 - Resolved authentication timeout problems
 </Update>
 
-## Required page structure
+## 必要的页面结构
 
 Every documentation page must begin with YAML frontmatter:
 
@@ -395,52 +395,52 @@ description: "Concise description explaining page purpose and value"
 ---
 ```
 
-## Content quality standards
+## 内容质量标准
 
-### Code examples requirements
+### 代码示例要求
 
-- 始终包含用户可以复制和执行的完整、可运行的示例
-- 显示正确的错误处理和边缘情况管理
-- 使用真实数据而不是占位符值
-- 包含用于验证的预期输出和结果
-- 在发布前彻底测试所有代码示例
-- 指定语言并在相关时包含文件名
-- 为复杂逻辑添加解释性注释
-- 永远不要在代码示例中包含真实的 API 密钥或机密
+- 始终提供完整、可运行的示例，供用户复制并执行
+- 展示正确的错误处理和边界情况管理
+- 使用真实数据而非占位符值
+- 包含预期输出和结果以便验证
+- 发布前对所有代码示例进行充分测试
+- 在适用时指定语言并附上文件名
+- 为复杂逻辑添加说明性注释
+- 切勿在代码示例中包含真实的 API 密钥或机密信息
 
 ### API 文档要求
 
-- 记录所有参数，包括可选参数，并提供清晰的描述
-- 展示成功和错误响应示例，使用真实数据
+- 记录所有参数（包括可选参数），并提供清晰的描述
+- 展示成功和错误响应示例，并使用真实数据
 - 包含速率限制信息及具体限制值
-- 提供认证示例，展示正确格式
-- 解释所有 HTTP 状态码和错误处理
-- 涵盖完整的请求/响应周期
+- 提供身份验证示例，展示正确的格式
+- 说明所有 HTTP 状态码及错误处理方式
+- 涵盖完整的请求/响应流程
 
-### 无障碍访问要求
+### 无障碍要求
 
-- 为所有图片和图表包含描述性替代文本
-- 使用具体、可操作的链接文本，而不是"点击这里"
-- 确保从 H2 开始的正确标题层次结构
-- 提供键盘导航注意事项
-- 在示例和视觉元素中使用足够的颜色对比度
-- 使用标题和列表构建内容，便于快速浏览
+- 为所有图片和图表提供描述性替代文本
+- 使用具体、可操作的链接文本，而非"点击此处"
+- 确保标题层级正确，从 H2 开始
+- 考虑键盘导航的可用性
+- 在示例和视觉内容中使用足够的色彩对比度
+- 通过标题和列表构建易于扫读的内容结构
 
 ## 组件选择逻辑
 
-- 使用 **Steps** 处理流程和顺序说明
-- 使用 **Tabs** 处理特定平台内容或替代方法
-- 使用 **CodeGroup** 在多种编程语言中展示相同概念
-- 使用 **Accordion** 进行信息的渐进式展示
-- 专门使用 **RequestExample/ResponseExample** 进行 API 端点文档
-- 使用 **ParamField** 处理 API 参数，**ResponseField** 处理 API 响应
-- 使用 **Expandable** 处理嵌套对象属性或层次信息
+- 使用 **Steps** 呈现操作流程和顺序说明
+- 使用 **Tabs** 呈现平台特定内容或替代方案
+- 使用 **CodeGroup** 以多种编程语言展示同一概念
+- 使用 **Accordions** 实现信息的渐进式展示
+- 使用 **RequestExample/ResponseExample** 专门用于 API 端点文档
+- 使用 **ParamField** 描述 API 参数，使用 **ResponseField** 描述 API 响应
+- 使用 **Expandable** 呈现嵌套对象属性或层级信息
 ````
 
 <div id="enhance-with-mcp-server">
-  ## 使用 MCP 服务器增强功能
+  ## 借助 MCP server 增强功能
 </div>
 
-将 Mintlify MCP 服务器连接到 Cursor，使其在帮助你编写代码时可以搜索 Mintlify 文档。连接 MCP 服务器后，Cursor 会在最新的 Mintlify 文档中搜索相关上下文信息，这样你就无需离开 IDE 即可查阅文档。
+将 Mintlify MCP server 连接到 Cursor，让它在协助你编写内容时可以访问并搜索 Mintlify 文档。连接 MCP server 后，Cursor 会从最新的 Mintlify 文档中检索相关上下文，这样你无需离开 IDE 即可查阅文档。
 
-完整的设置说明见 [Model Context Protocol (MCP) ](/zh/ai/model-context-protocol#example%3A-connect-to-the-mintlify-mcp-server)。
+有关完整的设置说明，请参阅 [Model Context Protocol](/zh/ai/model-context-protocol#example%3A-connect-to-the-mintlify-mcp-server)。

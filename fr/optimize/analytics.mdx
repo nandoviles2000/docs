@@ -1,121 +1,121 @@
 ---
-title: "Analytics"
-description: "Suivez les analyses de votre documentation dans le tableau de bord Mintlify pour comprendre les vues de page, les tendances des visiteurs, les recherches et l’efficacité du contenu."
-keywords: ["analytics","métriques","vues de page","trafic","tendances","analyses"]
+title: "Analyses"
+description: "Suivez les analyses de votre documentation dans le tableau de bord Mintlify pour comprendre les vues de page, les tendances des visiteurs, les requêtes de recherche et l’efficacité du contenu."
+keywords: ["analyses","métriques","vues de page","trafic","tendances","enseignements"]
 ---
 
-La page [Analytics](https://dashboard.mintlify.com/products/analytics/v2/) dans votre Dashboard affiche des données sur les visiteurs de votre documentation, la façon dont ils interagissent avec l’Assistant, ce qu’ils recherchent et leurs commentaires. Utilisez ces informations pour identifier quelles pages sont les plus utiles pour vos utilisateurs et suivre les tendances dans le temps.
+La page [analyses](https://dashboard.mintlify.com/products/analytics/v2/) de votre tableau de bord affiche des données sur les visiteurs de votre documentation, la façon dont ils interagissent avec l’assistant, ce qu’ils recherchent et les retours qu’ils laissent. Utilisez ces informations pour identifier les pages les plus utiles à vos utilisateurs et suivre les tendances dans le temps.
 
+Vous pouvez également accéder aux données d’analyses depuis le terminal avec la commande `mint analytics`. Consultez [Analyser votre documentation](/fr/cli/analytics) pour voir les commandes et options disponibles.
 
-Vous pouvez également accéder aux données d'analytique depuis le terminal avec la commande `mint analytics`. Consultez [Analysez votre documentation](/fr/cli/analytics) pour les commandes et options disponibles.
 <div id="filter-by-ai-or-human-visitors">
   ## Filtrer par visiteurs IA ou humains
 </div>
 
-Filtrez vos données Analytics par source de trafic pour analyser séparément le trafic des agents IA et celui des visiteurs humains.
+Filtrez vos données d’analyses par source de trafic afin d’analyser séparément le trafic des agents IA et celui des visiteurs humains.
 
 <Frame>
-  <img src="/images/analytics/traffic-filter-light.png" alt="Le filtre de source de trafic sur la page Analytics." className="block dark:hidden" />
+  <img src="/images/analytics/traffic-filter-light.png" alt="Le filtre de source de trafic sur la page d’analyses." className="block dark:hidden" />
 
-  <img src="/images/analytics/traffic-filter-dark.png" alt="Le filtre de source de trafic sur la page Analytics." className="hidden dark:block" />
+  <img src="/images/analytics/traffic-filter-dark.png" alt="Le filtre de source de trafic sur la page d’analyses." className="hidden dark:block" />
 </Frame>
 
-Lorsque vous modifiez la source de trafic, la page Analytics n’affiche que les indicateurs pertinents pour cette source de trafic. Pour le trafic IA, la page Analytics affiche les visiteurs et les recherches Model Context Protocol (MCP). Pour le trafic humain, la page Analytics affiche les visiteurs, les vues de page, l’utilisation de l’Assistant, les recherches et les commentaires.
+Lorsque vous modifiez la source de trafic, la page d’analyses n’affiche que les métriques pertinentes pour cette source. Pour le trafic IA, la page d’analyses affiche les visiteurs et les recherches MCP. Pour le trafic humain, la page d’analyses affiche les visiteurs, les vues de page, l’utilisation de l’Assistant, les recherches et les retours.
 
 <div id="filter-time-period">
   ## Filtrer par période
 </div>
 
-Utilisez le sélecteur de période pour ajuster la période des données affichées.
+Utilisez le sélecteur de période pour ajuster la plage temporelle des données affichées.
 
 <Frame>
-  <img src="/images/analytics/range-selector-light.png" alt="Le sélecteur de période développé, affichant des options pour consulter différentes périodes de données." className="block dark:hidden" />
+  <img src="/images/analytics/range-selector-light.png" alt="Le sélecteur de période déployé affiche des options pour consulter les données sur différentes périodes." className="block dark:hidden" />
 
-  <img src="/images/analytics/range-selector-dark.png" alt="Le sélecteur de période développé, affichant des options pour consulter différentes périodes de données." className="hidden dark:block" />
+  <img src="/images/analytics/range-selector-dark.png" alt="Le sélecteur de période déployé affiche des options pour consulter les données sur différentes périodes." className="hidden dark:block" />
 </Frame>
 
 <div id="visitors">
   ## Visiteurs
 </div>
 
-L’onglet Visiteurs affiche un graphique en barres des visiteurs au fil du temps, une liste des pages les plus consultées et une liste des sites référents.
+L’onglet Visiteurs affiche un histogramme du nombre de visiteurs au fil du temps, une liste des pages les plus consultées et les sources de provenance.
 
-Analysez les statistiques de vos visiteurs pour :
+Consultez les analyses des visiteurs pour :
 
-* **Surveiller les tendances de trafic** : Observez les variations du trafic après des mises à jour ou la publication de nouveau contenu afin de comprendre l’impact de vos changements.
-* **Identifier les pages populaires** : Appuyez-vous sur les pages populaires pour comprendre quel contenu est le plus important pour vos utilisateurs, afin de vous assurer qu’il est à jour et complet.
-* **Suivre les sources de trafic** : Comprenez d’où viennent vos utilisateurs afin d’optimiser votre contenu pour le bon public cible.
+* **Surveiller les tendances du trafic** : observez l’évolution du trafic après des mises à jour ou l’ajout de nouveau contenu afin de comprendre l’impact de vos changements.
+* **Identifier les pages les plus consultées** : utilisez cette liste pour déterminer quel contenu est le plus important pour vos utilisateurs, afin de vous assurer qu’il est à jour et complet.
+* **Suivre les sources de trafic** : comprenez d’où viennent vos utilisateurs pour vous aider à optimiser votre contenu pour le bon public.
 
 <div id="top-agents">
   ### Agents principaux
 </div>
 
-Lors de l&#39;affichage du trafic IA, **Top agents** remplace **Referrals** dans l&#39;onglet **Visitors**. **Top agents** indique quels agents IA consultent votre documentation. Utilisez ces informations pour vous aider à déterminer :
+Lorsque vous consultez le trafic IA, les agents principaux remplacent les sites référents dans l’onglet Visiteurs. Les agents principaux indiquent quels agents IA consultent votre documentation. Utilisez ces informations pour déterminer :
 
-* **Répartition des agents IA** : voyez quelles plateformes IA accèdent à votre documentation afin de savoir quels outils vos utilisateurs privilégient.
-* **Opportunités d&#39;intégration** : identifiez les plateformes IA à prioriser pour l&#39;optimisation et les tests.
+* **Répartition des agents IA** : voyez quelles plateformes d’IA accèdent à votre documentation afin de comprendre quels outils vos utilisateurs préfèrent.
+* **Possibilités d’intégration** : identifiez les plateformes d’IA à privilégier pour l’optimisation et les tests.
 * **Tendances du trafic IA** : surveillez quels agents sont les plus actifs et comment leur utilisation évolue au fil du temps.
 
 <div id="views">
   ## Vues
 </div>
 
-L’onglet Vues affiche un graphique en barres des vues de page au fil du temps, ainsi qu’une liste de vos pages les plus consultées par nombre de vues.
+L’onglet Vues affiche un graphique à barres des vues de page au fil du temps, ainsi qu’une liste de vos pages les plus consultées en fonction du nombre de vues.
 
-Analyser vos Analytics de vues de page pour :
+Consultez les analyses de vos vues de page pour :
 
-* **Suivre l’engagement avec le contenu** : suivez le nombre total de vues de page pour comprendre l’utilisation globale de votre documentation et identifier les tendances.
-* **Identifier les pages les plus consultées** : voyez quelles pages reçoivent le plus de vues afin de prioriser les mises à jour et de garantir que le contenu à fort trafic reste exact.
+* **Suivre l’engagement pour votre contenu** : suivez le nombre total de vues de page pour comprendre l’utilisation globale de votre documentation et repérer les tendances.
+* **Identifier les pages les plus consultées** : voyez quelles pages reçoivent le plus de vues afin de prioriser les mises à jour et de garantir l’exactitude des contenus les plus consultés.
 
 <div id="assistant">
   ## Assistant
 </div>
 
-L&#39;onglet Assistant affiche un graphique en barres de l&#39;utilisation de l&#39;Assistant au fil du temps, une liste de catégories et l&#39;historique des conversations.
+L’onglet Assistant affiche un graphique en barres de l’utilisation de l’assistant au fil du temps, une liste de catégories et l’historique des conversations.
 
-Examinez vos Analytics de l&#39;Assistant pour :
+Consultez les analyses de votre assistant pour :
 
-* **Surveiller l&#39;utilisation de l&#39;Assistant** : Observez les évolutions de l&#39;utilisation de l&#39;Assistant pour comprendre comment vos utilisateurs interagissent avec votre contenu.
-* **Identifier les catégories fréquentes** : Utilisez les catégories à forte fréquence pour comprendre quels sujets sont les plus importants pour vos utilisateurs. Identifiez les lacunes dans la couverture et priorisez les mises à jour de contenu.
-* **Examiner l&#39;historique des conversations** : Obtenez des données détaillées à forte intention sur la façon dont vos utilisateurs perçoivent votre produit en analysant l&#39;historique de leurs échanges avec l&#39;Assistant. Voyez quels termes ils utilisent, sur quoi ils ont besoin d&#39;aide et quelles tâches ils essaient d&#39;accomplir.
+* **Surveiller l’utilisation de l’assistant** : observez l’évolution de l’utilisation de l’assistant afin de comprendre comment vos utilisateurs interagissent avec votre contenu.
+* **Identifier les catégories fréquentes** : utilisez les catégories les plus récurrentes pour comprendre quels sujets sont les plus importants pour vos utilisateurs. Repérez les lacunes dans la couverture du contenu et priorisez les mises à jour.
+* **Consulter l’historique des conversations** : obtenez des données détaillées sur les intentions de vos utilisateurs et leur perception de votre produit en consultant leur historique de conversations avec l’assistant. Voyez quels termes ils utilisent, les sujets pour lesquels ils ont besoin d’aide et les tâches qu’ils essaient d’accomplir.
 
 <div id="categories">
   ### Catégories
 </div>
 
-L’onglet Catégories utilise des LLM pour regrouper automatiquement les conversations par sujet ou par thème.
+L’onglet des catégories utilise des LLM pour regrouper automatiquement les conversations par sujet ou par thème.
 
 <Frame>
-  <img src="/images/analytics/categories-light.png" alt="L’onglet Catégories dans la page Analytics de l’Assistant." className="block dark:hidden" />
+  <img src="/images/analytics/categories-light.png" alt="L’onglet des catégories sur la page d’analyses de l’Assistant." className="block dark:hidden" />
 
-  <img src="/images/analytics/categories-dark.png" alt="L’onglet Catégories dans la page Analytics de l’Assistant." className="hidden dark:block" />
+  <img src="/images/analytics/categories-dark.png" alt="L’onglet des catégories sur la page d’analyses de l’Assistant." className="hidden dark:block" />
 </Frame>
 
-Utilisez les catégories pour identifier les sujets récurrents, les tendances dans les besoins et comportements des utilisateurs, ainsi que les sections de la documentation qui pourraient nécessiter un enrichissement ou une clarification.
+Utilisez les catégories pour repérer les sujets fréquents, les tendances dans les besoins et le comportement des utilisateurs, ainsi que les domaines où la documentation pourrait devoir être étoffée ou clarifiée.
 
-Cliquez sur une ligne de catégorie pour la déplier et afficher les conversations associées regroupées sous cette catégorie.
+Cliquez sur une ligne de catégorie pour la développer et afficher les conversations associées regroupées sous cette catégorie.
 
-Cliquez sur une conversation donnée pour afficher l’intégralité du fil de discussion, y compris la question de l’utilisateur, la réponse de l’Assistant et toutes les sources citées.
+Cliquez sur une conversation pour afficher l’intégralité du fil de discussion, y compris la question de l’utilisateur, la réponse de l’assistant et les sources citées.
 
 <div id="chat-history">
   ### Historique des conversations
 </div>
 
-L’onglet Historique des conversations affiche un enregistrement chronologique de toutes les conversations avec l’Assistant.
+L’onglet Historique des conversations affiche, par ordre chronologique, l’ensemble des conversations avec l’assistant.
 
-Cliquez sur un message pour afficher l’intégralité du fil de discussion, y compris la question de l’utilisateur, la réponse de l’Assistant et toutes les sources citées.
+Cliquez sur n’importe quel message pour afficher l’intégralité du fil de discussion, y compris la question de l’utilisateur, la réponse de l’assistant et les sources citées.
 
 <div id="export-queries">
-  ### Exporter les requêtes
+  ### Export des requêtes
 </div>
 
-Pour une analyse plus approfondie, exportez un fichier CSV contenant vos requêtes, réponses et sources. Utilisez vos outils préférés pour analyser les données exportées.
+Pour une analyse plus approfondie, exportez un fichier CSV contenant vos requêtes, réponses et sources. Utilisez les outils de votre choix pour analyser les données exportées.
 
 <Tip>
   Exemples de prompts d’analyse :
 
-  * Répertorier toutes les requêtes pour lesquelles aucune source n’a été citée.
-  * Identifier des tendances dans les interactions qui ont échoué.
+  * Listez les requêtes pour lesquelles aucune source n’a été citée.
+  * Identifiez des tendances dans les interactions infructueuses.
 </Tip>
 
 <div id="searches">
@@ -123,37 +123,37 @@ Pour une analyse plus approfondie, exportez un fichier CSV contenant vos requêt
 </div>
 
 <Note>
-  La métrique Recherches est disponible uniquement lors de l’affichage du trafic humain.
+  La métrique Recherches n’est disponible que lorsque vous consultez le trafic humain.
 </Note>
 
-L’onglet Recherches affiche un diagramme en barres des recherches au fil du temps ainsi que les requêtes spécifiques.
+L’onglet Recherches affiche un histogramme des recherches au fil du temps ainsi que des requêtes spécifiques.
 
-Analysez vos Analytics de recherche pour :
+Consultez vos analyses de recherche pour :
 
-* **Surveiller les tendances de recherche** : Observez l’évolution des requêtes de recherche pour comprendre comment vos utilisateurs trouvent votre contenu et sur quels sujets ils souhaitent obtenir des informations.
-* **Identifier les requêtes fréquentes** : Servez-vous des requêtes fréquentes pour comprendre quels sujets sont les plus importants pour vos utilisateurs. Identifiez les lacunes de couverture et priorisez les mises à jour de contenu.
-* **Identifier les faibles taux de clics** : Les taux de clics (CTR) indiquent le nombre d’utilisateurs qui cliquent sur un résultat de recherche après avoir saisi une requête. Un CTR faible peut indiquer que les résultats de recherche ne sont pas pertinents par rapport aux requêtes des utilisateurs. Si vous avez des termes de recherche fréquents avec un CTR faible, envisagez d’améliorer la pertinence des résultats de recherche en ajoutant des mots-clés et en mettant à jour votre contenu.
+* **Surveiller les tendances de recherche** : observez l’évolution des requêtes de recherche pour comprendre comment vos utilisateurs trouvent votre contenu et sur quels sujets ils recherchent des informations.
+* **Identifier les requêtes fréquentes** : utilisez les requêtes fréquentes pour comprendre quels sujets sont les plus importants pour vos utilisateurs. Repérez les lacunes dans votre contenu et priorisez les mises à jour.
+* **Identifier les faibles taux de clics** : le taux de clics (CTR) indique la proportion d’utilisateurs qui cliquent sur un résultat de recherche après avoir saisi une requête. Un CTR faible peut indiquer que les résultats de recherche ne correspondent pas aux requêtes des utilisateurs. Si certains termes de recherche fréquents ont un CTR faible, envisagez d’améliorer la pertinence des résultats en ajoutant des mots-clés et en mettant à jour votre contenu.
 
 <div id="mcp-searches">
   ## Recherches MCP
 </div>
 
 <Note>
-  La métrique MCP Searches n’est disponible que lors de l’affichage du trafic de l’IA.
+  La métrique Recherches MCP n’est disponible que lorsque vous consultez le trafic IA.
 </Note>
 
-L’onglet MCP Searches affiche les interactions de recherche des agents IA via le Model Context Protocol (MCP). Cette métrique montre comment les agents IA effectuent des requêtes et interagissent avec votre documentation.
+L’onglet des recherches MCP affiche les interactions de recherche des agents IA via le Model Context Protocol (MCP). Cette métrique montre comment les agents IA effectuent des requêtes sur votre documentation et interagissent avec elle.
 
-Analysez les Analytics de vos recherches MCP pour :
+Consultez les analyses de vos recherches MCP pour :
 
-* **Surveiller l’activité de recherche de l’IA** : Suivez à quelle fréquence les agents IA recherchent dans votre documentation et identifiez les tendances des requêtes générées par l’IA.
-* **Identifier les requêtes IA courantes** : Comprenez quelles informations les agents IA recherchent afin d’optimiser votre contenu pour la consommation par l’IA.
-* **Améliorer la découvrabilité pour l’IA** : Utilisez les requêtes de recherche MCP fréquentes pour repérer les lacunes de votre documentation qui empêchent les agents IA de trouver facilement des réponses.
+* **Surveiller l’activité de recherche de l’IA** : suivez la fréquence à laquelle les agents IA effectuent des recherches dans votre documentation et identifiez les tendances des requêtes effectuées par l’IA.
+* **Identifier les requêtes IA courantes** : comprenez quelles informations les agents IA recherchent afin d’optimiser votre contenu pour qu’il soit exploitable par l’IA.
+* **Améliorer la découvrabilité pour l’IA** : utilisez les requêtes de recherche MCP fréquentes pour repérer les lacunes de votre documentation pour lesquelles les agents IA ont du mal à trouver des réponses.
 
 <div id="feedback">
-  ## Commentaires
+  ## Retour
 </div>
 
-L’onglet de commentaires affiche un graphique en barres des commentaires au fil du temps ainsi que les retours individuels.
+L’onglet des retours affiche un graphique en barres montrant l’évolution des retours au fil du temps, ainsi que des retours individuels.
 
-Consultez [Commentaires](/fr/optimize/feedback) pour plus d’informations sur l’utilisation des données de commentaires afin d’améliorer votre contenu.
+Consultez [Retour](/fr/optimize/feedback) pour en savoir plus sur l’utilisation des données de retours afin d’améliorer votre contenu.

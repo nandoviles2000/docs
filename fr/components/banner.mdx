@@ -1,38 +1,38 @@
 ---
 title: "Bannière"
-description: "Ajoutez une bannière dismissible en haut de votre site de documentation pour afficher des annonces importantes, des notes de version ou des notifications."
-keywords: ["bannière", "annonces", "à l'échelle du site"]
+description: "Ajoutez une bannière que les utilisateurs peuvent fermer en haut de votre site de documentation pour afficher des annonces importantes, des notes de version ou des notifications."
+keywords: ["bannière", "annonces", "à l’échelle du site"]
 ---
 
-Utilisez des bannières pour afficher des annonces, des mises à jour ou des notifications importantes sur l'ensemble de votre site de documentation. Les bannières apparaissent en haut de chaque page, prennent en charge la mise en forme Markdown, et vous pouvez permettre aux utilisateurs de les masquer. Elles utilisent la couleur définie par la propriété `colors.dark` dans votre `docs.json`.
+Utilisez des bannières pour afficher des annonces, des mises à jour ou des notifications importantes sur l’ensemble de votre site de documentation. Elles apparaissent en haut de chaque page, prennent en charge la mise en forme Markdown et peuvent être fermées. Les bannières utilisent la couleur définie par la propriété `colors.dark` dans votre `docs.json`.
 
-Pour ajouter une bannière, utilisez la propriété `banner` dans votre `docs.json` :
+Pour ajouter une bannière, utilisez la propriété `banner` dans votre `docs.json` :
 
 <CodeGroup>
-  ```json Product announcements wrap
+  ```json Annonces produit wrap
   "banner": {
-    "content": "🚀 La version 2.0 est disponible ! Consultez notre [journal des modifications](/changelog) pour plus de détails.",
+    "content": "🚀 La version 2.0 est maintenant disponible ! Consultez notre [journal des modifications](/changelog) pour en savoir plus.",
     "dismissible": true 
   }
   ```
 
-  ```json Maintenance notices wrap
+  ```json Avis de maintenance wrap
   "banner": {
-    "content": "⚠️ Maintenance planifiée : l'API sera indisponible le 15 décembre, de 2 h à 4 h UTC",
+    "content": "⚠️ Maintenance planifiée : l’API sera indisponible le 15 décembre, de 2 h à 4 h UTC",
     "dismissible": false
   }
   ```
 
-  ```json Required actions wrap
+  ```json Actions requises wrap
   "banner": {
-    "content": "**Action requise :** migrez vers notre nouvelle version d'ici le 1er janvier. [Guide de migration](/migration)",
+    "content": "**Action requise :** Migrez vers notre nouvelle version avant le 1er janvier. [Guide de migration](/migration)",
     "dismissible": true
   }
   ```
 </CodeGroup>
 
 <Note>
-  Vous pouvez également configurer des bannières par langue en définissant `banner` dans `navigation.languages`. Consultez [Bannières propres à chaque langue](#language-specific-banners).
+  Vous pouvez également configurer des bannières spécifiques à la langue en définissant `banner` dans `navigation.languages`. Consultez [Bannières spécifiques à la langue](#language-specific-banners).
 </Note>
 
 <div id="properties">
@@ -40,18 +40,18 @@ Pour ajouter une bannière, utilisez la propriété `banner` dans votre `docs.js
 </div>
 
 <ResponseField name="content" type="string" required>
-  Le contenu textuel affiché dans la bannière. Prend en charge le formatage MDX de base, y compris les liens, le gras et l'italique. Les composants personnalisés ne sont pas pris en charge.
+  Le texte affiché dans la bannière. Prend en charge la mise en forme MDX de base, y compris les liens, le gras et l’italique. Les composants personnalisés ne sont pas pris en charge.
 </ResponseField>
 
 <ResponseField name="dismissible" type="boolean">
-  Indique si les utilisateurs peuvent fermer la bannière. Lorsque `true`, un bouton de fermeture apparaît. Si un utilisateur ferme la bannière, elle reste masquée pour lui jusqu'à ce que vous mettiez à jour le contenu de la bannière. Valeur par défaut : `false`.
+  Indique si les utilisateurs peuvent fermer la bannière. Lorsque `true`, un bouton de fermeture s’affiche. Si un utilisateur ferme la bannière, elle reste masquée pour lui jusqu’à ce que vous mettiez à jour son contenu. La valeur par défaut est `false`.
 </ResponseField>
 
 <div id="language-specific-banners">
-  ## Bannières spécifiques à chaque langue
+  ## Bannières spécifiques à la langue
 </div>
 
-Configurez un contenu de bannière différent pour chaque langue de votre documentation. Définissez ces bannières spécifiques à chaque langue dans le tableau `navigation.languages` de votre fichier `docs.json`.
+Configurez un contenu de bannière différent pour chaque langue de votre documentation. Définissez des bannières spécifiques à la langue dans le tableau `navigation.languages` de votre `docs.json`.
 
 ```json
 {
@@ -60,12 +60,12 @@ Configurez un contenu de bannière différent pour chaque langue de votre docume
       {
         "language": "en",
         "banner": {
-          "content": "🚀 La version 2.0 est en ligne ! Consultez notre [journal des modifications](/en/changelog) pour plus de détails.",
+          "content": "🚀 Version 2.0 is now live! See our [changelog](/en/changelog) for details.",
           "dismissible": true
         },
         "groups": [
           {
-            "group": "Premiers pas",
+            "group": "Getting started",
             "pages": ["en/overview", "en/quickstart"]
           }
         ]
@@ -78,7 +78,7 @@ Configurez un contenu de bannière différent pour chaque langue de votre docume
         },
         "groups": [
           {
-            "group": "Premiers pas",
+            "group": "Getting started",
             "pages": ["es/overview", "es/quickstart"]
           }
         ]
@@ -86,7 +86,7 @@ Configurez un contenu de bannière différent pour chaque langue de votre docume
     ]
   },
   "banner": {
-    "content": "🚀 La version 2.0 est en ligne !",
+    "content": "🚀 Version 2.0 is now live!",
     "dismissible": true
   }
 }
@@ -96,7 +96,7 @@ Configurez un contenu de bannière différent pour chaque langue de votre docume
   ### Comportement de repli
 </div>
 
-Les bannières suivent un ordre de priorité pour déterminer quel contenu afficher :
+Les bannières suivent un ordre de priorité pour déterminer le contenu à afficher :
 
-1. **Bannière spécifique à une langue** : Si la langue actuelle dispose d'une configuration `banner`, celle-ci est prioritaire.
-2. **Bannière globale** : Si aucune bannière spécifique à une langue n'existe, la `banner` globale est affichée.
+1. **Bannière spécifique à la langue** : si la langue actuelle dispose d’une configuration `banner`, celle-ci est prioritaire.
+2. **Bannière globale** : s’il n’existe pas de bannière spécifique à la langue, la `banner` globale est affichée.

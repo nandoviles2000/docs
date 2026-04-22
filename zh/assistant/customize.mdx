@@ -1,32 +1,32 @@
 ---
-title: "自定义 AI 助手行为"
-description: "使用 Assistant.md 文件为 AI 助手提供自定义指令，以塑造其语气、角色和关注领域。"
-keywords: ["assistant", "自定义指令", "Assistant.md", "系统提示", "角色"]
+title: "自定义助手行为"
+description: "使用 Assistant.md 文件为助手添加自定义指令，以塑造其语气、角色设定和关注重点。"
+keywords: ["助手", "自定义指令", "Assistant.md", "系统提示词", "角色"]
 ---
 
-在你的文档项目根目录添加一个 `.mintlify/Assistant.md` 文件，为 AI 助手提供自定义指令来定义其响应方式（`ASSISTANT.md` 也是可接受的文件名）。AI 助手将这些指令作为每个响应的系统级上下文。
+在文档项目的根目录下添加 `.mintlify/Assistant.md` 文件，为助手提供自定义指令，以控制其响应方式 (`ASSISTANT.md` 也是受支持的文件名) 。助手会在每次回复时将这些指令作为系统级上下文使用。
 
 <Warning>
-  请将 `Assistant.md` 文件放在 `.mintlify/` 目录中，而不是项目根目录。如果你将文件存放在项目根目录，你的自定义指令将通过 `/assistant.md` 路径公开访问。`.mintlify/` 目录不会公开提供服务，因此你的 `Assistant.md` 文件在该目录中时不可被访问。
-  
-  如果你必须将 `Assistant.md` 文件存放在项目根目录或任何其他目录，请将其添加到 [`.mintignore`](/zh/organize/mintignore) 文件中，以将其从文档站点中排除。
+  请将 `Assistant.md` 文件放在 `.mintlify/` 目录中，而不是项目根目录下。如果将该文件存放在项目根目录中，你的自定义指令会通过 `/assistant.md` 路径被公开访问。`.mintlify/` 目录不会被公开提供，因此放在该目录中的 `Assistant.md` 文件无法被外部访问。
+
+  如果你必须将 `Assistant.md` 文件存放在项目根目录或其他任何目录中，请将其添加到 [`.mintignore`](/zh/organize/mintignore) 文件中，以将其从文档站点中排除。
 </Warning>
 
-`Assistant.md` 文件中的指令会添加到 AI 助手的系统提示中。它们不会替换或覆盖 AI 助手的默认指令。
+`Assistant.md` 文件中的指令会追加到助手的系统提示词中。它们不会替代或覆盖助手的默认指令。
 
-要删除自定义指令，请删除 `Assistant.md` 文件。
+若要移除自定义指令，请删除 `Assistant.md` 文件。
 
-使用 `Assistant.md` 可以：
+你可以使用 `Assistant.md` 来：
 
-- 调整 AI 助手的角色和语气
-- 提供产品特定的上下文
-- 定义支持升级路径
-- 指定术语偏好
-- 限定或界定 AI 助手的关注领域
-- 提供特定版本的指导
+* 调整助手的角色设定和语气
+* 提供产品特定的上下文
+* 定义支持升级路径
+* 指定术语偏好
+* 限制或界定助手的关注范围
+* 提供特定版本的指导
 
 <div id="example-assistantmd-file">
-  ## `Assistant.md` 文件示例
+  ## 示例 `Assistant.md` 文件
 </div>
 
 ```markdown .mintlify/Assistant.md

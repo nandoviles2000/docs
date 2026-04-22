@@ -1,63 +1,63 @@
 ---
 title: "Speakeasy"
-description: "Affichez des exemples de code SDK générés automatiquement par Speakeasy dans votre bac à sable d’API, avec des exemples multi-langages pour Python, TypeScript, Go et plus encore."
-keywords: ["Speakeasy SDK", "SDK générés automatiquement", "exemples de code de SDK", "intégration au bac à sable d’API"]
+description: "Affichez dans votre bac à sable API des exemples de code SDK générés automatiquement par Speakeasy, avec des exemples dans plusieurs langages, notamment Python, TypeScript, Go, et plus encore."
+keywords: ["SDK Speakeasy", "SDK générés automatiquement", "exemples de code SDK", "intégration du bac à sable API"]
 ---
 
-Vous pouvez intégrer les extraits de code générés automatiquement à partir des SDK Speakeasy directement dans la documentation de référence d’API de Mintlify. Les exemples d’utilisation des SDK apparaissent dans le [bac à sable interactif](/fr/api-playground/overview) des sites de documentation propulsés par Mintlify.
+Vous pouvez intégrer directement des extraits de code générés automatiquement à partir des SDK Speakeasy dans la Référence de l’API de Mintlify. Les extraits d’utilisation des SDK s’affichent dans le [bac à sable interactif](/fr/api-playground/overview) des sites de documentation basés sur Mintlify.
 
 <Frame>
-  ![Un bac à sable d’API Mintlify avec des extraits de code Speakeasy.](/images/speakeasy/mintlify-with-speakeasy-openapi.png)
+  ![Un bac à sable API Mintlify affichant des extraits de code Speakeasy.](/images/speakeasy/mintlify-with-speakeasy-openapi.png)
 </Frame>
 
 <div id="prerequisites">
   ## Prérequis
 </div>
 
-Pour intégrer Mintlify à Speakeasy, vous aurez besoin des éléments suivants :
+Pour intégrer Mintlify à Speakeasy, vous aurez besoin des éléments suivants :
 
-- Un [référentiel de documentation Mintlify](/fr/quickstart).
-  - Un SDK généré par Speakeasy avec une [URL d’exemples de code automatisés](https://www.speakeasy.com/docs/code-samples/automated-code-sample-urls) configurée.
+* Un [dépôt de documentation Mintlify](/fr/quickstart).
+  * Un SDK généré par Speakeasy avec une [URL d’exemples de code automatisés](https://www.speakeasy.com/docs/code-samples/automated-code-sample-urls) configurée.
 
 <div id="setting-up-the-integration">
-  ## Configuration de l’intégration
+  ## Configurer l’intégration
 </div>
 
-Pour intégrer Speakeasy à Mintlify, vous devez récupérer l’URL publique de la spécification combinée de l’API depuis le registre, puis mettre à jour votre fichier de configuration `docs.json`.
+Pour intégrer Speakeasy à Mintlify, vous devez récupérer dans le registre l’URL publique de la spécification combinée de l’API et mettre à jour votre fichier de configuration `docs.json`.
 
 <div id="get-the-apis-combined-spec-public-url-from-the-registry">
-  ### Récupérer l’URL publique de la spécification combinée de l’API depuis le registre
+  ### Récupérez l&#39;URL publique de la spécification combinée de l&#39;API à partir du registre
 </div>
 
-Accédez à votre [Dashboard Speakeasy](https://app.speakeasy.com) et ouvrez l’onglet **API Registry**. Ouvrez l’entrée `*-with-code-samples` de l’API.
+Accédez à votre [tableau de bord Speakeasy](https://app.speakeasy.com) et ouvrez l&#39;onglet **API Registry**. Ouvrez l&#39;entrée `*-with-code-samples` de l&#39;API.
 
 <Frame>
-  ![Capture d’écran de la page Speakeasy API Registry. L’onglet API Registry est mis en évidence par un carré rouge avec le numéro 1 et l’entrée de l’API est mise en évidence par un carré rouge avec le numéro 2.](/images/speakeasy/openapi-registry-and-combined-spec.png)
+  ![Capture d'écran de la page API Registry de Speakeasy. L'onglet API Registry est mis en évidence par un carré rouge numéroté 1, et l'entrée de l'API par un carré rouge numéroté 2.](/images/speakeasy/openapi-registry-and-combined-spec.png)
 </Frame>
 
 <Note>
-  Si l’entrée n’est pas étiquetée **Combined Spec**, vérifiez que l’API a une [URL d’exemples de code automatisée](https://www.speakeasy.com/docs/code-samples/automated-code-sample-urls) configurée.
+  Si l&#39;entrée n&#39;est pas libellée **Combined Spec**, assurez-vous qu&#39;une [URL d’exemple de code automatisé](https://www.speakeasy.com/docs/code-samples/automated-code-sample-urls) est configurée pour l&#39;API.
 </Note>
 
-Depuis la page de l’entrée du registre, copiez l’URL publique fournie.
+Depuis la page de l&#39;entrée du registre, copiez l&#39;URL publique fournie.
 
 <Frame>
-  ![Capture d’écran montrant l’entrée du registre de la spécification combinée avec la fonction de copie d’URL mise en évidence par un carré rouge.](/images/speakeasy/copy-combined-spec-url.png)
+  ![Capture d'écran montrant l'entrée de registre de la spécification combinée, avec la fonction de copie de l'URL mise en évidence par un carré rouge.](/images/speakeasy/copy-combined-spec-url.png)
 </Frame>
 
 <div id="update-your-docsjson-configuration-file">
   ### Mettez à jour votre fichier de configuration `docs.json`
 </div>
 
-Ajoutez l’URL de la spécification combinée dans une section **Anchors** ou **Tabs** de votre fichier `docs.json`.
+Ajoutez l’URL de la spécification combinée à une section **Anchors** ou **Tabs** de votre fichier `docs.json`.
 
-Ajoutez l’URL de la spécification combinée à une ancre en mettant à jour le champ `anchor` dans votre fichier `docs.json` comme suit :
+Ajoutez l’URL de la spécification combinée à un point d’ancrage en mettant à jour le champ `anchor` dans votre fichier `docs.json` comme suit :
 
 ```json docs.json
 {
   "anchors": [
     {
-      "name": "Référence de l'API",
+      "name": "API Reference",
       // !mark
       "openapi": "SPEAKEASY_COMBINED_SPEC_URL",
       "url": "api-reference",
@@ -67,13 +67,13 @@ Ajoutez l’URL de la spécification combinée à une ancre en mettant à jour l
 }
 ```
 
-Ajoutez l’URL de la spécification combinée à un onglet en mettant à jour le champ `tab` dans le fichier `docs.json` comme suit :
+Ajoutez l’URL de la spécification combinée à un onglet en mettant à jour le champ `tab` du fichier `docs.json` comme suit :
 
 ```json docs.json
 {
   "tabs": [
     {
-      "name": "Référence de l'API",
+      "name": "API Reference",
       "url": "api-reference",
       // !mark
       "openapi": "SPEAKEASY_COMBINED_SPEC_URL"
@@ -82,4 +82,4 @@ Ajoutez l’URL de la spécification combinée à un onglet en mettant à jour l
 }
 ```
 
-Vous pouvez désormais afficher les extraits de code générés par Speakeasy dans votre documentation d’API et interagir avec eux dans le playground.
+Vous pouvez désormais consulter dans votre documentation d’API des extraits de code générés par Speakeasy et interagir avec eux dans le playground.

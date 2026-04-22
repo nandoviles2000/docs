@@ -1,33 +1,33 @@
 ---
 title: "Configuración de autenticación"
-description: "Controla el acceso a tu documentación mediante la autenticación de usuarios."
-keywords: ['authentication', 'auth', 'OAuth', 'JWT', 'password']
+description: "Configura la autenticación de usuarios para tu sitio de documentación con OAuth, JWT o enlaces compartidos para controlar el acceso a páginas y referencias de API."
+keywords: ['autenticación', 'auth', 'OAuth', 'JWT', 'contraseña']
 ---
 
 <Info>
-  [Los planes Pro](https://mintlify.com/pricing?ref=authentication) incluyen autenticación por contraseña.
+  Los [planes Pro](https://mintlify.com/pricing?ref=authentication) incluyen autenticación con contraseña.
 
-  [Los planes Enterprise](https://mintlify.com/pricing?ref=authentication) incluyen todos los métodos de autenticación.
+  Los [planes Enterprise](https://mintlify.com/pricing?ref=authentication) incluyen todos los métodos de autenticación.
 </Info>
 
 <Warning>
-  La autenticación solo está disponible para documentación alojada en un dominio personalizado o subdominio de Mintlify (por ejemplo, `docs.ejemplo.com` o `ejemplo.mintlify.dev`). La autenticación **no es compatible** cuando se usa una [ruta base personalizada](/es/deploy/docs-subpath) (por ejemplo, `ejemplo.com/docs`).
+  La autenticación solo está disponible para la documentación alojada en un dominio personalizado o en un subdominio de Mintlify (por ejemplo, `docs.example.com` o `example.mintlify.dev`). La autenticación **no se admite** cuando se usa una [ruta base personalizada](/es/deploy/docs-subpath) (por ejemplo, `example.com/docs`).
 </Warning>
 
-La autenticación exige que los usuarios inicien sesión antes de acceder a tu documentación.
+La autenticación requiere que los usuarios inicien sesión antes de acceder a tu documentación.
 
-Cuando habilites la autenticación, los usuarios deberán iniciar sesión para acceder a cualquier contenido. Puedes configurar páginas o grupos específicos como públicos mientras mantienes otras páginas protegidas.
+Cuando habilitas la autenticación, los usuarios deben iniciar sesión para acceder a cualquier contenido. Puedes configurar páginas o grupos específicos como públicos y mantener protegidas las demás páginas.
 
 <div id="configure-authentication">
-  ## Configurar la autenticación
+  ## Configura la autenticación
 </div>
 
-Selecciona el método de handshake que quieres configurar.
+Selecciona el método de handshake que quieras configurar.
 
 <Tabs>
   <Tab title="Contraseña">
     <Info>
-      La autenticación mediante contraseña proporciona únicamente control de acceso y **no** admite funciones específicas por usuario, como el control de acceso basado en grupos o el autocompletado previo del área de pruebas de la API.
+      La autenticación con contraseña solo proporciona control de acceso y **no** admite funciones específicas de cada usuario, como el control de acceso basado en grupos o el prerrellenado del entorno de pruebas de API.
     </Info>
 
     ### Requisitos previos
@@ -38,11 +38,11 @@ Selecciona el método de handshake que quieres configurar.
 
     <Steps>
       <Step title="Crea una contraseña.">
-        1. En tu dashboard, ve a [Authentication](https://dashboard.mintlify.com/products/authentication).
-        2. Habilita la autenticación.
+        1. En tu panel, ve a [Autenticación](https://dashboard.mintlify.com/products/authentication).
+        2. Activa la autenticación.
         3. En la sección **Password Protection**, introduce una contraseña segura
 
-        Después de introducir una contraseña, tu sitio se vuelve a implementar automáticamente. Cuando la implementación haya finalizado, cualquiera que visite tu sitio deberá introducir la contraseña para acceder a tu contenido.
+        Después de introducir una contraseña, tu sitio se volverá a desplegar. Cuando termine el despliegue, cualquier persona que visite tu sitio deberá introducir la contraseña para acceder a tu contenido.
       </Step>
 
       <Step title="Distribuye el acceso.">
@@ -52,12 +52,12 @@ Selecciona el método de handshake que quieres configurar.
 
     ### Ejemplo
 
-    Alojas tu documentación en `docs.foo.com` y necesitas un control de acceso básico sin hacer seguimiento de usuarios individuales. Quieres evitar el acceso público sin complicar la configuración.
+    Alojas tu documentación en `docs.foo.com` y necesitas un control de acceso básico sin hacer seguimiento de usuarios individuales. Quieres impedir el acceso público sin complicar la configuración.
 
-    **Crea una contraseña segura** en tu dashboard. **Comparte las credenciales** con los usuarios autorizados.
+    **Crea una contraseña segura** en tu panel. **Comparte las credenciales** con los usuarios autorizados.
   </Tab>
 
-  <Tab title="Dashboard de Mintlify">
+  <Tab title="panel de Mintlify">
     ### Requisitos previos
 
     * Todas las personas que necesiten acceder a tu documentación deben ser miembros de tu organización de Mintlify.
@@ -65,27 +65,27 @@ Selecciona el método de handshake que quieres configurar.
     ### Configuración
 
     <Steps>
-      <Step title="Habilita la autenticación del Dashboard de Mintlify.">
-        1. En tu dashboard, ve a [Authentication](https://dashboard.mintlify.com/products/authentication).
+      <Step title="Habilita la autenticación del panel de Mintlify.">
+        1. En tu panel, ve a [Authentication](https://dashboard.mintlify.com/products/authentication).
         2. Habilita la autenticación.
         3. En la sección **Custom Authentication**, haz clic en **Mintlify Auth**.
         4. Haz clic en **Enable Mintlify Auth**.
 
-        Después de habilitar la autenticación de Mintlify, tu sitio se vuelve a implementar automáticamente. Una vez que finalice la implementación, cualquier persona que visite tu sitio deberá iniciar sesión en tu organización de Mintlify para acceder a tu contenido.
+        Después de habilitar la autenticación de Mintlify, tu sitio se vuelve a desplegar. Cuando termine el despliegue, cualquier persona que visite tu sitio deberá iniciar sesión en tu organización de Mintlify para acceder a tu contenido.
       </Step>
 
       <Step title="Agrega usuarios autorizados.">
-        1. En tu dashboard, ve a [Members](https://dashboard.mintlify.com/settings/organization/members).
+        1. En tu panel, ve a [Members](https://dashboard.mintlify.com/settings/organization/members).
         2. Agrega a cada persona que deba tener acceso a tu documentación.
-        3. Asigna los roles apropiados según sus permisos de edición.
+        3. Asigna los roles adecuados según sus permisos de edición.
       </Step>
     </Steps>
 
     ### Ejemplo
 
-    Alojas tu documentación en `docs.foo.com` y todo tu equipo tiene acceso a tu dashboard. Quieres restringir el acceso solo a los miembros del equipo.
+    Alojas tu documentación en `docs.foo.com` y todo tu equipo tiene acceso a tu panel. Quieres restringir el acceso únicamente a los miembros del equipo.
 
-    **Habilita la autenticación de Mintlify** en la configuración de tu dashboard.
+    **Habilita la autenticación de Mintlify** en la configuración de tu panel.
 
     **Verifica el acceso del equipo** comprobando que todos los miembros del equipo estén activos en tu organización.
   </Tab>
@@ -93,14 +93,14 @@ Selecciona el método de handshake que quieres configurar.
   <Tab title="OAuth 2.0">
     ### Requisitos previos
 
-    * Un servidor OAuth u OIDC que admita el flujo de código de autorización (Authorization Code Flow).
-    * Capacidad para crear un endpoint de API accesible mediante tokens de acceso OAuth (opcional, para habilitar el control de acceso basado en grupos).
+    * Un servidor OAuth u OIDC que admita Authorization Code Flow.
+    * La capacidad de crear un endpoint de API accesible mediante tokens de acceso de OAuth (opcional, para habilitar el control de acceso basado en grupos).
 
     ### Configuración
 
     <Steps>
-      <Step title="Configura tus ajustes de OAuth.">
-        1. En tu dashboard, ve a [Authentication](https://dashboard.mintlify.com/products/authentication).
+      <Step title="Configura la configuración de OAuth.">
+        1. En tu panel, ve a [Authentication](https://dashboard.mintlify.com/products/authentication).
         2. Habilita la autenticación.
         3. En la sección **Custom Authentication**, haz clic en **OAuth**.
         4. Configura estos campos:
@@ -108,21 +108,21 @@ Selecciona el método de handshake que quieres configurar.
         * **Authorization URL**: Tu endpoint de OAuth.
         * **Client ID**: Tu identificador de cliente de OAuth 2.0.
         * **Client Secret**: Tu secreto de cliente de OAuth 2.0.
-        * **Scopes** (opcional): Permisos que se van a solicitar. Copia la cadena de scope **completa** (por ejemplo, para un scope como `provider.users.docs`, copia el `provider.users.docs` completo). Usa varios scopes si necesitas diferentes niveles de acceso.
-        * **Additional authorization parameters** (opcional): Parámetros de consulta adicionales que se agregarán a la solicitud de autorización inicial.
+        * **Scopes** (opcional): Permisos que se solicitarán. Copia la cadena de scope **completa** (por ejemplo, para un scope como `provider.users.docs`, copia `provider.users.docs` completo). Usa varios scopes si necesitas distintos niveles de acceso.
+        * **Additional authorization parameters** (opcional): Parámetros de consulta adicionales que se añadirán a la solicitud de autorización inicial.
         * **Token URL**: Tu endpoint de intercambio de tokens de OAuth.
-        * **Info API URL** (opcional): Endpoint en tu servidor al que Mintlify llama para obtener información del usuario. Obligatorio para el control de acceso basado en grupos. Si se omite, el flujo de OAuth solo verifica la identidad.
-        * **Logout URL** (opcional): La URL de cierre de sesión nativa de tu proveedor de OAuth. Cuando los usuarios cierran sesión, Mintlify valida la redirección de cierre de sesión frente a esta URL configurada por motivos de seguridad. La redirección solo se completa si coincide exactamente con el `logoutUrl` configurado. Si no configuras una Logout URL, los usuarios se redirigen a `/login`. Mintlify redirige a los usuarios con una solicitud `GET` y no agrega parámetros de consulta, por lo que debes incluir cualquier parámetro (por ejemplo, `returnTo`) directamente en la URL.
+        * **Info API URL** (opcional): Endpoint de tu servidor al que Mintlify llama para obtener información del usuario. Es obligatorio para el control de acceso basado en grupos. Si se omite, el flujo de OAuth solo verifica la identidad.
+        * **Logout URL** (opcional): La URL nativa de cierre de sesión de tu proveedor de OAuth. Cuando los usuarios cierran sesión, Mintlify valida la redirección de cierre de sesión con esta URL configurada por seguridad. La redirección solo se completa correctamente si coincide exactamente con el `logoutUrl` configurado. Si no configuras una URL de cierre de sesión, se redirigirá a los usuarios a `/login`. Mintlify redirige a los usuarios con una solicitud `GET` y no añade parámetros de consulta, así que incluye cualquier parámetro (por ejemplo, `returnTo`) directamente en la URL.
         * **Redirect URL** (opcional): La URL a la que se redirigirá a los usuarios después de la autenticación.
 
-        5. Haz clic en **Guardar cambios**.
+        5. Haz clic en **Save changes**.
 
-        Después de configurar tus ajustes de OAuth, tu sitio se vuelve a implementar. Cuando finalice la implementación, cualquier persona que visite tu sitio deberá iniciar sesión en tu proveedor de OAuth para acceder a tu contenido.
+        Después de configurar OAuth, tu sitio se volverá a desplegar. Cuando termine el despliegue, cualquier persona que visite tu sitio deberá iniciar sesión en tu proveedor de OAuth para acceder a tu contenido.
       </Step>
 
       <Step title="Configura tu servidor OAuth.">
-        1. Copia la **Redirect URL** de tus [ajustes de autenticación](https://dashboard.mintlify.com/products/authentication).
-        2. Agrega la Redirect URL como una URL de redirección autorizada en tu servidor OAuth.
+        1. Copia la **Redirect URL** desde tu [configuración de autenticación](https://dashboard.mintlify.com/products/authentication).
+        2. Añade la URL de redirección como URL de redirección autorizada en tu servidor OAuth.
       </Step>
 
       <Step title="Crea tu endpoint de información de usuario (opcional).">
@@ -130,19 +130,19 @@ Selecciona el método de handshake que quieres configurar.
 
         * Responda a solicitudes `GET`.
         * Acepte un encabezado `Authorization: Bearer <access_token>` para la autenticación.
-        * Devuelva los datos de usuario en el formato `User`. Consulta [Formato de datos de usuario](#user-data-format) para obtener más información.
+        * Devuelva datos del usuario en formato `User`. Consulta [Formato de los datos del usuario](#user-data-format) para obtener más información.
 
-        Mintlify llama a este endpoint con el token de acceso de OAuth para obtener la información del usuario. No se envían parámetros de consulta adicionales.
+        Mintlify llama a este endpoint con el token de acceso de OAuth para obtener información del usuario. No se envían parámetros de consulta adicionales.
 
-        Agrega la URL de este endpoint al campo **Info API URL** en tus [ajustes de autenticación](https://dashboard.mintlify.com/products/authentication).
+        Añade la URL de este endpoint al campo **Info API URL** en tu [configuración de autenticación](https://dashboard.mintlify.com/products/authentication).
       </Step>
     </Steps>
 
     ### Ejemplo
 
-    Alojas tu documentación en `foo.com/docs` y tienes un servidor OAuth existente en `auth.foo.com` que admite el flujo de código de autorización (Authorization Code Flow).
+    Alojas tu documentación en `foo.com/docs` y tienes un servidor OAuth existente en `auth.foo.com` que admite Authorization Code Flow.
 
-    **Configura los detalles de tu servidor OAuth** en tu dashboard:
+    **Configura los detalles de tu servidor OAuth** en tu panel:
 
     * **Authorization URL**: `https://auth.foo.com/authorization`
     * **Client ID**: `ydybo4SD8PR73vzWWd6S0ObH`
@@ -151,7 +151,7 @@ Selecciona el método de handshake que quieres configurar.
     * **Info API URL**: `https://api.foo.com/docs/user-info`
     * **Logout URL**: `https://auth.foo.com/logout?returnTo=https%3A%2F%2Ffoo.com%2Fdocs`
 
-    **Crea un endpoint de información de usuario** en `api.foo.com/docs/user-info`, que requiera un token de acceso OAuth con el scope `provider.users.docs`, y devuelva:
+    **Crea un endpoint de información de usuario** en `api.foo.com/docs/user-info`, que requiere un token de acceso de OAuth con el scope `provider.users.docs` y devuelve:
 
     ```json
     {
@@ -166,7 +166,7 @@ Selecciona el método de handshake que quieres configurar.
     ```
 
     <Note>
-      Controla la duración de la sesión con el campo `expiresAt` en la respuesta de información de usuario. Este es un timestamp Unix (segundos desde el inicio de la época Unix) que indica cuándo debe expirar la sesión. Consulta [Formato de datos de usuario](#user-data-format) para más detalles.
+      Controla la duración de la sesión con el campo `expiresAt` en la respuesta de información del usuario. Se trata de una marca de tiempo Unix (segundos desde el epoch) que indica cuándo debe expirar la sesión. Consulta [Formato de datos del usuario](#user-data-format) para obtener más información.
     </Note>
 
     **Configura tu servidor OAuth para permitir redirecciones** a tu URL de callback.
@@ -175,36 +175,36 @@ Selecciona el método de handshake que quieres configurar.
   <Tab title="JWT">
     ### Requisitos previos
 
-    * Un sistema de autenticación que pueda generar y firmar JWT.
-    * Un servicio de backend que pueda crear URL de redirección.
+    * Un sistema de autenticación capaz de generar y firmar JWT.
+    * Un servicio backend que puede crear URL de redirección.
 
     ### Configuración
 
     <Steps>
       <Step title="Genera una clave privada.">
-        1. En tu dashboard, ve a [Authentication](https://dashboard.mintlify.com/products/authentication).
-        2. Habilita la autenticación.
-        3. En la sección **Custom Authentication**, haz clic en **JWT**.
-        4. Introduce la URL de tu flujo de inicio de sesión existente.
-        5. Haz clic en **Save changes**.
-        6. Haz clic en **Generate new key**.
-        7. Almacena tu clave de forma segura donde tu backend pueda acceder a ella.
+        1. En tu panel, ve a [Autenticación](https://dashboard.mintlify.com/products/authentication).
+        2. Activa la autenticación.
+        3. En la sección **Autenticación personalizada**, haz clic en **JWT**.
+        4. Introduce la URL de tu flujo de inicio de sesión actual.
+        5. Haz clic en **Guardar cambios**.
+        6. Haz clic en **Generar nueva clave**.
+        7. Guarda tu clave de forma segura en un lugar al que tu backend tenga acceso.
 
-        Después de generar una clave privada, tu sitio se vuelve a implementar automáticamente. Cuando la implementación haya finalizado, cualquier persona que visite tu sitio debe iniciar sesión en tu sistema de autenticación JWT para acceder a tu contenido.
+        Después de generar una clave privada, tu sitio se vuelve a desplegar. Cuando termine de implementarse, cualquier persona que visite tu sitio deberá iniciar sesión en tu sistema de autenticación JWT para acceder a tu contenido.
       </Step>
 
       <Step title="Integra la autenticación de Mintlify en tu flujo de inicio de sesión.">
-        Modifica tu flujo de inicio de sesión existente para incluir estos pasos después de la autenticación del usuario:
+        Modifica tu flujo de inicio de sesión actual para incluir estos pasos después de autenticar al usuario:
 
-        * Crea un JWT que contenga la información del usuario autenticado en el formato `User`. Consulta [Formato de datos de usuario](#user-data-format) para obtener más información.
-        * Firma el JWT con tu clave secreta, usando el algoritmo EdDSA.
-        * Crea una URL de redirección de vuelta a la ruta `/login/jwt-callback` de tu documentación, incluyendo el JWT como el hash.
+        * Crea un JWT que contenga la información del usuario autenticado en el formato `User`. Consulta [Formato de datos del usuario](#user-data-format) para obtener más información.
+        * Firma el JWT con tu clave secreta usando el algoritmo EdDSA.
+        * Crea una URL de redirección de vuelta a la ruta `/login/jwt-callback` de tu documentación, incluyendo el JWT como hash.
       </Step>
     </Steps>
 
     ### Ejemplo
 
-    Alojas tu documentación en `docs.foo.com` con un sistema de autenticación existente en `foo.com`. Quieres ampliar tu flujo de inicio de sesión para conceder acceso a la documentación manteniéndola separada de tu dashboard (o no tienes un dashboard).
+    Alojas tu documentación en `docs.foo.com` con un sistema de autenticación existente en `foo.com`. Quieres ampliar tu flujo de inicio de sesión para conceder acceso a la documentación, manteniendo esta separada de tu panel (o en caso de que no tengas un panel).
 
     Crea un endpoint de inicio de sesión en `https://foo.com/docs-login` que amplíe tu autenticación existente.
 
@@ -226,7 +226,7 @@ Selecciona el método de handshake que quieres configurar.
       export async function handleRequest(req: Request, res: Response) {
         const user = {
           host: DOCS_HOST, // Debe coincidir con la URL de tu documentación
-          expiresAt: Math.floor((Date.now() + TWO_WEEKS_IN_MS) / 1000), // vencimiento de la sesión de 2 semanas
+          expiresAt: Math.floor((Date.now() + TWO_WEEKS_IN_MS) / 1000), // Expiración de sesión de 2 semanas
           groups: res.locals.user.groups,
           apiPlaygroundInputs: {
             header: {
@@ -237,7 +237,7 @@ Selecciona el método de handshake que quieres configurar.
 
         const jwt = await new jose.SignJWT(user)
           .setProtectedHeader({ alg: 'EdDSA' })
-          .setExpirationTime('10 s') // vencimiento del JWT de 10 segundos
+          .setExpirationTime('10 s') // Expiración del JWT de 10 segundos
           .sign(signingKey);
 
         return res.redirect(`https://${DOCS_HOST}/login/jwt-callback#${jwt}`);
@@ -259,8 +259,8 @@ Selecciona el método de handshake que quieres configurar.
         jwt_token = jwt.encode(
           payload={
             'host': DOCS_HOST, # Debe coincidir con la URL de tu documentación
-            'exp': int((datetime.now() + timedelta(seconds=10)).timestamp()),    # vencimiento del JWT de 10 segundos
-            'expiresAt': int((datetime.now() + timedelta(weeks=2)).timestamp()), # vencimiento de la sesión de 2 semanas
+            'exp': int((datetime.now() + timedelta(seconds=10)).timestamp()),    # Expiración del JWT: 10 segundos
+            'expiresAt': int((datetime.now() + timedelta(weeks=2)).timestamp()), # Expiración de la sesión: 2 semanas
             'groups': ['admin'] if current_user.is_admin else [],
             'apiPlaygroundInputs': {
               'header': {
@@ -276,14 +276,14 @@ Selecciona el método de handshake que quieres configurar.
       ```
     </CodeGroup>
 
-    ### Redirigir a usuarios no autenticados
+    ### Redirigir usuarios no autenticados
 
-    Cuando un usuario no autenticado intenta acceder a una página protegida, la redirección a tu URL de inicio de sesión conserva el destino previsto del usuario.
+    Cuando un usuario no autenticado intenta acceder a una página protegida, la redirección a tu URL de inicio de sesión conserva el destino al que el usuario quería acceder.
 
-    1. El usuario intenta visitar una página protegida: `https://docs.foo.com/quickstart`.
-    2. Redirige a tu URL de inicio de sesión con un parámetro de consulta llamado `redirect`: `https://foo.com/docs-login?redirect=%2Fquickstart`.
-    3. Después de la autenticación, redirige a `https://docs.foo.com/login/jwt-callback?redirect=%2Fquickstart#{SIGNED_JWT}`.
-    4. El usuario llega a su destino original.
+    1. El usuario intenta acceder a una página protegida: `https://docs.foo.com/quickstart`.
+    2. Redirige a tu URL de inicio de sesión con el parámetro de consulta `redirect`: `https://foo.com/docs-login?redirect=%2Fquickstart`.
+    3. Tras la autenticación, redirige a `https://docs.foo.com/login/jwt-callback?redirect=%2Fquickstart#{SIGNED_JWT}`.
+    4. Se redirige al usuario a su destino original.
   </Tab>
 </Tabs>
 
@@ -291,17 +291,17 @@ Selecciona el método de handshake que quieres configurar.
   ## Hacer públicas las páginas
 </div>
 
-Cuando uses Autenticación, todas las páginas están protegidas de forma predeterminada. Puedes hacer que páginas específicas sean visibles sin autenticación a nivel de página o de grupo con la propiedad `public`.
+Al usar autenticación, de forma predeterminada todas las páginas requieren autenticación para acceder a ellas. Puedes permitir que páginas específicas se vean sin autenticación a nivel de página o de grupo con la propiedad `public`.
 
 <div id="individual-pages">
   ### Páginas individuales
 </div>
 
-Para hacer pública una página, agrega `public: true` al frontmatter de la página.
+Para hacer que una página sea pública, agrega `public: true` al frontmatter de la página.
 
 ```mdx Public page example
 ---
-title: "Página pública"
+title: "Public page"
 public: true
 ---
 ```
@@ -310,14 +310,14 @@ public: true
   ### Grupos de páginas
 </div>
 
-Para hacer públicas todas las páginas de un grupo, añade `"public": true` debajo del nombre del grupo en el objeto `navigation` de tu `docs.json`.
+Para que todas las páginas de un grupo sean públicas, agrega `"public": true` debajo del nombre del grupo en el objeto `navigation` de tu `docs.json`.
 
 ```json Public group example
 {
   "navigation": {
     "groups": [
       {
-        "group": "Grupo público",
+        "group": "Public group",
         "public": true,
         "icon": "play",
         "pages": [
@@ -327,7 +327,7 @@ Para hacer públicas todas las páginas de un grupo, añade `"public": true` deb
         ]
       },
       {
-        "group": "Grupo privado",
+        "group": "Private group",
         "icon": "pause",
         "pages": [
           "private-information",
@@ -340,12 +340,12 @@ Para hacer públicas todas las páginas de un grupo, añade `"public": true` deb
 ```
 
 <div id="control-access-with-groups">
-  ## Controla el acceso con groups
+  ## Controla el acceso con grupos
 </div>
 
-Cuando usas OAuth o autenticación con JWT (JSON Web Token), puedes restringir páginas específicas a ciertos grupos de usuarios. Esto es útil cuando quieres que distintos usuarios vean contenido diferente según su rol o atributos.
+Cuando usas autenticación con OAuth o JWT, puedes restringir páginas específicas a determinados grupos de usuarios. Esto es útil cuando quieres que distintos usuarios vean contenido diferente según su rol o sus atributos.
 
-Administra los grupos mediante los datos del usuario enviados durante la autenticación. Consulta [Formato de datos de usuario](#user-data-format) para más detalles.
+Gestiona los grupos mediante los datos del usuario que se transmiten durante la autenticación. Consulta [Formato de los datos del usuario](#user-data-format) para obtener más información.
 
 ```json Example user info
 {
@@ -354,41 +354,41 @@ Administra los grupos mediante los datos del usuario enviados durante la autenti
 }
 ```
 
-Especifica qué groups pueden acceder a páginas determinadas usando la propiedad `groups` en el frontmatter.
+Especifica qué grupos pueden acceder a determinadas páginas mediante la propiedad `groups` del frontmatter.
 
 ```mdx Example page restricted to the admin group highlight={3}
 ---
-title: "Panel de administración"
+title: "Admin dashboard"
 groups: ["admin"]
 ---
 ```
 
-Los usuarios deben pertenecer al menos a uno de los groups enumerados para acceder a la página. Si un usuario intenta acceder a una página sin el group requerido, recibirá un error 404.
+Los usuarios deben pertenecer al menos a uno de los grupos indicados para acceder a la página. Si un usuario intenta acceder a una página sin pertenecer al grupo requerido, recibirá un error 404.
 
 <div id="how-groups-interact-with-public-pages">
-  ### Cómo interactúan los groups con las páginas públicas
+  ### Cómo interactúan los grupos con las páginas públicas
 </div>
 
-* Todas las páginas requieren Autenticación de forma predeterminada.
-* Las páginas con una propiedad `groups` solo son accesibles para usuarios autenticados dentro de esos groups.
+* Todas las páginas requieren autenticación de forma predeterminada.
+* Las páginas con la propiedad `groups` solo son accesibles para los usuarios autenticados que pertenezcan a esos grupos.
 * Las páginas sin la propiedad `groups` son accesibles para todos los usuarios autenticados.
-* Las páginas con `public: true` y sin la propiedad `groups` son accesibles para cualquier persona.
+* Las páginas con `public: true` y sin la propiedad `groups` son accesibles para todos.
 
 <CodeGroup>
-  ```mdx Public page
+  ```mdx Página pública
   ---
   title: "Guía pública"
   public: true
   ---
   ```
 
-  ```mdx Protected page
+  ```mdx Página protegida
   ---
   title: "Referencia de API"
   ---
   ```
 
-  ```mdx Protected page with groups
+  ```mdx Página protegida con grupos
   ---
   title: "Configuraciones avanzadas"
   groups: ["pro", "enterprise"]
@@ -397,13 +397,13 @@ Los usuarios deben pertenecer al menos a uno de los groups enumerados para acced
 </CodeGroup>
 
 <div id="user-data-format">
-  ## Formato de datos de usuario
+  ## Formato de los datos del usuario
 </div>
 
-Cuando utilices autenticación OAuth o JWT, tu sistema devolverá datos de usuario que controlan la duración de la sesión, la pertenencia a grupos y la [personalización de contenido](/es/create/personalization).
+Al usar autenticación con OAuth o JWT, tu sistema devuelve datos del usuario que controlan la duración de la sesión, la pertenencia a grupos y la [personalización del contenido](/es/create/personalization).
 
 <CodeGroup>
-  ```tsx Format
+  ```tsx Formato
   type User = {
     host?: string;
     expiresAt?: number;
@@ -441,49 +441,49 @@ Cuando utilices autenticación OAuth o JWT, tu sistema devolverá datos de usuar
 </CodeGroup>
 
 <ParamField path="host" type="string">
-  **Obligatorio para la autenticación JWT.** El nombre de host de tu sitio de documentación. La cadena debe coincidir exactamente con el dominio donde implementas tu documentación. Mintlify valida que el host del JWT coincida con el host de la solicitud para evitar la reutilización de tokens entre diferentes sitios.
+  **Obligatorio para la autenticación con JWT.** El nombre de host de tu sitio de documentación. La cadena debe coincidir exactamente con el dominio donde despliegas tu documentación. Mintlify valida que el host del JWT coincida con el host de la solicitud para evitar la reutilización de tokens entre distintos sitios.
 </ParamField>
 
 <ParamField path="expiresAt" type="number">
-  Momento de expiración de la sesión en segundos desde el epoch. Cuando la hora actual supera este valor, el usuario debe volver a autenticarse.
+  Hora de vencimiento de la sesión en segundos desde el epoch. Cuando la hora actual supera este valor, el usuario debe volver a autenticarse.
 
-  <Warning>**Para JWT:** Esto es diferente del claim `exp` del JWT, que determina cuándo un JWT se considera inválido. Configura el claim `exp` del JWT con una duración corta (10 segundos o menos) por seguridad. Usa `expiresAt` para la duración real de la sesión (de horas a semanas).</Warning>
+  <Warning>**Para JWT:** Esto difiere del claim `exp` del JWT, que determina cuándo un JWT se considera inválido. Establece el claim `exp` del JWT con una duración corta (10 segundos o menos) por seguridad. Usa `expiresAt` para la duración real de la sesión (de horas a semanas).</Warning>
 </ParamField>
 
 <ParamField path="groups" type="string[]">
-  Lista de los grupos a los que pertenece el usuario. Las páginas cuyo frontmatter tenga un `groups` coincidente son accesibles para este usuario.
+  Lista de grupos a los que pertenece el usuario. Las páginas con `groups` coincidentes en su frontmatter son accesibles para este usuario.
 
   **Ejemplo**: Un usuario con `groups: ["admin", "engineering"]` puede acceder a páginas etiquetadas con los grupos `admin` o `engineering`.
 </ParamField>
 
 <ParamField path="content" type="Record<string, any>">
-  Datos personalizados accesibles en páginas MDX mediante la variable `user` para [contenido personalizado](/es/create/personalization#dynamic-mdx-content).
+  Datos personalizados a los que se puede acceder en páginas MDX mediante la variable `user` para [contenido personalizado](/es/create/personalization#dynamic-mdx-content).
 </ParamField>
 
 <ParamField path="apiPlaygroundInputs" type="object">
-  Rellena previamente los campos del área de pruebas de la API con valores específicos del usuario. Cuando un usuario se autentica, estos valores rellenan los campos de entrada correspondientes en el área de pruebas de la API. Los usuarios pueden sobrescribir los valores rellenados previamente, y sus cambios persisten en el almacenamiento local.
+  Rellena previamente los campos del entorno de pruebas de API con valores específicos del usuario. Cuando un usuario se autentica, estos valores completan los campos de entrada correspondientes en el entorno de pruebas de API. Los usuarios pueden sobrescribir los valores rellenados previamente, y sus cambios se conservan en el almacenamiento local.
 
   Solo se aplican los valores que coinciden con el esquema de seguridad del endpoint actual.
 
   <Expandable title="propiedades">
     <ParamField path="header" type="Record<string, unknown>">
-      Valores de encabezado que se van a rellenar previamente, indexados por nombre de encabezado.
+      Valores de encabezado para rellenar previamente, asociados al nombre del encabezado.
     </ParamField>
 
     <ParamField path="query" type="Record<string, unknown>">
-      Valores de parámetros de búsqueda que se van a rellenar previamente, indexados por nombre de parámetro.
+      Valores de parámetros de consulta para rellenar previamente, asociados al nombre del parámetro.
     </ParamField>
 
     <ParamField path="cookie" type="Record<string, unknown>">
-      Valores de cookies que se van a rellenar previamente, indexados por nombre de cookie.
+      Valores de cookie para rellenar previamente, asociados al nombre de la cookie.
     </ParamField>
 
     <ParamField path="server" type="Record<string, string>">
-      Valores de variables de servidor que se van a rellenar previamente, indexados por nombre de variable.
+      Valores de variables de servidor para rellenar previamente, asociados al nombre de la variable.
     </ParamField>
 
     <ParamField path="path" type="Record<string, unknown>">
-      Valores de parámetros de ruta que se van a rellenar previamente, indexados por nombre de parámetro.
+      Valores de parámetros de ruta para rellenar previamente, asociados al nombre del parámetro.
     </ParamField>
   </Expandable>
 </ParamField>
@@ -492,16 +492,16 @@ Cuando utilices autenticación OAuth o JWT, tu sistema devolverá datos de usuar
   ## Disponibilidad de funciones
 </div>
 
-Algunas funciones se comportan de manera diferente o no están disponibles cuando habilitas la autenticación. Mintlify no admite el alojamiento público de archivos arbitrarios en un sitio autenticado. Todos los archivos alojados, incluidos `llms.txt`, `llms-full.txt` y `skill.md`, están sujetos a los mismos requisitos de autenticación que las páginas de tu documentación.
+Algunas funciones se comportan de forma distinta o no están disponibles cuando habilitas la autenticación. Mintlify no permite servir archivos arbitrarios públicamente en un sitio con autenticación. Todos los archivos alojados, incluidos `llms.txt`, `llms-full.txt` y `skill.md`, están sujetos a los mismos requisitos de autenticación que tus páginas de documentación.
 
-| Función                                                      | Público                 | Totalmente autenticado (todas las páginas protegidas)                                                            | Parcialmente autenticado (algunas páginas públicas)                                                              |
-| :----------------------------------------------------------- | :---------------------- | :--------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- |
-| [llms.txt and llms-full.txt](/es/ai/llmstxt)                    | Compatibilidad completa | Disponible tras autenticación, por lo que es posible que las herramientas de IA no puedan acceder a los archivos | Disponible tras autenticación, por lo que es posible que las herramientas de IA no puedan acceder a los archivos |
-| [Servidor MCP](/es/ai/model-context-protocol)                   | Compatibilidad completa | Requiere autenticación para conectarse                                                                           | Disponible sin autenticación para páginas públicas y con autenticación para páginas protegidas                   |
-| [Exportación a Markdown](/es/ai/markdown-export)                | Compatibilidad completa | Compatibilidad completa, respeta los grupos de usuarios                                                          | Compatibilidad completa, respeta los grupos de usuarios                                                          |
-| [Exportación a PDF](/es/optimize/pdf-exports)                   | Compatibilidad completa | No compatible                                                                                                    | No compatible                                                                                                    |
-| [Búsqueda](/es/assistant/index)                                 | Compatibilidad completa | Compatibilidad completa, respeta los grupos de usuarios                                                          | Compatibilidad completa, respeta los grupos de usuarios                                                          |
-| [Assistant](/es/assistant/index)                                | Compatibilidad completa | Compatibilidad completa, respeta los grupos de usuarios                                                          | Compatibilidad completa, respeta los grupos de usuarios                                                          |
-| [skill.md](/es/ai/skillmd)                                      | Compatibilidad completa | No compatible                                                                                                    | No compatible                                                                                                    |
-| [Mapa del sitio](/es/optimize/seo#sitemaps-and-robotstxt-files) | Compatibilidad completa | Disponible tras autenticación, pero excluye las páginas en groups                                                | Disponible tras autenticación, pero excluye las páginas en groups                                                |
-| [robots.txt](/es/optimize/seo#sitemaps-and-robotstxt-files)     | Compatibilidad completa | Disponible tras autenticación                                                                                    | Disponible tras autenticación                                                                                    |
+| Función                                                      | Público              | Totalmente autenticado (todas las páginas protegidas)                                                           | Parcialmente autenticado (algunas páginas públicas)                                                             |
+| :----------------------------------------------------------- | :------------------- | :-------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| [llms.txt and llms-full.txt](/es/ai/llmstxt)                    | Compatibilidad total | Disponible con autenticación, por lo que es posible que las herramientas de IA no puedan acceder a los archivos | Disponible con autenticación, por lo que es posible que las herramientas de IA no puedan acceder a los archivos |
+| [MCP server](/es/ai/model-context-protocol)                     | Compatibilidad total | Requiere autenticación para conectarse                                                                          | Disponible sin autenticación para las páginas públicas y con autenticación para las páginas protegidas          |
+| [Exportación en Markdown](/es/ai/markdown-export)               | Compatibilidad total | Compatibilidad total, respeta los grupos de usuarios                                                            | Compatibilidad total, respeta los grupos de usuarios                                                            |
+| [Exportación en PDF](/es/optimize/pdf-exports)                  | Compatibilidad total | No compatible                                                                                                   | No compatible                                                                                                   |
+| [Búsqueda](/es/assistant/index)                                 | Compatibilidad total | Compatibilidad total, respeta los grupos de usuarios                                                            | Compatibilidad total, respeta los grupos de usuarios                                                            |
+| [Assistant](/es/assistant/index)                                | Compatibilidad total | Compatibilidad total, respeta los grupos de usuarios                                                            | Compatibilidad total, respeta los grupos de usuarios                                                            |
+| [skill.md](/es/ai/skillmd)                                      | Compatibilidad total | No compatible                                                                                                   | No compatible                                                                                                   |
+| [Mapa del sitio](/es/optimize/seo#sitemaps-and-robotstxt-files) | Compatibilidad total | Disponible con autenticación, pero excluye las páginas de los grupos                                            | Disponible con autenticación, pero excluye las páginas de los grupos                                            |
+| [robots.txt](/es/optimize/seo#sitemaps-and-robotstxt-files)     | Compatibilidad total | Disponible con autenticación                                                                                    | Disponible con autenticación                                                                                    |

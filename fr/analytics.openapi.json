@@ -3,7 +3,7 @@
   "info": {
     "title": "Mintlify Analytics Export API",
     "version": "1.0.0",
-    "description": "API d’exportation des données Analytics de la documentation"
+    "description": "API pour exporter les données d’analyses de la documentation"
   },
   "servers": [
     {
@@ -16,13 +16,13 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "L’en-tête Authorization requiert un jeton Bearer. Utilisez une clé d’API administrateur (préfixée par `mint_`). Il s’agit d’une clé secrète côté serveur. Générez-en une depuis la [page API keys](https://dashboard.mintlify.com/settings/organization/api-keys) dans votre Dashboard."
+        "description": "L’en-tête Authorization attend un jeton Bearer. Utilisez une clé API administrateur (préfixée par `mint_`). Il s’agit d’une clé secrète côté serveur. Générez-en une sur la [page des clés API](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
       }
     },
     "schemas": {
       "projectId": {
         "type": "string",
-        "description": "ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard."
+        "description": "L’ID de votre projet. Vous pouvez le copier depuis la page des [clés API](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
       },
       "FeedbackResponse": {
         "type": "object",
@@ -33,75 +33,7 @@
             "items": {
               "anyOf": [
                 {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "description": "Identifiant unique du retour."
-                    },
-                    "path": {
-                      "type": "string",
-                      "description": "Le chemin ou l’URL du document source."
-                    },
-                    "comment": {
-                      "type": [
-                        "string",
-                        "null"
-                      ],
-                      "description": "Texte du commentaire de l’utilisateur."
-                    },
-                    "createdAt": {
-                      "type": [
-                        "string",
-                        "null"
-                      ],
-                      "description": "Horodatage de l’envoi du retour."
-                    },
-                    "source": {
-                      "type": "string",
-                      "enum": [
-                        "code_snippet",
-                        "contextual",
-                        "agent",
-                        "thumbs_only"
-                      ],
-                      "description": "Source du retour. `code_snippet` correspond à un retour sur un bloc de code, `contextual` à un retour au niveau de la page, `agent` est un retour soumis par un agent IA tiers, `thumbs_only` est un vote pouce vers le haut/bas."
-                    },
-                    "status": {
-                      "type": "string",
-                      "enum": [
-                        "pending",
-                        "in_progress",
-                        "resolved",
-                        "dismissed"
-                      ],
-                      "description": "Statut actuel de révision du retour."
-                    },
-                    "helpful": {
-                      "type": "boolean",
-                      "description": "Indique si l'utilisateur a jugé le contenu utile."
-                    },
-                    "contact": {
-                      "type": [
-                        "string",
-                        "null"
-                      ],
-                      "description": "Adresse e-mail fournie par l'utilisateur pour le suivi."
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "path",
-                    "comment",
-                    "createdAt",
-                    "source",
-                    "status",
-                    "helpful",
-                    "contact"
-                  ],
-                  "description": "Renvoyé lorsque la source est `contextual`. Indique si l'utilisateur a trouvé la page utile et un e-mail de contact optionnel."
-                },
-                {
+                  "description": "Renvoyé lorsque la source est `contextual`. Indique si l’utilisateur a trouvé la page utile et inclut éventuellement une adresse e-mail de contact.",
                   "type": "object",
                   "properties": {
                     "id": {
@@ -134,7 +66,7 @@
                         "agent",
                         "thumbs_only"
                       ],
-                      "description": "Source du retour. `code_snippet` correspond à un retour sur un bloc de code, `contextual` à un retour au niveau de la page, `agent` est un retour soumis par un agent IA tiers, `thumbs_only` est un vote pouce vers le haut/bas."
+                      "description": "Origine du retour. `code_snippet` désigne un retour sur un bloc de code, `contextual` un retour au niveau de la page, `agent` un retour envoyé par un agent d’IA tiers, et `thumbs_only` un vote positif ou négatif."
                     },
                     "status": {
                       "type": "string",
@@ -144,25 +76,94 @@
                         "resolved",
                         "dismissed"
                       ],
-                      "description": "Statut actuel d’examen du retour."
+                      "description": "État actuel de révision du retour."
+                    },
+                    "helpful": {
+                      "type": "boolean",
+                      "description": "Indique si l’utilisateur a trouvé le contenu utile."
+                    },
+                    "contact": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Adresse e-mail fournie par l’utilisateur pour le suivi."
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "path",
+                    "comment",
+                    "createdAt",
+                    "source",
+                    "status",
+                    "helpful",
+                    "contact"
+                  ]
+                },
+                {
+                  "description": "Renvoyé lorsque la source est `code_snippet`. Inclut le code, le nom du fichier et le langage de l’extrait auquel le retour se rapporte.",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Identifiant unique du retour."
+                    },
+                    "path": {
+                      "type": "string",
+                      "description": "Chemin ou URL du document source."
+                    },
+                    "comment": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Texte du commentaire de l’utilisateur."
+                    },
+                    "createdAt": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "Horodatage de l’envoi du retour."
+                    },
+                    "source": {
+                      "type": "string",
+                      "enum": [
+                        "code_snippet",
+                        "contextual",
+                        "agent",
+                        "thumbs_only"
+                      ],
+                      "description": "Origine du retour. `code_snippet` désigne un retour sur un bloc de code, `contextual` un retour au niveau de la page, `agent` un retour envoyé par un agent d’IA tiers, et `thumbs_only` un vote positif ou négatif."
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "in_progress",
+                        "resolved",
+                        "dismissed"
+                      ],
+                      "description": "État actuel de révision du retour."
                     },
                     "code": {
                       "type": "string",
-                      "description": "Extrait de code auquel le retour se rapporte."
+                      "description": "Extrait de code concerné par le retour."
                     },
                     "filename": {
                       "type": [
                         "string",
                         "null"
                       ],
-                      "description": "Nom de fichier associé à l'extrait de code."
+                      "description": "Nom du fichier associé à l’extrait de code."
                     },
                     "lang": {
                       "type": [
                         "string",
                         "null"
                       ],
-                      "description": "Langage de programmation de l'extrait de code."
+                      "description": "Langage de programmation de l’extrait de code."
                     }
                   },
                   "required": [
@@ -175,10 +176,10 @@
                     "code",
                     "filename",
                     "lang"
-                  ],
-                  "description": "Renvoyé lorsque la source est `code_snippet`. Inclut le code, le nom de fichier et le langage de l'extrait auquel le retour se rapporte."
+                  ]
                 },
                 {
+                  "description": "Renvoyé lorsque la source est `agent` ou `thumbs_only`. Contient uniquement les champs de base du retour.",
                   "type": "object",
                   "properties": {
                     "id": {
@@ -194,7 +195,7 @@
                         "string",
                         "null"
                       ],
-                      "description": "Texte du commentaire de l’utilisateur."
+                      "description": "Texte du commentaire de retour de l’utilisateur."
                     },
                     "createdAt": {
                       "type": [
@@ -211,7 +212,7 @@
                         "agent",
                         "thumbs_only"
                       ],
-                      "description": "Source du retour. `code_snippet` correspond à un retour sur un bloc de code, `contextual` à un retour au niveau de la page, `agent` est un retour soumis par un agent IA tiers, `thumbs_only` est un vote pouce vers le haut/bas."
+                      "description": "Origine du retour. `code_snippet` indique un retour sur un bloc de code, `contextual` un retour au niveau de la page, `agent` un retour envoyé par un agent d’IA tiers, et `thumbs_only` un vote positif ou négatif."
                     },
                     "status": {
                       "type": "string",
@@ -221,7 +222,7 @@
                         "resolved",
                         "dismissed"
                       ],
-                      "description": "Statut actuel d’examen du retour."
+                      "description": "État actuel de révision du retour."
                     }
                   },
                   "required": [
@@ -231,8 +232,7 @@
                     "createdAt",
                     "source",
                     "status"
-                  ],
-                  "description": "Renvoyé lorsque la source est `agent` ou `thumbs_only`. Contient uniquement les champs de base du retour."
+                  ]
                 }
               ]
             }
@@ -242,7 +242,7 @@
               "string",
               "null"
             ],
-            "description": "Curseur permettant de récupérer la page de résultats suivante. null s’il n’y a plus de résultats."
+            "description": "Curseur permettant de récupérer la page de résultats suivante. `null` s’il n’y a plus de résultats."
           },
           "hasMore": {
             "type": "boolean",
@@ -283,39 +283,12 @@
           "error"
         ]
       },
-      "AssistantCallerStatsResponse": {
-        "type": "object",
-        "properties": {
-          "web": {
-            "type": "number",
-            "description": "Nombre de requêtes de l'Assistant provenant du web (site de documentation)."
-          },
-          "api": {
-            "type": "number",
-            "description": "Nombre de requêtes de l'Assistant provenant d'appels API."
-          },
-          "other": {
-            "type": "number",
-            "description": "Nombre de requêtes de l'Assistant provenant d'autres sources (par exemple, intégrations, SDKs)."
-          },
-          "total": {
-            "type": "number",
-            "description": "Total des requêtes de l'Assistant tous types d'appelants confondus."
-          }
-        },
-        "required": [
-          "web",
-          "api",
-          "other",
-          "total"
-        ]
-      },
       "AssistantConversationsResponse": {
         "type": "object",
         "properties": {
           "conversations": {
             "type": "array",
-            "description": "Liste des conversations de l’Assistant.",
+            "description": "Liste des conversations avec l’assistant.",
             "items": {
               "type": "object",
               "properties": {
@@ -329,11 +302,11 @@
                 },
                 "query": {
                   "type": "string",
-                  "description": "La question de l’utilisateur adressée à l’Assistant."
+                  "description": "Question posée par l’utilisateur à l’assistant."
                 },
                 "response": {
                   "type": "string",
-                  "description": "La réponse générée par l’Assistant."
+                  "description": "Réponse de l’assistant."
                 },
                 "sources": {
                   "type": "array",
@@ -361,7 +334,7 @@
                     "string",
                     "null"
                   ],
-                  "description": "Catégorie de regroupement automatiquement attribuée à la conversation, le cas échéant."
+                  "description": "Catégorie de regroupement attribuée automatiquement à la conversation, le cas échéant."
                 }
               },
               "required": [
@@ -379,16 +352,295 @@
               "string",
               "null"
             ],
-            "description": "Curseur de pagination permettant de récupérer la page de résultats suivante. Null s’il n’y a plus de résultats."
+            "description": "Curseur permettant de récupérer la page de résultats suivante. `null` s’il n’y a plus de résultats."
           },
           "hasMore": {
             "type": "boolean",
-            "description": "Indique si des résultats supplémentaires sont disponibles au‑delà de cette page."
+            "description": "Indique si des résultats supplémentaires sont disponibles au-delà de cette page."
           }
         },
         "required": [
           "conversations",
           "nextCursor",
+          "hasMore"
+        ]
+      },
+      "FeedbackGroupedByPageResponse": {
+        "type": "object",
+        "properties": {
+          "feedback": {
+            "type": "array",
+            "description": "Nombre de retours agrégés par chemin de page de documentation.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Chemin de la page de documentation."
+                },
+                "thumbsUp": {
+                  "type": "number",
+                  "description": "Nombre de retours contextuels positifs (pouces levés)."
+                },
+                "thumbsDown": {
+                  "type": "number",
+                  "description": "Nombre de retours contextuels négatifs (pouces baissés)."
+                },
+                "code": {
+                  "type": "number",
+                  "description": "Nombre de retours sur des extraits de code."
+                },
+                "total": {
+                  "type": "number",
+                  "description": "Nombre total de retours pour cette page."
+                }
+              },
+              "required": [
+                "path",
+                "thumbsUp",
+                "thumbsDown",
+                "code",
+                "total"
+              ]
+            }
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Indique si des résultats supplémentaires sont disponibles au-delà de cette page."
+          }
+        },
+        "required": [
+          "feedback",
+          "hasMore"
+        ]
+      },
+      "SearchesResponse": {
+        "type": "object",
+        "properties": {
+          "searches": {
+            "type": "array",
+            "description": "Termes de recherche classés par nombre d’occurrences décroissant.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "searchQuery": {
+                  "type": "string",
+                  "description": "Terme de recherche saisi par les utilisateurs."
+                },
+                "hits": {
+                  "type": "number",
+                  "description": "Nombre de fois où ce terme a été recherché."
+                },
+                "ctr": {
+                  "type": "number",
+                  "description": "Taux de clics pour ce terme de recherche."
+                },
+                "topClickedPage": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Chemin du résultat le plus cliqué pour cette requête, le cas échéant."
+                },
+                "lastSearchedAt": {
+                  "type": "string",
+                  "description": "Horodatage de la dernière fois où ce terme a été recherché."
+                }
+              },
+              "required": [
+                "searchQuery",
+                "hits",
+                "ctr",
+                "topClickedPage",
+                "lastSearchedAt"
+              ]
+            }
+          },
+          "totalSearches": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Nombre total d'événements de recherche dans l'intervalle de dates demandé (somme de toutes les occurrences, et non des requêtes distinctes)."
+          },
+          "nextCursor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Curseur de pagination opaque pour la page suivante. `null` s'il n'y a pas d'autres résultats."
+          }
+        },
+        "required": [
+          "searches",
+          "totalSearches",
+          "nextCursor"
+        ]
+      },
+      "ViewsTrafficTotals": {
+        "type": "object",
+        "properties": {
+          "human": {
+            "type": "number",
+            "description": "Événements de consultation de contenu sur l'ensemble du site provenant du trafic humain."
+          },
+          "ai": {
+            "type": "number",
+            "description": "Événements de consultation de contenu sur l'ensemble du site provenant du trafic de bots d'IA."
+          },
+          "total": {
+            "type": "number",
+            "description": "Événements de consultation de contenu sur l'ensemble du site."
+          }
+        },
+        "required": [
+          "human",
+          "ai",
+          "total"
+        ]
+      },
+      "ViewsByPageResponse": {
+        "type": "object",
+        "properties": {
+          "totals": {
+            "$ref": "#/components/schemas/ViewsTrafficTotals",
+            "description": "Total des consultations sur l'ensemble du site pour l'intervalle de dates."
+          },
+          "views": {
+            "type": "array",
+            "description": "Nombre de consultations par page.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Chemin de la page de documentation."
+                },
+                "human": {
+                  "type": "number",
+                  "description": "Événements de consultation de contenu sur ce chemin provenant du trafic humain."
+                },
+                "ai": {
+                  "type": "number",
+                  "description": "Événements de consultation de contenu sur ce chemin provenant du trafic de bots d'IA."
+                },
+                "total": {
+                  "type": "number",
+                  "description": "Nombre total d'événements de consultation de contenu sur ce chemin."
+                }
+              },
+              "required": [
+                "path",
+                "human",
+                "ai",
+                "total"
+              ]
+            }
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Indique si des résultats supplémentaires sont disponibles au-delà de cette page."
+          }
+        },
+        "required": [
+          "totals",
+          "views",
+          "hasMore"
+        ]
+      },
+      "AssistantCallerStatsResponse": {
+        "type": "object",
+        "properties": {
+          "web": {
+            "type": "number",
+            "description": "Nombre de requêtes de l'assistant provenant du web (site de documentation)."
+          },
+          "api": {
+            "type": "number",
+            "description": "Nombre de requêtes de l'assistant provenant d'appels API."
+          },
+          "other": {
+            "type": "number",
+            "description": "Nombre de requêtes de l'assistant provenant d'autres sources (p. ex., intégrations, SDK)."
+          },
+          "total": {
+            "type": "number",
+            "description": "Nombre total de requêtes de l'assistant, tous types d'appelants confondus."
+          }
+        },
+        "required": [
+          "web",
+          "api",
+          "other",
+          "total"
+        ]
+      },
+      "VisitorsTrafficTotals": {
+        "type": "object",
+        "properties": {
+          "human": {
+            "type": "number",
+            "description": "Visiteurs uniques sur l'ensemble du site provenant du trafic humain."
+          },
+          "ai": {
+            "type": "number",
+            "description": "Visiteurs uniques sur l'ensemble du site provenant du trafic de bots d'IA."
+          },
+          "total": {
+            "type": "number",
+            "description": "Nombre approximatif de visiteurs distincts sur l'ensemble du site ayant au moins une consultation admissible (dédupliqués entre humains et IA)."
+          }
+        },
+        "required": [
+          "human",
+          "ai",
+          "total"
+        ]
+      },
+      "VisitorsByPageResponse": {
+        "type": "object",
+        "properties": {
+          "totals": {
+            "$ref": "#/components/schemas/VisitorsTrafficTotals",
+            "description": "Total des visiteurs uniques sur l'ensemble du site pour l'intervalle de dates."
+          },
+          "visitors": {
+            "type": "array",
+            "description": "Nombre de visiteurs par page.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Chemin de la page de documentation."
+                },
+                "human": {
+                  "type": "number",
+                  "description": "Visiteurs uniques provenant du trafic humain."
+                },
+                "ai": {
+                  "type": "number",
+                  "description": "Visiteurs uniques provenant du trafic de bots d'IA."
+                },
+                "total": {
+                  "type": "number",
+                  "description": "Nombre approximatif de visiteurs distincts ayant au moins une consultation admissible sur ce chemin (dédupliqués entre humains et IA)."
+                }
+              },
+              "required": [
+                "path",
+                "human",
+                "ai",
+                "total"
+              ]
+            }
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Indique si des résultats supplémentaires sont disponibles au-delà de cette page."
+          }
+        },
+        "required": [
+          "totals",
+          "visitors",
           "hasMore"
         ]
       }
@@ -407,8 +659,8 @@
   "paths": {
     "/v1/analytics/{projectId}/feedback": {
       "get": {
-        "summary": "Récupérer les retours des utilisateurs",
-        "description": "Renvoie des retours d’utilisateurs paginés avec des filtres facultatifs",
+        "summary": "Récupérer les retours utilisateurs",
+        "description": "Renvoie des retours d'utilisateurs paginés avec filtrage facultatif",
         "tags": [
           "Analytics"
         ],
@@ -424,7 +676,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Date au format ISO 8601 ou AAAA-MM-JJ",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD",
               "example": "2024-01-01"
             },
             "required": false,
@@ -434,7 +686,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Date au format ISO 8601 ou AAAA-MM-JJ. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures, mais pas la date spécifiée elle-même.",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD. `dateTo` est une limite supérieure exclusive. Les résultats incluent les dates antérieures à la date spécifiée, mais pas la date elle-même.",
               "example": "2024-01-01"
             },
             "required": false,
@@ -450,7 +702,7 @@
                 "agent",
                 "thumbs_only"
               ],
-              "description": "Filtrer par source des retours utilisateurs"
+              "description": "Filtrer par source des retours"
             },
             "required": false,
             "name": "source",
@@ -459,7 +711,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Liste de statuts séparés par des virgules pour le filtrage"
+              "description": "Liste des statuts à filtrer, séparés par des virgules"
             },
             "required": false,
             "name": "status",
@@ -489,7 +741,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Données de retours utilisateurs paginées",
+            "description": "Données de retours avec pagination",
             "content": {
               "application/json": {
                 "schema": {
@@ -499,7 +751,7 @@
             }
           },
           "400": {
-            "description": "Paramètres de requête invalides",
+            "description": "Paramètres de requête non valides",
             "content": {
               "application/json": {
                 "schema": {
@@ -521,10 +773,10 @@
         }
       }
     },
-    "/v1/analytics/{projectId}/assistant/caller-stats": {
+    "/v1/analytics/{projectId}/feedback/by-page": {
       "get": {
-        "summary": "Récupérer les statistiques d'appels de l'Assistant",
-        "description": "Renvoie une répartition du nombre de requêtes de l'Assistant par type d'appelant (web, API et autres) pour la plage de dates spécifiée.",
+        "summary": "Récupérer les retours par page",
+        "description": "Renvoie le nombre de retours agrégés par chemin de page de documentation (votes positifs/négatifs pour les retours contextuels, nombre d’extraits de code et total par page)",
         "tags": [
           "Analytics"
         ],
@@ -540,7 +792,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Date au format ISO 8601 ou AAAA-MM-JJ",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD",
               "example": "2024-01-01"
             },
             "required": false,
@@ -550,27 +802,63 @@
           {
             "schema": {
               "type": "string",
-              "description": "Date au format ISO 8601 ou AAAA-MM-JJ. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures, mais pas la date spécifiée.",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures à la date spécifiée, mais pas la date elle-même.",
               "example": "2024-01-01"
             },
             "required": false,
             "name": "dateTo",
             "in": "query"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10,
+              "description": "Nombre maximal de résultats par page"
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "code_snippet",
+                "contextual",
+                "agent",
+                "thumbs_only"
+              ],
+              "description": "Filtrer par source des retours"
+            },
+            "required": false,
+            "name": "source",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Liste des statuts à filtrer, séparés par des virgules"
+            },
+            "required": false,
+            "name": "status",
+            "in": "query"
           }
         ],
         "responses": {
           "200": {
-            "description": "Nombre de requêtes de l'Assistant ventilé par type d'appelant",
+            "description": "Agrégats des retours par page avec indicateur de pagination",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AssistantCallerStatsResponse"
+                  "$ref": "#/components/schemas/FeedbackGroupedByPageResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "Paramètres de requête invalides",
+            "description": "Paramètres de requête non valides",
             "content": {
               "application/json": {
                 "schema": {
@@ -594,8 +882,8 @@
     },
     "/v1/analytics/{projectId}/assistant": {
       "get": {
-        "summary": "Récupérer les conversations de l’Assistant",
-        "description": "Renvoie l’historique de conversation paginé de l’Assistant IA",
+        "summary": "Récupérer les conversations de l’assistant",
+        "description": "Renvoie l’historique paginé des conversations de l’assistant IA",
         "tags": [
           "Analytics"
         ],
@@ -611,7 +899,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Date au format ISO 8601 ou AAAA-MM-JJ",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD",
               "example": "2024-01-01"
             },
             "required": false,
@@ -621,7 +909,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Date au format ISO 8601 ou AAAA-MM-JJ. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures, mais pas la date spécifiée.",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures à la date spécifiée, mais pas la date elle-même.",
               "example": "2024-01-01"
             },
             "required": false,
@@ -653,7 +941,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Données de conversation paginées",
+            "description": "Données de conversation avec pagination",
             "content": {
               "application/json": {
                 "schema": {
@@ -663,7 +951,358 @@
             }
           },
           "400": {
-            "description": "Paramètres de requête invalides",
+            "description": "Paramètres de requête non valides",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/{projectId}/assistant/caller-stats": {
+      "get": {
+        "summary": "Récupérer les statistiques des appelants de l’assistant",
+        "description": "Renvoie une répartition du nombre de requêtes de l’assistant par type d’appelant (web, API et autre) pour la plage de dates spécifiée.",
+        "tags": [
+          "Analytics"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateFrom",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures à la date spécifiée, mais pas la date elle-même.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateTo",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nombre de requêtes de l’Assistant ventilé par type d’appelant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssistantCallerStatsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Paramètres de requête non valides",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/{projectId}/searches": {
+      "get": {
+        "summary": "Récupérer les requêtes de recherche",
+        "description": "Renvoie les termes de recherche paginés de la documentation pour la plage de dates, classés par nombre d’occurrences décroissant. Chaque ligne inclut le taux de clics, le chemin du résultat le plus cliqué pour cette requête (le cas échéant) et la date de dernière recherche du terme. `totalSearches` correspond au nombre total d’événements de requêtes de recherche sur la même plage de dates (somme de toutes les occurrences, et non des requêtes distinctes).",
+        "tags": [
+          "Analytics"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateFrom",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures à la date spécifiée, mais pas la date elle-même.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateTo",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 50,
+              "description": "Nombre maximal de termes de recherche par page (triés par nombre d’occurrences décroissant)"
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Curseur de pagination opaque issu de la réponse précédente"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agrégats de termes de recherche avec pagination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Paramètres de requête ou curseur non valides",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/{projectId}/views": {
+      "get": {
+        "summary": "Récupérer les vues de page",
+        "description": "Renvoie le nombre d’événements de consultation de contenu par chemin et pour l’ensemble du site, ventilé entre le trafic humain et le trafic IA.",
+        "tags": [
+          "Analytics"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateFrom",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures à la date spécifiée, mais pas la date elle-même.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateTo",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 250,
+              "default": 50,
+              "description": "Nombre maximal de résultats par page (1-250, 50 par défaut). Incrémentez offset de limit tant que hasMore est défini sur true pour paginer."
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "description": "Nombre de lignes à ignorer. Utilisez offset = (page - 1) * limit pour un accès par page."
+            },
+            "required": false,
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nombre d’événements de consultation de contenu pour l’ensemble du site et par chemin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewsByPageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Paramètres de requête non valides",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erreur serveur",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/{projectId}/visitors": {
+      "get": {
+        "summary": "Récupérer les visiteurs uniques",
+        "description": "Renvoie, par chemin et pour l’ensemble du site, un nombre approximatif de visiteurs distincts par type de trafic. Le champ `total` est dédupliqué entre les humains et l’IA (union des ID de visiteurs distincts avec au moins une consultation de contenu admissible).",
+        "tags": [
+          "Analytics"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateFrom",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Date au format ISO 8601 ou YYYY-MM-DD. `dateTo` est une borne supérieure exclusive. Les résultats incluent les dates antérieures à la date spécifiée, mais pas la date elle-même.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateTo",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 250,
+              "default": 50,
+              "description": "Nombre maximal de résultats par page (1-250, 50 par défaut). Incrémentez offset de limit tant que hasMore est défini sur true pour paginer."
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "description": "Nombre de lignes à ignorer. Utilisez offset = (page - 1) * limit pour un accès par page."
+            },
+            "required": false,
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Totaux pour l’ensemble du site et nombre de visiteurs par chemin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VisitorsByPageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Paramètres de requête non valides",
             "content": {
               "application/json": {
                 "schema": {

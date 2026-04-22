@@ -1,13 +1,13 @@
 ---
-title: "Vista"
-description: "Usa el componente view para crear paneles de contenido intercambiables para diferentes lenguajes de programación, frameworks o alternativas de configuración."
+title: "View"
+description: "Usa el componente View para crear paneles de contenido intercambiables para distintos lenguajes de programación, frameworks o alternativas de configuración."
 keywords: ["selector", "contenido específico por lenguaje", "cambio de contenido"]
 ---
 
-Usa el componente `View` para crear contenido que cambie según la vista seleccionada en un menú desplegable de múltiples vistas. Es especialmente útil para mostrar ejemplos de código o documentación específica para distintos lenguajes de programación o frameworks.
+Usa el componente `View` para crear contenido que cambie según la vista seleccionada en un menú desplegable de varias vistas. Esto resulta especialmente útil para mostrar ejemplos de código o documentación específicos de distintos lenguajes de programación o frameworks.
 
 <Tip>
-  Usa un componente `View` por lenguaje en cada página. Usa [pestañas](/es/components/tabs) para procedimientos que varían según el lenguaje y [grupos de código](/es/components/code-groups) para ejemplos de código que difieren según el lenguaje.
+  Usa un componente `View` por lenguaje en cada página. Usa [pestañas](/es/components/tabs) para procedimientos que varían según el lenguaje y [grupos de código](/es/components/code-groups) para ejemplos de código que varían según el lenguaje.
 </Tip>
 
 <View title="JavaScript" icon="js">
@@ -49,19 +49,19 @@ Usa el componente `View` para crear contenido que cambie según la vista selecci
 ````
 
 <div id="table-of-contents-behavior">
-  ## Comportamiento de la tabla de contenidos
+  ## Comportamiento de la tabla de contenido
 </div>
 
-La tabla de contenidos se actualiza automáticamente para mostrar solo los encabezados de la vista seleccionada en ese momento. Cuando cambias entre vistas usando el menú desplegable de vistas múltiples, la tabla de contenidos se actualiza para mostrar los encabezados relevantes para esa vista.
+La tabla de contenido se actualiza automáticamente para mostrar solo los encabezados de la vista seleccionada. Cuando cambias de vista con el menú desplegable de varias vistas, la tabla de contenido se actualiza para mostrar los encabezados correspondientes a esa vista.
 
-Si tienes estructuras de encabezados diferentes en cada vista, los usuarios solo verán los encabezados que sean relevantes para el idioma o framework que hayan seleccionado.
+Si tienes estructuras de encabezados distintas en cada vista, los usuarios solo verán los encabezados correspondientes al idioma o framework que hayan seleccionado.
 
 <div id="properties">
   ## Propiedades
 </div>
 
 <ResponseField name="title" type="string" required>
-  El título que identifica esta vista. Debe coincidir con una de las opciones del menú desplegable de vistas múltiples.
+  El título que identifica esta vista. Debe coincidir con una de las opciones del menú desplegable de varias vistas.
 </ResponseField>
 
 <ResponseField name="icon" type="string">
@@ -69,5 +69,5 @@ Si tienes estructuras de encabezados diferentes en cada vista, los usuarios solo
 </ResponseField>
 
 <ResponseField name="iconType" type="string">
-  Solo para iconos de Font Awesome: uno de `regular`, `solid`, `light`, `thin`, `sharp-solid`, `duotone`, `brands`.
+  Solo para iconos de Font Awesome: Uno de estos valores: `regular`, `solid`, `light`, `thin`, `sharp-solid`, `duotone`, `brands`.
 </ResponseField>

@@ -1,19 +1,19 @@
 ---
 title: "Desplegables"
-description: "Usa el componente expandable para mostrar u ocultar propiedades anidadas en la documentación de API, mostrando campos secundarios de objetos de solicitud y respuesta."
-keywords: ["desplegables", "propiedades anidadas", "campos desplegables", "alternar contenido"]
+description: "Usa el componente Expandable para mostrar u ocultar propiedades de objetos anidados en la documentación de la API, mostrando campos hijo para objetos de solicitud y respuesta."
+keywords: ["desplegables", "propiedades anidadas", "campos desplegables", "mostrar u ocultar contenido"]
 ---
 
-Usa desplegables para mostrar y ocultar contenido anidado dentro de los campos de respuesta. Son especialmente útiles para mostrar propiedades de objetos complejas en la documentación de la API.
+Usa desplegables para mostrar y ocultar contenido anidado dentro de los campos de respuesta. Son especialmente útiles para mostrar propiedades complejas de objetos en la documentación de la API.
 
-<ResponseField name="user" type="User Object">
-  <Expandable title="properties">
+<ResponseField name="user" type="Objeto de usuario">
+  <Expandable title="propiedades">
     <ResponseField name="full_name" type="string">
       El nombre completo del usuario
     </ResponseField>
 
     <ResponseField name="is_over_21" type="boolean">
-      Indica si el usuario tiene más de 21 años
+      Si el usuario es mayor de 21 años
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -22,11 +22,11 @@ Usa desplegables para mostrar y ocultar contenido anidado dentro de los campos d
 <ResponseField name="user" type="User Object">
   <Expandable title="properties">
     <ResponseField name="full_name" type="string">
-      El nombre completo del usuario
+      The full name of the user
     </ResponseField>
 
     <ResponseField name="is_over_21" type="boolean">
-      Indica si el usuario tiene más de 21 años
+      Whether the user is over 21 years old
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -41,5 +41,5 @@ Usa desplegables para mostrar y ocultar contenido anidado dentro de los campos d
 </ResponseField>
 
 <ResponseField name="defaultOpen" type="boolean" default="false">
-  Configúralo en `true` para que el elemento expandible se abra al cargar la página.
+  Establécelo en `true` para que el Expandable se abra cuando se cargue la página
 </ResponseField>

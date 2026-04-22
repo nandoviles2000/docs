@@ -1,41 +1,40 @@
 ---
 title: "Markdown 导出"
-description: "将文档页面导出为整洁的 Markdown 格式，用于 AI 工具、LLM 集成和自动化内容处理工作流程。"
-keywords: ["markdown", "token 效率", "AI 处理"]
+description: "将文档页面导出为简洁的 Markdown 版本，供 AI 工具、LLM 集成和自动化内容处理工作流使用。"
+keywords: ["markdown", "令牌效率", "AI 处理"]
 ---
 
 import { PreviewButton } from "/snippets/previewbutton.jsx"
 
-与 HTML 相比，Markdown 提供的结构化文本更便于 AI 工具高效处理，从而带来更高的响应准确性、更快的处理速度，以及更低的 token 使用量。
+Markdown 提供的是结构化文本，AI 工具处理起来比 HTML 更高效，因此能够提高响应准确性、加快处理速度，并降低 token 用量。
 
-Mintlify 会自动生成针对 AI 工具和外部 integrations 优化的页面 Markdown 版本。
-
+Mintlify 会自动生成面向 AI 工具和外部集成优化的页面 Markdown 版本。
 
 <div id="md-url-extension">
-  ## .md URL 后缀
+  ## `.md` URL 扩展名
 </div>
 
-在任意页面的 URL 末尾添加 `.md`，即可查看其 Markdown 版本。
+在任意页面的 URL 后添加 `.md`，即可查看其 Markdown 版本。
 
-<PreviewButton href="https://mintlify.com/docs/ai/markdown-export.md">以 Markdown 打开此页面</PreviewButton>
+<PreviewButton href="https://mintlify.com/docs/ai/markdown-export.md">以 Markdown 格式打开此页面</PreviewButton>
 
 <div id="accept-header">
-  ## Accept 标头
+  ## Accept 请求头
 </div>
 
-向任意页面 URL 发送带有 `Accept: text/markdown` 或 `Accept: text/plain` 的请求，即可接收 Markdown 版本而非 HTML。这对于以编程方式获取文档内容的 AI 工具和 integrations 非常有用。
+向任意页面 URL 发送包含 `Accept: text/markdown` 或 `Accept: text/plain` 的请求，即可获取 Markdown 版本，而不是 HTML 版本。这对于以编程方式抓取文档内容的 AI 工具和集成非常有用。
 
 ```bash
 curl -H "Accept: text/markdown" https://mintlify.com/docs/ai/markdown-export
 ```
 
 <div id="audience-specific-content">
-  ## 面向特定受众的内容
+  ## 面向不同受众的内容
 </div>
 
-使用 [visibility](/zh/components/visibility) 组件为人类和 AI 受众自定义内容。
+使用 [visibility](/zh/components/visibility) 组件，分别为人类受众和 AI 受众定制内容。
 
-用 `<Visibility for="humans">` 包裹的内容会显示在网页上，但不会出现在 Markdown 输出中。用 `<Visibility for="agents">` 包裹的内容会出现在 Markdown 输出中，但不会显示在网页上。
+包裹在 `<Visibility for="humans">` 中的内容会显示在网页上，但不会出现在 Markdown 输出中。包裹在 `<Visibility for="agents">` 中的内容会出现在 Markdown 输出中，但不会显示在网页上。
 
 ```mdx
 <Visibility for="humans">
@@ -48,17 +47,17 @@ curl -H "Accept: text/markdown" https://mintlify.com/docs/ai/markdown-export
 ```
 
 <div id="agent-feedback">
-  ## Agent 反馈
+  ## 智能体反馈
 </div>
 
-如果你启用了 [Agent 反馈](/zh/optimize/feedback#agent-feedback)，Mintlify 会在每个页面的 Markdown 导出中附加一个 `<AgentInstructions>` 块，告知 Agent 如何提交关于页面内容的反馈。
+如果启用[智能体反馈](/zh/optimize/feedback#agent-feedback)，Mintlify 会在每个页面导出的 Markdown 中附加一个 `<AgentInstructions>` 块，说明智能体应如何针对页面内容提交反馈。
 
-Agent 通过向端点发送页面路径和反馈文本来提交反馈。
+智能体会通过向该端点发送页面路径和反馈文本来提交反馈。
 
-使用 Agent 反馈根据 Agent 发现的不正确、过时或令人困惑的内容来改进你的页面。
+你可以利用智能体反馈，根据它们发现的不准确、过时或令人困惑的内容改进页面，使页面更适合智能体使用。
 
 <div id="keyboard-shortcut">
   ## 键盘快捷键
 </div>
 
-按 <kbd>Command</kbd> + <kbd>C</kbd>（在 Windows 上为 <kbd>Ctrl</kbd> + <kbd>C</kbd>）将页面以 Markdown 格式复制到剪贴板。
+按 <kbd>Command</kbd> + <kbd>C</kbd> (Windows 上为 <kbd>Ctrl</kbd> + <kbd>C</kbd>) 即可将页面以 Markdown 格式复制到剪贴板。

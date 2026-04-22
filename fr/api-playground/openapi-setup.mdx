@@ -1,27 +1,27 @@
 ---
-title: "Configuration d’OpenAPI"
-description: "Générez une documentation API interactive à partir de fichiers de spécification OpenAPI avec des pages d'endpoints automatiques, des constructeurs de requêtes et une navigation."
-keywords: ["OpenAPI", "API specification", "Swagger"]
+title: "Configuration OpenAPI"
+description: "Générez une documentation API interactive à partir de fichiers de spécification OpenAPI, avec des pages de point de terminaison générées automatiquement, des outils de création de requêtes et une navigation intégrée."
+keywords: ["OpenAPI", "spécification API", "Swagger"]
 ---
 
-OpenAPI est une spécification destinée à décrire des API. Mintlify prend en charge les documents OpenAPI 3.0 et 3.1 pour générer une documentation d’API interactive et la maintenir à jour.
+OpenAPI est une spécification qui permet de décrire des API. Mintlify prend en charge les documents OpenAPI 3.0 et 3.1 pour générer une documentation API interactive et la maintenir à jour.
 
 <div id="add-an-openapi-specification-file">
   ## Ajouter un fichier de spécification OpenAPI
 </div>
 
-Pour documenter vos endpoints avec OpenAPI, vous avez besoin d'une ou plusieurs spécifications OpenAPI valides au format JSON ou YAML qui respectent la [spécification OpenAPI 3.0 ou 3.1](https://swagger.io/specification/).
+Pour documenter vos points de terminaison avec OpenAPI, vous avez besoin d’une ou de plusieurs spécifications OpenAPI valides au format JSON ou YAML, conformes à la [spécification OpenAPI 3.0 ou 3.1](https://swagger.io/specification/).
 
-Ajoutez des spécifications OpenAPI à votre référentiel de documentation ou hébergez-les en ligne de manière à pouvoir y accéder via une URL. Les spécifications stockées dans votre référentiel sont [proposées au téléchargement](/fr/create/files) à leur chemin sur votre domaine de documentation. Par exemple, `https://your-domain/docs/openapi.json`.
+Ajoutez des spécifications OpenAPI à votre dépôt de documentation ou hébergez-les en ligne à un emplacement accessible par URL. Les spécifications stockées dans votre dépôt sont [proposées en téléchargement](/fr/create/files) à leur chemin sur votre domaine de documentation. Par exemple, `https://your-domain/docs/openapi.json`.
 
-Référencez autant de spécifications OpenAPI que nécessaire dans l'élément `navigation` de votre fichier `docs.json` pour créer des pages pour vos endpoints d'API. Chaque fichier de spécification génère son propre ensemble d'endpoints.
+Référencez autant de spécifications OpenAPI que nécessaire dans l’élément de navigation de votre `docs.json` pour créer des pages pour les points de terminaison de votre API. Chaque fichier de spécification génère son propre ensemble de points de terminaison.
 
 <CodeGroup>
   ```json Spécification unique
   "navigation": {
     "tabs": [
       {
-        "tab": "API Reference",
+        "tab": "Référence de l’API",
         "openapi": "openapi.json"
       }
     ]
@@ -32,7 +32,7 @@ Référencez autant de spécifications OpenAPI que nécessaire dans l'élément 
   "navigation": {
     "tabs": [
       {
-        "tab": "API Reference",
+        "tab": "Référence de l’API",
         "openapi": [
           "openapi/v1.json",
           "openapi/v2.json"
@@ -44,29 +44,29 @@ Référencez autant de spécifications OpenAPI que nécessaire dans l'élément 
 </CodeGroup>
 
 <Note>
-  Mintlify prend en charge `$ref` pour les **références internes uniquement** au sein d'un seul document OpenAPI. Les références externes ne sont pas prises en charge.
+  Mintlify prend en charge `$ref` pour **les références internes uniquement** au sein d’un seul document OpenAPI. Les références externes ne sont pas prises en charge.
 </Note>
 
 <div id="describe-your-api">
   ### Décrivez votre API
 </div>
 
-Nous recommandons les ressources suivantes pour apprendre et rédiger votre spécification OpenAPI.
+Nous vous recommandons les ressources suivantes pour comprendre et élaborer votre spécification OpenAPI.
 
-* [Guide OpenAPI de Swagger](https://swagger.io/docs/specification/v3_0/basic-structure/) pour apprendre la syntaxe d’OpenAPI.
-* [Sources Markdown de la spécification OpenAPI](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/) pour consulter les détails de la dernière version de la spécification OpenAPI.
+* [Le guide OpenAPI de Swagger](https://swagger.io/docs/specification/v3_0/basic-structure/) pour apprendre la syntaxe OpenAPI.
+* [Les sources Markdown de la spécification OpenAPI](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/) pour consulter les détails de la dernière version de la spécification OpenAPI.
 * [Swagger Editor](https://editor.swagger.io/) pour modifier, valider et déboguer votre document OpenAPI.
-* [Mint CLI](https://www.npmjs.com/package/mint) pour valider votre document OpenAPI avec la commande : `mint validate`.
+* [Le CLI Mint](https://www.npmjs.com/package/mint) pour valider votre document OpenAPI avec la commande : `mint validate`.
 
 <Note>
-  Le guide OpenAPI de Swagger porte sur OpenAPI v3.0, mais la quasi-totalité des informations s’applique à v3.1. Pour en savoir plus sur les différences entre v3.0 et v3.1, consultez l’article du blog OpenAPI [Migrating from OpenAPI 3.0 to 3.1.0](https://www.openapis.org/blog/2021/02/16/migrating-from-openapi-3-0-to-3-1-0).
+  Le guide OpenAPI de Swagger porte sur OpenAPI v3.0, mais la quasi-totalité des informations s’applique également à la v3.1. Pour en savoir plus sur les différences entre les versions 3.0 et 3.1, consultez [Migrating from OpenAPI 3.0 to 3.1.0](https://www.openapis.org/blog/2021/02/16/migrating-from-openapi-3-0-to-3-1-0) sur le blog OpenAPI.
 </Note>
 
 <div id="specify-the-base-url-for-your-api">
   ### Spécifiez l’URL de base de votre API
 </div>
 
-Pour activer l’aire de jeu de l’API, ajoutez un champ `servers` à votre spécification OpenAPI avec l’URL de base de votre API.
+Pour activer le bac à sable API, ajoutez un champ `servers` à votre spécification OpenAPI contenant l’URL de base de votre API.
 
 ```json
 {
@@ -78,23 +78,23 @@ Pour activer l’aire de jeu de l’API, ajoutez un champ `servers` à votre sp�
 }
 ```
 
-Dans une spécification OpenAPI, les différents points de terminaison (endpoints) d’API sont définis par leurs chemins, comme `/users/{id}` ou simplement `/`. L’URL de base indique où ces chemins doivent être ajoutés. Pour en savoir plus sur la configuration du champ `servers`, consultez la page [API Server and Base Path](https://swagger.io/docs/specification/api-host-and-base-path/) de la documentation OpenAPI.
+Dans une spécification OpenAPI, les différents points de terminaison d’API sont définis par leur chemin, comme `/users/{id}` ou simplement `/`. L’URL de base indique à quel emplacement ces chemins doivent être ajoutés. Pour en savoir plus sur la configuration du champ `servers`, consultez [API Server and Base Path](https://swagger.io/docs/specification/api-host-and-base-path/) dans la documentation OpenAPI.
 
-Le bac à sable de l’API utilise ces URL de serveur pour déterminer où envoyer les requêtes. Si vous spécifiez plusieurs serveurs, un menu déroulant permet aux utilisateurs de basculer entre eux. Si vous ne spécifiez aucun serveur, le bac à sable de l’API utilise le mode simple, puisqu’il ne peut pas envoyer de requêtes sans URL de base.
+Le bac à sable API utilise ces URL de serveur pour déterminer où envoyer les requêtes. Si vous spécifiez plusieurs serveurs, une liste déroulante permet aux utilisateurs de passer de l’un à l’autre. Si vous ne spécifiez aucun serveur, le bac à sable API utilise le mode simple, car il ne peut pas envoyer de requêtes sans URL de base.
 
-Si votre API comporte des points de terminaison accessibles à différentes URL, vous pouvez [surcharger le champ `servers`](https://swagger.io/docs/specification/v3_0/api-host-and-base-path/#overriding-servers) pour un chemin ou une opération donnés.
+Si votre API comporte des points de terminaison accessibles à différentes URL, vous pouvez [remplacer le champ `servers`](https://swagger.io/docs/specification/v3_0/api-host-and-base-path/#overriding-servers) pour un chemin ou une opération donnée.
 
 <div id="specify-authentication">
   ### Spécifier l’authentification
 </div>
 
-Pour activer l’authentification dans votre documentation et votre environnement de test API, configurez les champs `securitySchemes` et `security` dans votre spécification OpenAPI. Les descriptions d’API et l’environnement de test API ajoutent des champs d’authentification en fonction des paramètres de sécurité de votre spécification OpenAPI.
+Pour activer l’authentification dans votre documentation API et votre bac à sable API, configurez les champs `securitySchemes` et `security` dans votre spécification OpenAPI. Les descriptions d’API et le bac à sable API ajoutent des champs d’authentification en fonction des configurations de sécurité définies dans votre spécification OpenAPI.
 
 <Steps>
   <Step title="Définissez votre méthode d’authentification.">
     Ajoutez un champ `securitySchemes` pour définir la manière dont les utilisateurs s’authentifient.
 
-    Cet exemple montre une configuration pour l’authentification de type Bearer.
+    Cet exemple montre une configuration pour l’authentification bearer.
 
     ```json
     {
@@ -110,7 +110,7 @@ Pour activer l’authentification dans votre documentation et votre environnemen
     ```
   </Step>
 
-  <Step title="Appliquez l’authentification à vos endpoints.">
+  <Step title="Appliquez l’authentification à vos points de terminaison.">
     Ajoutez un champ `security` pour rendre l’authentification obligatoire.
 
     ```json
@@ -127,19 +127,19 @@ Pour activer l’authentification dans votre documentation et votre environnemen
 
 Les types d’authentification courants incluent :
 
-* [Clés d’API](https://swagger.io/docs/specification/authentication/api-keys/) : pour les clés transmises via l’en-tête, les paramètres de requête ou les cookies.
-* [Bearer](https://swagger.io/docs/specification/authentication/bearer-authentication/) : pour les jetons JWT ou OAuth.
-* [Basic](https://swagger.io/docs/specification/authentication/basic-authentication/) : pour le nom d’utilisateur et le mot de passe.
+* [Clés API](https://swagger.io/docs/specification/authentication/api-keys/) : Pour les clés transmises dans les en-têtes, les paramètres de requête ou les cookies.
+* [Bearer](https://swagger.io/docs/specification/authentication/bearer-authentication/) : Pour les jetons JWT ou OAuth.
+* [Basic](https://swagger.io/docs/specification/authentication/basic-authentication/) : Pour le nom d’utilisateur et le mot de passe.
 
-Si différents endpoints de votre API nécessitent différentes méthodes d’authentification, vous pouvez [remplacer le champ `security`](https://swagger.io/docs/specification/authentication/#:~:text=you%20can%20apply%20them%20to%20the%20whole%20API%20or%20individual%20operations%20by%20adding%20the%20security%20section%20on%20the%20root%20level%20or%20operation%20level%2C%20respectively.) pour une opération donnée.
+Si différents points de terminaison de votre API nécessitent différentes méthodes d’authentification, vous pouvez [redéfinir le champ `security`](https://swagger.io/docs/specification/authentication/#:~:text=you%20can%20apply%20them%20to%20the%20whole%20API%20or%20individual%20operations%20by%20adding%20the%20security%20section%20on%20the%20root%20level%20or%20operation%20level%2C%20respectively.) pour une opération donnée.
 
-Pour plus d’informations sur la définition et l’application de l’authentification, consultez la section [Authentication](https://swagger.io/docs/specification/authentication/) de la documentation OpenAPI.
+Pour en savoir plus sur la définition et l’application de l’authentification, consultez [Authentication](https://swagger.io/docs/specification/authentication/) dans la documentation OpenAPI.
 
 <div id="set-default-values-for-security-schemes">
   #### Définir des valeurs par défaut pour les schémas de sécurité
 </div>
 
-Utilisez l’extension `x-default` sur un schéma de sécurité pour pré-remplir le champ d’authentification dans le playground de l’API. Cela est utile pour fournir des valeurs d’exemple ou des identifiants de test qui aident les utilisateurs à démarrer rapidement.
+Utilisez l’extension `x-default` sur un schéma de sécurité pour préremplir le champ d’authentification dans le bac à sable API. Cela permet de fournir des valeurs d’exemple ou des identifiants de test afin d’aider les utilisateurs à démarrer rapidement.
 
 ```json {6}
 {
@@ -156,21 +156,21 @@ Utilisez l’extension `x-default` sur un schéma de sécurité pour pré-rempli
 }
 ```
 
-L’extension `x-default` prend en charge les types de schéma de sécurité `apiKey` et `http` bearer. La valeur apparaît comme entrée par défaut dans les champs d’authentification du playground.
+L’extension `x-default` prend en charge les types de schéma de sécurité `apiKey` et `http` bearer. La valeur apparaît comme valeur saisie par défaut dans les champs d’authentification du bac à sable.
 
-Vous pouvez également utiliser `x-default` sur n’importe quelle propriété de schéma dans votre spécification OpenAPI pour définir une valeur par défaut dans le playground de l’API sans affecter le champ `default` dans la définition du schéma.
+Vous pouvez également utiliser `x-default` sur n’importe quelle propriété de schéma de votre spécification OpenAPI pour définir une valeur par défaut dans le bac à sable API sans affecter le champ `default` dans la définition du schéma.
 
 <div id="customize-your-endpoint-pages">
-  ## Personnalisez les pages de vos endpoints
+  ## Personnalisez les pages de vos points de terminaison
 </div>
 
-Personnalisez les pages de vos endpoints en ajoutant l’extension `x-mint` à votre spécification OpenAPI. L’extension `x-mint` vous offre un contrôle supplémentaire sur la manière dont votre documentation d’API se génère et s’affiche.
+Personnalisez les pages de vos points de terminaison en ajoutant l’extension `x-mint` à votre spécification OpenAPI. L’extension `x-mint` vous offre un contrôle supplémentaire sur la génération et l’affichage de votre documentation API.
 
 <div id="metadata">
   ### Métadonnées
 </div>
 
-Remplacez les métadonnées par défaut des pages d’API générées en ajoutant `x-mint: metadata` à n’importe quelle opération. Vous pouvez utiliser n’importe quel champ de métadonnées valide dans le front matter MDX, à l’exception de `openapi`.
+Remplacez les métadonnées par défaut des pages d’API générées en ajoutant `x-mint: metadata` à n’importe quelle opération. Vous pouvez utiliser n’importe quel champ de métadonnées valide dans les métadonnées d’en-tête MDX, sauf `openapi`.
 
 ```json {7-14}
 {
@@ -183,13 +183,13 @@ Remplacez les métadonnées par défaut des pages d’API générées en ajoutan
           "metadata": {
             "title": "List all users",
             "sidebarTitle": "List users",
-            "description": "Récupérer les données utilisateur paginées avec des options de filtrage",
+            "description": "Fetch paginated user data with filtering options",
             "og:title": "Display a list of users"
           }
         },
         "parameters": [
           {
-            // Parameter configuration
+            // Configuration des paramètres
           }
         ]
       }
@@ -198,14 +198,14 @@ Remplacez les métadonnées par défaut des pages d’API générées en ajoutan
 }
 ```
 
-Vous pouvez également contrôler l’affichage du playground pour chaque endpoint à l’aide des champs metadata `playground` et `groups` :
+Vous pouvez également contrôler l’affichage du `playground` sur chaque point de terminaison à l’aide des champs de métadonnées `playground` et `groups` :
 
 ```json {7-11}
 {
   "paths": {
     "/admin/users": {
       "post": {
-        "summary": "Créer un utilisateur administrateur",
+        "summary": "Create admin user",
         "x-mint": {
           "metadata": {
             "playground": "auth",
@@ -219,22 +219,22 @@ Vous pouvez également contrôler l’affichage du playground pour chaque endpoi
 }
 ```
 
-Cette configuration rend la page accessible au public tout en réservant l’espace de test interactif aux utilisateurs authentifiés du groupe `admin`.
+Cette configuration rend la page publiquement visible tout en réservant le bac à sable interactif aux utilisateurs authentifiés du groupe `admin`.
 
 <div id="content">
   ### Contenu
 </div>
 
-Ajoutez du contenu avant la documentation API générée automatiquement à l’aide de `x-mint: content`. L’extension `x-mint: content` est compatible avec tous les composants MDX de Mintlify ainsi que leur mise en forme.
+Ajoutez du contenu avant la documentation d’API générée automatiquement à l’aide de `x-mint: content`. L’extension `x-mint: content` prend en charge tous les composants MDX et toute la mise en forme de Mintlify.
 
 ```json {6-8}
 {
   "paths": {
     "/users": {
       "post": {
-        "summary": "Créer un utilisateur",
+        "summary": "Create user",
         "x-mint": {
-          "content": "## Prérequis\n\nCe point de terminaison nécessite des privilèges administrateur et est soumis à une limitation du débit.\n\n<Note>Les adresses e-mail des utilisateurs doivent être uniques dans l'ensemble du système.</Note>"
+          "content": "## Prerequisites\n\nThis endpoint requires admin privileges and has rate limiting.\n\n<Note>User emails must be unique across the system.</Note>"
         },
         "parameters": [
           {
@@ -251,14 +251,14 @@ Ajoutez du contenu avant la documentation API générée automatiquement à l’
   ### href
 </div>
 
-Définissez l’URL de la page de point de terminaison générée automatiquement à l’aide de `x-mint: href`. Lorsque `x-mint: href` est présent, la page d’API générée utilise l’URL spécifiée au lieu de l’URL par défaut générée automatiquement.
+Définissez l’URL de la page de point de terminaison auto-générée à l’aide de `x-mint: href`. Lorsque `x-mint: href` est présent, la page API générée utilise l’URL spécifiée au lieu de l’URL auto-générée par défaut.
 
 ```json {6-8, 14-16}
 {
   "paths": {
     "/legacy-endpoint": {
       "get": {
-        "summary": "Point de terminaison obsolète",
+        "summary": "Legacy endpoint",
         "x-mint": {
           "href": "/deprecated-endpoints/legacy-endpoint"
         }
@@ -266,7 +266,7 @@ Définissez l’URL de la page de point de terminaison générée automatiquemen
     },
     "/documented-elsewhere": {
       "post": {
-        "summary": "Point de terminaison spécial",
+        "summary": "Special endpoint",
         "x-mint": {
           "href": "/guides/special-endpoint-guide"
         }
@@ -277,12 +277,12 @@ Définissez l’URL de la page de point de terminaison générée automatiquemen
 ```
 
 <div id="group-display-names">
-  ### Noms d'affichage des groupes
+  ### Noms d’affichage des groupes
 </div>
 
-Définissez un nom d'affichage personnalisé pour le groupe de navigation d'un tag à l'aide de l'extension `x-group` sur un objet tag. Par défaut, Mintlify utilise le `name` du tag à la fois comme libellé du groupe de navigation et comme segment du chemin URL. L'extension `x-group` remplace le libellé du groupe tout en conservant le nom du tag pour l'URL.
+Définissez un nom d’affichage personnalisé pour le groupe de navigation d’un tag à l’aide de l’extension `x-group` sur un objet tag. Par défaut, Mintlify utilise le `name` du tag à la fois comme libellé du groupe de navigation et comme segment de chemin d’URL. L’extension `x-group` remplace le libellé du groupe tout en conservant le nom du tag dans l’URL.
 
-Cela est utile lorsque vous souhaitez un nom de groupe lisible qui diffère du tag utilisé dans les chemins de votre API.
+Cela est utile lorsque vous souhaitez un nom de groupe compréhensible par les humains, différent du tag utilisé dans vos chemins d’API.
 
 ```json {4-9}
 {
@@ -304,70 +304,70 @@ Cela est utile lorsque vous souhaitez un nom de groupe lisible qui diffère du t
 }
 ```
 
-Dans cet exemple, le groupe de navigation s'affiche sous le nom "User Management", mais l'URL de la page générée utilise toujours le nom du tag `user-management` comme segment de chemin.
+Dans cet exemple, le groupe de navigation s’affiche sous l’intitulé &quot;Gestion des utilisateurs&quot;, mais l’URL de la page générée utilise toujours le tag `user-management` comme segment du chemin.
 
 <div id="auto-populate-api-pages">
-  ## Remplir automatiquement les pages d'API
+  ## Générer automatiquement des pages d’API
 </div>
 
-Ajoutez un champ `openapi` à n’importe quel élément de navigation dans votre `docs.json` pour générer automatiquement des pages pour les endpoints OpenAPI. Vous pouvez contrôler l’emplacement de ces pages dans votre structure de navigation, soit en tant que sections API dédiées, soit aux côtés d’autres pages.
+Ajoutez un champ `openapi` à n’importe quel élément de navigation dans votre `docs.json` pour générer automatiquement des pages pour les points de terminaison OpenAPI. Vous pouvez choisir où ces pages apparaissent dans votre structure de navigation, sous forme de sections d’API dédiées ou aux côtés d’autres pages.
 
-Le champ `openapi` accepte soit un chemin dans votre dépôt de documentation, soit une URL vers un document OpenAPI hébergé.
-
-<Tip>
-  Lorsque vous utilisez une URL pour votre spécification OpenAPI, les modifications de la spécification ne déclenchent pas de push Git, donc vos docs ne se redéploient pas automatiquement. Pour garder vos docs synchronisés, appelez l’endpoint d’API [Trigger deployment](/fr/api/update/trigger) dans la même action CI qui génère ou met à jour votre spécification. Ainsi, vos docs se mettent à jour automatiquement sans avoir à déclencher manuellement un déploiement depuis le tableau de bord.
-</Tip>
-
-Les pages d’endpoint générées ont les métadonnées par défaut suivantes :
-
-* `title` : le champ `summary` de l’opération, s’il est présent. S’il n’y a pas de `summary`, Mintlify génère le titre à partir de la méthode HTTP et de l’endpoint.
-* `description` : le champ `description` de l’opération, s’il est présent.
-* `version` : la valeur `version` de l’ancre ou de l’onglet parent, si elle est présente.
-* `deprecated` : le champ `deprecated` de l’opération. Si `true`, une étiquette « obsolète » apparaît à côté du titre de l’endpoint dans la navigation latérale et sur la page de l’endpoint.
+Le champ `openapi` accepte soit un chemin dans votre dépôt de documentation, soit l’URL d’un document OpenAPI hébergé.
 
 <Tip>
-  Pour exclure des endpoints spécifiques de vos pages d’API générées automatiquement, ajoutez la propriété [x-hidden](/fr/api-playground/managing-page-visibility#x-hidden) à l’opération dans votre spécification OpenAPI.
+  Lorsque vous utilisez une URL pour votre spécification OpenAPI, les modifications qui y sont apportées ne déclenchent pas de push Git. Votre documentation n’est donc pas redéployée automatiquement. Pour la garder synchronisée, appelez le point de terminaison d’API [Trigger deployment](/fr/api/update/trigger) dans la même action CI que celle qui génère ou met à jour votre spécification. Ainsi, votre documentation se met à jour automatiquement, sans que vous ayez à déclencher manuellement un déploiement depuis le tableau de bord.
 </Tip>
 
-Il existe deux approches pour ajouter des pages d’endpoint à votre documentation :
+Les pages de point de terminaison générées utilisent les valeurs de métadonnées par défaut suivantes :
 
-1. **Sections API dédiées** : référencez des spécifications OpenAPI dans des éléments de navigation pour des sections API dédiées.
-2. **Endpoints sélectifs** : référencez des endpoints spécifiques dans votre navigation, aux côtés d’autres pages.
+* `title` : le champ `summary` de l’opération, s’il est présent. En l’absence de `summary`, Mintlify génère le titre à partir de la méthode HTTP et du point de terminaison.
+* `description` : le champ `description` de l’opération, s’il est présent.
+* `version` : la valeur `version` de l’ancre ou de l’onglet parent, si elle est présente.
+* `deprecated` : le champ `deprecated` de l’opération. Si sa valeur est `true`, une mention d’obsolescence apparaît à côté du titre du point de terminaison dans la navigation latérale et sur la page du point de terminaison.
+
+<Tip>
+  Pour exclure certains points de terminaison de vos pages d’API générées automatiquement, ajoutez la propriété [x-hidden](/fr/api-playground/managing-page-visibility#x-hidden) à l’opération dans votre spécification OpenAPI.
+</Tip>
+
+Il existe deux façons d’ajouter des pages de point de terminaison à votre documentation :
+
+1. **Sections d’API dédiées** : référencez des spécifications OpenAPI dans des éléments de navigation pour créer des sections d’API dédiées.
+2. **Points de terminaison sélectionnés** : référencez des points de terminaison spécifiques dans votre navigation aux côtés d’autres pages.
 
 <div id="dedicated-api-sections">
   ### Sections d’API dédiées
 </div>
 
-Générez des sections d’API dédiées en ajoutant un champ `openapi` à un élément de navigation, sans autres pages. Tous les points de terminaison de la spécification apparaissent dans la section générée.
+Générez des sections d’API dédiées en ajoutant un champ `openapi` à un élément de navigation, sans y ajouter d’autres pages. Tous les points de terminaison de la spécification apparaissent dans la section générée.
 
 ```json {5}
 "navigation": {
   "tabs": [
     {
-        "tab": "Référence API",
+        "tab": "API Reference",
         "openapi": "https://petstore3.swagger.io/api/v3/openapi.json"
     }
   ]
 }
 ```
 
-Pour organiser plusieurs spécifications OpenAPI dans des sections distinctes de votre documentation, assignez chaque spécification à un groupe différent dans votre hiérarchie de navigation. Chaque groupe peut référencer sa propre spécification OpenAPI.
+Pour organiser plusieurs spécifications OpenAPI dans des sections distinctes de votre documentation, attribuez chaque spécification à un groupe différent dans votre hiérarchie de navigation. Chaque groupe peut renvoyer vers sa propre spécification OpenAPI.
 
 ```json {8-11, 15-18}
 "navigation": {
   "tabs": [
     {
-      "tab": "Référence API",
+      "tab": "API Reference",
       "groups": [
         {
-          "group": "API Utilisateurs",
+          "group": "Users API",
           "openapi": {
             "source": "/path/to/users-openapi.json",
             "directory": "users-api-reference"
           }
         },
         {
-          "group": "API Administration",
+          "group": "Admin API",
           "openapi": {
             "source": "/path/to/admin-openapi.json",
             "directory": "admin-api-reference"
@@ -380,33 +380,33 @@ Pour organiser plusieurs spécifications OpenAPI dans des sections distinctes de
 ```
 
 <Note>
-  Le champ `directory` est facultatif et indique où Mintlify stocke les pages d’API générées dans votre dépôt de documentation. S’il n’est pas défini, le répertoire par défaut est `api-reference` à la racine de votre dépôt.
+  Le champ `directory` est facultatif et indique où Mintlify enregistre les pages d’API générées dans le dépôt de documentation. S’il n’est pas renseigné, le répertoire `api-reference` de votre dépôt est utilisé par défaut.
 </Note>
 
 <div id="selective-endpoints">
-  ### Points de terminaison sélectifs
+  ### Sélection de points de terminaison
 </div>
 
-Si vous souhaitez mieux contrôler l’emplacement des points de terminaison dans votre documentation, vous pouvez référencer des points de terminaison précis dans votre navigation. Cette approche vous permet de générer des pages pour des points de terminaison d’API aux côtés d’autres contenus. Vous pouvez également utiliser cette approche pour combiner des points de terminaison provenant de différentes spécifications OpenAPI.
+Lorsque vous souhaitez mieux contrôler l’emplacement des points de terminaison dans votre documentation, vous pouvez référencer des points de terminaison spécifiques dans votre Navigation. Cette approche vous permet de générer des pages pour des points de terminaison d’API en parallèle d’autres contenus. Vous pouvez également l’utiliser pour combiner des points de terminaison issus de différentes spécifications OpenAPI.
 
 <div id="set-a-default-openapi-spec">
   #### Définir une spécification OpenAPI par défaut
 </div>
 
-Configurez une spécification OpenAPI par défaut pour un élément de navigation. Référencez ensuite des points de terminaison spécifiques dans le champ `pages`.
+Configurez une spécification OpenAPI par défaut pour un élément de navigation. Faites ensuite référence à des points de terminaison spécifiques dans le champ `pages`.
 
 ```json {12, 15-16}
 "navigation": {
   "tabs": [
     {
-      "tab": "Démarrage",
+      "tab": "Getting started",
       "pages": [
         "quickstart",
         "installation"
       ]
     },
     {
-      "tab": "Référence API",
+      "tab": "API reference",
       "openapi": "/path/to/openapi.json",
       "pages": [
         "api-overview",
@@ -419,25 +419,25 @@ Configurez une spécification OpenAPI par défaut pour un élément de navigatio
 }
 ```
 
-Toute entrée de page correspondant au format `METHOD /path` génère une page d’API pour ce point de terminaison à partir de la spécification OpenAPI par défaut.
+Toute entrée de page correspondant au format `METHOD /path` génère une page d’API pour ce point de terminaison à l’aide de la spécification OpenAPI par défaut.
 
 <div id="openapi-spec-inheritance">
   #### Héritage de la spécification OpenAPI
 </div>
 
-Les éléments de navigation enfants héritent de la spécification OpenAPI de leur parent, sauf s’ils définissent la leur.
+Les éléments enfants de la navigation héritent de la spécification OpenAPI de leur parent, sauf s’ils définissent la leur.
 
 ```json {3, 7-8, 11, 13-14}
 {
-  "group": "Référence API",
+  "group": "API reference",
   "openapi": "/path/to/openapi-v1.json",
   "pages": [
-    "aperçu",
-    "authentification",
+    "overview",
+    "authentication",
     "GET /users",
     "POST /users",
     {
-      "group": "Commandes",
+      "group": "Orders",
       "openapi": "/path/to/openapi-v2.json",
       "pages": [
         "GET /orders",
@@ -452,7 +452,7 @@ Les éléments de navigation enfants héritent de la spécification OpenAPI de l
   #### Points de terminaison individuels
 </div>
 
-Faites référence à des points de terminaison spécifiques sans définir de spécification OpenAPI par défaut en incluant le chemin d’accès au fichier. Vous pouvez référencer des points de terminaison issus de plusieurs spécifications OpenAPI dans une même section de documentation.
+Référencez des points de terminaison spécifiques sans définir de spécification OpenAPI par défaut, en incluant le chemin du fichier. Vous pouvez référencer des points de terminaison issus de plusieurs spécifications OpenAPI dans une même section de la documentation.
 
 ```json {5-6}
 "navigation": {
@@ -465,30 +465,30 @@ Faites référence à des points de terminaison spécifiques sans définir de sp
 }
 ```
 
-Cette approche est utile lorsque vous avez besoin de points de terminaison individuels provenant de différentes spécifications, que vous souhaitez inclure uniquement certains points de terminaison, ou que vous voulez les intégrer aux côtés d’autres types de documentation.
+Cette approche est utile lorsque vous avez besoin de points de terminaison issus de différentes spécifications, que vous souhaitez n’en inclure que certains, ou que vous voulez les intégrer à d’autres types de documentation.
 
 <div id="create-mdx-pages-from-your-openapi-specification">
-  ## Créer des pages MDX à partir de votre spécification OpenAPI
+  ## Créez des pages MDX à partir de votre spécification OpenAPI
 </div>
 
-Pour un contrôle plus fin de chaque page d’endpoint, créez des pages MDX à partir de votre spécification OpenAPI. Vous pourrez ainsi personnaliser les métadonnées et le contenu des pages, ainsi que réorganiser ou exclure des pages de votre navigation, tout en conservant les paramètres et réponses générés automatiquement.
+Pour un contrôle plus fin sur chaque page de point de terminaison, créez des pages MDX à partir de votre spécification OpenAPI. Vous pouvez ainsi personnaliser les métadonnées et le contenu de la page, ainsi que réorganiser ou exclure des pages dans votre Navigation, tout en continuant à utiliser les paramètres et les réponses générés automatiquement.
 
-Il existe deux façons de documenter votre spécification OpenAPI avec des pages MDX distinctes :
+Il existe deux façons de documenter votre spécification OpenAPI avec des pages MDX distinctes :
 
-* Documenter les endpoints avec le champ `openapi` dans le frontmatter.
-* Documenter les modèles de données avec le champ `openapi-schema` dans le frontmatter.
+* Documentez les points de terminaison avec le champ `openapi` dans les métadonnées d’en-tête.
+* Documentez les modèles de données avec le champ `openapi-schema` dans les métadonnées d’en-tête.
 
 <div id="document-endpoints">
-  ### Documenter les endpoints
+  ### Documenter les points de terminaison
 </div>
 
-Créez une page pour chaque endpoint et indiquez quelle opération OpenAPI afficher en utilisant le champ `openapi` dans le frontmatter.
+Créez une page pour chaque point de terminaison et indiquez l’opération OpenAPI à afficher à l’aide du champ `openapi` dans les métadonnées d’en-tête.
 
 <CodeGroup>
   ```mdx Example
   ---
-  title: "Récupérer des utilisateurs"
-  description: "Renvoie toutes les plantes du système auxquelles l'utilisateur a accès"
+  title: "Obtenir les utilisateurs"
+  description: "Renvoie toutes les plantes du système auxquelles l’utilisateur a accès"
   openapi: "/path/to/openapi-1.json GET /users"
   deprecated: true
   version: "1.0"
@@ -499,7 +499,7 @@ Créez une page pour chaque endpoint et indiquez quelle opération OpenAPI affic
   ---
   title: "titre de la page"
   description: "description de la page"
-  openapi: chemin-vers-fichier-openapi méthode chemin
+  openapi: chemin-du-fichier-openapi méthode chemin
   deprecated: booléen (facultatif)
   version: "chaîne-de-version" (facultatif)
   ---
@@ -509,7 +509,7 @@ Créez une page pour chaque endpoint et indiquez quelle opération OpenAPI affic
 La méthode et le chemin doivent correspondre exactement à votre spécification OpenAPI. Si vous avez plusieurs spécifications OpenAPI, incluez le chemin vers la spécification correcte dans votre référence. Vous pouvez également référencer des URL OpenAPI externes dans `docs.json`.
 
 <div id="autogenerate-endpoint-pages">
-  #### Générer automatiquement des pages d’endpoint
+  #### Générer automatiquement des pages de points de terminaison
 </div>
 
 Pour générer automatiquement des fichiers MDX à partir de votre spécification OpenAPI, utilisez le [scraper](https://www.npmjs.com/package/@mintlify/scraping) de Mintlify.
@@ -519,17 +519,17 @@ npx @mintlify/scraping@latest openapi-file <path-to-openapi-file> -o <folder-nam
 ```
 
 <Tip>
-  Ajoutez l’option `-o` pour préciser un dossier où déposer les fichiers. Si aucun dossier n’est indiqué, les fichiers seront créés dans le répertoire de travail.
+  Ajoutez l’indicateur `-o` pour préciser le dossier dans lequel les fichiers seront créés. Si aucun dossier n’est spécifié, les fichiers seront créés dans le répertoire de travail.
 </Tip>
 
 <div id="document-data-models">
   ### Documenter les modèles de données
 </div>
 
-Créez une page pour chaque structure de données définie dans `components.schemas` de votre spécification OpenAPI en utilisant le champ `openapi-schema` dans le frontmatter.
+Créez une page pour chaque structure de données définie dans le `components.schemas` de votre spécification OpenAPI à l’aide du champ `openapi-schema` dans les métadonnées d’en-tête.
 
 <CodeGroup>
-  ```mdx Example
+  ```mdx Exemple
   ---
   openapi-schema: OrderItem
   ---
@@ -542,10 +542,10 @@ Créez une page pour chaque structure de données définie dans `components.sche
   ```
 </CodeGroup>
 
-Si vous avez des schémas portant le même nom dans plusieurs fichiers, indiquez le fichier OpenAPI :
+Si des schémas portent le même nom dans plusieurs fichiers, indiquez le fichier OpenAPI :
 
 <CodeGroup>
-  ```mdx Example
+  ```mdx Exemple
   ---
   openapi-schema: en-schema.json OrderItem
   ---
@@ -562,20 +562,20 @@ Si vous avez des schémas portant le même nom dans plusieurs fichiers, indiquez
   ## Webhooks
 </div>
 
-Les webhooks sont des callbacks HTTP que votre API envoie pour avertir des systèmes externes lorsque des événements se produisent. Les documents OpenAPI 3.1+ prennent en charge les webhooks.
+Les webhooks sont des rappels HTTP envoyés par votre API pour avertir des systèmes externes lorsqu’un événement se produit. Les documents OpenAPI 3.1+ prennent en charge les webhooks.
 
-Ajoutez un champ `webhooks` à votre document OpenAPI, en parallèle du champ `paths`.
+Ajoutez un champ `webhooks` à votre document OpenAPI, à côté du champ `paths`.
 
-Pour en savoir plus sur la définition des webhooks, consultez la section [Webhooks](https://spec.openapis.org/oas/v3.1.0#oasWebhooks) de la documentation OpenAPI.
+Pour en savoir plus sur la définition des webhooks, consultez [Webhooks](https://spec.openapis.org/oas/v3.1.0#oasWebhooks) dans la documentation OpenAPI.
 
-Pour créer une page MDX pour un webhook (OpenAPI 3.1+), utilisez `webhook` au lieu d’une méthode HTTP :
+Pour créer une page MDX pour un webhook (OpenAPI 3.1+), utilisez `webhook` au lieu d’une méthode HTTP :
 
 ```mdx
 ---
-title: "Webhook de mise à jour de commande"
-description: "Déclenché lorsqu'une commande est mise à jour"
+title: "Order updated webhook"
+description: "Triggered when an order is updated"
 openapi: "openapi.json webhook orderUpdated"
 ---
 ```
 
-Le nom du webhook doit correspondre exactement à la clé du champ `webhooks` de votre spécification OpenAPI.
+Le nom du webhook doit correspondre exactement à la clé dans le champ `webhooks` de votre spécification OpenAPI.

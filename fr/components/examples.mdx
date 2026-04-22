@@ -1,29 +1,29 @@
 ---
 title: "Exemples"
-description: "Affichez des exemples de code dans le panneau latéral droit sur les ordinateurs de bureau, à côté de la documentation API."
-keywords: ["RequestExample", "ResponseExample", "code examples", "request-response"]
+description: "Affichez des exemples de code dans la barre latérale droite sur ordinateur pour présenter des exemples de requête et de réponse à côté de la documentation API."
+keywords: ["RequestExample", "ResponseExample", "exemples de code", "requête-réponse"]
 ---
 
-Les composants `<RequestExample>` et `<ResponseExample>` affichent des code blocks dans la barre latérale droite afin de créer une mise en page à deux colonnes qui maintient les exemples visibles pendant que les utilisateurs font défiler votre contenu. Utilisez ces composants pour la documentation d’API, mais ils fonctionnent sur toutes les pages.
+Les composants `<RequestExample>` et `<ResponseExample>` affichent des blocs de code dans la barre latérale droite pour créer une mise en page à deux colonnes qui garde les exemples visibles pendant que les utilisateurs font défiler le contenu. Utilisez ces composants pour la documentation API, mais ils fonctionnent sur toutes les pages.
 
 Cas d’utilisation courants :
 
-* Documentation d’API endpoint avec des exemples de requête et de réponse
-* Exemples de configuration accompagnés d’un texte explicatif
-* Exemples de code auxquels les utilisateurs se réfèrent en suivant des instructions
-* Exemples « avant/après » dans des tutoriels
+* Documentation de points de terminaison API avec des exemples de requête et de réponse
+* Exemples de configuration accompagnés de texte explicatif
+* Exemples de code auxquels les utilisateurs se reportent pendant qu’ils suivent les instructions
+* Exemples avant/après dans les tutoriels
 
-Sur les appareils mobiles, les composants `<RequestExample>` et `<ResponseExample>` s’affichent comme des code blocks que les utilisateurs peuvent dépasser en faisant défiler.
+Sur mobile, les composants `<RequestExample>` et `<ResponseExample>` s’affichent comme des blocs de code classiques que les utilisateurs peuvent faire défiler.
 
 <RequestExample>
-  ```bash Request
+  ```bash Requête
   curl --request POST \
     --url https://dog-api.kinduff.com/api/facts
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response
+  ```json Réponse
   { "status": "success" }
   ```
 </ResponseExample>
@@ -32,14 +32,14 @@ Sur les appareils mobiles, les composants `<RequestExample>` et `<ResponseExampl
   ## RequestExample
 </div>
 
-Utilisez `<RequestExample>` pour épingler des exemples de code dans la barre latérale droite. Ce composant fonctionne de façon similaire au composant [CodeGroup](/fr/components/code-groups), mais affiche le code dans la barre latérale plutôt qu’en ligne.
+Utilisez `<RequestExample>` pour épingler des exemples de code dans la barre latérale droite. Ce composant fonctionne comme le composant [CodeGroup](/fr/components/code-groups), mais affiche le code dans la barre latérale plutôt que dans le contenu.
 
-Vous pouvez inclure plusieurs code blocks dans un seul `<RequestExample>`. Chaque code block doit avoir un attribut title.
+Vous pouvez inclure plusieurs blocs de code dans un seul `<RequestExample>`. Chaque bloc de code doit avoir un attribut title.
 
 ````mdx RequestExample
 <RequestExample>
 
-```bash Requête
+```bash requête
 curl --request POST \
   --url https://dog-api.kinduff.com/api/facts
 ```
@@ -51,12 +51,12 @@ curl --request POST \
   ## ResponseExample
 </div>
 
-Le composant `<ResponseExample>` épingle les exemples de code dans la barre latérale droite, sous tout contenu `<RequestExample>` présent sur la même page.
+Le composant `<ResponseExample>` fixe des exemples de code dans la barre latérale droite, sous le contenu `<RequestExample>` de la même page.
 
 ````mdx ResponseExample
 <ResponseExample>
 
-```json Réponse
+```json réponse
 { "status": "success" }
 ```
 
@@ -67,8 +67,8 @@ Le composant `<ResponseExample>` épingle les exemples de code dans la barre lat
   ## Propriétés
 </div>
 
-`<RequestExample>` et `<ResponseExample>` acceptent les propriétés suivantes :
+`<RequestExample>` et `<ResponseExample>` acceptent toutes deux les propriétés suivantes :
 
 <ResponseField name="dropdown" type="boolean">
-  Afficher un menu déroulant de langues pour basculer entre les blocs de code, au lieu de la disposition par onglets par défaut.
+  Affiche un menu déroulant de langues pour passer d’un bloc de code à l’autre, au lieu de la disposition par défaut en onglets.
 </ResponseField>

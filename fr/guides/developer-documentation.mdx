@@ -1,61 +1,61 @@
 ---
 title: "Créer une documentation développeur"
 sidebarTitle: "Documentation développeur"
-description: "Créez une documentation développeur qui aide les ingénieurs à s’intégrer à vos API, SDK et outils, avec des guides de démarrage rapide, des références et des guides."
-keywords: ["documentation développeur", "documentation d'API", "documentation SDK", "documentation technique", "portail développeur"]
+description: "Créez une documentation développeur qui aide les ingénieurs à intégrer vos API, SDK et outils, avec notamment des guides de démarrage rapide, des références et des guides pratiques."
+keywords: ["documentation développeur", "documentation d’API", "documentation SDK", "documentation technique", "portail développeur"]
 ---
 
-La documentation développeur aide les développeurs à comprendre votre produit et à s&#39;y intégrer. Une bonne documentation permet aux développeurs de faire plus avec votre produit, réduit la charge du support, accélère l’adoption et améliore l’expérience développeur.
+La documentation développeur aide les utilisateurs à comprendre votre produit et à l’intégrer. Une bonne documentation permet aux utilisateurs d’en faire plus avec votre produit, réduit la charge du support, accélère l’adoption et améliore l’expérience développeur.
 
 Mintlify fournit une infrastructure conçue pour la documentation développeur.
 
-* **Génération de références d’API** : générez des [références d’API](/fr/api-playground/overview) interactives à partir de spécifications OpenAPI qui permettent aux développeurs de tester des endpoints directement dans votre documentation.
-* **Blocs de code avec explications** : l’[Assistant](/fr/assistant/index) explique les exemples de code dans leur contexte, aidant les développeurs à comprendre les détails d’implémentation.
-* **Synchronisation Git** : gardez la documentation synchronisée avec votre base de code en utilisant [GitHub](/fr/deploy/github) ou [GitLab](/fr/deploy/gitlab).
-* **Gestion des versions** : maintenez la documentation pour plusieurs [versions](/fr/organize/navigation#versions) afin que les développeurs sur d’anciennes versions puissent toujours trouver des informations précises.
+* **Génération de Référence de l’API**: Générez des [Références de l’API](/fr/api-playground/overview) interactives à partir de spécifications OpenAPI, afin que les développeurs puissent tester les points de terminaison directement dans votre documentation.
+* **Blocs de code avec explications**: L’[assistant](/fr/assistant/index) explique les exemples de code dans leur contexte, ce qui aide les développeurs à comprendre les détails de l’implémentation.
+* **Synchronisation Git**: Gardez votre documentation synchronisée avec votre base de code à l’aide de [GitHub](/fr/deploy/github) ou de [GitLab](/fr/deploy/gitlab).
+* **Gestion des versions**: Maintenez une documentation pour plusieurs [versions](/fr/organize/navigation#versions) afin que les développeurs utilisant des versions antérieures puissent toujours trouver des informations exactes.
 
 <div id="prerequisites">
   ## Prérequis
 </div>
 
-Si vous n&#39;avez pas encore créé de projet Mintlify, consultez le [Démarrage rapide](/fr/quickstart) pour déployer votre site.
+Si vous n’avez pas encore créé de projet Mintlify, consultez le [guide de démarrage rapide](/fr/quickstart) pour déployer votre site.
 
 * Votre spécification d’API au format OpenAPI (si vous documentez une API)
-* Un référentiel Git pour votre documentation
+* Un dépôt Git pour votre documentation
 * Un accès administrateur à votre organisation Mintlify
 
 <div id="migrate-existing-documentation">
-  ## Migrer la documentation existante
+  ## Migrer une documentation existante
 </div>
 
-Si vous créez une nouvelle documentation à partir de zéro, passez à la section [Planifier la structure de votre documentation](#plan-your-documentation-structure).
+Si vous créez votre documentation à partir de zéro, passez à [Planifier la structure de votre documentation](#plan-your-documentation-structure).
 
 <div id="audit-existing-content">
-  ### Auditer le contenu existant
+  ### Auditez le contenu existant
 </div>
 
-Passez en revue votre documentation actuelle pour comprendre ce que vous avez déjà et ce que vous devez migrer.
+Passez en revue votre documentation actuelle pour comprendre ce que vous avez et ce que vous devez migrer.
 
-* **Référence d&#39;API** : Est-elle générée à partir d&#39;une spécification ou rédigée manuellement ? Quels endpoints documentez-vous ?
-* **Guides et tutoriels** : Quels guides d&#39;intégration existent ? Sont-ils à jour ?
-* **Exemples de code** : Quels langages et frameworks utilisez-vous ?
-* **Documentation SDK** : Avez-vous une documentation distincte pour chaque SDK ?
-* **Journal des modifications** : Tenez-vous un journal des modifications ou des notes de version ?
-* **Metadata** : Disposez-vous de metadata pour votre contenu, comme des dates, des auteurs et des tags ?
+* **Référence de l’API** : est-elle générée à partir d’une spécification ou rédigée manuellement ? Quels points de terminaison documentez-vous ?
+* **Guides et tutoriels** : quels guides d’intégration existent ? Sont-ils à jour ?
+* **Exemples de code** : quels langages et frameworks utilisez-vous ?
+* **Documentation des SDK** : disposez-vous d’une documentation distincte pour chaque SDK ?
+* **changelog** : tenez-vous un changelog ou des notes de version ?
+* **Métadonnées** : disposez-vous de métadonnées pour votre contenu, comme les dates, les auteurs et les tags ?
 
 <div id="export-your-existing-content">
   ### Exportez votre contenu existant
 </div>
 
-* Exportez en **Markdown** pour une migration simplifiée vers Mintlify.
-* Exportez les **spécifications OpenAPI** pour la documentation de référence de votre API.
-* Exportez en **HTML** si Markdown n’est pas disponible, puis convertissez-le en Markdown.
+* Exportez au format **Markdown** pour migrer le plus simplement vers Mintlify.
+* Exportez les **spécifications OpenAPI** pour le contenu de la **Référence de l’API**.
+* Exportez au format **HTML** si Markdown n’est pas disponible, puis convertissez-le en Markdown.
 
 <div id="plan-your-documentation-structure">
   ## Planifiez la structure de votre documentation
 </div>
 
-La documentation pour développeurs inclut généralement plusieurs types de contenus. Structurez votre navigation en fonction de la façon dont vos utilisateurs comprennent votre produit.
+La documentation destinée aux développeurs comprend généralement plusieurs types de contenu. Structurez votre navigation en fonction de la manière dont vos utilisateurs appréhendent votre produit.
 
 ```json docs.json example
 {
@@ -79,7 +79,7 @@ La documentation pour développeurs inclut généralement plusieurs types de con
         ]
       },
       {
-        "group": "Référence API",
+        "group": "API Reference",
         "pages": [
           "api-reference/overview",
           "api-reference/users",
@@ -100,10 +100,10 @@ La documentation pour développeurs inclut généralement plusieurs types de con
 }
 ```
 
-Pour davantage d’options de configuration, voir [Navigation](/fr/organize/navigation).
+Consultez [Navigation](/fr/organize/navigation) pour découvrir d’autres options de configuration.
 
 <div id="set-up-your-api-reference">
-  ## Configurez la référence de votre API
+  ## Configurez votre Référence de l’API
 </div>
 
 Si vous avez une API, générez une référence interactive à partir de votre spécification OpenAPI.
@@ -122,7 +122,7 @@ Si vous avez une API, générez une référence interactive à partir de votre s
   </Step>
 
   <Step title="Configurez la spécification dans docs.json">
-    Référencez votre fichier OpenAPI dans votre configuration `docs.json`.
+    Indiquez votre fichier OpenAPI dans la configuration `docs.json`.
 
     ```json Exemple de configuration
     {
@@ -132,11 +132,11 @@ Si vous avez une API, générez une référence interactive à partir de votre s
   </Step>
 
   <Step title="Ajoutez les points de terminaison à la navigation">
-    Ajoutez les points de terminaison à la navigation de votre `docs.json`. Consultez la page [Configuration OpenAPI](/fr/api-playground/openapi-setup) pour les options de configuration.
+    Ajoutez les points de terminaison à la navigation de votre `docs.json`. Consultez la page [Configuration d’OpenAPI](/fr/api-playground/openapi-setup) pour découvrir les options disponibles.
 
     ```json Exemple de navigation
     {
-      "group": "Référence API",
+      "group": "API Reference",
       "pages": [
         "api-reference/overview",
         "api-reference/users/list-users",
@@ -149,19 +149,19 @@ Si vous avez une API, générez une référence interactive à partir de votre s
 </Steps>
 
 <div id="set-up-the-assistant">
-  ## Configurer l&#39;Assistant
+  ## Configurer l’assistant
 </div>
 
-L&#39;Assistant aide les développeurs à trouver des réponses et à comprendre les exemples de code. Configurez-le depuis votre [dashboard](https://dashboard.mintlify.com/products/assistant/settings).
+L’assistant aide les développeurs à trouver des réponses et à mieux comprendre des exemples de code. Configurez-le depuis votre [tableau de bord](https://dashboard.mintlify.com/products/assistant/settings).
 
-* **Exemples de questions** : Ajoutez des questions à destination des développeurs comme « Comment authentifier des requêtes API ? » ou « Montre-moi comment gérer les webhooks. »
-* **Explications de code** : L&#39;Assistant peut expliquer des code blocks dans leur contexte lorsque les développeurs posent des questions sur des exemples spécifiques.
+* **Exemples de questions** : ajoutez des questions axées sur les développeurs, comme « Comment authentifier des requêtes API ? » ou « Montrez-moi comment gérer les webhooks. »
+* **Explications de code** : l’assistant peut expliquer les blocs de code dans leur contexte lorsque les développeurs posent des questions sur des exemples précis.
 
 <div id="set-up-versioning">
   ## Configurer la gestion des versions
 </div>
 
-Si vous maintenez plusieurs versions d’API, configurez la gestion des versions afin que les développeurs puissent trouver la documentation de leur version.
+Si vous gérez plusieurs versions d’API, configurez la gestion des versions afin que les développeurs trouvent la documentation correspondant à leur version.
 
 ```json Versioning example
 {
@@ -169,12 +169,12 @@ Si vous maintenez plusieurs versions d’API, configurez la gestion des versions
   "navigation": {
     "groups": [
       {
-        "group": "Référence de l'API",
+        "group": "API Reference",
         "version": "v2",
         "pages": ["v2/api-reference/users"]
       },
       {
-        "group": "Référence de l'API",
+        "group": "API Reference",
         "version": "v1",
         "pages": ["v1/api-reference/users"]
       }
@@ -183,21 +183,21 @@ Si vous maintenez plusieurs versions d’API, configurez la gestion des versions
 }
 ```
 
-Pour en savoir plus, consultez [Versions](/fr/organize/navigation#versions).
+Consultez [Versions](/fr/organize/navigation#versions) pour en savoir plus.
 
 <div id="connect-to-your-repository">
-  ## Connectez votre référentiel
+  ## Connectez votre dépôt
 </div>
 
-Installez la [GitHub App](/fr/deploy/github) Mintlify pour garder la documentation synchronisée avec votre base de code et faciliter les contributions.
+Installez l’[application GitHub](/fr/deploy/github) de Mintlify pour maintenir votre documentation synchronisée avec votre code source et permettre les contributions.
 
 <Steps>
-  <Step title="Connectez votre référentiel">
-    Associez votre référentiel GitHub dans le [Dashboard](https://dashboard.mintlify.com). Cela active les déploiements automatiques lorsque vous poussez des modifications.
+  <Step title="Connectez votre dépôt">
+    Associez votre dépôt GitHub dans le [tableau de bord](https://dashboard.mintlify.com). Cela active les déploiements automatiques lorsque vous poussez des modifications.
   </Step>
 
   <Step title="Configurez les paramètres de branche">
-    Définissez votre branche de production et activez les déploiements de prévisualisation pour les pull requests (demandes de fusion). Cela vous permet d’examiner les modifications de la documentation avant leur mise en ligne.
+    Définissez votre branche de production et activez les déploiements de prévisualisation pour les pull requests. Vous pourrez ainsi vérifier les modifications de la documentation avant leur mise en ligne.
   </Step>
 </Steps>
 
@@ -206,26 +206,26 @@ Installez la [GitHub App](/fr/deploy/github) Mintlify pour garder la documentati
 </Note>
 
 <div id="maintain-your-documentation">
-  ## Maintenez votre documentation
+  ## Tenez votre documentation à jour
 </div>
 
-La documentation développeur nécessite des mises à jour régulières afin que les informations restent exactes et utilisables.
+La documentation développeur doit être mise à jour régulièrement afin que les informations restent exactes et utiles.
 
 <Steps>
-  <Step title="Maintenir la référence d'API à jour">
-    Mettez à jour votre spécification OpenAPI à chaque nouvelle version. Si votre spécification est générée à partir du code, automatisez cela dans votre processus de mise en production.
+  <Step title="Gardez la Référence de l’API à jour">
+    Mettez à jour votre spécification OpenAPI chaque fois que vous publiez des changements. Si votre spécification est générée à partir du code, automatisez cette étape dans votre processus de publication.
   </Step>
 
-  <Step title="Mettre à jour les exemples de code">
-    Passez en revue les exemples de code lorsque vous publiez de nouvelles versions de SDK ou des mises à jour produit. Des exemples obsolètes entraînent des échecs d&#39;intégration et des demandes au support technique.
+  <Step title="Mettez à jour les exemples de code">
+    Passez en revue les exemples de code lorsque vous publiez de nouvelles versions du SDK ou des mises à jour du produit. Des exemples obsolètes entraînent des échecs d’intégration et des demandes d’assistance.
   </Step>
 
-  <Step title="Maintenir un journal des modifications">
-    Documentez les changements majeurs, les nouvelles fonctionnalités et les mises en obsolescence. Les développeurs s&#39;appuient sur le journal des modifications pour comprendre ce qui a changé entre les versions. Voir [Journal des modifications](/fr/create/changelogs) pour plus d&#39;informations.
+  <Step title="Tenez un changelog à jour">
+    Documentez les changements incompatibles, les nouvelles fonctionnalités et les dépréciations. Les développeurs s’appuient sur les changelogs pour comprendre ce qui a changé d’une version à l’autre. Consultez [Changelogs](/fr/create/changelogs) pour plus d’informations.
   </Step>
 
-  <Step title="Surveiller les retours">
-    Passez en revue les conversations de l&#39;Assistant et les Analytics de recherche pour identifier les lacunes de votre documentation. Si les développeurs posent à plusieurs reprises des questions sur le même sujet, améliorez cette section. Voir [Maintenance](/fr/guides/maintenance) pour plus d&#39;informations.
+  <Step title="Surveillez les retours">
+    Examinez les conversations avec l’Assistant et les analyses de Recherche pour identifier les lacunes de votre documentation. Si les développeurs posent régulièrement des questions sur le même sujet, améliorez cette section. Consultez [Maintenance](/fr/guides/maintenance) pour plus d’informations.
   </Step>
 </Steps>
 
@@ -233,9 +233,9 @@ La documentation développeur nécessite des mises à jour régulières afin que
   ## Prochaines étapes
 </div>
 
-Votre documentation pour développeurs est prête à être lancée. Après le déploiement :
+Votre documentation pour les développeurs est prête à être publiée. Après le déploiement :
 
-1. Annoncez la mise en ligne de la documentation à votre communauté de développeurs.
-2. Surveillez les tendances de recherche et les conversations de l&#39;Assistant pour identifier les lacunes.
-3. Mettez en place un processus pour mettre à jour la documentation à chaque nouvelle version de l&#39;API.
-4. Recueillez les retours des développeurs pour améliorer le contenu au fil du temps.
+1. Annoncez la documentation auprès de votre communauté de développeurs.
+2. Surveillez les requêtes de recherche et les conversations avec l’assistant afin d’identifier les lacunes.
+3. Mettez en place un processus pour mettre à jour la documentation à chaque nouvelle version de l’API.
+4. Recueillez les retours des développeurs afin d’améliorer le contenu au fil du temps.

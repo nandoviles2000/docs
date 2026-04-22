@@ -1,122 +1,122 @@
 ---
-title: "Model Context Protocol（模型上下文协议）"
-description: "通过托管的模型上下文协议（MCP）服务器，将文档和 API 端点连接到 Claude、Cursor 等 AI 工具。"
+title: "模型上下文协议"
+description: "使用托管的 Model Context Protocol (MCP) 服务器，将您的文档和 API 端点连接到 Claude、Cursor 等 AI 工具。"
 keywords: ["MCP", "AI 工具", "Claude", "Cursor"]
 ---
 
 import { PreviewButton } from "/snippets/previewbutton.jsx"
 
 <div id="about-mcp-servers">
-  ## 关于 MCP 服务器
+  ## 关于 MCP server
 </div>
 
-Model Context Protocol (MCP，模型上下文协议) 是一个开放协议，用于在 AI 应用与外部服务 (例如文档) 之间建立标准化连接。Mintlify 会基于你的文档生成一个 MCP 服务器，为更广泛的 AI 生态系统做好准备，让任何 MCP 客户端例如 Claude、Cursor、Goose、ChatGPT 等都可以连接到你的文档。
+Model Context Protocol (MCP) 是一种开放协议，用于在 AI 应用与外部服务 (如文档) 之间建立标准化连接。Mintlify 会根据您的文档生成一个 MCP server，让您的内容接入更广泛的 AI 生态系统，以便 Claude、Cursor、Goose、ChatGPT 等任何 MCP 客户端都能连接到您的文档。
 
-你的 MCP 服务器会向 AI 应用提供搜索文档和获取完整页面内容的工具。你的用户必须将你的 MCP 服务器连接到他们的工具中。
+您的 MCP server 会为 AI 应用提供工具，用于搜索您的文档并获取完整页面内容。您的用户必须将您的 MCP server 连接到他们使用的工具。
 
 <div id="how-mcp-servers-work">
-  ### MCP 服务器的工作方式
+  ### MCP server 的工作方式
 </div>
 
-当某个 AI 应用接入你的文档 MCP 服务器后，它可以直接根据用户提示搜索你的文档并获取完整页面内容，而不是依赖其训练数据中的信息或执行通用的网页搜索。你的 MCP 服务器会提供对文档站点上所有已建立索引内容的访问权限。
+当 AI 应用连接到你的文档 MCP server 时，它可以搜索你的文档，并根据用户提示直接检索完整页面内容，而不是依赖训练数据中的信息或进行泛化的网页搜索。你的 MCP server 可访问文档站点中所有已编入索引的内容。
 
-* AI 应用可以在生成回复时主动搜索你的文档，即使没有被明确要求搜索你的文档来获取答案。
-* AI 应用会根据对话的上下文以及你的文档与当前话题的相关性来决定何时使用可用的工具。
-* 每次工具调用都发生在生成过程中，因此 AI 应用会利用你的文档中的最新信息来生成回复。
+* AI 应用在生成回复时可以主动搜索你的文档，即使用户没有明确要求它这样做来查找答案。
+* AI 应用会根据对话上下文以及你的文档是否相关，决定何时使用可用工具。
+* 每次工具调用都发生在生成过程中，因此 AI 应用会使用你文档中的最新信息来生成回复。
 
 <Tip>
-  某些 AI 工具 (例如 Claude) 同时支持 MCP 和 skills。MCP 提供对文档内容的访问，而 skills 则指导代理如何高效使用这些内容。两者是互补的，连接你的 MCP 服务器即可让代理同时获得这两者。
+  一些 AI 工具 (例如 Claude) 同时支持 MCP 和 skills。MCP 用于访问你的文档内容，而 skills 则指导代理如何高效使用这些内容。两者相辅相成，连接你的 MCP server 后，代理即可同时访问这两者。
 </Tip>
 
 <div id="mcp-tools">
   ### MCP 工具
 </div>
 
-你的 MCP 服务器提供两个代理可以使用的工具：
+你的 MCP server 提供了两个代理可用的工具：
 
-- **Search**：在你的文档中搜索相关内容，返回带有标题和链接的摘要片段。使用此工具来发现信息或查找与查询匹配的页面。
-- **Query docs filesystem**：使用 shell 风格的命令读取和浏览文档的虚拟文件系统。使用此工具来获取页面内容、浏览文档结构或提取特定部分——包括在单次调用中批量读取多个页面。
+* **搜索**：在你的文档中搜索相关内容，并返回带有标题和链接的片段。用它来发现信息，或查找与查询匹配的页面。
+* **查询文档文件系统**：使用 shell 风格命令读取并浏览你的文档虚拟文件系统。用它来获取页面内容、浏览文档结构，或提取特定章节——包括在一次调用中批量读取多个页面。
 
-代理会根据对话的上下文来决定何时使用每个工具。例如，代理可能会先搜索你的文档以查找相关页面，然后使用 query docs filesystem 工具读取最相关结果的完整内容。
+代理会根据对话上下文判断何时使用每个工具。例如，代理可能会先搜索你的文档以找到相关页面，然后再使用查询文档文件系统工具读取最相关结果的完整内容。
 
 <div id="mcp-resources">
   ### MCP 资源
 </div>
 
-你的 MCP 服务器还会将你的 [skill.md 文件](/zh/ai/skillmd)作为 MCP 资源公开。连接到你的 MCP 服务器的代理可以发现并访问你的 skill 文件，无需单独安装。
+你的 MCP server 还会将你的 [skill.md 文件](/zh/ai/skillmd) 公开为 MCP 资源。连接到你的 MCP server 的代理无需单独安装这些文件，即可发现并访问你的 skill 文件。
 
-`Skill.md` 资源会显示在 MCP 服务器的资源列表中，包含 Mintlify 生成的或你在[自定义 skill 文件](/zh/ai/skillmd#custom-skill-files)中定义的能力描述。
+`Skill.md` 资源会显示在 MCP server 的资源列表中，其中包含由 Mintlify 生成的能力描述，或你在 [自定义 skill 文件](/zh/ai/skillmd#custom-skill-files) 中定义的能力描述。
 
 <div id="search-parameters">
   ### 搜索参数
 </div>
 
-MCP 搜索工具支持可选参数，AI 应用使用它们来控制和优化搜索结果。
+MCP 搜索工具支持可选参数，AI 应用可用它们来控制并优化搜索结果。
 
-* **`pageSize`**：返回的结果数量，介于 1 到 50 之间。默认值为 10。
-* **`scoreThreshold`**：最低相关性分数，介于 0 到 1 之间。只返回达到或超过此阈值的结果。用于过滤低相关性的匹配项。
-* **`version`**：将结果筛选为特定的文档版本。例如，`'v0.7'`。只返回带有指定版本标签的内容，或在所有版本中通用的内容。
-* **`language`**：将结果筛选为特定的语言代码。例如，`'en'`、`'zh'` 或 `'es'`。只返回指定语言的内容，或在所有语言中通用的内容。
+* **`pageSize`**：返回结果的数量，范围为 1 到 50。默认为 10。
+* **`scoreThreshold`**：0 到 1 之间的最低相关性分数。仅返回达到或超过该阈值的结果。可用此参数过滤掉相关性较低的匹配结果。
+* **`version`**：将结果筛选到特定文档版本。例如，`'v0.7'`。仅返回带有指定版本标签的内容，或所有版本中都可用的内容。
+* **`language`**：将结果筛选到特定语言代码。例如，`'en'`、`'zh'` 或 `'es'`。仅返回指定语言的内容，或所有语言中都可用的内容。
 
-AI 应用会根据用户 query 的上下文来决定何时应用这些参数。例如，如果用户询问特定 API 版本，AI 应用可能会自动应用相应的筛选条件，以提供更相关的结果。
+AI 应用会根据用户查询的上下文判断何时应用这些参数。例如，如果用户询问特定的 API 版本，AI 应用可能会自动应用相应的筛选条件，以提供更相关的结果。
 
 <div id="mcp-compared-to-web-search">
-  ### MCP 与网页搜索的对比
+  ### MCP 与网页搜索对比
 </div>
 
-AI 工具可以进行网页搜索，但 MCP 在文档方面具有明显优势。
+AI 工具可以搜索网页，但在文档场景中，MCP 具有明显优势。
 
-* **直接访问文档来源**：网页搜索依赖搜索引擎已经索引的内容，这些内容可能过时或不完整。MCP 会直接搜索你当前已索引的文档。
-* **集成式工作流**：MCP 允许 AI 在生成回答的过程中执行搜索，而不是先单独进行一次网页搜索。
-* **没有搜索噪音**：SEO (搜索引擎优化) 和排序算法会影响网页搜索结果。MCP 则会直接访问你的文档内容。
+* **直接访问源文档**：网页搜索依赖搜索引擎已收录的内容，而这些内容可能已经过时或不完整。MCP 则直接搜索你当前已建立索引的文档。
+* **集成式工作流**：MCP 允许 AI 在生成回答时进行搜索，而不是单独执行一次网页搜索。
+* **没有搜索噪声**：SEO 和排名算法会影响网页搜索结果。MCP 会直接检索你的文档内容。
 
 <div id="access-your-mcp-server">
-  ## 访问你的 MCP 服务器
+  ## 访问你的 MCP server
 </div>
 
-Mintlify 会为你的文档生成一个 MCP 服务器，并将其托管在你的文档 URL 的 `/mcp` 路径下。例如，Mintlify 的 MCP 服务器位于 `https://mintlify.com/docs/mcp`。
+Mintlify 会为你的文档生成一个 MCP server，并将其托管在文档 URL 的 `/mcp` 路径下。例如，Mintlify 的 MCP server 可通过 `https://mintlify.com/docs/mcp` 访问。
 
-* 对于公开文档，你的 MCP 服务器对任何人都可用。它会搜索所有已编入索引的公开页面。
-* 对于部分需要认证的文档，也就是某些页面公开、其他页面需要登录的情况，你必须先启用你的 MCP 服务器，用户才能访问它。未认证的用户可以搜索公开内容。已完成认证的用户可以根据其 [user groups](/zh/deploy/authentication-setup) 搜索他们有权访问的所有内容。
-* 对于所有页面都需要认证的文档，你必须先启用你的 MCP 服务器，用户才能使用它。用户必须先完成认证，然后才能连接到你的 MCP 服务器。你的 MCP 服务器只会根据每个用户有权访问的 [user groups](/zh/deploy/authentication-setup) 搜索相应内容。
+* 对于公开文档，你的 MCP server 对所有人开放。它会搜索所有已编入索引的公开页面。
+* 对于部分启用身份验证的文档 (即部分页面公开，其他页面需要登录) ，你必须先启用 MCP server，用户才能访问。未经身份验证的用户可以搜索公开内容。已完成身份验证的用户可以根据其[用户组](/zh/deploy/authentication-setup)，搜索自己有权访问的所有内容。
+* 对于所有页面都需要身份验证的文档，你必须先启用 MCP server，用户才能使用它。用户必须先完成身份验证，才能连接到你的 MCP server。你的 MCP server 只会搜索每位用户根据其[用户组](/zh/deploy/authentication-setup)有权访问的内容。
 
-你可以在控制台中的 [MCP 服务器页面](https://dashboard.mintlify.com/products/mcp) 查看并复制你的 MCP 服务器 URL。
+你可以在仪表板中的 [MCP server 页面](https://dashboard.mintlify.com/products/mcp)查看并复制你的 MCP server URL。
 
 <Frame>
-  <img src="/images/mcp/mcp-server-page-light.png" alt="控制台中的 MCP 服务器页面。" className="block dark:hidden" />
+  <img src="/images/mcp/mcp-server-page-light.png" alt="仪表板中的 MCP server 页面。" className="block dark:hidden" />
 
-  <img src="/images/mcp/mcp-server-page-dark.png" alt="控制台中的 MCP 服务器页面。" className="hidden dark:block" />
+  <img src="/images/mcp/mcp-server-page-dark.png" alt="仪表板中的 MCP server 页面。" className="hidden dark:block" />
 </Frame>
 
 <Note>
-  托管的 MCP 服务器使用 `/mcp` 和 `/authed/mcp` 路径。其他导航元素不能使用这些路径。
+  托管型 MCP server 使用 `/mcp` 和 `/authed/mcp` 路径。其他导航元素不能使用这些路径。
 </Note>
 
 <div id="enable-authenticated-mcp">
-  ### 启用 MCP 认证
+  ### 启用需身份验证的 MCP
 </div>
 
-如果你的文档需要认证，你的 MCP 服务器会要求用户在连接前先完成认证。当用户将你的 MCP 服务器 URL 添加到其 AI 工具时，必须使用现有凭据登录。认证完成后，系统会通过重定向将用户带回其工具。MCP 服务器只会根据每位用户的[用户组](/zh/deploy/authentication-setup)返回其有权访问的内容。
+如果您的文档需要身份验证，用户在连接到您的 MCP server 之前必须先完成身份验证。当用户将您的 MCP server URL 添加到其 AI 工具时，他们必须使用现有凭据登录。完成身份验证后，系统会通过重定向将其带回工具。MCP server 只会根据每位用户的[用户组](/zh/deploy/authentication-setup)，返回其有权访问的内容。
 
-如果你的文档采用部分认证，同时包含公开页面和受保护页面，你有两个 MCP 服务器端点：
+如果您的文档采用部分身份验证，同时包含公开页面和受保护页面，则您会有两个 MCP server 端点：
 
-- `/mcp`：无需认证。仅返回公开内容。将此端点分享给需要访问公开内容的用户。
-- `/authed/mcp`：始终需要认证。根据每位用户的[用户组](/zh/deploy/authentication-setup)权限返回相应内容。将此端点分享给需要访问受保护内容的用户。
+* `/mcp`：不需要身份验证。仅返回公开内容。将其分享给需要访问公开内容的用户。
+* `/authed/mcp`：始终需要身份验证。根据每位用户的[用户组](/zh/deploy/authentication-setup)，返回其权限范围内的内容。将其分享给需要访问受保护内容的用户。
 
-`/authed/mcp` 端点使用其专属的 OAuth 流程，位于 `/authed/mcp/oauth/*`。为你的 MCP 服务器配置的重定向域名同时适用于 `/mcp` 和 `/authed/mcp`。
+`/authed/mcp` 端点在 `/authed/mcp/oauth/*` 使用独立的 OAuth 流程。为您的 MCP server 配置的重定向域同时适用于 `/mcp` 和 `/authed/mcp`。
 
-默认情况下，你的 MCP 服务器仅适用于 localhost 工具。要允许基于 Web 的工具连接，请添加这些 AI 工具的重定向域名。重定向域名是指用户完成认证后，AI 工具使用的主机名，例如 `claude.ai` 或 `app.cursor.ai`。如果用户的 AI 工具的重定向域名不在此列表中，就无法完成认证。
+默认情况下，您的 MCP server 仅适用于 localhost 工具。要允许基于 Web 的工具连接，请为这些 AI 工具添加重定向域。重定向域是指用户完成身份验证后，AI 工具使用的主机名，例如 `claude.ai` 或 `app.cursor.ai`。如果用户的 AI 工具的重定向域不在此列表中，就无法完成身份验证。
 
 <Steps>
-  <Step title="在你的控制台中启用 MCP 认证">
-    1. 前往你的控制台中的 [MCP 服务器页面](https://dashboard.mintlify.com/products/mcp)。
-    2. 点击 **Enable MCP Server** 开关。
+  <Step title="在您的仪表板中启用需身份验证的 MCP">
+    1. 前往仪表板中的[MCP server 页面](https://dashboard.mintlify.com/products/mcp)。
+    2. 点击 **Enable MCP Server** 切换开关。
   </Step>
 
-  <Step title="添加重定向域名">
-    添加你希望向用户开放访问权限的 AI 工具的重定向域名。如果用户的 AI 工具的重定向域名不在此列表中，就无法完成认证。常见的重定向域名包括 `claude.ai` 和 `vscode.dev/redirect`。
+  <Step title="添加重定向域">
+    添加您希望向用户开放的 AI 工具的重定向域。如果用户的 AI 工具的重定向域不在此列表中，就无法完成身份验证。常见的重定向域包括 `claude.ai` 和 `vscode.dev/redirect`。
 
-    默认情况下，重定向域名使用 `https://`。要允许自定义协议方案，请在域名条目中包含完整协议。例如，原生应用回调如 `myapp://callback`。Mintlify 始终阻止危险协议，如 `javascript:`、`data:` 和 `file:`。
+    默认情况下，重定向域使用 `https://`。如果要允许自定义协议方案，请在域名条目中包含完整协议。例如，原生应用的回调地址 `myapp://callback`。Mintlify 始终会阻止危险协议，例如 `javascript:`、`data:` 和 `file:`。
 
     回环地址 (`localhost`、`127.0.0.1`) 始终受信任，无需添加。
   </Step>
@@ -126,36 +126,37 @@ Mintlify 会为你的文档生成一个 MCP 服务器，并将其托管在你的
   ### 客户端凭据
 </div>
 
-客户端凭据允许你以编程方式连接到你的认证 MCP 服务器，无需基于浏览器的登录。客户端凭据适用于服务端集成、CI/CD 流水线、自动化工作流以及用户无法完成交互式 OAuth 流程的任何环境。
+客户端凭据让你无需通过浏览器登录，即可通过编程方式连接到已认证的 MCP server。对于服务端集成、CI/CD 流水线、自动化工作流，以及任何用户无法完成交互式 OAuth 流程的环境，请使用客户端凭据。
 
-客户端凭据通过 `/authed/mcp` 端点进行认证，并返回与拥有所有页面访问权限的已认证用户相同的内容。
+客户端凭据通过 `/authed/mcp` 端点进行身份验证，并返回与已认证且拥有所有页面访问权限的用户相同的内容。
 
 <Steps>
   <Step title="创建客户端凭据">
-    1. 前往你的控制台中的 [MCP 服务器页面](https://dashboard.mintlify.com/products/mcp)。
+    1. 前往仪表板中的 [MCP server 页面](https://dashboard.mintlify.com/products/mcp)。
     2. 在 **Client Credentials** 部分，选择 **Create credential**。
-    3. 输入凭据的标签以标识其用途。
-    4. 复制 **client ID** 和 **client secret**。client secret 仅显示一次，之后无法再次获取。
+    3. 输入一个标签，用于标识该凭据的用途。
+    4. 复制 **client ID** 和 **client secret**。**client secret** 只会显示一次，之后无法再次获取。
   </Step>
+
   <Step title="用凭据换取访问令牌">
-    向你的 MCP 服务器的令牌端点发送 POST 请求，附上你的 client ID 和 secret。令牌端点位于你的文档 URL 的 `/authed/mcp/oauth/token` 路径下。
+    向你的 MCP server 的令牌端点发送 POST 请求，并附上客户端 ID 和密钥。令牌端点位于你的文档 URL 下的 `/authed/mcp/oauth/token` 路径。
 
     <CodeGroup>
-    ```bash cURL
-    curl -X POST https://your-docs.com/authed/mcp/oauth/token \
-      -H 'Content-Type: application/x-www-form-urlencoded' \
-      -d 'grant_type=client_credentials&client_id=CLIENT_ID&client_secret=CLIENT_SECRET'
-    ```
+      ```bash cURL
+      curl -X POST https://your-docs.com/authed/mcp/oauth/token \
+        -H 'Content-Type: application/x-www-form-urlencoded' \
+        -d 'grant_type=client_credentials&client_id=CLIENT_ID&client_secret=CLIENT_SECRET'
+      ```
 
-    ```bash cURL (Basic Auth)
-    curl -X POST https://your-docs.com/authed/mcp/oauth/token \
-      -H 'Content-Type: application/x-www-form-urlencoded' \
-      -H 'Authorization: Basic BASE64_CLIENT_ID_COLON_SECRET' \
-      -d 'grant_type=client_credentials'
-    ```
+      ```bash cURL (Basic Auth)
+      curl -X POST https://your-docs.com/authed/mcp/oauth/token \
+        -H 'Content-Type: application/x-www-form-urlencoded' \
+        -H 'Authorization: Basic BASE64_CLIENT_ID_COLON_SECRET' \
+        -d 'grant_type=client_credentials'
+      ```
     </CodeGroup>
 
-    响应中包含一个访问令牌：
+    响应中会包含访问令牌：
 
     ```json
     {
@@ -166,34 +167,35 @@ Mintlify 会为你的文档生成一个 MCP 服务器，并将其托管在你的
     }
     ```
 
-    访问令牌在 14 天后过期。当前令牌过期后，请重新请求新的令牌。
+    访问令牌会在 14 天后过期。当前令牌过期后，请重新申请新令牌。
   </Step>
-  <Step title="连接到 MCP 服务器">
-    连接到 `/authed/mcp` 端点时，将访问令牌用作 bearer token。
+
+  <Step title="连接到 MCP server">
+    连接到 `/authed/mcp` 端点时，请将访问令牌作为 Bearer token 使用。
 
     <CodeGroup>
-    ```bash cURL
-    curl -X POST https://your-docs.com/authed/mcp \
-      -H 'Authorization: Bearer ACCESS_TOKEN' \
-      -H 'Content-Type: application/json' \
-      -H 'Accept: application/json, text/event-stream' \
-      -d '{
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "initialize",
-        "params": {
-          "protocolVersion": "2025-03-26",
-          "capabilities": {},
-          "clientInfo": {"name": "my-integration", "version": "1.0.0"}
-        }
-      }'
-    ```
+      ```bash cURL
+      curl -X POST https://your-docs.com/authed/mcp \
+        -H 'Authorization: Bearer ACCESS_TOKEN' \
+        -H 'Content-Type: application/json' \
+        -H 'Accept: application/json, text/event-stream' \
+        -d '{
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "initialize",
+          "params": {
+            "protocolVersion": "2025-03-26",
+            "capabilities": {},
+            "clientInfo": {"name": "my-integration", "version": "1.0.0"}
+          }
+        }'
+      ```
 
-    ```bash Claude Code
-    claude mcp add --transport http \
-      --header "Authorization: Bearer ACCESS_TOKEN" \
-      my-docs https://your-docs.com/authed/mcp
-    ```
+      ```bash Claude Code
+      claude mcp add --transport http \
+        --header "Authorization: Bearer ACCESS_TOKEN" \
+        my-docs https://your-docs.com/authed/mcp
+      ```
     </CodeGroup>
   </Step>
 </Steps>
@@ -202,49 +204,49 @@ Mintlify 会为你的文档生成一个 MCP 服务器，并将其托管在你的
   #### 管理客户端凭据
 </div>
 
-你可以在控制台中的 [MCP 服务器页面](https://dashboard.mintlify.com/products/mcp) 管理你的客户端凭据。
+你可以在仪表板的 [MCP server 页面](https://dashboard.mintlify.com/products/mcp)中管理客户端凭据。
 
-- **删除凭据**将永久撤销访问权限。此操作无法撤消。
+* **删除凭据** 可永久撤销访问权限。此操作无法撤销。
 
 <Warning>
-  请像对待密码一样对待 client secret。不要将它们提交到源代码管理中，也不要在客户端代码中暴露它们。请使用环境变量或密钥管理器来存储它们。
+  请像对待密码一样保管客户端密钥。不要将其提交到版本控制系统中，也不要在客户端代码中暴露它们。请使用环境变量或密钥管理器来存储它们。
 </Warning>
 
 <div id="rate-limits">
   ### 速率限制
 </div>
 
-为保护可用性，Mintlify 会对 MCP 服务器实施速率限制。
+为保障服务可用性，Mintlify 会对 MCP server 实施速率限制。
 
-| 范围              | 限制            | 说明                        |
-| :-------------- | :------------ | :------------------------ |
-| 每位用户 (IP 地址)    | 每小时 5,000 个请求 | 限制单个用户查询你的 MCP 服务器配置的频率。 |
-| 每个文档站点的 Search (domain) | 每小时 10,000 个请求 | 限制所有用户在你的 MCP 服务器上的搜索工具调用总次数。 |
-| 每个文档站点的 Query docs filesystem (domain) | 每小时 10,000 个请求 | 限制所有用户在你的 MCP 服务器上的 query docs filesystem 工具调用总次数。 |
-| 每个文档站点的认证 Search (domain) | 每小时 5,000 个请求 | 限制所有用户在你的 MCP 服务器上的认证搜索工具调用总次数。 |
-| 每个文档站点的认证 Query docs filesystem (domain) | 每小时 5,000 个请求 | 限制所有用户在你的 MCP 服务器上的认证 query docs filesystem 工具调用总次数。 |
+| 范围                      | 限制             | 描述                                       |
+| :---------------------- | :------------- | :--------------------------------------- |
+| 每位用户 (IP 地址)            | 每小时 5,000 次请求  | 限制单个用户查询你的 MCP server 配置的频率。             |
+| 每个文档站点 (域名) 的搜索         | 每小时 10,000 次请求 | 限制你的 MCP server 所有用户发起的搜索工具调用总数。         |
+| 每个文档站点 (域名) 的查询文档文件系统   | 每小时 10,000 次请求 | 限制你的 MCP server 所有用户发起的查询文档文件系统工具调用总数。   |
+| 每个文档站点 (域名) 的认证搜索       | 每小时 5,000 次请求  | 限制你的 MCP server 所有用户发起的认证搜索工具调用总数。       |
+| 每个文档站点 (域名) 的认证查询文档文件系统 | 每小时 5,000 次请求  | 限制你的 MCP server 所有用户发起的认证查询文档文件系统工具调用总数。 |
 
 <div id="content-filtering-and-indexing">
-  ## 内容过滤与索引编入
+  ## 内容过滤与索引
 </div>
 
-你的 MCP 服务器会搜索 Mintlify 从你的文档存储库中索引编入的内容。文件处理和搜索索引编入控制了通过你的 MCP 服务器可用的内容。
+您的 MCP server 会搜索 Mintlify 从您的文档仓库中编入索引的内容。文件处理和搜索索引决定了哪些内容可通过您的 MCP server 访问。
 
-对于需要身份验证的文档，你的 MCP 服务器只会索引编入[公开用户组](/zh/deploy/authentication-setup#make-pages-public)中的页面。对于采用部分身份验证的文档，你的 MCP 服务器会为未经身份验证的用户索引编入公开页面，以及公开用户组中的任何页面。
+对于需要身份验证的文档，您的 MCP server 仅会索引[公开用户组](/zh/deploy/authentication-setup#make-pages-public)中的页面。对于部分需要身份验证的文档，您的 MCP server 会索引面向未验证用户公开的页面，以及公开用户组中的所有页面。
 
 <div id="file-processing-with-mintignore">
-  ### 使用 `.mintignore` 进行文件处理
+  ### 使用 `.mintignore` 处理文件
 </div>
 
-如果文件匹配 [.mintignore](/zh/organize/mintignore) 中的模式，Mintlify 不会处理或索引它们。这些文件也无法通过你的 MCP 服务器访问。
+如果文件匹配 [.mintignore](/zh/organize/mintignore) 中的模式，Mintlify 就不会处理或索引这些文件。这些文件也无法通过你的 MCP server 访问。
 
 <div id="search-indexing-with-docsjson">
   ### 使用 `docs.json` 配置搜索索引
 </div>
 
-默认情况下，Mintlify 只会将包含在 `docs.json` 导航中的页面编入索引，以便通过你的 MCP 服务器进行搜索。
+默认情况下，Mintlify 仅会通过您的 MCP server 对已包含在 `docs.json` 导航中的页面建立搜索索引。
 
-除非你选择将所有页面都编入索引，否则 Mintlify 会将[隐藏页面](/zh/organize/hidden-pages) (不在导航中的页面) 排除在搜索索引之外。要在 MCP 服务器的搜索结果中包含隐藏页面，请在 `docs.json` 中添加 `seo.indexing` 属性。
+除非您选择为所有页面建立索引，否则 Mintlify 会将[隐藏页面](/zh/organize/hidden-pages) (即未包含在导航中的页面) 排除在搜索索引之外。要让隐藏页面显示在您的 MCP server 搜索结果中，请在 `docs.json` 中添加 `seo.indexing` 属性。
 
 ```json
 "seo": {
@@ -252,69 +254,69 @@ Mintlify 会为你的文档生成一个 MCP 服务器，并将其托管在你的
 }
 ```
 
-要将特定页面排除在搜索索引编入之外，请在其 frontmatter 中添加 `noindex: true`。
+若要将特定页面排除在搜索索引之外，请在其 frontmatter 中添加 `noindex: true`。
 
 ```mdx
 ---
-title: "隐藏页面"
-description: "此页面不在导航中,并且无法通过搜索访问。"
+title: "Hidden page"
+description: "This page is not in the navigation and is not available through search."
 noindex: true
 ---
 ```
 
 <div id="use-your-mcp-server">
-  ## 使用你的 MCP 服务器
+  ## 使用你的 MCP server
 </div>
 
-你的用户需要将你的 MCP 服务器连接到他们常用的 AI 工具。
+你的用户必须将你的 MCP server 连接到他们常用的 AI 工具。
 
-1. 将你的 MCP 服务器 URL 公开可访问。
-2. 让用户复制你的 MCP 服务器 URL 并添加到他们的工具中。
-3. 用户即可通过其工具访问你的文档。
+1. 确保你的 MCP server URL 可公开访问。
+2. 用户复制你的 MCP server URL，并将其添加到自己的工具中。
+3. 用户通过这些工具访问你的文档。
 
-以下是一些你可以帮助用户连接到你的 MCP 服务器的方法：
+以下是一些帮助用户连接到你的 MCP server 的方法：
 
 <Tabs>
-  <Tab title="Contextual menu">
-    在[上下文菜单](/zh/ai/contextual-menu)中为用户添加选项，使其可从文档任意页面连接到你的 MCP 服务器。
+  <Tab title="上下文菜单">
+    在[上下文菜单](/zh/ai/contextual-menu)中为用户添加选项，让他们可以从文档的任意页面连接到你的 MCP server。
 
-    | 选项 | 标识符 | 说明 |
-    | :----- | :--------- | :---------- |
-    | **复制 MCP 服务器 URL** | `mcp` | 将你的 MCP 服务器 URL 复制到用户的剪贴板。 |
-    | **复制 MCP 安装命令** | `add-mcp` | 将用于安装 MCP 服务器的 `npx add-mcp` 命令复制到用户的剪贴板。 |
-    | **连接到 Cursor** | `cursor` | 在 Cursor 中安装你的 MCP 服务器。 |
-    | **连接到 VS Code** | `vscode` | 在 VS Code 中安装你的 MCP 服务器。 |
+    | 选项                    | 标识符       | 描述                                    |
+    | :-------------------- | :-------- | :------------------------------------ |
+    | **复制 MCP server URL** | `mcp`     | 将你的 MCP server URL 复制到用户剪贴板。          |
+    | **复制 MCP 安装命令**       | `add-mcp` | 复制用于安装 MCP server 的 `npx add-mcp` 命令。 |
+    | **连接到 Cursor**        | `cursor`  | 在 Cursor 中安装你的 MCP server。            |
+    | **连接到 VS Code**       | `vscode`  | 在 VS Code 中安装你的 MCP server。           |
   </Tab>
 
   <Tab title="Claude">
     <Steps>
-      <Step title="获取你的 MCP 服务器 URL。">
-        前往[控制台](https://dashboard.mintlify.com/products/mcp)，找到你的 MCP 服务器 URL。
+      <Step title="获取你的 MCP server URL。">
+        前往你的[仪表板](https://dashboard.mintlify.com/products/mcp)，找到你的 MCP server URL。
       </Step>
 
-      <Step title="为用户发布 MCP 服务器 URL。">
-        为用户创建一份指南，包含你的 MCP 服务器 URL 以及将其连接到 Claude 的步骤。
+      <Step title="向用户公开你的 MCP server URL。">
+        为用户创建一份指南，其中包含你的 MCP server URL 以及将其连接到 Claude 的步骤。
 
-        1. 在 Claude 设置中，前往 [Connectors](https://claude.ai/settings/connectors) 页面。
+        1. 前往 Claude 设置中的 [Connectors](https://claude.ai/settings/connectors) 页面。
         2. 选择 **Add custom connector**。
-        3. 添加你的 MCP 服务器名称和 URL。
+        3. 添加你的 MCP server 名称和 URL。
         4. 选择 **Add**。
-        5. 使用 Claude 时，选择附件按钮 (加号图标) 。
-        6. 选择你的 MCP 服务器。
+        5. 使用 Claude 时，点击附件按钮 (加号图标) 。
+        6. 选择你的 MCP server。
       </Step>
     </Steps>
 
-    详见 [Model Context Protocol 文档](https://modelcontextprotocol.io/docs/tutorials/use-remote-mcp-server#connecting-to-a-remote-mcp-server)。
+    更多详情，请参阅 [Model Context Protocol 文档](https://modelcontextprotocol.io/docs/tutorials/use-remote-mcp-server#connecting-to-a-remote-mcp-server)。
   </Tab>
 
   <Tab title="Claude Code">
     <Steps>
-      <Step title="获取你的 MCP 服务器 URL。">
-        前往[控制台](https://dashboard.mintlify.com/products/mcp)，找到你的 MCP 服务器 URL。
+      <Step title="获取你的 MCP server URL。">
+        前往你的[仪表板](https://dashboard.mintlify.com/products/mcp)，找到你的 MCP server URL。
       </Step>
 
-      <Step title="为用户发布 MCP 服务器 URL。">
-        为用户创建一份指南，包含你的 MCP 服务器 URL 以及将其连接到 Claude Code 的命令。
+      <Step title="向用户公开你的 MCP server URL。">
+        为用户创建一份指南，其中包含你的 MCP server URL 以及将其连接到 Claude Code 的命令。
 
         ```bash
         claude mcp add --transport http <name> <url>
@@ -322,22 +324,22 @@ noindex: true
       </Step>
     </Steps>
 
-    详见 [Claude Code 文档](https://docs.anthropic.com/en/docs/claude-code/mcp#installing-mcp-servers)。
+    更多详情，请参阅 [Claude Code 文档](https://docs.anthropic.com/en/docs/claude-code/mcp#installing-mcp-servers)。
   </Tab>
 
   <Tab title="Cursor">
     <Steps>
-      <Step title="获取你的 MCP 服务器 URL。">
-        前往[控制台](https://dashboard.mintlify.com/products/mcp)，找到你的 MCP 服务器 URL。
+      <Step title="获取你的 MCP server URL。">
+        前往你的[仪表板](https://dashboard.mintlify.com/products/mcp)，找到你的 MCP server URL。
       </Step>
 
-      <Step title="为用户发布 MCP 服务器 URL。">
-        为用户创建一份指南，包含你的 MCP 服务器 URL 以及将其连接到 Cursor 的步骤。
+      <Step title="向用户公开你的 MCP server URL。">
+        为用户创建一份指南，其中包含你的 MCP server URL 以及将其连接到 Cursor 的步骤。
 
         1. 使用 <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (Windows 上为 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>) 打开命令面板。
-        2. 搜索 &quot;Open MCP settings&quot;。
+        2. 搜索 “Open MCP settings”。
         3. 选择 **Add custom MCP**。这会打开 `mcp.json` 文件。
-        4. 在 `mcp.json` 中配置服务器：
+        4. 在 `mcp.json` 中配置你的服务器：
 
         ```json
         {
@@ -351,20 +353,20 @@ noindex: true
       </Step>
     </Steps>
 
-    详见 [Cursor 文档](https://docs.cursor.com/en/context/mcp#installing-mcp-servers)。
+    更多详情，请参阅 [Cursor 文档](https://docs.cursor.com/en/context/mcp#installing-mcp-servers)。
   </Tab>
 
   <Tab title="VS Code">
     <Steps>
-      <Step title="获取你的 MCP 服务器 URL。">
-        前往[控制台](https://dashboard.mintlify.com/products/mcp)，找到你的 MCP 服务器 URL。
+      <Step title="获取你的 MCP server URL。">
+        前往你的[仪表板](https://dashboard.mintlify.com/products/mcp)，找到你的 MCP server URL。
       </Step>
 
-      <Step title="为用户发布 MCP 服务器 URL。">
-        为用户创建一份指南，包含你的 MCP 服务器 URL 以及将其连接到 VS Code 的步骤。
+      <Step title="向用户公开你的 MCP server URL。">
+        为用户创建一份指南，其中包含你的 MCP server URL 以及将其连接到 VS Code 的步骤。
 
         1. 创建 `.vscode/mcp.json` 文件。
-        2. 在 `mcp.json` 中配置服务器：
+        2. 在 `mcp.json` 中配置你的服务器：
 
         ```json
         {
@@ -379,75 +381,75 @@ noindex: true
       </Step>
     </Steps>
 
-    详见 [VS Code 文档](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)。
+    更多详情，请参阅 [VS Code 文档](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)。
   </Tab>
 </Tabs>
 
 <div id="example-connect-to-the-mintlify-mcp-server">
-  ### 示例：连接 Mintlify MCP 服务器
+  ### 示例：连接到 Mintlify MCP server
 </div>
 
-连接 Mintlify MCP 服务器，以便在你常用的 AI 工具中搜索此文档站点。这样你就能在本地环境中更精准地了解如何使用 Mintlify，同时也演示了如何帮助你的用户连接到你的 MCP 服务器。
+连接到 Mintlify MCP server，即可在你常用的 AI 工具中搜索此文档站点。这样可以更准确地获取有关如何在本地环境中使用 Mintlify 的答案，也能帮助你向用户演示如何连接到你的 MCP server。
 
 <Tabs>
-  <Tab title="Contextual menu">
-    在本页顶部打开上下文菜单，选择 **Connect to Cursor** 或 **Connect to VS Code**，即可将 Mintlify MCP 服务器连接到你选择的 IDE。
+  <Tab title="上下文菜单">
+    在本页顶部，打开上下文菜单，然后选择 **Connect to Cursor** 或 **Connect to VS Code**，即可将 Mintlify MCP server 连接到你选择的 IDE。
   </Tab>
 
   <Tab title="Claude">
-    在 Claude 中使用 Mintlify MCP 服务器：
+    要在 Claude 中使用 Mintlify MCP server：
 
     <Steps>
-      <Step title="将 Mintlify MCP 服务器添加到 Claude">
-        1. 进入 Claude 设置中的 [Connectors](https://claude.ai/settings/connectors) 页面。
+      <Step title="将 Mintlify MCP server 添加到 Claude">
+        1. 前往 Claude 设置中的 [Connectors](https://claude.ai/settings/connectors) 页面。
         2. 选择 **Add custom connector**。
-        3. 添加 Mintlify MCP 服务器：
+        3. 添加 Mintlify MCP server：
 
-        * Name: `Mintlify`
-        * URL: `https://mintlify.com/docs/mcp`
+        * 名称：`Mintlify`
+        * URL：`https://mintlify.com/docs/mcp`
 
         4. 选择 **Add**。
       </Step>
 
-      <Step title="在聊天中访问 MCP 服务器">
+      <Step title="在聊天中访问 MCP server">
         1. 使用 Claude 时，点击附件按钮 (加号图标) 。
-        2. 选择 Mintlify MCP 服务器。
-        3. 向 Claude 提问有关 Mintlify 的问题。
+        2. 选择 Mintlify MCP server。
+        3. 向 Claude 提问与 Mintlify 相关的问题。
       </Step>
     </Steps>
 
-    查看 [Model Context Protocol 文档](https://modelcontextprotocol.io/docs/tutorials/use-remote-mcp-server#connecting-to-a-remote-mcp-server)了解更多详情。
+    更多详情，请参阅 [Model Context Protocol 文档](https://modelcontextprotocol.io/docs/tutorials/use-remote-mcp-server#connecting-to-a-remote-mcp-server)。
   </Tab>
 
   <Tab title="Claude Code">
-    在 Claude Code 中使用 Mintlify MCP 服务器，运行以下命令：
+    要在 Claude Code 中使用 Mintlify MCP server，请运行以下命令：
 
     ```bash
     claude mcp add --transport http Mintlify https://mintlify.com/docs/mcp
     ```
 
-    通过运行以下命令测试连接：
+    运行以下命令测试连接：
 
     ```bash
     claude mcp list
     ```
 
-    查看 [Claude Code 文档](https://docs.anthropic.com/en/docs/claude-code/mcp#installing-mcp-servers)了解更多详情。
+    更多详情，请参阅 [Claude Code 文档](https://docs.anthropic.com/en/docs/claude-code/mcp#installing-mcp-servers)。
   </Tab>
 
   <Tab title="Cursor">
     <PreviewButton href="cursor://anysphere.cursor-deeplink/mcp/install?name=mintlify&config=eyJ1cmwiOiJodHRwczovL21pbnRsaWZ5LmNvbS9kb2NzL21jcCJ9">在 Cursor 中安装</PreviewButton>
 
-    要将 Mintlify MCP 服务器连接到 Cursor，点击 **在 Cursor 中安装** 按钮。若需手动连接 MCP 服务器，请按以下步骤操作：
+    要将 Mintlify MCP server 连接到 Cursor，请点击 **在 Cursor 中安装** 按钮。或者，如果要手动连接 MCP server，请按以下步骤操作：
 
     <Steps>
       <Step title="打开 MCP 设置">
         1. 使用 <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (Windows 上为 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>) 打开命令面板。
-        2. 搜索 “Open MCP settings”。
+        2. 搜索 &quot;Open MCP settings&quot;。
         3. 选择 **Add custom MCP**。这会打开 `mcp.json` 文件。
       </Step>
 
-      <Step title="配置 Mintlify MCP 服务器">
+      <Step title="配置 Mintlify MCP server">
         在 `mcp.json` 中添加：
 
         ```json
@@ -462,17 +464,17 @@ noindex: true
       </Step>
 
       <Step title="测试连接">
-        在 Cursor 的聊天中，输入 “What tools do you have available?”。Cursor 应显示 Mintlify MCP 服务器为可用工具。
+        在 Cursor 聊天中，输入 “What tools do you have available?”。Cursor 应会将 Mintlify MCP server 显示为可用工具。
       </Step>
     </Steps>
 
-    查看 Cursor 文档中的 [Installing MCP servers](https://docs.cursor.com/en/context/mcp#installing-mcp-servers) 了解更多详情。
+    更多详情，请参阅 Cursor 文档中的 [Installing MCP servers](https://docs.cursor.com/en/context/mcp#installing-mcp-servers)。
   </Tab>
 
   <Tab title="VS Code">
     <PreviewButton href="https://vscode.dev/redirect/mcp/install?name=mintlify&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmintlify.com%2Fdocs%2Fmcp%22%7D">在 VS Code 中安装</PreviewButton>
 
-    要将 Mintlify MCP 服务器连接到 VS Code，点击 **在 VS Code 中安装** 按钮。若需手动连接 MCP 服务器，创建 `.vscode/mcp.json` 文件并添加：
+    要将 Mintlify MCP server 连接到 VS Code，请点击 **在 VS Code 中安装** 按钮。或者，如果要手动连接 MCP server，请创建 `.vscode/mcp.json` 文件并添加：
 
     ```json
     {
@@ -485,20 +487,20 @@ noindex: true
     }
     ```
 
-    查看 [VS Code 文档](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)了解更多详情。
+    更多详情，请参阅 [VS Code 文档](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)。
   </Tab>
 </Tabs>
 
 <div id="using-multiple-mcp-servers">
-  ### 使用多个 MCP 服务器
+  ### 使用多个 MCP server
 </div>
 
-用户可以将多个 MCP 服务器连接到其 AI 工具。已连接的 MCP 服务器在 AI 调用搜索工具之前不会占用上下文。AI 会根据查询的相关性决定何时搜索，因此不会针对每个问题搜索每个已连接的服务器。
+用户可以将多个 MCP server 连接到自己的 AI 工具。已连接的 MCP server 在 AI 调用搜索工具之前不会占用上下文。AI 会根据查询的相关性决定何时执行搜索，因此不会针对每个问题都搜索所有已连接的 server。
 
-当 AI 执行搜索时，每次查询都会返回多个结果，这些结果会加入对话上下文。如果 AI 为了回答同一个问题搜索多个服务器，可能会占用大量上下文。
+当 AI 执行搜索时，每次查询都会返回多个结果，并将这些结果加入对话上下文中。如果 AI 为同一个问题搜索多个 server，可能会占用大量上下文。
 
-使用多个 MCP 服务器的最佳实践：
+使用多个 MCP server 的最佳实践：
 
-* 仅连接与当前工作相关的 MCP 服务器。
-* 尽量让提示词更具体，以便 AI 搜索最相关的服务器。
-* 断开未在主动使用的服务器，以减少潜在的上下文占用。
+* 只连接与当前工作相关的 MCP server。
+* 在提示中尽量说得具体明确，以便 AI 搜索最相关的 server。
+* 断开当前未主动使用的 server，以减少潜在的上下文占用。

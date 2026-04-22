@@ -1,14 +1,16 @@
 ---
 title: "集成"
-description: "通过 docs.json 中的集成配置，将分析平台、聊天小部件和第三方服务连接到你的 Mintlify 文档站点。"
-keywords: ["集成", "分析", "google analytics", "posthog", "segment", "intercom", "hotjar", "mixpanel", "amplitude", "docs.json"]
+description: "通过 docs.json 中的 integrations 配置，将分析平台、聊天小组件和第三方服务接入你的 Mintlify 文档站点。"
+keywords: ["集成", "分析", "Google Analytics", "PostHog", "Segment", "Intercom", "Hotjar", "Mixpanel", "Amplitude", "docs.json"]
 ---
 
-使用 `docs.json` 中的 `integrations` 字段将第三方分析平台、聊天工具和其他服务连接到你的文档站点。
+使用 `docs.json` 中的 `integrations` 字段，将第三方分析平台、聊天工具和其他服务接入你的文档站点。
 
-## 设置
+<div id="settings">
+  ## 设置
+</div>
 
-在 `docs.json` 文件中将所有集成配置为 `integrations` 对象的属性：
+在 `docs.json` 文件中，将所有集成都配置在 `integrations` 对象下作为属性：
 
 ```json docs.json
 "integrations": {
@@ -18,14 +20,16 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
 }
 ```
 
-### 分析
+<div id="analytics">
+  ### 分析
+</div>
 
 <ResponseField name="integrations.adobe" type="object">
   Adobe Analytics 集成。
 
   <Expandable title="integrations.adobe">
     <ResponseField name="launchUrl" type="string (uri)" required>
-      你的 Adobe Analytics launch URL。
+      你的 Adobe Analytics Launch URL。
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -35,7 +39,7 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
 
   <Expandable title="integrations.amplitude">
     <ResponseField name="apiKey" type="string" required>
-      你的 Amplitude API key。
+      你的 Amplitude API 密钥。
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -64,7 +68,7 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
   Google Analytics 4 集成。
 
   <Expandable title="integrations.ga4">
-    <ResponseField name="measurementId" type="string 匹配 ^G" required>
+    <ResponseField name="measurementId" type="string matching ^G" required>
       你的 Google Analytics 4 测量 ID。必须以 `G` 开头。
     </ResponseField>
   </Expandable>
@@ -74,7 +78,7 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
   Google Tag Manager 集成。
 
   <Expandable title="integrations.gtm">
-    <ResponseField name="tagId" type="string 匹配 ^G" required>
+    <ResponseField name="tagId" type="string matching ^G" required>
       你的 Google Tag Manager 容器 ID。必须以 `G` 开头。
     </ResponseField>
   </Expandable>
@@ -95,8 +99,9 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
 
   <Expandable title="integrations.hightouch">
     <ResponseField name="writeKey" type="string" required>
-      你的 Hightouch write key。
+      你的 Hightouch 写入密钥。
     </ResponseField>
+
     <ResponseField name="apiHost" type="string">
       你的 Hightouch API 主机。
     </ResponseField>
@@ -110,6 +115,7 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
     <ResponseField name="hjid" type="string" required>
       你的 Hotjar 站点 ID。
     </ResponseField>
+
     <ResponseField name="hjsv" type="string" required>
       你的 Hotjar 脚本版本。
     </ResponseField>
@@ -131,13 +137,13 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
 
   <Expandable title="integrations.mixpanel">
     <ResponseField name="projectToken" type="string" required>
-      你的 Mixpanel 项目 token。
+      你的 Mixpanel 项目令牌。
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.pirsch" type="object">
-  Pirsch 隐私友好型分析集成。
+  Pirsch 隐私友好的分析集成。
 
   <Expandable title="integrations.pirsch">
     <ResponseField name="id" type="string" required>
@@ -147,14 +153,15 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
 </ResponseField>
 
 <ResponseField name="integrations.plausible" type="object">
-  Plausible 隐私友好型分析集成。
+  Plausible 隐私友好的分析集成。
 
   <Expandable title="integrations.plausible">
     <ResponseField name="domain" type="string" required>
       你的 Plausible 域名。
     </ResponseField>
+
     <ResponseField name="server" type="string">
-      如果自托管，你的 Plausible 服务器。
+      如果是自托管，请填写你的 Plausible 服务器地址。
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -163,12 +170,14 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
   PostHog 产品分析集成。
 
   <Expandable title="integrations.posthog">
-    <ResponseField name="apiKey" type="string 匹配 ^phc_" required>
-      你的 PostHog API key。必须以 `phc_` 开头。
+    <ResponseField name="apiKey" type="string matching ^phc_" required>
+      您的 PostHog API 密钥。必须以 `phc_` 开头。
     </ResponseField>
+
     <ResponseField name="apiHost" type="string (uri)">
-      你的 PostHog API 主机。自托管 PostHog 时必需。
+      您的 PostHog API 主机地址。如果您自托管 PostHog，则此项必填。
     </ResponseField>
+
     <ResponseField name="sessionRecording" type="boolean">
       是否启用会话录制。默认为 `false`。
     </ResponseField>
@@ -180,19 +189,21 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
 
   <Expandable title="integrations.segment">
     <ResponseField name="key" type="string" required>
-      你的 Segment write key。
+      您的 Segment 写入密钥。
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### 聊天和支持
+<div id="chat-and-support">
+  ### 聊天与支持
+</div>
 
 <ResponseField name="integrations.frontchat" type="object">
-  Front 聊天小部件集成。
+  Front 聊天小组件集成。
 
   <Expandable title="integrations.frontchat">
     <ResponseField name="snippetId" type="string" required>
-      你的 Front 聊天代码片段 ID。最小长度：6。
+      你的 Front 聊天代码片段 ID。最短长度：6。
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -202,49 +213,56 @@ keywords: ["集成", "分析", "google analytics", "posthog", "segment", "interc
 
   <Expandable title="integrations.intercom">
     <ResponseField name="appId" type="string" required>
-      你的 Intercom 应用 ID。最小长度：6。
+      你的 Intercom 应用 ID。最短长度：6。
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### 数据增强
+<div id="data-enrichment">
+  ### 数据增强
+</div>
 
 <ResponseField name="integrations.clearbit" type="object">
   Clearbit 访客数据增强集成。
 
   <Expandable title="integrations.clearbit">
     <ResponseField name="publicApiKey" type="string" required>
-      你的 Clearbit 公开 API key。
+      您的 Clearbit 公共 API 密钥。
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### 平台设置
+<div id="platform-settings">
+  ### 平台设置
+</div>
 
 <ResponseField name="integrations.telemetry" type="object">
   Mintlify 遥测设置。
 
   <Expandable title="integrations.telemetry">
     <ResponseField name="enabled" type="boolean">
-      是否启用 Mintlify 遥测。当设置为 `false` 时，反馈功能也会被禁用，不会显示在文档页面上。
+      是否启用 Mintlify 遥测。设为 `false` 时，反馈功能也会一并禁用，且不会显示在文档页面中。
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.cookies" type="object">
-  文档站点的 cookie 设置。
+  文档站点的 Cookie 设置。
 
   <Expandable title="integrations.cookies">
     <ResponseField name="key" type="string">
-      Cookie 键名。
+      Cookie 键名称。
     </ResponseField>
+
     <ResponseField name="value" type="string">
       Cookie 值。
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-## 示例
+<div id="example">
+  ## 示例
+</div>
 
 ```json docs.json
 "integrations": {

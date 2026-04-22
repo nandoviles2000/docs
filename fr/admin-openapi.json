@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Mintlify Admin API",
-    "description": "Une API pour les opérations administratives, y compris les mises à jour de la documentation et la gestion des agents.",
+    "description": "Une API pour les opérations administratives, notamment les mises à jour de la documentation et la gestion des agents.",
     "version": "2.0.0"
   },
   "servers": [
@@ -18,9 +18,9 @@
   "paths": {
     "/v1/agent/{projectId}/job": {
       "post": {
-        "summary": "Créer une tâche d’agent (v1)",
+        "summary": "Créer un job d’agent (v1)",
         "deprecated": true,
-        "description": "Obsolète : utilisez plutôt [v2 create agent job](/api/agent/v2/create-agent-job). Crée une nouvelle tâche d’agent capable de générer et de modifier de la documentation à partir des messages fournis et des informations de branche.",
+        "description": "Obsolète : utilisez plutôt [v2 create agent job](/api/agent/v2/create-agent-job). Crée un nouveau job d’agent capable de générer et de modifier la documentation à partir des messages et des informations de branche fournis.",
         "parameters": [
           {
             "name": "projectId",
@@ -29,7 +29,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard."
+            "description": "Votre ID de projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
           }
         ],
         "requestBody": {
@@ -44,11 +44,11 @@
                 "properties": {
                   "branch": {
                     "type": "string",
-                    "description": "Le nom de la branche Git sur laquelle l’agent doit travailler. S’il est omis, l’agent génère un nom de branche à partir du contenu des messages."
+                    "description": "Le nom de la branche Git sur laquelle l’agent doit travailler. S’il est omis, l’agent génère un nom de branche à partir du contenu du message."
                   },
                   "messages": {
                     "type": "array",
-                    "description": "Une liste de messages à fournir à l’agent. Une invite système par défaut est toujours ajoutée automatiquement au début. Vous n’avez donc généralement besoin d’inclure que des messages utilisateur.",
+                    "description": "Liste des messages à fournir à l’agent. Une invite système par défaut est toujours ajoutée automatiquement au début. Vous n’avez donc généralement besoin d’inclure que des messages utilisateur.",
                     "items": {
                       "type": "object",
                       "required": [
@@ -63,7 +63,7 @@
                             "user",
                             "assistant"
                           ],
-                          "description": "Le rôle de l’expéditeur du message. Utilisez `user` pour les instructions de tâche. Utilisez `system` pour ajouter des instructions supplémentaires après l’invite système par défaut (sans la remplacer). Utilisez `assistant` pour fournir des exemples de réponses de l’Assistant pour le prompting few-shot."
+                          "description": "Le rôle de l’expéditeur du message. Utilisez `user` pour les instructions de tâche. Utilisez `system` pour ajouter des instructions supplémentaires qui sont ajoutées après l’invite système par défaut (sans la remplacer). Utilisez `assistant` pour fournir des réponses d’assistant d’exemple pour le prompting few-shot."
                         },
                         "content": {
                           "type": "string",
@@ -75,7 +75,7 @@
                   "asDraft": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Détermine si la pull request (demande de fusion) est créée en mode brouillon ou non. Si la valeur est true, crée une pull request (demande de fusion) en brouillon. Si la valeur est false (par défaut), crée une pull request (demande de fusion) prête à être examinée."
+                    "description": "Détermine si la pull request (PR) est créée en mode brouillon ou non. Lorsque la valeur est `true`, crée une pull request (PR) en brouillon. Lorsque la valeur est `false` (par défaut), crée une pull request (PR) standard prête à être relue."
                   },
                   "model": {
                     "type": "string",
@@ -84,7 +84,7 @@
                       "opus"
                     ],
                     "default": "sonnet",
-                    "description": "Le modèle d’IA à utiliser pour la tâche d’agent. Utilisez `sonnet` pour un traitement plus rapide et plus économique. Utilisez `opus` pour un traitement plus performant, mais plus lent."
+                    "description": "Le modèle d’IA à utiliser pour le job d’agent. Utilisez `sonnet` pour un traitement plus rapide et plus économique. Utilisez `opus` pour un traitement plus performant, mais plus lent."
                   }
                 }
               }
@@ -93,26 +93,26 @@
         },
         "responses": {
           "200": {
-            "description": "Tâche d'agent créée avec succès. Retourne une réponse en flux avec des événements Server-Sent Events.",
+            "description": "Job d’agent créé avec succès. Renvoie une réponse en flux avec des événements envoyés par le serveur.",
             "headers": {
               "X-Session-Id": {
                 "schema": {
                   "type": "string"
                 },
-                "description": "Identifiant unique de session pour la tâche d'agent créée."
+                "description": "Identifiant de session unique du job d’agent créé."
               },
               "X-Branch-Name": {
                 "schema": {
                   "type": "string"
                 },
-                "description": "Nom de la branche Git où l'agent effectue les modifications."
+                "description": "Nom de la branche Git sur laquelle l’agent effectue les modifications."
               }
             },
             "content": {
               "text/event-stream": {
                 "schema": {
                   "type": "string",
-                  "description": "Flux Server-Sent Events contenant les détails d'exécution et les résultats de la tâche d'agent."
+                  "description": "Flux d’événements envoyés par le serveur contenant les détails d’exécution et les résultats du job d’agent."
                 }
               }
             }
@@ -122,9 +122,9 @@
     },
     "/v1/agent/{projectId}/job/{id}": {
       "get": {
-        "summary": "Récupérer une tâche d’agent par ID (v1)",
+        "summary": "Récupérer un job d’agent par ID (v1)",
         "deprecated": true,
-        "description": "Obsolète : utilisez plutôt [v2 get agent job](/api/agent/v2/get-agent-job). Récupère les détails et le statut d’une tâche d’agent spécifique à partir de son ID.",
+        "description": "Obsolète : utilisez plutôt [v2 get agent job](/api/agent/v2/get-agent-job). Récupère les détails et le statut d’un job d’agent spécifique à partir de son ID.",
         "parameters": [
           {
             "name": "projectId",
@@ -133,7 +133,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard."
+            "description": "Votre ID de projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
           },
           {
             "name": "id",
@@ -142,12 +142,12 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’identifiant unique de la tâche d’agent à récupérer."
+            "description": "L’identifiant unique du job d’agent à récupérer."
           }
         ],
         "responses": {
           "200": {
-            "description": "Détails de la tâche d’agent récupérés avec succès",
+            "description": "Détails du job d’agent récupérés avec succès",
             "content": {
               "application/json": {
                 "schema": {
@@ -168,7 +168,7 @@
                     },
                     "haulted": {
                       "type": "boolean",
-                      "description": "Indique si l’exécution de la session a été interrompue."
+                      "description": "Indique si l’exécution de la session a été arrêtée."
                     },
                     "haultReason": {
                       "type": "string",
@@ -179,11 +179,11 @@
                         "processing",
                         "interrupted"
                       ],
-                      "description": "Motif de l'interruption de la session. `processing` indique que la tâche est en cours. `interrupted` indique que la tâche a été interrompue manuellement."
+                      "description": "Motif de l’arrêt de la session. `processing` indique que le job est toujours en cours d’exécution. `interrupted` indique que le job a été interrompu manuellement."
                     },
                     "pullRequestLink": {
                       "type": "string",
-                      "description": "Lien vers la pull request (demande de fusion) créée."
+                      "description": "Lien vers la pull request (PR) créée."
                     },
                     "messageToUser": {
                       "type": "string",
@@ -191,7 +191,7 @@
                     },
                     "todos": {
                       "type": "array",
-                      "description": "Liste des éléments de la liste de tâches de la session.",
+                      "description": "Liste des tâches de la session.",
                       "items": {
                         "type": "object",
                         "properties": {
@@ -231,7 +231,7 @@
                     },
                     "title": {
                       "type": "string",
-                      "description": "Titre généré résumant la tâche de l’agent."
+                      "description": "Titre généré résumant le job d’agent."
                     },
                     "createdAt": {
                       "type": "string",
@@ -248,9 +248,9 @@
     },
     "/v1/agent/{projectId}/jobs": {
       "get": {
-        "summary": "Récupérer toutes les tâches d’agent (v1)",
+        "summary": "Récupérer tous les jobs d’agent (v1)",
         "deprecated": true,
-        "description": "Obsolète : utilisez plutôt [v2 get agent job](/api/agent/v2/get-agent-job). Récupère toutes les tâches d’agent pour le domain spécifié, y compris leur statut et leurs détails.",
+        "description": "Obsolète : utilisez plutôt [v2 get agent job](/api/agent/v2/get-agent-job). Récupère tous les jobs d’agent du domaine spécifié, y compris leur statut et leurs détails.",
         "parameters": [
           {
             "name": "projectId",
@@ -259,7 +259,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard."
+            "description": "ID de votre projet. Peut être copié depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
           },
           {
             "name": "skip",
@@ -282,12 +282,12 @@
               "maximum": 100,
               "default": 12
             },
-            "description": "Nombre de résultats à retourner. Maximum 100."
+            "description": "Nombre de résultats à renvoyer. Maximum : 100."
           }
         ],
         "responses": {
           "200": {
-            "description": "Toutes les tâches d’agent ont été récupérées avec succès",
+            "description": "Tous les jobs d’agent ont été récupérés avec succès",
             "content": {
               "application/json": {
                 "schema": {
@@ -295,17 +295,17 @@
                   "properties": {
                     "allSessions": {
                       "type": "array",
-                      "description": "Tableau de toutes les sessions d’agent pour le domain.",
+                      "description": "Tableau de toutes les sessions d’agent du domaine.",
                       "items": {
                         "type": "object",
                         "properties": {
                           "sessionId": {
                             "type": "string",
-                            "description": "Le sous-domaine auquel cette session appartient."
+                            "description": "Sous-domaine auquel appartient cette session."
                           },
                           "subdomain": {
                             "type": "string",
-                            "description": "Le sous-domaine auquel cette session appartient."
+                            "description": "Sous-domaine auquel appartient cette session."
                           },
                           "branch": {
                             "type": "string",
@@ -325,19 +325,19 @@
                               "processing",
                               "interrupted"
                             ],
-                            "description": "Motif de l'interruption de la session. `processing` indique que la tâche est en cours. `interrupted` indique que la tâche a été interrompue manuellement."
+                            "description": "Raison de l’arrêt de la session. `processing` indique que le job est toujours en cours d’exécution. `interrupted` indique que le job a été interrompu manuellement."
                           },
                           "pullRequestLink": {
                             "type": "string",
-                            "description": "Lien vers la pull request (demande de fusion) créée."
+                            "description": "Lien vers la pull request (PR) créée."
                           },
                           "messageToUser": {
                             "type": "string",
-                            "description": "Message destiné à l’utilisateur concernant l’issue de la session."
+                            "description": "Message destiné à l’utilisateur concernant le résultat de la session."
                           },
                           "todos": {
                             "type": "array",
-                            "description": "Liste des éléments de la liste de tâches de la session.",
+                            "description": "Liste des tâches de la session.",
                             "items": {
                               "type": "object",
                               "properties": {
@@ -377,7 +377,7 @@
                           },
                           "title": {
                             "type": "string",
-                            "description": "Titre généré résumant la tâche de l’agent."
+                            "description": "Titre généré résumant le job d’agent."
                           },
                           "createdAt": {
                             "type": "string",
@@ -397,8 +397,8 @@
     },
     "/v2/agent/{projectId}/job": {
       "post": {
-        "summary": "Créer une tâche d’agent",
-        "description": "Crée une nouvelle tâche d’agent qui s’exécute en arrière-plan. La tâche traite le prompt de manière asynchrone — interrogez le point de terminaison get job pour suivre sa progression. Si l’agent modifie les fichiers avec succès, une pull request (demande de fusion) est automatiquement créée.",
+        "summary": "Créer un job d’agent",
+        "description": "Crée un nouveau job d’agent qui s’exécute en arrière-plan. Le job traite le prompt de manière asynchrone — interrogez le point de terminaison get job pour suivre sa progression. Si l’agent modifie les fichiers avec succès, une pull request (PR) est créée automatiquement.",
         "parameters": [
           {
             "name": "projectId",
@@ -407,7 +407,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard."
+            "description": "ID de votre projet. Peut être copié depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
           }
         ],
         "requestBody": {
@@ -423,7 +423,7 @@
                   "prompt": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "L’instruction que l’agent doit exécuter."
+                    "description": "Instruction que l’agent doit exécuter."
                   }
                 }
               }
@@ -432,7 +432,7 @@
         },
         "responses": {
           "201": {
-            "description": "Tâche d’agent créée avec succès",
+            "description": "Job d’agent créé avec succès",
             "content": {
               "application/json": {
                 "schema": {
@@ -442,7 +442,7 @@
             }
           },
           "400": {
-            "description": "requête invalide",
+            "description": "Requête invalide",
             "content": {
               "application/json": {
                 "schema": {
@@ -452,7 +452,7 @@
             }
           },
           "429": {
-            "description": "limite de débit dépassé",
+            "description": "Limite de requêtes dépassée",
             "content": {
               "application/json": {
                 "schema": {
@@ -466,8 +466,8 @@
     },
     "/v2/agent/{projectId}/job/{id}": {
       "get": {
-        "summary": "Récupérer une tâche d’agent",
-        "description": "Récupère le statut actuel et les détails d’une tâche d’agent. Interrogez ce point de terminaison pour suivre la progression de la tâche.",
+        "summary": "Récupérer un job d’agent",
+        "description": "Récupère l’état actuel et les détails d’un job d’agent. Interrogez ce point de terminaison pour suivre la progression du job.",
         "parameters": [
           {
             "name": "projectId",
@@ -476,7 +476,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard."
+            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
           },
           {
             "name": "id",
@@ -485,12 +485,12 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’identifiant unique de la tâche d’agent."
+            "description": "L’identifiant unique du job d’agent."
           }
         ],
         "responses": {
           "200": {
-            "description": "Détails de la tâche d’agent",
+            "description": "Détails du job d’agent",
             "content": {
               "application/json": {
                 "schema": {
@@ -500,7 +500,7 @@
             }
           },
           "404": {
-            "description": "Tâche introuvable",
+            "description": "Job introuvable",
             "content": {
               "application/json": {
                 "schema": {
@@ -515,7 +515,7 @@
     "/v2/agent/{projectId}/job/{id}/message": {
       "post": {
         "summary": "Envoyer un message de suivi",
-        "description": "Envoie un message de suivi à une tâche d’agent existante. Le message est traité de manière asynchrone — interroger le point de terminaison get job pour suivre la progression.",
+        "description": "Envoie un message de suivi à un job d’agent existant. Le message est traité de manière asynchrone — interrogez le point de terminaison get job pour suivre sa progression.",
         "parameters": [
           {
             "name": "projectId",
@@ -524,7 +524,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard."
+            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
           },
           {
             "name": "id",
@@ -533,7 +533,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "L’identifiant unique de la tâche d’agent à laquelle envoyer un message."
+            "description": "L’identifiant unique du job d’agent auquel envoyer un message."
           }
         ],
         "requestBody": {
@@ -549,7 +549,7 @@
                   "prompt": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "L’instruction de suivi destinée à l’agent."
+                    "description": "L’instruction de suivi pour l’agent."
                   }
                 }
               }
@@ -578,7 +578,7 @@
             }
           },
           "404": {
-            "description": "Tâche introuvable",
+            "description": "Job introuvable",
             "content": {
               "application/json": {
                 "schema": {
@@ -588,7 +588,7 @@
             }
           },
           "429": {
-            "description": "Limite de débit dépassée",
+            "description": "Limite de requêtes dépassée",
             "content": {
               "application/json": {
                 "schema": {
@@ -608,7 +608,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Identifiant unique de la tâche d’agent."
+            "description": "Identifiant unique du job d’agent."
           },
           "status": {
             "type": "string",
@@ -618,15 +618,15 @@
               "archived",
               "failed"
             ],
-            "description": "Statut actuel de la tâche. `active` — l’agent traite actuellement le prompt. `completed` — l’agent a terminé avec succès et une PR a peut-être été créée (vérifiez `prLink`). `archived` — la tâche a été archivée. `failed` — l’agent a rencontré une erreur non récupérable. Interrogez régulièrement jusqu’à ce que le statut soit `completed`, `archived` ou `failed`."
+            "description": "État actuel du job. `active` — l’agent traite actuellement le prompt. `completed` — l’agent a terminé avec succès et une PR a peut-être été créée (vérifiez `prLink`). `archived` — le job a été archivé. `failed` — l’agent a rencontré une erreur irrécupérable. Interrogez ce point de terminaison jusqu’à ce que l’état soit `completed`, `archived` ou `failed`."
           },
           "source": {
             "type": "object",
-            "description": "Informations sur le référentiel source.",
+            "description": "Informations sur le dépôt source.",
             "properties": {
               "repository": {
                 "type": "string",
-                "description": "URL complète du référentiel GitHub."
+                "description": "URL complète du dépôt GitHub."
               },
               "ref": {
                 "type": "string",
@@ -637,24 +637,24 @@
           },
           "model": {
             "type": "string",
-            "description": "Modèle d’IA utilisé pour cette tâche."
+            "description": "Le modèle d’IA utilisé pour ce job."
           },
           "prLink": {
             "type": "string",
             "format": "uri",
             "example": "https://github.com/org/repo/pull/123",
-            "description": "URL de la pull request (demande de fusion) GitHub créée par l’agent. `null` tant que la tâche est `active` ou si aucun fichier n’a été modifié. Renseignée une fois que l’agent a créé une PR avec succès.",
+            "description": "URL de la pull request GitHub créée par l’agent. `null` tant que le job est encore `active` ou si aucun fichier n’a été modifié. Ce champ est renseigné une fois que l’agent crée une PR avec succès.",
             "nullable": true
           },
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "description": "Horodatage de création de la tâche."
+            "description": "Horodatage de création du job."
           },
           "archivedAt": {
             "type": "string",
             "format": "date-time",
-            "description": "Horodatage d’archivage de la tâche.",
+            "description": "Horodatage de l’archivage du job.",
             "nullable": true
           }
         }
@@ -673,7 +673,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "L’en-tête `Authorization` requiert un jeton Bearer. Utilisez une clé API d’administrateur (préfixée par `mint_`). Il s’agit d’une clé secrète côté serveur. Générez-en une sur la [page des clés API](https://dashboard.mintlify.com/settings/organization/api-keys) dans votre Dashboard Mintlify."
+        "description": "L’en-tête Authorization attend un jeton Bearer. Utilisez une clé d’API administrateur (préfixée par `mint_`). Il s’agit d’une clé secrète côté serveur. Générez-en une sur la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
       }
     }
   }

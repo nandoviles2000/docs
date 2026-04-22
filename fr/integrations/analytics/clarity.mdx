@@ -1,29 +1,27 @@
 ---
 title: "Clarity"
-description: "Intégrez Microsoft Clarity à votre site de documentation Mintlify pour capturer des enregistrements de session, des cartes de chaleur et des analyses d’interaction utilisateur."
-keywords: ["Microsoft Clarity", "enregistrement de session", "cartes de chaleur", "sessions utilisateurs"]
+description: "Intégrez Microsoft Clarity à votre site de documentation Mintlify pour capturer des enregistrements de session, des cartes thermiques et des analyses des interactions des utilisateurs."
+keywords: ["Microsoft Clarity", "enregistrement de session", "cartes thermiques", "sessions utilisateur"]
 ---
 
-Ajoutez l’extrait suivant à votre fichier `docs.json` pour envoyer des Analytics à Microsoft Clarity.
+Ajoutez ce qui suit à votre fichier `docs.json` pour transmettre vos données d’analyse à Microsoft Clarity.
 
 <CodeGroup>
+  ```json Options d’analyse dans docs.json
+  "integrations": {
+      "clarity": {
+          "projectId": "required"
+      }
+  }
+  ```
 
-```json Options d’Analytics dans docs.json
-"integrations": {
-    "clarity": {
-        "projectId": "required"
-    }
-}
-```
-
-```json Exemple
-"integrations": {
-    "clarity": {
-        "projectId": "abc123xyz"
-    }
-}
-```
-
+  ```json Exemple
+  "integrations": {
+      "clarity": {
+          "projectId": "abc123xyz"
+      }
+  }
+  ```
 </CodeGroup>
 
 <div id="get-your-project-id">
@@ -31,5 +29,5 @@ Ajoutez l’extrait suivant à votre fichier `docs.json` pour envoyer des Analyt
 </div>
 
 1. Créez un [compte Clarity](https://clarity.microsoft.com/projects).
-2. Cliquez sur **Obtenir le code de suivi.**
-3. Copiez l’ID de votre projet à partir du code de suivi.
+2. Cliquez sur **Get tracking code**.
+3. Copiez l’ID de votre projet dans le code de suivi.

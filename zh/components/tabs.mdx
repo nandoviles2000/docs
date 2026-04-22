@@ -1,16 +1,16 @@
 ---
-title: "选项卡"
-description: "使用 tab 组件将内容组织成可切换的面板，用于展示不同选项、平台版本或语言示例。"
-keywords: ["标签式内容", "内容面板", "可切换内容"]
+title: "Tabs"
+description: "使用 Tabs 组件将内容组织为可切换的面板，用于展示不同选项、平台版本或语言示例。"
+keywords: ["标签页内容", "内容面板", "可切换内容"]
 ---
 
-使用选项卡将内容组织为多个面板，用户可以在它们之间切换。你可以添加任意数量的选项卡，并在每个选项卡内包含其他组件。
+使用Tab将内容组织成多个可切换的面板，供用户在不同面板之间切换。你可以添加任意数量的Tab，并在每个Tab中包含其他组件。
 
 <Tabs>
   <Tab title="第一个标签页">
-    ☝️ 欢迎来到只能在第一个标签页中看到的内容。
+    ☝️ 欢迎查看仅在第一个Tab中显示的内容。
 
-    你可以在选项卡中添加任意数量的组件。例如，一个代码块：
+    你可以在Tab中添加任意数量的组件。例如，一个代码块：
 
     ```java HelloWorld.java
       class HelloWorld {
@@ -22,22 +22,22 @@ keywords: ["标签式内容", "内容面板", "可切换内容"]
   </Tab>
 
   <Tab title="第二个标签页" icon="leaf">
-    ✌️ 这里是只在第二个标签页中的内容。
+    ✌️ 这里是仅在第二个Tab中显示的内容。
 
-    这个还带有一个 <Icon icon="leaf" /> 图标！
+    这个Tab带有一个 <Icon icon="leaf" /> 图标！
   </Tab>
 
   <Tab title="第三个标签页">
-    💪 这里是只在第三个标签页中的内容。
+    💪 这里是仅在第三个Tab中显示的内容。
   </Tab>
 </Tabs>
 
 ````mdx Tabs example
 <Tabs>
-  <Tab title="第一个标签页">
-    ☝️ 欢迎来到只能在第一个标签页中看到的内容。
+  <Tab title="First tab">
+    ☝️ Welcome to the content that you can only see inside the first tab.
 
-    你可以在选项卡中添加任意数量的组件。例如,一个代码块:
+    You can add any number of components inside of tabs. For example, a code block:
     ```java HelloWorld.java
       class HelloWorld {
           public static void main(String[] args) {
@@ -57,17 +57,17 @@ keywords: ["标签式内容", "内容面板", "可切换内容"]
 </Tabs>
 ````
 
-具有相同标题的 Tabs 会在整个页面中保持同步。比如，如果你有多个标签页分组都包含一个 `JavaScript` 标签页标题，在其中一个标签页分组中选择 `JavaScript` 时，其他分组中的 `JavaScript` 也会自动被选中。这样，用户只需选择一次语言或框架，就能在所有地方看到相同的选择。Tabs 也会与具有相同标题的[代码分组](/zh/components/code-groups)同步。
+标题相同的 Tabs 会在整个页面内保持同步。例如，如果你有多个标签组都包含 `JavaScript` Tab，那么在其中一个标签组中选择 `JavaScript` 时，其他标签组中的 `JavaScript` 也会自动选中。这样一来，用户只需选择一次语言或框架，就能在所有相关位置看到该选择已同步生效。Tabs 还会与标题相同的[代码组](/zh/components/code-groups)保持同步。
 
-要禁用标签页同步，在 `<Tabs>` 组件上添加 `sync={false}`。
+如需禁用Tab同步，请在 `<Tabs>` 组件中添加 `sync={false}`。
 
 ```mdx Disable tab sync example
 <Tabs sync={false}>
-  <Tab title="第一个标签页">
-    此选项卡组独立运行。
+  <Tab title="First tab">
+    此标签组独立运行。
   </Tab>
-  <Tab title="第二个标签页">
-    在此处选择标签页不会影响其他选项卡组。
+  <Tab title="Second tab">
+    在此处选择标签不会影响其他标签组。
   </Tab>
 </Tabs>
 ```
@@ -79,35 +79,35 @@ keywords: ["标签式内容", "内容面板", "可切换内容"]
 在 `<Tabs>` 包装组件上设置这些属性。
 
 <ResponseField name="defaultTabIndex" type="number" default="0">
-  默认显示的标签页索引（从零开始）。例如，设置为 `1` 可在页面加载时显示第二个标签页。
+  默认显示的 Tab 索引 (从 0 开始) 。例如，设置为 `1` 时，页面加载后会显示第二个 Tab。
 </ResponseField>
 
 <ResponseField name="sync" type="boolean" default="true">
-  当为 `true` 时，标签页会与页面上其他具有相同标题的标签页和代码组保持同步。将其设置为 `false` 可使标签页彼此独立。
+  当设为 `true` 时，Tab 会与页面上其他标题相同的 Tab 和代码组保持同步。设为 `false` 可使各个 Tab 相互独立。
 </ResponseField>
 
 <ResponseField name="borderBottom" type="boolean">
-  为标签页容器添加底部边框和内边距。可用于在视觉上将标签页内容与页面其余部分区分开来，尤其是在标签页包含不同长度的内容时。
+  为 Tab 容器添加底部边框和内边距。在视觉上将标签页内容与页面其余部分区分开来，尤其适用于 Tab 中内容长度不一的情况。
 </ResponseField>
 
 <div id="tab-properties">
   ## Tab 属性
 </div>
 
-在每个单独的 `<Tab>` 组件上设置这些属性。
+在每个单独的 `<Tab>` 组件上设置以下属性。
 
 <ResponseField name="title" type="string" required>
-  标签页的标题。较短的标题更便于导航。标题相同的标签页会同步其选中状态。
+  Tab的标题。标题越简短，越便于导航。标题相同的Tab会同步选中状态。
 </ResponseField>
 
 <ResponseField name="id" type="string">
-  用于锚点链接的标签页自定义 ID。若未提供，则默认与 `title` 的值相同。
+  Tab的自定义 ID，用于锚点链接。如果未提供，默认与 `title` 的值相同。
 </ResponseField>
 
 <ResponseField name="icon" type="string">
-  一个 [Font Awesome](https://fontawesome.com/icons) icon、[Lucide](https://lucide.dev/icons) icon、指向 icon 的 URL，或 icon 的相对路径。
+  [Font Awesome](https://fontawesome.com/icons) 图标、[Lucide](https://lucide.dev/icons) 图标、图标 URL，或图标的相对路径。
 </ResponseField>
 
 <ResponseField name="iconType" type="string">
-  仅适用于 Font Awesome icon：可选值之一为 `regular`、`solid`、`light`、`thin`、`sharp-solid`、`duotone`、`brands`。
+  仅适用于 Font Awesome 图标：`regular`、`solid`、`light`、`thin`、`sharp-solid`、`duotone`、`brands` 之一。
 </ResponseField>

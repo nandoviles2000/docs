@@ -1,32 +1,31 @@
 ---
 title: "Campos de respuesta"
-description: "Documenta los campos de respuesta de la API usando el componente ResponseField con anotaciones de tipo, descripciones e indicadores de obligatorio u opcional."
-keywords: ["salida de la API", "valores de retorno", "estructura de la respuesta"]
+description: "Documenta los campos de respuesta de la API con el componente ResponseField mediante anotaciones de tipo, descripciones e indicadores de campo obligatorio u opcional."
+keywords: ["salida de la API", "valores devueltos", "estructura de la respuesta"]
 ---
 
-Usa el componente `<ResponseField>` para definir los valores devueltos de una API. Muchos documentos también utilizan `<ResponseField>` en páginas cuando necesitas enumerar los tipos de algo.
+Usa el componente `<ResponseField>` para definir los valores devueltos de una API. En muchas páginas de documentación, también se usa `<ResponseField>` cuando necesitas enumerar los tipos de algún elemento.
 
 <ResponseField name="response" type="string" required>
-  Un ejemplo de campo de respuesta
+  Ejemplo de campo de respuesta
 </ResponseField>
 
 ```mdx
 <ResponseField name="response" type="string" required>
-  Un ejemplo de campo de respuesta
+  A response field example
 </ResponseField>
 ```
 
-
 <div id="props">
-  ## Props
+  ## Propiedades
 </div>
 
 <ResponseField name="name" type="string" required>
-  El nombre del valor de la respuesta.
+  El nombre del valor de respuesta.
 </ResponseField>
 
 <ResponseField name="type" type="string" required>
-  Tipo esperado del valor de la respuesta: puede ser cualquier cadena arbitraria.
+  El tipo esperado del valor de respuesta; puede ser cualquier cadena.
 </ResponseField>
 
 <ResponseField name="default" type="string">
@@ -34,11 +33,11 @@ Usa el componente `<ResponseField>` para definir los valores devueltos de una AP
 </ResponseField>
 
 <ResponseField name="required" type="boolean">
-  Mostrar "required" junto al nombre del campo.
+  Muestra &quot;required&quot; junto al nombre del campo.
 </ResponseField>
 
 <ResponseField name="deprecated" type="boolean">
-  Indica si has marcado un campo como obsoleto o no.
+  Indica si un campo está obsoleto.
 </ResponseField>
 
 <ResponseField name="pre" type="string[]">
@@ -50,11 +49,9 @@ Usa el componente `<ResponseField>` para definir los valores devueltos de una AP
 </ResponseField>
 
 <RequestExample>
-
-```mdx Response Field Example
-<ResponseField name="response" type="string" required>
-  Ejemplo de campo de respuesta
-</ResponseField>
-```
-
+  ```mdx Ejemplo de campo de respuesta
+  <ResponseField name="response" type="string" required>
+    Un ejemplo de campo de respuesta
+  </ResponseField>
+  ```
 </RequestExample>

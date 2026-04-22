@@ -1,94 +1,94 @@
 ---
 title: "Solución de problemas del firewall de Cloudflare"
-description: "Soluciona solicitudes bloqueadas y resuelve conflictos de reglas WAF de Cloudflare al servir documentación de Mintlify a través de Cloudflare Workers."
-keywords: ["Cloudflare WAF", "firewall rules", "Bot Fight Mode", "403 errors"]
+description: "Soluciona las solicitudes bloqueadas y resuelve los conflictos entre reglas de Cloudflare WAF al servir la documentación de Mintlify mediante Cloudflare Workers."
+keywords: ["Cloudflare WAF", "reglas de firewall", "Bot Fight Mode", "errores 403"]
 ---
 
-Si tu sitio de documentación muestra errores 500 tras unos segundos o la navegación se vuelve lenta, el firewall de Cloudflare podría estar bloqueando solicitudes a los recursos de Mintlify.
+Si tu sitio de documentación muestra errores 500 después de unos segundos o la navegación es lenta, es posible que el firewall de Cloudflare esté bloqueando las solicitudes a los recursos de Mintlify.
 
 <div id="symptoms">
   ## Síntomas
 </div>
 
-- La página de documentación carga inicialmente pero se bloquea con un error 500 después de 30–60 segundos
-- Navegación del lado del cliente lenta o interrumpida entre páginas
-- Errores 403 en la consola del navegador en solicitudes a las rutas `/mintlify-assets/*`
-- Mensajes de Cloudflare sobre desafíos de seguridad por “datos malformados” o “patrones de URL sospechosos”
+* La página de documentación carga al principio, pero devuelve un error 500 después de 30-60 segundos
+* Navegación entre páginas lenta o interrumpida en el cliente
+* Errores 403 en la consola del navegador para solicitudes a las rutas `/mintlify-assets/*`
+* Mensajes de verificación de seguridad de Cloudflare sobre &quot;datos malformados&quot; o &quot;patrones de URL sospechosos&quot;
 
 <div id="root-cause">
-  ## Causa raíz
+  ## Causa principal
 </div>
 
-El Firewall de aplicaciones web (WAF) y el Bot Fight Mode de Cloudflare pueden marcar como sospechosas las solicitudes de recursos de Mintlify debido a:
+El firewall de aplicaciones web (WAF) de Cloudflare y Bot Fight Mode pueden marcar como sospechosas las solicitudes de recursos de Mintlify por los siguientes motivos:
 
-- Múltiples símbolos «%» en parámetros de URL codificados
-- Cadenas de consulta largas con caracteres especiales
-- Solicitudes automatizadas desde pestañas inactivas
+* Varios símbolos `%` en parámetros de URL codificados
+* Cadenas de consulta largas con caracteres especiales
+* Solicitudes automatizadas desde pestañas inactivas
 
 <div id="solution">
   ## Solución
 </div>
 
-Crea una regla de firewall en Cloudflare para excluir los recursos de Mintlify de las comprobaciones de seguridad.
+Crea una regla de firewall en Cloudflare para excluir los recurso de Mintlify de las comprobaciones de seguridad.
 
 <div id="create-the-firewall-exception">
-  ### Crear la excepción del firewall
+  ### Crea la excepción en el firewall
 </div>
 
-1. Inicia sesión en tu [dashboard de Cloudflare](https://dash.cloudflare.com/)
-2. Selecciona tu domain
-3. Ve a **Security > WAF**
+1. Inicia sesión en tu [panel de Cloudflare](https://dash.cloudflare.com/)
+2. Selecciona tu dominio
+3. Ve a **Security &gt; WAF**
 4. Selecciona **Create rule**
 5. Configura la regla con estos ajustes:
 
-**Nombre de la regla:** Permitir assets de Mintlify
+**Nombre de la regla:** Permitir recursos de Mintlify
 
-**Cuando las solicitudes entrantes coincidan:**
+**Cuando las solicitudes entrantes coincidan con lo siguiente:**
 
-- Campo: `Hostname`
-- Operador: `equals`
-- Value: `docs.yourdomain.com` (reemplaza con tu domain real de documentación)
+* Campo: `Hostname`
+* Operador: `equals`
+* Valor: `docs.yourdomain.com` (sustitúyelo por el dominio real de tu documentación)
 
 **Y:**
 
-- Campo: `URI Path`
-- Operador: `starts with`
-- Value: `/mintlify-assets/`
+* Campo: `URI Path`
+* Operador: `starts with`
+* Valor: `/mintlify-assets/`
 
 **Entonces:**
 
-- Acción: `Skip`
-- Selecciona: `All remaining custom rules`, `Managed rules` y `Super Bot Fight Mode`
+* Acción: `Skip`
+* Selecciona: `All remaining custom rules`, `Managed rules` y `Super Bot Fight Mode`
 
-6. Activa **Log** para rastrear las solicitudes coincidentes
+6. Activa **Log** para registrar las solicitudes coincidentes
 7. Selecciona **Deploy**
 
 <div id="verify-the-rule">
   ### Verifica la regla
 </div>
 
-Después del despliegue:
+Después de desplegar:
 
 1. Abre tu sitio de documentación en un navegador
-2. Deja la página inactiva durante 2–3 minutos
-3. Navega entre páginas
-4. Revisa la consola del navegador en busca de errores 403
+2. Deja la página sin actividad durante 2-3 minutos
+3. Navega entre las páginas
+4. Revisa la consola del navegador para ver si hay errores 403
 
 Si los problemas persisten, verifica la configuración de la regla:
 
-- Asegúrate de que el hostname coincida exactamente con tu domain de docs
-- Confirma que la ruta URI use `starts with` (no `contains`)
-- No incluyas comodines (`*`) en el value de la ruta
-- Verifica que la regla esté habilitada y desplegada
+* Asegúrate de que el nombre de host coincida exactamente con el dominio de tu documentación
+* Confirma que la ruta URI use `starts with` (no `contains`)
+* No incluyas comodines (`*`) en el valor de la ruta
+* Verifica que la regla esté habilitada y desplegada
 
 <div id="common-mistakes">
   ## Errores comunes
 </div>
 
-- Usar el operador `contains` con `/mintlify-assets/*` - El `*` se interpreta como un carácter literal, no como un comodín
-- Usar `equals` para la ruta URI - Esto solo coincide con la ruta exacta `/mintlify-assets/` y no con subrutas
-- Olvidar excluir Bot Fight Mode - Esto debe incluirse explícitamente en la acción de exclusión
-- Nombre de host incorrecto - Debe coincidir con tu domain de documentación real
+* Usar el operador `contains` con `/mintlify-assets/*` - El `*` se interpreta como un carácter literal, no como un comodín
+* Usar `equals` para URI Path - Esto solo coincide con la ruta exacta `/mintlify-assets/` y no con las subrutas
+* Olvidar excluir Bot Fight Mode - Debes incluirlo explícitamente en la acción de exclusión
+* Nombre de host incorrecto - Debe coincidir con tu dominio de documentación real
 
 <div id="additional-troubleshooting">
   ## Solución de problemas adicional
@@ -96,23 +96,23 @@ Si los problemas persisten, verifica la configuración de la regla:
 
 Si la excepción del firewall no resuelve el problema:
 
-1. Revisa el registro de **Security > Events** de Cloudflare para detectar solicitudes bloqueadas
+1. Revisa el registro **Security &gt; Events** de Cloudflare para ver las solicitudes bloqueadas
 2. Verifica que tu Cloudflare Worker (si usas una subruta personalizada) reenvíe correctamente el encabezado `Host`
-3. Configura temporalmente el nivel de seguridad en “Essentially Off” para confirmar que Cloudflare es la causa
-4. Revisa cualquier Page Rule personalizada que pueda anular la excepción del firewall
+3. Establece temporalmente el nivel de seguridad en &quot;Essentially Off&quot; para confirmar que Cloudflare es la causa
+4. Revisa cualquier Page Rule personalizada que pueda estar anulando la excepción del firewall
 
 <div id="example-working-configuration">
   ## Ejemplo de configuración en funcionamiento
 </div>
 
 ```
-Regla: Permitir recursos de Mintlify
-Estado: Habilitado
+Rule: Allow Mintlify assets
+Status: Enabled
 
-Cuando las solicitudes entrantes coincidan:
+When incoming requests match:
   (http.host eq "docs.flashnet.xyz" and starts_with(http.request.uri.path, "/mintlify-assets/"))
 
-Entonces:
-  Omitir: Todas las reglas personalizadas restantes, Reglas administradas, Modo Super Bot Fight
-  Registro: Habilitado
+Then:
+  Skip: All remaining custom rules, Managed rules, Super Bot Fight Mode
+  Log: Enabled
 ```

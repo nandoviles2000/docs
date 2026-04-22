@@ -1,138 +1,159 @@
 ---
 title: "Estructura del sitio"
-description: "Configura la barra de navegación, navegación, pie de página, banner, menú contextual, redirecciones y otros ajustes estructurales en tu archivo `docs.json`."
-keywords: ["navbar", "navigation", "footer", "banner", "contextual", "redirects", "variables", "metadata", "docs.json"]
+description: "Configura la barra de navegación, los grupos de navegación, los enlaces del pie de página, el banner, el menú contextual, las redirecciones y otros elementos estructurales en el archivo docs.json."
+keywords: ["barra de navegación", "navegación", "pie de página", "banner", "contextual", "redirecciones", "variables", "metadatos", "docs.json"]
 ---
 
 import IconsOptional from "/snippets/es/icons-optional.mdx";
 
-Usa estos ajustes en tu archivo `docs.json` para controlar la arquitectura de información y la experiencia de usuario de tu sitio. Modifica la barra de navegación, pie de página, banners, comportamiento de navegación, menús contextuales, redirecciones y variables de contenido globales.
+Usa esta configuración en tu archivo `docs.json` para controlar la arquitectura de la información y la experiencia del usuario de tu sitio. Modifica la barra de navegación, el pie de página, los banners, el comportamiento de la navegación, los menús contextuales, las redirecciones y las variables globales de contenido.
 
-## Ajustes
+<div id="settings">
+  ## Configuración
+</div>
 
-### `navigation` - <Badge color="red">required</Badge>
+### `navigation` - <Badge color="red">obligatorio</Badge>
 
 **Tipo:** `object`
 
-La estructura de navegación de tu contenido. Aquí es donde defines la jerarquía completa de páginas de tu sitio usando grupos, pestañas, desplegables, anclas y más.
+La estructura de navegación de tu contenido. Aquí defines la jerarquía completa de páginas de tu sitio con grupos, pestañas, menús desplegables, anclas y más.
 
-Consulta [Navegación](/es/organize/navigation) para obtener documentación completa sobre cómo construir tu estructura de navegación.
+Consulta [Navegación](/es/organize/navigation) para ver la documentación completa sobre cómo crear tu estructura de navegación.
 
 <ResponseField name="navigation.global" type="object">
-  Elementos de navegación globales que aparecen en todas las páginas y configuraciones regionales.
+  Elementos de navegación globales que aparecen en todas las páginas e idiomas.
 
   <Expandable title="navigation.global">
-    <ResponseField name="tabs" type="array of object">
-      Pestañas de navegación de nivel superior para organizar secciones principales. Consulta [Pestañas](/es/organize/navigation#tabs).
+    <ResponseField name="pestañas" type="array of object">
+      Pestañas de navegación de nivel superior para organizar las secciones principales. Consulta [Pestañas](/es/organize/navigation#tabs).
 
-      <Expandable title="tabs">
+      <Expandable title="pestañas">
         <ResponseField name="tab" type="string" required>
           Nombre visible de la pestaña. Longitud mínima: 1.
         </ResponseField>
+
         <IconsOptional />
+
         <ResponseField name="hidden" type="boolean">
-          Si se debe ocultar esta pestaña de forma predeterminada.
+          Si esta pestaña debe ocultarse de forma predeterminada.
         </ResponseField>
+
         <ResponseField name="href" type="string (uri)" required>
-          URL o ruta para el destino de la pestaña.
+          URL o ruta de destino de la pestaña.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
-    <ResponseField name="anchors" type="array of object">
-      Enlaces con ancla que aparecen de forma destacada en la barra lateral. Consulta [Anclas](/es/organize/navigation#anchors).
+    <ResponseField name="anclas" type="array of object">
+      Enlaces anclados que aparecen de forma destacada en la barra lateral. Consulta [Anclas](/es/organize/navigation#anchors).
 
       <Expandable title="anchors">
         <ResponseField name="anchor" type="string" required>
           Nombre visible del ancla. Longitud mínima: 1.
         </ResponseField>
+
         <IconsOptional />
+
         <ResponseField name="color" type="object">
           Colores personalizados para el icono del ancla.
 
           <Expandable title="color">
             <ResponseField name="light" type="string">
-              Color del ancla para el modo claro. Debe ser un código hexadecimal que comience con `#`.
+              Color del icono del ancla para el modo claro. Debe ser un código hexadecimal que empiece por `#`.
             </ResponseField>
+
             <ResponseField name="dark" type="string">
-              Color del ancla para el modo oscuro. Debe ser un código hexadecimal que comience con `#`.
+              Color del icono del ancla para el modo oscuro. Debe ser un código hexadecimal que empiece por `#`.
             </ResponseField>
           </Expandable>
         </ResponseField>
+
         <ResponseField name="hidden" type="boolean">
-          Si se debe ocultar este ancla de forma predeterminada.
+          Indica si este ancla debe ocultarse de forma predeterminada.
         </ResponseField>
+
         <ResponseField name="href" type="string (uri)" required>
-          URL o ruta para el destino del ancla.
+          URL o ruta del destino del ancla.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
-    <ResponseField name="dropdowns" type="array of object">
-      Menús desplegables para organizar contenido relacionado. Consulta [Desplegables](/es/organize/navigation#dropdowns).
+    <ResponseField name="menús desplegables" type="array of object">
+      Menús desplegables para organizar contenido relacionado. Consulta [Dropdowns](/es/organize/navigation#dropdowns).
 
-      <Expandable title="dropdowns">
+      <Expandable title="desplegables">
         <ResponseField name="dropdown" type="string" required>
           Nombre visible del desplegable. Longitud mínima: 1.
         </ResponseField>
+
         <IconsOptional />
+
         <ResponseField name="hidden" type="boolean">
-          Si se debe ocultar este desplegable de forma predeterminada.
+          Indica si este desplegable debe ocultarse de forma predeterminada.
         </ResponseField>
+
         <ResponseField name="href" type="string (uri)" required>
-          URL o ruta para el destino del desplegable.
+          URL o ruta de destino del desplegable.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
-    <ResponseField name="languages" type="array of object">
-      Configuración del selector de idioma para sitios localizados. Consulta [Idiomas](/es/organize/navigation#languages).
+    <ResponseField name="idiomas" type="array of object">
+      Configuración del selector de idioma para sitios multilingües. Consulta [Idiomas](/es/organize/navigation#languages).
 
       <Expandable title="languages">
-        <ResponseField name="language" type='"ar" | "ca" | "cn" | "cs" | "de" | "en" | "es" | "fi" | "fr" | "fr-CA" | "he" | "hi" | "hu" | "id" | "it" | "ja" | "jp" | "ko" | "lv" | "nl" | "no" | "pl" | "pt" | "pt-BR" | "ro" | "ru" | "sv" | "tr" | "uk" | "uz" | "vi" | "zh" | "zh-Hans" | "zh-Hant"' required>
+        <ResponseField name="language" type="&#x22;ar&#x22; | &#x22;ca&#x22; | &#x22;cn&#x22; | &#x22;cs&#x22; | &#x22;de&#x22; | &#x22;en&#x22; | &#x22;es&#x22; | &#x22;fi&#x22; | &#x22;fr&#x22; | &#x22;fr-CA&#x22; | &#x22;he&#x22; | &#x22;hi&#x22; | &#x22;hu&#x22; | &#x22;id&#x22; | &#x22;it&#x22; | &#x22;ja&#x22; | &#x22;jp&#x22; | &#x22;ko&#x22; | &#x22;lv&#x22; | &#x22;nl&#x22; | &#x22;no&#x22; | &#x22;pl&#x22; | &#x22;pt&#x22; | &#x22;pt-BR&#x22; | &#x22;ro&#x22; | &#x22;ru&#x22; | &#x22;sv&#x22; | &#x22;tr&#x22; | &#x22;uk&#x22; | &#x22;uz&#x22; | &#x22;vi&#x22; | &#x22;zh&#x22; | &#x22;zh-Hans&#x22; | &#x22;zh-Hant&#x22;" required>
           Código de idioma en formato [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1).
         </ResponseField>
+
         <ResponseField name="default" type="boolean">
-          Si este es el idioma predeterminado.
+          Indica si este es el idioma predeterminado.
         </ResponseField>
+
         <ResponseField name="hidden" type="boolean">
-          Si se debe ocultar esta opción de idioma de forma predeterminada.
+          Indica si esta opción de idioma debe ocultarse de forma predeterminada.
         </ResponseField>
+
         <ResponseField name="href" type="string (uri)" required>
-          Una ruta válida o enlace externo a esta versión de tu documentación.
+          Una ruta válida o un enlace externo a esta versión de tu documentación en este idioma.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
-    <ResponseField name="versions" type="array of object">
-      Configuración del selector de versiones para sitios con múltiples versiones. Consulta [Versiones](/es/organize/navigation#versions).
+    <ResponseField name="versiones" type="array of object">
+      Configuración del selector de versiones para sitios con varias versiones. Consulta [Versiones](/es/organize/navigation#versions).
 
-      <Expandable title="versions">
+      <Expandable title="versiones">
         <ResponseField name="version" type="string" required>
-          Nombre visible de la versión. Longitud mínima: 1.
+          Nombre para mostrar de la versión. Longitud mínima: 1.
         </ResponseField>
+
         <ResponseField name="default" type="boolean">
-          Si esta es la versión predeterminada.
+          Indica si esta es la versión predeterminada.
         </ResponseField>
+
         <ResponseField name="hidden" type="boolean">
-          Si se debe ocultar esta versión de forma predeterminada.
+          Indica si esta versión debe ocultarse de forma predeterminada.
         </ResponseField>
+
         <ResponseField name="href" type="string (uri)" required>
-          URL o ruta a esta versión de tu documentación.
+          URL o ruta de esta versión de tu documentación.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
-    <ResponseField name="products" type="array of object">
-      Selector de productos para sitios con múltiples productos. Consulta [Productos](/es/organize/navigation#products).
+    <ResponseField name="productos" type="array of object">
+      Selector de productos para sitios que incluyen varios productos. Consulta [Productos](/es/organize/navigation#products).
 
-      <Expandable title="products">
+      <Expandable title="productos">
         <ResponseField name="product" type="string" required>
-          Nombre visible del producto.
+          Nombre del producto que se muestra.
         </ResponseField>
+
         <ResponseField name="description" type="string">
           Descripción del producto.
         </ResponseField>
+
         <IconsOptional />
       </Expandable>
     </ResponseField>
@@ -140,37 +161,43 @@ Consulta [Navegación](/es/organize/navigation) para obtener documentación comp
 </ResponseField>
 
 <ResponseField name="navigation.languages" type="array of object">
-  Selector de idioma para sitios [multi-idioma](/es/organize/navigation#languages). Cada entrada puede incluir configuraciones específicas del idioma para `banner`, `footer` y `navbar`, además de la estructura de navegación.
+  Selector de idioma para sitios [multilingües](/es/organize/navigation#languages). Cada entrada puede incluir configuraciones de `banner`, `footer` y `navbar` específicas por idioma, además de la estructura de Navegación.
 
   <Expandable title="navigation.languages">
-    <ResponseField name="language" type='"ar" | "ca" | "cn" | "cs" | "de" | "en" | "es" | "fi" | "fr" | "fr-CA" | "he" | "hi" | "hu" | "id" | "it" | "ja" | "jp" | "ko" | "lv" | "nl" | "no" | "pl" | "pt" | "pt-BR" | "ro" | "ru" | "sv" | "tr" | "uk" | "uz" | "vi" | "zh" | "zh-Hans" | "zh-Hant"' required>
-      Código de idioma en formato [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1).
+    <ResponseField name="language" type="&#x22;ar&#x22; | &#x22;ca&#x22; | &#x22;cn&#x22; | &#x22;cs&#x22; | &#x22;de&#x22; | &#x22;en&#x22; | &#x22;es&#x22; | &#x22;fi&#x22; | &#x22;fr&#x22; | &#x22;fr-CA&#x22; | &#x22;he&#x22; | &#x22;hi&#x22; | &#x22;hu&#x22; | &#x22;id&#x22; | &#x22;it&#x22; | &#x22;ja&#x22; | &#x22;jp&#x22; | &#x22;ko&#x22; | &#x22;lv&#x22; | &#x22;nl&#x22; | &#x22;no&#x22; | &#x22;pl&#x22; | &#x22;pt&#x22; | &#x22;pt-BR&#x22; | &#x22;ro&#x22; | &#x22;ru&#x22; | &#x22;sv&#x22; | &#x22;tr&#x22; | &#x22;uk&#x22; | &#x22;uz&#x22; | &#x22;vi&#x22; | &#x22;zh&#x22; | &#x22;zh-Hans&#x22; | &#x22;zh-Hant&#x22;" required>
+      Código de idioma en formato ISO 639-1.
     </ResponseField>
+
     <ResponseField name="default" type="boolean">
-      Si este es el idioma predeterminado.
+      Indica si este es el idioma predeterminado.
     </ResponseField>
+
     <ResponseField name="banner" type="object">
       Configuración del banner específica del idioma. Acepta las mismas opciones que el campo [`banner`](#banner) de nivel superior.
     </ResponseField>
+
     <ResponseField name="footer" type="object">
       Configuración del pie de página específica del idioma. Acepta las mismas opciones que el campo [`footer`](#footer) de nivel superior.
     </ResponseField>
+
     <ResponseField name="navbar" type="object">
       Configuración de la barra de navegación específica del idioma. Acepta las mismas opciones que el campo [`navbar`](#navbar) de nivel superior.
     </ResponseField>
+
     <ResponseField name="hidden" type="boolean">
-      Si se debe ocultar esta opción de idioma de forma predeterminada.
+      Indica si esta opción de idioma debe ocultarse de forma predeterminada.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="navigation.versions" type="array of object">
-  Selector de versiones para sitios con [múltiples versiones](/es/organize/navigation#versions).
+  Selector de versión para sitios con [varias versiones](/es/organize/navigation#versions).
 
   <Expandable title="navigation.versions">
     <ResponseField name="default" type="boolean">
-      Establécelo en `true` para hacer esta la versión predeterminada. Si se omite, la primera versión del array es la predeterminada.
+      Establécelo en `true` para convertirla en la versión predeterminada. Si se omite, la primera versión de la matriz será la predeterminada.
     </ResponseField>
+
     <ResponseField name="tag" type="string">
       Etiqueta de insignia que se muestra junto a la versión en el selector. Úsala para destacar versiones como `"Latest"`, `"Recommended"` o `"Beta"`.
     </ResponseField>
@@ -186,11 +213,11 @@ Consulta [Navegación](/es/organize/navigation) para obtener documentación comp
 </ResponseField>
 
 <ResponseField name="navigation.dropdowns" type="array of object">
-  [Desplegables](/es/organize/navigation#dropdowns) para agrupar contenido relacionado.
+  [Menús desplegables](/es/organize/navigation#dropdowns) para agrupar contenido relacionado.
 </ResponseField>
 
 <ResponseField name="navigation.products" type="array of object">
-  Selector de productos para sitios con múltiples [productos](/es/organize/navigation#products).
+  Selector de producto para sitios con varios [productos](/es/organize/navigation#products).
 </ResponseField>
 
 <ResponseField name="navigation.groups" type="array of object">
@@ -198,50 +225,57 @@ Consulta [Navegación](/es/organize/navigation) para obtener documentación comp
 </ResponseField>
 
 <ResponseField name="navigation.pages" type="array of string or object">
-  [Páginas](/es/organize/navigation#pages) individuales que conforman tu documentación.
+  [Páginas](/es/organize/navigation#pages) individuales que componen tu documentación.
 </ResponseField>
 
-<ResponseField name="navigation.directory" type='"none" | "accordion" | "card"'>
-  Diseño de directorio para páginas raíz en grupos de navegación. Cuando se establece, los grupos con una página `root` muestran automáticamente un listado de sus páginas secundarias debajo del contenido de la página. Los valores se heredan recursivamente a través del árbol de navegación; los descendientes pueden sobreescribirlos. Consulta [Listados de directorio](/es/organize/navigation#directory-listings).
+<ResponseField name="navigation.directory" type="&#x22;none&#x22; | &#x22;accordion&#x22; | &#x22;card&#x22;">
+  Diseño de directorio para las páginas raíz de los grupos de navegación. Cuando se configura, los grupos con una página `root` muestran automáticamente una lista de sus elementos secundarios debajo del contenido de la página. Los valores se heredan de forma recursiva a través del árbol de navegación; los descendientes pueden sobrescribirlos. Consulta [Listados de directorios](/es/organize/navigation#directory-listings).
 </ResponseField>
 
----
+***
 
-### `navbar`
+<div id="navbar">
+  ### `navbar`
+</div>
 
-**Tipo:** `object`
+**Type:** `object`
 
 Enlaces y botones que se muestran en la barra de navegación superior.
 
 <ResponseField name="navbar.links" type="array of object">
-  Enlaces que se mostrarán en la barra de navegación.
+  Enlaces que se muestran en la barra de navegación.
 
   <Expandable title="navbar.links">
-    <ResponseField name="type" type='"github" | "discord"'>
-      Tipo de enlace opcional. Omítelo para un enlace de texto estándar. Establécelo en `github` para enlazar a un repositorio de GitHub y mostrar el conteo de estrellas. Establécelo en `discord` para enlazar a un servidor de Discord y mostrar el número de usuarios en línea.
+    <ResponseField name="type" type="&#x22;github&#x22; | &#x22;discord&#x22;">
+      Tipo de enlace opcional. Omítelo para usar un enlace de texto estándar. Usa `github` para enlazar a un repositorio de GitHub y mostrar su número de estrellas. Usa `discord` para enlazar a un servidor de Discord y mostrar su número de usuarios en línea.
     </ResponseField>
+
     <ResponseField name="label" type="string">
-      Texto del enlace. Obligatorio cuando `type` no está definido. Opcional para `github` y `discord`. Si se omite, Mintlify genera el texto a partir de los datos de la API.
+      Texto del enlace. Obligatorio cuando no se especifica `type`. Opcional para `github` y `discord`. Si se omite, Mintlify genera el texto a partir de los datos de la API.
     </ResponseField>
+
     <ResponseField name="href" type="string (uri)" required>
-      Destino del enlace. Debe ser una URL externa válida. Para `github`, debe ser una URL de repositorio de GitHub. Para `discord`, debe ser una URL de invitación de Discord.
+      Destino del enlace. Debe ser una URL externa válida. Para `github`, debe ser la URL de un repositorio de GitHub. Para `discord`, debe ser una URL de invitación de Discord.
     </ResponseField>
+
     <IconsOptional />
   </Expandable>
 </ResponseField>
 
 <ResponseField name="navbar.primary" type="object">
-  Botón principal de llamada a la acción en la barra de navegación.
+  Botón de llamada a la acción principal de la barra de navegación.
 
   <Expandable title="navbar.primary">
-    <ResponseField name="type" type='"button" | "github" | "discord"' required>
-      Estilo del botón. Elige `button` para un botón estándar, `github` para un enlace a un repositorio de GitHub con conteo de estrellas, o `discord` para una invitación a Discord con conteo de usuarios en línea.
+    <ResponseField name="type" type="&#x22;button&#x22; | &#x22;github&#x22; | &#x22;discord&#x22;" required>
+      Estilo del botón. Elige `button` para un botón estándar, `github` para un enlace a un repositorio de GitHub con número de estrellas o `discord` para una invitación de Discord con número de usuarios en línea.
     </ResponseField>
+
     <ResponseField name="label" type="string">
       Texto del botón. Obligatorio cuando `type` es `button`. Opcional para `github` y `discord`.
     </ResponseField>
+
     <ResponseField name="href" type="string (uri)" required>
-      Destino del botón. Debe ser una URL externa. Para `github`, debe ser una URL de repositorio de GitHub. Para `discord`, debe ser una URL de invitación de Discord.
+      Destino del botón. Debe ser una URL externa. Para `github`, debe ser la URL de un repositorio de GitHub. Para `discord`, debe ser una URL de invitación de Discord.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -250,19 +284,21 @@ Enlaces y botones que se muestran en la barra de navegación superior.
 "navbar": {
   "links": [
     { "type": "github", "href": "https://github.com/your-org/your-repo" },
-    { "label": "Comunidad", "href": "https://example.com/community" }
+    { "label": "Community", "href": "https://example.com/community" }
   ],
   "primary": {
     "type": "button",
-    "label": "Comenzar",
+    "label": "Get started",
     "href": "https://example.com/signup"
   }
 }
 ```
 
----
+***
 
-### `footer`
+<div id="footer">
+  ### `footer`
+</div>
 
 **Tipo:** `object`
 
@@ -288,6 +324,7 @@ Contenido del pie de página y enlaces a redes sociales.
     <ResponseField name="header" type="string">
       Título de la columna. Longitud mínima: 1.
     </ResponseField>
+
     <ResponseField name="items" type="array of object" required>
       Enlaces que se mostrarán en la columna.
 
@@ -295,6 +332,7 @@ Contenido del pie de página y enlaces a redes sociales.
         <ResponseField name="label" type="string" required>
           Texto del enlace. Longitud mínima: 1.
         </ResponseField>
+
         <ResponseField name="href" type="string (uri)" required>
           URL de destino del enlace.
         </ResponseField>
@@ -311,26 +349,28 @@ Contenido del pie de página y enlaces a redes sociales.
   },
   "links": [
     {
-      "header": "Empresa",
+      "header": "Company",
       "items": [
         { "label": "Blog", "href": "https://example.com/blog" },
-        { "label": "Carreras", "href": "https://example.com/careers" }
+        { "label": "Careers", "href": "https://example.com/careers" }
       ]
     }
   ]
 }
 ```
 
----
+***
 
-### `banner`
+<div id="banner">
+  ### `banner`
+</div>
 
 **Tipo:** `object`
 
-Un banner para todo el sitio que se muestra en la parte superior de cada página.
+Un banner visible en todo el sitio que se muestra en la parte superior de cada página.
 
 <ResponseField name="banner.content" type="string" required>
-  El contenido de texto que se muestra en el banner. Admite formato MDX básico, incluidos enlaces, texto en negrita y texto en cursiva. Los componentes personalizados no son compatibles.
+  El contenido de texto que se muestra en el banner. Admite formato básico de MDX, incluidos enlaces y texto en negrita y cursiva. No se admiten componentes personalizados.
 
   ```json
   "content": "Acabamos de lanzar algo nuevo. [Más información](https://example.com)"
@@ -338,84 +378,93 @@ Un banner para todo el sitio que se muestra en la parte superior de cada página
 </ResponseField>
 
 <ResponseField name="banner.dismissible" type="boolean">
-  Si se debe mostrar un botón para descartar para que los usuarios puedan cerrar el banner. El valor predeterminado es `false`.
+  Indica si se muestra un botón para descartar el banner, de modo que los usuarios puedan cerrarlo. El valor predeterminado es `false`.
 </ResponseField>
 
 ```json docs.json
 "banner": {
-  "content": "Acabamos de lanzar algo nuevo. [Más información](https://example.com)",
+  "content": "We just launched something new. [Learn more](https://example.com)",
   "dismissible": true
 }
 ```
 
----
+***
 
-### `interaction`
+<div id="interaction">
+  ### `interaction`
+</div>
 
 **Tipo:** `object`
 
-Controla el comportamiento de interacción del usuario para los elementos de navegación.
+Controla cómo interactúan los usuarios con los elementos de navegación.
 
 <ResponseField name="interaction.drilldown" type="boolean">
-  Controla la navegación automática al seleccionar un grupo de navegación. Establécelo en `true` para navegar automáticamente a la primera página cuando se expande un grupo. Establécelo en `false` para solo expandir o contraer el grupo sin navegar. Déjalo sin establecer para usar el comportamiento predeterminado del tema.
+  Controla la navegación automática al seleccionar un grupo de navegación. Establece `true` para navegar automáticamente a la primera página cuando se expanda un grupo. Establece `false` para solo expandir o contraer el grupo sin navegar. Déjalo sin definir para usar el comportamiento predeterminado del tema.
 </ResponseField>
 
----
+***
 
-### `contextual`
+<div id="contextual">
+  ### `contextual`
+</div>
 
-**Tipo:** `object`
+**Type:** `object`
 
-El menú contextual brinda a los usuarios acceso rápido a herramientas de IA y acciones de la página. Aparece en el encabezado de la página o en la barra lateral de la tabla de contenidos.
+El menú contextual ofrece a los usuarios acceso rápido a herramientas de IA y acciones de la página. Aparece en el encabezado de la página o en la barra lateral de la tabla de contenidos.
 
 <Note>
   El menú contextual solo está disponible en los despliegues de vista previa y producción.
 </Note>
 
 <ResponseField name="contextual.options" type="array" required>
-  Acciones disponibles en el menú contextual. La primera opción del array aparece como la acción predeterminada.
+  Acciones disponibles en el menú contextual. La primera opción del array aparece como acción predeterminada.
 
-  Opciones integradas:
-  - `"add-mcp"` — Agrega tu servidor MCP a la configuración del usuario
-  - `"aistudio"` — Envía la página actual a Google AI Studio
-  - `"assistant"` — Abre el asistente de IA con la página actual como contexto
-  - `"copy"` — Copia la página actual como Markdown en el portapapeles
-  - `"chatgpt"` — Envía la página actual a ChatGPT
-  - `"claude"` — Envía la página actual a Claude
-  - `"cursor"` — Instala tu servidor MCP alojado en Cursor
-  - `"devin"` — Envía la página actual a Devin
-  - `"devin-mcp"` — Instala tu servidor MCP alojado en Devin
-  - `"grok"` — Envía la página actual a Grok
-  - `"mcp"` — Copia la URL de tu servidor MCP en el portapapeles
-  - `"perplexity"` — Envía la página actual a Perplexity
-  - `"view"` — Ver la página actual como Markdown en una nueva pestaña
-  - `"vscode"` — Instala tu servidor MCP alojado en VS Code
-  - `"windsurf"` — Envía la página actual a Windsurf
+  Opciones predefinidas:
+
+  * `"add-mcp"` — Añade tu MCP server a la configuración del usuario
+  * `"aistudio"` — Envía la página actual a Google AI Studio
+  * `"assistant"` — Abre el asistente de IA con la página actual como contexto
+  * `"copy"` — Copia la página actual como Markdown al portapapeles
+  * `"chatgpt"` — Envía la página actual a ChatGPT
+  * `"claude"` — Envía la página actual a Claude
+  * `"cursor"` — Instala tu MCP server alojado en Cursor
+  * `"devin"` — Envía la página actual a Devin
+  * `"devin-mcp"` — Instala tu MCP server alojado en Devin
+  * `"grok"` — Envía la página actual a Grok
+  * `"mcp"` — Copia la URL de tu MCP server al portapapeles
+  * `"perplexity"` — Envía la página actual a Perplexity
+  * `"view"` — Abre la página actual como Markdown en una pestaña nueva
+  * `"vscode"` — Instala tu MCP server alojado en VS Code
+  * `"windsurf"` — Envía la página actual a Windsurf
 
   Define opciones personalizadas como objetos:
 
   <Expandable title="Opción personalizada">
     <ResponseField name="title" type="string" required>
-      Título visible para la opción personalizada.
+      Título visible de la opción personalizada.
     </ResponseField>
+
     <ResponseField name="description" type="string" required>
-      Texto de descripción para la opción personalizada.
+      Texto descriptivo de la opción personalizada.
     </ResponseField>
+
     <ResponseField name="icon" type="string">
-      Icono para la opción personalizada. Admite nombres de la biblioteca de iconos, URLs, rutas o código SVG.
+      Icono de la opción personalizada. Admite nombres de bibliotecas de iconos, URL, rutas o código SVG.
     </ResponseField>
+
     <ResponseField name="href" type="string or object" required>
-      Destino del enlace. Puede ser una cadena de URL o un objeto con `base` y parámetros `query` opcionales.
+      Destino del enlace. Puede ser una cadena con una URL o un objeto con `base` y el parámetro opcional `query`.
 
       Valores de marcador de posición disponibles:
-      - `$page` — Contenido de la página actual
-      - `$path` — Ruta de la página actual
-      - `$mcp` — URL del servidor MCP
+
+      * `$page` — Contenido de la página actual
+      * `$path` — Ruta de la página actual
+      * `$mcp` — URL del MCP server
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-<ResponseField name="contextual.display" type='"header" | "toc"'>
+<ResponseField name="contextual.display" type="&#x22;header&#x22; | &#x22;toc&#x22;">
   Dónde mostrar las opciones contextuales. Elige `header` para mostrarlas en el menú contextual de la parte superior de la página, o `toc` para mostrarlas en la barra lateral de la tabla de contenidos. El valor predeterminado es `header`.
 </ResponseField>
 
@@ -426,20 +475,22 @@ El menú contextual brinda a los usuarios acceso rápido a herramientas de IA y 
 }
 ```
 
----
+***
 
-### `redirects`
+<div id="redirects">
+  ### `redirects`
+</div>
 
-**Tipo:** `array of object`
+**Tipo:** `matriz de objetos`
 
-Redirecciones para páginas movidas, renombradas o eliminadas. Úsalas para preservar enlaces cuando reorganizas tu contenido.
+Redirecciones para páginas movidas, renombradas o eliminadas. Úsalas para conservar los enlaces al reorganizar tu contenido.
 
 <ResponseField name="redirects[].source" type="string" required>
-  La ruta desde la que redirigir. Ejemplo: `/old-page`
+  La ruta desde la que se redirige. Ejemplo: `/old-page`
 </ResponseField>
 
 <ResponseField name="redirects[].destination" type="string" required>
-  La ruta a la que redirigir. Ejemplo: `/new-page`
+  La ruta a la que se redirige. Ejemplo: `/new-page`
 </ResponseField>
 
 <ResponseField name="redirects[].permanent" type="boolean">
@@ -460,24 +511,28 @@ Redirecciones para páginas movidas, renombradas o eliminadas. Úsalas para pres
 ]
 ```
 
----
+***
 
-### `errors`
+<div id="errors">
+  ### `errors`
+</div>
 
-**Tipo:** `object`
+**Type:** `object`
 
-Configuración de páginas de error personalizadas.
+Configuración personalizada de las páginas de error.
 
 <ResponseField name="errors.404" type="object">
-  Configuración para la página de error 404 "Página no encontrada".
+  Configuración de la página de error 404 &quot;Página no encontrada&quot;.
 
   <Expandable title="errors.404">
     <ResponseField name="redirect" type="boolean">
-      Si se debe redirigir automáticamente a la página de inicio cuando no se encuentra una página. El valor predeterminado es `true`.
+      Indica si se redirige automáticamente a la página de inicio cuando no se encuentra una página. El valor predeterminado es `true`.
     </ResponseField>
+
     <ResponseField name="title" type="string">
       Título personalizado para la página 404.
     </ResponseField>
+
     <ResponseField name="description" type="string">
       Descripción personalizada para la página 404. Admite formato MDX, incluidos enlaces, texto en negrita y cursiva, y componentes personalizados.
     </ResponseField>
@@ -488,26 +543,28 @@ Configuración de páginas de error personalizadas.
 "errors": {
   "404": {
     "redirect": false,
-    "title": "Página no encontrada",
-    "description": "La página que buscas no existe. [Ir al inicio](/)."
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist. [Go home](/)."
   }
 }
 ```
 
----
+***
 
-### `variables`
+<div id="variables">
+  ### `variables`
+</div>
 
 **Tipo:** `object`
 
-Variables globales para usar en toda tu documentación. Mintlify reemplaza los marcadores de posición `{{variableName}}` con los valores definidos en tiempo de compilación.
+Variables globales para usar en toda la documentación. Mintlify reemplaza los marcadores de posición `{{variableName}}` con los valores definidos en el momento de la compilación.
 
 <ResponseField name="variables.[variableName]" type="string">
-  Un par clave-valor donde la clave es el nombre de la variable y el valor es el texto de reemplazo.
+  Un par clave-valor en el que la clave es el nombre de la variable y el valor es el texto de reemplazo.
 
-  - Los nombres de variables pueden contener caracteres alfanuméricos y guiones.
-  - Debes definir todas las variables referenciadas en tu contenido o la compilación fallará.
-  - Mintlify sanitiza los valores para prevenir ataques XSS.
+  * Los nombres de las variables pueden contener caracteres alfanuméricos y guiones.
+  * Debes definir todas las variables a las que se haga referencia en tu contenido; de lo contrario, la compilación fallará.
+  * Mintlify sanitiza los valores para evitar ataques XSS.
 </ResponseField>
 
 ```json docs.json
@@ -517,24 +574,26 @@ Variables globales para usar en toda tu documentación. Mintlify reemplaza los m
 }
 ```
 
-En tu contenido, referencia las variables con dobles llaves:
+En tu contenido, haz referencia a las variables entre llaves dobles:
 
 ```mdx
-La versión actual es {{version}}. Realiza solicitudes a {{api-url}}.
+The current version is {{version}}. Make requests to {{api-url}}.
 ```
 
----
+***
 
-### `metadata`
+<div id="metadata">
+  ### `metadata`
+</div>
 
 **Tipo:** `object`
 
-Configuración de metadatos a nivel de página aplicada globalmente.
+Configuración de metadatos a nivel de página que se aplica globalmente.
 
 <ResponseField name="metadata.timestamp" type="boolean">
-  Habilita una fecha de última modificación en todas las páginas. Cuando está habilitado, las páginas muestran la fecha en que el contenido fue modificado por última vez. El valor predeterminado es `false`.
+  Habilita una fecha de última modificación en todas las páginas. Cuando está habilitada, las páginas muestran la fecha en que se modificó el contenido por última vez. El valor predeterminado es `false`.
 
-  Puedes sobrescribir esta configuración en páginas individuales usando el campo de frontmatter `timestamp`. Consulta [Páginas](/es/organize/pages#last-modified-timestamp) para más detalles.
+  Puedes anular esta configuración en páginas individuales mediante el campo `timestamp` del frontmatter. Consulta [Páginas](/es/organize/pages#last-modified-timestamp) para obtener más información.
 </ResponseField>
 
 ```json docs.json

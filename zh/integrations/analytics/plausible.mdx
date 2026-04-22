@@ -1,32 +1,30 @@
 ---
 title: "Plausible"
-description: "将 Plausible Analytics 集成到你的 Mintlify 文档，实现轻量级、尊重隐私的访客跟踪，无需 Cookie 或同意横幅。"
-keywords: ["Plausible Analytics", "privacy-respecting analytics", "self-hosted analytics", "domain configuration"]
+description: "将 Plausible Analytics 集成到你的 Mintlify 文档中，以轻量且尊重隐私的方式跟踪访客，无需使用 Cookie 或征得同意的横幅。"
+keywords: ["Plausible Analytics", "注重隐私的分析", "自托管分析", "域名配置"]
 ---
 
-在 `docs.json` 中添加你站点的 domain，以将 Analytics 发送至 Plausible。
+将站点域名添加到 `docs.json` 中，以便将分析数据发送到 Plausible。
 
 <Info>
-  为 domain 或服务器填写时不要包含 `https://`。
+  域名或服务器地址中不要包含 `https://`。
 </Info>
 
 <CodeGroup>
+  ```json docs.json 中的分析选项
+  "integrations": {
+      "plausible": {
+          "domain": "必填 - 你的文档域名",
+          "server": "可选 - 你的自托管 Plausible 服务器 URL"
+      }
+  }
+  ```
 
-```json docs.json 中的 Analytics 选项
-"integrations": {
-    "plausible": {
-        "domain": "required - your documentation domain",
-        "server": "optional - your self-hosted Plausible server URL"
-    }
-}
-```
-
-```json 示例
-"integrations": {
-    "plausible": {
-        "domain": "docs.domain.com"
-    }
-}
-```
-
+  ```json 示例
+  "integrations": {
+      "plausible": {
+          "domain": "docs.domain.com"
+      }
+  }
+  ```
 </CodeGroup>

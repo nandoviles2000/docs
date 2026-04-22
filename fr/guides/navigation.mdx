@@ -2,180 +2,183 @@
 title: "Comment structurer la navigation de la documentation"
 sidebarTitle: "Navigation"
 description: "Concevez une navigation de documentation qui aide les utilisateurs à trouver ce dont ils ont besoin grâce à une architecture de l'information claire, un regroupement logique et une structure validée."
-keywords: ["navigation de documentation", "architecture de l'information", "structure de documentation", "navigation latérale", "conception de navigation"]
+keywords: ["navigation de la documentation", "architecture de l'information", "structure de la documentation", "navigation de la barre latérale", "conception de la navigation"]
 ---
 
-La navigation façonne la manière dont les utilisateurs construisent un modèle mental de votre produit. Une navigation bien conçue aide les utilisateurs à trouver des réponses rapidement, à comprendre comment les différentes parties du produit sont liées et à se sentir confiants qu'ils sont au bon endroit. Une mauvaise navigation envoie les utilisateurs vers les moteurs de recherche, les tickets de support ou la documentation de vos concurrents.
+La navigation façonne la manière dont les utilisateurs se représentent mentalement votre produit. Une navigation bien conçue les aide à trouver rapidement des réponses, à comprendre comment les différentes parties du produit s&#39;articulent entre elles et à avoir l&#39;assurance d&#39;être au bon endroit. Une navigation mal pensée les renvoie vers les moteurs de recherche, les tickets de support ou la documentation de vos concurrents.
 
-Ce guide couvre comment concevoir, valider et maintenir une navigation de documentation qui fonctionne pour de vrais utilisateurs.
+Ce guide explique comment concevoir, valider et maintenir une navigation de documentation adaptée à de vrais utilisateurs.
 
 <div id="start-by-understanding-your-users-and-product">
-## Commencez par comprendre vos utilisateurs et votre produit
+  ## Commencez par comprendre vos utilisateurs et votre produit
 </div>
 
-Avant d'organiser les pages, alignez-vous avec les personnes qui connaissent le mieux votre produit et vos utilisateurs.
+Avant d&#39;organiser les pages, échangez avec les personnes qui connaissent le mieux votre produit et vos utilisateurs.
 
 <div id="map-the-foundation-with-stakeholders">
-### Établissez les bases avec les parties prenantes
+  ### Posez les bases avec les parties prenantes
 </div>
 
-Discutez avec les fondateurs, les chefs de produit et les responsables techniques avant de prendre des décisions structurelles. L'objectif est de comprendre comment le produit fonctionne réellement, pas seulement comment il est commercialisé.
+Échangez avec les fondateurs, les chefs de produit et les responsables de l’ingénierie avant de prendre des décisions structurelles. L’objectif est de comprendre comment le produit fonctionne réellement, et pas seulement comment il est présenté.
 
-Questions à poser :
-- Quelle est la manière la plus simple d'expliquer comment le produit fonctionne ?
-- Quels sont les composants fondamentaux du produit ?
-- Comment les utilisateurs adoptent-ils généralement le produit ? Où se retrouvent-ils le plus souvent bloqués ?
-- Quelles sont les intégrations ou dépendances les plus importantes ?
-- Si le produit était divisé en différentes couches, quelles seraient-elles ? Serait-il organisé par tâches que les gens effectuent ou par fonctionnalités qu'ils utilisent ?
+Questions à poser :
 
-Ces conversations font émerger la structure naturelle du produit et révèlent souvent où la navigation de la documentation s'est éloignée de la façon dont les utilisateurs pensent réellement.
+* Quelle est la façon la plus simple d’expliquer le fonctionnement du produit ?
+* Quels sont les composants de base du produit ?
+* Comment les utilisateurs adoptent-ils généralement le produit ? Où rencontrent-ils le plus souvent des difficultés ?
+* Quelles sont les intégrations ou dépendances les plus importantes ?
+* Si le produit était décomposé en différentes couches, quelles seraient-elles ? Serait-il organisé par tâches réalisées par les utilisateurs ou par fonctionnalités qu’ils utilisent ?
+
+Ces échanges font ressortir la structure naturelle du produit et révèlent souvent les points où la navigation de la documentation s’est éloignée de la façon dont les utilisateurs pensent réellement.
 
 <div id="know-who-youre-writing-for">
-### Sachez pour qui vous écrivez
+  ### Sachez à qui vous vous adressez
 </div>
 
-Les décisions de navigation dépendent de votre audience. Un développeur intégrant une API navigue différemment d'un administrateur configurant des paramètres ou d'un nouvel utilisateur suivant un parcours d'intégration.
+Les décisions de Navigation dépendent de votre public. Un développeur qui intègre une API ne navigue pas de la même manière qu’un administrateur qui configure des paramètres ou qu’un nouvel utilisateur qui suit un parcours d’onboarding.
 
-Si vous avez plusieurs audiences distinctes, demandez-vous si elles ont besoin de structures de navigation séparées ou si une structure unifiée unique peut toutes les servir. Consultez [Comprendre votre audience](/fr/guides/understand-your-audience) pour en savoir plus sur la définition des personas de documentation.
+Si vous avez plusieurs publics distincts, demandez-vous s’ils ont besoin de structures de Navigation distinctes ou si une structure unifiée peut convenir à tous. Consultez [Comprendre votre public](/fr/guides/understand-your-audience) pour en savoir plus sur la définition des personas de votre documentation.
 
 <div id="choose-a-navigation-structure">
-## Choisissez une structure de navigation
+  ## Choisissez une structure de navigation
 </div>
 
 <div id="organize-by-user-journey-not-product-features">
-### Organisez par parcours utilisateur, pas par fonctionnalités du produit
+  ### Organisez par parcours utilisateur, et non par fonctionnalités produit
 </div>
 
-L'erreur de navigation la plus courante est d'organiser la documentation de la manière dont l'équipe produit pense au produit plutôt que de la manière dont les utilisateurs essaient d'atteindre leurs objectifs.
+L’erreur de Navigation la plus courante consiste à organiser la documentation en fonction de la façon dont l’équipe produit conçoit le produit, plutôt qu’en fonction de la manière dont les utilisateurs cherchent à atteindre leurs objectifs.
 
-Comparez ces deux approches pour un produit d'API :
+Comparez ces deux approches pour un produit API :
 
-| Centré sur les fonctionnalités (à éviter) | Centré sur le parcours (préférable) |
-|---|---|
-| API principale | Démarrer |
-| Authentification | S'authentifier |
-| Webhooks | Envoyer votre première requête |
-| Limitation de débit | Gérer les erreurs |
-| SDKs | Passer en production |
+| Centré sur les fonctionnalités (à éviter) | Centré sur le parcours (mieux) |
+| ----------------------------------------- | ------------------------------ |
+| API principale                            | Premiers pas                   |
+| Authentification                          | S’authentifier                 |
+| Webhooks                                  | Envoyer votre première requête |
+| Limitation du débit                       | Gérer les erreurs              |
+| SDK                                       | Passer en production           |
 
-La navigation centrée sur le parcours indique aux utilisateurs où ils en sont dans un processus. La navigation centrée sur les fonctionnalités exige que les utilisateurs sachent déjà ce qu'ils cherchent.
+Une Navigation centrée sur le parcours indique aux utilisateurs où ils en sont dans un processus. Une Navigation centrée sur les fonctionnalités suppose que les utilisateurs savent déjà ce qu’ils cherchent.
 
 <div id="manage-depth-and-breadth">
-### Gérez la profondeur et la largeur
+  ### Gérer la profondeur et la largeur
 </div>
 
-La profondeur de navigation désigne le nombre de niveaux que les utilisateurs doivent traverser pour atteindre le contenu. La largeur désigne le nombre d'éléments qui apparaissent à chaque niveau.
+La profondeur de la navigation désigne le nombre de niveaux que les utilisateurs doivent parcourir pour accéder au contenu. La largeur désigne le nombre d’éléments affichés à chaque niveau.
 
-Quelques principes :
-- **Limitez les sections de niveau supérieur à sept éléments ou moins.** La charge cognitive augmente lorsque les utilisateurs doivent examiner et évaluer davantage d'options.
-- **Préférez la profondeur à la largeur.** Une section de niveau supérieur avec cinq sous-sections est plus facile à parcourir que 20 éléments de niveau supérieur.
-- **Ne cachez pas le contenu critique en dessous de deux niveaux.** Si les utilisateurs doivent cliquer à travers trois niveaux pour atteindre des pages fréquemment consultées, envisagez de promouvoir ce contenu.
+Quelques principes :
+
+* **Limitez les sections de premier niveau à sept éléments maximum.** La charge cognitive augmente lorsque les utilisateurs doivent parcourir et évaluer un plus grand nombre d’options.
+* **Privilégiez la profondeur à la largeur.** Une section de premier niveau avec cinq sous-sections est plus facile à parcourir que 20 éléments de premier niveau.
+* **Ne masquez pas le contenu critique au-delà de deux niveaux.** Si les utilisateurs doivent passer par trois niveaux pour atteindre des pages fréquemment consultées, envisagez de remonter ce contenu à un niveau supérieur.
 
 <div id="name-navigation-items-clearly">
-### Nommez clairement les éléments de navigation
+  ### Intitulez clairement les éléments de navigation
 </div>
 
-Les libellés de navigation doivent correspondre à la façon dont les utilisateurs décrivent leurs objectifs, pas à la façon dont les ingénieurs décrivent les fonctionnalités.
+Les libellés de navigation doivent correspondre à la manière dont les utilisateurs décrivent leurs objectifs, et non à celle dont les ingénieurs décrivent les fonctionnalités.
 
-- Utilisez des verbes pour les sections orientées tâches ("S'authentifier", "Déployer", "Surveiller")
-- Utilisez des noms pour les sections de référence ("Référence API", "SDKs", "Journal des modifications")
-- Évitez la terminologie interne que les utilisateurs ne reconnaîtront pas
-- Gardez les libellés courts — idéalement moins de 4 mots
+* Utilisez des verbes pour les sections axées sur les tâches (&quot;S’authentifier&quot;, &quot;Déployer&quot;, &quot;Surveiller&quot;)
+* Utilisez des noms pour les sections de référence (&quot;Référence de l’API&quot;, &quot;SDK&quot;, &quot;Journal des modifications&quot;)
+* Évitez la terminologie interne que les utilisateurs ne reconnaîtront pas
+* Gardez des libellés courts — idéalement moins de 4 mots
 
 <div id="validate-your-assumptions">
-## Validez vos hypothèses
+  ## Validez vos hypothèses
 </div>
 
-Votre première structure de navigation est une hypothèse. Validez-la avant de la considérer comme permanente.
+Votre première structure de navigation est une hypothèse. Validez-la avant de la figer.
 
 <div id="track-real-user-journeys">
-### Suivez les parcours réels des utilisateurs
+  ### Suivez les parcours réels des utilisateurs
 </div>
 
-Utilisez des outils de relecture de session comme [FullStory](https://www.fullstory.com) ou [Hotjar](https://www.hotjar.com) et des outils d'analyse comme [Mixpanel](https://mixpanel.com) pour étudier comment les utilisateurs se déplacent réellement dans votre documentation. Recherchez :
+Utilisez des outils de replay de session comme [FullStory](https://www.fullstory.com) ou [Hotjar](https://www.hotjar.com), ainsi que des outils d’analyses comme [Mixpanel](https://mixpanel.com), pour étudier comment les utilisateurs parcourent réellement votre documentation. Recherchez :
 
-- **Points d'entrée :** Où les utilisateurs commencent-ils ? Viennent-ils d'une recherche, d'un ticket de support ou directement de votre produit ?
-- **Schémas de navigation :** Les utilisateurs suivent-ils la structure prévue ou empruntent-ils des chemins inattendus ?
-- **Points de friction :** Où les utilisateurs s'arrêtent-ils, reviennent-ils en arrière ou abandonnent-ils leur session ?
-- **Comportement de recherche :** Les utilisateurs recherchent-ils des termes qui n'apparaissent pas dans vos libellés de navigation ? Cela signale un décalage terminologique.
+* **Points d’entrée :** Où les utilisateurs commencent-ils ? Viennent-ils de la recherche, d’un ticket de support ou directement de votre produit ?
+* **Schémas de navigation :** Les utilisateurs suivent-ils la structure attendue ou empruntent-ils des chemins inattendus ?
+* **Points de friction :** À quels endroits les utilisateurs s’arrêtent-ils, reviennent-ils en arrière ou abandonnent-ils leur session ?
+* **Comportement de recherche :** Les utilisateurs recherchent-ils des termes qui n’apparaissent pas dans vos libellés de navigation ? Cela indique un décalage terminologique.
 
 <div id="test-with-real-users">
-### Testez avec de vrais utilisateurs
+  ### Testez avec de vrais utilisateurs
 </div>
 
-L'analyse révèle des schémas, mais les conversations directes fournissent le contexte qui les sous-tend.
+Les analyses mettent en évidence des tendances, mais les échanges directs apportent le contexte qui permet de les comprendre.
 
-Demandez aux utilisateurs de réaliser une tâche spécifique en utilisant uniquement la documentation tout en décrivant leur processus de réflexion. L'endroit où ils cliquent en premier et celui où ils se retrouvent bloqués révèle si votre navigation est intuitive.
+Demandez aux utilisateurs d’effectuer une tâche précise en s’appuyant uniquement sur la documentation, tout en verbalisant leur raisonnement. L’endroit où ils cliquent en premier et celui où ils se retrouvent bloqués révèlent si votre navigation est intuitive.
 
-Les nouvelles recrues de votre propre équipe sont de bons substituts pour les utilisateurs. Avant qu'elles ne se familiarisent trop avec le produit de l'intérieur, demandez-leur de trouver des réponses à des questions spécifiques en utilisant uniquement la documentation. Leurs instincts révèlent les hypothèses que votre navigation fait et qui ne sont pas évidentes pour les nouveaux venus.
+Les nouvelles recrues de votre équipe peuvent aussi servir de bons substituts aux utilisateurs. Avant qu’elles ne se familiarisent trop avec le produit en interne, demandez-leur de trouver des réponses à des questions précises en utilisant uniquement la documentation. Leur instinct révèle les hypothèses intégrées à votre navigation qui n’apparaissent pas clairement aux nouveaux arrivants.
 
 <div id="identify-and-fix-common-problems">
-## Identifiez et corrigez les problèmes courants
+  ## Repérer et corriger les problèmes courants
 </div>
 
 <div id="overloaded-top-level-sections">
-### Sections de niveau supérieur surchargées
+  ### Sections de premier niveau surchargées
 </div>
 
-Si votre navigation de niveau supérieur comporte plus de 7 ou 8 éléments, les utilisateurs passent plus de temps à évaluer les options qu'à trouver du contenu. Regroupez les sujets connexes dans des sections avec des noms significatifs.
+Si votre navigation de premier niveau comporte plus de 7 ou 8 éléments, les utilisateurs passent plus de temps à comparer les options qu’à trouver le contenu. Regroupez les sujets connexes en sections portant des noms explicites.
 
 <div id="buried-essential-content">
-### Contenu essentiel enfoui
+  ### Contenu essentiel trop enfoui
 </div>
 
-Si les pages dont les utilisateurs ont le plus besoin se trouvent à deux ou trois niveaux de profondeur, promouvez-les. Les pages à fort trafic doivent être faciles à atteindre depuis le niveau supérieur ou visibles dans le premier niveau de toute section pertinente.
+Si les pages dont les utilisateurs ont le plus besoin sont enfouies à deux ou trois niveaux de profondeur, mettez-les en avant. Les pages à fort trafic doivent être faciles d’accès depuis le niveau supérieur ou visibles dès le premier niveau de toute section pertinente.
 
 <div id="unclear-section-names">
-### Noms de section peu clairs
+  ### Intitulés de sections peu clairs
 </div>
 
-Si les utilisateurs hésitent avant de cliquer sur un élément de navigation, le libellé ne remplit pas son rôle. Testez si les utilisateurs peuvent prédire ce qu'ils trouveront avant de cliquer en décrivant ce qui se trouve à l'intérieur.
+Si les utilisateurs hésitent avant de cliquer sur un élément de navigation, c’est que le libellé ne remplit pas son rôle. Vérifiez s’ils peuvent anticiper ce qu’ils vont y trouver avant de cliquer en leur demandant d’en décrire le contenu.
 
 <div id="missing-pages-vs-navigation-problems">
-### Pages manquantes vs. problèmes de navigation
+  ### Pages manquantes ou problèmes de navigation
 </div>
 
-Parfois, ce qui ressemble à un problème de navigation est en réalité un manque de contenu. Si les utilisateurs recherchent des termes qui ne correspondent à aucune page, il vous manque peut-être du contenu plutôt que des libellés incorrects. Distinguez les deux avant de restructurer.
+Parfois, ce qui ressemble à un problème de navigation est en réalité un manque de contenu. Si les utilisateurs recherchent des termes qui ne correspondent à aucune page, il se peut que le problème vienne d’un contenu manquant plutôt que d’un libellé inadapté. Faites bien la distinction entre les deux avant de restructurer.
 
 <div id="iterate-over-time">
-## Itérez au fil du temps
+  ## Améliorez au fil du temps
 </div>
 
-La navigation doit évoluer avec votre produit et vos utilisateurs. Vous n'avez pas besoin de tout réussir du premier coup.
+La navigation doit évoluer avec votre produit et vos utilisateurs. Vous n’avez pas besoin de tout réussir du premier coup.
 
-Une cadence pratique :
-- **Révisez la navigation chaque fois que le produit lance des changements majeurs.** Les nouvelles fonctionnalités exposent souvent des lacunes structurelles.
-- **Consultez les analyses de recherche trimestriellement** pour repérer les termes que les utilisateurs recherchent et qui ne sont pas reflétés dans vos libellés de navigation.
-- **Réexaminez la structure de niveau supérieur annuellement.** À mesure que la documentation grandit, ce qui fonctionnait à 20 pages peut ne plus fonctionner à 200.
+Un rythme simple :
+
+* **Passez en revue la navigation chaque fois que le produit fait l’objet de changements majeurs.** Les nouvelles fonctionnalités révèlent souvent des lacunes structurelles.
+* **Vérifiez les analyses des recherches chaque trimestre** pour repérer les termes recherchés par les utilisateurs qui ne figurent pas dans vos libellés de navigation.
+* **Réévaluez la structure de premier niveau chaque année.** À mesure que la documentation s’étoffe, ce qui fonctionnait avec 20 pages peut ne plus fonctionner avec 200.
 
 <Tip>
-  Utilisez les [workflows](/fr/agent/workflows) pour automatiser les vérifications récurrentes comme identifier les pages avec de faibles scores de retour ou signaler les éléments de navigation qui reçoivent rarement des clics.
+  Utilisez les [flux de travail](/fr/agent/workflows) pour automatiser les vérifications récurrentes, par exemple pour mettre en évidence les pages avec de faibles scores de feedback ou signaler les éléments de navigation qui sont rarement cliqués.
 </Tip>
 
-Pour configurer la navigation dans Mintlify — onglets, groupes, ancres et ordre des pages — consultez la [référence de navigation](/fr/organize/navigation).
+Pour configurer la navigation dans Mintlify — onglets, groupes, ancres et ordre des pages — consultez la [référence de la navigation](/fr/organize/navigation).
 
 <div id="frequently-asked-questions">
-## Questions fréquemment posées
+  ## Questions fréquentes
 </div>
 
 <AccordionGroup>
-<Accordion title="Dois-je organiser la navigation par fonctionnalités du produit ou par objectifs utilisateur ?">
-Par objectifs utilisateur, dans la plupart des cas. La navigation basée sur les fonctionnalités a du sens pour les équipes produit qui comprennent déjà l'architecture, mais les utilisateurs viennent à la documentation pour accomplir quelque chose — pas pour parcourir les fonctionnalités. Organisez autour de ce que les utilisateurs essaient de faire et regroupez les fonctionnalités sous les tâches qu'elles permettent.
-</Accordion>
+  <Accordion title="Dois-je organiser la navigation par fonctionnalités produit ou par objectifs utilisateur ?">
+    Par objectifs utilisateur, dans la plupart des cas. Une navigation basée sur les fonctionnalités peut convenir aux équipes produit qui maîtrisent déjà l’architecture, mais les utilisateurs consultent la documentation pour accomplir une tâche, pas pour parcourir une liste de fonctionnalités. Organisez-la donc en fonction de ce que les utilisateurs cherchent à faire, et regroupez les fonctionnalités sous les tâches qu’elles permettent d’accomplir.
+  </Accordion>
 
-<Accordion title="Combien de sections de navigation de niveau supérieur devrais-je avoir ?">
-Visez 5 à 7. La recherche sur la charge cognitive suggère que les utilisateurs peuvent confortablement évaluer environ 7 éléments avant que la fatigue décisionnelle ne s'installe. Si vous en avez plus, cherchez des regroupements naturels qui peuvent être combinés en une seule section avec des sous-sections.
-</Accordion>
+  <Accordion title="Combien de sections de navigation de premier niveau dois-je prévoir ?">
+    Visez entre 5 et 7. Les recherches sur la charge cognitive montrent que les utilisateurs peuvent évaluer confortablement environ 7 éléments avant de ressentir une fatigue décisionnelle. Si vous en avez davantage, cherchez des regroupements naturels à fusionner dans une même section avec des sous-sections.
+  </Accordion>
 
-<Accordion title="Comment gérer une documentation qui s'adresse à plusieurs audiences ?">
-D'abord, décidez si vos audiences sont suffisamment différentes pour nécessiter des structures séparées. Si un administrateur et un développeur ont tous deux besoin de démarrer, une section partagée "Démarrer" peut très bien fonctionner avec des sous-sections spécifiques à chaque audience. Si leurs parcours sont fondamentalement différents — produits séparés, personas séparés — envisagez des sites de documentation séparés ou une navigation par onglets qui sépare clairement les deux chemins.
-</Accordion>
+  <Accordion title="Comment gérer une documentation destinée à plusieurs publics ?">
+    Commencez par déterminer si vos publics sont assez différents pour justifier des structures distinctes. Si un administrateur et un développeur doivent tous deux se lancer, une section commune « premier pas » peut très bien convenir, avec des sous-sections propres à chaque public. Si leurs parcours sont fondamentalement différents — produits distincts, personas distincts — envisagez des sites de documentation séparés ou une navigation par onglets qui distingue clairement les deux parcours.
+  </Accordion>
 
-<Accordion title="Quand devrais-je réorganiser ma navigation ?">
-Réorganisez lorsque les données utilisateur montrent des échecs de navigation constants — taux de rebond élevés sur les pages d'index, recherches fréquentes de termes que vous attendriez les utilisateurs à trouver directement par navigation, ou tickets de support indiquant que les utilisateurs ne trouvent pas du contenu évident. Évitez de réorganiser sur la seule base de l'intuition. Le coût de la restructuration (signets cassés, réapprentissage, réécriture des liens internes) est réel, alors assurez-vous que les données le justifient.
-</Accordion>
+  <Accordion title="Quand dois-je réorganiser ma navigation ?">
+    Réorganisez-la lorsque les données utilisateur révèlent des problèmes de navigation récurrents : taux de rebond élevés sur les pages d’index, recherches fréquentes sur des termes que les utilisateurs devraient pouvoir trouver directement via la navigation, ou tickets de support montrant qu’ils ne trouvent pas des contenus pourtant évidents. Évitez de réorganiser sur la seule base de l’intuition. Le coût d’une restructuration (signets cassés, temps de réapprentissage, réécriture des liens internes) est réel ; assurez-vous donc que les données le justifient.
+  </Accordion>
 
-<Accordion title="Comment empêcher la navigation de devenir désordonnée à mesure que la documentation grandit ?">
-Intégrez une révision dans votre flux de travail de contenu. Lors de l'ajout de nouvelles pages, exigez une décision sur leur emplacement dans la navigation avant de commencer à écrire. Il est beaucoup plus facile de maintenir une structure cohérente en prenant des décisions de placement en amont que de réorganiser après que des dizaines de pages se soient accumulées aux mauvais endroits.
-</Accordion>
+  <Accordion title="Comment éviter que la navigation ne devienne confuse à mesure que la documentation s’étoffe ?">
+    Intégrez une révision à votre workflow éditorial. Lors de l’ajout de nouvelles pages, exigez qu’une décision soit prise sur leur place dans la navigation avant même de commencer la rédaction. Il est bien plus facile de préserver une structure cohérente en décidant du placement dès le départ que de tout réorganiser après l’accumulation de dizaines de pages au mauvais endroit.
+  </Accordion>
 </AccordionGroup>

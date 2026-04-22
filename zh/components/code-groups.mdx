@@ -1,10 +1,10 @@
 ---
-title: "代码分组"
-description: "使用 CodeGroup 组件在标签页界面中展示多个代码示例，让读者可以比较不同编程语言的实现方式。"
-keywords: ["code groups", "tabbed code", "multi-language examples", "CodeGroup"]
+title: "代码组"
+description: "使用 CodeGroup 组件在标签页界面中显示多个代码示例，让读者能够跨语言比较不同实现。"
+keywords: ["代码组", "标签页代码", "多语言示例", "CodeGroup"]
 ---
 
-使用 `CodeGroup` 组件在带有标签页的界面中展示多个代码块，便于用户比较不同编程语言的实现，或查看完成同一任务的替代方案。
+使用 `CodeGroup` 组件在标签页界面中显示多个代码块，以便用户比较不同编程语言的实现，或查看完成同一任务的其他写法。
 
 <CodeGroup>
   ```javascript helloWorld.js
@@ -24,15 +24,15 @@ keywords: ["code groups", "tabbed code", "multi-language examples", "CodeGroup"]
   ```
 </CodeGroup>
 
-代码分组将从你的 `docs.json` 文件继承全局样式。可通过 `styling.codeblocks` 自定义主题。配置选项参见 [Settings](/zh/organize/settings-appearance#styling)。
+代码组会继承 `docs.json` 文件中的全局样式。你可以使用 `styling.codeblocks` 自定义主题。有关配置选项，请参阅[设置](/zh/organize/settings-appearance#styling)。
 
-当标签相同时，同一页面上的代码分组会与其他代码分组以及 [Tabs](/zh/components/tabs) 自动同步。当你在某个代码分组中选择一种语言时，所有具有相同标签的 Tabs 和代码分组都会更新为显示相同的语言。
+当标签名称一致时，代码组会自动与同一页面上的其他代码组和[Tabs](/zh/components/tabs)同步。当你在一个代码组中选择某种语言时，所有标签名称相同的 Tabs 和代码组都会更新为显示相同的语言。
 
-<div id="creating-code-groups">
+<div id="create-code-groups">
   ## 创建代码组
 </div>
 
-要创建代码组，请使用 `<CodeGroup>` 标签包裹多个代码块。每个代码块必须包含一个 title，其值将作为标签页的标签。
+要创建代码组，请用 `<CodeGroup>` 标签包裹多个代码块。每个代码块都必须包含一个标题，该标题会显示为选项卡标签。
 
 ````mdx
 <CodeGroup>
@@ -48,7 +48,7 @@ print('Hello World!')
 ```java HelloWorld.java
 class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("你好，世界！");
+        System.out.println("Hello, World!");
     }
 }
 ```
@@ -60,7 +60,7 @@ class HelloWorld {
   ## 语言下拉菜单
 </div>
 
-你可以通过使用 `dropdown` 属性，将 CodeGroup 中的选项卡替换为下拉菜单，以在不同语言之间切换。
+你可以使用 `dropdown` 属性，将代码组中的 Tabs 替换为下拉菜单，以便在不同语言之间切换。
 
 <CodeGroup dropdown>
   ```javascript helloWorld.js
@@ -84,17 +84,17 @@ class HelloWorld {
 <CodeGroup dropdown>
 
 ```javascript helloWorld.js
-console.log("你好世界");
+console.log("Hello World");
 ```
 
 ```python hello_world.py
-print('你好世界!')
+print('Hello World!')
 ```
 
 ```java HelloWorld.java
 class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("你好，世界！");
+        System.out.println("Hello, World!");
     }
 }
 ```

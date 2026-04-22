@@ -1,22 +1,24 @@
 ---
 title: "Obtener comentarios por página"
-description: "Recupera los recuentos de comentarios de los usuarios agregados por página de documentación, incluidas las valoraciones positivas/negativas y los comentarios sobre fragmentos de código."
+description: "Obtén el recuento de comentarios de los usuarios agregado por
+  página de documentación, incluidas las valoraciones positivas y negativas y
+  los comentarios sobre fragmentos de código."
 openapi: /es/analytics.openapi.json GET /v1/analytics/{projectId}/feedback/by-page
-keywords: [ "Analytics", "feedback", "exportación", "por página", "agregado" ]
+keywords: [ "analítica", "comentarios", "exportación", "por página", "agregado" ]
 ---
 
 <div id="usage">
   ## Uso
 </div>
 
-Usa este endpoint para exportar los comentarios de los usuarios agregados por ruta de página de documentación. Cada entrada muestra el recuento total de comentarios de una página, desglosado por tipo.
+Usa este endpoint para exportar los comentarios de los usuarios agrupados por la ruta de la página de documentación. Cada entrada muestra el número total de comentarios de una página, desglosado por tipo.
 
 <div id="filtering">
   ## Filtrado
 </div>
 
-Filtra los comentarios por:
+Filtra los comentarios según:
 
-- **Rango de fechas**: Utiliza `dateFrom` y `dateTo` para limitar los resultados a un período de tiempo específico
-- **Fuente**: Filtra por tipos de feedback `code_snippet`, `contextual` o `agent`
-- **Estado**: Filtra por valores de estado como `pending`, `in_progress`, `resolved` o `dismissed`
+* **Rango de fechas**: Usa `dateFrom` y `dateTo` para limitar los resultados a un periodo de tiempo específico
+* **Fuente**: Filtra por tipos de comentarios como `code_snippet`, `contextual` o `agent`
+* **Estado**: Filtra por valores de estado como `pending`, `in_progress`, `resolved` o `dismissed`

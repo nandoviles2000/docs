@@ -1,28 +1,21 @@
 ---
 title: "Comentarios"
-description: "Monitorea la satisfacción de los usuarios con widgets de retroalimentación integrados, calificaciones de páginas y reacciones de pulgar arriba/abajo para identificar áreas de mejora."
-keywords: ["user feedback", "thumbs rating", "contextual", "satisfaction", "agents"]
+description: "Supervisa la satisfacción de los usuarios con widgets de comentarios integrados, valoraciones de páginas y reacciones de pulgar arriba o abajo para identificar áreas de mejora en la documentación."
+keywords: ["comentarios de usuarios", "valoración con pulgares", "contextual", "satisfacción", "agentes"]
 ---
 
 <Info>
-  Para recopilar y ver comentarios, debes habilitar los comentarios desde la página de [Add-ons](https://dashboard.mintlify.com/products/addons) en tu dashboard.
+  Para recopilar y ver comentarios, debes habilitarlos desde la página [Add-ons](https://dashboard.mintlify.com/products/addons) en tu panel.
 </Info>
 
-La pestaña [Feedback](https://dashboard.mintlify.com/products/analytics/v2/feedback) muestra los votos cuantitativos de pulgar hacia arriba y pulgar hacia abajo que ha recibido tu documentación, así como cualquier comentario cualitativo que hayan proporcionado los usuarios. Usa esta información para evaluar la calidad de tu documentación y realizar mejoras.
+La pestaña de [comentarios](https://dashboard.mintlify.com/products/analytics/v2/feedback) muestra los votos cuantitativos de pulgar arriba y pulgar abajo que ha recibido tu documentación, así como cualquier comentario cualitativo que hayan enviado los usuarios. Usa esta información para evaluar la calidad de tu documentación y mejorarla.
 
-Consulta los comentarios en la página de Analytics en tu dashboard.
+Consulta los comentarios en la página de analítica de tu panel.
 
 <Frame>
-  <img
-    className="block dark:hidden"
-    src="/images/analytics/feedback-light.png"
-    alt="Pestaña Feedback en la página de Analytics."
-  />
-  <img
-    className="hidden dark:block"
-    src="/images/analytics/feedback-dark.png"
-    alt="Pestaña Feedback en la página de Analytics."
-  />
+  <img className="block dark:hidden" src="/images/analytics/feedback-light.png" alt="Pestaña de comentarios en la página de analítica." />
+
+  <img className="hidden dark:block" src="/images/analytics/feedback-dark.png" alt="Pestaña de comentarios en la página de analítica." />
 </Frame>
 
 <div id="feedback-types">
@@ -30,45 +23,45 @@ Consulta los comentarios en la página de Analytics en tu dashboard.
 </div>
 
 <Note>
-  Los comentarios contextuales y sobre fragmentos de código están en versión beta. Para habilitarlos en tu sitio de documentación, [contacta a nuestro equipo de ventas](mailto:hahnbee@mintlify.com).
+  Los comentarios contextuales y sobre fragmentos de código están en fase beta. Para habilitarlos en tu sitio de documentación, [contacta con nuestro equipo de ventas](mailto:hahnbee@mintlify.com).
 </Note>
 
-La pestaña de comentarios muestra información según los [Add-ons de comentarios](https://dashboard.mintlify.com/products/addons) que habilites.
+La pestaña de comentarios muestra información según los [complementos de comentarios](https://dashboard.mintlify.com/products/addons) que habilites.
 
 <Frame>
-  <img className="block dark:hidden" src="/images/analytics/feedback-addons-light.png" alt="Controles de comentarios en la página Add-ons." />
+  <img className="block dark:hidden" src="/images/analytics/feedback-addons-light.png" alt="Opciones de comentarios en la página Add-ons." />
 
-  <img className="hidden dark:block" src="/images/analytics/feedback-addons-dark.png" alt="Controles de comentarios en la página Add-ons." />
+  <img className="hidden dark:block" src="/images/analytics/feedback-addons-dark.png" alt="Opciones de comentarios en la página Add-ons." />
 </Frame>
 
-- **Valoración con pulgares**: Votación simple de pulgar arriba/abajo para medir la satisfacción general con las páginas.
-- **Sugerencias de edición**: Permite que los usuarios sugieran ediciones para tu documentación. Solo disponible para repositorios públicos de GitHub.
-- **Crear issues**: Permite que los usuarios creen issues de GitHub directamente desde tu documentación. Solo disponible para repositorios públicos de GitHub.
-- **Comentarios contextuales**: Comentarios abiertos sobre el contenido de una página.
-- **Comentarios sobre fragmentos de código**: Comentarios específicamente sobre fragmentos de código.
-- **Comentarios de agentes**: Comentarios enviados por agentes de IA de terceros que acceden a tu documentación.
+* **Valoración con pulgares**: Votación sencilla con pulgar arriba o abajo para medir la satisfacción general con las páginas.
+* **Sugerencias de edición**: Permite a los usuarios sugerir cambios en tu documentación. Solo disponible para repositorios públicos de GitHub.
+* **Crear incidencias**: Permite a los usuarios crear incidencias en GitHub directamente desde tu documentación. Solo disponible para repositorios públicos de GitHub.
+* **Comentarios contextuales**: Comentarios de formato libre sobre el contenido de una página.
+* **Comentarios sobre fragmentos de código**: Comentarios específicos sobre fragmentos de código.
+* **Comentarios de agentes**: Comentarios enviados por agentes de IA de terceros que acceden a tu documentación.
 
 <div id="collect-email-addresses">
   ## Recopilar direcciones de correo electrónico
 </div>
 
-Habilita la recopilación de correos electrónicos para que los usuarios puedan proporcionar opcionalmente su dirección de correo electrónico al enviar comentarios.
+Activa la recopilación de correos electrónicos para que los usuarios puedan proporcionar opcionalmente su dirección de correo electrónico al enviar comentarios.
 
-1. Ve a la página de [Add-ons](https://dashboard.mintlify.com/products/addons) en tu dashboard.
-2. Habilita la opción **Collect reader emails** en la configuración de comentarios.
-3. Opcionalmente, añade un aviso de privacidad sobre cómo tu equipo utiliza los correos electrónicos recopilados.
+1. Ve a la página [Add-ons](https://dashboard.mintlify.com/products/addons) en tu panel.
+2. Activa el interruptor **Collect reader emails** en la configuración de comentarios.
+3. Si lo deseas, agrega un aviso de privacidad sobre cómo tu equipo utiliza los correos electrónicos recopilados.
 
-Consulta las direcciones de correo electrónico enviadas con los comentarios en el [dashboard de comentarios](https://dashboard.mintlify.com/products/analytics/v2/feedback) junto al contenido de los comentarios.
+Consulta las direcciones de correo electrónico enviadas con los comentarios en el [panel de comentarios](https://dashboard.mintlify.com/products/analytics/v2/feedback), junto con el contenido de los comentarios.
 
 <Note>
-  Si deshabilitas la telemetría en tu archivo `docs.json`, las funciones de comentarios no estarán disponibles en tus páginas de documentación.
+  Si desactivas la telemetría en tu archivo `docs.json`, las funciones de comentarios no estarán disponibles en tus páginas de documentación.
 </Note>
 
 <div id="manage-feedback">
-  ## Gestionar comentarios
+  ## Gestiona los comentarios
 </div>
 
-Para los comentarios contextuales y sobre fragmentos de código, puedes establecer el estado de cada comentario y añadir notas internas para hacer un seguimiento de tu trabajo al resolver los comentarios de los usuarios.
+En los comentarios contextuales y de fragmentos de código, puedes establecer el estado de un comentario y añadir notas internas para hacer seguimiento de tu trabajo al resolver los comentarios de los usuarios.
 
 <div id="change-feedback-status">
   ### Cambiar el estado de los comentarios
@@ -76,34 +69,34 @@ Para los comentarios contextuales y sobre fragmentos de código, puedes establec
 
 Selecciona el estado junto a un comentario para marcarlo como **Pendiente**, **En curso**, **Resuelto** o **Descartado**.
 
-Mejores prácticas para definir estados de comentarios:
+Buenas prácticas para definir los estados de los comentarios:
 
-- **Pendiente**: El comentario está a la espera de revisión.
-- **En curso**: Se está trabajando para resolver el comentario.
-- **Resuelto**: El comentario se ha resuelto.
-- **Descartado**: El comentario es irrelevante o inexacto.
+* **Pendiente**: El comentario está a la espera de revisión.
+* **En curso**: Se está trabajando para abordar el comentario.
+* **Resuelto**: El comentario ya se ha resuelto.
+* **Descartado**: El comentario es irrelevante o inexacto.
 
 <div id="filter-by-status">
   ### Filtrar por estado
 </div>
 
-Utiliza el menú **Filters** para controlar qué comentarios se muestran. Quita un estado para ocultar todos los comentarios con ese estado. De forma predeterminada, se muestran todos los tipos de comentarios.
+Usa el menú **Filters** para controlar qué comentarios se muestran. Quita la selección de un estado para ocultar todos los comentarios con ese estado. De forma predeterminada, se muestran todos los tipos de comentarios.
 
 <div id="filter-by-type">
   ### Filtrar por tipo
 </div>
 
-Selecciona entre **Ratings by page**, **Detailed feedback** y **Code snippets** según la información que deseas analizar.
+Selecciona entre **Valoraciones por página**, **Comentarios detallados** y **Fragmentos de código** según la información que quieras analizar.
 
-- **Ratings by page**: Consulta qué páginas tienen más comentarios positivos y negativos. Usa estos datos cuantitativos para identificar las páginas que los usuarios consideran más y menos útiles.
-- **Detailed feedback**: Revisa los comentarios abiertos que los usuarios dejan en las páginas para identificar mejoras específicas en páginas concretas.
-- **Code snippets**: Revisa los comentarios abiertos que los usuarios dejan sobre fragmentos de código para identificar mejoras específicas en bloques de código concretos.
+* **Valoraciones por página**: Consulta qué páginas tienen más comentarios positivos y negativos. Usa estos datos cuantitativos para identificar las páginas que los usuarios consideran más y menos útiles.
+* **Comentarios detallados**: Revisa los comentarios de texto libre que los usuarios dejan en las páginas para identificar mejoras concretas en páginas específicas.
+* **Fragmentos de código**: Revisa los comentarios de texto libre que los usuarios dejan en los fragmentos de código para identificar mejoras concretas en bloques de código específicos.
 
 <div id="add-internal-notes">
-  ### Añadir notas internas
+  ### Añade notas internas
 </div>
 
-Haz clic en un elemento de feedback para añadir una nota interna. Estas notas solo son visibles para las personas con acceso a tu dashboard.
+Haz clic en un comentario para añadir una nota interna. Estas notas solo son visibles para quienes tienen acceso a tu panel.
 
 Usa las notas para añadir información para colaborar, vincular tickets relevantes de soporte o de ingeniería, o recordar cualquier otra información útil.
 
@@ -112,61 +105,55 @@ Usa las notas para añadir información para colaborar, vincular tickets relevan
 </div>
 
 <Note>
-  Los comentarios de agentes están en versión beta y sujetos a cambios.
+  Los comentarios de agentes están en beta y pueden cambiar.
 </Note>
 
-Cuando agentes de IA de terceros acceden a tu documentación, pueden enviar comentarios estructurados sobre páginas que encuentran incorrectas, desactualizadas o difíciles de usar.
+Cuando agentes de IA de terceros consultan tu documentación, pueden enviar comentarios estructurados sobre páginas que consideran incorrectas, desactualizadas o difíciles de usar.
 
-Estos comentarios aparecen en el [dashboard de comentarios](https://dashboard.mintlify.com/products/analytics/v2/feedback) identificados con una etiqueta **Agent**. Gestiona los comentarios de agentes de la misma forma que los comentarios humanos. Establece estados, añade notas internas y filtra los comentarios.
+Estos comentarios aparecen en el [panel de comentarios](https://dashboard.mintlify.com/products/analytics/v2/feedback), marcados con una insignia de **Agente**. Administra los comentarios de agentes igual que los comentarios de usuarios. Define estados, agrega notas internas y filtra los comentarios.
 
 <div id="how-agent-feedback-works">
-  ### Cómo funcionan los comentarios de agentes
+  ### Cómo funciona el comentario de agentes
 </div>
 
-Debes habilitar los comentarios de agentes en tu dashboard para recopilarlos.
+Debes habilitar el comentario de agentes en tu panel para poder recopilarlo.
 
-Una vez habilitados, Mintlify añade un bloque `<AgentInstructions>` con instrucciones y el endpoint para enviar comentarios cuando un agente obtiene una página mediante la exportación Markdown.
+Una vez habilitada, Mintlify agrega un bloque `<AgentInstructions>` con instrucciones y el endpoint para enviar comentarios cuando un agente recupera una página mediante la exportación a Markdown.
 
-Los agentes envían comentarios al endpoint con la ruta de la página y el texto del comentario. Los comentarios aparecen en el dashboard junto a los comentarios humanos.
+Los agentes envían comentarios al endpoint con la ruta de la página y el texto del comentario. El comentario aparece en el panel junto con el comentario de las personas.
 
-El endpoint de comentarios siempre está disponible en `https://tu-dominio.com/feedback` como una solicitud `POST`, incluso si no añades las instrucciones a la exportación Markdown, por lo que puedes indicar a los agentes que envíen comentarios manualmente publicando en el endpoint.
+El endpoint de comentario siempre está disponible en `https://your-domain.com/feedback` mediante una solicitud `POST`, incluso si no agregas las instrucciones a la exportación a Markdown, por lo que puedes indicar a los agentes que envíen comentarios manualmente haciendo un `POST` al endpoint.
 
 <div id="enable-agent-feedback">
-  ### Habilitar comentarios de agentes
+  ### Habilita los comentarios de agentes
 </div>
 
+1. Ve a la página [Add-ons](https://dashboard.mintlify.com/products/addons) en tu panel.
+2. Activa la opción **Comentarios de agentes**.
 
-1. Ve a la página de [Add-ons](https://dashboard.mintlify.com/products/addons) en tu dashboard.
-2. Habilita la opción **Agent feedback**.
-    <Frame>
-      <img
-        className="block dark:hidden"
-        src="/images/analytics/agent-feedback-light.png"
-        alt="Opción de comentarios de agentes en la página de Add-ons."
-      />
-      <img
-        className="hidden dark:block"
-        src="/images/analytics/agent-feedback-dark.png"
-        alt="Opción de comentarios de agentes en la página de Add-ons."
-      />
-    </Frame>
+   <Frame>
+     <img className="block dark:hidden" src="/images/analytics/agent-feedback-light.png" alt="Opción Comentarios de agentes en la página Add-ons." />
+
+     <img className="hidden dark:block" src="/images/analytics/agent-feedback-dark.png" alt="Opción Comentarios de agentes en la página Add-ons." />
+   </Frame>
 
 <div id="retrieve-agent-feedback-via-api">
-  ### Recuperar comentarios de agentes por API
+  ### Recupera los comentarios de agentes a través de la API
 </div>
 
-Usa el [endpoint de feedback de analytics](/es/api/analytics/feedback) para recuperar comentarios de agentes de forma programática. Filtra por `source=agent` para obtener solo los comentarios de agentes.
+Usa el [endpoint de comentarios de analítica](/es/api/analytics/feedback) para recuperar mediante programación los comentarios de agentes. Filtra por `source=agent` para devolver solo los comentarios de agentes.
 
 Las respuestas de comentarios de agentes incluyen:
-- `comment`: El texto del comentario enviado por el agente.
-- `path`: La ruta de la página a la que se refiere el comentario.
+
+* `comment`: El texto de los comentarios enviados por el agente.
+* `path`: La ruta de la página a la que se refieren los comentarios.
 
 <div id="use-feedback-data">
-  ## Usa los datos de feedback
+  ## Usa los datos de comentarios
 </div>
 
-Revisa tus datos de feedback para:
+Revisa tus datos de comentarios para:
 
-- **Identificar contenido exitoso**: Las páginas con más feedback positivo muestran qué funciona bien en tu documentación.
-- **Priorizar mejoras**: Las páginas con más feedback negativo indican qué contenido podría necesitar atención.
-- **Tomar medidas**: Realiza actualizaciones en la documentación basadas en el feedback directo de los usuarios.
+* **Identificar el contenido exitoso**: Las páginas con más comentarios positivos muestran qué funciona bien en tu documentación.
+* **Priorizar las mejoras**: Las páginas con más comentarios negativos indican qué contenido podría necesitar atención.
+* **Actuar**: Actualiza la documentación en función de los comentarios directos de los usuarios.

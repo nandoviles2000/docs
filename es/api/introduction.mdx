@@ -1,67 +1,71 @@
 ---
 title: "Introducción"
-description: "Usa la API REST de Mintlify para lanzar despliegues, integrar un asistente de IA, exportar datos de Analytics y gestionar la documentación de forma programática."
-keywords: ["REST API", "endpoints", "API keys"]
+description: "Usa la API REST de Mintlify para desencadenar despliegues, integrar un asistente de IA, exportar datos de analítica y gestionar la documentación de forma programática."
+keywords: ["API REST", "endpoints", "claves de API"]
 ---
 
-La REST (Representational State Transfer) API de Mintlify te permite interactuar de forma programática con tu documentación, lanzar actualizaciones, integrar experiencias de chat impulsadas por IA y exportar datos de Analytics.
+La API REST (Representational State Transfer) de Mintlify te permite interactuar de forma programática con tu documentación, desencadenar actualizaciones, integrar experiencias de chat con IA y exportar datos de analítica.
 
 <div id="endpoints">
   ## Endpoints
 </div>
 
-* [Trigger update](/es/api/update/trigger): Activa una actualización de tu sitio cuando quieras.
-* [Get update status](/es/api/update/status): Obtén el estado de una actualización y otros detalles de tu documentación.
-* [Trigger preview deployment](/es/api/preview/trigger): Crea o actualiza una implementación de vista previa para una rama específica.
-* [Create agent job](/es/api/agent/v2/create-agent-job): Crea una tarea de agente para editar tu documentación automáticamente.
-* [Get agent job](/es/api/agent/v2/get-agent-job): Obtén los detalles y el estado de una tarea de agente específica.
-* [Send follow-up message](/es/api/agent/v2/send-message): Envía un mensaje de seguimiento a una tarea de agente existente.
-* [Create assistant message](/es/api/assistant/create-assistant-message-v2): Integra el assistant, entrenado con tu documentación, en cualquier aplicación que elijas.
-* [Search documentation](/es/api/assistant/search): Busca en tu documentación.
-* [Get page content](/es/api/assistant/get-page-content): Recupera el contenido de texto completo de una página de documentación.
-* [Get user feedback](/es/api/analytics/feedback): Exporta los comentarios de los usuarios de tu documentación.
-* [Get assistant conversations](/es/api/analytics/assistant-conversations): Exporta el historial de conversaciones del Asistente de IA.
-* [Get assistant caller stats](/es/api/analytics/assistant-caller-stats): Obtén un desglose de los recuentos de consultas del assistant por tipo de origen.
+* [Activar actualización](/es/api/update/trigger): Activa una actualización de tu sitio cuando lo desees.
+* [Obtener el estado de la actualización](/es/api/update/status): Obtén el estado de una actualización y otros detalles sobre tu documentación.
+* [Activar despliegue de vista previa](/es/api/preview/trigger): Crea o actualiza un despliegue de vista previa para una rama específica.
+* [Crear trabajo del agente](/es/api/agent/v2/create-agent-job): Crea un trabajo del agente para editar automáticamente tu documentación.
+* [Obtener trabajo del agente](/es/api/agent/v2/get-agent-job): Recupera los detalles y el estado de un trabajo del agente específico.
+* [Enviar mensaje de seguimiento](/es/api/agent/v2/send-message): Envía un mensaje de seguimiento a un trabajo del agente existente.
+* [Crear mensaje del asistente](/es/api/assistant/create-assistant-message-v2): Integra el asistente, entrenado con tu documentación, en cualquier aplicación que elijas.
+* [Buscar en la documentación](/es/api/assistant/search): Busca en tu documentación.
+* [Obtener contenido de la página](/es/api/assistant/get-page-content): Recupera el contenido de texto completo de una página de documentación.
+* [Obtener comentarios de usuarios](/es/api/analytics/feedback): Exporta los comentarios de usuarios de tu documentación.
+* [Obtener comentarios por página](/es/api/analytics/feedback-by-page): Exporta los recuentos de comentarios agregados por página.
+* [Obtener conversaciones del asistente](/es/api/analytics/assistant-conversations): Exporta el historial de conversaciones del asistente de IA.
+* [Obtener estadísticas de origen del asistente](/es/api/analytics/assistant-caller-stats): Recupera un desglose del número de consultas del asistente por tipo de origen.
+* [Obtener consultas de búsqueda](/es/api/analytics/searches): Exporta los términos de búsqueda de la documentación y la analítica.
+* [Obtener vistas de página](/es/api/analytics/views): Exporta los recuentos de vistas de contenido por página y de todo el sitio.
+* [Obtener visitantes únicos](/es/api/analytics/visitors): Exporta los recuentos de visitantes únicos por página y de todo el sitio.
 
 <div id="common-use-cases">
   ### Casos de uso comunes
 </div>
 
-* **Implementaciones automatizadas**: Activa actualizaciones del sitio a intervalos establecidos o cuando se produzcan eventos con [Trigger update](/es/api/update/trigger) y [Get update status](/es/api/update/status).
-* **Integración CI/CD**: Actualiza la documentación como parte de tu pipeline de implementación cuando el código cambie con [Trigger update](/es/api/update/trigger).
-* **Implementaciones de vista previa**: Crea o actualiza implementaciones de vista previa de forma programática en tu pipeline CI/CD con [Trigger preview deployment](/es/api/preview/trigger).
-* **Integraciones personalizadas**: Inserta el Asistente de IA en tu producto, portal de soporte o herramientas internas con [Create assistant message](/es/api/assistant/create-assistant-message-v2), [Search documentation](/es/api/assistant/search) y [Get page content](/es/api/assistant/get-page-content).
-* **Edición automatizada**: Usa trabajos de agente para actualizar la documentación programáticamente y a escala con [Create agent job](/es/api/agent/v2/create-agent-job), [Get agent job](/es/api/agent/v2/get-agent-job) y [Send follow-up message](/es/api/agent/v2/send-message).
-* **Exportación de Analytics**: Exporta comentarios, conversaciones del assistant y datos de visitantes para análisis externo con [Get user feedback](/es/api/analytics/feedback), [Get assistant conversations](/es/api/analytics/assistant-conversations) y [Get assistant caller stats](/es/api/analytics/assistant-caller-stats).
+* **Despliegues automatizados**: Activa actualizaciones del sitio a intervalos definidos o cuando se produzcan eventos con [Activar actualización](/es/api/update/trigger) y [Obtener el estado de la actualización](/es/api/update/status).
+* **Integración con CI/CD**: Actualiza la documentación como parte de tu pipeline de despliegue cuando cambie el código con [Activar actualización](/es/api/update/trigger).
+* **Despliegues de vista previa**: Crea o actualiza despliegues de vista previa de forma programática en tu pipeline de CI/CD con [Activar despliegue de vista previa](/es/api/preview/trigger).
+* **Integraciones personalizadas**: Integra el asistente de IA en tu producto, portal de soporte o herramientas internas con [Crear mensaje del asistente](/es/api/assistant/create-assistant-message-v2), [Buscar en la documentación](/es/api/assistant/search) y [Obtener el contenido de la página](/es/api/assistant/get-page-content).
+* **Edición automatizada**: Usa trabajos del agente para actualizar la documentación de forma programática y a escala con [Crear trabajo del agente](/es/api/agent/v2/create-agent-job), [Obtener trabajo del agente](/es/api/agent/v2/get-agent-job) y [Enviar mensaje de seguimiento](/es/api/agent/v2/send-message).
+* **Exportación de analítica**: Exporta comentarios, conversaciones del asistente, analítica de búsquedas, vistas de página y datos de visitantes para analizarlos externamente con [Obtener comentarios de usuarios](/es/api/analytics/feedback), [Obtener comentarios por página](/es/api/analytics/feedback-by-page), [Obtener conversaciones del asistente](/es/api/analytics/assistant-conversations), [obtener estadística de origen del asistente](/es/api/analytics/assistant-caller-stats), [Obtener consultas de búsqueda](/es/api/analytics/searches), [Obtener vistas de página](/es/api/analytics/views) y [Obtener visitantes únicos](/es/api/analytics/visitors).
 
 <div id="authentication">
   ## Autenticación
 </div>
 
-Puedes generar API keys en la [página de API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard. Cada API key pertenece a una organización; puedes usar API keys en múltiples implementaciones dentro de la misma organización.
+Genera claves de API en la [página de claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel. Cada clave de API pertenece a una organización; puedes usar claves en varios despliegues dentro de la misma organización.
 
-Puedes crear hasta 10 API keys por hora y por organización.
+Puedes crear hasta 10 claves de API por hora por organización.
 
 <div id="admin-api-key">
-  ### Clave de la API de administrador
+  ### Clave de API de administrador
 </div>
 
-Usa la clave de la API de administrador para autenticar solicitudes a [Trigger update](/es/api/update/trigger), [Get update status](/es/api/update/status), [Trigger preview deployment](/es/api/preview/trigger), [Create agent job](/es/api/agent/v2/create-agent-job), [Get agent job](/es/api/agent/v2/get-agent-job), [Send follow-up message](/es/api/agent/v2/send-message), [Get user feedback](/es/api/analytics/feedback), [Get assistant conversations](/es/api/analytics/assistant-conversations) y [Get assistant caller stats](/es/api/analytics/assistant-caller-stats).
+Usa la clave de API de administrador para autenticar las solicitudes a [activar actualización](/es/api/update/trigger), [Obtener el estado de la actualización](/es/api/update/status), [activar despliegue de vista previa](/es/api/preview/trigger), [Crear trabajo del agente](/es/api/agent/v2/create-agent-job), [Obtener trabajo del agente](/es/api/agent/v2/get-agent-job), [Enviar mensaje de seguimiento](/es/api/agent/v2/send-message), [Obtener comentarios de usuarios](/es/api/analytics/feedback), [Obtener comentarios por página](/es/api/analytics/feedback-by-page), [Obtener conversaciones del asistente](/es/api/analytics/assistant-conversations), [obtener estadística de origen del asistente](/es/api/analytics/assistant-caller-stats), [Obtener consultas de búsqueda](/es/api/analytics/searches), [Obtener vistas de página](/es/api/analytics/views) y [Obtener visitantes únicos](/es/api/analytics/visitors).
 
-Las claves de la API de administrador comienzan con el prefijo `mint_`.
+Las claves de API de administrador comienzan con el prefijo `mint_`.
 
-La clave de la API de administrador es un secreto del lado del servidor. No la expongas en código del lado del cliente.
+La clave de API de administrador es un secreto del servidor. No la expongas en código del cliente.
 
 <div id="assistant-api-key">
-  ### key del Assistant API
+  ### Clave de la API de Assistant
 </div>
 
-Usa la key del Assistant API para autenticar solicitudes a los endpoints [Create assistant message](/es/api/assistant/create-assistant-message-v2), [Search documentation](/es/api/assistant/search) y [Get page content](/es/api/assistant/get-page-content).
+Usa la clave de la API de Assistant para autenticar las solicitudes a los endpoints [Crear mensaje del asistente](/es/api/assistant/create-assistant-message-v2), [Buscar en la documentación](/es/api/assistant/search) y [Obtener el contenido de la página](/es/api/assistant/get-page-content).
 
-Las keys del Assistant API comienzan con el prefijo `mint_dsc_`.
+Las claves de la API de Assistant comienzan con el prefijo `mint_dsc_`.
 
-La key del Assistant API es un token público que puede referenciarse en tu código de frontend.
+La clave de la API de Assistant es un token público que puedes usar en el código frontend.
 
 <Note>
-  Las llamadas que usan el token del Assistant API pueden generar costos: ya sea usando tus créditos del assistant o incurriendo en excedentes.
+  Las llamadas que usan el token de la API de Assistant pueden generar costos: ya sea consumiendo tus créditos de Assistant o generando cargos por exceso.
 </Note>

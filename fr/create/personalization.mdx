@@ -1,20 +1,20 @@
 ---
 title: "Contenu personnalisé"
-description: "Affichez du contenu personnalisé en fonction des données d’authentification de l’utilisateur, des appartenances aux groupes et des variables personnalisées pour adapter la documentation à chaque audience."
+description: "Affichez du contenu personnalisé en fonction des données d’authentification des utilisateurs, de leur appartenance à des groupes et de variables personnalisées afin d’adapter la documentation à chaque audience."
 keywords: ["personnalisation du contenu", "personnalisation", "données utilisateur", "groupes", "dynamique", "préremplissage"]
 ---
 
 <Note>
-  La personnalisation nécessite une [authentification](/fr/deploy/authentication-setup) configurée avec OAuth ou JWT.
+  La personnalisation nécessite que [l’authentification](/fr/deploy/authentication-setup) soit configurée avec OAuth ou JWT.
 </Note>
 
-Personnalisez le contenu pour vos utilisateurs lorsqu’ils se connectent à votre site de documentation. Vous pouvez préremplir des clés d’API, afficher du contenu spécifique au plan ou au rôle d’un utilisateur et filtrer le contenu de la référence d’API en fonction de leur groupe d’appartenance.
+Personnalisez le contenu pour vos utilisateurs lorsqu’ils se connectent à votre site de documentation. Vous pouvez préremplir des clés API, afficher du contenu propre à l’offre ou au rôle d’un utilisateur, et filtrer le contenu de la Référence de l’API en fonction de son appartenance à un groupe.
 
 <div id="api-key-prefilling">
-  ## Préremplissage de la clé d’API
+  ## Préremplissage des clés API
 </div>
 
-Renseignez automatiquement les champs du bac à sable d’API avec des valeurs propres à chaque utilisateur en renvoyant des noms de champs correspondants dans vos données utilisateur. Incluez ces valeurs dans le champ `apiPlaygroundInputs` de vos [données utilisateur](/fr/deploy/authentication-setup#user-data-format).
+Préremplissez automatiquement les champs du bac à sable API avec des valeurs propres à l’utilisateur en renvoyant, dans vos données utilisateur, des noms de champs correspondants. Incluez les valeurs dans le champ `apiPlaygroundInputs` de vos [données utilisateur](/fr/deploy/authentication-setup#user-data-format).
 
 ```json
 {
@@ -25,13 +25,13 @@ Renseignez automatiquement les champs du bac à sable d’API avec des valeurs p
 }
 ```
 
-Les noms de champ doivent correspondre aux noms définis dans votre spécification OpenAPI. Seules les valeurs correspondant au schéma de sécurité du point de terminaison en cours sont prises en compte.
+Les noms des champs doivent correspondre aux noms définis dans votre spécification OpenAPI. Seules les valeurs correspondant au schéma de sécurité du point de terminaison actuel sont prises en compte.
 
 <div id="dynamic-mdx-content">
   ## Contenu MDX dynamique
 </div>
 
-Affichez du contenu en fonction des informations utilisateur comme le nom, l&#39;abonnement ou l&#39;organisation grâce à la variable `user` dans vos pages MDX. Incluez des données personnalisées dans le champ `content` de vos [données utilisateur](/fr/deploy/authentication-setup#user-data-format).
+Affichez du contenu en fonction d’informations utilisateur telles que le nom, l’abonnement ou l’organisation, à l’aide de la variable `user` dans vos pages MDX. Incluez des données personnalisées dans le champ `content` de vos [données utilisateur](/fr/deploy/authentication-setup#user-data-format).
 
 ```json
 {
@@ -46,7 +46,7 @@ Affichez du contenu en fonction des informations utilisateur comme le nom, l&#39
 Utilisez ces valeurs dans votre MDX.
 
 ```mdx
-Bienvenue, {user.firstName} ! Votre forfait {user.plan} comprend 100 places pour les membres de votre organisation {user.company}.
+Welcome back, {user.firstName}! Your {user.plan} plan includes 100 seats for members in your {user.company} organization.
 ```
 
 Pour effectuer un rendu conditionnel en fonction des données utilisateur, utilisez la variable `user` dans les composants JSX.
@@ -54,41 +54,41 @@ Pour effectuer un rendu conditionnel en fonction des données utilisateur, utili
 ```jsx
 {
   user.plan === 'enterprise'
-    ? <>Contactez votre administrateur pour activer cette fonctionnalité.</>
-    : <>Consultez <a href="https://yoursite.com/pricing">nos tarifs</a> pour plus d'informations sur la mise à niveau.</>
+    ? <>Contact your admin to enable this feature.</>
+    : <>See <a href="https://yoursite.com/pricing">pricing</a> for information about upgrading.</>
 }
 ```
 
 <Note>
-  La variable `user` est un objet vide pour les utilisateurs déconnectés. Utilisez l’opérateur d’enchaînement optionnel sur tous les champs de `user` pour éviter les erreurs. Par exemple, `{user.org?.plan}` au lieu de `{user.org.plan}`.
+  La variable `user` est un objet vide lorsque l’utilisateur n’est pas connecté. Utilisez le chaînage optionnel sur tous les champs de `user` afin d’éviter les erreurs. Par exemple, `{user.org?.plan}` au lieu de `{user.org.plan}`.
 </Note>
 
 <div id="page-visibility">
-  ## Visibilité des pages
+  ## Visibilité de la page
 </div>
 
-Restreignez l’accès aux pages à des groupes d’utilisateurs spécifiques en ajoutant `groups` au frontmatter de la page. Les utilisateurs doivent appartenir à au moins un des groupes énumérés pour accéder à la page.
+Limitez l’accès aux pages à des groupes d’utilisateurs spécifiques en ajoutant `groups` aux métadonnées d’en-tête de la page. Les utilisateurs doivent appartenir à au moins un des groupes indiqués pour accéder à la page.
 
 ```mdx
 ---
-title: "Paramètres d'administration"
+title: "Admin settings"
 groups: ["admin"]
 ---
 ```
 
-Pour plus de détails sur la façon dont les groupes interagissent avec les pages publiques, voir [Contrôler l&#39;accès avec des groupes](/fr/deploy/authentication-setup#control-access-with-groups).
+Pour plus de détails sur la manière dont les groupes interagissent avec les pages publiques, consultez [Contrôler l’accès avec les groupes](/fr/deploy/authentication-setup#control-access-with-groups).
 
 <div id="openapi-content-filtering">
   ## Filtrage du contenu OpenAPI
 </div>
 
-Filtrez le contenu de la référence d’API en fonction des groupes d’utilisateurs à l’aide de l’extension `x-mint` dans votre spécification OpenAPI. Vous pouvez filtrer des points de terminaison entiers, des propriétés de schéma individuelles, des variantes `oneOf` et des valeurs d’énumération.
+Filtrez le contenu de la Référence de l’API en fonction des groupes d’utilisateurs à l’aide de l’extension `x-mint` dans votre spécification OpenAPI. Vous pouvez filtrer des points de terminaison entiers, des propriétés de schéma individuelles, des variantes `oneOf` et des valeurs d’énumération.
 
 <div id="filter-endpoints">
-  ### Filtrer les endpoints
+  ### Filtrer les points de terminaison
 </div>
 
-Ajoutez `x-mint.groups` à une opération ou à un chemin pour restreindre la page de l’endpoint à des groupes d’utilisateurs spécifiques. Les utilisateurs qui ne font pas partie des groupes indiqués ne verront pas l’endpoint dans la navigation et ne pourront pas accéder à sa page.
+Ajoutez `x-mint.groups` à une opération ou à un chemin pour restreindre l’accès à la page du point de terminaison à certains groupes d’utilisateurs. Les utilisateurs qui ne font pas partie des groupes indiqués ne verront pas le point de terminaison dans la navigation et ne pourront pas accéder à sa page.
 
 <CodeGroup>
   ```json {6-8} Opération restreinte
@@ -96,13 +96,13 @@ Ajoutez `x-mint.groups` à une opération ou à un chemin pour restreindre la pa
     "paths": {
       "/billing": {
         "get": {
-          "summary": "Récupérer les détails de facturation",
+          "summary": "Get billing details",
           "x-mint": {
             "groups": ["admin", "billing"]
           },
           "responses": {
             "200": {
-              "description": "Détails de facturation"
+              "description": "Billing details"
             }
           }
         }
@@ -119,12 +119,12 @@ Ajoutez `x-mint.groups` à une opération ou à un chemin pour restreindre la pa
       },
       "/billing": {
         "get": {
-          "summary": "Récupérer les détails de facturation",
+          "summary": "Get billing details",
         }
       },
       "/users": {
         "get": {
-          "summary": "Récupérer les détails de l’utilisateur",
+          "summary": "Get user details",
         }
       }
     }
@@ -136,7 +136,7 @@ Ajoutez `x-mint.groups` à une opération ou à un chemin pour restreindre la pa
   ### Filtrer les propriétés du schéma
 </div>
 
-Ajoutez `x-mint.groups` aux propriétés individuelles des corps de requête, des paramètres ou des réponses. Les propriétés sans `x-mint.groups` restent visibles pour tous les utilisateurs.
+Ajoutez `x-mint.groups` à des propriétés spécifiques dans les corps de requête, les paramètres ou les réponses. Les propriétés sans `x-mint.groups` restent visibles pour tous les utilisateurs.
 
 ```json {11-13} Restricted property
 {
@@ -161,13 +161,13 @@ Ajoutez `x-mint.groups` aux propriétés individuelles des corps de requête, de
 }
 ```
 
-Dans cet exemple, tous les utilisateurs peuvent voir la propriété `name`. Seuls les utilisateurs du groupe `admin` peuvent voir la propriété `internal_id`.
+Dans cet exemple, tous les utilisateurs voient la propriété `name`. Seuls les utilisateurs du groupe `admin` voient la propriété `internal_id`.
 
 <div id="filter-oneof-variants">
-  ### Filtrer les variantes oneOf
+  ### Filtrer les variantes de `oneOf`
 </div>
 
-Ajoutez `x-mint.groups` à chaque option `oneOf` pour restreindre les variantes de schéma qu’un utilisateur peut voir.
+Ajoutez `x-mint.groups` à chaque option `oneOf` pour limiter les variantes de schéma visibles par l’utilisateur.
 
 ```json {7-9} Restricted oneOf variant
 {
@@ -199,7 +199,7 @@ Ajoutez `x-mint.groups` à chaque option `oneOf` pour restreindre les variantes 
   ### Filtrer les valeurs d’énumération
 </div>
 
-Utilisez l’extension `x-mint-enum` pour restreindre certaines valeurs d’énumération par groupe. Indiquez chaque valeur restreinte comme key, avec ses groups autorisés comme value. Les valeurs d’énumération qui ne sont pas répertoriées dans `x-mint-enum` sont visibles par tous les utilisateurs.
+Utilisez l’extension `x-mint-enum` pour restreindre certaines valeurs d’énumération par groupe. Indiquez chaque valeur restreinte comme clé, et les groupes autorisés comme valeur. Les valeurs d’énumération qui ne figurent pas dans `x-mint-enum` sont visibles par tous les utilisateurs.
 
 ```json {4-7} Restricted enum values
 {
@@ -212,24 +212,24 @@ Utilisez l’extension `x-mint-enum` pour restreindre certaines valeurs d’énu
 }
 ```
 
-Dans cet exemple, tous les utilisateurs voient `free`. Les utilisateurs appartenant aux groupes `pro` ou `enterprise` voient `pro`. Seuls les utilisateurs du groupe `enterprise` voient `enterprise`.
+Dans cet exemple, tous les utilisateurs voient `free`. Les utilisateurs des groupes `pro` ou `enterprise` voient `pro`. Seuls les utilisateurs du groupe `enterprise` voient `enterprise`.
 
 <Note>
-  `x-mint-enum` est une extension distincte au niveau supérieur de l&#39;objet de schéma, et non imbriquée sous `x-mint`.
+  `x-mint-enum` est une extension distincte de premier niveau dans l’objet de schéma, et non imbriquée sous `x-mint`.
 </Note>
 
 <div id="user-data-format">
   ## Format des données utilisateur
 </div>
 
-Votre système d’authentification retourne des données utilisateur qui contrôlent la personnalisation. Les champs `groups`, `content` et `apiPlaygroundInputs` décrits sur cette page font tous partie de l’objet de données utilisateur.
+Votre système d’authentification renvoie des données utilisateur qui déterminent la personnalisation. Les champs `groups`, `content` et `apiPlaygroundInputs` décrits sur cette page font tous partie de l’objet de données utilisateur.
 
-Pour connaître le format complet des données utilisateur et la référence des champs, consultez la page [Format des données utilisateur](/fr/deploy/authentication-setup#user-data-format).
+Pour consulter le format complet des données utilisateur et la référence des champs, voir [Format des données utilisateur](/fr/deploy/authentication-setup#user-data-format).
 
 <div id="logout-behavior">
   ## Comportement de déconnexion
 </div>
 
-La déconnexion s&#39;effectue côté client. Lorsque les utilisateurs cliquent sur le bouton de déconnexion, Mintlify efface les données de session stockées dans le navigateur.
+La déconnexion s’effectue côté client. Lorsque les utilisateurs cliquent sur le bouton de déconnexion, Mintlify efface les données de session enregistrées dans le navigateur.
 
 Pour limiter la durée de conservation des données de personnalisation, définissez le champ `expiresAt` dans vos données utilisateur.

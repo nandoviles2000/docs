@@ -1,12 +1,12 @@
 ---
-title: "Créer un message de l'Assistant"
-description: "Envoyez des messages à l'Assistant IA et recevez des réponses en
-  streaming à l'aide de l'AI SDK v5 ou version ultérieure avec le hook useChat."
+title: "Créer un message d’assistant"
+description: "Envoyez des messages à l’assistant IA et recevez des réponses en
+  streaming à l’aide d’AI SDK v5 ou version ultérieure via le hook useChat."
 openapi: /fr/discovery-openapi.json POST /v2/assistant/{domain}/message
 keywords:
   [
-    "assistant message",
-    "embed",
+    "message d’assistant",
+    "intégration",
     "chat",
     "intégrer",
     "v2",
@@ -16,17 +16,18 @@ keywords:
 ---
 
 <Info>
-  L&#39;endpoint assistant message v2 est compatible avec **AI SDK v5+**. Si vous utilisez l&#39;AI SDK v4, utilisez plutôt l&#39;[endpoint assistant message v1](/fr/api/assistant/create-assistant-message).
+  Le point de terminaison assistant message v2 est compatible avec **AI SDK v5+**. Si vous
+  utilisez AI SDK v4, utilisez plutôt le [point de terminaison assistant message v1](/fr/api/assistant/create-assistant-message).
 </Info>
 
 <div id="integration-with-usechat">
   ## Intégration avec `useChat`
 </div>
 
-Le hook `useChat` de l&#39;AI SDK de Vercel est la méthode recommandée pour intégrer l&#39;API Assistant dans votre application.
+Le hook `useChat` du AI SDK de Vercel est le moyen recommandé pour intégrer l’API de l’assistant dans votre application.
 
 <Steps>
-  <Step title="Installer l'AI SDK">
+  <Step title="Installer AI SDK">
     ```bash
     npm i ai@^6 @ai-sdk/react
     ```
@@ -65,7 +66,7 @@ Le hook `useChat` de l&#39;AI SDK de Vercel est la méthode recommandée pour in
         <div>
           {messages.map((message) => (
             <div key={message.id}>
-              {message.role === "user" ? "User: " : "Assistant: "}
+              {message.role === "user" ? "Utilisateur : " : "Assistant : "}
               {message.parts
                 .filter((part) => part.type === "text")
                 .map((part) => part.text)
@@ -82,38 +83,38 @@ Le hook `useChat` de l&#39;AI SDK de Vercel est la méthode recommandée pour in
             }}
           >
             <input value={input} onChange={(e) => setInput(e.target.value)} />
-            <button type="submit">Send</button>
+            <button type="submit">Envoyer</button>
           </form>
         </div>
       );
     }
     ```
 
-    **Configuration requise :**
+    **Configuration requise :**
 
-    * `transport` - Utilisez `DefaultChatTransport` pour configurer la connexion à l&#39;API.
+    * `transport` - Utilisez `DefaultChatTransport` pour configurer la connexion à l’API.
     * `body.fp` - Identifiant d’empreinte (utilisez `'anonymous'` ou un identifiant utilisateur unique).
-    * `body.retrievalPageSize` - Nombre de résultats de recherche à utiliser (recommandé : 5).
+    * `body.retrievalPageSize` - Nombre de résultats de recherche à utiliser (recommandé : 5).
 
-    **Configuration optionnelle :**
+    **Configuration facultative :**
 
-    * `body.context` - Tableau d’informations contextuelles à fournir à l’Assistant. Chaque objet de contexte contient :
-      * `type` - Soit `'code'` soit `'textSelection'`.
-      * `value` - Le morceau de code ou le contenu textuel sélectionné.
-      * `path` (optionnel) - Chemin vers le fichier source ou la page.
-      * `elementId` (optionnel) - Identifiant de l’élément d’interface contenant le contexte.
-    * `body.currentPath` - Chemin de la page que l’utilisateur est en train de consulter. Lorsqu’il est fourni, l’Assistant utilise ce contexte pour fournir des réponses plus pertinentes. Longueur maximale : 200 caractères.
+    * `body.context` - Tableau d’informations contextuelles à fournir à l’assistant. Chaque objet de contexte contient :
+      * `type` - Soit `'code'`, soit `'textSelection'`.
+      * `value` - L’extrait de code ou le contenu du texte sélectionné.
+      * `path` (facultatif) - Chemin vers le fichier source ou la page.
+      * `elementId` (facultatif) - Identifiant de l’élément d’interface contenant le contexte.
+    * `body.currentPath` - Chemin de la page que l’utilisateur consulte actuellement. Lorsqu’il est fourni, l’assistant utilise ce contexte pour fournir des réponses plus pertinentes. Longueur maximale : 200 caractères.
   </Step>
 </Steps>
 
-Voir [useChat](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat) et [Transport](https://ai-sdk.dev/docs/ai-sdk-ui/transport) dans la documentation de l&#39;AI SDK pour plus de détails.
+Consultez la documentation du AI SDK pour plus de détails sur [useChat](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat) et [Transport](https://ai-sdk.dev/docs/ai-sdk-ui/transport).
 
 <div id="rate-limits">
-  ## Limites de débit
+  ## Limites de requêtes
 </div>
 
-L&#39;API Assistant est soumise aux limites suivantes :
+L’API de l’assistant est soumise aux limites suivantes :
 
-* 10 000 utilisations par key et par mois
+* 10 000 utilisations par clé et par mois
 * 10 000 requêtes par organisation Mintlify et par heure
-* 10 000 requêtes par IP et par jour
+* 10 000 requêtes par adresse IP et par jour

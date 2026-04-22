@@ -1,27 +1,33 @@
 ---
-title: "Créer un message de l’Assistant (v1)"
-description: "Obsolète. Envoyez des messages à l’Assistant IA à l’aide de l’AI
-  SDK v4. Utilisez le point de terminaison v2 pour l’AI SDK v5 ou une version
-  ultérieure."
+title: "Créer un message pour l’assistant (v1)"
+description: "Obsolète. Envoyez des messages à l’assistant IA avec AI SDK v4.
+  Utilisez le point de terminaison v2 pour AI SDK v5 ou version ultérieure."
 openapi: /fr/discovery-openapi.json POST /v1/assistant/{domain}/message
 tag: "Obsolète"
-keywords: [ "message de l’Assistant", "intégration", "chat", "intégrer", "ai sdk v4" ]
+keywords:
+  [
+    "message pour l’assistant",
+    "intégration",
+    "chat",
+    "intégrer",
+    "ai sdk v4"
+  ]
 ---
 
 <Badge color="orange">Obsolète</Badge>
 
 <Info>
-  Le point de terminaison assistant message v1 est compatible avec **AI SDK v4**. Si vous utilisez AI SDK v5 ou une version ultérieure, utilisez plutôt le [point de terminaison assistant message v2](/fr/api/assistant/create-assistant-message-v2).
+  Le point de terminaison v1 des messages pour l’assistant est compatible avec **AI SDK v4**. Si vous utilisez AI SDK v5 ou une version ultérieure, utilisez plutôt le [point de terminaison v2 des messages pour l’assistant](/fr/api/assistant/create-assistant-message-v2).
 </Info>
 
 <div id="integration-with-usechat">
   ## Intégration avec `useChat`
 </div>
 
-Le hook `useChat` du SDK AI de Vercel est la méthode recommandée pour intégrer l’API de l’Assistant à votre application.
+Le hook `useChat` du SDK AI de Vercel est le moyen recommandé pour intégrer l&#39;API de l&#39;assistant à votre application.
 
 <Steps>
-  <Step title="Installer le SDK AI v4">
+  <Step title="Installer AI SDK v4">
     ```bash
     npm i ai@^4.1.15
     ```
@@ -56,44 +62,44 @@ Le hook `useChat` du SDK AI de Vercel est la méthode recommandée pour intégre
         <div>
           {messages.map((message) => (
             <div key={message.id}>
-              {message.role === 'user' ? 'Utilisateur : ' : 'Assistant : '}
+              {message.role === 'user' ? 'User: ' : 'Assistant: '}
               {message.content}
             </div>
           ))}
           <form onSubmit={handleSubmit}>
             <input value={input} onChange={handleInputChange} />
-            <button type="submit">Envoyer</button>
+            <button type="submit">Send</button>
           </form>
         </div>
       );
     }
     ```
 
-    **Configuration requise pour Mintlify :**
+    **Configuration requise pour Mintlify :**
 
     * `streamProtocol: 'data'` - Requis pour les réponses en streaming.
     * `sendExtraMessageFields: true` - Requis pour envoyer les métadonnées des messages.
-    * `body.fp` - Identifiant d’empreinte (utilisez &#39;anonymous&#39; ou un identifiant utilisateur).
-    * `body.retrievalPageSize` - Nombre de résultats de recherche à utiliser (recommandé : 5).
+    * `body.fp` - Identifiant d&#39;empreinte (utilisez &#39;anonymous&#39; ou un identifiant utilisateur).
+    * `body.retrievalPageSize` - Nombre de résultats de recherche à utiliser (recommandé : 5).
 
-    **Configuration optionnelle :**
+    **Configuration facultative :**
 
-    * `body.context` - Tableau d’informations contextuelles à fournir à l’Assistant. Chaque objet de contexte contient :
-      * `type` - Soit `'code'` soit `'textSelection'`.
-      * `value` - L’extrait de code ou le texte sélectionné.
-      * `elementId` (optionnel) - Identifiant de l’élément d’interface contenant le contexte.
-    * `body.currentPath` - Le chemin de la page actuellement consultée par l’utilisateur. Lorsqu’il est fourni, l’Assistant utilise ce contexte pour donner des réponses plus pertinentes. Longueur maximale : 200 caractères.
+    * `body.context` - Tableau d&#39;informations contextuelles à fournir à l&#39;assistant. Chaque objet de contexte contient :
+      * `type` - Soit `'code'`, soit `'textSelection'`.
+      * `value` - L&#39;extrait de code ou le contenu du texte sélectionné.
+      * `elementId` (facultatif) - Identifiant de l&#39;élément d&#39;interface contenant le contexte.
+    * `body.currentPath` - Chemin de la page que l&#39;utilisateur consulte actuellement. Lorsqu&#39;il est fourni, l&#39;assistant utilise ce contexte pour proposer des réponses plus pertinentes. Longueur maximale : 200 caractères.
   </Step>
 </Steps>
 
-Consultez [useChat](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat) dans la documentation du SDK AI pour en savoir plus.
+Consultez la documentation du SDK AI pour plus de détails sur [useChat](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat).
 
 <div id="rate-limits">
   ## Limites de débit
 </div>
 
-L’API de l’Assistant applique les limites suivantes :
+L&#39;API de l&#39;assistant est soumise aux limites suivantes :
 
-* 10 000 utilisations par key et par mois
+* 10 000 utilisations par clé et par mois
 * 10 000 requêtes par organisation Mintlify et par heure
-* 10 000 requêtes par adresse IP et par jour
+* 10 000 requêtes par IP et par jour

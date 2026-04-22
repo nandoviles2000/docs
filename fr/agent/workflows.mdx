@@ -1,351 +1,353 @@
 ---
-title: "Workflows"
-description: "Automatisez la maintenance de la documentation avec des tâches d'agent planifiées ou déclenchées par des événements, y compris les planifications cron et l'automatisation par webhooks."
-keywords: ["automation", "automate", "cron", "auto-update"]
+title: "Flux de travail"
+description: "Configurez des flux de travail de documentation automatisés avec des tâches d’agent planifiées ou déclenchées par des événements, y compris des planifications cron et une automatisation basée sur des webhooks."
+keywords: ["automatisation", "automatiser", "cron", "mise à jour automatique"]
 tag: "Bêta"
 ---
 
 <Info>
-  Les workflows sont en bêta. Ils sont actuellement gratuits pour toutes les offres pendant la période bêta. Les fonctionnalités, la disponibilité et la tarification des workflows sont susceptibles d'être modifiées.
+  Les flux de travail sont en bêta. Ils sont actuellement gratuits pour tous les forfaits pendant cette période. Les fonctionnalités, la disponibilité et la tarification des flux de travail sont susceptibles d’évoluer.
 </Info>
 
-Les workflows exécutent automatiquement l'agent selon une planification ou lors d'une poussée vers un référentiel. Chaque workflow définit un prompt pour l'agent ainsi qu'un déclencheur indiquant quand l'exécuter. Les workflows prennent en charge les référentiels GitHub et GitLab.
+Les flux de travail exécutent automatiquement l’agent selon une planification ou lors d’un push vers un dépôt. Chaque flux de travail définit un prompt pour l’agent ainsi qu’un déclencheur indiquant quand l’exécuter. Les flux de travail prennent en charge les dépôts GitHub et GitLab.
 
-Lorsqu'un workflow s'exécute, l'agent clone tous les référentiels spécifiés comme contexte, suit le prompt, puis ouvre soit une pull request (ou merge request pour GitLab), soit pousse directement les modifications vers votre branche de déploiement.
+Lorsqu’un flux de travail s’exécute, l’agent clone les dépôts spécifiés comme contexte, suit les instructions du prompt, puis ouvre soit une pull request (PR) (ou une merge request sur GitLab), soit pousse directement les modifications vers votre branche de déploiement.
 
-Chaque workflow peut s'exécuter jusqu'à 50 fois par jour. Les exécutions qui échouent ne sont pas comptabilisées dans cette limite.
+Chaque flux de travail peut s’exécuter jusqu’à 50 fois par jour. Les exécutions qui échouent ne comptent pas dans cette limite.
 
 <Tip>
-Utilisez des workflows qui s'exécutent selon une planification pour automatiser des tâches récurrentes, comme la publication de journaux des modifications ou la vérification des problèmes de grammaire et de style.
+  Utilisez des flux de travail planifiés pour automatiser des tâches récurrentes, comme la publication de changelogs ou la détection des problèmes de grammaire et de style.
 
-Utilisez des workflows qui s'exécutent lors d'événements de poussée pour automatiser des tâches de maintenance réactive, comme la mise à jour des références d'API ou l'identification des mises à jour de documentation nécessaires pour de nouvelles fonctionnalités.
+  Utilisez des flux de travail déclenchés par des événements push pour automatiser des tâches de maintenance réactive, comme la mise à jour des références d’API ou l’identification des mises à jour de documentation nécessaires pour les nouvelles fonctionnalités.
 </Tip>
 
 <div id="create-a-workflow">
-## Créer un workflow
+  ## Créer un flux de travail
 </div>
 
-1. Ouvrez la page [Workflows](https://dashboard.mintlify.com/products/workflows).
-2. Cliquez sur **New workflow**.
-3. Configurez le nom du workflow, le type de déclencheur, les référentiels et la planification.
-4. Rédigez les instructions de l'agent et choisissez si vous souhaitez fusionner automatiquement les pull requests.
-5. Facultatif : activez les notifications Slack pour lorsque le workflow se termine.
-6. Cliquez sur **Create workflow**.
+1. Ouvrez la page [Flux de travail](https://dashboard.mintlify.com/products/workflows).
+2. Cliquez sur **Nouveau flux de travail**.
+3. Configurez le nom du flux de travail, le type de déclencheur, les dépôts et la planification.
+4. Rédigez les instructions de l’agent et choisissez si vous souhaitez fusionner automatiquement les pull requests (PR).
+5. Si vous le souhaitez, activez les notifications Slack à la fin du flux de travail.
+6. Cliquez sur **Créer un flux de travail**.
 
 <Frame>
-<img src="/images/agent/new-workflow-light.png" alt="La page de configuration d'un nouveau workflow." className="block dark:hidden" />
-<img src="/images/agent/new-workflow-dark.png" alt="La page de configuration d'un nouveau workflow." className="hidden dark:block" />
+  <img src="/images/agent/new-workflow-light.png" alt="La page de configuration d’un nouveau flux de travail." className="block dark:hidden" />
+
+  <img src="/images/agent/new-workflow-dark.png" alt="La page de configuration d’un nouveau flux de travail." className="hidden dark:block" />
 </Frame>
 
 <div id="configuration">
-## Configuration
+  ## Configuration
 </div>
 
-| Champ | Obligatoire | Description |
-|-------|-------------|-------------|
-| **Name** | Oui | Nom d'affichage visible dans le dashboard. |
-| **Trigger** | Oui | Configuration du déclencheur. |
-| **Context** | Non | Référentiels clonés comme référence lors de l'exécution du workflow. |
-| **Automerge** | Non | Désactivé par défaut, ce qui ouvre une pull request pour révision. Si activé, ouvre une pull request et la fusionne automatiquement. |
-| **Notify** | Non | Configuration des notifications. Envoyez des messages Slack lorsque les workflows sont terminés. |
+| Champ                  | Obligatoire | Description                                                                                                                                               |
+| ---------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nom**                | Oui         | Nom d’affichage affiché dans le tableau de bord.                                                                                                          |
+| **Déclencheur**        | Oui         | Configuration du déclencheur.                                                                                                                             |
+| **Contexte**           | Non         | Dépôts clonés à titre de référence lors de l’exécution du flux de travail.                                                                                |
+| **Fusion automatique** | Non         | Désactivée par défaut, ce qui ouvre une pull request (PR) pour révision. Si elle est activée, ouvre une pull request (PR) et la fusionne automatiquement. |
+| **Notification**       | Non         | Configuration des notifications. Envoyez des messages Slack lorsque les flux de travail se terminent.                                                     |
 
-Pour les référentiels GitHub, vous devez avoir installé la GitHub App Mintlify sur chaque référentiel répertorié dans les champs de contexte ou de déclencheur. Ajoutez de nouveaux référentiels sur la page [GitHub app](https://dashboard.mintlify.com/settings/organization/github-app) de votre dashboard Mintlify.
+Pour les dépôts GitHub, vous devez avoir installé la GitHub App Mintlify sur chaque dépôt indiqué dans les champs de contexte ou de déclencheur. Ajoutez de nouveaux dépôts sur la page [GitHub app](https://dashboard.mintlify.com/settings/organization/github-app) de votre tableau de bord Mintlify.
 
-Pour les référentiels GitLab, vous devez connecter votre compte GitLab sur la page [GitLab OAuth](https://dashboard.mintlify.com/settings/organization/gitlab-oauth) de votre dashboard Mintlify. Ajoutez ensuite les référentiels que vous souhaitez utiliser avec les workflows. Vous devez disposer au minimum du rôle Maintainer sur chaque projet pour connecter GitLab OAuth.
+Pour les dépôts GitLab, vous devez connecter votre compte GitLab sur la page [GitLab OAuth](https://dashboard.mintlify.com/settings/organization/gitlab-oauth) de votre tableau de bord Mintlify. Ajoutez ensuite les dépôts que vous souhaitez utiliser avec les flux de travail. Vous devez disposer au minimum du rôle Maintainer sur chaque projet pour connecter GitLab OAuth.
 
 <Frame>
-  <img src="/images/github/app-repos-light.png" alt="La page GitHub app montrant les dépôts connectés pour deux organisations." className="block dark:hidden" />
-  <img src="/images/github/app-repos-dark.png" alt="La page GitHub app montrant les dépôts connectés pour deux organisations en mode sombre." className="hidden dark:block" />
+  <img src="/images/github/app-repos-light.png" alt="La page GitHub app affichant les dépôts connectés pour deux organisations." className="block dark:hidden" />
+
+  <img src="/images/github/app-repos-dark.png" alt="La page GitHub app affichant les dépôts connectés pour deux organisations en mode sombre." className="hidden dark:block" />
 </Frame>
 
 <div id="triggers">
-### Déclencheurs
+  ### Déclencheurs
 </div>
 
-Chaque workflow doit définir un seul déclencheur.
+Chaque flux de travail doit définir un seul déclencheur.
 
 <div id="on-schedule-cron">
-#### Selon une planification (cron)
+  #### Selon une planification (cron)
 </div>
 
-Exécutez un workflow à intervalles réguliers à l'aide d'une expression cron. Toutes les planifications s'exécutent en UTC.
+Exécutez un flux de travail à intervalles réguliers à l’aide d’une expression cron. Toutes les planifications utilisent l’UTC.
 
-Les workflows sont placés en file d'attente dans les 10 minutes suivant l'heure planifiée et leur exécution peut prendre jusqu'à 10 minutes.
+Les flux de travail sont placés en file d’attente dans les 10 minutes suivant l’heure planifiée et peuvent mettre jusqu’à 10 minutes à s’exécuter.
 
-La valeur est une expression cron standard à 5 champs au format `minute hour day-of-month month day-of-week`. Utilisez un outil comme [crontab.guru](https://crontab.guru) pour définir et valider les programmations.
+La valeur est une expression cron standard à 5 champs au format `minute hour day-of-month month day-of-week`. Utilisez un outil comme [crontab.guru](https://crontab.guru) pour créer et valider les planifications.
 
-| Expression | Planification |
-|------------|--------------|
-| `0 9 * * 1` | Chaque lundi à 9 h 00 UTC |
-| `0 0 1 * *` | Premier jour de chaque mois à 0 h 00 UTC |
-| `0 8 * * 1-5` | Du lundi au vendredi à 8 h 00 UTC |
+| Expression    | Planification                               |
+| ------------- | ------------------------------------------- |
+| `0 9 * * 1`   | Chaque lundi à 9 h 00 UTC                   |
+| `0 0 1 * *`   | Le premier jour de chaque mois à minuit UTC |
+| `0 8 * * 1-5` | En semaine à 8 h 00 UTC                     |
 
 <div id="on-push-events">
-#### Lors des événements de type push
+  #### Lors des événements push
 </div>
 
-Exécutez un workflow lorsque des modifications sont poussées vers un référentiel ou une branche spécifiques. Cela inclut les fusions de pull requests et les poussées directes vers la branche.
+Exécutez un flux de travail lorsque des modifications sont envoyées vers un dépôt ou une branche spécifique. Cela inclut à la fois les fusions de pull request (PR) et les push directs vers la branche.
 
-Spécifiez chaque référentiel au format `owner/repo`. Vous pouvez optionnellement spécifier une branche à surveiller. Si vous ne spécifiez pas de branche, le workflow se déclenche lorsque des modifications sont poussées vers la branche par défaut du référentiel.
+Spécifiez chaque dépôt au format `owner/repo`. Vous pouvez également spécifier une branche à surveiller. Si vous ne spécifiez pas de branche, le flux de travail se déclenche lors des push vers la branche par défaut du dépôt.
 
-Un workflow peut surveiller les poussées vers jusqu'à 10 référentiels ou branches.
+Un flux de travail peut surveiller les push sur un maximum de 10 dépôts ou branches.
 
 <div id="context-repositories">
-### Référentiels de contexte
+  ### Dépôts contextuels
 </div>
 
-Les référentiels de contexte accordent à l'agent un accès en lecture à des référentiels supplémentaires lors de l'exécution du workflow. Cela est utile lorsque votre prompt doit examiner du code ou du contenu en dehors de votre référentiel de documentation. Vous pouvez spécifier jusqu'à cinq référentiels de contexte par workflow.
+Les dépôts contextuels donnent à l’agent un accès en lecture à des dépôts supplémentaires lorsque le flux de travail s’exécute. Cela est utile lorsque votre prompt exige de consulter du code ou du contenu en dehors de votre dépôt de documentation. Vous pouvez spécifier jusqu’à cinq dépôts contextuels par flux de travail.
 
 <div id="auto-merge-changes">
-### Fusion automatique des modifications
+  ### Fusion automatique des modifications
 </div>
 
-Par défaut, l'agent ouvre une pull request pour chaque exécution de workflow afin que vous puissiez examiner les modifications avant leur mise en production. Activez la fusion automatique pour fusionner automatiquement la pull request sans approbation manuelle. Cela vous permet de conserver une trace des modifications dans l'historique des pull requests de votre référentiel tout en automatisant l'étape de fusion.
+Par défaut, l’agent ouvre une pull request (PR) pour chaque exécution du flux de travail afin que vous puissiez examiner les modifications avant leur mise en ligne. Activez la fusion automatique pour fusionner automatiquement la pull request (PR) sans approbation manuelle. Vous conservez ainsi une trace des modifications dans l’historique des pull requests de votre dépôt, tout en automatisant l’étape de fusion.
 
 <Note>
-  Pour les référentiels GitHub, l'automerge nécessite que la GitHub App Mintlify dispose de permissions de contournement sur tous les ensembles de règles ciblant votre branche de déploiement, y compris les ensembles de règles définis au niveau de l'organisation et au niveau du dépôt. Consultez [Configurer l'automerge](/fr/guides/configure-automerge) pour les instructions de configuration.
+  Pour les dépôts GitHub, la fusion automatique nécessite que la GitHub App Mintlify dispose d’autorisations de contournement sur tous les jeux de règles qui ciblent votre branche de déploiement, y compris ceux définis au niveau de l’organisation et du dépôt. Consultez [Configurer la fusion automatique](/fr/guides/configure-automerge) pour obtenir les instructions de configuration.
 
-  Pour les référentiels GitLab, l'automerge utilise la connexion GitLab OAuth configurée sur la page [GitLab OAuth](https://dashboard.mintlify.com/settings/organization/gitlab-oauth) de votre dashboard Mintlify. Vous devez disposer au minimum du rôle Maintainer sur chaque projet pour connecter GitLab OAuth.
+  Pour les dépôts GitLab, la fusion automatique utilise la connexion GitLab OAuth configurée sur la page [GitLab OAuth](https://dashboard.mintlify.com/settings/organization/gitlab-oauth) de votre tableau de bord Mintlify. Vous devez disposer au minimum du rôle Maintainer sur chaque projet pour connecter GitLab OAuth.
 </Note>
 
 <div id="slack-notifications">
-### Notifications Slack
+  ### Notifications Slack
 </div>
 
-Envoyez des messages Slack lorsqu'un workflow se termine ou échoue. Les notifications incluent le statut du workflow, un lien vers la pull request et un résumé des changements.
+Envoyez des messages Slack lorsqu’un flux de travail se termine ou échoue. Les notifications incluent l’état du flux de travail, un lien vers la pull request (PR) et un résumé des modifications.
 
 <Note>
-Les notifications Slack nécessitent l'application Mintlify Slack dans l'espace de travail Slack de votre organisation. Installez l'application Slack depuis votre [dashboard](https://dashboard.mintlify.com/products/agent).
+  Les notifications Slack nécessitent l’application Slack de Mintlify dans l’espace de travail Slack de votre organisation. Installez l’application Slack depuis votre [tableau de bord](https://dashboard.mintlify.com/products/agent).
 </Note>
 
-Lors de la création ou de la modification d'un workflow dans le dashboard, activez les notifications Slack via le bouton **Notify on completion** :
+Lorsque vous créez ou modifiez un flux de travail dans le tableau de bord, activez les notifications Slack avec l’option **Notify on completion** :
 
-1. Si vous n'avez pas encore connecté Slack, cliquez sur **Install Slack app**.
-2. Cliquez sur le bouton **Notify on completion**.
-3. Recherchez et sélectionnez les canaux que vous souhaitez notifier.
-4. Enregistrez votre workflow.
+1. Si vous n’avez pas encore connecté Slack, cliquez sur **Install Slack app**.
+2. Activez l’option **Notify on completion**.
+3. Recherchez et sélectionnez les canaux à notifier.
+4. Enregistrez votre flux de travail.
 
 <div id="manage-workflows">
-## Gérer les workflows
+  ## Gérer les flux de travail
 </div>
 
-Modifiez, supprimez, désactivez ou déclenchez des workflows depuis la page [Workflows](https://dashboard.mintlify.com/products/workflows) de votre dashboard.
+Modifiez, supprimez, désactivez ou déclenchez des flux de travail à partir de la page [flux de travail](https://dashboard.mintlify.com/products/workflows) de votre tableau de bord.
 
 <div id="trigger-a-workflow-manually">
-### Déclencher un workflow manuellement
+  ### Déclencher un flux de travail manuellement
 </div>
 
-Vous pouvez exécuter les workflows basés sur cron à la demande sans attendre la prochaine heure planifiée. Les exécutions déclenchées manuellement sont comptabilisées dans la limite quotidienne d'exécutions.
+Vous pouvez exécuter à la demande des flux de travail basés sur cron, sans attendre la prochaine exécution planifiée. Les exécutions déclenchées manuellement sont comptabilisées dans la limite d’exécutions quotidienne.
 
-1. Accédez à la page [Workflows](https://dashboard.mintlify.com/products/workflows) dans votre dashboard.
-2. Cliquez sur **View workflows** pour voir tous les workflows.
-3. Cliquez sur le workflow que vous souhaitez exécuter.
-4. Cliquez sur le bouton <Icon icon="play" /> de déclenchement manuel du workflow pour l'exécuter.
+1. Accédez à la page [flux de travail](https://dashboard.mintlify.com/products/workflows) de votre tableau de bord.
+2. Cliquez sur **Voir les flux de travail** pour afficher tous les flux de travail.
+3. Cliquez sur le flux de travail que vous souhaitez exécuter.
+4. Cliquez sur le bouton <Icon icon="play" /> pour déclencher manuellement le flux de travail.
 
 <div id="disable-a-workflow">
-### Désactiver un workflow
+  ### Désactiver un flux de travail
 </div>
 
-Désactivez un workflow pour l'arrêter temporairement sans le supprimer. Les workflows désactivés conservent leur configuration et leur historique d'exécutions, mais ne s'exécutent pas selon leur planification ni en réponse à des événements push. Vous ne pouvez pas déclencher manuellement un workflow désactivé.
+Désactivez un flux de travail pour l’empêcher temporairement de s’exécuter sans le supprimer. Les flux de travail désactivés conservent leur configuration et leur historique d’exécution, mais ne s’exécutent ni selon la planification prévue ni en réponse aux événements `push`. Vous ne pouvez pas déclencher manuellement un flux de travail désactivé.
 
-Pour activer ou désactiver un workflow :
+Pour activer ou désactiver un flux de travail :
 
-1. Accédez à la page [Workflows](https://dashboard.mintlify.com/products/workflows) dans votre dashboard.
-2. Cliquez sur **View workflows** pour voir tous les workflows.
-3. Cliquez sur le workflow que vous souhaitez désactiver ou activer.
-4. Cliquez sur le bouton bascule **Active** pour désactiver le workflow, ou activez-le pour le réactiver.
-5. Cliquez sur **Save changes**.
+1. Accédez à la page [Flux de travail](https://dashboard.mintlify.com/products/workflows) dans votre tableau de bord.
+2. Cliquez sur **Voir les flux de travail** pour afficher tous les flux de travail.
+3. Cliquez sur le flux de travail que vous souhaitez désactiver ou activer.
+4. Désactivez le bouton bascule **Active** pour désactiver le flux de travail, ou activez-le pour l’activer.
+5. Cliquez sur **Enregistrer les modifications**.
 
-Lorsque vous réactivez un workflow basé sur cron, Mintlify recalcule le prochain délai d'exécution à partir de l'heure actuelle.
+Lorsque vous réactivez un flux de travail basé sur `cron`, Mintlify recalcule l’heure de la prochaine exécution à partir de l’heure actuelle.
 
 <div id="gitlab-setup">
-## Configuration GitLab
+  ## Configuration de GitLab
 </div>
 
-Pour utiliser des référentiels GitLab dans un workflow, connectez chaque projet via l'intégration OAuth GitLab sur la page de configuration OAuth GitLab. Vous devez connecter tous les référentiels utilisés par le workflow, y compris votre référentiel de documentation et tous les référentiels de déclenchement ou de contexte.
+Pour utiliser des dépôts GitLab dans un flux de travail, connectez chaque projet via l’intégration OAuth GitLab sur la page des paramètres OAuth GitLab. Vous devez connecter chaque dépôt que le flux de travail utilise, y compris votre dépôt de documentation ainsi que tous les dépôts de déclenchement ou de contexte.
 
 <Note>
-  Les workflows nécessitent un forfait GitLab payant. L'agent utilise des jetons d'accès projet de courte durée pour accéder aux référentiels, ce que le plan gratuit de GitLab ne prend pas en charge.
+  Les flux de travail nécessitent une formule GitLab payante. L’agent utilise des jetons d’accès au projet de courte durée pour accéder aux dépôts, une fonctionnalité qui n’est pas prise en charge par l’offre Free de GitLab.
 </Note>
 
 <div id="prompts">
-## Prompts
+  ## Prompts
 </div>
 
-Des prompts efficaces se concentrent sur une seule tâche et visent un résultat précis. Les workflows présentent toujours une certaine variabilité en raison de la nature non déterministe des agents, mais vous pouvez améliorer la cohérence des résultats des workflows en suivant ces bonnes pratiques.
+Des prompts efficaces se concentrent sur une seule tâche et visent un résultat précis. Les flux de travail présentent toujours une certaine variabilité en raison de la nature non déterministe des agents, mais vous pouvez améliorer la cohérence de leurs résultats en suivant ces bonnes pratiques.
 
-- Décrivez le résultat que vous souhaitez que l'agent produise.
-- Incluez des critères de réussite.
-- Précisez le contexte que vous voulez que l'agent utilise.
-- Divisez les tâches complexes en étapes ou en plusieurs workflows.
+* Décrivez le résultat que vous voulez obtenir avec l’agent.
+* Incluez des critères de réussite.
+* Précisez le contexte que vous voulez que l’agent utilise.
+* Décomposez les tâches complexes en étapes ou en plusieurs flux de travail.
 
 <div id="agent-environment">
-### Environnement de l'agent
+  ### Environnement de l’agent
 </div>
 
-L'agent s'exécute dans un sandbox isolé. Lorsque vous rédigez des prompts, faites uniquement référence aux outils dont l'agent dispose.
+L’agent s’exécute dans une sandbox isolée. Lorsque vous rédigez des prompts, ne faites référence qu’aux outils dont l’agent dispose.
 
-- Utilitaires shell standard (`grep`, `sed`, `awk`, `curl`, entre autres)
-- `git` et la CLI GitHub (`gh`)
-- La CLI Mintlify (`mint`)
-- Node.js et Bun
-- **Recherche web** pour trouver des informations à jour en dehors de votre documentation
-- **Récupération web** pour récupérer et lire le contenu d'une page web
+* Utilitaires shell standard (`grep`, `sed`, `awk`, `curl`, entre autres)
+* `git` et la CLI de GitHub (`gh`)
+* La CLI Mintlify (`mint`)
+* Node.js et Bun
+* **Recherche sur le Web** pour trouver des informations à jour en dehors de votre documentation
+* **Récupération sur le Web** pour récupérer et lire le contenu d’une page web
 
-L'agent ne peut pas installer de paquets ni d'outils supplémentaires au moment de l'exécution. Les registres de paquets ne sont pas accessibles depuis le sandbox.
+L’agent ne peut pas installer de paquets ou d’outils supplémentaires à l’exécution. Les registres de paquets ne sont pas accessibles depuis la sandbox.
 
-Les prompts qui demandent à l'agent d'exécuter des outils indisponibles peuvent produire des résultats inattendus ou échouer.
+Les prompts qui demandent à l’agent d’exécuter des outils indisponibles peuvent produire des résultats inattendus ou échouer.
 
 <div id="example-prompts">
-## Exemples de prompts
+  ## Exemples de prompts
 </div>
 
-Ces exemples de prompts illustrent des modèles de workflows courants. Créez un workflow dans le dashboard et collez le prompt dans le champ d'instructions.
+Ces exemples de prompts illustrent des schémas de flux de travail courants. Créez un flux de travail dans le tableau de bord et collez le prompt dans le champ d’instructions.
 
 <div id="draft-documentation-for-new-features">
-### Brouillon de documentation pour les nouvelles fonctionnalités
+  ### Rédigez la documentation des nouvelles fonctionnalités
 </div>
 
 <Tip>
-  Si vous utilisez les suggestions de l'agent dans votre Dashboard, ce workflow reproduit ce comportement.
+  Si vous utilisez les suggestions de l’agent dans votre tableau de bord, ce flux de travail reproduit ce comportement.
 
-  Ajoutez ce workflow, en l'adaptant à votre projet, pour générer automatiquement des brouillons de documentation à mesure que vous ajoutez de nouvelles fonctionnalités à votre produit.
+  Ajoutez ce flux de travail, en l’adaptant à votre projet, pour générer automatiquement un premier jet de documentation à mesure que vous ajoutez de nouvelles fonctionnalités à votre produit.
 </Tip>
 
-**Trigger:** On push to `your-org/your-product` (main branch)
-**Context repos:** `your-org/your-docs`
+**Déclencheur :** Lors d’un push vers `your-org/your-product` (branche `main`)
+**Dépôts de contexte :** `your-org/your-docs`
 
 ```text
-Review the diff from the last merged PR in `your-org/your-product`. Identify any new features, APIs, or other changes that require documentation.
+Examinez le diff du dernier PR (pull request) fusionné dans `your-org/your-product`. Identifiez les nouvelles fonctionnalités, les API ou tout autre changement nécessitant une documentation.
 
-For each new addition, draft documentation updates that explain what it does, when to use it, and how to configure it. Include a code example where relevant.
+Pour chaque nouvel ajout, rédigez des mises à jour de documentation expliquant ce qu'il fait, quand l'utiliser et comment le configurer. Incluez un exemple de code le cas échéant.
 
-Success criteria: After reading any new or updated documentation, users understand what the feature is, if it applies to tasks they do, and how to use it.
+Critères de réussite : après avoir lu toute documentation nouvelle ou mise à jour, les utilisateurs comprennent ce qu'est la fonctionnalité, si elle s'applique aux tâches qu'ils effectuent et comment l'utiliser.
 
 ## Important
 
-- Only document changes that affect end users. Skip internal refactors or dependency updates.
-- Match the style and structure of existing docs pages.
+- Ne documentez que les changements qui affectent les utilisateurs finaux. Ignorez les refactorisations internes ou les mises à jour de dépendances.
+- Respectez le style et la structure des pages de documentation existantes.
 ```
 
 <div id="style-audit">
-### Audit de style
+  ### Audit de style
 </div>
 
-**Trigger:** On push to `your-org/your-docs` (main branch)
+**Déclencheur :** Lors d’un push vers `your-org/your-docs` (branche main)
 
 ```text
-Review all MDX files changed in the last merged PR against the style guide at `path/to/style-guide`.
+Passez en revue tous les fichiers MDX modifiés dans la dernière pull request (PR) fusionnée par rapport au guide de style situé à `path/to/style-guide`.
 
-Open a pull request to resolve any style violations that can be fixed automatically. For any edits that require judgment or nuance, note them in the PR body with the specific lines, rule violations, and suggested fixes.
+Ouvrez une pull request (PR) pour résoudre les violations de style pouvant être corrigées automatiquement. Pour toute modification nécessitant un jugement ou une nuance, signalez-les dans le corps de la PR avec les lignes concernées, les violations de règles et les corrections suggérées.
 
-Success criteria:
-- All style violations have a proposed resolution.
-- No new style violations are introduced.
+Critères de réussite :
+- Toutes les violations de style ont une résolution proposée.
+- Aucune nouvelle violation de style n'est introduite.
 
 ## Important
 
-- Do not change content meaning. Only correct style violations.
-- Skip any files in language subdirectories (`es/`, `fr/`, `zh/`).
+- Ne modifiez pas le sens du contenu. Corrigez uniquement les violations de style.
+- Ignorez les fichiers dans les sous-répertoires de langue (`es/`, `fr/`, `zh/`).
 ```
 
 <div id="update-api-reference">
-### Mettre à jour la référence d'API
+  ### Mettez à jour la Référence de l’API
 </div>
 
-**Trigger:** On push to `your-org/your-product` (main branch)
-**Context repos:** `your-org/your-docs`
+**Déclencheur :** Push vers `your-org/your-product` (branche `main`)
+**Dépôts de contexte :** `your-org/your-docs`
 
 ```text
-Review the diff from the last merged PR in `your-org/your-product` for changes to API endpoints, parameters, response shapes, or error codes.
+Examinez le diff de la dernière PR (pull request) fusionnée dans `your-org/your-product` pour identifier les modifications apportées aux points de terminaison d'API, aux paramètres, aux structures de réponse ou aux codes d'erreur.
 
-Update the corresponding API specifications or pages in the docs to reflect the changes. Include updated parameter descriptions, type information, and examples where affected.
+Mettez à jour les spécifications d'API ou les pages correspondantes dans la documentation pour refléter ces modifications. Incluez les descriptions de paramètres mises à jour, les informations de type et les exemples le cas échéant.
 
-Success criteria: All API specifications and pages are up to date with the changes in the product repository.
+Critères de réussite : toutes les spécifications d'API et les pages sont à jour par rapport aux modifications apportées dans le dépôt du produit.
 
 ## Important
 
-- If a parameter or endpoint was removed, mark it as deprecated rather than deleting it unless the code explicitly removes it with no deprecation period.
-- If no API changes were introduced, do nothing.
+- Si un paramètre ou un point de terminaison a été supprimé, marquez-le comme déprécié plutôt que de le supprimer, sauf si le code le retire explicitement sans période de dépréciation.
+- Si aucune modification d'API n'a été introduite, ne faites rien.
 ```
 
 <div id="track-translation-lag">
-### Suivre le retard de traduction
+  ### Suivre le retard des traductions
 </div>
 
-**Trigger:** Cron schedule `0 9 * * 3` (mercredis à 9 h 00 UTC)
+**Déclencheur :** planification Cron `0 9 * * 3` (le mercredi à 9 h 00 UTC)
 
-Mettez à jour les sous-répertoires de langue d'exemple (`es/`, `fr/`, `zh/`) avec vos sous-répertoires de langue réels.
+Remplacez les sous-répertoires de langue d’exemple (`es/`, `fr/`, `zh/`) par vos véritables sous-répertoires de langue.
 
 ```text
-Compare the English MDX files in the repo against their counterparts in the `es/`, `fr/`, and `zh/` subdirectories. Use git history to identify English files updated more recently than their translations.
+Comparez les fichiers MDX en anglais du dépôt avec leurs équivalents dans les sous-répertoires `es/`, `fr/` et `zh/`. Utilisez l'historique git pour identifier les fichiers anglais mis à jour plus récemment que leurs traductions.
 
-Open a pull request that lists pages that are out of sync, organized by language. For each page, include the date of the last English update and a brief summary of what changed so translators have context on what to update.
+Ouvrez un pull request (PR) répertoriant les pages non synchronisées, organisées par langue. Pour chaque page, indiquez la date de la dernière mise à jour en anglais et un bref résumé des modifications apportées, afin que les traducteurs aient le contexte nécessaire pour effectuer leurs mises à jour.
 
-Success criteria: Any discrepancies between the English and translated files are identified and listed in the pull request.
+Critères de réussite : toute divergence entre les fichiers anglais et traduits est identifiée et répertoriée dans le pull request (PR).
 
 ## Important
 
-- If a translated file does not exist, flag it as missing rather than out of sync.
-- Group findings by language, then by how far out of date they are (most stale first).
+- Si un fichier traduit n'existe pas, signalez-le comme manquant plutôt que non synchronisé.
+- Regroupez les résultats par langue, puis par degré d'obsolescence (les plus anciens en premier).
 ```
 
 <div id="seo-and-metadata-audit">
-### Audit SEO et métadonnées
+  ### Audit du SEO et des métadonnées
 </div>
 
-**Trigger:** Cron schedule `0 9 * * 1` (lundis à 9 h 00 UTC)
+**Déclencheur :** planification Cron `0 9 * * 1` (le lundi à 9 h 00 UTC)
 
 ```text
-Audit all MDX files in the docs for SEO and metadata quality. Check for:
+Auditez tous les fichiers MDX de la documentation pour vérifier la qualité du SEO et des métadonnées. Vérifiez les points suivants :
 
-- Missing or empty `title` frontmatter
-- Titles that are too long (over 60 characters) — long titles are truncated in search result snippets
-- Titles that follow a boilerplate pattern like "PageType - Name" without describing the specific content of the page
-- Missing or empty `description` frontmatter (see OpenAPI pages below — do not treat as missing when an OpenAPI spec supplies the description)
-- Descriptions that are too short (under 130 characters) — short descriptions are frequently ignored by Google in favor of auto-generated snippets
-- Descriptions that are too long (over 160 characters)
-- Pages that share an identical description with other pages — each page needs a unique description
+- Métadonnées d'en-tête `title` manquantes ou vides
+- Titres trop longs (plus de 60 caractères) — les titres longs sont tronqués dans les extraits des résultats de recherche
+- Titres qui suivent un modèle générique du type « TypeDePage - Nom » sans décrire le contenu spécifique de la page
+- Métadonnées d'en-tête `description` manquantes ou vides (voir les pages OpenAPI ci-dessous — ne pas considérer comme manquantes lorsqu'une spec OpenAPI fournit la description)
+- Descriptions trop courtes (moins de 130 caractères) — les descriptions courtes sont fréquemment ignorées par Google au profit d'extraits générés automatiquement
+- Descriptions trop longues (plus de 160 caractères)
+- Pages partageant une description identique avec d'autres pages — chaque page doit avoir une description unique
 
-Open a pull request with improvements for any issues found.
+Ouvrez un pull request (PR) avec les améliorations pour tout problème détecté.
 
-When writing titles: be descriptive and specific about what the page covers. Avoid generic patterns like "Overview - Product Name". Target 50-60 characters.
+Pour la rédaction des titres : soyez descriptif et précis quant au contenu de la page. Évitez les modèles génériques du type « Vue d'ensemble - Nom du produit ». Visez 50 à 60 caractères.
 
-When writing descriptions: summarize what the specific page covers in plain language. Include 2-3 terms a user would actually search for. Never reuse the same description across pages. Target 130-155 characters.
+Pour la rédaction des descriptions : résumez en langage clair ce que couvre la page. Incluez 2 à 3 termes qu'un utilisateur rechercherait réellement. Ne réutilisez jamais la même description sur plusieurs pages. Visez 130 à 155 caractères.
 
-### Pages with `openapi:` in frontmatter (API reference from spec)
+### Pages avec `openapi:` dans les métadonnées d'en-tête (Référence de l'API issue de la spec)
 
-The `openapi:` frontmatter value can be either an **operation reference** (e.g., `openapi: GET /users/{id}`) or a **file reference** (e.g., `openapi: ./openapi.yaml`). Only operation references supply per-page `summary` and `description` from the spec.
+La valeur des métadonnées d'en-tête `openapi:` peut être soit une **référence d'opération** (ex. : `openapi: GET /users/{id}`), soit une **référence de fichier** (ex. : `openapi: ./openapi.yaml`). Seules les références d'opération fournissent les champs `summary` et `description` par page depuis la spec.
 
-For pages with an **operation reference**:
-- Read the referenced OpenAPI spec file to check whether the operation defines a `description`.
-- If the operation **has** a `description`: do not add a `description:` field to frontmatter. If one was incorrectly added, remove it so the metadata comes from the spec.
-- If the operation **has no** `description`: audit `description` frontmatter as normal — add one if missing or fix it if it fails the quality checks.
-- If the operation defines a `summary` and the page has no `title:` frontmatter, treat the title as present — do not add one.
-- Never edit the OpenAPI spec files themselves.
+Pour les pages avec une **référence d'opération** :
+- Lisez le fichier de spec OpenAPI référencé pour vérifier si l'opération définit une `description`.
+- Si l'opération **possède** une `description` : n'ajoutez pas de champ `description:` dans les métadonnées d'en-tête. Si un tel champ a été ajouté par erreur, supprimez-le afin que les métadonnées proviennent de la spec.
+- Si l'opération **ne possède pas** de `description` : auditez les métadonnées d'en-tête `description` normalement — ajoutez-en une si elle est absente ou corrigez-la si elle ne satisfait pas les critères de qualité.
+- Si l'opération définit un `summary` et que la page ne possède pas de métadonnée d'en-tête `title:`, considérez le titre comme présent — n'en ajoutez pas.
+- Ne modifiez jamais les fichiers de spec OpenAPI eux-mêmes.
 
-For pages with a **file reference**, audit all frontmatter fields as normal.
+Pour les pages avec une **référence de fichier**, auditez tous les champs des métadonnées d'en-tête normalement.
 
-Success criteria:
-- Pages have a unique title under 60 characters that describes the specific content
-- Pages have a unique description between 130 and 160 characters (except for pages where the OpenAPI spec supplies the description)
+Critères de succès :
+- Les pages ont un titre unique de moins de 60 caractères décrivant le contenu spécifique
+- Les pages ont une description unique comprise entre 130 et 160 caractères (sauf pour les pages dont la description est fournie par la spec OpenAPI)
 
 ## Important
 
-- Only update frontmatter. Do not change page content or OpenAPI spec files.
-- If all pages have complete and reasonable metadata, do nothing.
+- Mettez uniquement à jour les métadonnées d'en-tête. Ne modifiez pas le contenu des pages ni les fichiers de spec OpenAPI.
+- Si toutes les pages ont des métadonnées complètes et satisfaisantes, ne faites rien.
 ```
 
 <div id="changelog-with-notifications">
-### Journal des modifications avec notifications
+  ### Journal des modifications avec notifications
 </div>
 
-**Trigger:** Cron schedule `0 9 * * 1` (lundis à 9 h 00 UTC)
-**Context repos:** `your-org/your-product`
-**Slack notifications:** canal `documentation`, utilisateur `tech-writer`
+**Déclencheur :** planification cron `0 9 * * 1` (le lundi à 9 h 00 UTC)
+**Dépôts de contexte :** `your-org/your-product`
+**Notifications Slack :** canal `documentation`, utilisateur `tech-writer`
 
 ```text
-Review all merged PRs in `your-org/your-product` from the past week. Draft a changelog entry summarizing new features, bug fixes, and breaking changes.
+Passez en revue toutes les PR (pull requests) fusionnées dans `your-org/your-product` au cours de la semaine écoulée. Rédigez une entrée de changelog résumant les nouvelles fonctionnalités, les corrections de bugs et les changements majeurs.
 
-Success criteria: The changelog accurately reflects the week's changes and is ready for review.
+Critères de succès : le changelog reflète fidèlement les modifications de la semaine et est prêt pour la révision.
 ```

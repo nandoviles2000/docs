@@ -1,38 +1,38 @@
 ---
 title: "OpenAPI 设置"
-description: "从 OpenAPI 规范文件生成交互式 API 文档，自动创建端点页面、请求构建器和导航结构。"
+description: "通过 OpenAPI 规范文件生成交互式 API 文档，并自动创建接口页面、请求构建器和导航。"
 keywords: ["OpenAPI", "API 规范", "Swagger"]
 ---
 
-OpenAPI 是用于描述 API 的规范。Mintlify 支持 OpenAPI 3.0 和 3.1 文档，用于生成交互式 API 文档并保持其始终最新。
+OpenAPI 是一种用于描述 API 的规范。Mintlify 支持 OpenAPI 3.0 和 3.1 文档，可生成交互式 API 文档，并使其保持最新。
 
 <div id="add-an-openapi-specification-file">
   ## 添加 OpenAPI 规范文件
 </div>
 
-要使用 OpenAPI 为你的端点撰写文档，你需要一个或多个有效的 OpenAPI 规范文件，格式为 JSON 或 YAML，并且遵循 [OpenAPI 3.0 或 3.1 规范](https://swagger.io/specification/)。
+要使用 OpenAPI 为你的 API 端点编写文档，你需要准备一个或多个有效的 OpenAPI 规范文件，格式可以是 JSON 或 YAML，并且需遵循 [OpenAPI specification 3.0 or 3.1](https://swagger.io/specification/)。
 
-将 OpenAPI 规范添加到你的文档存储库中，或将其托管在线，以便你可以通过 URL 访问这些规范。存储在存储库中的规范会在你的文档域名上按照其路径[提供为可下载文件](/zh/create/files)。例如，`https://your-domain/docs/openapi.json`。
+将 OpenAPI 规范添加到你的文档仓库中，或将其托管到可通过 URL 访问的位置。存储在仓库中的规范会在你的文档域下按其路径[作为可下载文件提供](/zh/create/files)。例如，`https://your-domain/docs/openapi.json`。
 
-在 `docs.json` 的 `navigation` 配置中引用任意数量的 OpenAPI 规范，以为你的 API 端点创建页面。每个规范文件都会生成自己的一组端点。
+在 `docs.json` 的导航元素中引用任意数量的 OpenAPI 规范，即可为你的 API 端点创建页面。每个规范文件都会生成自己的一组端点。
 
 <CodeGroup>
-  ```json Single specification
+  ```json 单个规范
   "navigation": {
     "tabs": [
       {
-        "tab": "API Reference",
+        "tab": "API 参考",
         "openapi": "openapi.json"
       }
     ]
   }
   ```
 
-  ```json Multiple specifications
+  ```json 多个规范
   "navigation": {
     "tabs": [
       {
-        "tab": "API Reference",
+        "tab": "API 参考",
         "openapi": [
           "openapi/v1.json",
           "openapi/v2.json"
@@ -44,29 +44,29 @@ OpenAPI 是用于描述 API 的规范。Mintlify 支持 OpenAPI 3.0 和 3.1 文�
 </CodeGroup>
 
 <Note>
-  Mintlify 仅支持在单个 OpenAPI 文档内使用 `$ref` 进行**内部引用**，不支持外部引用。
+  Mintlify 仅支持在单个 OpenAPI 文档内使用 **内部引用** 的 `$ref`。不支持外部引用。
 </Note>
 
 <div id="describe-your-api">
   ### 描述你的 API
 </div>
 
-我们推荐以下资源，帮助你学习并编写 OpenAPI 规范。
+我们建议参考以下资源，了解并编写你的 OpenAPI 规范。
 
-* [Swagger 的 OpenAPI 指南](https://swagger.io/docs/specification/v3_0/basic-structure/)，用于学习 OpenAPI 语法。
-* [OpenAPI 规范的 Markdown 源文件](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/)，用于查阅最新版 OpenAPI 规范的详细信息。
-* [Swagger Editor](https://editor.swagger.io/)，用于编辑、验证和调试你的 OpenAPI 文档。
-* [Mint CLI](https://www.npmjs.com/package/mint)，可通过以下命令验证你的 OpenAPI 文档：`mint validate`。
+* 通过 [Swagger 的 OpenAPI 指南](https://swagger.io/docs/specification/v3_0/basic-structure/) 了解 OpenAPI 语法。
+* 查阅 [OpenAPI 规范的 Markdown 源文件](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/)，参考最新 OpenAPI 规范的详细内容。
+* 使用 [Swagger Editor](https://editor.swagger.io/) 编辑、验证并调试你的 OpenAPI 文档。
+* 使用 [Mint CLI](https://www.npmjs.com/package/mint) 运行以下命令，验证你的 OpenAPI 文档：`mint validate`。
 
 <Note>
-  Swagger 的 OpenAPI 指南面向 OpenAPI v3.0，但其中几乎所有信息同样适用于 v3.1。关于 v3.0 与 v3.1 的差异，请参阅 OpenAPI 博客中的 [Migrating from OpenAPI 3.0 to 3.1.0](https://www.openapis.org/blog/2021/02/16/migrating-from-openapi-3-0-to-3-1-0)。
+  Swagger 的 OpenAPI 指南面向 OpenAPI v3.0，但其中几乎所有内容也适用于 v3.1。有关 v3.0 与 v3.1 之间差异的更多信息，请参阅 OpenAPI 博客中的 [Migrating from OpenAPI 3.0 to 3.1.0](https://www.openapis.org/blog/2021/02/16/migrating-from-openapi-3-0-to-3-1-0)。
 </Note>
 
 <div id="specify-the-base-url-for-your-api">
   ### 指定 API 的基础 URL
 </div>
 
-要启用 API playground，请在 OpenAPI 规范中添加 `servers` 字段，并填写 API 的基础 URL。
+要启用 API 操场，请在 OpenAPI 规范中添加 `servers` 字段，并填入 API 的基础 URL。
 
 ```json
 {
@@ -78,23 +78,23 @@ OpenAPI 是用于描述 API 的规范。Mintlify 支持 OpenAPI 3.0 和 3.1 文�
 }
 ```
 
-在 OpenAPI 规范中，不同的 API 端点通过其路径来定义，例如 `/users/{id}`，或直接使用 `/`。基础 URL 用于指明这些路径应追加到哪里。有关如何配置 `servers` 字段的更多信息，请参阅 OpenAPI 文档中的 [API Server and Base Path](https://swagger.io/docs/specification/api-host-and-base-path/)。
+在 OpenAPI 规范中，不同的 API 端点通过各自的路径指定，例如 `/users/{id}` 或直接使用 `/`。基础 URL 定义了这些路径应追加到哪里。有关如何配置 `servers` 字段的更多信息，请参阅 OpenAPI 文档中的 [API Server and Base Path](https://swagger.io/docs/specification/api-host-and-base-path/)。
 
-API playground 会使用这些服务器 URL 来确定请求的发送目标。如果你指定了多个服务器，将提供一个下拉菜单，允许用户在不同服务器之间切换。如果未指定服务器，API playground 会使用简易模式，因为在没有基础 URL 的情况下无法发送请求。
+API 操场使用这些服务器 URL 来确定请求应发送到哪里。如果你指定了多个服务器，用户可以通过下拉菜单在不同服务器之间切换。如果你没有指定服务器，API 操场会使用简单模式，因为没有基础 URL 就无法发送请求。
 
-如果你的 API 的端点分布在不同的 URL 下，你可以为特定路径或操作[覆盖 `servers` 字段](https://swagger.io/docs/specification/v3_0/api-host-and-base-path/#overriding-servers)。
+如果你的 API 在不同 URL 下有不同的端点，你可以针对特定路径或操作[覆盖 `servers` 字段](https://swagger.io/docs/specification/v3_0/api-host-and-base-path/#overriding-servers)。
 
 <div id="specify-authentication">
   ### 指定身份验证
 </div>
 
-要在 API 文档与操练场中启用身份验证，请在 OpenAPI 规范中配置 `securitySchemes` 和 `security` 字段。API 描述与 API 操练场会根据 OpenAPI 规范中的安全配置自动添加身份验证字段。
+要在 API 文档和 API 操场中启用身份验证，请在 OpenAPI 规范中配置 `securitySchemes` 和 `security` 字段。API 描述和 API 操场会根据 OpenAPI 规范中的安全配置添加相应的身份验证字段。
 
 <Steps>
-  <Step title="定义你的身份验证方式。">
-    添加 `securitySchemes` 字段来定义用户如何进行身份验证。
+  <Step title="定义身份验证方法。">
+    添加 `securitySchemes` 字段，用于定义用户如何进行身份验证。
 
-    以下示例展示了 Bearer 身份验证的配置：
+    以下示例展示了 bearer 身份验证的配置。
 
     ```json
     {
@@ -110,7 +110,7 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
     ```
   </Step>
 
-  <Step title="将身份验证应用到你的端点。">
+  <Step title="将身份验证应用到端点。">
     添加 `security` 字段以要求进行身份验证。
 
     ```json
@@ -127,19 +127,19 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 
 常见的身份验证类型包括：
 
-* [API Keys](https://swagger.io/docs/specification/authentication/api-keys/): 适用于基于 header、query 或 cookie 的密钥。
-* [Bearer](https://swagger.io/docs/specification/authentication/bearer-authentication/): 适用于 JWT 或 OAuth 令牌。
-* [Basic](https://swagger.io/docs/specification/authentication/basic-authentication/): 适用于用户名与密码。
+* [API Keys](https://swagger.io/docs/specification/authentication/api-keys/)：用于基于请求头、查询参数或 Cookie 的密钥。
+* [Bearer](https://swagger.io/docs/specification/authentication/bearer-authentication/)：用于 JWT 或 OAuth 令牌。
+* [Basic](https://swagger.io/docs/specification/authentication/basic-authentication/)：用于用户名和密码。
 
-如果你的 API 中不同的端点需要不同的身份验证方式，你可以为某个操作[覆盖 `security` 字段](https://swagger.io/docs/specification/authentication/#:~:text=you%20can%20apply%20them%20to%20the%20whole%20API%20or%20individual%20operations%20by%20adding%20the%20security%20section%20on%20the%20root%20level%20or%20operation%20level%2C%20respectively.)。
+如果 API 中的不同端点需要使用不同的身份验证方式，您可以为特定操作[覆盖 `security` 字段](https://swagger.io/docs/specification/authentication/#:~:text=you%20can%20apply%20them%20to%20the%20whole%20API%20or%20individual%20operations%20by%20adding%20the%20security%20section%20on%20the%20root%20level%20or%20operation%20level%2C%20respectively.)。
 
-有关定义和应用身份验证的更多信息，请参阅 OpenAPI 文档中的[Authentication](https://swagger.io/docs/specification/authentication/)。
+有关如何定义和应用身份验证的更多信息，请参阅 OpenAPI 文档中的 [Authentication](https://swagger.io/docs/specification/authentication/)。
 
 <div id="set-default-values-for-security-schemes">
   #### 为安全方案设置默认值
 </div>
 
-在安全方案上使用 `x-default` 扩展，可以在 API playground 中预填身份验证字段。这对于提供占位值或测试凭据非常有用，能帮助用户快速上手。
+在安全方案中使用 `x-default` 扩展，即可在 API 操场中预先填充身份验证字段。这可用于提供占位值或测试凭据，帮助用户快速上手。
 
 ```json {6}
 {
@@ -156,21 +156,21 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 }
 ```
 
-`x-default` 扩展支持 `apiKey` 和 `http` bearer 安全方案类型。该值作为 playground 身份验证字段中的默认输入显示。
+`x-default` 扩展支持 `apiKey` 和 `http` bearer 安全方案类型。该值会显示为 playground 身份验证字段中的默认输入值。
 
-你还可以在 OpenAPI 规范中的任何 schema 属性上使用 `x-default`，以在 API playground 中设置默认值，而不影响 schema 定义中的 `default` 字段。
+你也可以在 OpenAPI 规范中的任何 schema 属性上使用 `x-default`，从而在不影响 schema 定义中 `default` 字段的情况下，为 API 操场设置默认值。
 
 <div id="customize-your-endpoint-pages">
-  ## 自定义端点页面
+  ## 自定义您的端点页面
 </div>
 
-在 OpenAPI 规范中添加 `x-mint` 扩展即可自定义端点页面。`x-mint` 扩展可让你进一步控制 API 文档的生成与展示方式。
+通过在 OpenAPI 规范中添加 `x-mint` 扩展，您可以自定义端点页面。`x-mint` 扩展可让您进一步控制 API 文档的生成和显示方式。
 
 <div id="metadata">
   ### 元数据
 </div>
 
-在任意操作中添加 `x-mint: metadata`，即可覆盖生成的 API 页面的默认元数据。除了 `openapi` 之外，你可以使用 MDX frontmatter 中任意有效的元数据字段。
+在任意操作中添加 `x-mint: metadata`，即可覆盖生成的 API 页面的默认元数据。除 `openapi` 外，你可以使用任何可用于 MDX frontmatter 的元数据字段。
 
 ```json {7-14}
 {
@@ -183,13 +183,13 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
           "metadata": {
             "title": "List all users",
             "sidebarTitle": "List users",
-            "description": "获取分页用户数据及筛选选项",
+            "description": "Fetch paginated user data with filtering options",
             "og:title": "Display a list of users"
           }
         },
         "parameters": [
           {
-            // Parameter configuration
+            // 参数配置
           }
         ]
       }
@@ -198,14 +198,14 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 }
 ```
 
-你还可以使用 `playground` 和 `groups` metadata 字段，为每个 endpoint 单独控制 playground 的展示：
+你还可以使用 `playground` 和 `groups` 元数据字段，针对每个 API 端点控制操场的显示：
 
 ```json {7-11}
 {
   "paths": {
     "/admin/users": {
       "post": {
-        "summary": "创建管理员用户",
+        "summary": "Create admin user",
         "x-mint": {
           "metadata": {
             "playground": "auth",
@@ -219,22 +219,22 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 }
 ```
 
-此配置会让页面对所有人可见，但只有属于 `admin` 组的已认证用户才能使用交互式 Playground。
+此配置会使页面公开可见，同时将交互式操场的使用限制为仅 `admin` 组中的已认证用户。
 
 <div id="content">
   ### 内容
 </div>
 
-使用 `x-mint: content` 在自动生成的 API 文档之前添加内容。`x-mint: content` 扩展支持所有 Mintlify MDX 组件和格式。
+使用 `x-mint: content` 可在自动生成的 API 文档前添加内容。`x-mint: content` 扩展支持所有 Mintlify MDX 组件和格式设置。
 
 ```json {6-8}
 {
   "paths": {
     "/users": {
       "post": {
-        "summary": "创建用户",
+        "summary": "Create user",
         "x-mint": {
-          "content": "## 前提条件\n\n此端点需要管理员权限,并设有速率限制。\n\n<Note>用户邮箱在系统内必须唯一。</Note>"
+          "content": "## Prerequisites\n\nThis endpoint requires admin privileges and has rate limiting.\n\n<Note>User emails must be unique across the system.</Note>"
         },
         "parameters": [
           {
@@ -251,14 +251,14 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
   ### href
 </div>
 
-使用 `x-mint: href` 设置自动生成的端点页面的 URL。当存在 `x-mint: href` 时，生成的 API 页面将使用指定的 URL，而不是默认自动生成的 URL。
+使用 `x-mint: href` 设置自动生成的端点页面 URL。指定 `x-mint: href` 后，生成的 API 页面将使用该 URL，而不是默认的自动生成 URL。
 
 ```json {6-8, 14-16}
 {
   "paths": {
     "/legacy-endpoint": {
       "get": {
-        "summary": "旧版端点",
+        "summary": "Legacy endpoint",
         "x-mint": {
           "href": "/deprecated-endpoints/legacy-endpoint"
         }
@@ -266,7 +266,7 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
     },
     "/documented-elsewhere": {
       "post": {
-        "summary": "特殊端点",
+        "summary": "Special endpoint",
         "x-mint": {
           "href": "/guides/special-endpoint-guide"
         }
@@ -277,12 +277,12 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 ```
 
 <div id="group-display-names">
-  ### 分组显示名称
+  ### 组显示名称
 </div>
 
-使用 tag 对象上的 `x-group` 扩展为某个 tag 的导航分组设置自定义显示名称。默认情况下，Mintlify 将 tag 的 `name` 同时用作导航分组标签和 URL 路径段。`x-group` 扩展会覆盖分组标签，同时保留 tag 名称用于 URL。
+使用标签对象上的 `x-group` 扩展，为标签对应的导航分组设置自定义显示名称。默认情况下，Mintlify 会将标签的 `name` 同时用作导航分组标签和 URL 路径段。`x-group` 扩展会覆盖分组标签，但仍保留标签名称作为 URL 的一部分。
 
-当你希望使用一个易于阅读的分组名称，而该名称与 API 路径中使用的 tag 不同时，这非常有用。
+当你希望使用更便于阅读的分组名称，而该名称又不同于 API 路径中使用的标签时，这项功能就很有用。
 
 ```json {4-9}
 {
@@ -304,70 +304,70 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 }
 ```
 
-在此示例中，导航分组显示为 "User Management"，但生成的页面 URL 仍使用 `user-management` tag 名称作为路径段。
+在此示例中，导航分组显示为 &quot;User Management&quot;，但生成的页面 URL 仍使用 `user-management` 标签名作为路径段。
 
 <div id="auto-populate-api-pages">
-  ## 自动填充 API 页面
+  ## 自动生成 API 页面
 </div>
 
-在你的 `docs.json` 中为任意导航元素添加一个 `openapi` 字段，可自动生成 OpenAPI 端点页面。你可以控制这些页面在导航结构中的位置，既可作为独立的 API 区块，也可与其他页面并列展示。
+在 `docs.json` 中为任意导航元素添加 `openapi` 字段，即可自动为 OpenAPI 端点生成页面。你可以控制这些页面在导航结构中的显示位置：既可以将它们作为专门的 API 章节，也可以与其他页面一起显示。
 
-`openapi` 字段可接受你文档仓库中的路径，或指向托管 OpenAPI 文档的 URL。
+`openapi` 字段既可以接受文档仓库中的路径，也可以接受指向托管的 OpenAPI 文档的 URL。
 
 <Tip>
-  当你使用 URL 指定 OpenAPI 规范时，规范的更改不会触发 Git 推送，因此你的文档不会自动重新部署。为了保持文档同步，请在生成或更新规范的同一个 CI 操作中调用 [Trigger deployment](/zh/api/update/trigger) API 端点。这样你的文档就会自动更新，无需从仪表板手动触发部署。
+  当你为 OpenAPI 规范使用 URL 时，对规范的更改不会触发 Git push，因此文档不会自动重新部署。为保持文档同步，请在生成或更新规范的同一个 CI 操作中调用[触发部署](/zh/api/update/trigger) API 端点。这样，文档就会自动更新，而无需从仪表板手动触发部署。
 </Tip>
 
 生成的端点页面具有以下默认元数据值：
 
-* `title`：若存在，则取该操作的 `summary` 字段；若没有 `summary`，Mintlify 会根据 HTTP 方法与端点生成标题。
-* `description`：若存在，则取该操作的 `description` 字段。
-* `version`：若存在，则取父级锚点或选项卡中的 `version` 值。
-* `deprecated`：取该操作的 `deprecated` 字段。若为 `true`，则会在侧边导航和端点页面的端点标题旁显示“已弃用”标签。
+* `title`：操作的 `summary` 字段 (如果存在) 。如果没有 `summary`，Mintlify 会根据 HTTP 方法和端点生成标题。
+* `description`：操作的 `description` 字段 (如果存在) 。
+* `version`：父锚点或 Tab 中的 `version` 值 (如果存在) 。
+* `deprecated`：操作的 `deprecated` 字段。如果为 `true`，侧边导航中的端点标题旁以及端点页面上都会显示“已弃用”标签。
 
 <Tip>
-  若要将特定端点从自动生成的 API 页面中排除，请在 OpenAPI 规范中的该操作上添加 [x-hidden](/zh/api-playground/managing-page-visibility#x-hidden) 属性。
+  若要从自动生成的 API 页面中排除特定端点，请在 OpenAPI 规范的相应操作中添加 [x-hidden](/zh/api-playground/managing-page-visibility#x-hidden) 属性。
 </Tip>
 
 将端点页面添加到文档中有两种方式：
 
-1. **独立的 API 区块**：在导航元素中引用 OpenAPI 规范以创建独立的 API 区块。
-2. **选择性端点**：在导航中与其他页面并列引用特定端点。
+1. **专门的 API 章节**：在专门的 API 章节的导航元素中引用 OpenAPI 规范。
+2. **选择性添加端点**：在导航中与其他页面一起引用特定端点。
 
 <div id="dedicated-api-sections">
-  ### 专用 API 部分
+  ### 独立 API 章节
 </div>
 
-在某个导航元素中仅添加一个 `openapi` 字段 (不包含其他页面) ，即可生成专用的 API 部分。规范中的所有端点都会出现在生成的部分中。
+通过为某个导航元素添加 `openapi` 字段，且不添加任何其他页面，即可生成独立的 API 章节。规范中的所有端点都会显示在生成的章节中。
 
 ```json {5}
 "navigation": {
   "tabs": [
     {
-        "tab": "API 参考",
+        "tab": "API Reference",
         "openapi": "https://petstore3.swagger.io/api/v3/openapi.json"
     }
   ]
 }
 ```
 
-若要在文档的不同部分组织多个 OpenAPI 规范，请在导航层级中将每个规范分配到不同的分组。每个分组都可以引用其各自的 OpenAPI 规范。
+要将多个 OpenAPI 规范分别组织到文档的不同章节中，请在导航层级中将每个规范分配到不同的分组。每个分组都可以引用其各自的 OpenAPI 规范。
 
 ```json {8-11, 15-18}
 "navigation": {
   "tabs": [
     {
-      "tab": "API 参考",
+      "tab": "API Reference",
       "groups": [
         {
-          "group": "用户 API",
+          "group": "Users API",
           "openapi": {
             "source": "/path/to/users-openapi.json",
             "directory": "users-api-reference"
           }
         },
         {
-          "group": "管理 API",
+          "group": "Admin API",
           "openapi": {
             "source": "/path/to/admin-openapi.json",
             "directory": "admin-api-reference"
@@ -380,33 +380,33 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 ```
 
 <Note>
-  `directory` 字段为可选项，用于指定 Mintlify 将生成的 API 页面存放在文档仓库中的位置。若未指定，则默认使用仓库中的 `api-reference` 目录。
+  `directory` 字段是可选的，用于指定 Mintlify 将生成的 API 页面存储在文档仓库中的位置。若未指定，默认使用仓库中的 `api-reference` 目录。
 </Note>
 
 <div id="selective-endpoints">
-  ### 选择性端点
+  ### 选择性显示端点
 </div>
 
-当你希望更精确地控制端点在文档中的展示位置时，可以在导航中引用特定端点。此方法允许你在其他内容旁生成 API 端点的页面。你也可以用这种方法将来自不同 OpenAPI 规范的端点混合在一起。
+当你希望更精细地控制各个端点在文档中的显示位置时，可以在导航中引用特定端点。通过这种方式，你可以在其他内容旁边为 API 端点生成页面。你也可以用这种方式混合来自不同 OpenAPI 规范的端点。
 
 <div id="set-a-default-openapi-spec">
   #### 设置默认 OpenAPI 规范
 </div>
 
-为导航元素配置默认的 OpenAPI 规范，然后在 `pages` 字段中引用特定的端点。
+为某个导航元素配置默认 OpenAPI 规范，然后在 `pages` 字段中引用具体端点。
 
 ```json {12, 15-16}
 "navigation": {
   "tabs": [
     {
-      "tab": "快速入门",
+      "tab": "Getting started",
       "pages": [
         "quickstart",
         "installation"
       ]
     },
     {
-      "tab": "API 参考",
+      "tab": "API reference",
       "openapi": "/path/to/openapi.json",
       "pages": [
         "api-overview",
@@ -419,25 +419,25 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 }
 ```
 
-任何符合 `METHOD /path` 格式的页面条目，都会基于默认的 OpenAPI 规范为该端点生成一个 API 页面。
+任何符合 `METHOD /path` 格式的页面条目，都会基于默认的 OpenAPI 规范为该端点生成 API 页面。
 
 <div id="openapi-spec-inheritance">
   #### OpenAPI 规范继承
 </div>
 
-子级导航项会继承其父级的 OpenAPI 规范，除非它们定义了自己的规范。
+子导航元素会继承父级的 OpenAPI 规范，除非它们自行定义了规范。
 
 ```json {3, 7-8, 11, 13-14}
 {
-  "group": "API 参考",
+  "group": "API reference",
   "openapi": "/path/to/openapi-v1.json",
   "pages": [
-    "概述",
-    "身份验证",
+    "overview",
+    "authentication",
     "GET /users",
     "POST /users",
     {
-      "group": "订单",
+      "group": "Orders",
       "openapi": "/path/to/openapi-v2.json",
       "pages": [
         "GET /orders",
@@ -452,7 +452,7 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
   #### 单个端点
 </div>
 
-通过包含文件路径，可在不设置默认 OpenAPI 规范的情况下引用特定端点。你也可以在同一文档部分中引用来自多个 OpenAPI 规范的端点。
+通过包含文件路径，您无需设置默认的 OpenAPI 规范，也能引用特定端点。您可以在同一文档章节中引用来自多个 OpenAPI 规范的端点。
 
 ```json {5-6}
 "navigation": {
@@ -465,30 +465,30 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 }
 ```
 
-当你需要从不同规范中选取某些单独的端点、只想包含特定端点，或希望将端点与其他类型的文档一并呈现时，这种方法非常有用。
+当你需要从不同规范中提取单个端点、只想包含部分端点，或希望将端点与其他类型的文档一并纳入时，这种方法非常实用。
 
 <div id="create-mdx-pages-from-your-openapi-specification">
-  ## 从你的 OpenAPI 规范创建 MDX 页面
+  ## 从 OpenAPI 规范创建 MDX 页面
 </div>
 
-若需对单个端点页面进行更细粒度的控制，可基于你的 OpenAPI 规范创建 MDX 页面。这样你可以自定义页面元数据与内容，并在导航中对页面重新排序或将其排除，同时仍可使用自动生成的参数与响应。
+如果你需要更精细地控制各个端点页面，可以根据 OpenAPI 规范创建 MDX 页面。这样一来，你既能继续使用自动生成的参数和响应，也可以自定义页面元数据和内容，并在导航中调整页面顺序或将其排除。
 
-有两种方式使用独立的 MDX 页面为你的 OpenAPI 规范编写文档：
+你可以通过两种方式，使用单独的 MDX 页面为 OpenAPI 规范编写文档：
 
-* 在前置参数 (frontmatter) 中使用 `openapi` 字段为端点编写文档。
-* 在前置参数 (frontmatter) 中使用 `openapi-schema` 字段为数据模型编写文档。
+* 使用 frontmatter 中的 `openapi` 字段为端点编写文档。
+* 使用 frontmatter 中的 `openapi-schema` 字段为数据模型编写文档。
 
 <div id="document-endpoints">
-  ### 编写端点文档
+  ### 为端点编写文档
 </div>
 
-为每个端点创建一个页面，并在 frontmatter 中使用 `openapi` 字段指定要展示的 OpenAPI 操作。
+为每个端点创建一个页面，并使用 frontmatter 中的 `openapi` 字段指定要显示的 OpenAPI 操作。
 
 <CodeGroup>
   ```mdx Example
   ---
-  title: "Get users"
-  description: "Returns all plants from the system that the user has access to"
+  title: "获取用户"
+  description: "返回用户有权访问的系统中的所有工厂"
   openapi: "/path/to/openapi-1.json GET /users"
   deprecated: true
   version: "1.0"
@@ -497,16 +497,16 @@ API playground 会使用这些服务器 URL 来确定请求的发送目标。如
 
   ```mdx Format
   ---
-  title: "title of the page"
-  description: "description of the page"
+  title: "页面标题"
+  description: "页面描述"
   openapi: openapi-file-path method path
-  deprecated: boolean (not required)
-  version: "version-string" (not required)
+  deprecated: boolean（可选）
+  version: "version-string"（可选）
   ---
   ```
 </CodeGroup>
 
-方法和路径必须与您的 OpenAPI 规范完全一致。若您有多个 OpenAPI 规范，请在引用中包含对应规范文件的路径。您也可以在 `docs.json` 中引用外部 OpenAPI URL。
+方法和路径必须与您的 OpenAPI 规范完全一致。如果您有多个 OpenAPI 规范，请在引用中包含对应规范的路径。您也可以在 `docs.json` 中引用外部 OpenAPI URL。
 
 <div id="autogenerate-endpoint-pages">
   #### 自动生成端点页面
@@ -519,14 +519,14 @@ npx @mintlify/scraping@latest openapi-file <path-to-openapi-file> -o <folder-nam
 ```
 
 <Tip>
-  添加 `-o` 标志以指定输出文件夹。若未指定文件夹，文件将生成在工作目录中。
+  添加 `-o` 标志以指定用于存放文件的文件夹。如果未指定文件夹，文件将生成在当前工作目录中。
 </Tip>
 
 <div id="document-data-models">
   ### 文档数据模型
 </div>
 
-在 frontmatter 中使用 `openapi-schema` 字段，为 OpenAPI 规范的 `components.schemas` 下定义的每个数据结构各创建一个页面。
+使用 frontmatter 中的 `openapi-schema` 字段，为 OpenAPI 规范的 `components.schemas` 中定义的每个数据结构分别创建一个页面。
 
 <CodeGroup>
   ```mdx Example
@@ -542,7 +542,7 @@ npx @mintlify/scraping@latest openapi-file <path-to-openapi-file> -o <folder-nam
   ```
 </CodeGroup>
 
-如果在多个文件中存在同名 schema，请明确指定 OpenAPI 文件：
+如果多个文件中存在同名 schema，请指定 OpenAPI 文件：
 
 <CodeGroup>
   ```mdx Example
@@ -562,20 +562,20 @@ npx @mintlify/scraping@latest openapi-file <path-to-openapi-file> -o <folder-nam
   ## Webhooks
 </div>
 
-Webhook 是你的 API 在事件发生时用于通知外部系统的 HTTP 回调。OpenAPI 3.1+ 文档支持 webhook。
+Webhook 是一种 HTTP 回调：当事件发生时，你的 API 会向外部系统发送它以进行通知。OpenAPI 3.1+ 文档支持 webhook。
 
-在你的 OpenAPI 文档中，与 `paths` 字段并列添加一个 `webhooks` 字段。
+在 OpenAPI 文档中，添加一个 `webhooks` 字段，与 `paths` 字段并列。
 
-有关定义 Webhook 的更多信息，请参阅 OpenAPI 文档中的 [Webhooks](https://spec.openapis.org/oas/v3.1.0#oasWebhooks)。
+有关定义 webhook 的更多信息，请参阅 OpenAPI 文档中的 [Webhooks](https://spec.openapis.org/oas/v3.1.0#oasWebhooks)。
 
-要为某个 Webhook (OpenAPI 3.1+) 创建 MDX 页面，请使用 `webhook` 替代某个 HTTP 方法：
+要为 webhook (OpenAPI 3.1+) 创建 MDX 页面，请使用 `webhook`，而不是 HTTP 方法：
 
 ```mdx
 ---
-title: "订单更新 webhook"
-description: "当订单更新时触发"
+title: "Order updated webhook"
+description: "Triggered when an order is updated"
 openapi: "openapi.json webhook orderUpdated"
 ---
 ```
 
-Webhook 名称必须与 OpenAPI 规范中 `webhooks` 字段中的键完全一致。
+Webhook 名称必须与您的 OpenAPI 规范中 `webhooks` 字段里的键名完全一致。

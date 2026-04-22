@@ -1,16 +1,16 @@
 ---
 title: "字段"
-description: "使用 ParamField 和 ResponseField 组件，通过类型、默认值和验证规则为 API 请求和响应参数编写文档。"
-keywords: ["ParamField", "ResponseField", "request parameters", "response documentation"]
+description: "使用 ParamField 和 ResponseField 组件为 API 请求参数和响应参数编写文档，包括类型、默认值和验证规则。"
+keywords: ["ParamField", "ResponseField", "请求参数", "响应文档"]
 ---
 
-使用字段为 API 的参数与响应编写文档。字段分为两类：参数字段和响应字段。
+使用字段为 API 参数和响应编写文档。字段分为两种类型：参数字段和响应字段。
 
 <div id="parameter-field">
   ## 参数字段
 </div>
 
-使用 `<ParamField>` 组件为你的 API 或 SDK 定义参数。添加一个 `ParamField` 将自动添加一个 [API 操作台](/zh/api-playground/overview)。
+使用 `<ParamField>` 组件为你的 API 或 SDK 定义参数。添加 `ParamField` 后，会自动添加一个 [API 操场](/zh/api-playground/overview)。
 
 <ParamField path="param" type="string" required>
   参数字段示例
@@ -18,7 +18,7 @@ keywords: ["ParamField", "ResponseField", "request parameters", "response docume
 
 ```mdx
 <ParamField path="param" type="string" required>
-  参数字段示例
+  An example of a parameter field
 </ParamField>
 ```
 
@@ -26,9 +26,8 @@ keywords: ["ParamField", "ResponseField", "request parameters", "response docume
   ### 属性
 </div>
 
-<ParamField body="query, path, body, or header" type="string">
-  指定参数属于 query、path、body 或 header，后面跟随
-  参数名称。
+<ParamField body="query、path、body 或 header" type="string">
+  指定参数属于 query、path、body 还是 header，后面跟参数名称。
 </ParamField>
 
 <ParamField body="type" type="string">
@@ -40,30 +39,30 @@ keywords: ["ParamField", "ResponseField", "request parameters", "response docume
 </ParamField>
 
 <ParamField body="required" type="boolean">
-  指明你是否要求该参数。
+  指示是否必须提供该参数。
 </ParamField>
 
 <ParamField body="deprecated" type="boolean">
-  指明你是否已废弃该参数。
+  指示该参数是否已弃用。
 </ParamField>
 
 <ParamField body="default" type="any">
-  当请求的值为空时将使用的默认值。
+  当请求值为空时使用的默认值
 </ParamField>
 
-<ParamField body="placeholder" type="string">
+<ParamField body="占位符" type="string">
   playground 中输入框的占位文本。
 </ParamField>
 
 <ParamField body="children" type="string">
-  参数说明（支持 Markdown）。
+  参数说明 (支持 Markdown) 。
 </ParamField>
 
 <div id="response-field">
   ## 响应字段
 </div>
 
-`<ResponseField>` 组件用于定义 API 的返回值。
+`<ResponseField>` 组件用于定义 API 的返回字段。
 
 <ResponseField name="response" type="string" required>
   响应字段示例
@@ -71,7 +70,7 @@ keywords: ["ParamField", "ResponseField", "request parameters", "response docume
 
 ```mdx
 <ResponseField name="response" type="string" required>
-  响应字段示例
+  A response field example
 </ResponseField>
 ```
 
@@ -84,7 +83,7 @@ keywords: ["ParamField", "ResponseField", "request parameters", "response docume
 </ResponseField>
 
 <ResponseField name="type" type="string" required>
-  响应值的期望类型。可以是任意字符串。
+  响应值的预期类型。可以是任意字符串。
 </ResponseField>
 
 <ResponseField name="default" type="string">
@@ -92,17 +91,17 @@ keywords: ["ParamField", "ResponseField", "request parameters", "response docume
 </ResponseField>
 
 <ResponseField name="required" type="boolean">
-  指示你是否要求该响应。
+  表示该响应值是否为必填。
 </ResponseField>
 
 <ResponseField name="deprecated" type="boolean">
-  指示你是否已废弃该字段。
+  表示该字段是否已弃用。
 </ResponseField>
 
 <ResponseField name="pre" type="string[]">
-  出现在字段名称之前的标签。
+  显示在字段名称前的标签。
 </ResponseField>
 
 <ResponseField name="post" type="string[]">
-  出现在字段名称之后的标签。
+  显示在字段名称后的标签。
 </ResponseField>

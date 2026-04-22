@@ -1,6 +1,6 @@
 ---
 title: "Instalar la CLI"
-description: "Instala la CLI de Mintlify para previsualizar la documentación localmente, probar cambios en tiempo real y detectar errores de compilación antes de desplegar en producción."
+description: "Instala la CLI de Mintlify para previsualizar la documentación en local, probar los cambios en tiempo real y detectar errores de compilación antes de desplegar en producción."
 keywords: ["CLI", "npm", "instalar", "Node.js", "pnpm", "mint"]
 ---
 
@@ -8,10 +8,10 @@ keywords: ["CLI", "npm", "instalar", "Node.js", "pnpm", "mint"]
   ## Requisitos previos
 </div>
 
-- [Node.js](https://nodejs.org/en) v20.17.0+ (se recomiendan versiones LTS)
+* [Node.js](https://nodejs.org/en) v20.17.0+ (se recomiendan las versiones LTS)
 
 <div id="install-the-cli">
-  ## Instalar la CLI
+  ## Instala la CLI
 </div>
 
 <CodeGroup>
@@ -25,55 +25,55 @@ keywords: ["CLI", "npm", "instalar", "Node.js", "pnpm", "mint"]
 </CodeGroup>
 
 <div id="create-a-new-project">
-  ## Crear un nuevo proyecto
+  ## Crea un proyecto nuevo
 </div>
 
-Para crear un nuevo proyecto de documentación a partir de la plantilla inicial de Mintlify, ejecuta el siguiente comando:
+Para crear un nuevo proyecto de documentación a partir de la plantilla de inicio de Mintlify, ejecuta el siguiente comando:
 
 ```bash
 mint new [directory]
 ```
 
-Si no especificas un directorio, la CLI te solicitará crear un nuevo subdirectorio o sobrescribir el directorio actual.
+Si no especificas un directorio, la CLI te pedirá que crees un subdirectorio nuevo o que sobrescribas el directorio actual.
 
 <Warning>
   Sobrescribir el directorio actual elimina todos los archivos existentes.
 </Warning>
 
-| Flag | Descripción |
-| --- | --- |
-| `--name` | Nombre del proyecto. La CLI lo solicita si no se proporciona. |
-| `--theme` | [Tema](/es/customize/themes) del proyecto. La CLI lo solicita si no se proporciona. |
-| `--template` | Plantilla predefinida. La CLI la solicita si no se proporciona. |
-| `--force` | Sobrescribir el directorio actual sin solicitar confirmación. |
+| Flag         | Descripción                                                                      |
+| ------------ | -------------------------------------------------------------------------------- |
+| `--name`     | Nombre del proyecto. La CLI lo solicita si no se proporciona.                    |
+| `--theme`    | [Tema](/es/customize/themes) del proyecto. La CLI lo solicita si no se proporciona. |
+| `--template` | Plantilla predefinida. La CLI la solicita si no se proporciona.                  |
+| `--force`    | Sobrescribe el directorio actual sin pedir confirmación.                         |
 
-En modo interactivo, la CLI pregunta si deseas elegir un tema o clonar una plantilla. Para omitir el aviso, pasa el flag `--template` directamente:
+En modo interactivo, la CLI te pregunta si quieres elegir un tema o clonar una plantilla. Para omitir esta solicitud, pasa la marca `--template` directamente:
 
 ```bash
 mint new my-docs --template <template-name>
 ```
 
-Puedes combinar `--template` con `--theme` para anular el tema predeterminado de la plantilla:
+Puedes combinar `--template` con `--theme` para sobrescribir el tema predeterminado de la plantilla:
 
 ```bash
 mint new my-docs --template <template-name> --theme <theme>
 ```
 
-Consulta las plantillas disponibles en el repositorio [mintlify/templates](https://github.com/mintlify/templates) en GitHub. En modo interactivo, la CLI obtiene y muestra las plantillas disponibles automáticamente.
+Consulta las plantillas disponibles en el repositorio [mintlify/templates](https://github.com/mintlify/templates) en GitHub. En modo interactivo, la CLI recupera y muestra automáticamente las plantillas disponibles.
 
-En entornos no interactivos como pipelines de CI/CD o agentes de codificación IA, debes proporcionar los flags `--name` y `--theme`, o el flag `--template`.
+En entornos no interactivos, como pipelines de CI/CD o agentes de programación con IA, debes proporcionar las opciones `--name` y `--theme`, o la opción `--template`.
 
 <div id="update">
-  ## Actualizar
+  ## Update
 </div>
 
-Si tu previsualización local no está sincronizada con la documentación desplegada, actualiza la CLI a la última versión:
+Si tu vista previa local no está sincronizada con la documentación desplegada, actualiza la CLI a la versión más reciente:
 
 ```bash
 mint update
 ```
 
-Si `mint update` no está disponible en tu versión, reinstala la CLI con la última versión:
+Si `mint update` no está disponible en tu versión, vuelve a instalar la CLI con la versión más reciente:
 
 <CodeGroup>
   ```bash npm
@@ -89,40 +89,44 @@ Si `mint update` no está disponible en tu versión, reinstala la CLI con la úl
   ## Formato
 </div>
 
-Para resaltado de sintaxis y formato de código en archivos MDX, recomendamos usar las siguientes extensiones:
+Para el resaltado de sintaxis y el formateo de código en archivos MDX, recomendamos usar las siguientes extensiones:
 
-- **Cursor, Windsurf, VS Code**: [Extensión MDX para VS Code](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) y [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- **JetBrains**: [Plugin MDX para IntelliJ IDEA](https://plugins.jetbrains.com/plugin/14944-mdx) y [Prettier](https://prettier.io/docs/webstorm)
+* **Cursor, Windsurf, VS Code**: [extensión de MDX para VS Code](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) y [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+* **JetBrains**: [plugin de MDX para IntelliJ IDEA](https://plugins.jetbrains.com/plugin/14944-mdx) y [Prettier](https://prettier.io/docs/webstorm)
 
 <div id="troubleshooting">
   ## Solución de problemas
 </div>
 
 <AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
-    Esto puede deberse a una versión desactualizada de Node.js. Intenta lo siguiente:
+  <Accordion title="Error: No se pudo cargar el módulo &#x22;sharp&#x22; con el runtime darwin-arm64">
+    Esto puede deberse a una versión desactualizada de Node.js. Prueba lo siguiente:
 
-    1. Elimina la versión actual de la CLI de mint: `npm uninstall -g mint`
+    1. Elimina la versión instalada actualmente de la CLI de mint: `npm uninstall -g mint`
     2. Actualiza a Node.js v20.17.0+.
-    3. Reinstala la CLI de mint: `npm install -g mint`
+    3. Vuelve a instalar la CLI de mint: `npm install -g mint`
   </Accordion>
-  <Accordion title="Problema: Se produce un error desconocido">
-    **Solución**: Ve a la raíz de tu dispositivo y elimina la carpeta `~/.mintlify`. Después, ejecuta `mint dev` nuevamente.
-  </Accordion>
-  <Accordion title="Error: permission denied">
-    Esto se debe a que no tienes los permisos necesarios para instalar paquetes de Node de forma global.
 
-    **Solución**: Intenta ejecutar `sudo npm i -g mint`. Cuando se te solicite, ingresa la contraseña que usas para desbloquear tu computadora.
+  <Accordion title="Problema: aparece un error desconocido">
+    **Solución**: Ve al directorio raíz de tu dispositivo y elimina la carpeta `~/.mintlify`. Después, vuelve a ejecutar `mint dev`.
   </Accordion>
-  <Accordion title="La previsualización local no se ve igual que la documentación en la web">
+
+  <Accordion title="Error: permiso denegado">
+    Esto se debe a que no tienes los permisos necesarios para instalar paquetes de Node.js de forma global.
+
+    **Solución**: Prueba a ejecutar `sudo npm i -g mint`. Cuando se te solicite, introduce la contraseña que usas para desbloquear tu equipo.
+  </Accordion>
+
+  <Accordion title="La vista previa local no se ve igual que mi documentación en la web">
     Es probable que esto se deba a una versión desactualizada de la CLI.
 
-    **Solución**: Ejecuta `mint update` para obtener los últimos cambios.
+    **Solución**: Ejecuta `mint update` para obtener los cambios más recientes.
   </Accordion>
-  <Accordion title="Paquete mintlify versus mint">
-    Si tienes problemas con el paquete de la CLI, primero ejecuta `npm ls -g` para ver qué paquetes están instalados globalmente. Si no usas npm, prueba `which mint` para localizar la instalación.
 
-    Si tienes instalados tanto el paquete `mint` como el paquete `mintlify`, desinstala `mintlify`:
+  <Accordion title="paquete mintlify frente al paquete mint">
+    Si tienes algún problema con el paquete de la CLI, primero ejecuta `npm ls -g` para ver qué paquetes están instalados globalmente. Si no usas npm, prueba `which mint` para localizar la instalación.
+
+    Si tienes instalados tanto un paquete `mint` como uno `mintlify`, desinstala `mintlify`:
 
     ```bash
     npm uninstall -g mintlify
@@ -130,8 +134,9 @@ Para resaltado de sintaxis y formato de código en archivos MDX, recomendamos us
     npm i -g mint
     ```
   </Accordion>
+
   <Accordion title="La versión del cliente muestra 'none' después de la instalación">
-    Si ejecutas `mint version` y la versión del cliente se muestra como `none`, es posible que la CLI no pueda descargar la aplicación cliente debido a un firewall corporativo o VPN.
+    Si ejecutas `mint version` y la versión del cliente aparece como `none`, es posible que la CLI no pueda descargar la aplicación cliente debido a un firewall corporativo o una VPN.
 
     **Solución**: Pide a tu administrador de TI que agregue `releases.mintlify.com` a la lista de permitidos de tu red.
   </Accordion>

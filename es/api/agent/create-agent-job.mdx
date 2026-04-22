@@ -1,21 +1,21 @@
 ---
-title: "Crear trabajo del agente (v1)"
-description: "En desuso. Crea un trabajo del agente para automatizar las
-  actualizaciones de la documentación, con creación automática de branch y
-  generación de solicitud de extracción."
+title: "Crear un trabajo de agente (v1)"
+description: "Obsoleto. Crea un trabajo de agente para automatizar las
+  actualizaciones de la documentación, con creación automática de ramas y
+  generación de solicitudes de extracción (pull request, PR)."
 openapi: /es/admin-openapi.json POST /v1/agent/{projectId}/job
-keywords: [ "trabajo del agente", "crear", "automatización", "automatizar" ]
+keywords: [ "trabajo de agente", "crear", "automatización", "automatizar" ]
 tag: "deprecated"
 ---
 
-<Warning>Este endpoint está en desuso. Usa el endpoint [crear trabajo del agente v2](/es/api/agent/v2/create-agent-job) en su lugar.</Warning>
+<Warning>Este endpoint está obsoleto. Usa en su lugar el endpoint [v2 create agent job](/es/api/agent/v2/create-agent-job).</Warning>
 
-Este endpoint crea un trabajo del agente a partir de los mensajes proporcionados y la información de la branch. El trabajo se ejecuta de forma asíncrona y devuelve una respuesta en streaming con los detalles de la ejecución y los resultados.
+Este endpoint crea un trabajo de agente a partir de los mensajes y la información de la rama proporcionados. El trabajo se ejecuta de forma asíncrona y devuelve una respuesta en streaming con los detalles y los resultados de la ejecución.
 
-Si no existe una branch, el agente crea una. Si los archivos se editan correctamente, al finalizar el trabajo se crea automáticamente una solicitud de extracción.
+Si no existe una rama, el agente la crea. Si los archivos se editan correctamente, se crea automáticamente una solicitud de extracción (pull request, PR) al final del trabajo.
 
 <div id="rate-limits">
-  ## Límites de tasa
+  ## Límites de uso
 </div>
 
 La API del agente tiene los siguientes límites:
@@ -26,4 +26,4 @@ La API del agente tiene los siguientes límites:
   ## Uso recomendado
 </div>
 
-Para obtener mejores resultados, utiliza el [hook useChat de ai-sdk](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat#usechat) para enviar solicitudes y gestionar las respuestas.
+Para obtener mejores resultados, usa el [hook `useChat` de ai-sdk](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat#usechat) para enviar solicitudes y manejar las respuestas.

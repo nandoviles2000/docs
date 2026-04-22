@@ -1,32 +1,33 @@
 ---
-title: "Obtener conversaciones del assistant"
-description: "Obtén el historial de conversaciones del Asistente de IA,
-  incluidas las consultas, respuestas, fuentes citadas y categorías."
+title: "Obtener conversaciones del asistente"
+description: "Recupera el historial de conversaciones del asistente de IA,
+  incluidas las consultas, las respuestas, las fuentes citadas y las
+  categorías."
 openapi: /es/analytics.openapi.json GET /v1/analytics/{projectId}/assistant
-keywords: [ "analytics", "assistant", "conversations", "export", "AI" ]
+keywords: [ "analítica", "asistente", "conversaciones", "exportación", "IA" ]
 ---
 
 <div id="usage">
   ## Uso
 </div>
 
-Utiliza este endpoint para exportar el historial de conversaciones del Asistente de IA desde tu documentación. Cada conversación incluye la búsqueda del usuario, la respuesta del Asistente de IA, las fuentes citadas y la categoría de la búsqueda.
+Usa este endpoint para exportar el historial de conversaciones del asistente de IA de tu documentación. Cada conversación incluye la consulta del usuario, la respuesta del asistente, las fuentes citadas y la categoría de la consulta.
 
-Pagina los resultados usando el parámetro `cursor` devuelto en la respuesta. Continúa obteniendo resultados mientras `hasMore` sea `true`.
+Recorre los resultados paginados usando el parámetro `cursor` que se devuelve en la respuesta. Sigue recuperando resultados mientras `hasMore` sea `true`.
 
 <div id="filtering">
   ## Filtrado
 </div>
 
-Filtra conversaciones por intervalo de fechas usando los parámetros `dateFrom` y `dateTo`.
+Filtra las conversaciones por intervalo de fechas con los parámetros `dateFrom` y `dateTo`.
 
 <div id="conversation-data">
-  ## Datos de conversación
+  ## Datos de la conversación
 </div>
 
 Cada conversación incluye:
 
-- **query**: La pregunta del usuario
-- **response**: La respuesta del assistant
-- **sources**: Páginas a las que se hace referencia en la respuesta, con título y URL
-- **queryCategory**: Clasificación del tipo de búsqueda (si está disponible)
+* **query**: La pregunta del usuario
+* **response**: La respuesta del asistente
+* **sources**: Páginas referenciadas en la respuesta, con título y URL
+* **queryCategory**: Clasificación del tipo de consulta (si está disponible)

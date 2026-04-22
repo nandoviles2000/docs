@@ -1,78 +1,77 @@
 ---
 title: "Cómo configurar documentación multilingüe"
 sidebarTitle: "Internacionalización"
-description: "Configura documentación multilingüe con enrutamiento basado en idioma, navegación con selector de idioma y contenido traducido para llegar a audiencias globales."
-keywords: ["internationalization", "i18n", "documentación multilingüe", "translations", "localization", "language switcher"]
+description: "Configura documentación multilingüe con rutas basadas en la configuración regional, un selector de idioma en la navegación y contenido traducido para llegar a una audiencia global."
+keywords: ["internacionalización", "i18n", "documentación en varios idiomas", "traducciones", "localización", "selector de idioma"]
 ---
 
-La internacionalización (i18n) es el proceso de diseñar software o contenido para que funcione en distintos idiomas y configuraciones regionales. Esta guía explica cómo estructurar archivos, configurar la navegación y mantener las traducciones de forma eficiente, para que puedas ayudar a los usuarios a acceder a tu documentación en su idioma preferido y mejorar tu alcance global.
+La internacionalización (i18n) es el proceso de diseñar software o contenido para que funcione en distintos idiomas y configuraciones regionales. Esta guía explica cómo estructurar los archivos, configurar la Navegación y mantener las traducciones de forma eficaz para ayudar a los usuarios a acceder a tu documentación en su idioma preferido y ampliar tu alcance global.
 
 <div id="file-structure">
   ## Estructura de archivos
 </div>
 
-Organiza el contenido traducido en directorios específicos por idioma para mantener tu documentación manejable y estructurar tu navigation por idioma.
+Organiza el contenido traducido en directorios específicos de cada idioma para que tu documentación sea más fácil de mantener y para organizar la Navegación por idioma.
 
-Crea un directorio separado para cada idioma usando los [códigos de idioma ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Coloca los archivos traducidos en estos directorios con la misma estructura que tu idioma predeterminado.
+Crea un directorio independiente para cada idioma con los [códigos de idioma ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Coloca los archivos traducidos en estos directorios con la misma estructura que la de tu idioma predeterminado.
 
-<Expandable title="códigos de idioma compatibles">
-  * `ar` - árabe
-  * `ca` - catalán
-  * `cs` - checo
-  * `zh` o `zh-Hans` - chino (simplificado)
-  * `zh-Hant` - chino (tradicional)
-  * `de` - alemán
-  * `en` - inglés
-  * `es` - español
-  * `fi` - finlandés
-  * `fr` - francés
-  * `fr-CA` - francés (canadiense)
-  * `he` - hebreo
-  * `hi` - hindi
-  * `hu` - húngaro
-  * `id` - indonesio
-  * `it` - italiano
-  * `ja` - japonés
-  * `ko` - coreano
-  * `lv` - letón
-  * `nl` - neerlandés
-  * `no` - noruego
-  * `pl` - polaco
-  * `pt` o `pt-BR` - portugués
-  * `ro` - rumano
-  * `ru` - ruso
-  * `sv` - sueco
-  * `tr` - turco
-  * `uk` - ucraniano
-  * `uz` - uzbeko
-  * `vi` - vietnamita
+<Expandable title="códigos de idioma admitidos">
+  * `ar` - Árabe
+  * `ca` - Catalán
+  * `cs` - Checo
+  * `zh` o `zh-Hans` - Chino (simplificado)
+  * `zh-Hant` - Chino (tradicional)
+  * `de` - Alemán
+  * `en` - Inglés
+  * `es` - Español
+  * `fi` - Finés
+  * `fr` - Francés
+  * `fr-CA` - Francés (canadiense)
+  * `he` - Hebreo
+  * `hi` - Hindi
+  * `hu` - Húngaro
+  * `id` - Indonesio
+  * `it` - Italiano
+  * `ja` - Japonés
+  * `ko` - Coreano
+  * `lv` - Letón
+  * `nl` - Neerlandés
+  * `no` - Noruego
+  * `pl` - Polaco
+  * `pt` o `pt-BR` - Portugués
+  * `ro` - Rumano
+  * `ru` - Ruso
+  * `sv` - Sueco
+  * `tr` - Turco
+  * `uk` - Ucraniano
+  * `uz` - Uzbeko
+  * `vi` - Vietnamita
 </Expandable>
 
 ```text Example file structure
 docs/
-├── index.mdx                    # English (default)
+├── index.mdx                    # Inglés (predeterminado)
 ├── quickstart.mdx
 ├── fr/
-│   ├── index.mdx               # French
+│   ├── index.mdx               # Francés
 │   ├── quickstart.mdx
 ├── es/
-│   ├── index.mdx               # Spanish
+│   ├── index.mdx               # Español
 │   ├── quickstart.mdx
 └── zh/
-    ├── index.mdx               # Chinese
+    ├── index.mdx               # Chino
     └── quickstart.mdx
 ```
 
 <Tip>
-  Mantén los mismos nombres de archivo y la misma estructura de directorios en todos los idiomas. Esto facilita el mantenimiento de las traducciones y la identificación del contenido faltante.
+  Mantén los mismos nombres de archivo y la misma estructura de directorios en todos los idiomas. Esto facilita mantener las traducciones e identificar el contenido que falta.
 </Tip>
 
-
 <div id="configure-the-language-switcher">
-  ## Configurar el selector de idioma
+  ## Configura el selector de idioma
 </div>
 
-Para añadir un selector de idioma a tu documentación, configura el array `languages` en la propiedad `navigation` de tu `docs.json`.
+Para añadir un selector de idioma a tu documentación, configura el array `languages` en la sección de Navegación de tu `docs.json`.
 
 ```json docs.json
 {
@@ -82,7 +81,7 @@ Para añadir un selector de idioma a tu documentación, configura el array `lang
         "language": "en",
         "groups": [
           {
-            "group": "Primeros pasos",
+            "group": "Getting started",
             "pages": ["index", "quickstart"]
           }
         ]
@@ -101,23 +100,23 @@ Para añadir un selector de idioma a tu documentación, configura el array `lang
 }
 ```
 
-Cada entrada de idioma en el array `languages` requiere:
+Cada entrada de idioma en la matriz `languages` requiere lo siguiente:
 
 * `language`: código de idioma ISO 639-1
-* Estructura completa de navigation
-* Rutas de los archivos traducidos
+* Estructura de navegación completa
+* Rutas a los archivos traducidos
 
-La estructura de navigation puede diferir entre idiomas para adaptarse a las necesidades de contenido específicas de cada idioma.
+La estructura de navegación puede variar entre idiomas para adaptarse a las necesidades de contenido específicas de cada uno.
 
 <Warning>
-  No utilices la misma ruta de página en más de una locale. Duplicar rutas entre locales produce un comportamiento indefinido. Cada ruta de página debe aparecer únicamente en la navegación de un solo idioma.
+  No uses la misma ruta de página en más de un idioma. Duplicar rutas entre idiomas provoca un comportamiento indefinido. La ruta de cada página debe aparecer solo en la navegación de un idioma.
 </Warning>
 
 <div id="set-default-language">
-  ### Establecer el idioma predeterminado
+  ### Establece el idioma predeterminado
 </div>
 
-El primer idioma del arreglo `languages` se usa automáticamente como idioma predeterminado. Para establecer otro idioma como predeterminado, reordena el arreglo o agrega la propiedad `default`:
+El primer idioma de la matriz `languages` se usa automáticamente como predeterminado. Para usar otro idioma como predeterminado, reordena la matriz o agrega la propiedad `default`:
 
 ```json docs.json
 {
@@ -136,7 +135,7 @@ El primer idioma del arreglo `languages` se usa automáticamente como idioma pre
 }
 ```
 
-Alternativamente, usa la propiedad `default` para modificar el orden:
+También puedes usar la propiedad `default` para cambiar el orden:
 
 ```json docs.json
 {
@@ -156,22 +155,21 @@ Alternativamente, usa la propiedad `default` para modificar el orden:
 }
 ```
 
-
 <div id="single-language-documentation">
   ### Documentación en un solo idioma
 </div>
 
-Si solo quieres tener un único idioma disponible sin un selector de idioma, elimina el campo `languages` de tu configuración de navigation. En su lugar, define directamente tu estructura de navigation:
+Si solo quieres tener un idioma disponible sin un selector de idioma, elimina el campo `languages` de la configuración de navegación. En su lugar, define directamente la estructura de navegación:
 
 ```json docs.json
 {
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentación",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Primeros pasos",
+            "group": "Getting started",
             "pages": ["index", "quickstart"]
           }
         ]
@@ -181,18 +179,17 @@ Si solo quieres tener un único idioma disponible sin un selector de idioma, eli
 }
 ```
 
-Esto muestra la documentación en un solo idioma sin la interfaz de usuario del selector de idioma.
+Esto muestra tu documentación en un solo idioma, sin la interfaz del selector de idioma.
 
 <Tip>
-  Traduce las etiquetas de navegación, como los nombres de grupos o Tabs, para que coincidan con el idioma del contenido. Esto crea una experiencia completamente localizada para tus usuarios.
+  Traduce las etiquetas de Navegación, como los nombres de grupos o pestañas, para que coincidan con el idioma del contenido. Así crearás una experiencia totalmente localizada para tus usuarios.
 </Tip>
-
 
 <div id="global-navigation">
   ### Navegación global
 </div>
 
-Para añadir elementos de navegación global que aparezcan en todos los idiomas, configura el objeto `global` dentro de la `navigation` de tu `docs.json`.
+Para añadir elementos de navegación global que aparezcan en todos los idiomas, configura el objeto `global` en la navegación de tu `docs.json`.
 
 ```json docs.json
 {
@@ -200,7 +197,7 @@ Para añadir elementos de navegación global que aparezcan en todos los idiomas,
     "global": {
       "anchors": [
         {
-          "anchor": "Documentación",
+          "anchor": "Documentation",
           "href": "https://example.com/docs"
         },
         {
@@ -210,12 +207,11 @@ Para añadir elementos de navegación global que aparezcan en todos los idiomas,
       ]
     },
     "languages": [
-      // Language-specific navigation
+      // Navegación específica por idioma
     ]
   }
 }
 ```
-
 
 <div id="localized-footer-and-navbar">
   ### Pie de página y barra de navegación localizadas
@@ -223,7 +219,7 @@ Para añadir elementos de navegación global que aparezcan en todos los idiomas,
 
 Personaliza el pie de página y la barra de navegación de cada idioma para mostrar contenido traducido y enlaces específicos de cada región.
 
-Añade las propiedades `footer` y `navbar` a la configuración de cada idioma:
+Agrega las propiedades `footer` y `navbar` a la configuración de cada idioma:
 
 ```json docs.json
 {
@@ -300,16 +296,15 @@ Añade las propiedades `footer` y `navbar` a la configuración de cada idioma:
 }
 ```
 
-El `footer` y el `navbar` específicos para un idioma reemplazan la configuración global de ese idioma. Si un idioma no define estas propiedades, hereda la configuración global.
+Los elementos `footer` y `navbar` específicos de un idioma reemplazan la configuración global de ese idioma. Si un idioma no define estas propiedades, hereda la configuración global.
 
-También puedes configurar un `banner` específico para un idioma siguiendo el mismo patrón.
-
+También puedes configurar un `banner` específico de un idioma siguiendo el mismo patrón.
 
 <div id="maintain-translations">
-  ## Mantén las traducciones
+  ## Mantén las traducciones actualizadas
 </div>
 
-Mantén las traducciones precisas y sincronizadas con tu contenido original.
+Mantén las traducciones precisas y sincronizadas con el contenido original.
 
 <div id="translation-workflow">
   ### Flujo de trabajo de traducción
@@ -318,15 +313,15 @@ Mantén las traducciones precisas y sincronizadas con tu contenido original.
 1. Actualiza el contenido original en tu idioma principal.
 2. Identifica el contenido modificado.
 3. Traduce el contenido modificado.
-4. Revisa las traducciones para comprobar su precisión.
+4. Revisa la exactitud de las traducciones.
 5. Actualiza los archivos traducidos.
 6. Verifica que la navegación y los enlaces funcionen.
 
 <div id="automated-translations">
-  ### Traducciones automatizadas
+  ### Traducciones automáticas
 </div>
 
-Para soluciones de traducción automática, [ponte en contacto con el equipo de ventas de Mintlify](mailto:gtm@mintlify.com).
+Para soluciones de traducción automática, [contacta con el equipo de ventas de Mintlify](mailto:gtm@mintlify.com).
 
 <div id="external-translation-providers">
   ### Proveedores de traducción externos
@@ -334,12 +329,12 @@ Para soluciones de traducción automática, [ponte en contacto con el equipo de 
 
 Si trabajas con tus propios proveedores de traducción o traductores regionales, puedes integrar su flujo de trabajo con tu documentación de Mintlify mediante GitHub Actions o herramientas de CI/CD similares.
 
-1. **Exportar el contenido fuente**: Extrae los archivos MDX que necesiten traducción.
-2. **Enviar a los traductores**: Proporciona los archivos a tu proveedor de traducción.
-3. **Recibir las traducciones**: Recibe de vuelta los archivos MDX traducidos.
-4. **Importar y desplegar**: Añade los archivos traducidos a los directorios de idioma y actualiza la navegación.
+1. **Exporta el contenido fuente**: Extrae los archivos MDX que necesitan traducción.
+2. **Envíalo a los traductores**: Proporciona los archivos a tu proveedor de traducción.
+3. **Recibe las traducciones**: Recibe de vuelta los archivos MDX traducidos.
+4. **Importa y despliega**: Añade los archivos traducidos a los directorios de idioma y actualiza la navegación.
 
-Este flujo de trabajo de GitHub Actions exporta automáticamente el contenido en inglés modificado para su traducción cuando los PR se fusionan en main.
+Este flujo de trabajo de GitHub Actions exporta automáticamente el contenido modificado en inglés para su traducción cuando los PR se fusionan en main.
 
 ```yaml .github/workflows/export-for-translation.yml
 name: Export content for translation
@@ -353,7 +348,7 @@ on:
       - '!fr/**'
       - '!zh/**'
 
-# Evitar ejecuciones simultáneas del flujo de trabajo para prevenir condiciones de carrera
+# Evitar ejecuciones simultáneas del workflow para prevenir condiciones de carrera
 concurrency:
   group: translation-export-${{ github.ref }}
   cancel-in-progress: false
@@ -362,7 +357,7 @@ jobs:
   export:
     runs-on: ubuntu-latest
     
-    # Salida anticipada si no se detectan cambios (opcional: actúa como seguridad adicional)
+    # Salida anticipada si no se detectan cambios (opcional - actúa como seguridad adicional)
     outputs:
       files-changed: ${{ steps.changed.outputs.has-files }}
     
@@ -383,7 +378,7 @@ jobs:
             exit 0
           fi
           
-          # Obtener la lista de archivos MDX modificados (excluyendo los directorios de traducción)
+          # Obtener lista de archivos MDX modificados (excluyendo directorios de traducción)
           files=$(git diff --name-only HEAD~1 HEAD -- '*.mdx' ':!es/' ':!fr/' ':!zh/' | tr '\n' ' ')
           
           if [ -z "$files" ]; then
@@ -454,10 +449,10 @@ jobs:
           echo "${{ steps.changed.outputs.files }}" | tr ' ' '\n' | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
 ```
 
-Este flujo de trabajo de GitHub Actions valida e importa el contenido traducido cuando se añade en una PR.
+Este flujo de trabajo de GitHub Actions valida e importa contenido traducido cuando se añade mediante una PR.
 
 ```yaml .github/workflows/import-translations.yml
-name: Importar traducciones
+name: Import translations
 
 on:
   pull_request:
@@ -479,35 +474,35 @@ jobs:
       validation-status: ${{ steps.final-check.outputs.status }}
     
     steps:
-      - name: Obtener repositorio
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Historial completo para garantizar que origin/main esté disponible
+          fetch-depth: 0  # Full history to ensure origin/main is available
 
-      - name: Obtener referencia de origin/main
+      - name: Fetch origin/main reference
         run: |
-          git fetch origin main:origin/main 2>/dev/null || echo "origin/main no disponible, usando el más reciente"
+          git fetch origin main:origin/main 2>/dev/null || echo "origin/main not available, using latest"
         continue-on-error: true
 
-      - name: Obtener archivos de traducción modificados
+      - name: Get changed translation files
         id: changed-files
         run: |
           # Obtener todos los archivos MDX modificados en los directorios de traducción
           files=$(git diff --name-only origin/main..HEAD -- 'es/**/*.mdx' 'fr/**/*.mdx' 'zh/**/*.mdx' | sort)
           
           if [ -z "$files" ]; then
-            echo "No se detectaron archivos MDX de traducción en este PR"
+            echo "No translation MDX files detected in this PR"
             echo "files=" >> $GITHUB_OUTPUT
             echo "count=0" >> $GITHUB_OUTPUT
           else
-            echo "Se encontraron $(echo "$files" | wc -l) archivos de traducción"
+            echo "Found $(echo "$files" | wc -l) translation files"
             echo "$files"
             echo "files=$files" >> $GITHUB_OUTPUT
             echo "count=$(echo "$files" | wc -l)" >> $GITHUB_OUTPUT
           fi
         shell: bash
 
-      - name: Validar frontmatter
+      - name: Validate frontmatter
         id: frontmatter
         if: steps.changed-files.outputs.count > 0
         run: |
@@ -517,28 +512,28 @@ jobs:
           
           while IFS= read -r file; do
             if [ ! -f "$file" ]; then
-              echo "✗ Archivo no encontrado: $file"
+              echo "✗ File not found: $file"
               failed_files+=("$file")
               continue
             fi
             
-            # Verificar frontmatter válido (las líneas 1-2 deben ser ---)
+            # Verificar que el frontmatter sea válido (las líneas 1-2 deben ser ---)
             first_line=$(sed -n '1p' "$file")
             second_line=$(sed -n '2p' "$file")
             last_line=$(awk 'NF' "$file" | tail -1)
             
             if [ "$first_line" = "---" ] && grep -q "^---$" "$file"; then
-              echo "✓ Frontmatter válido: $file"
+              echo "✓ Valid frontmatter: $file"
               ((success_count++))
             else
-              echo "✗ Frontmatter inválido en $file"
-              echo "  Línea 1: '$first_line'"
+              echo "✗ Invalid frontmatter in $file"
+              echo "  Line 1: '$first_line'"
               failed_files+=("$file")
             fi
           done <<< "${{ steps.changed-files.outputs.files }}"
           
           echo ""
-          echo "Verificación de frontmatter: $success_count/$total aprobados"
+          echo "Frontmatter check: $success_count/$total passed"
           
           if [ ${#failed_files[@]} -gt 0 ]; then
             echo "frontmatter_valid=false" >> $GITHUB_OUTPUT
@@ -548,7 +543,7 @@ jobs:
           fi
         shell: bash
 
-      - name: Verificar estructura de archivos
+      - name: Check file structure
         id: structure
         if: steps.changed-files.outputs.count > 0
         run: |
@@ -556,23 +551,23 @@ jobs:
           orphaned_count=0
           
           while IFS= read -r translated_file; do
-            # Extraer idioma y ruta relativa
+            # Extraer el idioma y la ruta relativa
             # p. ej., "es/docs/guide.mdx" -> lang="es", relative_path="docs/guide.mdx"
             lang=$(echo "$translated_file" | cut -d'/' -f1)
             relative_path=$(echo "$translated_file" | cut -d'/' -f2-)
             source_file="$relative_path"
             
             if [ ! -f "$source_file" ]; then
-              echo "Fuente faltante: $translated_file -> $source_file"
+              echo "Missing source: $translated_file -> $source_file"
               missing_sources+=("$translated_file")
               ((orphaned_count++))
             else
-              echo "✓ Fuente encontrada: $translated_file -> $source_file"
+              echo "✓ Found source: $translated_file -> $source_file"
             fi
           done <<< "${{ steps.changed-files.outputs.files }}"
           
           echo ""
-          echo "Verificación de estructura: $orphaned_count archivo(s) huérfano(s)"
+          echo "Structure check: $orphaned_count orphaned file(s)"
           
           if [ $orphaned_count -gt 0 ]; then
             echo "structure_valid=false" >> $GITHUB_OUTPUT
@@ -582,7 +577,7 @@ jobs:
           fi
         shell: bash
 
-      - name: Validar integridad de archivos
+      - name: Validate file integrity
         id: integrity
         if: steps.changed-files.outputs.count > 0
         run: |
@@ -591,14 +586,14 @@ jobs:
           while IFS= read -r file; do
             # Verificar que el archivo sea legible y no esté vacío
             if [ ! -r "$file" ] || [ ! -s "$file" ]; then
-              echo "✗ Problema de integridad del archivo: $file (no legible o vacío)"
+              echo "✗ File integrity issue: $file (not readable or empty)"
               integrity_passed=false
             fi
             
             # Verificación básica: el archivo debe tener contenido después del frontmatter
             line_count=$(wc -l < "$file")
             if [ "$line_count" -lt 5 ]; then
-              echo "El archivo es sospechosamente corto: $file ($line_count líneas)"
+              echo "File is suspiciously short: $file ($line_count lines)"
             fi
           done <<< "${{ steps.changed-files.outputs.files }}"
           
@@ -609,48 +604,48 @@ jobs:
           fi
         shell: bash
 
-      - name: Generar informe de validación
+      - name: Generate validation report
         if: always()
         run: |
-          echo "## Informe de validación de traducciones" >> $GITHUB_STEP_SUMMARY
+          echo "## Translation Validation Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Archivos modificados:** ${{ steps.changed-files.outputs.count }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Files Changed:** ${{ steps.changed-files.outputs.count }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ "${{ steps.changed-files.outputs.count }}" = "0" ]; then
-            echo "No se encontraron archivos MDX de traducción en este PR" >> $GITHUB_STEP_SUMMARY
+            echo "No translation MDX files found in this PR" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "> Esto podría significar:" >> $GITHUB_STEP_SUMMARY
-            echo "- Solo se modificaron archivos que no son MDX en los directorios es/, fr/ o zh/" >> $GITHUB_STEP_SUMMARY
-            echo "- El flujo de trabajo se activó pero no hay contenido de traducción para validar" >> $GITHUB_STEP_SUMMARY
+            echo "> This could mean:" >> $GITHUB_STEP_SUMMARY
+            echo "- Only non-MDX files in es/, fr/, or zh/ directories were changed" >> $GITHUB_STEP_SUMMARY
+            echo "- Workflow was triggered but no translation content to validate" >> $GITHUB_STEP_SUMMARY
           else
-            echo "### Resultados de validación" >> $GITHUB_STEP_SUMMARY
+            echo "### Validation Results" >> $GITHUB_STEP_SUMMARY
             echo "- Frontmatter: ${{ steps.frontmatter.outputs.frontmatter_valid }}" >> $GITHUB_STEP_SUMMARY
-            echo "- Estructura de archivos: ${{ steps.structure.outputs.structure_valid }}" >> $GITHUB_STEP_SUMMARY
-            echo "- Integridad de archivos: ${{ steps.integrity.outputs.integrity_valid }}" >> $GITHUB_STEP_SUMMARY
+            echo "- File Structure: ${{ steps.structure.outputs.structure_valid }}" >> $GITHUB_STEP_SUMMARY
+            echo "- File Integrity: ${{ steps.integrity.outputs.integrity_valid }}" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
           fi
         shell: bash
 
-      - name: Verificación final de validación
+      - name: Final validation check
         id: final-check
-        # Solo ejecutar esta verificación si realmente había archivos MDX para validar
+        # Ejecutar esta verificación solo si había archivos MDX para validar
         if: steps.changed-files.outputs.count > 0
         run: |
           validation_failed=false
           
           if [ "${{ steps.frontmatter.outputs.frontmatter_valid }}" != "true" ]; then
-            echo "La validación del frontmatter falló"
+            echo "Frontmatter validation failed"
             validation_failed=true
           fi
           
           if [ "${{ steps.structure.outputs.structure_valid }}" != "true" ]; then
-            echo "La validación de la estructura de archivos falló"
+            echo "File structure validation failed"
             validation_failed=true
           fi
           
           if [ "${{ steps.integrity.outputs.integrity_valid }}" != "true" ]; then
-            echo "La validación de integridad de archivos falló"
+            echo "File integrity validation failed"
             validation_failed=true
           fi
           
@@ -659,29 +654,29 @@ jobs:
             exit 1
           else
             echo "status=passed" >> $GITHUB_OUTPUT
-            echo "Todas las validaciones aprobadas"
+            echo "All validations passed"
           fi
         shell: bash
 
-      - name: Gestionar el caso sin archivos para validar
-        # Ejecutar solo cuando no hay archivos MDX para validar
+      - name: Handle no-files-to-validate case
+        # Ejecutar solo cuando no haya archivos MDX para validar
         if: steps.changed-files.outputs.count == 0
         run: |
-          echo "No hay archivos MDX de traducción para validar - el PR es válido"
+          echo "No translation MDX files to validate - PR is valid"
           echo "status=no-changes" >> ${{ steps.final-check.outputs }}
         shell: bash
 ```
 
-**Mejores prácticas para flujos de trabajo de traducción externos**
+**Buenas prácticas para los flujos de trabajo de traducción externos**
 
-* **Conserva el frontmatter**: Asegúrate de que los traductores mantengan intacto el frontmatter en YAML y traduzcan solo los valores de `title` y `description`.
-* **Protege los bloques de código**: Marca los bloques de código como &quot;no traducir&quot; para tus proveedores de traducción.
+* **Conserva el frontmatter**: Asegúrate de que los traductores mantengan intacto el frontmatter YAML y traduzcan únicamente los valores de `title` y `description`.
+* **Protege los bloques de código**: Marca los bloques de código como &quot;no traducir&quot; para tus proveedores.
 * **Usa memoria de traducción**: Proporciona glosarios con términos técnicos que deban mantenerse en inglés o tener traducciones específicas.
 * **Automatiza la validación**: Usa comprobaciones de CI para verificar la sintaxis de MDX y el frontmatter antes de integrar las traducciones.
-* **Control de versiones**: Lleva un seguimiento de la versión de origen de cada traducción para identificar contenido desactualizado.
+* **Control de versiones**: Lleva un registro de la versión de origen de cada traducción para identificar contenido desactualizado.
 
 <div id="images-and-media">
-  ### Imágenes y recursos multimedia
+  ### Imágenes y contenido multimedia
 </div>
 
 Guarda las imágenes traducidas en directorios específicos para cada idioma.
@@ -695,99 +690,97 @@ images/
     └── dashboard.png     # Versión en español
 ```
 
-Referencia las imágenes usando rutas relativas en tu contenido traducido.
+Usa rutas relativas para hacer referencia a las imágenes en tu contenido traducido.
 
 ```mdx es/index.mdx
-![Captura de pantalla del dashboard](/images/es/dashboard.png)
+![Captura de pantalla del panel de control](/images/es/dashboard.png)
 ```
-
 
 <div id="seo-for-multi-language-sites">
   ## SEO para sitios multilingües
 </div>
 
-Optimiza cada versión en cada idioma para los motores de búsqueda.
+Optimiza cada versión idiomática para los motores de búsqueda.
 
 <div id="page-metadata">
-  ### Metadata de la página
+  ### Metadatos de la página
 </div>
 
-Incluye la metadata traducida en el frontmatter de cada archivo:
+Incluye los metadatos traducidos en el frontmatter de cada archivo:
 
 ```mdx fr/index.mdx
 ---
-title: "Comenzar"
-description: "Aprenda a comenzar con nuestro producto."
-keywords: ["inicio", "tutorial", "guía"]
+title: "Commencer"
+description: "Apprenez à commencer avec notre produit."
+keywords: ["démarrage", "tutoriel", "guide"]
 ---
 ```
 
-
 <div id="best-practices">
-  ## Mejores prácticas
+  ## Buenas prácticas
 </div>
 
 <div id="date-and-number-formats">
   ### Formatos de fecha y número
 </div>
 
-Ten en cuenta los formatos específicos de cada región para fechas y números.
+Ten en cuenta los formatos de fecha y número específicos de cada configuración regional.
 
-- Formatos de fecha: MM/DD/YYYY (mes/día/año) vs DD/MM/YYYY (día/mes/año)
-- Formatos numéricos: 1,000.00 vs 1.000,00
-- Símbolos de moneda: $100.00 vs 100,00€
+* Formatos de fecha: MM/DD/YYYY (mes/día/año) vs DD/MM/YYYY (día/mes/año)
+* Formatos de número: 1,000.00 vs 1.000,00
+* Símbolos de moneda: $100.00 vs 100,00€
 
-Incluye ejemplos en el formato apropiado para cada idioma o utiliza formatos universalmente comprensibles.
+Incluye ejemplos con el formato adecuado para cada idioma o usa formatos que se entiendan universalmente.
 
 <div id="maintain-consistency">
   ### Mantén la consistencia
 </div>
 
-- Mantén el mismo contenido en todos los idiomas para garantizar que cada usuario reciba la misma calidad de información.
-- Crea un glosario de traducción para los términos técnicos.
-- Conserva la misma estructura de contenido en todos los idiomas.
-- Haz que el tono y el estilo coincidan con los de tu contenido original.
-- Usa branches de Git para gestionar el trabajo de traducción por separado de las actualizaciones del contenido principal.
+* Mantén la paridad del contenido en todos los idiomas para garantizar que cada usuario reciba información de la misma calidad.
+* Crea un glosario de traducción para los términos técnicos.
+* Mantén la misma estructura de contenido en todos los idiomas.
+* Haz que el tono y el estilo coincidan con los del contenido fuente.
+* Usa ramas de Git para gestionar el trabajo de traducción por separado de las actualizaciones del contenido principal.
 
 <div id="layout-differences">
   ### Diferencias de diseño
 </div>
 
-Algunos idiomas requieren más o menos espacio que el inglés. Prueba tu contenido traducido en diferentes tamaños de pantalla para asegurarte de que:
+Algunos idiomas requieren más o menos espacio que el inglés. Prueba el contenido traducido en distintos tamaños de pantalla para asegurarte de que:
 
-- La navegación quepa correctamente.
-- Los bloques de código no se desborden.
-- Las tablas y otros textos con formato sigan siendo legibles.
-- Las imágenes se escalen adecuadamente.
+* La navegación se ajuste correctamente.
+* Los bloques de código no se desborden.
+* Las tablas y otros textos con formato sigan siendo legibles.
+* Las imágenes se escalen correctamente.
 
 <div id="character-encoding">
   ### Codificación de caracteres
 </div>
 
-Asegúrate de que tanto tu entorno de desarrollo como tu pipeline de implementación sean compatibles con la codificación UTF-8 para mostrar correctamente todos los caracteres de idiomas con alfabetos distintos y caracteres especiales.
+Asegúrate de que tu entorno de desarrollo y tu proceso de despliegue admitan la codificación UTF-8 para mostrar correctamente todos los caracteres en idiomas con distintos alfabetos y caracteres especiales.
 
 <div id="frequently-asked-questions">
-## Preguntas frecuentes
+  ## Preguntas frecuentes
 </div>
 
 <AccordionGroup>
-<Accordion title="¿Necesito traducir cada página antes de lanzar un nuevo idioma?">
-No. Puedes lanzar un idioma con cobertura parcial y expandirlo con el tiempo. Un enfoque común es traducir primero las páginas más visitadas —generalmente el contenido de inicio, autenticación y las guías prácticas principales— y dejar el contenido de referencia de menor tráfico en el idioma predeterminado hasta que las traducciones estén listas. Los usuarios generalmente prefieren algo de contenido traducido a ninguno.
-</Accordion>
+  <Accordion title="¿Necesito traducir todas las páginas antes de lanzar un nuevo idioma?">
+    No. Puedes lanzar un idioma con cobertura parcial e ir ampliándola con el tiempo. Lo habitual es traducir primero las páginas más visitadas —normalmente el contenido de introducción, la autenticación y las principales guías prácticas— y dejar el contenido de referencia con menos tráfico en el idioma predeterminado hasta que las traducciones estén listas. En general, los usuarios prefieren tener algo de contenido traducido a no tener nada.
+  </Accordion>
 
-<Accordion title="¿Qué pasa cuando falta una página traducida?">
-Si un usuario navega a una URL traducida que no existe, verá un error 404. Para evitar esto, incluye solo las páginas traducidas en la navegación específica del idioma o mantén la paridad entre tu idioma predeterminado y el contenido traducido. Usar la misma estructura de archivos en todos los idiomas facilita la identificación de las traducciones faltantes.
-</Accordion>
+  <Accordion title="¿Qué ocurre si falta una página traducida?">
+    Si un usuario accede a una URL traducida que no existe, verá un error 404. Para evitarlo, incluye solo las páginas traducidas en la navegación específica de cada idioma o mantén la paridad entre el idioma predeterminado y el contenido traducido. Usar la misma estructura de archivos en todos los idiomas facilita identificar qué traducciones faltan.
+  </Accordion>
 
-<Accordion title="¿Deben traducirse las etiquetas de navegación?">
-Sí. Las etiquetas de navegación —nombres de grupos, títulos de pestañas, texto de ancla— deben coincidir con el idioma del contenido. Una etiqueta "Getting started" en inglés dentro de una sección de documentación en español crea una experiencia discordante. Mintlify admite estructuras de navegación específicas por idioma, por lo que cada idioma puede tener etiquetas completamente traducidas.
-</Accordion>
+  <Accordion title="¿Deben traducirse las etiquetas de navegación?">
+    Sí. Las etiquetas de navegación —como los nombres de grupos, los títulos de las pestañas y el texto de los anclajes— deben coincidir con el idioma del contenido. Una etiqueta en inglés como &quot;Getting started&quot; en una sección de documentación en español genera una experiencia poco fluida. Mintlify admite estructuras de navegación específicas por idioma, por lo que cada idioma puede tener etiquetas totalmente traducidas.
+  </Accordion>
 
-<Accordion title="¿Cómo manejo los ejemplos de código en el contenido traducido?">
-El código en sí no debe traducirse: los nombres de variables, las llamadas a funciones y la sintaxis son independientes del idioma. Los comentarios dentro de los bloques de código pueden traducirse si explican conceptos que los usuarios necesitan comprender. Las instrucciones que rodean los bloques de código deben traducirse completamente.
-</Accordion>
+  <Accordion title="¿Cómo debo gestionar los ejemplos de código en el contenido traducido?">
+    El código en sí no debe traducirse: los nombres de variables, las llamadas a funciones y la sintaxis son independientes del idioma. Los comentarios dentro de los bloques de código pueden traducirse si explican conceptos que los usuarios necesitan entender. Las instrucciones que acompañan a los bloques de código deben traducirse por completo.
+  </Accordion>
 
-<Accordion title="¿Mintlify es compatible con idiomas de derecha a izquierda como el árabe o el hebreo?">
-Sí. El árabe (`ar`) y el hebreo (`he`) están en la lista de códigos de idioma compatibles. Mintlify gestiona automáticamente el diseño RTL cuando se configuran estos códigos de idioma. Prueba tu documentación en RTL para verificar que la navegación, las tablas y los bloques de código se muestren correctamente.
-</Accordion>
+  <Accordion title="¿Mintlify admite idiomas de derecha a izquierda, como árabe o hebreo?">
+    Sí. El árabe (`ar`) y el hebreo (`he`) están en la lista de códigos de idioma compatibles. Mintlify gestiona automáticamente el diseño RTL cuando se configuran estos códigos de idioma. Prueba la documentación en RTL para verificar que la navegación, las tablas y los bloques de código se muestren correctamente.
+  </Accordion>
 </AccordionGroup>

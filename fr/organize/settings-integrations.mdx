@@ -1,14 +1,16 @@
 ---
 title: "Intégrations"
-description: "Connectez des plateformes d'analyse, des widgets de chat et des services tiers à votre site de documentation Mintlify via la configuration des intégrations dans docs.json."
-keywords: ["integrations", "analytics", "google analytics", "posthog", "segment", "intercom", "hotjar", "mixpanel", "amplitude", "docs.json"]
+description: "Connectez des plateformes d’analyses, des widgets de chat et des services tiers à votre site de documentation Mintlify via le champ integrations de docs.json."
+keywords: ["intégrations", "analyses", "Google Analytics", "PostHog", "Segment", "Intercom", "Hotjar", "Mixpanel", "Amplitude", "docs.json"]
 ---
 
-Utilisez le champ `integrations` dans `docs.json` pour connecter des plateformes d'analyse tierces, des outils de chat et d'autres services à votre site de documentation.
+Utilisez le champ `integrations` dans `docs.json` pour connecter des plateformes d’analyses tierces, des outils de chat et d’autres services à votre site de documentation.
 
-## Paramètres
+<div id="settings">
+  ## Paramètres
+</div>
 
-Configurez toutes les intégrations comme propriétés de l'objet `integrations` dans votre fichier `docs.json` :
+Configurez toutes les intégrations sous forme de propriétés de l’objet `integrations` dans votre fichier `docs.json` :
 
 ```json docs.json
 "integrations": {
@@ -18,7 +20,9 @@ Configurez toutes les intégrations comme propriétés de l'objet `integrations`
 }
 ```
 
-### Analytics
+<div id="analytics">
+  ### Analyses
+</div>
 
 <ResponseField name="integrations.adobe" type="object">
   Intégration Adobe Analytics.
@@ -31,31 +35,31 @@ Configurez toutes les intégrations comme propriétés de l'objet `integrations`
 </ResponseField>
 
 <ResponseField name="integrations.amplitude" type="object">
-  Intégration Amplitude Analytics.
+  Intégration d&#39;analyses Amplitude.
 
   <Expandable title="integrations.amplitude">
     <ResponseField name="apiKey" type="string" required>
-      Votre clé d'API Amplitude.
+      Votre clé API Amplitude.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.clarity" type="object">
-  Intégration Microsoft Clarity pour l'enregistrement de sessions et les cartes de chaleur.
+  Intégration Microsoft Clarity pour l&#39;enregistrement des sessions et les cartes de chaleur.
 
   <Expandable title="integrations.clarity">
     <ResponseField name="projectId" type="string" required>
-      Votre identifiant de projet Microsoft Clarity.
+      Votre ID de projet Microsoft Clarity.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.fathom" type="object">
-  Intégration Fathom Analytics.
+  Intégration d&#39;analyses Fathom.
 
   <Expandable title="integrations.fathom">
     <ResponseField name="siteId" type="string" required>
-      Votre identifiant de site Fathom.
+      Votre ID de site Fathom.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -65,7 +69,7 @@ Configurez toutes les intégrations comme propriétés de l'objet `integrations`
 
   <Expandable title="integrations.ga4">
     <ResponseField name="measurementId" type="string matching ^G" required>
-      Votre identifiant de mesure Google Analytics 4. Doit commencer par `G`.
+      Votre ID de mesure Google Analytics 4. Il doit commencer par `G`.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -75,176 +79,190 @@ Configurez toutes les intégrations comme propriétés de l'objet `integrations`
 
   <Expandable title="integrations.gtm">
     <ResponseField name="tagId" type="string matching ^G" required>
-      Votre identifiant de conteneur Google Tag Manager. Doit commencer par `G`.
+      Votre ID de conteneur Google Tag Manager. Il doit commencer par `G`.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.heap" type="object">
-  Intégration Heap Analytics.
+  Intégration d&#39;analyses Heap.
 
   <Expandable title="integrations.heap">
     <ResponseField name="appId" type="string" required>
-      Votre identifiant d'application Heap.
+      Votre ID d&#39;application Heap.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.hightouch" type="object">
-  Intégration d'activation de données Hightouch.
+  Intégration d&#39;activation des données Hightouch.
 
   <Expandable title="integrations.hightouch">
     <ResponseField name="writeKey" type="string" required>
-      Votre clé d'écriture Hightouch.
+      Votre clé d&#39;écriture Hightouch.
     </ResponseField>
+
     <ResponseField name="apiHost" type="string">
-      Votre hôte d'API Hightouch.
+      Votre hôte API Hightouch.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.hotjar" type="object">
-  Intégration Hotjar pour les cartes de chaleur et l'enregistrement de sessions.
+  Intégration Hotjar pour les cartes de chaleur et l&#39;enregistrement des sessions.
 
   <Expandable title="integrations.hotjar">
     <ResponseField name="hjid" type="string" required>
-      Votre identifiant de site Hotjar.
+      Votre ID de site Hotjar.
     </ResponseField>
+
     <ResponseField name="hjsv" type="string" required>
-      Votre version de script Hotjar.
+      Votre version du script Hotjar.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.logrocket" type="object">
-  Intégration de replay de session LogRocket.
+  Intégration LogRocket de relecture de session.
 
   <Expandable title="integrations.logrocket">
     <ResponseField name="appId" type="string" required>
-      Votre identifiant d'application LogRocket.
+      Votre ID d&#39;application LogRocket.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.mixpanel" type="object">
-  Intégration Mixpanel product analytics.
+  Intégration d&#39;analyses produit Mixpanel.
 
   <Expandable title="integrations.mixpanel">
     <ResponseField name="projectToken" type="string" required>
-      Votre token de projet Mixpanel.
+      Votre jeton de projet Mixpanel.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.pirsch" type="object">
-  Intégration Pirsch, analytics respectueux de la vie privée.
+  Intégration d&#39;analyses respectueuses de la confidentialité Pirsch.
 
   <Expandable title="integrations.pirsch">
     <ResponseField name="id" type="string" required>
-      Votre identifiant de site Pirsch.
+      Votre ID de site Pirsch.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.plausible" type="object">
-  Intégration Plausible, analytics respectueux de la vie privée.
+  Intégration d&#39;analyses respectueuses de la confidentialité Plausible.
 
   <Expandable title="integrations.plausible">
     <ResponseField name="domain" type="string" required>
       Votre domaine Plausible.
     </ResponseField>
+
     <ResponseField name="server" type="string">
-      Votre serveur Plausible, si auto-hébergé.
+      Votre serveur Plausible, si vous l&#39;hébergez vous-même.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.posthog" type="object">
-  Intégration PostHog product analytics.
+  Intégration PostHog pour les analyses produit.
 
   <Expandable title="integrations.posthog">
     <ResponseField name="apiKey" type="string matching ^phc_" required>
-      Votre clé d'API PostHog. Doit commencer par `phc_`.
+      Votre clé API PostHog. Elle doit commencer par `phc_`.
     </ResponseField>
+
     <ResponseField name="apiHost" type="string (uri)">
-      Votre hôte d'API PostHog. Requis si vous auto-hébergez PostHog.
+      L’hôte API de votre PostHog. Obligatoire si vous hébergez PostHog vous-même.
     </ResponseField>
+
     <ResponseField name="sessionRecording" type="boolean">
-      Indique s'il faut activer l'enregistrement de session. Valeur par défaut : `false`.
+      Active l’enregistrement des sessions. La valeur par défaut est `false`.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.segment" type="object">
-  Intégration Segment, plateforme de données client.
+  Intégration de la plateforme de données clients Segment.
 
   <Expandable title="integrations.segment">
     <ResponseField name="key" type="string" required>
-      Votre clé d'écriture Segment.
+      Votre clé d’écriture Segment.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Chat et support
+<div id="chat-and-support">
+  ### Chat et support
+</div>
 
 <ResponseField name="integrations.frontchat" type="object">
   Intégration du widget de chat Front.
 
   <Expandable title="integrations.frontchat">
     <ResponseField name="snippetId" type="string" required>
-      Votre identifiant de snippet Front chat. Longueur minimale : 6.
+      Votre ID de snippet de chat Front. Longueur minimale : 6.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.intercom" type="object">
-  Intégration de messagerie client Intercom.
+  Intégration de la messagerie client Intercom.
 
   <Expandable title="integrations.intercom">
     <ResponseField name="appId" type="string" required>
-      Votre identifiant d'application Intercom. Longueur minimale : 6.
+      Votre ID d’application Intercom. Longueur minimale : 6.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Enrichissement de données
+<div id="data-enrichment">
+  ### Enrichissement des données
+</div>
 
 <ResponseField name="integrations.clearbit" type="object">
-  Intégration d'enrichissement de données visiteurs Clearbit.
+  Intégration Clearbit pour l’enrichissement des données sur les visiteurs.
 
   <Expandable title="integrations.clearbit">
     <ResponseField name="publicApiKey" type="string" required>
-      Votre clé d'API publique Clearbit.
+      Votre clé API publique Clearbit.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Paramètres de la plateforme
+<div id="platform-settings">
+  ### Paramètres de la plateforme
+</div>
 
 <ResponseField name="integrations.telemetry" type="object">
-  Paramètres de télémétrie Mintlify.
+  Paramètres de télémétrie de Mintlify.
 
   <Expandable title="integrations.telemetry">
     <ResponseField name="enabled" type="boolean">
-      Indique s'il faut activer la télémétrie Mintlify. Lorsque défini sur `false`, les fonctionnalités de feedback sont également désactivées et n'apparaissent pas sur les pages de votre documentation.
+      Indique si la télémétrie de Mintlify doit être activée. Lorsqu’elle est définie sur `false`, les fonctionnalités de retour sont également désactivées et n’apparaissent pas sur vos pages de documentation.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.cookies" type="object">
-  Paramètres de cookies pour votre site de documentation.
+  Paramètres des cookies de votre site de documentation.
 
   <Expandable title="integrations.cookies">
     <ResponseField name="key" type="string">
       Nom de la clé du cookie.
     </ResponseField>
+
     <ResponseField name="value" type="string">
       Valeur du cookie.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-## Exemple
+<div id="example">
+  ## Exemple
+</div>
 
 ```json docs.json
 "integrations": {

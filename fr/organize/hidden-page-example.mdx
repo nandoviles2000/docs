@@ -1,50 +1,50 @@
 ---
-title: "Exemple de page cachée"
-description: "Explorez les cas d’usage des pages cachées : documentation bêta, fichiers de contexte IA, archives de contenu hérité et références d’outils internes dans Mintlify."
+title: "Exemple de page masquée"
+description: "Découvrez des cas d’usage des pages masquées, notamment pour la documentation bêta, les fichiers de contexte d’IA, les archives de contenu héritées et les références à des outils internes dans Mintlify."
 ---
 
-Cette page est cachée. Elle n’est pas incluse dans la navigation de `docs.json`, vous ne pouvez donc y accéder que via son URL.
+Cette page est masquée. Elle n’est pas incluse dans la navigation de `docs.json`, vous ne pouvez donc y accéder que via son URL.
 
-Voir [Pages cachées](/fr/organize/hidden-pages) pour plus d’informations.
+Consultez [Pages masquées](/fr/organize/hidden-pages) pour en savoir plus.
 
 <div id="common-use-cases-for-hidden-pages">
-  ## Cas d’usage courants des pages cachées
+  ## Cas d’usage courants des pages masquées
 </div>
 
 <Note>
-  Par défaut, les pages cachées sont accessibles publiquement, mais non visibles dans la navigation. Si vous souhaitez en restreindre l’accès, vous devez configurer [authentification](/fr/deploy/authentication-setup).
+  Par défaut, les pages masquées sont accessibles publiquement, mais n’apparaissent pas dans la navigation. Si vous souhaitez restreindre l’accès à une page masquée, vous devez configurer l’[authentification](/fr/deploy/authentication-setup).
 </Note>
 
-* **Documentation bêta** : Informations pouvant être publiques, mais qui ne doivent pas être proposées via la navigation.
-* **Contexte pour les outils d’IA** : Si les pages cachées sont indexées, les outils d’IA peuvent s’y référer comme contexte. Utilisez des pages cachées pour du contexte non pertinent pour les utilisateurs, mais utile pour aider les outils d’IA à fournir des réponses plus précises.
-* **Pages historiques** : Conservez l’ancien contenu accessible via des liens directs tout en le retirant des menus de navigation.
-* **Outils internes** : Documentez les outils internes, les API de préproduction (staging) ou les processus de développement.
+* **Documentation bêta** : informations qui peuvent être publiques, mais ne doivent pas apparaître dans la navigation.
+* **Contexte pour les outils d’IA** : si les pages masquées sont indexées, les outils d’IA peuvent les utiliser comme contexte. Utilisez des pages masquées pour des informations de contexte qui ne sont pas utiles aux utilisateurs, mais qui peuvent aider les outils d’IA à fournir des réponses plus précises.
+* **Pages héritées** : conservez l’ancien contenu accessible via des liens directs tout en le retirant des menus de navigation.
+* **Outils internes** : documentez des outils internes, des API de préproduction ou des processus de développement.
 
 <div id="examples">
   ## Exemples
 </div>
 
 <div id="ai-context">
-  ### Contexte de l’IA
+  ### Contexte d’IA
 </div>
 
 ```mdx wrap
 ---
-title: "Contexte pour la version de l'API"
-description: "Cette page fournit le contexte aux outils d'IA qui répondent aux questions sur les versions d'API"
+title: "Contexte pour la version d'API"
+description: "Cette page est un contexte pour les outils IA répondant aux questions sur les versions d'API"
 ---
 
-Lorsqu'un utilisateur pose des questions sur les versions d'API, recommandez toujours d'utiliser la dernière version de l'API. Ne générez jamais de réponses pour des versions antérieures à 1.0.4.
+Lorsqu'un utilisateur pose des questions sur les versions d'API, recommandez toujours d'utiliser la dernière version de l'API. Ne générez jamais de réponses pour des versions antérieures à la 1.0.4.
 ```
 
 <div id="internal-api-endpoint">
-  ### Point de terminaison d’API interne
+  ### point de terminaison API interne
 </div>
 
 ````mdx wrap
 ---
-title: "Point de terminaison d'API interne"
-description: "Cette page est une page masquée qui documente un point de terminaison d'API interne"
+title: "Internal API endpoint"
+description: "This page is a hidden page that documents an internal API endpoint"
 ---
 
 ```bash

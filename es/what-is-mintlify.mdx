@@ -1,56 +1,56 @@
 ---
 title: "¿Qué es Mintlify?"
-description: "Mintlify es una plataforma de documentación diseñada para desarrolladores e IA, con búsqueda inteligente, playgrounds de API interactivos y analíticas integradas."
+description: "Mintlify es una plataforma de documentación diseñada para desarrolladores y para la IA, con Búsqueda inteligente, entornos de pruebas de API interactivos y analítica integrada."
 keywords: ["visión general", "cómo funciona", "arquitectura"]
 ---
 
-Mintlify aloja tu contenido como un sitio web. Tu contenido se almacena en un repositorio Git como archivos MDX, y Mintlify construye y despliega tu sitio automáticamente cuando haces push de un cambio.
+Mintlify aloja tu contenido como un sitio web. Tu contenido se guarda en un repositorio de Git en forma de archivos MDX, y Mintlify compila y despliega tu sitio automáticamente cuando subes un cambio.
 
 <div id="the-three-parts-of-a-mintlify-project">
   ## Las tres partes de un proyecto de Mintlify
 </div>
 
-**Tu repositorio** es la fuente de la verdad para tu documentación. Contiene un archivo MDX para cada página y un archivo `docs.json` que configura la navegación, el tema y los ajustes de tu sitio. Puedes usar tu propio repositorio de GitHub o GitLab, o dejar que Mintlify cree uno para ti durante la configuración inicial.
+**Tu repositorio** es la fuente de referencia de tu documentación. Contiene un archivo MDX para cada página y un archivo `docs.json` que configura la navegación, el tema y la configuración de tu sitio. Puedes usar tu propio repositorio de GitHub o GitLab, o dejar que Mintlify cree uno por ti durante la configuración inicial.
 
-**El Dashboard de Mintlify** se conecta a tu repositorio y te permite gestionar tu sitio. Úsalo para supervisar las implementaciones, configurar los ajustes, gestionar a tu equipo y editar contenido directamente en el navegador.
+**El panel de Mintlify** se conecta a tu repositorio y te permite administrar tu sitio. Úsalo para supervisar los despliegues, configurar opciones, gestionar tu equipo y editar contenido directamente en el navegador.
 
-**Tu sitio**, impulsado por Mintlify. Mintlify construye tu sitio a partir de tu repositorio y lo implementa en una URL `.mintlify.app` de forma predeterminada. Cuando estés listo, puedes asignar un dominio personalizado a tu sitio.
+**Tu sitio**, con tecnología de Mintlify. Mintlify compila tu sitio a partir de tu repositorio y, de forma predeterminada, lo despliega en una URL de `.mintlify.app`. Cuando estés listo, puedes apuntar un dominio personalizado a tu sitio.
 
 ```mermaid
 flowchart LR
-    WE["Editor web"] --> Repo[("Repositorio Git")]
+    WE["Editor web"] --> Repo[("Repositorio de Git")]
     Local["Editor local"] --> Repo
-    Repo -- "Webhook" --> Build["Mintlify build"]
-    Build --> Site["Sitio activo"]
+    Repo -- "Webhook" --> Build["Build de Mintlify"]
+    Build --> Site["Sitio en producción"]
 ```
 
 <div id="editing-content">
   ## Edición de contenido
 </div>
 
-Hay dos maneras de editar tu contenido, y puedes alternar entre ellas libremente.
+Hay dos formas de editar tu contenido y puedes cambiar entre ellas libremente.
 
-* **Editor web**: Edita y publica páginas en tu navegador. El editor confirma automáticamente los cambios en tu repositorio de Git.
-* **CLI y editor local**: Clona tu repositorio, ejecuta `mint dev` para previsualizar tu sitio de forma local y luego haz push de los cambios para desplegarlo.
+* **Editor web**: Edita y publica páginas desde tu navegador. El editor hace commit de los cambios en tu repositorio de Git automáticamente.
+* **CLI y editor local**: Clona tu repositorio, ejecuta `mint dev` para previsualizar tu sitio localmente y luego haz push de los cambios para desplegarlos.
 
-Varios miembros del equipo pueden trabajar en cualquiera de los dos flujos al mismo tiempo, usando branches de Git para gestionar cambios en paralelo. Cualquiera que pueda hacer push a tu repositorio puede actualizar tu contenido.
+Varios miembros del equipo pueden trabajar en cualquiera de los dos flujos de trabajo al mismo tiempo, usando ramas de Git para gestionar cambios en paralelo. Cualquiera que pueda hacer push a tu repositorio puede actualizar tu contenido.
 
 <div id="ai-features">
   ## Funciones de IA
 </div>
 
-Las funciones de IA integradas ayudan a las personas y a la IA a encontrar y comprender tu contenido, y te ayudan a mantenerlo.
+Las funciones de IA integradas ayudan a las personas y a la IA a encontrar y comprender tu contenido, y también te ayudan a mantenerlo.
 
-El **assistant** permite que tus usuarios hagan preguntas y obtengan respuestas citadas directamente de tu contenido.
+El **asistente** permite a tus usuarios hacer preguntas y obtener respuestas con citas basadas en tu contenido.
 
-El **agent** ayuda a tu equipo a crear y mantener contenido generando actualizaciones a partir de flujos de trabajo programados, solicitudes de extracción que se fusionan en tu repositorio de funcionalidades o hilos de Slack.
+El **agente** ayuda a tu equipo a crear y mantener contenido al generar actualizaciones a partir de flujos de trabajo programados, solicitudes de extracción (pull request, PR) fusionadas en tu repositorio de funcionalidades o hilos de Slack.
 
-Consulta [documentación nativa con IA](/es/ai-native) para ver una descripción general de todas las funciones de IA.
+Consulta [documentación nativa para IA](/es/ai-native) para ver un resumen de todas las funciones de IA.
 
 <div id="next-steps">
-  ## Próximos pasos
+  ## Siguientes pasos
 </div>
 
-<Card title="Guía rápida" icon="rocket" horizontal href="/es/quickstart">
-  Publica tu primer sitio de documentación en cuestión de minutos.
+<Card title="Inicio rápido" icon="rocket" horizontal href="/es/quickstart">
+  Despliega tu primer sitio de documentación en minutos.
 </Card>

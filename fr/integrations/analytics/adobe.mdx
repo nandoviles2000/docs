@@ -1,35 +1,33 @@
 ---
 title: "Adobe Analytics"
-description: "Intégrez Adobe Analytics à votre site de documentation Mintlify via les tags Adobe Experience Platform Launch pour un suivi détaillé de l’utilisation."
-keywords: ["Adobe Analytics", "Adobe Launch", "Adobe Experience Platform", "statistiques du site"]
+description: "Intégrez Adobe Analytics à votre site de documentation Mintlify à l’aide des balises Launch d’Adobe Experience Platform pour un suivi détaillé de l’utilisation."
+keywords: ["Adobe Analytics", "Adobe Launch", "Adobe Experience Platform", "analyses du site"]
 ---
 
-Ajoutez l’extrait suivant à votre fichier `docs.json` pour envoyer des données d’analyse à Adobe Analytics.
+Ajoutez ce qui suit à votre fichier `docs.json` pour envoyer les données d’analyse à Adobe Analytics.
 
 <CodeGroup>
+  ```json Options d’analyse dans docs.json
+  "integrations": {
+      "adobe": {
+          "launchUrl": "required"
+      }
+  }
+  ```
 
-```json Options d’Analytics dans docs.json
-"integrations": {
-    "adobe": {
-        "launchUrl": "required"
-    }
-}
-```
-
-```json Exemple
-"integrations": {
-    "adobe": {
-        "launchUrl": "https://assets.adobedtm.com/launch-EN93497c30fdf0424eb678d5f4ffac66dc.min.js"
-    }
-}
-```
-
+  ```json Exemple
+  "integrations": {
+      "adobe": {
+          "launchUrl": "https://assets.adobedtm.com/launch-EN93497c30fdf0424eb678d5f4ffac66dc.min.js"
+      }
+  }
+  ```
 </CodeGroup>
 
 <div id="get-your-launch-url">
-  ## Obtenez votre URL Launch
+  ## Récupérez l’URL de Launch
 </div>
 
 1. Connectez-vous à [Adobe Experience Platform Data Collection](https://experience.adobe.com/#/data-collection/).
 2. Ouvrez votre propriété Launch et accédez à l’onglet **Environments**.
-3. Copiez l’URL du script à partir de votre environnement de production.
+3. Copiez l’URL du script de votre environnement de production.

@@ -1,54 +1,54 @@
 ---
-title: "Imágenes e inserciones"
-description: "Añade imágenes, inserta videos de YouTube e incluye iframes en tus páginas MDX para mejorar la documentación con contenido visual e interactivo."
-keywords: ["imágenes", "videos", "iframes", "medios", "svg"]
+title: "Imágenes e incrustaciones"
+description: "Agrega imágenes, incrusta videos de YouTube e incluye iframes en tus páginas MDX para mejorar la documentación con contenido multimedia visual e interactivo."
+keywords: ["imágenes", "videos", "iframes", "multimedia", "svg"]
 ---
 
-Agrega imágenes, inserta videos e incluye contenido interactivo con iframes en tu documentación.
+Agrega imágenes, incrusta videos e incluye contenido interactivo con iframes en tu documentación.
 
 <Frame>
-  <img className="rounded-xl" src="https://mintlify-assets.b-cdn.net/bigbend.jpg" alt="Fotografía de un paisaje con flores moradas en primer plano, montañas al fondo y un cielo azul con nubes dispersas." />
+  <img className="rounded-xl" src="https://mintlify-assets.b-cdn.net/bigbend.jpg" alt="Fotografía de un paisaje pintoresco con flores moradas en primer plano, montañas al fondo y un cielo azul con nubes dispersas." />
 </Frame>
 
 <div id="images">
   ## Imágenes
 </div>
 
-Agrega imágenes para aportar contexto visual, ejemplos o elementos decorativos a tu documentación.
+Agrega imágenes para aportar contexto visual, ejemplos o un toque decorativo a tu documentación.
 
 <div id="basic-image-syntax">
   ### Sintaxis básica de imágenes
 </div>
 
-Utiliza la [sintaxis de Markdown](https://www.markdownguide.org/basic-syntax/#images) para añadir imágenes a tu documentación:
+Usa la [sintaxis de Markdown](https://www.markdownguide.org/basic-syntax/#images) para agregar imágenes a tu documentación:
 
 ```mdx
-![Texto alternativo que describe la imagen](/path/to/image.png)
+![Alt text describing the image](/path/to/image.png)
 ```
 
 <Tip>
-  Incluye siempre texto alternativo descriptivo para mejorar la accesibilidad y el SEO. El texto alternativo debe describir claramente lo que muestra la imagen.
+  Incluye siempre un texto alternativo descriptivo para mejorar la accesibilidad y el SEO. El texto alternativo debe describir claramente lo que muestra la imagen.
 </Tip>
 
-Los archivos de imagen deben pesar menos de 20 MB. Para archivos más grandes, alójalos en un servicio CDN como [Amazon S3](https://aws.amazon.com/s3) o [Cloudinary](https://cloudinary.com).
+Los archivos de imagen deben medir menos de 20 MB. Para archivos más grandes, alójalos en un servicio de CDN como [Amazon S3](https://aws.amazon.com/s3) o [Cloudinary](https://cloudinary.com).
 
 <div id="html-image-embeds">
-  ### Inserciones de imágenes HTML
+  ### Imágenes incrustadas con HTML
 </div>
 
-Para tener más control sobre la visualización de las imágenes, utiliza etiquetas HTML `<img>`:
+Para tener más control sobre cómo se muestran las imágenes, usa etiquetas HTML `<img>`:
 
 ```jsx
 <img 
   src="/images/dashboard.png" 
-  alt="Interfaz principal del dashboard"
+  alt="Main dashboard interface"
   style={{height: "300px", width: "400px"}}
   className="rounded-lg"
 />
 ```
 
 <div id="resize-images-with-inline-styles">
-  #### Cambiar el tamaño de imágenes con estilos en línea
+  #### Cambia el tamaño de las imágenes con estilos en línea
 </div>
 
 Usa estilos en línea de JSX con el atributo `style` para cambiar el tamaño de las imágenes:
@@ -57,12 +57,12 @@ Usa estilos en línea de JSX con el atributo `style` para cambiar el tamaño de 
 <img
   src="/images/architecture.png"
   style={{width: "450px", height: "auto"}}
-  alt="Diagrama que muestra la arquitectura del sistema"
+  alt="Diagram showing the architecture of the system"
 />
 ```
 
 <div id="disable-image-zoom">
-  #### Desactivar el zoom de las imágenes
+  #### Desactivar el zoom en las imágenes
 </div>
 
 Para desactivar el zoom predeterminado al hacer clic en las imágenes, agrega la propiedad `noZoom`:
@@ -70,30 +70,29 @@ Para desactivar el zoom predeterminado al hacer clic en las imágenes, agrega la
 ```html highlight="4"
 <img 
   src="/images/screenshot.png" 
-  alt="Texto alternativo descriptivo"
+  alt="Descriptive alt text"
   noZoom
 />
 ```
 
-
 <div id="link-images">
-  #### Enlazar imágenes
+  #### Imágenes con enlace
 </div>
 
-Para convertir una imagen en un enlace clicable, envuelve la imagen en una etiqueta de enlace y agrega la propiedad `noZoom`:
+Para hacer que una imagen sea un enlace en el que se puede hacer clic, envuelve la imagen en una etiqueta `<a>` y agrega la propiedad `noZoom`:
 
 ```html
 <a href="https://mintlify.com" target="_blank">
   <img 
     src="/images/logo.png" 
-    alt="Logotipo de Mintlify"
+    alt="Mintlify logo"
     noZoom
   />
 </a>
 ```
 
 <Note>
-  Las imágenes dentro de etiquetas de enlace muestran automáticamente un cursor de puntero para indicar que se pueden hacer clic.
+  Las imágenes dentro de etiquetas de anclaje muestran automáticamente un cursor de puntero para indicar que se pueden clicar.
 </Note>
 
 <div id="light-and-dark-mode-images">
@@ -107,14 +106,14 @@ Para mostrar imágenes distintas en los temas claro y oscuro, usa clases de Tail
 <img 
   className="block dark:hidden" 
   src="/images/light-mode.png" 
-  alt="Interfaz en modo claro"
+  alt="Light mode interface"
 />
 
 <!-- Imagen en modo oscuro -->
 <img 
   className="hidden dark:block" 
   src="/images/dark-mode.png" 
-  alt="Interfaz en modo oscuro"
+  alt="Dark mode interface"
 />
 ```
 
@@ -122,22 +121,22 @@ Para mostrar imágenes distintas en los temas claro y oscuro, usa clases de Tail
   ### Imágenes SVG
 </div>
 
-Los archivos SVG que usan elementos `foreignObject` se renderizan de forma diferente en producción que en el entorno de desarrollo local. La CDN de imágenes de Mintlify elimina `foreignObject` de los SVG como medida de seguridad, lo que puede truncar u ocultar texto y otros contenidos HTML incrustados.
+Los archivos SVG que usan elementos `foreignObject` se muestran de forma diferente en producción que en el entorno de desarrollo local. La CDN de imágenes de Mintlify elimina `foreignObject` de los SVG como medida de seguridad, lo que puede truncar u ocultar texto y otro contenido HTML incrustado.
 
-Esto suele afectar a los SVG exportados desde herramientas como [draw.io](https://www.drawio.com) que tienen el formato de texto HTML o el ajuste de línea activados. Para solucionarlo, desactiva **Formatted Text** y **Word Wrap** en todas las etiquetas de tu diagrama antes de exportarlo como SVG. Consulta la [documentación de draw.io](https://www.drawio.com/doc/faq/svg-export-text-problems) para obtener más información sobre las exportaciones de SVG.
+Esto suele afectar a los SVG exportados desde herramientas como [draw.io](https://www.drawio.com) que tienen activado el formato de texto HTML o el ajuste de texto. Para solucionarlo, desactiva **Formatted Text** y **Word Wrap** en todas las etiquetas de tu diagrama antes de exportarlo a SVG. Consulta la [documentación de draw.io](https://www.drawio.com/doc/faq/svg-export-text-problems) para obtener más información sobre la exportación de SVG.
 
 <div id="videos">
   ## Videos
 </div>
 
-Mintlify admite [etiquetas HTML en Markdown](https://www.markdownguide.org/basic-syntax/#html), lo que te brinda flexibilidad para crear contenido enriquecido.
+Mintlify admite [etiquetas HTML en Markdown](https://www.markdownguide.org/basic-syntax/#html), lo que te da flexibilidad para crear contenido más completo.
 
 <Tip>
-  Incluye siempre texto alternativo dentro de los elementos de video para los navegadores que no admiten la reproducción de video.
+  Incluye siempre texto de respaldo dentro de los elementos de video para los navegadores que no admiten la reproducción de video.
 </Tip>
 
 <div id="youtube-embeds">
-  ### Videos de YouTube incrustados
+  ### Videos incrustados de YouTube
 </div>
 
 Incrusta videos de YouTube mediante elementos iframe:
@@ -146,36 +145,35 @@ Incrusta videos de YouTube mediante elementos iframe:
 <iframe
   className="w-full aspect-video rounded-xl"
   src="https://www.youtube.com/embed/4KzFe50RQkQ"
-  title="Reproductor de vídeo de YouTube"
+  title="YouTube video player"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
 ></iframe>
 ```
 
 <Frame>
-  <iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/4KzFe50RQkQ" title="Reproductor de vídeo de YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+  <iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/4KzFe50RQkQ" title="Reproductor de video de YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
 </Frame>
 
-
 <div id="self-hosted-videos">
-  ### Videos autoalojados
+  ### Videos autohospedados
 </div>
 
-Usa el elemento HTML `<video>` para contenido de video autoalojado:
+Usa el elemento HTML `<video>` para contenido de video autohospedado:
 
 ```html
 <video
   controls
   className="w-full aspect-video rounded-xl"
-  src="enlace-a-tu-video.com"
+  src="link-to-your-video.com"
 ></video>
 ```
 
 <div id="autoplay-videos">
-  ### Reproducción automática de vídeos
+  ### Reproducción automática de videos
 </div>
 
-Para reproducir un vídeo automáticamente, usa:
+Para reproducir un video automáticamente, usa:
 
 ```html
 <video
@@ -189,19 +187,19 @@ Para reproducir un vídeo automáticamente, usa:
 ```
 
 <Note>
-  Al usar la sintaxis de JSX, escribe los atributos de dos palabras en camelCase: `autoPlay`, `playsInline`, `allowFullScreen`.
+  Al usar la sintaxis JSX, escribe los atributos formados por dos palabras en camelCase: `autoPlay`, `playsInline`, `allowFullScreen`.
 </Note>
 
 <div id="iframes">
   ## Iframes
 </div>
 
-Incorpora contenido externo con elementos iframe:
+Incrusta contenido externo con elementos iframe:
 
 ```html
 <iframe 
   src="https://example.com/embed" 
-  title="Contenido integrado"
+  title="Embedded content"
   className="w-full h-96 rounded-xl"
 ></iframe>
 ```
@@ -211,5 +209,5 @@ Incorpora contenido externo con elementos iframe:
 </div>
 
 <Card title="Referencia del componente Frame" icon="frame" horizontal href="/es/components/frames">
-  Aprende a usar el componente Frame para presentar imágenes.
+  Aprende a usar el componente Frame para mostrar imágenes.
 </Card>

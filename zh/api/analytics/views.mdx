@@ -1,20 +1,20 @@
 ---
 title: "获取页面浏览量"
-description: "获取按页面和全站的内容浏览量，并按人工流量和 AI 流量分类统计。"
+description: "获取各页面及全站内容的浏览次数，并按真人流量和 AI 流量分别统计。"
 openapi: /zh/analytics.openapi.json GET /v1/analytics/{projectId}/views
-keywords: ["analytics", "浏览量", "页面浏览量", "流量", "导出"]
+keywords: [ "分析", "浏览量", "页面浏览量", "流量", "导出" ]
 ---
 
 <div id="usage">
-  ## 使用方法
+  ## 用法
 </div>
 
-使用此端点导出页面浏览量分析数据。结果包括全站总量和各页面明细，并按人工流量和 AI 流量分类。
+使用此端点导出页面浏览分析数据。结果同时包含全站汇总数据和按页面划分的明细数据，并区分真人流量和 AI 流量。
 
-使用基于偏移量的分页浏览结果。当 `hasMore` 为 `true` 时，将 `offset` 递增 `limit`。
+使用基于偏移量的分页方式获取结果。当 `hasMore` 为 true 时，按 `limit` 的值递增 `offset`。
 
 <div id="filtering">
   ## 筛选
 </div>
 
-使用 `dateFrom` 和 `dateTo` 参数按日期范围过滤浏览量数据。
+使用 `dateFrom` 和 `dateTo` 参数按日期范围筛选浏览量数据。

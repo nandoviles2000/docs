@@ -1,71 +1,71 @@
 ---
 title: "Vercel"
-description: "配置 Vercel 重写规则，通过分步 vercel.json 设置将你的 Mintlify 文档托管在主域名的子路径下。"
+description: "通过分步配置 vercel.json，设置 Vercel 重写规则，使你的 Mintlify 文档可在主域名的子路径下提供访问。"
 keywords: ["vercel.json", "Vercel 部署", "重写规则配置", "子路径路由"]
 ---
 
 import { VercelJsonGenerator } from "/snippets/zh/vercel-json-generator.mdx";
 
-配置你的 `vercel.json` 文件，将主域名的请求代理到文档所在的子路径。
-
+配置 `vercel.json` 文件，将主域名的请求代理到子路径下的文档。
 
 <div id="verceljson-file">
   ## vercel.json 文件
 </div>
 
-`vercel.json` 文件用于配置项目的构建和部署方式。它位于项目的根目录，用来控制部署的各个方面，包括路由、重定向、请求头以及构建设置。
+`vercel.json` 文件用于配置项目的构建和部署方式。它位于项目根目录，用于控制部署的各个方面，包括路由、重定向、标头和构建设置。
 
-我们会在你的 `vercel.json` 文件中使用 `rewrites` 配置，将来自主域名的请求代理到你的文档站点。
+我们会使用 `vercel.json` 文件中的 `重写规则` 配置，将来自主域名的请求代理到你的文档站点。
 
-Rewrites 会在不更改浏览器中 URL 的情况下，将传入请求映射到不同的目标。当有人访问 `yoursite.com/docs` 时，Vercel 会在内部从 `your-subdomain.mintlify.dev/docs` 获取内容，但用户在浏览器中仍然看到的是 `yoursite.com/docs`。这与重定向不同，后者会将用户直接带到另一个完全不同的 URL。
+重写会在不更改浏览器中 URL 的情况下，将传入请求映射到不同的目标地址。当有人访问 `yoursite.com/docs` 时，Vercel 会在内部从 `your-subdomain.mintlify.dev/docs` 获取内容，但用户在浏览器中看到的仍是 `yoursite.com/docs`。这与重定向不同，后者会直接将用户带到另一个 URL。
 
 <div id="configuration">
   ## 配置
 </div>
 
 <div id="host-at-docs-subpath">
-  ### 在 `/docs` 子路径下托管
+  ### 托管到 `/docs` 子路径
 </div>
 
-1. 在控制台中前往 [Custom domain setup](https://dashboard.mintlify.com/settings/deployment/custom-domain)。
-2. 将 **Host at `/docs`** 开关切换到开启状态。
-    <Frame>
-      <img alt="Custom domain setup 页面截图。Host at `/docs` 开关已打开，并用橙色矩形高亮显示。" src="/images/subpath/toggle-light.png" className="block dark:hidden" />
-      <img alt="Custom domain setup 页面截图。Host at `/docs` 开关已打开，并用橙色矩形高亮显示。" src="/images/subpath/toggle-dark.png" className="hidden dark:block" />
-    </Frame>
+1. 前往仪表板中的[自定义域名设置](https://dashboard.mintlify.com/settings/deployment/custom-domain)。
+2. 打开 **Host at `/docs`** 开关。
+   <Frame>
+     <img alt="自定义域名设置页面的截图。Host at `/docs` 开关已开启，并以橙色矩形高亮显示。" src="/images/subpath/toggle-light.png" className="block dark:hidden" />
+
+     <img alt="自定义域名设置页面的截图。Host at `/docs` 开关已开启，并以橙色矩形高亮显示。" src="/images/subpath/toggle-dark.png" className="hidden dark:block" />
+   </Frame>
 3. 输入你的域名。
 4. 选择 **Add domain**。
-5. 在你的 `vercel.json` 文件中添加以下重写规则。将 `[subdomain]` 替换为你的子域，可以在控制台 URL 的末尾找到。例如，`dashboard.mintlify.com/your-organization/your-subdomain` 的子域标识符是 `your-subdomain`。
+5. 将以下重写规则添加到你的 `vercel.json` 文件中。将 `[subdomain]` 替换为你的子域名，可在仪表板 URL 的末尾找到。例如，`dashboard.mintlify.com/your-organization/your-subdomain` 的域名标识符是 `your-subdomain`。
 
-    ```json
-    {
-      "rewrites": [
-        {
-          "source": "/docs",
-          "destination": "https://[subdomain].mintlify.dev/docs"
-        },
-        {
-          "source": "/docs/:match*",
-          "destination": "https://[subdomain].mintlify.dev/docs/:match*"
-        }
-      ]
-    }
-    ```
+   ```json
+   {
+     "rewrites": [
+       {
+         "source": "/docs",
+         "destination": "https://[subdomain].mintlify.dev/docs"
+       },
+       {
+         "source": "/docs/:match*",
+         "destination": "https://[subdomain].mintlify.dev/docs/:match*"
+       }
+     ]
+   }
+   ```
 
-`rewrites` 配置会将你域名上的 `/docs` 子路径映射到你的文档站点上的 `/docs` 子路径。
+`重写规则` 配置会将你域名中的 `/docs` 子路径映射到你的文档站点中的 `/docs` 子路径。
 
-- **`source`**：你域名上触发重写的路径模式。
-- **`destination`**：请求应被代理到的位置。
-- **`:match*`**：用于捕获子路径之后任意路径片段的通配符。
+* **`source`**：你域名中会触发重写的路径模式。
+* **`destination`**：请求将被代理到的目标位置。
+* **`:match*`**：用于捕获子路径后任意路径段的通配符。
 
-如需了解更多信息，请参阅 Vercel 文档中的 [Configuring projects with vercel.json: Rewrites](https://vercel.com/docs/projects/project-configuration#rewrites)。
+如需了解更多信息，请参阅 Vercel 文档中的[使用 vercel.json 配置项目：Rewrites](https://vercel.com/docs/projects/project-configuration#rewrites)。
 
 <div id="host-at-custom-subpath">
-  ### 在自定义子路径下托管
+  ### 托管到自定义子路径
 </div>
 
-要使用自定义子路径（任何非 `/docs` 的路径），你必须在存储库中组织文档文件，使其与子路径结构相匹配。比如，如果你的文档托管在 `yoursite.com/help`，那么文档文件必须位于 `help/` 目录中。
+如需使用自定义子路径 (即除 `/docs` 之外的任意路径) ，你必须在代码仓库中按子路径结构组织文档文件。例如，如果你的文档托管在 `yoursite.com/help`，则文档文件必须位于 `help/` 目录中。
 
-使用下面的生成器来创建你的 rewrites（重写规则）配置。将这些重写规则添加到你的 `vercel.json` 文件中。
+使用下面的生成器创建重写配置，然后将重写规则添加到你的 `vercel.json` 文件中。
 
 <VercelJsonGenerator />

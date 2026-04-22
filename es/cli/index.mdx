@@ -1,63 +1,56 @@
 ---
-title: "Mintlify CLI"
-description: "Usa la CLI de Mintlify para previsualizar la documentación localmente, probar cambios en tiempo real, analizar el rendimiento del sitio y ejecutar controles de calidad antes de desplegar."
-keywords: ["CLI", "mint", "desarrollo local", "previsualización", "analítica"]
+title: "CLI de Mintlify"
+description: "Usa la CLI de Mintlify para obtener una vista previa local de la documentación, probar cambios en tiempo real, analizar el rendimiento del sitio y ejecutar comprobaciones de calidad antes de desplegar."
+keywords: ["CLI", "mint", "desarrollo local", "vista previa", "analítica"]
 ---
 
-<img
-  className="block dark:hidden my-0 pointer-events-none"
-  src="/images/installation/local-development-light.png"
-  alt="Gráfico decorativo que representa la CLI."
-/>
-<img
-  className="hidden dark:block my-0 pointer-events-none"
-  src="/images/installation/local-development-dark.png"
-  alt="Gráfico decorativo que representa la CLI."
-/>
+<img className="block dark:hidden my-0 pointer-events-none" src="/images/installation/local-development-light.png" alt="Gráfico decorativo que representa la CLI." />
+
+<img className="hidden dark:block my-0 pointer-events-none" src="/images/installation/local-development-dark.png" alt="Gráfico decorativo que representa la CLI." />
 
 <div id="about-the-cli">
-  ## Acerca de la CLI
+  ## Sobre la CLI
 </div>
 
-Usa la [CLI](https://www.npmjs.com/package/mint) para previsualizar tu documentación localmente, probar cambios en tiempo real, analizar el rendimiento del sitio y ejecutar controles de calidad antes de desplegar en producción.
+Usa la [CLI](https://www.npmjs.com/package/mint) para previsualizar tu documentación en local, probar cambios en tiempo real, analizar el rendimiento del sitio y ejecutar comprobaciones de calidad antes de desplegar en producción.
 
-La CLI se ejecuta en tu máquina y se conecta a tu despliegue de Mintlify cuando necesitas datos en vivo.
+La CLI se ejecuta en tu máquina y se conecta a tu despliegue de Mintlify cuando necesitas datos en tiempo real.
 
 <div id="preview-locally">
-  ### Previsualización local
+  ### Vista previa local
 </div>
 
-Ejecuta `mint dev` para previsualizar tu documentación en `localhost:3000`. A medida que escribes y actualizas tu contenido, los cambios aparecen en tiempo real sin necesidad de desplegar. Inicia sesión para habilitar la búsqueda y el asistente de IA en tu previsualización local.
+Ejecuta `mint dev` para previsualizar tu documentación en `localhost:3000`. A medida que escribes y actualizas el contenido, los cambios aparecen en tiempo real sin necesidad de desplegar. Inicia sesión para habilitar la Búsqueda y el asistente de IA en tu vista previa local.
 
 <div id="analyze-your-documentation">
   ### Analiza tu documentación
 </div>
 
-Ejecuta `mint analytics` para ver el tráfico, las consultas de búsqueda, los comentarios de los usuarios y las conversaciones del asistente de IA directamente desde la terminal. Útil para verificaciones rápidas, scripting y canalización de datos hacia otras herramientas.
+Ejecuta `mint analytics` para ver el tráfico, las consultas de búsqueda, los comentarios de los usuarios y las conversaciones con el asistente de IA directamente desde la terminal. Es útil para verificaciones rápidas, scripts y para pasar datos a otras herramientas.
 
 <div id="run-quality-checks">
-  ### Ejecuta controles de calidad
+  ### Ejecuta comprobaciones de calidad
 </div>
 
-Ejecuta `mint broken-links` para encontrar enlaces rotos, `mint a11y` para verificar accesibilidad y `mint validate` para validar la compilación de tu documentación antes de que llegue a producción.
+Ejecuta `mint broken-links` para encontrar enlaces rotos, `mint a11y` para comprobar la accesibilidad y `mint validate` para validar la compilación de la documentación antes de pasarla a producción.
 
 <div id="check-agent-readiness">
   ### Verifica la preparación para agentes
 </div>
 
-Ejecuta `mint score <url>` para evaluar qué tan preparado está un sitio de documentación para el consumo por agentes de IA. El comando muestra una puntuación general de preparación y resultados de verificaciones individuales.
+Ejecuta `mint score <url>` para evaluar qué tan bien pueden navegar los agentes por un sitio de documentación. El comando muestra una puntuación general de preparación y los resultados de cada verificación.
 
 <div id="manage-configuration">
   ### Gestiona la configuración
 </div>
 
-Ejecuta `mint config` para establecer valores predeterminados persistentes como tu subdominio de documentación y rangos de fechas para comandos de analítica.
+Ejecuta `mint config` para configurar valores predeterminados persistentes, como el subdominio de tu documentación y los rangos de fechas para los comandos de analítica.
 
 <div id="next-steps">
-  ## Próximos pasos
+  ## Siguientes pasos
 </div>
 
-- [Instalar la CLI](/es/cli/install): Instala la CLI y prepárala para usar.
-- [Previsualización local](/es/cli/preview): Ejecuta un servidor de desarrollo local con soporte de búsqueda y asistente.
-- [Analiza tu documentación](/es/cli/analytics): Consulta datos de analítica desde la terminal.
-- [Comandos](/es/cli/commands): Referencia completa de todos los comandos y flags.
+* [Instala la CLI](/es/cli/install): Instala la CLI y déjala lista para usar.
+* [Previsualiza localmente](/es/cli/preview): Ejecuta un servidor de desarrollo local con soporte para Búsqueda y asistente.
+* [Analiza tu documentación](/es/cli/analytics): Consulta datos de analítica desde la terminal.
+* [Comandos](/es/cli/commands): Referencia completa de todos los comandos y opciones.

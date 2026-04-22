@@ -1,6 +1,6 @@
 ---
 title: "添加媒体"
-description: "使用 Mintlify 网页编辑器内置的文件管理器，在文档页面中上传、管理和嵌入图片及其他媒体资源。"
+description: "使用 Mintlify 网页编辑器内置的文件管理器，在文档页面中上传、管理并嵌入图片及其他媒体资源。"
 keywords: ["editor","media","images","assets"]
 ---
 
@@ -8,36 +8,34 @@ keywords: ["editor","media","images","assets"]
   ## 支持的文件类型
 </div>
 
-* **图片**：PNG、JPG、JPEG、GIF、WebP（最大 20 MB）
+* **图片**：PNG、JPG、JPEG、GIF、WebP (最大 20 MB) 
 * **视频**：MP4、WebM (最大 20 MB) 
 * **字体**：TrueType (TTF) 、WOFF、WOFF2
-* **其他**：PDF、ICO (网站图标)
+* **其他**：PDF、ICO (收藏夹图标)
 
 <div id="add-media-to-a-page">
-  ## 在页面中添加媒体
+  ## 为页面添加媒体
 </div>
 
 <div id="drag-and-drop">
   ### 拖放
 </div>
 
-将媒体从你的电脑或资源管理器拖放到页面上。在可视化模式下，图片或视频会以内联形式插入。在 Markdown 模式下，编辑器会在你的光标位置插入路径。图片会保存到 `images/` 文件夹的根目录下，视频会保存到 `videos/` 文件夹的根目录下。
+将媒体从你的计算机或资源管理器拖放到页面中。在可视化模式下，图片或视频会直接内联插入。在 Markdown 模式下，编辑器会在光标所在位置插入路径。图片会保存到你的 `images/` 文件夹根目录，视频会保存到你的 `videos/` 文件夹根目录。
 
 <div id="slash-command">
   ### 斜杠命令
 </div>
 
-输入 <kbd>/image</kbd> 以打开图片菜单，或输入 <kbd>/video</kbd> 以打开视频菜单。上传新的媒体文件或从现有文件中进行选择。
+输入 <kbd>/image</kbd> 可打开图片菜单，输入 <kbd>/video</kbd> 可打开视频菜单。你可以上传新的媒体文件，或从现有文件中选择。
 
 <div id="embed">
   ### 嵌入
 </div>
 
-输入 <kbd>/youtube</kbd> 以嵌入 YouTube 视频，或输入 <kbd>/loom</kbd> 以嵌入 Loom 视频。粘贴视频 URL 后，编辑器会自动生成一个 iframe。
+输入 <kbd>/youtube</kbd> 可嵌入 YouTube 视频，或输入 <kbd>/loom</kbd> 可嵌入 Loom 视频。粘贴视频 URL 后，编辑器会自动生成 iframe。
 
-对于其他嵌入内容，输入 <kbd>/embed</kbd>，然后切换到 **手动嵌入** 以编写自定义 HTML。
-
-对于其他嵌入内容，输入 <kbd>/embed</kbd> 并切换到 **手动嵌入** 来编写自定义 HTML。
+如需嵌入其他内容，请输入 <kbd>/embed</kbd>，然后切换到 **手动嵌入** 来编写自定义 HTML。
 
 <div id="upload-files">
   ### 上传文件
@@ -46,29 +44,21 @@ keywords: ["editor","media","images","assets"]
 使用侧边栏中的文件浏览器上传或搜索文件。将文件拖放到文件夹中，以便整理媒体资源。
 
 <Frame>
-  <img
-    src="/images/editor/assets-light.png"
-    alt="在编辑器侧边栏菜单中打开的文件浏览器。"
-    className="block dark:hidden"
-  />
+  <img src="/images/editor/assets-light.png" alt="编辑器侧边栏菜单中打开的文件浏览器。" className="block dark:hidden" />
 
-  <img
-    src="/images/editor/assets-dark.png"
-    alt="在编辑器侧边栏菜单中打开的文件浏览器。"
-    className="hidden dark:block"
-  />
+  <img src="/images/editor/assets-dark.png" alt="编辑器侧边栏菜单中打开的文件浏览器。" className="hidden dark:block" />
 </Frame>
 
 <div id="format-images">
-  ## 格式化图片
+  ## 设置图片格式
 </div>
 
-在可视编辑模式下插入图片后，将鼠标悬停在图片上，会显示一个带有格式选项的工具栏。
+在可视化模式下插入图片后，将鼠标悬停在图片上，即可显示一个包含格式选项的工具栏。
 
-- **浅色/深色预览**：在浅色和深色模式之间切换，以查看图片在每种主题下的显示效果。
-- **对齐方式**：将图片对齐方式设置为左对齐、居中、右对齐或全宽。
-- **Frame**：将图片包裹在 `<Frame>` 组件中以添加边框和背景。
-- **设置**：替换图片或更新其 alt 文本（替代文本）。
+* **浅色/深色预览**：在浅色模式和深色模式之间切换，查看图片在不同主题下的显示效果。
+* **对齐方式**：将图片设为左对齐、居中、右对齐或全宽显示。
+* **Frame**：将图片包裹在 `<Frame>` 组件中，以添加边框和背景。
+* **设置**：替换图片或更新其替代文本。
 
 <div id="manage-assets">
   ## 管理资源
@@ -78,25 +68,25 @@ keywords: ["editor","media","images","assets"]
   ### 使用文件夹整理
 </div>
 
-在文件资源管理器中点击 **+** 按钮创建新文件夹。在文件树中拖拽文件和文件夹以重新调整它们的结构。
+点击文件浏览器中的 **+** 按钮，新建文件夹。拖放文件树中的文件和文件夹，即可重新整理它们。
 
 <div id="rename-and-edit-assets">
   ### 重命名和编辑资源
 </div>
 
-将鼠标悬停在资源上，点击 **...** 按钮，以重命名文件或更新其 alt 文本。
+将鼠标悬停在某个资源上，然后点击 **...** 按钮，即可重命名文件或更新其替代文本。
 
 <div id="delete-assets">
   ### 删除资源
 </div>
 
-将鼠标悬停在某个资源上，然后点击 <Icon icon="trash" /> 删除按钮。
+将鼠标悬停在资源上，然后点击 <Icon icon="trash" /> 删除按钮。
 
 <div id="best-practices">
   ## 最佳实践
 </div>
 
-- **使用描述性名称**：为文件使用清晰、具有描述性的名称。例如，将文件命名为 `api-dashboard-light.png`，而不是 `img1.png`。
-- **添加替代文本（alt text）**：为图像提供描述性的替代文本，以提升可访问性和 SEO（搜索引擎优化）。
-- **通过文件夹进行组织**：将相关资源分组管理，例如浅色和深色模式的不同版本，或某个特定功能区域使用的资源。
-- **使用合适的格式**：PNG 适用于带透明度的图形，JPG 适用于照片，SVG 适用于图标和徽标（你无法通过编辑器上传 SVG 文件，但可以通过 Git 将其添加到存储库中）。
+* **使用描述性名称**：为文件命名时应清晰明确，例如使用 `api-dashboard-light.png`，而不是 `img1.png`。
+* **添加替代文本**：为提升无障碍访问体验和 SEO 效果，请提供描述性的替代文本。
+* **用文件夹组织资源**：将相关 资源 归类到一起，例如浅色和深色模式的不同版本，或某个特定功能区域的资源。
+* **使用合适的格式**：带透明背景的图形使用 PNG，照片使用 JPG，图标和徽标使用 SVG (你无法通过编辑器上传 SVG 文件，但可以通过 Git 将其添加到仓库中) 。

@@ -1,128 +1,128 @@
 ---
 title: "Comandos"
-description: "Referencia completa de todos los comandos y flags de la CLI de Mintlify, incluyendo mint dev, mint build, mint validate, mint analytics y más."
-keywords: ["CLI", "mint", "comandos", "flags", "referencia"]
+description: "Referencia completa de todos los comandos y opciones de la CLI de Mintlify, incluidos mint dev, mint build, mint validate, mint analytics y más."
+keywords: ["CLI", "mint", "comandos", "opciones", "referencia"]
 ---
 
 <div id="global-flags">
-  ## Flags globales
+  ## Opciones globales
 </div>
 
-Estos flags están disponibles en todos los comandos.
+Estas opciones están disponibles en todos los comandos.
 
-| Flag | Descripción |
-| --- | --- |
-| `--telemetry`, `-t` | Habilitar o deshabilitar la telemetría anónima de uso. |
-| `--help`, `-h` | Mostrar la ayuda del comando. |
-| `--version`, `-v` | Mostrar la versión de la CLI. Alias de `mint version`. |
+| Opción              | Descripción                                            |
+| ------------------- | ------------------------------------------------------ |
+| `--telemetry`, `-t` | Activa o desactiva la telemetría anónima de uso.       |
+| `--help`, `-h`      | Muestra la ayuda del comando.                          |
+| `--version`, `-v`   | Muestra la versión de la CLI. Alias de `mint version`. |
 
 <div id="mint-dev">
   ## `mint dev`
 </div>
 
-Inicia una previsualización local de tu documentación.
+Inicia una vista previa local de la documentación.
 
 ```bash
 mint dev [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--port` | Puerto para ejecutar la previsualización local. Por defecto `3000`. |
-| `--no-open` | No abrir el navegador automáticamente. |
-| `--groups` | Lista separada por comas de grupos de usuarios a simular para la previsualización. |
-| `--disable-openapi` | Omitir el procesamiento de archivos OpenAPI para mejorar el rendimiento. |
-| `--local-schema` | Permitir archivos OpenAPI alojados localmente servidos por HTTP. |
+| Opción              | Descripción                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------- |
+| `--port`            | Puerto en el que se ejecuta la vista previa local. El valor predeterminado es `3000`. |
+| `--no-open`         | No abre el navegador automáticamente.                                                 |
+| `--groups`          | Lista de grupos de usuarios separada por comas para simular en la vista previa.       |
+| `--disable-openapi` | Omite el procesamiento del archivo OpenAPI para mejorar el rendimiento.               |
+| `--local-schema`    | Permite archivos OpenAPI alojados localmente y servidos mediante HTTP.                |
 
----
+***
 
 <div id="mint-login">
   ## `mint login`
 </div>
 
-Autenticarse con tu cuenta de Mintlify.
+Inicia sesión con tu cuenta de Mintlify.
 
 ```bash
 mint login
 ```
 
-Abre una ventana del navegador para completar la autenticación. Si el navegador no se abre, la CLI muestra una URL para abrir manualmente y un campo para pegar el código de autorización. Las credenciales se guardan en `~/.config/mintlify/config.json`.
+Abre una ventana del navegador para completar la autenticación. Si el navegador no se abre, la CLI muestra una URL para que la abras manualmente y te pide que pegues el código de autorización. Las credenciales se guardan en `~/.config/mintlify/config.json`.
 
-Si tienes más de un despliegue, la CLI te solicita que selecciones uno predeterminado después de iniciar sesión. Puedes cambiar el proyecto predeterminado más tarde con `mint config set subdomain <subdomain>`.
+Si tienes más de un despliegue, la CLI te pedirá que selecciones uno como predeterminado después de iniciar sesión. Puedes cambiar el proyecto predeterminado más adelante con `mint config set subdomain <subdomain>`.
 
----
+***
 
 <div id="mint-logout">
   ## `mint logout`
 </div>
 
-Eliminar las credenciales almacenadas.
+Elimina las credenciales guardadas.
 
 ```bash
 mint logout
 ```
 
----
+***
 
 <div id="mint-status">
   ## `mint status`
 </div>
 
-Muestra los detalles de tu sesión actual, incluyendo la versión de la CLI, el correo electrónico de la cuenta, la organización y el subdominio configurado.
+Muestra los detalles de tu sesión actual, incluidos la versión de la CLI, el correo electrónico de la cuenta, la organización y el subdominio configurado.
 
 ```bash
 mint status
 ```
 
----
+***
 
 <div id="mint-analytics">
   ## `mint analytics`
 </div>
 
-Consulta datos de analítica de tu documentación. Requiere autenticación con `mint login`.
+Consulta los datos de analítica de tu documentación. Requiere autenticación con `mint login`.
 
 ```bash
 mint analytics <subcommand> [flags]
 ```
 
-Todos los subcomandos aceptan estos flags compartidos:
+Todos los subcomandos aceptan estas opciones compartidas:
 
-| Flag | Descripción |
-| --- | --- |
-| `--subdomain` | Subdominio de la documentación. Por defecto usa el valor establecido con `mint config set subdomain`, o el primer proyecto de tu cuenta. |
-| `--from` | Fecha de inicio en formato `YYYY-MM-DD`. Por defecto 7 días atrás, o el valor establecido con `mint config set dateFrom`. |
-| `--to` | Fecha de fin en formato `YYYY-MM-DD`. Por defecto hoy, o el valor establecido con `mint config set dateTo`. |
-| `--format` | Formato de salida: `plain` (por defecto), `table`, `json` o `graph`. |
+| Opción        | Descripción                                                                                                                                              |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--subdomain` | Subdominio de la documentación. De forma predeterminada, usa el valor establecido con `mint config set subdomain` o el del primer proyecto de tu cuenta. |
+| `--from`      | Fecha de inicio en formato `YYYY-MM-DD`. De forma predeterminada, usa la fecha de hace 7 días o el valor establecido con `mint config set dateFrom`.     |
+| `--to`        | Fecha de fin en formato `YYYY-MM-DD`. De forma predeterminada, usa la fecha de hoy o el valor establecido con `mint config set dateTo`.                  |
+| `--format`    | Formato de salida: `plain` (predeterminado), `table`, `json` o `graph`.                                                                                  |
 
 <div id="mint-analytics-stats">
   ### `mint analytics stats`
 </div>
 
-Muestra un resumen de visitas, visitantes, búsquedas, comentarios y uso del asistente.
+Muestra un resumen de las visualizaciones, los visitantes, las búsquedas, los comentarios y el uso del asistente.
 
 ```bash
 mint analytics stats [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--page` | Filtrar por una ruta de página específica. |
+| Opción   | Descripción                               |
+| -------- | ----------------------------------------- |
+| `--page` | Filtra por una ruta de página específica. |
 
 <div id="mint-analytics-search">
   ### `mint analytics search`
 </div>
 
-Muestra consultas de búsqueda con recuento de resultados y tasas de clics.
+Muestra las consultas de búsqueda con el número de coincidencias y la tasa de clics.
 
 ```bash
 mint analytics search [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--query` | Filtrar por subcadena de consulta de búsqueda. |
-| `--page` | Filtrar por página más clicada. |
+| Opción    | Descripción                                          |
+| --------- | ---------------------------------------------------- |
+| `--query` | Filtra por una subcadena de la consulta de búsqueda. |
+| `--page`  | Filtra por la página con más clics.                  |
 
 <div id="mint-analytics-feedback">
   ### `mint analytics feedback`
@@ -134,16 +134,16 @@ Muestra los comentarios enviados por los usuarios.
 mint analytics feedback [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--type` | Tipo de comentario: `page` (agregar por página) o `code` (comentarios de fragmentos de código). |
-| `--page` | Filtrar por una ruta de página específica. |
+| Opción   | Descripción                                                                                          |
+| -------- | ---------------------------------------------------------------------------------------------------- |
+| `--type` | Tipo de comentarios: `page` (agrupado por página) o `code` (comentarios sobre fragmentos de código). |
+| `--page` | Filtra por una ruta de página específica.                                                            |
 
 <div id="mint-analytics-conversation">
   ### `mint analytics conversation`
 </div>
 
-Consulta datos de conversaciones del asistente.
+Consulta los datos de las conversaciones del asistente.
 
 ```bash
 mint analytics conversation <subcommand> [flags]
@@ -153,21 +153,21 @@ mint analytics conversation <subcommand> [flags]
   #### `mint analytics conversation list`
 </div>
 
-Lista las conversaciones del asistente. Cada entrada incluye un ID de conversación.
+Muestra una lista de conversaciones del asistente. Cada entrada incluye un ID de conversación.
 
 ```bash
 mint analytics conversation list [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--page` | Filtrar conversaciones que hacen referencia a una página específica en las fuentes. |
+| Opción   | Descripción                                                                            |
+| -------- | -------------------------------------------------------------------------------------- |
+| `--page` | Filtra las conversaciones que hacen referencia a una página específica en las fuentes. |
 
 <div id="mint-analytics-conversation-view-conversation-id">
   #### `mint analytics conversation view <conversation-id>`
 </div>
 
-Ver una conversación individual por ID. Usa `mint analytics conversation list` para obtener los IDs.
+Muestra una sola conversación por ID. Usa `mint analytics conversation list` para obtener los ID.
 
 ```bash
 mint analytics conversation view <conversation-id>
@@ -177,7 +177,7 @@ mint analytics conversation view <conversation-id>
   #### `mint analytics conversation buckets list`
 </div>
 
-Lista las categorías agrupadas de conversaciones. Cada entrada incluye un ID de categoría.
+Muestra las categorías de conversaciones agrupadas. Cada entrada incluye un ID del bucket.
 
 ```bash
 mint analytics conversation buckets list
@@ -187,192 +187,192 @@ mint analytics conversation buckets list
   #### `mint analytics conversation buckets view <bucket-id>`
 </div>
 
-Ver las conversaciones en una categoría. Usa `mint analytics conversation buckets list` para obtener los IDs.
+Muestra las conversaciones de un bucket de categorías. Usa `mint analytics conversation buckets list` para obtener los ID.
 
 ```bash
 mint analytics conversation buckets view <bucket-id>
 ```
 
----
+***
 
 <div id="mint-config">
   ## `mint config`
 </div>
 
-Gestiona valores predeterminados persistentes para los comandos de la CLI. La configuración se guarda en `~/.config/mintlify/config.json`.
+Gestiona los valores predeterminados persistentes de los comandos de la CLI. La configuración se guarda en `~/.config/mintlify/config.json`.
 
 ```bash
 mint config <subcommand> <key> [value]
 ```
 
-| Subcomando | Descripción |
-| --- | --- |
-| `set <key> <value>` | Establecer un valor de configuración. |
-| `get <key>` | Mostrar un valor de configuración. |
-| `clear <key>` | Eliminar un valor de configuración. |
+| Subcomando          | Descripción                          |
+| ------------------- | ------------------------------------ |
+| `set <key> <value>` | Establece un valor de configuración. |
+| `get <key>`         | Muestra el valor de configuración.   |
+| `clear <key>`       | Elimina un valor de configuración.   |
 
 <div id="configuration-keys">
   ### Claves de configuración
 </div>
 
-| Clave | Descripción | Usado por |
-| --- | --- | --- |
-| `subdomain` | Subdominio predeterminado de la documentación. | `mint analytics` |
-| `dateFrom` | Fecha de inicio predeterminada para consultas de analítica (`YYYY-MM-DD`). | `mint analytics` |
-| `dateTo` | Fecha de fin predeterminada para consultas de analítica (`YYYY-MM-DD`). | `mint analytics` |
+| Clave       | Descripción                                                                    | Utilizado por    |
+| ----------- | ------------------------------------------------------------------------------ | ---------------- |
+| `subdomain` | Subdominio predeterminado de la documentación.                                 | `mint analytics` |
+| `dateFrom`  | Fecha de inicio predeterminada para las consultas de analítica (`YYYY-MM-DD`). | `mint analytics` |
+| `dateTo`    | Fecha de fin predeterminada para las consultas de analítica (`YYYY-MM-DD`).    | `mint analytics` |
 
----
+***
 
 <div id="mint-broken-links">
   ## `mint broken-links`
 </div>
 
-Verifica enlaces rotos internos en tu documentación.
+Comprueba si hay enlaces internos rotos en tu documentación.
 
 ```bash
 mint broken-links [flags]
 ```
 
-El comando excluye los archivos que coinciden con los patrones de [.mintignore](/es/organize/mintignore). Los enlaces que apuntan a archivos ignorados se reportan como rotos.
+El comando excluye los archivos que coinciden con los patrones de [.mintignore](/es/organize/mintignore). Los enlaces que apuntan a archivos ignorados se marcan como rotos.
 
-| Flag | Descripción |
-| --- | --- |
-| `--check-anchors` | También validar enlaces de ancla (por ejemplo, `/page#section`) contra los slugs de encabezados. |
-| `--check-external` | También verificar URLs externas en busca de enlaces rotos. |
-| `--check-snippets` | También verificar enlaces dentro de componentes `<Snippet>`. |
+| Opción             | Descripción                                                                                                       |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| `--check-anchors`  | También valida los enlaces con anclas (por ejemplo, `/page#section`) con respecto a los slugs de los encabezados. |
+| `--check-external` | También comprueba si hay URL externas rotas.                                                                      |
+| `--check-snippets` | También comprueba los enlaces dentro de los componentes `<Snippet>`.                                              |
 
----
+***
 
 <div id="mint-a11y">
   ## `mint a11y`
 </div>
 
-Verifica problemas de accesibilidad en tu documentación.
+Comprueba si hay problemas de accesibilidad en tu documentación.
 
 ```bash
 mint a11y [flags]
 ```
 
-Verifica las relaciones de contraste de color y la falta de texto alternativo en imágenes y videos.
+Comprueba las relaciones de contraste de color y la falta de texto alternativo en imágenes y vídeos.
 
-| Flag | Descripción |
-| --- | --- |
-| `--skip-contrast` | Omitir las verificaciones de contraste de color. |
-| `--skip-alt-text` | Omitir las verificaciones de texto alternativo faltante. |
+| Opción            | Descripción                                             |
+| ----------------- | ------------------------------------------------------- |
+| `--skip-contrast` | Omite las comprobaciones de contraste de color.         |
+| `--skip-alt-text` | Omite las comprobaciones de texto alternativo faltante. |
 
----
+***
 
 <div id="mint-validate">
   ## `mint validate`
 </div>
 
-Valida la compilación de tu documentación en modo estricto. Finaliza con error si hay advertencias o errores. Incluye validación automática de las especificaciones OpenAPI referenciadas en tu `docs.json`.
+Valida la compilación de tu documentación en modo estricto. Finaliza con un error si hay alguna advertencia o algún error. Incluye la validación automática de las especificaciones de OpenAPI a las que se hace referencia en tu `docs.json`.
 
 ```bash
 mint validate [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--groups` | Lista separada por comas de grupos de usuarios a simular para la validación. |
-| `--disable-openapi` | Omitir el procesamiento y validación de archivos OpenAPI. |
-| `--local-schema` | Permitir la validación de archivos OpenAPI alojados localmente servidos por HTTP. Solo admite HTTPS en producción. |
+| Opción              | Descripción                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `--groups`          | Lista de grupos de usuarios, separada por comas, para simular durante la validación.                                |
+| `--disable-openapi` | Omite el procesamiento y la validación de archivos OpenAPI.                                                         |
+| `--local-schema`    | Permite validar archivos OpenAPI alojados localmente y servidos a través de HTTP. En producción, solo admite HTTPS. |
 
 <Note>
   El comando independiente `mint openapi-check` está obsoleto. Usa `mint validate` en su lugar.
 </Note>
 
----
+***
 
 <div id="mint-export">
   ## `mint export`
 </div>
 
-Exporta tu documentación como un archivo zip autónomo para visualización y distribución sin conexión.
+Exporta tu documentación como un archivo ZIP independiente para verla y distribuirla sin conexión.
 
 ```bash
 mint export [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--output` | Nombre del archivo de salida. Por defecto `export.zip`. |
-| `--groups` | Lista separada por comas de grupos de usuarios para incluir páginas restringidas. |
-| `--disable-openapi` | Omitir el procesamiento de OpenAPI. |
+| Opción              | Descripción                                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------------------------- |
+| `--output`          | Nombre del archivo de salida. El valor predeterminado es `export.zip`.                                |
+| `--groups`          | Lista de grupos de usuarios, separados por comas, para los que se incluirán las páginas restringidas. |
+| `--disable-openapi` | Omite el procesamiento de OpenAPI.                                                                    |
 
-Consulta [Exportación offline](/es/deploy/export) para más detalles.
+Consulta [Exportación sin conexión](/es/deploy/export) para obtener más información.
 
----
+***
 
 <div id="mint-score">
   ## `mint score`
 </div>
 
-Ejecuta verificaciones de preparación para agentes en un sitio de documentación público. Requiere autenticación con `mint login`.
+Ejecuta comprobaciones para evaluar la preparación del agente en un sitio público de documentación. Requiere autenticación con `mint login`.
 
 ```bash
 mint score <url> [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--format` | Formato de salida: `table` (predeterminado, con colores), `plain` (TSV para redirección) o `json`. |
+| Opción     | Descripción                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| `--format` | Formato de salida: `table` (por defecto, con color), `plain` (TSV para canalización) o `json`. |
 
-El comando muestra una puntuación general de preparación y un desglose de verificaciones individuales con indicadores de aprobado/reprobado.
+El comando muestra una puntuación general de preparación y un desglose de las comprobaciones individuales con indicadores de éxito o fallo.
 
 <div id="checks">
-  ### Verificaciones
+  ### Comprobaciones
 </div>
 
 La puntuación evalúa las siguientes áreas:
 
-| Verificación | Qué comprueba |
-| --- | --- |
-| `llmsTxtExists` | Los agentes pueden acceder a un archivo [llms.txt](/es/ai/llmstxt) en la raíz del sitio. |
-| `llmsTxtValid` | El archivo `llms.txt` sigue el formato esperado con encabezados, resumen en bloque de cita y enlaces Markdown. |
-| `llmsTxtSize` | El archivo `llms.txt` está dentro del umbral de tamaño para que los agentes puedan consumirlo sin truncamiento. |
-| `llmsTxtLinksResolve` | Los enlaces dentro de `llms.txt` apuntan a páginas activas. |
-| `llmsTxtLinksMarkdown` | Los enlaces dentro de `llms.txt` usan sintaxis Markdown. |
-| `llmsTxtDirective` | El archivo `llms.txt` contiene directivas de uso. |
-| `llmsTxtFullExists` | Un archivo [llms-full.txt](/es/ai/llmstxt/#llms-full-txt) está disponible para agentes que necesitan el contenido completo. Se ejecuta independientemente de `llmsTxtExists`. |
-| `llmsTxtFullSize` | El archivo `llms-full.txt` tiene un tamaño razonable para que los agentes lo procesen. |
-| `llmsTxtFullValid` | El archivo `llms-full.txt` contiene contenido válido con encabezados. |
-| `llmsTxtFullLinksResolve` | Los enlaces dentro de `llms-full.txt` apuntan a páginas activas. |
-| `skillMd` | Los agentes pueden acceder a un archivo [skill.md](https://www.mintlify.com/docs/ai/skillmd) para el uso de herramientas por agentes. |
-| `contentNegotiationMarkdown` | El sitio devuelve Markdown cuando los agentes lo solicitan mediante negociación de contenido. |
-| `contentNegotiationPlaintext` | El sitio devuelve texto plano cuando los agentes lo solicitan mediante negociación de contenido. |
-| `mcpServerDiscoverable` | Los agentes pueden descubrir un [servidor MCP](/es/ai/model-context-protocol) para agentes basados en herramientas. |
-| `mcpToolCount` | El servidor MCP expone al menos una herramienta. |
-| `openApiSpec` | Hay una especificación OpenAPI o Swagger disponible en una ruta estándar. |
-| `robotsTxtAllowsAI` | El archivo `robots.txt` no bloquea los rastreadores de IA. |
-| `sitemapExists` | Hay un mapa del sitio disponible para el descubrimiento de páginas. |
-| `structuredData` | La página principal contiene datos estructurados [JSON-LD](https://json-ld.org/) (`<script type="application/ld+json">`). Informa el número de bloques JSON-LD y los tipos de esquema encontrados. |
-| `responseLatency` | El sitio responde en un tiempo aceptable para los agentes. |
+| Comprobación                  | Qué verifica                                                                                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `llmsTxtExists`               | Los agentes pueden acceder a un archivo [llms.txt](/es/ai/llmstxt) en la raíz del sitio.                                                                                                             |
+| `llmsTxtValid`                | El archivo `llms.txt` sigue el formato esperado, con encabezados, un resumen en cita en bloque y enlaces Markdown.                                                                                |
+| `llmsTxtSize`                 | El archivo `llms.txt` está dentro del umbral de tamaño para que los agentes puedan procesarlo sin truncarse.                                                                                      |
+| `llmsTxtLinksResolve`         | Los enlaces dentro de `llms.txt` apuntan a páginas activas.                                                                                                                                       |
+| `llmsTxtLinksMarkdown`        | Los enlaces dentro de `llms.txt` usan sintaxis Markdown.                                                                                                                                          |
+| `llmsTxtDirective`            | El archivo `llms.txt` contiene directivas de uso.                                                                                                                                                 |
+| `llmsTxtFullExists`           | Hay un archivo [llms-full.txt](/es/ai/llmstxt/#llms-full-txt) disponible para los agentes que necesitan el contenido completo. Se ejecuta de forma independiente de `llmsTxtExists`.                 |
+| `llmsTxtFullSize`             | El archivo `llms-full.txt` tiene un tamaño razonable para que los agentes lo procesen.                                                                                                            |
+| `llmsTxtFullValid`            | El archivo `llms-full.txt` contiene contenido válido con encabezados.                                                                                                                             |
+| `llmsTxtFullLinksResolve`     | Los enlaces dentro de `llms-full.txt` apuntan a páginas activas.                                                                                                                                  |
+| `skillMd`                     | Los agentes pueden acceder a un archivo [skill.md](https://www.mintlify.com/docs/ai/skillmd) para usar herramientas del agente.                                                                   |
+| `contentNegotiationMarkdown`  | El sitio devuelve Markdown cuando los agentes lo solicitan mediante negociación de contenido.                                                                                                     |
+| `contentNegotiationPlaintext` | El sitio devuelve texto sin formato cuando los agentes lo solicitan mediante negociación de contenido.                                                                                            |
+| `mcpServerDiscoverable`       | Los agentes pueden detectar un [MCP server](/es/ai/model-context-protocol) para agentes basados en herramientas.                                                                                     |
+| `mcpToolCount`                | El MCP server expone al menos una herramienta.                                                                                                                                                    |
+| `openApiSpec`                 | Hay una especificación OpenAPI o Swagger disponible en una ruta estándar.                                                                                                                         |
+| `robotsTxtAllowsAI`           | El archivo `robots.txt` no bloquea a los rastreadores de IA.                                                                                                                                      |
+| `sitemapExists`               | Hay un mapa del sitio disponible para descubrir páginas.                                                                                                                                          |
+| `structuredData`              | La página de inicio contiene datos estructurados [JSON-LD](https://json-ld.org/) (`<script type="application/ld+json">`). Indica el número de bloques JSON-LD y los tipos de esquema encontrados. |
+| `responseLatency`             | El sitio responde en un tiempo aceptable para los agentes.                                                                                                                                        |
 
-Algunas verificaciones solo se ejecutan si una verificación de la que dependen pasa. Si una verificación falla, ninguna de las verificaciones que dependen de ella se ejecuta. Fallan automáticamente. Por ejemplo, `llmsTxtValid` solo pasa si `llmsTxtExists` pasa primero.
+Algunas comprobaciones solo se ejecutan si antes supera una comprobación de la que dependen. Si una comprobación falla, no se ejecuta ninguna de las comprobaciones que dependen de ella. Fallan automáticamente. Por ejemplo, `llmsTxtValid` solo se supera si antes se supera `llmsTxtExists`.
 
-La puntuación general utiliza puntuación ponderada, por lo que las verificaciones de mayor impacto contribuyen más a su puntuación.
+La puntuación general usa una ponderación, por lo que las comprobaciones de mayor impacto contribuyen más a tu puntuación.
 
----
+***
 
 <div id="mint-new">
   ## `mint new`
 </div>
 
-Crea un nuevo proyecto de documentación eligiendo un tema o clonando una plantilla predefinida del repositorio [mintlify/templates](https://github.com/mintlify/templates).
+Crea un nuevo proyecto de documentación seleccionando un tema o clonando una plantilla predefinida del repositorio [mintlify/templates](https://github.com/mintlify/templates).
 
 ```bash
 mint new [directory] [flags]
 ```
 
-| Flag | Descripción |
-| --- | --- |
-| `--name` | Nombre del proyecto. La CLI lo solicita si no se proporciona en modo interactivo. |
-| `--theme` | [Tema](/es/customize/themes) del proyecto. La CLI lo solicita si no se proporciona en modo interactivo. |
-| `--template` | Plantilla predefinida. La CLI la solicita si no se proporciona en modo interactivo. |
-| `--force` | Sobrescribir el directorio sin solicitar confirmación. |
+| Opción       | Descripción                                                                                                |
+| ------------ | ---------------------------------------------------------------------------------------------------------- |
+| `--name`     | Nombre del proyecto. La CLI te lo solicitará si no lo proporcionas en modo interactivo.                    |
+| `--theme`    | [Tema](/es/customize/themes) del proyecto. La CLI te lo solicitará si no lo proporcionas en modo interactivo. |
+| `--template` | Plantilla predefinida. La CLI te la solicitará si no la proporcionas en modo interactivo.                  |
+| `--force`    | Sobrescribe el directorio sin pedir confirmación.                                                          |
 
----
+***
 
 <div id="mint-update">
   ## `mint update`
@@ -384,42 +384,42 @@ Actualiza la CLI a la última versión.
 mint update
 ```
 
----
+***
 
 <div id="mint-version">
   ## `mint version`
 </div>
 
-Muestra las versiones actuales de la CLI y del cliente.
+Muestra la versión actual de la CLI y del cliente.
 
 ```bash
 mint version
 ```
 
----
+***
 
 <div id="coming-soon">
   ## Próximamente
 </div>
 
-Estos comandos están disponibles para ejecutar pero aún no son funcionales. Ejecutarlos registra tu interés a través de la telemetría de la CLI y ayuda a priorizar qué se lanza a continuación.
+Estos comandos se pueden ejecutar, pero todavía no funcionan. Al ejecutarlos, se registra tu interés mediante la telemetría de la CLI, lo que ayuda a priorizar lo próximo que se lance.
 
-| Comando | Descripción |
-| --- | --- |
-| `mint ai` | Herramientas de documentación con IA. |
-| `mint test` | Pruebas de documentación. |
-| `mint signup` | Registro de cuenta desde la CLI. |
-| `mint mcp` | Servidor MCP para documentación. |
+| Command       | Description                                      |
+| ------------- | ------------------------------------------------ |
+| `mint ai`     | Herramientas de documentación impulsadas por IA. |
+| `mint test`   | Pruebas de documentación.                        |
+| `mint signup` | Registro de cuenta desde la CLI.                 |
+| `mint mcp`    | MCP server para documentación.                   |
 
----
+***
 
 <div id="telemetry">
   ## Telemetría
 </div>
 
-La CLI recopila telemetría anónima de uso para ayudar a mejorar Mintlify. Los datos de telemetría incluyen el nombre del comando, la versión de la CLI, el sistema operativo y la arquitectura. Mintlify **no** recopila información de identificación personal, contenido del proyecto ni rutas de archivos.
+La CLI recopila telemetría de uso anónima para ayudar a mejorar Mintlify. Los datos de telemetría incluyen el nombre del comando, la versión de la CLI, el sistema operativo y la arquitectura. Mintlify **no** recopila información personal identificable, contenido del proyecto ni rutas de archivos.
 
-Por defecto, la CLI recopila datos de telemetría. Puedes desactivarla en cualquier momento usando el flag `--telemetry`:
+De forma predeterminada, la CLI recopila datos de telemetría. Puedes desactivarla en cualquier momento con la opción `--telemetry`:
 
 ```bash
 # Deshabilitar telemetría
@@ -429,11 +429,11 @@ mint --telemetry false
 mint --telemetry true
 ```
 
-También puedes deshabilitar la telemetría configurando una de estas variables de entorno:
+También puedes desactivar la telemetría configurando una de estas variables de entorno:
 
-| Variable | Valor | Descripción |
-| --- | --- | --- |
-| `MINTLIFY_TELEMETRY_DISABLED` | `1` | Deshabilitar la telemetría de la CLI de Mintlify. |
-| `DO_NOT_TRACK` | `1` | Deshabilitar la telemetría usando el estándar [Console Do Not Track](https://consoledonottrack.com/). |
+| Variable                      | Valor | Descripción                                                                                          |
+| ----------------------------- | ----- | ---------------------------------------------------------------------------------------------------- |
+| `MINTLIFY_TELEMETRY_DISABLED` | `1`   | Desactiva la telemetría de la CLI de Mintlify.                                                       |
+| `DO_NOT_TRACK`                | `1`   | Desactiva la telemetría mediante el estándar [Console Do Not Track](https://consoledonottrack.com/). |
 
-Tu preferencia se guarda en `~/.config/mintlify/config.json` y persiste entre sesiones de la CLI.
+Esta preferencia se guarda en `~/.config/mintlify/config.json` y persiste entre sesiones de la CLI.

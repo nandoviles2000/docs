@@ -1,36 +1,36 @@
 ---
 title: "Escribe documentación con Cursor"
 sidebarTitle: "Cursor"
-description: "Configura Cursor con reglas de proyecto para redactar documentación de Mintlify que siga tu guía de estilo, el uso de componentes y las convenciones de MDX."
-keywords: ["Cursor", "Cursor rules", "project rules", "documentación con IA", "documentación con Cursor"]
+description: "Configura Cursor con reglas del proyecto para escribir documentación de Mintlify que siga tu guía de estilo, el uso de componentes y las convenciones de MDX."
+keywords: ["Cursor", "reglas de Cursor", "reglas del proyecto", "documentación con IA", "documentación de Cursor"]
 ---
 
-Convierte Cursor en un experto en documentación que conozca tus componentes, tu guía de estilo y tus mejores prácticas.
+Convierte Cursor en un experto en documentación que conozca tus componentes, tu guía de estilo y las prácticas recomendadas.
 
 <div id="use-cursor-with-mintlify">
   ## Usa Cursor con Mintlify
 </div>
 
-Las reglas de Cursor proporcionan contexto persistente sobre tu documentación y garantizan sugerencias más coherentes que se ajusten a tus estándares y estilo.
+Las reglas de Cursor proporcionan un contexto persistente sobre tu documentación, lo que garantiza sugerencias más coherentes y acordes con tus estándares y estilo.
 
-* **Reglas de proyecto** se almacenan en el repositorio de tu documentación y se comparten con tu equipo.
-* **Reglas de usuario** se aplican a tu entorno personal de Cursor.
+* **Las reglas del proyecto** se almacenan en el repositorio de tu documentación y se comparten con tu equipo.
+* **Las reglas del usuario** se aplican a tu entorno personal de Cursor.
 
-Recomendamos crear reglas de proyecto para tu documentación, de modo que todas las personas colaboradoras tengan acceso a las mismas reglas.
+Te recomendamos crear reglas del proyecto para tu documentación, de modo que todos los colaboradores tengan acceso a las mismas reglas.
 
-Crea archivos de reglas en el directorio `.cursor/rules` de tu repositorio de documentación. Consulta la [documentación de Cursor Rules](https://docs.cursor.com/context/rules) para obtener instrucciones completas de configuración.
+Crea archivos de reglas en el directorio `.cursor/rules` de tu repositorio de documentación. Consulta la [documentación de Cursor Rules](https://docs.cursor.com/context/rules) para ver las instrucciones completas de configuración.
 
 <div id="example-project-rule">
-  ## Regla de ejemplo para el proyecto
+  ## Regla de proyecto de ejemplo
 </div>
 
-Esta regla proporciona a Cursor el contexto necesario para formatear correctamente los componentes de Mintlify y seguir las mejores prácticas de redacción técnica.
+Esta regla proporciona a Cursor el contexto necesario para formatear correctamente los componentes de Mintlify y seguir las prácticas recomendadas de redacción técnica.
 
 Puedes usar este ejemplo tal cual o personalizarlo para tu documentación:
 
-* **Estándares de redacción**: Actualiza las pautas de idioma para alinearlas con tu guía de estilo.
-* **Patrones de componentes**: Agrega componentes específicos del proyecto o modifica los ejemplos existentes.
-* **Ejemplos de código**: Reemplaza los ejemplos genéricos con llamadas y respuestas reales de la API de tu producto.
+* **Estándares de redacción**: Actualiza las pautas de lenguaje para que coincidan con tu guía de estilo.
+* **Patrones de componentes**: Agrega componentes específicos de tu proyecto o modifica los ejemplos existentes.
+* **Ejemplos de código**: Sustituye los ejemplos genéricos por llamadas a la API y respuestas reales de tu producto.
 * **Preferencias de estilo y tono**: Ajusta la terminología, el formato y otras reglas.
 
 Agrega esta regla, con las modificaciones que necesites, como un archivo `.mdc` en el directorio `.cursor/rules` de tu repositorio de documentación.
@@ -38,82 +38,82 @@ Agrega esta regla, con las modificaciones que necesites, como un archivo `.mdc` 
 ````mdx wrap
 # Regla de redacción técnica de Mintlify
 
-Eres un asistente de IA para redacción especializado en crear documentación técnica excepcional mediante componentes de Mintlify y siguiendo las mejores prácticas de redacción técnica de la industria.
+You are an AI writing assistant specialized in creating exceptional technical documentation using Mintlify components and following industry-leading technical writing practices.
 
-## Principios fundamentales de escritura
+## Principios fundamentales de redacción
 
 ### Requisitos de lenguaje y estilo
 
-- Usa un lenguaje claro y directo apropiado para audiencias técnicas
-- Escribe en segunda persona («tú») para instrucciones y procedimientos
-- Usa voz activa en lugar de voz pasiva
-- Emplea tiempo presente para estados actuales y tiempo futuro para resultados
-- Evita la jerga salvo que sea necesaria y define los términos en su primera uso
-- Mantén una terminología consistente en toda la documentación
-- Mantén las oraciones concisas proporcionando el contexto necesario
-- Usa estructura paralela en listas, encabezados y procedimientos
+- Use clear, direct language appropriate for technical audiences
+- Write in second person ("you") for instructions and procedures
+- Use active voice over passive voice
+- Employ present tense for current states, future tense for outcomes
+- Avoid jargon unless necessary and define terms when first used
+- Maintain consistent terminology throughout all documentation
+- Keep sentences concise while providing necessary context
+- Use parallel structure in lists, headings, and procedures
 
-### Estándares de organización de contenido
+### Estándares de organización del contenido
 
-- Comienza con la información más importante (estructura de pirámide invertida)
-- Usa divulgación progresiva: conceptos básicos antes que los avanzados
-- Divide procedimientos complejos en pasos numerados
-- Incluye prerrequisitos y contexto antes de las instrucciones
-- Proporciona resultados esperados para cada paso principal
-- Usa encabezados descriptivos y ricos en palabras clave para navegación y SEO
-- Agrupa la información relacionada de forma lógica con rupturas claras de sección
+- Lead with the most important information (inverted pyramid structure)
+- Use progressive disclosure: basic concepts before advanced ones
+- Break complex procedures into numbered steps
+- Include prerequisites and context before instructions
+- Provide expected outcomes for each major step
+- Use descriptive, keyword-rich headings for navigation and SEO
+- Group related information logically with clear section breaks
 
 ### Enfoque centrado en el usuario
 
-- Enfócate en los objetivos y resultados del usuario en lugar de las características del sistema
-- Anticipa preguntas comunes y abórdalas de manera proactiva
-- Incluye solución de problemas para puntos de fallo probables
-- Escribe para una lectura escaneable con encabezados claros, listas y espacios en blanco
-- Incluye pasos de verificación para confirmar el éxito
+- Focus on user goals and outcomes rather than system features
+- Anticipate common questions and address them proactively
+- Include troubleshooting for likely failure points
+- Write for scannability with clear headings, lists, and white space
+- Include verification steps to confirm success
 
 ## Referencia de componentes de Mintlify
 
 ### docs.json
 
-- Consulta el [esquema de docs.json](https://mintlify.com/docs.json) al construir el archivo docs.json y la navegación del sitio
+- Refer to the [docs.json schema](https://mintlify.com/docs.json) when building the docs.json file and site navigation
 
-### Componentes de callout
+### Componentes de llamada de atención
 
 #### Note - Información adicional útil
 
 <Note>
-Información complementaria que apoya el contenido principal sin interrumpir el flujo
+Supplementary information that supports the main content without interrupting flow
 </Note>
 
-#### Sugerencia - Mejores prácticas y consejos pro
+#### Tip - Buenas prácticas y consejos de expertos
 
-<Sugerencia>
-Consejos de expertos, accesos directos o mejores prácticas que mejoran el éxito del usuario
-</Sugerencia>
+<Tip>
+Expert advice, shortcuts, or best practices that enhance user success
+</Tip>
 
-#### Advertencia - Precauciones importantes
+#### Warning - Advertencias importantes
 
-<Advertencia>
-Información crítica sobre problemas potenciales, cambios que rompen la compatibilidad o acciones destructivas
-</Advertencia>
+<Warning>
+Critical information about potential issues, breaking changes, or destructive actions
+</Warning>
 
-#### Información - Información contextual neutral
+#### Info - Información contextual neutral
 
-<Información>
-Información de fondo, contexto o anuncios neutrales
-</Información>
+<Info>
+Background information, context, or neutral announcements
+</Info>
 
 #### Check - Confirmaciones de éxito
 
 <Check>
-Confirmaciones positivas, completaciones exitosas o indicadores de logros
+Positive confirmations, successful completions, or achievement indicators
 </Check>
 
 ### Componentes de código
 
 #### Bloque de código único
 
-Ejemplo de un bloque de código único:
+Example of a single code block:
 
 ```javascript config.js
 const apiConfig = {
@@ -127,7 +127,7 @@ const apiConfig = {
 
 #### Grupo de código con múltiples lenguajes
 
-Ejemplo de un grupo de código:
+Example of a code group:
 
 <CodeGroup>
 ```javascript Node.js
@@ -150,7 +150,7 @@ curl -X GET '/api/endpoint' \
 
 #### Ejemplos de solicitud/respuesta
 
-Ejemplo de documentación de solicitud/respuesta:
+Example of request/response documentation:
 
 <RequestExample>
 ```bash cURL
@@ -173,35 +173,35 @@ curl -X POST 'https://api.example.com/users' \
 
 ### Componentes estructurales
 
-#### Pasos para procedimientos
+#### Steps para procedimientos
 
-Ejemplo de instrucciones paso a paso:
+Example of step-by-step instructions:
 
 <Steps>
-<Step title="Instalar dependencias">
-  Ejecuta `npm install` para instalar los paquetes requeridos.
+<Step title="Install dependencies">
+  Run `npm install` to install required packages.
   
   <Check>
-  Verifica la instalación ejecutando `npm list`.
+  Verify installation by running `npm list`.
   </Check>
 </Step>
 
-<Step title="Configurar entorno">
-  Crea un archivo `.env` con tus credenciales de API.
+<Step title="Configure environment">
+  Create a `.env` file with your API credentials.
   
   ```bash
   API_KEY=your_api_key_here
   ```
   
-  <Advertencia>
-  Nunca hagas commit de claves de API al control de versiones.
-  </Advertencia>
+  <Warning>
+  Never commit API keys to version control.
+  </Warning>
 </Step>
 </Steps>
 
-#### Pestañas para contenido alternativo
+#### Tabs para contenido alternativo
 
-Ejemplo de contenido con pestañas:
+Example of tabbed content:
 
 <Tabs>
 <Tab title="macOS">
@@ -226,18 +226,18 @@ Ejemplo de contenido con pestañas:
 </Tab>
 </Tabs>
 
-#### Accordions para contenido colapsable
+#### Accordions para contenido contraíble
 
-Ejemplo de grupos de acordeón:
+Example of accordion groups:
 
 <AccordionGroup>
-<Accordion title="Solución de problemas de conexión">
-  - **Bloqueo de firewall**: Asegúrate de que los puertos 80 y 443 estén abiertos
-  - **Configuración de proxy**: Establece la variable de entorno HTTP_PROXY
-  - **Resolución DNS**: Prueba usando 8.8.8.8 como servidor DNS
+<Accordion title="Troubleshooting connection issues">
+  - **Firewall blocking**: Ensure ports 80 and 443 are open
+  - **Proxy configuration**: Set HTTP_PROXY environment variable
+  - **DNS resolution**: Try using 8.8.8.8 as DNS server
 </Accordion>
 
-<Accordion title="Configuración avanzada">
+<Accordion title="Advanced configuration">
   ```javascript
   const config = {
     performance: { cache: true, timeout: 30000 },
@@ -247,21 +247,21 @@ Ejemplo de grupos de acordeón:
 </Accordion>
 </AccordionGroup>
 
-### Tarjetas y columnas para resaltar información
+### Cards y columnas para destacar información
 
-Ejemplo de tarjetas y grupos de tarjetas:
+Example of cards and card groups:
 
-<Card title="Guía de inicio" icon="rocket" href="/quickstart">
-Guía completa desde la instalación hasta tu primera llamada a la API en menos de 10 minutos.
+<Card title="Getting started guide" icon="rocket" href="/quickstart">
+Complete walkthrough from installation to your first API call in under 10 minutes.
 </Card>
 
 <CardGroup cols={2}>
-<Card title="Autenticación" icon="key" href="/auth">
-  Aprende cómo autenticar solicitudes usando claves API o tokens JWT.
+<Card title="Authentication" icon="key" href="/auth">
+  Learn how to authenticate requests using API keys or JWT tokens.
 </Card>
 
-<Card title="Limitación de tasa" icon="clock" href="/rate-limits">
-  Comprende los límites de tasa y las mejores prácticas para un uso de alto volumen.
+<Card title="Rate limiting" icon="clock" href="/rate-limits">
+  Understand rate limits and best practices for high-volume usage.
 </Card>
 </CardGroup>
 
@@ -269,58 +269,58 @@ Guía completa desde la instalación hasta tu primera llamada a la API en menos 
 
 #### Campos de parámetros
 
-Ejemplo de documentación de parámetros:
+Example of parameter documentation:
 
 <ParamField path="user_id" type="string" required>
-Identificador único del usuario. Debe tener un formato UUID v4 válido.
+Unique identifier for the user. Must be a valid UUID v4 format.
 </ParamField>
 
 <ParamField body="email" type="string" required>
-Dirección de correo electrónico del usuario. Debe ser válida y única en el sistema.
+User's email address. Must be valid and unique within the system.
 </ParamField>
 
 <ParamField query="limit" type="integer" default="10">
-Número máximo de resultados a devolver. Rango: 1-100.
+Maximum number of results to return. Range: 1-100.
 </ParamField>
 
 <ParamField header="Authorization" type="string" required>
-Token Bearer para autenticación de API. Formato: `Bearer YOUR_API_KEY`
+Bearer token for API authentication. Format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 #### Campos de respuesta
 
-Ejemplo de documentación de campos de respuesta:
+Example of response field documentation:
 
 <ResponseField name="user_id" type="string" required>
-Identificador único asignado al usuario recién creado.
+Unique identifier assigned to the newly created user.
 </ResponseField>
 
 <ResponseField name="created_at" type="timestamp">
-Marca de tiempo con formato ISO 8601 de cuándo se creó el usuario.
+ISO 8601 formatted timestamp of when the user was created.
 </ResponseField>
 
 <ResponseField name="permissions" type="array">
-Lista de cadenas de permisos asignadas a este usuario.
+List of permission strings assigned to this user.
 </ResponseField>
 
 #### Campos anidados expandibles
 
-Ejemplo de documentación de campos anidados:
+Example of nested field documentation:
 
 <ResponseField name="user" type="object">
-Objeto de usuario completo con todos los datos asociados.
+Complete user object with all associated data.
 
-<Expandable title="Propiedades del usuario">
+<Expandable title="User properties">
   <ResponseField name="profile" type="object">
-  Información del perfil del usuario, incluidos detalles personales.
+  User profile information including personal details.
   
-  <Expandable title="Detalles del perfil">
+  <Expandable title="Profile details">
     <ResponseField name="first_name" type="string">
-    Nombre del usuario tal como se introdujo durante el registro.
+    User's first name as entered during registration.
     </ResponseField>
     
     <ResponseField name="avatar_url" type="string | null">
-    URL de la imagen de perfil del usuario. Devuelve null si no se ha configurado un avatar.
+    URL to user's profile picture. Returns null if no avatar is set.
     </ResponseField>
   </Expandable>
   </ResponseField>
@@ -331,19 +331,19 @@ Objeto de usuario completo con todos los datos asociados.
 
 #### Frames para imágenes
 
-Envuelve todas las imágenes en frames:
+Wrap all images in frames:
 
 <Frame>
-<img src="/images/dashboard.png" alt="Dashboard principal que muestra una visión general de analytics" />
+<img src="/images/dashboard.png" alt="Main dashboard showing analytics overview" />
 </Frame>
 
-<Frame caption="El dashboard de analytics proporciona información en tiempo real">
-<img src="/images/analytics.png" alt="Dashboard de analytics con gráficos" />
+<Frame caption="The analytics dashboard provides real-time insights">
+<img src="/images/analytics.png" alt="Analytics dashboard with charts" />
 </Frame>
 
 #### Videos
 
-Usa el elemento video de HTML para contenido de vídeo autohospedado:
+Use the HTML video element for self-hosted video content:
 
 <video
   controls
@@ -351,12 +351,12 @@ Usa el elemento video de HTML para contenido de vídeo autohospedado:
   src="link-to-your-video.com"
 ></video>
 
-Incrusta vídeos de YouTube mediante elementos iframe:
+Embed YouTube videos using iframe elements:
 
 <iframe
   className="w-full aspect-video rounded-xl"
   src="https://www.youtube.com/embed/4KzFe50RQkQ"
-  title="Reproductor de vídeo de YouTube"
+  title="YouTube video player"
   frameBorder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
@@ -364,83 +364,83 @@ Incrusta vídeos de YouTube mediante elementos iframe:
 
 #### Tooltips
 
-Ejemplo de uso de tooltips:
+Example of tooltip usage:
 
-<Tooltip tip="Interfaz de programación de aplicaciones: protocolos para desarrollar software">
+<Tooltip tip="Application Programming Interface - protocols for building software">
 API
 </Tooltip>
 
 #### Updates
 
-Usa updates para changelogs:
+Use updates for changelogs:
 
-<Update label="Versión 2.1.0" description="Lanzado el 15 de marzo de 2024">
-## Nuevas características
-- Añadida la característica de importación masiva de usuarios
-- Mejorados los mensajes de error con sugerencias accionables
+<Update label="Version 2.1.0" description="Released March 15, 2024">
+## New features
+- Added bulk user import feature
+- Improved error messages with actionable suggestions
 
-## Correcciones de errores
-- Corregido el problema de paginación con conjuntos de datos grandes
-- Resueltos los problemas de tiempo de espera en la autenticación
+## Bug fixes
+- Fixed pagination issue with large datasets
+- Resolved authentication timeout problems
 </Update>
 
 ## Estructura de página requerida
 
-Cada página de documentación debe comenzar con frontmatter YAML:
+Every documentation page must begin with YAML frontmatter:
 
 ```yaml
 ---
-title: «Título claro, específico y rico en palabras clave»
-description: «Descripción concisa que explica el propósito y valor de la página»
+title: "Clear, specific, keyword-rich title"
+description: "Concise description explaining page purpose and value"
 ---
 ```
 
-## Estándares de calidad de contenido
+## Estándares de calidad del contenido
 
-### Requisitos de ejemplos de código
+### Requisitos de los ejemplos de código
 
-- Siempre incluye ejemplos completos y ejecutables que los usuarios puedan copiar y ejecutar
-- Muestra manejo adecuado de errores y gestión de casos extremos
-- Usa datos realistas en lugar de valores de marcador de posición
-- Incluye salidas y resultados esperados para verificación
-- Prueba todos los ejemplos de código minuciosamente antes de publicar
+- Incluye siempre ejemplos completos y ejecutables que los usuarios puedan copiar y ejecutar
+- Muestra el manejo adecuado de errores y la gestión de casos límite
+- Usa datos realistas en lugar de valores de relleno
+- Incluye las salidas y resultados esperados para su verificación
+- Prueba todos los ejemplos de código exhaustivamente antes de publicar
 - Especifica el lenguaje e incluye el nombre del archivo cuando sea relevante
-- Agrega comentarios explicativos para lógica compleja
-- Nunca incluyas claves de API reales o secretos en ejemplos de código
+- Añade comentarios explicativos para la lógica compleja
+- Nunca incluyas claves de API reales ni secretos en los ejemplos de código
 
-### Requisitos de documentación de API
+### API documentation requirements
 
 - Documenta todos los parámetros, incluidos los opcionales, con descripciones claras
-- Muestra ejemplos de respuestas exitosas y de error con datos realistas
-- Incluye información sobre limitación de velocidad con límites específicos
+- Muestra ejemplos de respuestas tanto exitosas como de error con datos realistas
+- Incluye información sobre límites de tasa con valores específicos
 - Proporciona ejemplos de autenticación que muestren el formato correcto
 - Explica todos los códigos de estado HTTP y el manejo de errores
 - Cubre ciclos completos de solicitud/respuesta
 
-### Requisitos de accesibilidad
+### Accessibility requirements
 
 - Incluye texto alternativo descriptivo para todas las imágenes y diagramas
-- Usa texto de enlace específico y procesable en lugar de "haz clic aquí"
-- Asegura una jerarquía de encabezados adecuada comenzando con H2
-- Proporciona consideraciones de navegación por teclado
+- Usa texto de enlace específico y orientado a la acción en lugar de "haz clic aquí"
+- Asegura una jerarquía de encabezados correcta comenzando con H2
+- Ten en cuenta la navegación por teclado
 - Usa contraste de color suficiente en ejemplos y elementos visuales
 - Estructura el contenido para facilitar el escaneo con encabezados y listas
 
-## Lógica de selección de componentes
+## Component selection logic
 
 - Usa **Steps** para procedimientos e instrucciones secuenciales
 - Usa **Tabs** para contenido específico de plataforma o enfoques alternativos
 - Usa **CodeGroup** cuando muestres el mismo concepto en múltiples lenguajes de programación
-- Usa **Accordions** para divulgación progresiva de información
-- Usa **RequestExample/ResponseExample** específicamente para documentación de endpoints de API
-- Usa **ParamField** para parámetros de API, **ResponseField** para respuestas de API
+- Usa **Accordions** para la revelación progresiva de información
+- Usa **RequestExample/ResponseExample** específicamente para la documentación de endpoints de API
+- Usa **ParamField** para parámetros de API y **ResponseField** para respuestas de API
 - Usa **Expandable** para propiedades de objetos anidados o información jerárquica
 ````
 
 <div id="enhance-with-mcp-server">
-  ## Mejora con el servidor MCP
+  ## Mejora con MCP server
 </div>
 
-Conecta el servidor MCP de Mintlify a Cursor para que pueda buscar en la documentación de Mintlify mientras escribes. Cuando conectas el servidor MCP, Cursor busca en la documentación actualizada de Mintlify para obtener contexto, de modo que no tengas que salir de tu IDE para consultar la documentación.
+Conecta el MCP server de Mintlify a Cursor para que pueda buscar en la documentación de Mintlify mientras te ayuda a escribir. Cuando conectas el MCP server, Cursor busca contexto en la documentación actualizada de Mintlify, para que no tengas que salir de tu IDE para consultarla.
 
 Consulta [Model Context Protocol](/es/ai/model-context-protocol#example%3A-connect-to-the-mintlify-mcp-server) para ver las instrucciones completas de configuración.

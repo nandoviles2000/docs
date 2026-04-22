@@ -1,29 +1,29 @@
 ---
-title: "Personalizar el comportamiento del assistant"
-description: "Dale al assistant instrucciones personalizadas usando un archivo Assistant.md para definir su tono, persona y áreas de enfoque."
-keywords: ["assistant", "instrucciones personalizadas", "Assistant.md", "system prompt", "persona"]
+title: "Personaliza el comportamiento del Assistant"
+description: "Dale al Assistant instrucciones personalizadas mediante un archivo Assistant.md para definir su tono, personalidad y áreas de enfoque."
+keywords: ["asistente", "instrucciones personalizadas", "Assistant.md", "prompt del sistema", "personalidad"]
 ---
 
-Agrega un archivo `.mintlify/Assistant.md` en la raíz de tu proyecto de documentación para darle al assistant instrucciones personalizadas que definan cómo responde (`ASSISTANT.md` también es un nombre de archivo aceptado). El assistant usa estas instrucciones como contexto a nivel de sistema para cada respuesta.
+Agrega un archivo `.mintlify/Assistant.md` en la raíz de tu proyecto de documentación para darle al Assistant instrucciones personalizadas que definan cómo responde (`ASSISTANT.md` también es un nombre de archivo válido). El Assistant usa estas instrucciones como contexto a nivel de sistema en cada respuesta.
 
 <Warning>
-  Coloca tu archivo `Assistant.md` dentro del directorio `.mintlify/`, no en la raíz de tu proyecto. Si almacenas el archivo en la raíz de tu proyecto, tus instrucciones personalizadas serán accesibles públicamente a través de la ruta `/assistant.md`. El directorio `.mintlify/` no se sirve públicamente, por lo que tu archivo `Assistant.md` no es accesible cuando está en ese directorio.
-  
-  Si necesitas almacenar tu archivo `Assistant.md` en la raíz de tu proyecto o en cualquier otro directorio, agrégalo a tu archivo [`.mintignore`](/es/organize/mintignore) para excluirlo de tu sitio de documentación.
+  Coloca tu archivo `Assistant.md` dentro del directorio `.mintlify/`, no en la raíz de tu proyecto. Si almacenas el archivo en la raíz de tu proyecto, tus instrucciones personalizadas quedarán accesibles públicamente a través de la ruta `/assistant.md`. El directorio `.mintlify/` no se sirve públicamente, por lo que tu archivo `Assistant.md` no será accesible públicamente si está en ese directorio.
+
+  Si debes almacenar tu archivo `Assistant.md` en la raíz de tu proyecto o en cualquier otro directorio, agrégalo a tu archivo [`.mintignore`](/es/organize/mintignore) para excluirlo de tu sitio de documentación.
 </Warning>
 
-Las instrucciones en un archivo `Assistant.md` se añaden al prompt de sistema del assistant. No reemplazan ni anulan las instrucciones predeterminadas del assistant.
+Las instrucciones de un archivo `Assistant.md` se agregan al prompt del sistema del Assistant. No sustituyen ni anulan las instrucciones predeterminadas del Assistant.
 
 Para eliminar las instrucciones personalizadas, elimina el archivo `Assistant.md`.
 
 Usa `Assistant.md` para:
 
-- Ajustar la persona y el tono del assistant
-- Proporcionar contexto específico del producto
-- Definir rutas de escalación de soporte
-- Especificar preferencias de terminología
-- Restringir o delimitar las áreas de enfoque del assistant
-- Proporcionar orientación específica de versión
+* Ajustar la personalidad y el tono del Assistant
+* Proporcionar contexto específico del producto
+* Definir vías de escalado para soporte
+* Especificar preferencias de terminología
+* Restringir o delimitar las áreas de enfoque del Assistant
+* Proporcionar instrucciones específicas para cada versión
 
 <div id="example-assistantmd-file">
   ## Ejemplo de archivo `Assistant.md`

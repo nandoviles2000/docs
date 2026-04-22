@@ -1,20 +1,28 @@
 ---
 title: "Obtener consultas de búsqueda"
-description: "Recupera los términos de búsqueda de la documentación con los recuentos de resultados, las tasas de clics y las páginas más visitadas."
+description: "Recupera términos de búsqueda de la documentación con número de
+  coincidencias, tasas de clics y las páginas con más clics."
 openapi: /es/analytics.openapi.json GET /v1/analytics/{projectId}/searches
-keywords: [ "Analytics", "búsqueda", "exportación", "consultas", "términos de búsqueda" ]
+keywords:
+  [
+    "analítica",
+    "búsqueda",
+    "exportación",
+    "consultas",
+    "términos de búsqueda"
+  ]
 ---
 
 <div id="usage">
   ## Uso
 </div>
 
-Usa este endpoint para exportar el análisis de búsqueda de la documentación. Los resultados se ordenan de mayor a menor número de resultados, mostrando los términos que más buscan tus usuarios.
+Usa este endpoint para exportar la analítica de búsqueda de la documentación. Los resultados se ordenan por número de coincidencias en orden descendente, para mostrar qué términos buscan con más frecuencia tus usuarios.
 
-Pagina los resultados usando el parámetro `nextCursor` devuelto en la respuesta. Continúa obteniendo resultados mientras `nextCursor` no sea nulo.
+Recorre los resultados paginados con el parámetro `nextCursor` que se devuelve en la respuesta. Sigue recuperando resultados mientras `nextCursor` no sea null.
 
 <div id="filtering">
   ## Filtrado
 </div>
 
-Filtra los datos de búsqueda por rango de fechas usando los parámetros `dateFrom` y `dateTo`.
+Filtra los datos de búsqueda por rango de fechas con los parámetros `dateFrom` y `dateTo`.

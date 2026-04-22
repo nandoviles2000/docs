@@ -1,62 +1,68 @@
 ---
-title: "Conceptos básicos de Git para el editor web"
-sidebarTitle: "Conceptos básicos de Git"
-description: "Comprende los conceptos de control de versiones de Git que hay detrás del editor web de Mintlify, incluyendo branches, commits, pull requests y flujos de trabajo de fusión."
-keywords: ["git", "control de versiones", "editor web", "ramas", "confirmaciones", "solicitudes de extracción", "PRs"]
+title: "Aspectos básicos de Git para el editor web"
+sidebarTitle: "Aspectos básicos de Git"
+description: "Comprende los conceptos de control de versiones de Git en los que se basa el editor web de Mintlify, incluidas las ramas, los commits, las solicitudes de extracción (pull requests, PR) y los flujos de trabajo de fusión."
+keywords: ["git", "control de versiones", "editor web", "ramas", "commits", "solicitudes de extracción", "PR"]
 ---
 
-Git te permite controlar y hacer seguimiento de los cambios en los archivos. Git es el sistema de control de versiones preferido para flujos de trabajo de documentación como código, donde gestionas la documentación de la misma manera que cualquier otro repositorio de código.
+Git te permite controlar y hacer seguimiento de los cambios en los archivos. Git es el sistema de control de versiones preferido para los flujos de trabajo de documentación como código, en los que gestionas la documentación igual que cualquier otra base de código.
 
-El editor web se encarga de las operaciones de Git por ti. Comprender algunos conceptos clave te ayuda a sacar el máximo provecho del editor y a colaborar con tu equipo.
+El editor web se encarga de las operaciones de Git por ti. Entender algunos conceptos clave te ayuda a aprovechar al máximo el editor y a colaborar con tu equipo.
 
 <div id="what-git-does-for-your-docs">
-  ## Lo que Git hace para tu documentación
+  ## Qué hace Git por tu documentación
 </div>
 
-Git registra cada cambio que se hace en tu documentación. Anota qué cambió, quién lo cambió, cuándo lo cambió y por qué. Esto significa que puedes:
+Git registra cada cambio que se hace en tu documentación. Registra qué cambió, quién lo cambió, cuándo lo cambió y por qué. Esto significa que puedes:
 
-- Ver el historial completo de cualquier página.
-- Deshacer cambios revirtiendo a una versión anterior.
-- Trabajar en actualizaciones sin afectar tu sitio en producción.
-- Revisar los cambios antes de que se publiquen.
+* Ver el historial completo de cualquier página.
+* Deshacer cambios volviendo a una versión anterior.
+* Trabajar en actualizaciones sin afectar tu sitio publicado.
+* Revisar los cambios antes de que se publiquen.
 
-Tu repositorio de documentación es la colección de archivos, y su historial, que constituyen tu sitio de documentación. El editor web se conecta a este repositorio para leer y actualizar tu contenido.
+Tu repositorio de documentación es el conjunto de archivos y su historial que conforman tu sitio de documentación. El editor web se conecta a este repositorio para leer y actualizar tu contenido.
 
 <div id="key-concepts">
   ## Conceptos clave
 </div>
 
-Estos son los conceptos de Git que encontrarás con mayor frecuencia al usar el editor web.
+Estos son los conceptos de Git con los que te encontrarás más a menudo al usar el editor web.
 
 <AccordionGroup>
-  <Accordion title="Confirmación">
-    Una instantánea guardada de tus cambios en un momento específico. Cada confirmación incluye un mensaje que describe qué cambió y crea un registro permanente en el historial de tu proyecto.
+  <Accordion title="Commit">
+    Una instantánea guardada de tus cambios en un momento determinado. Cada commit incluye un mensaje que describe qué cambió y crea un registro permanente en el historial de tu proyecto.
 
-    Cuando guardas cambios, el editor web crea una confirmación.
+    Cuando guardas cambios, el editor web crea un commit.
   </Accordion>
-  <Accordion title="Branch">
-    Una línea de trabajo independiente en tu repositorio. A veces se llama una **feature branch**.
-    
-    Tu sitio de documentación en producción se construye desde una **rama de implementación**, normalmente llamada `main`. Otras ramas te permiten trabajar en cambios de forma independiente. Nada en una rama afecta tu sitio en producción hasta que la fusionas con tu rama de implementación mediante una solicitud de extracción.
 
-    Cuando creas una rama, el editor web crea una nueva rama en tu repositorio. Puedes buscar y cambiar entre ramas desde el menú desplegable de ramas en la barra de herramientas. Si tienes cambios sin guardar, el editor te permite llevarlos a la nueva rama o dejarlos en tu rama actual.
-  </Accordion>
-  <Accordion title="Rama de implementación">
-    La rama que construye tu sitio de documentación en producción, normalmente llamada `main`. Los cambios que se fusionan en esta rama se implementan automáticamente en tu sitio.
-  </Accordion>
-  <Accordion title="Solicitud de extracción">
-    Una propuesta para unir cambios de una rama a otra. Las solicitudes de extracción permiten que tu equipo revise y discuta los cambios antes de que se publiquen.
+  <Accordion title="Rama">
+    Una línea de trabajo independiente en tu repositorio. A veces se la llama **rama de funcionalidad**.
 
-    Cuando publicas cambios en una feature branch, el editor web crea una solicitud de extracción. Tu equipo revisa y une la solicitud de extracción en tu proveedor de Git (GitHub o GitLab).
+    Tu documentación publicada se genera desde una **rama de despliegue**, normalmente llamada `main`. Las demás ramas te permiten trabajar en cambios de forma independiente. Nada de lo que hagas en una rama afecta a tu sitio publicado hasta que lo fusionas con tu rama de despliegue mediante una solicitud de extracción (pull request, PR).
+
+    Cuando creas una rama, el editor web crea una nueva rama en tu repositorio. Puedes buscar ramas y cambiar entre ellas desde el menú desplegable de ramas de la barra de herramientas. Si tienes cambios sin guardar, el editor te permite llevarlos a la nueva rama o dejarlos en tu rama actual.
   </Accordion>
-  <Accordion title="Merge">
-    Combinar cambios de una rama en otra. Después de que tu equipo revisa y aprueba una solicitud de extracción, fusionar la rama incorpora tus cambios en la rama de implementación y los publica.
+
+  <Accordion title="Rama de despliegue">
+    La rama desde la que se genera tu sitio de documentación publicado, normalmente llamada `main`. Los cambios que se fusionan en esta rama se despliegan automáticamente en tu sitio.
   </Accordion>
+
+  <Accordion title="Solicitud de extracción (pull request, PR)">
+    Una propuesta para fusionar cambios de una rama en otra. Las solicitudes de extracción permiten a tu equipo revisar y debatir los cambios antes de que se publiquen.
+
+    Cuando publicas cambios en una rama de funcionalidad, el editor web crea una solicitud de extracción (pull request, PR). Tu equipo revisa y fusiona la solicitud de extracción (pull request, PR) en tu proveedor de Git (GitHub o GitLab).
+  </Accordion>
+
+  <Accordion title="Fusión">
+    Combinar cambios de una rama en otra. Después de que tu equipo revise y apruebe una solicitud de extracción (pull request, PR), al fusionar la rama tus cambios se incorporan a la rama de despliegue y se publican.
+  </Accordion>
+
   <Accordion title="Conflicto">
-    Ocurre cuando dos personas modifican de forma distinta la misma parte de un archivo. El editor ayuda a resolver cualquier conflicto que ocurra en tus ramas.
+    Ocurre cuando dos personas cambian de forma distinta la misma parte de un archivo. El editor te ayuda a resolver los conflictos que surjan en tus ramas.
   </Accordion>
-  <Accordion title="Diff">
-    Una comparación que muestra las diferencias entre dos versiones de un archivo. Al revisar solicitudes de extracción, los diffs resaltan exactamente qué cambió. El editor web puede mostrar diffs de archivos individuales cuando revisas los cambios de una branch antes de publicar.
+
+  <Accordion title="Diferencia">
+    Una comparación que muestra las diferencias entre dos versiones de un archivo. Al revisar solicitudes de extracción (pull request, PR), las diferencias resaltan exactamente qué cambió. El editor web puede mostrar diferencias de archivos individuales cuando revisas los cambios de una rama antes de publicarlos.
   </Accordion>
 </AccordionGroup>
 
@@ -66,10 +72,10 @@ Estos son los conceptos de Git que encontrarás con mayor frecuencia al usar el 
 
 Cada acción que realizas en el editor web corresponde a una operación de Git.
 
-| Tu acción en el editor | Operación de Git en segundo plano |
-|---|---|
-| Abrir un archivo | Obtener la versión más reciente desde tu repositorio |
-| Save changes | Crear una **confirmación**, una instantánea de tus cambios en el historial del proyecto |
-| Crear una branch | Crear una **branch**, una línea de trabajo independiente que no afecta tu sitio en vivo a menos que decidas publicarla |
-| Publicar en tu rama de implementación | Enviar directamente tu confirmación, lo que inicia una implementación |
-| Publicar en una branch de funcionalidades | Crear una **solicitud de extracción**, una propuesta para fusionar tus cambios en la rama de implementación |
+| Tu acción en el editor                | Operación de Git en segundo plano                                                                                          |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Abrir un archivo                      | Obtener la versión más reciente de tu repositorio                                                                          |
+| Guardar cambios                       | Crear un **commit**, una instantánea de tus cambios en el historial del proyecto                                           |
+| Crear una rama                        | Crear una **rama**, una línea de trabajo independiente que no afecta a tu sitio publicado a menos que decidas publicarla   |
+| Publicar en tu rama de despliegue     | Enviar tu commit directamente, lo que desencadena un despliegue                                                            |
+| Publicar en una rama de funcionalidad | Crear una **solicitud de extracción (pull request, PR)**, una propuesta para fusionar tus cambios en la rama de despliegue |

@@ -1,29 +1,29 @@
 ---
 title: "Mermaid"
-description: "使用 Mermaid 语法在文档中创建流程图、序列图和其他可视化图表，并自动渲染。"
-keywords: ["Mermaid", "flowcharts", "diagrams"]
+description: "使用 Mermaid 语法在文档中创建流程图、时序图和其他可视化图表，并自动渲染。"
+keywords: ["Mermaid", "流程图", "图表"]
 ---
 
-[Mermaid](https://mermaid.js.org/) 支持使用文本与代码构建流程图、时序图、甘特图及其他各类图表。
+[Mermaid](https://mermaid.js.org/) 可让你通过文本和代码创建流程图、时序图、甘特图及其他图表。
 
-有关支持的图表类型与语法的完整列表，请参阅 [Mermaid 文档](https://mermaid.js.org/intro/)。
+如需查看支持的所有图表类型及其语法，请参阅 [Mermaid 文档](https://mermaid.js.org/intro/)。
 
 ```mermaid placement="top-right"
   flowchart LR
-    subgraph subgraph1
+    subgraph 子图 1
         direction TB
-        top1[top] --> bottom1[bottom]
+        top1[顶部] --> bottom1[底部]
     end
-    subgraph subgraph2
+    subgraph 子图 2
         direction TB
-        top2[top] --> bottom2[bottom]
+        top2[顶部] --> bottom2[底部]
     end
     %% ^ These subgraphs are identical, except for the links to them:
 
     %% Link *to* subgraph1: subgraph1 direction is maintained
     outside --> subgraph1
-    %% subgraph2 内部的链接:
-    %% subgraph2 继承顶级图的方向 (LR)
+    %% Link *within* subgraph2:
+    %% subgraph2 inherits the direction of the top-level graph (LR)
     outside ---> top2
 ```
 
@@ -38,24 +38,23 @@ keywords: ["Mermaid", "flowcharts", "diagrams"]
         direction TB
         top2[top] --> bottom2[bottom]
     end
-    %% ^ 这些子图完全相同，除了指向它们的链接：
+    %% ^ 这两个子图完全相同，区别仅在于指向它们的链接：
 
-    %% 指向 subgraph1 的链接：subgraph1 的方向保持不变
+    %% 链接*指向* subgraph1：subgraph1 的方向保持不变
     outside --> subgraph1
-    %% subgraph2 内部的链接：
-    %% subgraph2 继承顶级图的方向 (LR)
+    %% 链接*位于* subgraph2 *内部*：
+    %% subgraph2 继承顶层图的方向（LR）
     outside ---> top2
 ```
 ````
-
 
 <div id="elk-layout-support">
   ## ELK 布局支持
 </div>
 
-Mintlify 支持将 [ELK（Eclipse Layout Kernel）](https://www.eclipse.org/elk/) 布局引擎用于 Mermaid 图表。ELK 会优化元素排布，减少重叠并提升可读性，对大型或复杂图表尤其有用。
+Mintlify 支持在 Mermaid 图中使用 [ELK (Eclipse Layout Kernel)](https://www.eclipse.org/elk/) 布局引擎。ELK 可优化图形布局，减少重叠并提升可读性，因此尤其适合大型或复杂的图表。
 
-要在 Mermaid 图表中使用 ELK 布局，请在图表定义的开头添加 `%%{init: {'flowchart': {'defaultRenderer': 'elk'}}}%%` 指令：
+要在 Mermaid 图中使用 ELK 布局，请在图表开头添加 `%%{init: {'flowchart': {'defaultRenderer': 'elk'}}}%%` 指令：
 
 ````mdx ELK layout example
 ```mermaid
@@ -69,36 +68,35 @@ flowchart LR
 ```
 ````
 
-
 <div id="interactive-controls">
-  ## 交互式控件
+  ## 交互控件
 </div>
 
-所有 Mermaid 图表都包含交互式缩放和平移控件。默认情况下，当图表 height 超过 120px 时会显示这些控件。
+所有 Mermaid 图表都包含可交互的缩放和平移控件。默认情况下，当图表高度超过 120px 时，会显示这些控件。
 
-- **放大/缩小**：使用缩放按钮来放大或缩小图表。
-- **平移**：使用方向箭头在图表中移动视图。
-- **重置视图**：点击重置按钮返回到初始视图。
+* **放大/缩小**：使用缩放按钮可放大或缩小图表。
+* **平移**：使用方向箭头在图表中四处移动。
+* **重置视图**：点击重置按钮可恢复到初始视图。
 
-在处理无法完全显示在视口中的大型或复杂图表时，这些控件尤其有用。
+对于无法在视口中完整显示的大型或复杂图表，这些控件尤其有用。
 
 <div id="properties">
   ## 属性
 </div>
 
 <ResponseField name="actions" type="boolean">
-  显示或隐藏交互控件。设置该属性后会覆盖默认行为（当图表的 height 超过 120px 时显示控件）。
+  显示或隐藏交互控件。设置后，将覆盖默认行为 (默认情况下，当图表高度超过 120px 时显示控件) 。
 </ResponseField>
 
 <ResponseField name="placement" type="string" default="bottom-right">
-  交互控件的位置。可选值：`top-left`、`top-right`、`bottom-left`、`bottom-right`。
+  交互控件的位置。可选项：`top-left`、`top-right`、`bottom-left`、`bottom-right`。
 </ResponseField>
 
 <div id="examples">
   ### 示例
 </div>
 
-在示意图中隐藏控件：
+隐藏图表中的控件：
 
 ````mdx
 ```mermaid actions={false}
@@ -107,7 +105,7 @@ flowchart LR
 ```
 ````
 
-将控件显示在左上角：
+在左上角显示控件：
 
 ````mdx
 ```mermaid placement="top-left"
@@ -116,7 +114,7 @@ flowchart LR
 ```
 ````
 
-同时使用这两个属性：
+将这两个属性结合起来：
 
 ````mdx
 ```mermaid placement="top-left" actions={true}
@@ -125,15 +123,14 @@ flowchart LR
 ```
 ````
 
-
 <div id="syntax">
   ## 语法
 </div>
 
-要创建 Mermaid 图表，请将图表定义写入 Mermaid 代码块中。
+要创建 Mermaid 图表，请在 Mermaid 代码块中编写图表定义。
 
 ````mdx
 ```mermaid
-// 在此处编写您的 mermaid 图表代码
+// 在此处填写您的 Mermaid 图表代码
 ```
 ````

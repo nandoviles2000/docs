@@ -1,19 +1,19 @@
 ---
 title: "示例"
-description: "在桌面设备右侧边栏面板中展示代码示例，与 API 文档并排显示请求和响应样本。"
-keywords: ["RequestExample", "ResponseExample", "code examples", "request-response"]
+description: "在桌面设备的右侧边栏面板中显示代码示例，以便在 API 文档旁展示请求和响应示例。"
+keywords: ["RequestExample", "ResponseExample", "代码示例", "请求-响应"]
 ---
 
-`<RequestExample>` 和 `<ResponseExample>` 组件会在右侧边栏显示代码块，形成双栏布局，使用户在滚动阅读内容时始终能看到示例。请将这些组件用于 API 文档，但它们适用于所有页面。
+`<RequestExample>` 和 `<ResponseExample>` 组件会在右侧边栏中显示代码块，创建双栏布局，让用户在滚动浏览内容时仍能看到示例。请将这些组件用于 API 文档，但它们也适用于所有页面。
 
 常见用例：
 
-* 带有请求与响应示例的 API 端点文档
-* 与说明性文字并列的配置示例
-* 供用户在按步骤操作时参考的代码示例
+* 包含请求和响应示例的 API 端点文档
+* 与说明文字并排显示的配置示例
+* 用户按说明操作时需要参考的代码示例
 * 教程中的前后对比示例
 
-在移动设备上，`<RequestExample>` 和 `<ResponseExample>` 组件会显示为常规代码块，用户可以直接滚动略过。
+在移动设备上，`<RequestExample>` 和 `<ResponseExample>` 组件会显示为普通代码块，用户可以直接滚动查看。
 
 <RequestExample>
   ```bash Request
@@ -32,14 +32,14 @@ keywords: ["RequestExample", "ResponseExample", "code examples", "request-respon
   ## RequestExample
 </div>
 
-使用 `<RequestExample>` 将代码示例固定在右侧边栏。该组件与 [CodeGroup](/zh/components/code-groups) 类似，但会在侧边栏显示代码，而非内联展示。
+使用 `<RequestExample>` 可将代码示例固定在右侧边栏。该组件的用法与 [CodeGroup](/zh/components/code-groups) 组件类似，但会将代码显示在侧边栏中，而不是直接内嵌在正文中。
 
-你可以在一个 `<RequestExample>` 中包含多个代码块。每个代码块都必须包含 title 属性。
+你可以在一个 `<RequestExample>` 中包含多个代码块。每个代码块都必须带有 `title` 属性。
 
 ````mdx RequestExample
 <RequestExample>
 
-```bash 请求
+```bash Request
 curl --request POST \
   --url https://dog-api.kinduff.com/api/facts
 ```
@@ -51,12 +51,12 @@ curl --request POST \
   ## ResponseExample
 </div>
 
-`<ResponseExample>` 组件会将代码示例固定在右侧边栏，位于同一页面中任意 `<RequestExample>` 的内容下方。
+`<ResponseExample>` 组件会将代码示例固定在右侧边栏中，并显示在同一页面上任意 `<RequestExample>` 内容的下方。
 
 ````mdx ResponseExample
 <ResponseExample>
 
-```json 响应
+```json Response
 { "status": "success" }
 ```
 
@@ -67,8 +67,8 @@ curl --request POST \
   ## 属性
 </div>
 
-`<RequestExample>` 和 `<ResponseExample>` 均接受以下属性：
+`<RequestExample>` 和 `<ResponseExample>` 都支持以下属性：
 
 <ResponseField name="dropdown" type="boolean">
-  显示语言下拉菜单用于在代码块之间切换，而非默认的选项卡布局。
+  显示用于在代码块之间切换的语言下拉菜单，而非默认的 Tab 布局。
 </ResponseField>

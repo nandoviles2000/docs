@@ -1,71 +1,71 @@
 ---
 title: "Journaux d’audit"
-description: "Consultez les journaux d'audit pour suivre les actions effectuées par les membres de l'organisation, notamment les déploiements, les modifications de configuration et les mises à jour de permissions."
-keywords: ["surveillance", "suivi des activités", "sécurité", "conformité"]
+description: "Consultez les journaux d’audit pour suivre les actions effectuées par les membres de l’organisation, y compris les déploiements, les modifications de configuration et les mises à jour des autorisations."
+keywords: ["surveillance", "suivi de l’activité", "sécurité", "conformité"]
 ---
 
 <Info>
-  Les journaux d’audit sont disponibles avec les [Enterprise plans](https://mintlify.com/pricing?ref=audit-logs).
+  Les journaux d’audit sont disponibles sur [Enterprise plans](https://mintlify.com/pricing?ref=audit-logs).
 </Info>
 
-Utilisez les journaux d’audit pour surveiller et suivre les actions effectuées par les membres de votre organisation. Les journaux d’audit fournissent un historique des activités à des fins de sécurité, de conformité et de résolution des problèmes.
+Utilisez les journaux d’audit pour surveiller les actions effectuées par les membres de votre organisation. Les journaux d’audit fournissent un historique des activités à des fins de sécurité, de conformité et de dépannage.
 
-- **Surveiller la sécurité** : Suivez les tentatives d’authentification et les modifications d’autorisations.
-- **Assurer la conformité** : Conservez des traces de toutes les activités de l’organisation.
-- **Résoudre les problèmes** : Analysez les actions ayant échoué et leurs causes.
-- **Suivre les changements** : Vérifiez qui a effectué des modifications spécifiques et quand.
+* **Surveiller la sécurité** : Suivez les tentatives d’authentification et les modifications des autorisations.
+* **Assurer la conformité** : Conservez un historique de toutes les activités de l’organisation.
+* **Résoudre les problèmes** : Analysez les actions ayant échoué et leurs causes.
+* **Suivre les modifications** : Vérifiez qui a effectué des modifications précises et à quel moment.
 
 <div id="view-audit-logs">
-  ## Afficher les journaux d&#39;audit
+  ## Consulter les journaux d’audit
 </div>
 
-Accédez à la page [Audit log](https://dashboard.mintlify.com/settings/organization/audit-logs) de votre Dashboard pour consulter les journaux d&#39;audit.
+Accédez à la page [Audit log](https://dashboard.mintlify.com/settings/organization/audit-logs) de votre tableau de bord pour consulter les journaux d’audit.
 
-Cliquez sur n&#39;importe quelle entrée de journal pour la développer et afficher des informations détaillées, notamment :
+Cliquez sur une entrée du journal pour la déplier et afficher des informations détaillées, notamment :
 
-| Champ     | Description                                                     |
-| --------- | --------------------------------------------------------------- |
-| Timestamp | Date et heure auxquelles l&#39;action s&#39;est produite        |
-| Actor     | Adresse e-mail de l&#39;utilisateur qui a effectué l&#39;action |
-| Action    | Action effectuée par l&#39;utilisateur                          |
-| Category  | Type de ressource affectée                                      |
-| Outcome   | Indique si l&#39;action a réussi ou échoué                      |
-| Metadata  | Contexte supplémentaire concernant l&#39;action                 |
+| Champ       | Description                                             |
+| ----------- | ------------------------------------------------------- |
+| Horodatage  | Date et heure auxquelles l’action a eu lieu             |
+| Acteur      | Adresse e-mail de l’utilisateur ayant effectué l’action |
+| Action      | Action effectuée par l’utilisateur                      |
+| Catégorie   | Type de ressource affectée                              |
+| Résultat    | Indique si l’action a réussi ou échoué                  |
+| Métadonnées | Contexte supplémentaire sur l’action                    |
 
 <div id="filter-logs">
   ### Filtrer les journaux
 </div>
 
-Filtrez les journaux d’audit pour trouver des activités spécifiques.
+Filtrez les journaux d’audit pour repérer des activités précises.
 
-**Plage de dates** : Sélectionnez une plage de dates prédéfinie pour afficher les journaux sur une période spécifique.
+**Plage de dates** : sélectionnez une plage de dates prédéfinie pour afficher les journaux sur une période donnée.
 
-**Catégorie** : Filtrez les journaux par type d’action.
+**Catégorie** : filtrez les journaux selon le type d’action.
 
-| Catégorie        | Description                                                        |
-|------------------|--------------------------------------------------------------------|
-| Organization     | Mises à jour des paramètres de l’organisation et demandes de suppression. |
-| Member           | Invitations, suppressions et changements de rôle des membres de l’équipe. |
-| Deployment       | Modifications de la configuration de déploiement, y compris les domaines personnalisés, l’authentification, les sources Git et les identifiants client MCP. |
-| Preview deployment | Création de déploiements de prévisualisation, mises à jour et changements d’authentification. |
-| API key          | Création et suppression de clés d’API et de clés d’API de découverte. |
-| Assistant        | Mises à jour des paramètres de l’Assistant, tels que l’e-mail de redirection, les sites de recherche web et les questions de départ. |
-| PDF export       | Génération et suppression d’exportations PDF.                      |
-| Integration      | Installations et suppressions de GitHub, Slack, Linear et Notion. |
-| Billing          | Mises à jour d’abonnements, achats de modules complémentaires et affichage des factures. |
-| Quota            | Modifications de la politique de dépassement de quota et de la configuration des alertes. |
-| User             | Paramètres de notification des utilisateurs individuels.           |
-| Workflows        | Configurations de workflows et gestion des référentiels.           |
-| Audit log        | Consultations et exportations des journaux d’audit.                |
-| Auth             | Tentatives de connexion, déconnexions et créations de sessions.    |
+| Catégorie                       | Description                                                                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Organisation                    | Mises à jour des paramètres de l’organisation et demandes de suppression.                                                                                   |
+| Membre                          | Invitations de membres de l’équipe, suppressions et changements de rôle.                                                                                    |
+| Déploiement                     | Modifications de la configuration du déploiement, y compris les domaines personnalisés, l’authentification, les sources Git et les identifiants client MCP. |
+| Déploiement de prévisualisation | Création et mises à jour des déploiements de prévisualisation, ainsi que modifications de l’authentification.                                               |
+| Clé API                         | Création et suppression des clés API et des clés API de découverte.                                                                                         |
+| Assistant                       | Mises à jour des paramètres d’Assistant, comme l’adresse e-mail de déviation, les sites de recherche sur le Web et les questions initiales.                 |
+| Export PDF                      | Génération et suppression des exports PDF.                                                                                                                  |
+| Intégration                     | Installations et suppressions de GitHub, Slack, Linear et Notion.                                                                                           |
+| Facturation                     | Mises à jour de l’abonnement, achats de modules complémentaires et consultation des factures.                                                               |
+| Quota                           | Modifications de la politique de dépassement et de la configuration des alertes.                                                                            |
+| Utilisateur                     | Paramètres de notification de chaque utilisateur.                                                                                                           |
+| Flux de travail                 | Configurations des flux de travail et gestion du dépôt.                                                                                                     |
+| Journal d’audit                 | Consultations et exportations des journaux d’audit.                                                                                                         |
+| Auth                            | Tentatives de connexion, déconnexions et créations de session.                                                                                              |
 
 <div id="export-audit-logs">
   ## Exporter les journaux d’audit
 </div>
 
-Exportez les journaux d’audit au format CSV pour l’analyse, les rapports de conformité ou l’archivage à long terme.
+Exportez les journaux d’audit au format CSV à des fins d’analyse, de conformité ou d’archivage à long terme.
 
-1. Accédez à la page [Audit log](https://dashboard.mintlify.com/settings/organization/audit-logs) de votre Dashboard.
-1. Le cas échéant, appliquez des filtres pour restreindre les journaux que vous souhaitez exporter.
-1. Cliquez sur **Export CSV**.
-1. Mintlify vous envoie un e‑mail avec un lien de téléchargement lorsque l’export est prêt.
+1. Accédez à la page [Audit log](https://dashboard.mintlify.com/settings/organization/audit-logs) de votre tableau de bord.
+2. Si nécessaire, appliquez des filtres pour affiner les journaux à exporter.
+3. Cliquez sur **Export CSV**.
+4. Mintlify vous envoie un e-mail contenant un lien de téléchargement lorsque l’export est prêt.

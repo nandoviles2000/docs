@@ -1,15 +1,15 @@
 ---
 title: "Infobulles"
-description: "Ajoutez des infobulles pour afficher des définitions contextuelles et des explications lorsque les utilisateurs survolent des termes, abréviations ou concepts techniques dans votre documentation."
-keywords: ["infobulles", "aide au survol", "informations contextuelles", "explicatif", "définitions"]
+description: "Ajoutez des infobulles pour afficher des définitions et des explications contextuelles lorsque les utilisateurs survolent des termes, des abréviations ou des concepts techniques dans votre documentation."
+keywords: ["infobulles", "aide contextuelle", "informations contextuelles", "explicatives", "définitions"]
 ---
 
-Utilisez des infobulles pour fournir des précisions ou des définitions lorsqu’un utilisateur survole un texte. Les infobulles peuvent inclure des liens d’appel à l’action facultatifs.
+Utilisez des infobulles pour fournir des explications ou définitions supplémentaires lorsqu’un utilisateur survole un texte. Les infobulles peuvent inclure des liens d’appel à l’action facultatifs.
 
-**Exemple** : <Tooltip headline="API" tip="Application Programming Interface : un ensemble de protocoles permettant à des applications logicielles de communiquer." cta="Lire notre guide de l’API" href="/fr/api-reference">API</Tooltip> La documentation API aide les développeurs à comprendre comment intégrer votre service.
+**Exemple** : la documentation <Tooltip headline="API" tip="Interface de programmation d’applications : un ensemble de protocoles permettant à des applications logicielles de communiquer." cta="Lire notre guide de l’API" href="/fr/api-reference">API</Tooltip> aide les développeurs à comprendre comment intégrer votre service.
 
 ```mdx Tooltip example wrap
-<Tooltip headline="API" tip="Application Programming Interface : un ensemble de protocoles permettant à des applications logicielles de communiquer." cta="Lire notre guide de l'API" href="/api-reference">API</Tooltip> La documentation API aide les développeurs à comprendre comment intégrer votre service.
+<Tooltip headline="API" tip="Application Programming Interface: a set of protocols for software applications to communicate." cta="Read our API guide" href="/api-reference">API</Tooltip> documentation helps developers understand how to integrate with your service.
 ```
 
 <div id="properties">
@@ -25,9 +25,9 @@ Utilisez des infobulles pour fournir des précisions ou des définitions lorsqu�
 </ResponseField>
 
 <ResponseField name="cta" type="string">
-  Le texte de l’appel à l’action pour un lien dans l’infobulle.
+  Le texte d’appel à l’action d’un lien dans l’infobulle.
 </ResponseField>
 
 <ResponseField name="href" type="string">
-  URL du lien d’appel à l’action. Requis lors de l’utilisation de `cta`.
+  URL du lien d’appel à l’action. Obligatoire lorsque vous utilisez `cta`.
 </ResponseField>

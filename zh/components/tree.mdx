@@ -1,13 +1,13 @@
 ---
-title: "树"
-description: "使用树组件显示带有可折叠节点和路径名语法高亮的层级文件与文件夹结构。"
+title: "Tree"
+description: "使用 Tree 组件显示层级化的文件和文件夹结构，支持可折叠节点以及路径名称的语法高亮。"
 keywords: ["树", "文件树", "文件夹结构", "层级导航", "文件系统"]
 ---
 
-使用树组件来展示层级结构，例如文件系统、项目目录或嵌套内容。Tree 组件支持键盘导航和无障碍访问特性。
+使用 Tree 组件展示文件系统、项目目录或嵌套内容等层级结构。Tree 组件支持键盘导航和无障碍功能。
 
 <div id="basic-tree">
-  ## 基础目录结构
+  ## 基本目录树
 </div>
 
 <Tree>
@@ -46,12 +46,11 @@ keywords: ["树", "文件树", "文件夹结构", "层级导航", "文件系统"
 </Tree>
 ```
 
-
 <div id="nested-folders">
   ## 嵌套文件夹
 </div>
 
-通过将 `Tree.Folder` 组件相互嵌套来创建深层级结构。
+通过将 `Tree.Folder` 组件层层嵌套，创建多层嵌套结构。
 
 <Tree>
   <Tree.Folder name="app" defaultOpen>
@@ -100,21 +99,20 @@ keywords: ["树", "文件树", "文件夹结构", "层级导航", "文件系统"
 </Tree>
 ```
 
-
 <div id="keyboard-navigation">
   ## 键盘导航
 </div>
 
 Tree 组件支持键盘导航。
 
-- **方向键**：在可见条目之间向上或向下移动。
-- **右箭头**：展开关闭的文件夹，或移动到已展开文件夹的第一个子项。
-- **左箭头**：收起已展开的文件夹，或移动到父级文件夹。
-- **Home**：跳转到 Tree 中的第一个条目。
-- **End**：跳转到 Tree 中最后一个可见条目。
-- **Enter/空格**：切换文件夹的展开/收起状态。
-- **\***：展开当前层级的所有同级文件夹。
-- **前瞻式搜索**：输入字符以跳转到以这些字符开头的条目。
+* **方向键**：在可见项之间上下移动。
+* **右方向键**：展开已关闭的文件夹，或移动到已打开文件夹的第一个子项。
+* **左方向键**：折叠已打开的文件夹，或移动到父文件夹。
+* **Home**：跳转到树中的第一个项。
+* **End**：跳转到树中最后一个可见项。
+* **Enter/Space**：切换文件夹的展开/折叠状态。
+* *****：展开当前层级中的所有同级文件夹。
+* **键入搜索**：输入字符，跳转到以这些字符开头的项。
 
 <div id="properties">
   ## 属性
@@ -125,15 +123,15 @@ Tree 组件支持键盘导航。
 </div>
 
 <ResponseField name="name" type="string" required>
-  在树形结构中显示的文件夹名称。
+  树中显示的文件夹名称。
 </ResponseField>
 
 <ResponseField name="defaultOpen" type="boolean" default="false">
-  文件夹是否在默认情况下展开。
+  文件夹默认是否展开。
 </ResponseField>
 
 <ResponseField name="openable" type="boolean" default="true">
-  文件夹是否可以展开和收起。对于不可交互的文件夹，将其设置为 false。
+  文件夹是否可展开和折叠。对于非交互式文件夹，请将其设为 false。
 </ResponseField>
 
 <div id="treefile">
@@ -141,5 +139,5 @@ Tree 组件支持键盘导航。
 </div>
 
 <ResponseField name="name" type="string" required>
-  在树状视图中显示的文件名。
+  树中显示的文件名。
 </ResponseField>

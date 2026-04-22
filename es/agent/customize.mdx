@@ -1,18 +1,18 @@
 ---
-title: "Personalizar el comportamiento del agente"
-description: "Personaliza el comportamiento del agente con un archivo de configuración `AGENTS.md` para controlar cómo gestiona las tareas de documentación y sigue tus convenciones."
-keywords: ["AGENTS.md", "agent configuration", "custom instructions", "agent customization"]
+title: "Personaliza el comportamiento del agente"
+description: "Personaliza el comportamiento del agente con un archivo de configuración `AGENTS.md` para controlar cómo el agente gestiona las tareas de documentación y sigue tus convenciones."
+keywords: ["AGENTS.md", "configuración del agente", "instrucciones personalizadas", "personalización del agente"]
 ---
 
-Crea un archivo `.mintlify/AGENTS.md` en la raíz de tu proyecto de documentación para personalizar el comportamiento del agente (también se acepta `Agents.md` como nombre de archivo).
+Crea un archivo `.mintlify/AGENTS.md` en la raíz de tu proyecto de documentación para personalizar el comportamiento del agente (`Agents.md` también se acepta como nombre de archivo).
 
 <Warning>
-  Coloca tu archivo `AGENTS.md` dentro del directorio `.mintlify/`, no en la raíz de tu proyecto. Si almacenas el archivo en la raíz de tu proyecto, tus instrucciones personalizadas serán accesibles públicamente a través de la ruta `/agents.md`. El directorio `.mintlify/` no se sirve públicamente, por lo que tu archivo `AGENTS.md` no será accesible cuando esté en ese directorio.
-  
+  Coloca tu archivo `AGENTS.md` dentro del directorio `.mintlify/`, no en la raíz de tu proyecto. Si almacenas el archivo en la raíz de tu proyecto, tus instrucciones personalizadas serán accesibles públicamente a través de la ruta `/agents.md`. El directorio `.mintlify/` no se expone públicamente, por lo que tu archivo `AGENTS.md` no será accesible cuando esté en ese directorio.
+
   Si necesitas almacenar tu archivo `AGENTS.md` en la raíz de tu proyecto o en cualquier otro directorio, agrégalo a tu archivo [`.mintignore`](/es/organize/mintignore) para excluirlo de tu sitio de documentación.
 </Warning>
 
-Añade todas las instrucciones que quieras que el agente siga. El agente agrega estas instrucciones a su prompt del sistema, por lo que se aplican a todas las tareas, tanto si usas el agente en tu dashboard, en Slack o mediante la API.
+Agrega las instrucciones que quieras que siga el agente. El agente añade estas instrucciones a su prompt del sistema, por lo que se aplican a todas las tareas, ya sea que uses el agente en tu panel, en Slack o a través de la API.
 
 <div id="what-to-include-in-agentsmd">
   ## Qué incluir en AGENTS.md
@@ -20,37 +20,37 @@ Añade todas las instrucciones que quieras que el agente siga. El agente agrega 
 
 Considera agregar instrucciones sobre:
 
-- **Preferencias de estilo**: Voz, tono, formato y terminología específica de tu documentación.
-- **Estándares de código**: Lenguajes de programación, frameworks y convenciones de codificación que se deben usar en los ejemplos.
-- **Requisitos de contenido**: Qué secciones o información se deben incluir para diferentes tipos de páginas.
-- **Contexto del proyecto**: Detalles específicos sobre tu producto, arquitectura o base de usuarios que guíen las decisiones sobre la documentación.
+* **Preferencias de estilo**: Voz, tono, formato y terminología específicos de tu documentación.
+* **Estándares de código**: Lenguajes de programación, frameworks y convenciones de código que deben usarse en los ejemplos.
+* **Requisitos de contenido**: Qué secciones o información incluir para distintos tipos de páginas.
+* **Contexto del proyecto**: Detalles específicos sobre tu producto, arquitectura o usuarios que orienten las decisiones de documentación.
 
 <div id="example-agentsmd-file">
   ## Ejemplo de archivo AGENTS.md
 </div>
 
 ```markdown .mintlify/AGENTS.md
-# Documentation agent instructions
+# Instrucciones para el agente de documentación
 
-## Code examples
-- Use TypeScript for all code examples. Our users are primarily TypeScript developers.
-- Always include error handling in API call examples.
-- Show both success and error response examples for all endpoints.
-- Include import statements at the top of code examples.
+## Ejemplos de código
+- Usa TypeScript en todos los ejemplos de código. Nuestros usuarios son principalmente desarrolladores de TypeScript.
+- Incluye siempre el manejo de errores en los ejemplos de llamadas a la API.
+- Muestra ejemplos de respuestas tanto exitosas como de error para todos los endpoints.
+- Incluye las sentencias de importación al inicio de los ejemplos de código.
 
-## API documentation standards
-- Every endpoint must document: authentication requirements, rate limits, and common error codes.
-- Use real-world parameter values in examples (not foo/bar placeholders).
-- Include a complete request/response cycle for each endpoint.
+## Estándares de documentación de la API
+- Cada endpoint debe documentar: requisitos de autenticación, límites de tasa y códigos de error comunes.
+- Usa valores de parámetros reales en los ejemplos (no marcadores de posición como foo/bar).
+- Incluye un ciclo completo de solicitud/respuesta para cada endpoint.
 
-## Style and formatting
-- Write for developers with 2-5 years of experience. Don't oversimplify, but explain non-obvious concepts.
-- Use active voice and second person ("you").
-- Date format: ISO 8601 (YYYY-MM-DD).
-- When referencing UI elements, use bold: **Settings** button.
+## Estilo y formato
+- Escribe para desarrolladores con 2 a 5 años de experiencia. No simplifiques en exceso, pero explica los conceptos no evidentes.
+- Usa voz activa y segunda persona ("tú").
+- Formato de fecha: ISO 8601 (YYYY-MM-DD).
+- Al hacer referencia a elementos de la interfaz, usa negrita: botón **Settings**.
 
-## What to include
-- Add prerequisite sections to guides when users need API keys, environment setup, or dependencies.
-- Include "Next steps" sections linking to related documentation.
-- Add troubleshooting sections for common issues we see in support tickets.
+## Qué incluir
+- Agrega secciones de requisitos previos a las guías cuando los usuarios necesiten claves de API, configuración del entorno o dependencias.
+- Incluye secciones de "Próximos pasos" con enlaces a documentación relacionada.
+- Agrega secciones de solución de problemas para los problemas comunes que vemos en los tickets de soporte.
 ```

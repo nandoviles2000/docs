@@ -1,17 +1,17 @@
 ---
 title: "Configuration d’un monorepo"
-description: "Configurez le chemin de la documentation et le répertoire de contenu dans un projet monorepo afin que Mintlify déploie uniquement depuis votre dossier de documentation désigné."
-keywords: ["monorepo", "content directory", "multi-project repository"]
+description: "Configurez le chemin d’accès à la documentation et le répertoire de contenu dans un projet en monorepo afin que Mintlify ne déploie qu’à partir du dossier de documentation défini."
+keywords: ["monorepo", "répertoire de contenu", "dépôt multi-projets"]
 ---
 
-Configurez Mintlify pour déployer la documentation depuis un répertoire spécifique au sein d’un monorepo. Cette configuration vous permet de conserver la documentation aux côtés de votre code dans des référentiels contenant plusieurs projets ou services.
+Configurez Mintlify pour déployer la documentation à partir d’un répertoire spécifique dans un monorepo. Cette configuration vous permet de conserver la documentation aux côtés de votre code dans des dépôts contenant plusieurs projets ou services.
 
 <div id="prerequisites">
   ## Prérequis
 </div>
 
-* Accès administrateur à votre projet Mintlify.
-* Fichiers de documentation organisés dans un répertoire dédié au sein de votre monorepo.
+* Un accès administrateur à votre projet Mintlify.
+* Des fichiers de documentation organisés dans un répertoire dédié au sein de votre monorepo.
 * Un fichier `docs.json` valide dans votre répertoire de documentation.
 
 <div id="configure-monorepo-deployment">
@@ -19,29 +19,24 @@ Configurez Mintlify pour déployer la documentation depuis un répertoire spéci
 </div>
 
 <Steps>
-<Step title="Accéder aux paramètres Git">
-Accédez à [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) dans votre Dashboard.
+  <Step title="Accéder aux paramètres Git">
+    Accédez à [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) dans votre tableau de bord.
 
-<Frame>
-<img
-  className="block dark:hidden my-0 pointer-events-none"
-  src="/images/monorepo-light.png"
-  alt="Le panneau des paramètres du projet dans le menu Git Settings. L’option Configurer en tant que monorepo est activée et un chemin vers le répertoire /docs est renseigné."
-/>
-<img
-  className="hidden dark:block my-0 pointer-events-none"
-  src="/images/monorepo-dark.png"
-  alt="Le panneau des paramètres du projet dans le menu Git Settings. L’option Configurer en tant que monorepo est activée et un chemin vers le répertoire /docs est renseigné."
-/>
-</Frame>
+    <Frame>
+      <img className="block dark:hidden my-0 pointer-events-none" src="/images/monorepo-light.png" alt="Le panneau des paramètres du projet dans le menu Git Settings. L’option Set up as monorepo est activée et un chemin vers le répertoire /docs est indiqué." />
 
-</Step>
-<Step title="Définir le chemin de votre documentation">
-1. Activez l’option **Configurer en tant que monorepo**.
-2. Saisissez le chemin relatif vers votre répertoire de documentation. Par exemple, si votre documentation se trouve dans le répertoire `docs`, saisissez `/docs`.
-<Note>
-  N’incluez pas de barre oblique finale dans le chemin.
-</Note>
-3. Sélectionnez **Enregistrer les modifications**.
-</Step>
+      <img className="hidden dark:block my-0 pointer-events-none" src="/images/monorepo-dark.png" alt="Le panneau des paramètres du projet dans le menu Git Settings. L’option Set up as monorepo est activée et un chemin vers le répertoire /docs est indiqué." />
+    </Frame>
+  </Step>
+
+  <Step title="Définir le chemin de votre documentation">
+    1. Activez l’option **Set up as monorepo**.
+    2. Saisissez le chemin relatif vers votre répertoire de documentation. Par exemple, si votre documentation se trouve dans le répertoire `docs`, saisissez `/docs`.
+
+    <Note>
+      N’ajoutez pas de barre oblique finale au chemin.
+    </Note>
+
+    3. Sélectionnez **Save changes**.
+  </Step>
 </Steps>

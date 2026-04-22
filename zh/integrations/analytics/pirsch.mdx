@@ -1,15 +1,15 @@
 ---
 title: "Pirsch"
-description: "将 Pirsch 集成到你的 Mintlify 文档，实现符合 GDPR 的无 Cookie 分析跟踪，不收集个人数据。"
-keywords: ["Pirsch Analytics", "隐私分析", "identification code", "符合 GDPR"]
+description: "将 Pirsch 集成到您的 Mintlify 文档中，使用符合 GDPR 且无需 Cookie 的分析功能，在不收集个人数据的情况下跟踪页面浏览量。"
+keywords: ["Pirsch 分析", "隐私分析", "识别码", "符合 GDPR"]
 ---
 
-在你的 `docs.json` 文件中添加以下配置，将 Analytics 发送到 Pirsch。
+将以下内容添加到您的 `docs.json` 文件中，以将分析数据发送到 Pirsch。
 
-你可以在 Settings &gt; Developer &gt; Identification Code 中获取你的网站 ID。
+您可以在 Settings &gt; Developer &gt; Identification Code 中获取站点 ID。
 
 <CodeGroup>
-  ```json docs.json 中的 Analytics 选项
+  ```json docs.json 中的分析选项
   "integrations": {
       "pirsch": {
           "id": "required"

@@ -1,62 +1,52 @@
 ---
 title: "Ajouter des médias"
-description: "Importez, gérez et intégrez des images et autres ressources multimédias dans vos pages de documentation grâce au gestionnaire de fichiers intégré de l'éditeur web Mintlify."
-keywords: ["editor","media","images","assets"]
+description: "Importez, gérez et intégrez des images et d'autres ressources multimédias dans vos pages de documentation à l'aide du gestionnaire de fichiers intégré à l'éditeur web de Mintlify."
+keywords: ["éditeur","médias","images","ressources"]
 ---
 
 <div id="supported-file-types">
   ## Types de fichiers pris en charge
 </div>
 
-* **Images** : PNG, JPG, JPEG, GIF, WebP (max 20 Mo)
-* **Vidéos** : MP4, WebM (max 20 Mo)
+* **Images** : PNG, JPG, JPEG, GIF, WebP (max. 20 Mo)
+* **Vidéos** : MP4, WebM (max. 20 Mo)
 * **Polices** : TrueType (TTF), WOFF, WOFF2
 * **Autres** : PDF, ICO (favicons)
 
 <div id="add-media-to-a-page">
-  ## Ajouter des médias à une page
+  ## Ajouter un média à une page
 </div>
 
 <div id="drag-and-drop">
   ### Glisser-déposer
 </div>
 
-Glissez-déposez des éléments multimédias depuis votre ordinateur ou le gestionnaire de ressources dans une page. En mode visuel, l&#39;image ou la vidéo est insérée directement dans le contenu. En mode Markdown, l&#39;éditeur insère le chemin à l&#39;emplacement de votre curseur. Les images sont enregistrées à la racine de votre dossier `images/`, et les vidéos à la racine de votre dossier `videos/`.
+Glissez-déposez des médias depuis votre ordinateur ou le gestionnaire de ressources vers une page. En mode visuel, l’image ou la vidéo s’insère directement dans le contenu. En mode Markdown, l’éditeur insère le chemin à l’emplacement du curseur. Les images sont enregistrées à la racine de votre dossier `images/`, et les vidéos à la racine de votre dossier `videos/`.
 
 <div id="slash-command">
-  ### Commande /
+  ### Commande slash
 </div>
 
-Tapez <kbd>/image</kbd> pour ouvrir le menu d’images ou <kbd>/video</kbd> pour ouvrir le menu de vidéos. Importez un nouveau média ou sélectionnez un fichier existant.
+Saisissez <kbd>/image</kbd> pour ouvrir le menu des images ou <kbd>/video</kbd> pour ouvrir le menu des vidéos. Téléversez un nouveau média ou sélectionnez-en un parmi les fichiers existants.
 
 <div id="embed">
   ### Intégrer
 </div>
 
-Tapez <kbd>/youtube</kbd> pour intégrer une vidéo YouTube ou <kbd>/loom</kbd> pour intégrer une vidéo Loom. Collez l’URL de la vidéo, et l’éditeur génère une iframe.
+Saisissez <kbd>/youtube</kbd> pour intégrer une vidéo YouTube ou <kbd>/loom</kbd> pour intégrer une vidéo Loom. Collez l’URL de la vidéo et l’éditeur génère automatiquement une iframe.
 
-Pour les autres contenus intégrés, tapez <kbd>/embed</kbd>, puis passez à **Intégration manuelle** pour écrire du HTML personnalisé.
-
-Pour d'autres intégrations, saisissez <kbd>/embed</kbd> et passez à **Intégration manuelle** pour écrire du HTML personnalisé.
+Pour les autres contenus intégrés, saisissez <kbd>/embed</kbd> et basculez vers **Intégration manuelle** pour écrire du HTML personnalisé.
 
 <div id="upload-files">
-  ### Téléverser des fichiers
+  ### Importer des fichiers
 </div>
 
-Utilisez l’explorateur de fichiers dans la barre latérale pour téléverser ou rechercher des fichiers. Faites glisser des fichiers et déposez-les dans un dossier pour organiser les ressources multimédias.
+Utilisez l’explorateur de fichiers dans la barre latérale pour importer des fichiers ou en rechercher. Glissez-déposez des fichiers dans un dossier pour organiser les ressources multimédias.
 
 <Frame>
-  <img
-    src="/images/editor/assets-light.png"
-    alt="Explorateur de fichiers ouvert dans le menu de la barre latérale de l’éditeur."
-    className="block dark:hidden"
-  />
+  <img src="/images/editor/assets-light.png" alt="Explorateur de fichiers ouvert dans la barre latérale de l’éditeur." className="block dark:hidden" />
 
-  <img
-    src="/images/editor/assets-dark.png"
-    alt="Explorateur de fichiers ouvert dans le menu de la barre latérale de l’éditeur."
-    className="hidden dark:block"
-  />
+  <img src="/images/editor/assets-dark.png" alt="Explorateur de fichiers ouvert dans la barre latérale de l’éditeur." className="hidden dark:block" />
 </Frame>
 
 <div id="format-images">
@@ -65,38 +55,38 @@ Utilisez l’explorateur de fichiers dans la barre latérale pour téléverser o
 
 Après avoir inséré une image en mode visuel, survolez-la pour afficher une barre d’outils avec des options de mise en forme.
 
-- **Aperçu clair/sombre** : basculez entre le mode clair et le mode sombre pour voir l’apparence de l’image dans chaque thème.
-- **Alignement** : choisissez un alignement de l’image : gauche, centré, droite ou pleine largeur.
-- **Frame** : entourez l’image d’un composant `<Frame>` pour ajouter une bordure et un arrière-plan.
-- **Paramètres** : remplacez l’image ou mettez à jour son texte alternatif.
+* **Aperçu clair/sombre** : Basculez entre les modes clair et sombre pour voir comment l’image s’affiche dans chaque thème.
+* **Alignement** : Réglez l’alignement de l’image à gauche, au centre, à droite ou en pleine largeur.
+* **Frame** : Placez l’image dans un composant `<Frame>` pour ajouter une bordure et un arrière-plan.
+* **Paramètres** : Remplacez l’image ou mettez à jour son texte alternatif.
 
 <div id="manage-assets">
   ## Gérer les ressources
 </div>
 
 <div id="organize-with-folders">
-  ### Organiser à l’aide de dossiers
+  ### Organiser avec des dossiers
 </div>
 
-Cliquez sur le bouton **+** dans l’explorateur de fichiers pour créer un nouveau dossier. Faites glisser et déposez des fichiers et des dossiers dans l’arborescence pour les réorganiser.
+Cliquez sur le bouton **+** dans l’explorateur de fichiers pour créer un nouveau dossier. Faites glisser-déposer des fichiers et des dossiers dans l’arborescence pour les réorganiser.
 
 <div id="rename-and-edit-assets">
   ### Renommer et modifier des ressources
 </div>
 
-Survolez une ressource et cliquez sur le bouton **...** pour renommer le fichier ou mettre à jour son texte alternatif.
+Survolez une ressource et cliquez sur le bouton **...** pour renommer le fichier ou modifier son texte alternatif.
 
 <div id="delete-assets">
   ### Supprimer des ressources
 </div>
 
-Survolez une ressource, puis cliquez sur le bouton <Icon icon="trash" /> pour la supprimer.
+Survolez une ressource, puis cliquez sur le bouton de suppression <Icon icon="trash" />.
 
 <div id="best-practices">
   ## Bonnes pratiques
 </div>
 
-- **Utilisez des noms explicites** : Nommez clairement vos fichiers, par exemple `api-dashboard-light.png` plutôt que `img1.png`.
-- **Ajoutez un texte alternatif (alt)** : Fournissez un texte alternatif descriptif pour l’accessibilité et le SEO.
-- **Organisez à l’aide de dossiers** : Regroupez les ressources associées, comme les variantes en mode clair et sombre ou pour une fonctionnalité ou une section spécifique.
-- **Utilisez des formats adaptés** : PNG pour les graphiques avec transparence, JPG pour les photos, SVG pour les icônes et les logos (vous ne pouvez pas téléverser de fichiers SVG via l'éditeur, mais vous pouvez les ajouter à votre référentiel via Git).
+* **Utilisez des noms descriptifs** : nommez clairement vos fichiers, par exemple `api-dashboard-light.png` plutôt que `img1.png`.
+* **Ajoutez un texte alternatif** : fournissez un texte alternatif descriptif pour l’accessibilité et le SEO.
+* **Organisez avec des dossiers** : regroupez les ressources liées, comme les variantes pour les modes clair et sombre ou les ressources d’une fonctionnalité donnée.
+* **Utilisez des formats appropriés** : PNG pour les graphiques avec transparence, JPG pour les photos, SVG pour les icônes et les logos (vous ne pouvez pas importer de fichiers SVG via l’éditeur, mais vous pouvez les ajouter à votre dépôt via Git).

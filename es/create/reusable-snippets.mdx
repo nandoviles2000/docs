@@ -1,60 +1,60 @@
 ---
 title: "Fragmentos reutilizables"
-description: "Crea fragmentos de contenido reutilizables con variables para mantener la coherencia entre páginas de documentación y reducir la duplicación en tus archivos MDX."
-keywords: ["content snippets", "reusable content", "variables"]
+description: "Crea fragmentos de contenido reutilizables con variables para mantener la coherencia en todas las páginas de documentación y reducir la duplicación en tus archivos MDX."
+keywords: ["fragmentos de contenido", "contenido reutilizable", "variables"]
 ---
 
-Uno de los principios fundamentales del desarrollo de software es DRY (Don&#39;t Repeat Yourself), que también se aplica a la documentación. Si te encuentras repitiendo el mismo contenido en varios lugares, crea un fragmento personalizado para ese contenido. Los fragmentos incluyen contenido que puedes importar en otros archivos para reutilizarlo. Tú controlas dónde aparece el fragmento en una página. Si alguna vez necesitas actualizar el contenido, solo tendrás que editar el fragmento en lugar de cada archivo donde se use.
+Uno de los principios fundamentales del desarrollo de software es DRY (Don&#39;t Repeat Yourself), y también se aplica a la documentación. Si ves que repites el mismo contenido en varios lugares, crea un fragmento personalizado para ese contenido. Los fragmentos contienen contenido que puedes importar en otros archivos para reutilizarlo. Tú decides dónde aparece el fragmento en una página. Si en algún momento necesitas actualizar el contenido, solo tendrás que editar el fragmento en lugar de hacerlo en cada archivo donde se use.
 
 <div id="how-snippets-work">
-  ## Cómo funcionan los snippets
+  ## Cómo funcionan los fragmentos
 </div>
 
-Los snippets son archivos `.mdx`, `.md` o `.jsx` que se importan en otro archivo. Puedes colocar los archivos de snippets en cualquier parte de tu proyecto.
+Los fragmentos son archivos `.mdx`, `.md` o `.jsx` que se importan en otro archivo. Puedes colocar los archivos de fragmentos en cualquier parte de tu proyecto.
 
-Cuando importas un snippet en otro archivo, el snippet solo aparece donde lo importas y no se renderiza como una página independiente. Cualquier archivo en la carpeta `/snippets/` siempre se considera un snippet, incluso si no se importa en otro archivo.
+Cuando importas un fragmento en otro archivo, el fragmento solo aparece donde lo importas y no se muestra como una página independiente. Cualquier archivo de la carpeta `/snippets/` siempre se considera un fragmento, aunque no se importe en otro archivo.
 
 <div id="create-snippets">
-  ## Crear snippets
+  ## Crear fragmentos
 </div>
 
-Crea un archivo con el contenido que quieras reutilizar. Los snippets pueden contener todos los tipos de contenido compatibles con Mintlify y pueden importar otros snippets.
+Crea un archivo con el contenido que quieras reutilizar. Los fragmentos pueden incluir todos los tipos de contenido compatibles con Mintlify y también importar otros fragmentos.
 
 <div id="import-snippets-into-pages">
-  ## Importar fragmentos en páginas
+  ## Importa fragmentos en las páginas
 </div>
 
 Importa fragmentos en las páginas usando una ruta absoluta o relativa.
 
-* **Importaciones absolutas**: Comienzan con `/` para importaciones desde la raíz de tu proyecto.
-* **Importaciones relativas**: Usa `./` o `../` para importar fragmentos en relación con la ubicación del archivo actual.
+* **Importaciones absolutas**: Empiezan con `/` para importar desde la raíz de tu proyecto.
+* **Importaciones relativas**: Usa `./` o `../` para importar fragmentos con relación a la ubicación del archivo actual.
 
 <Tip>
-  Las importaciones relativas habilitan la navegación en el IDE. Pulsa <kbd>CMD</kbd> y haz clic en el nombre de un fragmento en tu editor para ir directamente a su definición.
+  Las importaciones relativas permiten la navegación en el IDE. Presiona <kbd>CMD</kbd> y haz clic en el nombre de un fragmento en tu editor para ir directamente a la definición del fragmento.
 </Tip>
 
 <div id="import-text">
   ### Importar texto
 </div>
 
-1. Añade al archivo de fragmento el contenido que quieras reutilizar.
+1. Agrega al archivo de fragmento el contenido que quieras reutilizar.
 
    ```mdx shared/my-snippet.mdx wrap
-   Hello world! This is my content I want to reuse across pages.
+   ¡Hola, mundo! Este es el contenido que quiero reutilizar en varias páginas.
    ```
 
-2. Importa el snippet en tu archivo de destino utilizando una ruta absoluta o relativa.
+2. Importa el fragmento en tu archivo de destino usando una ruta absoluta o una relativa.
 
    <CodeGroup>
      ```mdx Importación absoluta
      ---
      title: "Una página de ejemplo"
-     description: "Esta es una página de ejemplo que importa un snippet."
+     description: "Esta es una página de ejemplo que importa un fragmento."
      ---
 
      import MySnippet from "/shared/my-snippet.mdx";
 
-     El contenido del snippet aparece debajo de esta frase.
+     El contenido del fragmento aparece debajo de esta frase.
 
      <MySnippet />
      ```
@@ -62,12 +62,12 @@ Importa fragmentos en las páginas usando una ruta absoluta o relativa.
      ```mdx Importación relativa
      ---
      title: "Una página de ejemplo"
-     description: "Esta es una página de ejemplo que importa un snippet."
+     description: "Esta es una página de ejemplo que importa un fragmento."
      ---
 
      import MySnippet from "../shared/my-snippet.mdx";
 
-     El contenido del snippet aparece debajo de esta frase.
+     El contenido del fragmento aparece debajo de esta frase.
 
      <MySnippet />
      ```
@@ -77,19 +77,19 @@ Importa fragmentos en las páginas usando una ruta absoluta o relativa.
   ### Importar variables
 </div>
 
-Haz referencia a variables de un fragmento en una página.
+Usa variables de un fragmento en una página.
 
 1. Exporta variables desde un archivo de fragmento.
 
    ```mdx shared/custom-variables.mdx
    export const myName = "Ronan";
 
-   export const myObject = { fruit: "fresas" };
+   export const myObject = { fruit: "strawberries" };
 
    ;
    ```
 
-2. Importa el fragmento desde tu archivo de destino y usa la variable.
+2. Importa el fragmento en tu archivo de destino y usa las variables.
 
    ```mdx destination-file.mdx
    ---
@@ -99,22 +99,22 @@ Haz referencia a variables de un fragmento en una página.
 
    import { myName, myObject } from "/shared/custom-variables.mdx";
 
-   Hello, my name is {myName} and I like {myObject.fruit}.
+   Hola, me llamo {myName} y me gustan {myObject.fruit}.
    ```
 
 <div id="import-snippets-with-variables">
-  ### Importar fragmentos con variables
+  ### Importa fragmentos con variables
 </div>
 
 Usa variables para pasar datos a un fragmento cuando lo importes.
 
-1. Añade variables a tu fragmento y pásales propiedades cuando lo importes. En este ejemplo, la variable es `{word}`.
+1. Agrega variables a tu fragmento y pasa propiedades al importarlo. En este ejemplo, la variable es `{word}`.
 
    ```mdx shared/my-snippet.mdx
    Mi palabra clave del día es {word}.
    ```
 
-2. Importa el fragmento en tu archivo de destino con la variable. La propiedad pasada reemplaza la variable en la definición del fragmento.
+2. Importa el fragmento en el archivo de destino con la variable. La propiedad que pases reemplaza la variable en la definición del fragmento.
 
    ```mdx destination-file.mdx
    ---
@@ -131,20 +131,20 @@ Usa variables para pasar datos a un fragmento cuando lo importes.
   ### Importar componentes de React
 </div>
 
-1. Crea un fragmento con un componente JSX. Consulta [Componentes de React](/es/customize/react-components) para obtener más información.
+1. Crea un fragmento con un componente JSX. Consulta [componentes de React](/es/customize/react-components) para obtener más información.
 
    ```js components/my-jsx-snippet.jsx
    export const MyJSXSnippet = () => {
      return (
        <div>
-         <h1>¡Hola, mundo!</h1>
+         <h1>Hello, world!</h1>
        </div>
      );
    };
    ```
 
 <Note>
-  Al crear fragmentos de JSX, usa la sintaxis de funciones flecha (`=>`) en lugar de declaraciones de función. La palabra clave `function` no es compatible en los fragmentos.
+  Al crear fragmentos de JSX, usa la sintaxis de funciones flecha (`=>`) en lugar de las declaraciones de función. La palabra clave `function` no es compatible con los fragmentos.
 </Note>
 
 2. Importa el fragmento.

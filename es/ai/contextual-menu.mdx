@@ -1,45 +1,45 @@
 ---
 title: "Menú contextual"
-description: "Agrega un menú contextual a tu documentación con integraciones de IA en un clic para ChatGPT, Claude, Perplexity y más."
-keywords: ["Herramientas de IA", "ChatGPT", "Claude", "Perplexity", "MCP", "Grok", "Cursor", "vscode", "vs code", "Google AI Studio", "aistudio", "Devin", "Windsurf"]
+description: "Añade un menú contextual a tu documentación con integraciones de IA en un clic para ChatGPT, Claude, Perplexity, Google AI Studio, Devin, Windsurf y herramientas MCP."
+keywords: ["herramientas de IA", "ChatGPT", "Claude", "Perplexity", "MCP", "Grok", "cursor", "vscode", "vs code", "Google AI Studio", "aistudio", "Devin", "Windsurf"]
 ---
 
 import { PreviewButton } from "/snippets/previewbutton.jsx"
 import IconsRequired from "/snippets/es/icons-required.mdx";
 
-El menú contextual ofrece acceso rápido a contenido optimizado con IA e integraciones directas con herramientas de IA populares. Cuando los usuarios seleccionan el menú contextual en cualquier página, pueden copiar contenido como contexto para herramientas de IA o abrir conversaciones en ChatGPT, Claude, Perplexity, Google AI Studio, Grok, Devin, Windsurf o una herramienta personalizada de su elección, con su documentación ya cargada como contexto.
+El menú contextual ofrece acceso rápido a contenido optimizado para IA y a integraciones directas con herramientas de IA populares. Cuando los usuarios seleccionan el menú contextual en cualquier página, pueden copiar contenido como contexto para herramientas de IA o abrir conversaciones en ChatGPT, Claude, Perplexity, Google AI Studio, Grok, Devin, Windsurf o una herramienta personalizada de su elección, con la documentación ya cargada como contexto.
 
 <div id="menu-options">
   ## Opciones del menú
 </div>
 
-El menú contextual incluye varias opciones preconfiguradas que puedes habilitar agregando su identificador a tu configuración.
+El menú contextual incluye varias opciones predefinidas que puedes habilitar añadiendo su identificador a tu configuración.
 
-| Opción                                             | Identificador | Descripción                                                                           |
-| :------------------------------------------------- | :------------ | :------------------------------------------------------------------------------------ |
-| **Copiar página**                                  | `copy`        | Copia la página actual como Markdown para pegarla como contexto en herramientas de IA |
-| **Ver como Markdown**                              | `view`        | Abre la página actual como Markdown                                                   |
-| **Preguntar a assistant**                          | `assistant`   | Abre el [assistant](/es/assistant/index) con la página actual como contexto                 |
-| **Abrir en ChatGPT**                               | `chatgpt`     | Crea una conversación en ChatGPT con la página actual como contexto                   |
-| **Abrir en Claude**                                | `claude`      | Crea una conversación en Claude con la página actual como contexto                    |
-| **Abrir en Perplexity**                            | `perplexity`  | Crea una conversación en Perplexity con la página actual como contexto                |
-| **Abrir en Grok**                                  | `grok`        | Crea una conversación en Grok con la página actual como contexto                      |
-| **Abrir en Google AI Studio**                      | `aistudio`    | Crea una conversación en Google AI Studio con la página actual como contexto          |
-| **Abrir en Devin**                                 | `devin`       | Crea una sesión de Devin con la página actual como contexto                           |
-| **Abrir en Windsurf**                              | `windsurf`    | Abre Windsurf Cascade con la página actual como contexto                              |
-| **Copiar URL del servidor MCP**                    | `mcp`         | Copia la URL de tu servidor MCP al portapapeles                                       |
-| **Copiar comando de instalación del servidor MCP** | `add-mcp`     | Copia el comando `npx add-mcp` para instalar el servidor MCP                          |
-| **Conectar con Cursor**                            | `cursor`      | Instala tu servidor MCP alojado en Cursor                                             |
-| **Conectar con VS Code**                           | `vscode`      | Instala tu servidor MCP alojado en VS Code                                            |
-| **Conectar con Devin**                             | `devin-mcp`   | Instala tu servidor MCP alojado en Devin                                              |
-| **Opciones personalizadas**                        | Object        | Agrega opciones personalizadas al menú contextual                                     |
+| Opción                                              | Identificador | Descripción                                                                           |
+| :-------------------------------------------------- | :------------ | :------------------------------------------------------------------------------------ |
+| **Copiar página**                                   | `copy`        | Copia la página actual como Markdown para pegarla como contexto en herramientas de IA |
+| **Ver como Markdown**                               | `view`        | Abre la página actual como Markdown                                                   |
+| **Preguntar al asistente**                          | `assistant`   | Abre el [asistente](/es/assistant/index) con la página actual como contexto              |
+| **Abrir en ChatGPT**                                | `chatgpt`     | Crea una conversación de ChatGPT con la página actual como contexto                   |
+| **Abrir en Claude**                                 | `claude`      | Crea una conversación de Claude con la página actual como contexto                    |
+| **Abrir en Perplexity**                             | `perplexity`  | Crea una conversación de Perplexity con la página actual como contexto                |
+| **Abrir en Grok**                                   | `grok`        | Crea una conversación de Grok con la página actual como contexto                      |
+| **Abrir en Google AI Studio**                       | `aistudio`    | Crea una conversación de Google AI Studio con la página actual como contexto          |
+| **Abrir en Devin**                                  | `devin`       | Crea una sesión de Devin con la página actual como contexto                           |
+| **Abrir en Windsurf**                               | `windsurf`    | Abre Windsurf Cascade con la página actual como contexto                              |
+| **Copiar la URL del MCP server**                    | `mcp`         | Copia la URL de tu MCP server al portapapeles                                         |
+| **Copiar el comando de instalación del MCP server** | `add-mcp`     | Copia el comando `npx add-mcp` para instalar el MCP server                            |
+| **Conectar con Cursor**                             | `cursor`      | Instala tu MCP server alojado en Cursor                                               |
+| **Conectar con VS Code**                            | `vscode`      | Instala tu MCP server alojado en VS Code                                              |
+| **Conectar con Devin**                              | `devin-mcp`   | Instala tu MCP server alojado en Devin                                                |
+| **Opciones personalizadas**                         | Object        | Añade opciones personalizadas al menú contextual                                      |
 
 <Frame>
-  <img src="/images/contextual-menu/contextual-menu.png" alt="El menú contextual expandido que muestra los elementos del menú Copiar página, Ver como Markdown, Abrir en ChatGPT y Abrir en Claude." />
+  <img src="/images/contextual-menu/contextual-menu.png" alt="El menú contextual desplegado muestra las opciones Copiar página, Ver como Markdown, Abrir en ChatGPT y Abrir en Claude." />
 </Frame>
 
 <div id="enabling-the-contextual-menu">
-  ## Activar el menú contextual
+  ## Habilita el menú contextual
 </div>
 
 Añade el campo `contextual` a tu archivo `docs.json` y especifica qué opciones quieres incluir.
@@ -54,11 +54,11 @@ Añade el campo `contextual` a tu archivo `docs.json` y especifica qué opciones
      "chatgpt",
      "claude",
      "perplexity",
-      "grok",
-       "aistudio",
-       "devin",
-       "windsurf",
-        "mcp",
+     "grok",
+     "aistudio",
+     "devin",
+     "windsurf",
+      "mcp",
       "cursor",
       "vscode",
       "devin-mcp"
@@ -82,49 +82,49 @@ De forma predeterminada, el menú contextual aparece en el encabezado de la pág
 }
 ```
 
-| Valor | Descripción |
-|:------|:------------|
+| Valor    | Descripción                                                                                   |
+| :------- | :-------------------------------------------------------------------------------------------- |
 | `header` | Muestra las opciones en el menú contextual de la parte superior de la página (predeterminado) |
-| `toc` | Muestra las opciones en la barra lateral de la tabla de contenidos |
+| `toc`    | Muestra las opciones en la barra lateral de la tabla de contenidos                            |
 
 <div id="adding-custom-options">
-  ## Agregar opciones personalizadas
+  ## Añadir opciones personalizadas
 </div>
 
-Crea opciones personalizadas en el menú contextual agregando un objeto al arreglo `options`. Cada opción personalizada requiere estas propiedades:
+Crea opciones personalizadas en el menú contextual agregando un objeto al array `options`. Cada opción personalizada requiere las siguientes propiedades:
 
 <ResponseField name="title" type="string" required>
   El título de la opción.
 </ResponseField>
 
 <ResponseField name="description" type="string" required>
-  La descripción de la opción. Se muestra debajo del título cuando el menú contextual se expande.
+  La descripción de la opción. Se muestra debajo del título cuando se expande el menú contextual.
 </ResponseField>
 
 <IconsRequired />
 
 <ResponseField name="href" type="string | object" required>
-  El href de la opción. Usa una cadena para enlaces simples o un objeto para enlaces dinámicos con parámetros de búsqueda.
+  El `href` de la opción. Usa una cadena para enlaces simples o un objeto para enlaces dinámicos con parámetros de consulta.
 
-  <Expandable title="href object">
+  <Expandable title="objeto href">
     <ResponseField name="base" type="string" required>
       La URL base de la opción.
     </ResponseField>
 
     <ResponseField name="query" type="object" required>
-      Los parámetros de búsqueda de la opción.
+      Los parámetros de consulta de la opción.
 
-      <Expandable title="query object">
+      <Expandable title="objeto query">
         <ResponseField name="key" type="string" required>
-          La key del parámetro de búsqueda.
+          La clave del parámetro de consulta.
         </ResponseField>
 
         <ResponseField name="value" type="string" required>
-          El value del parámetro de búsqueda. Mintlify reemplaza los siguientes marcadores de posición por los valores correspondientes:
+          El valor del parámetro de consulta. Mintlify reemplaza los siguientes marcadores de posición por los valores correspondientes:
 
           * Usa `$page` para insertar el contenido de la página actual en Markdown.
           * Usa `$path` para insertar la ruta de la página actual.
-          * Usa `$mcp` para insertar la URL del servidor MCP alojado.
+          * Usa `$mcp` para insertar la URL del MCP server alojado.
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -143,8 +143,8 @@ Ejemplo de opción personalizada:
             "claude",
             "perplexity",
             {
-                "title": "Solicitar una funcionalidad",
-                "description": "Únete a la discusión en GitHub para solicitar una nueva funcionalidad",
+                "title": "Request a feature",
+                "description": "Join the discussion on GitHub to request a new feature",
                 "icon": "plus",
                 "href": "https://github.com/orgs/mintlify/discussions/categories/feature-requests"
             }

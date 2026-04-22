@@ -1,63 +1,63 @@
 ---
 title: "审计日志"
-description: "查看审计日志，追踪组织成员执行的操作，包括部署、配置更改和权限更新。"
-keywords: ["monitoring", "activity tracking", "security", "compliance"]
+description: "查看审计日志，跟踪组织成员执行的操作，包括部署、配置更改和权限更新。"
+keywords: ["监控", "活动跟踪", "安全", "合规"]
 ---
 
 <Info>
-  审计日志适用于 [Enterprise 方案](https://mintlify.com/pricing?ref=audit-logs)。
+  审计日志仅适用于 [Enterprise 计划](https://mintlify.com/pricing?ref=audit-logs)。
 </Info>
 
-使用审计日志来监控和跟踪你组织成员执行的操作。审计日志为安全、合规和故障排查提供完整的活动记录。
+使用审计日志监控和跟踪组织成员执行的操作。审计日志会记录各项活动，便于满足安全、合规和故障排查需求。
 
-- **监控安全**：跟踪认证尝试和权限变更。
-- **确保合规**：维护所有组织活动的记录。
-- **排查问题**：调查失败的操作及其原因。
-- **跟踪变更**：查看是谁在何时做出的特定更改。
+* **监控安全**：跟踪身份验证尝试和权限变更。
+* **确保合规**：保留所有组织活动记录。
+* **排查问题**：调查失败的操作及其原因。
+* **跟踪变更**：查看谁在何时进行了特定更改。
 
 <div id="view-audit-logs">
   ## 查看审计日志
 </div>
 
-前往控制台中的 [Audit log](https://dashboard.mintlify.com/settings/organization/audit-logs) 页面以查看审计日志。
+前往仪表板中的 [审计日志](https://dashboard.mintlify.com/settings/organization/audit-logs) 页面，查看审计日志。
 
-点击任意日志条目以展开并查看详细信息，包括：
+点击任意日志条目即可展开，并查看以下详细信息：
 
-| 字段        | 说明             |
-| --------- | -------------- |
-| Timestamp | 操作发生的日期和时间     |
-| Actor     | 执行该操作用户的电子邮箱地址 |
-| Action    | 用户执行的操作内容      |
-| Category  | 受影响的资源类型       |
-| Outcome   | 操作是成功还是失败      |
-| Metadata  | 有关该操作的其他上下文信息  |
+| 字段        | 描述           |
+| --------- | ------------ |
+| Timestamp | 操作发生的日期和时间   |
+| Actor     | 执行该操作的用户邮箱地址 |
+| Action    | 用户执行的操作      |
+| Category  | 受影响资源的类型     |
+| Outcome   | 操作成功还是失败     |
+| Metadata  | 与该操作相关的附加上下文 |
 
 <div id="filter-logs">
   ### 筛选日志
 </div>
 
-筛选审计日志以查找特定活动。
+筛选审计日志，查找特定活动。
 
-**日期范围**：选择预设的日期范围，以查看特定时间段内的日志。
+**日期范围**：选择预设日期范围，以查看特定时间段内的日志。
 
 **类别**：按操作类型筛选日志。
 
-| Category         | Description                                                        |
-|------------------|--------------------------------------------------------------------|
-| Organization     | 组织设置更新和删除请求。                |
-| Member           | 团队成员邀请、移除和角色变更。               |
-| Deployment       | 部署配置更改，包括自定义域名、认证、Git 源和 MCP 客户端凭证。 |
-| Preview deployment | 预览部署的创建、更新和认证更改。 |
-| API key          | API key 和 Discovery API key 的创建和删除。               |
-| Assistant        | AI 助手设置更新，例如分流邮件、网页搜索站点和初始问题。 |
-| PDF export       | PDF 导出生成和删除。                                |
-| Integration      | GitHub、Slack、Linear 和 Notion 的安装与移除。 |
-| Billing          | 订阅更新、附加组件购买和发票查看。          |
-| Quota            | 超额策略和告警配置更改。                    |
-| User             | 个人用户通知设置。                             |
-| Workflows        | 工作流配置和存储库管理。                 |
-| Audit log        | 审计日志的查看和导出。                              |
-| Auth             | 登录尝试、登出和会话创建。                     |
+| 类别        | 描述                                    |
+| --------- | ------------------------------------- |
+| 组织        | 组织设置更新和删除请求。                          |
+| 成员        | 团队成员邀请、移除和角色变更。                       |
+| 部署        | 部署配置变更，包括自定义域名、身份验证、Git 源和 MCP 客户端凭据。 |
+| 预览部署      | 预览部署的创建、更新和身份验证变更。                    |
+| API 密钥    | API 密钥和 discovery API 密钥的创建与删除。       |
+| Assistant | Assistant 设置更新，例如转接邮箱、网页搜索站点和起始问题。    |
+| PDF 导出    | PDF 导出的生成与删除。                         |
+| 集成        | GitHub、Slack、Linear 和 Notion 的安装与移除。  |
+| 计费        | 订阅更新、附加组件购买和发票查看。                     |
+| 配额        | 超额策略和警报配置变更。                          |
+| 用户        | 个人用户通知设置。                             |
+| 工作流       | 工作流配置和仓库管理。                           |
+| 审计日志      | 审计日志的查看与导出。                           |
+| 身份验证      | 登录尝试、登出和会话创建。                         |
 
 <div id="export-audit-logs">
   ## 导出审计日志
@@ -65,7 +65,7 @@ keywords: ["monitoring", "activity tracking", "security", "compliance"]
 
 将审计日志导出为 CSV，用于分析、合规报告或长期归档。
 
-1. 在控制台中进入 [Audit log](https://dashboard.mintlify.com/settings/organization/audit-logs) 页面。
-1. （可选）应用筛选条件以缩小要导出的日志范围。
-1. 点击 **Export CSV**。
-1. 当导出完成后，Mintlify 会向你发送一封包含下载链接的电子邮件。
+1. 前往仪表板中的 [审计日志](https://dashboard.mintlify.com/settings/organization/audit-logs) 页面。
+2.  (可选) 应用筛选条件，缩小要导出的日志范围。
+3. 点击 **Export CSV**。
+4. 导出完成后，Mintlify 会向你发送一封包含下载链接的电子邮件。

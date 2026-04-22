@@ -1,42 +1,48 @@
 ---
 title: "SEO y búsqueda"
-description: "Configura los ajustes de SEO en docs.json, incluyendo la descripción del sitio, la indexación en motores de búsqueda, meta tags, el marcador de la barra de búsqueda y las marcas de tiempo de las páginas."
-keywords: ["SEO", "search", "indexing", "meta tags", "description", "timestamp", "last modified", "docs.json"]
+description: "Configura las opciones de SEO en docs.json, incluida la descripción del sitio, la indexación en motores de búsqueda, las metaetiquetas, el texto de marcador de posición de la barra de búsqueda y las marcas de tiempo de las páginas."
+keywords: ["SEO", "búsqueda", "indexación", "metaetiquetas", "descripción", "marca de tiempo", "última modificación", "docs.json"]
 ---
 
-Usa estos ajustes en tu archivo `docs.json` para controlar cómo los motores de búsqueda indexan tu documentación, qué metadatos aparecen en los resultados de búsqueda, cómo se comporta la barra de búsqueda y si las páginas muestran una marca de tiempo de última modificación.
+Usa estas opciones en tu archivo `docs.json` para controlar cómo los motores de búsqueda indexan tu documentación, qué metadatos aparecen en los resultados de búsqueda, cómo funciona la barra de búsqueda y si las páginas muestran la fecha de última modificación.
 
-## Ajustes
+<div id="settings">
+  ## Configuración
+</div>
 
-### `description`
+<div id="description">
+  ### `description`
+</div>
 
-**Tipo:** `string`
+**Type:** `string`
 
-Una descripción de tu sitio de documentación para SEO e indexación con IA. Aparece en los resultados de los motores de búsqueda y las herramientas de IA la usan para entender el propósito de tu sitio.
+Una descripción de tu sitio de documentación para SEO y su indexación por IA. Aparece en los resultados de los motores de búsqueda, y las herramientas de IA la usan para comprender el propósito de tu sitio.
 
 ```json docs.json
-"description": "Documentación para la API y la plataforma de desarrolladores de Example Co."
+"description": "Documentation for Example Co.'s API and developer platform."
 ```
 
----
+***
 
-### `seo`
+<div id="seo">
+  ### `seo`
+</div>
 
-**Tipo:** `object`
+**Type:** `object`
 
 Configuración de indexación y metadatos para motores de búsqueda.
 
-<ResponseField name="seo.indexing" type='"navigable" | "all"'>
+<ResponseField name="seo.indexing" type="&#x22;navigable&#x22; | &#x22;all&#x22;">
   Especifica qué páginas deben indexar los motores de búsqueda.
 
-  - `navigable` — Indexa solo las páginas incluidas en la navegación de tu `docs.json`. Este es el valor predeterminado.
-  - `all` — Indexa todas las páginas de tu proyecto, incluyendo páginas que no están en la navegación.
+  * `navigable` — Indexa solo las páginas incluidas en la Navegación de tu `docs.json`. Este es el valor predeterminado.
+  * `all` — Indexa todas las páginas de tu proyecto, incluidas las que no están en la Navegación.
 </ResponseField>
 
 <ResponseField name="seo.metatags" type="object">
-  Meta tags personalizadas añadidas a cada página. Proporciona como pares clave-valor donde cada clave es el nombre de una meta tag y el valor es su contenido.
+  Metaetiquetas personalizadas que se añaden a cada página. Proporciónalas como pares clave-valor, donde cada clave es el nombre de una metaetiqueta y el valor es su contenido.
 
-  Consulta la [referencia de meta tags comunes](/es/optimize/seo#common-meta-tags-reference) para ver las opciones disponibles.
+  Consulta la [referencia de metaetiquetas comunes](/es/optimize/seo#common-meta-tags-reference) para ver las opciones disponibles.
 
   ```json
   "metatags": {
@@ -55,36 +61,40 @@ Configuración de indexación y metadatos para motores de búsqueda.
 }
 ```
 
----
+***
 
-### `search`
+<div id="search">
+  ### `search`
+</div>
 
-**Tipo:** `object`
+**Type:** `object`
 
-Configuración de visualización de la barra de búsqueda.
+Configuración de visualización de la barra de Búsqueda.
 
 <ResponseField name="search.prompt" type="string">
-  Texto de marcador de posición que se muestra en la barra de búsqueda cuando está vacía.
+  Texto de marcador de posición que aparece en la barra de Búsqueda cuando está vacía.
 </ResponseField>
 
 ```json docs.json
 "search": {
-  "prompt": "Buscar en la documentación..."
+  "prompt": "Search the docs..."
 }
 ```
 
----
+***
 
-### `metadata`
+<div id="metadata">
+  ### `metadata`
+</div>
 
 **Tipo:** `object`
 
-Configuración de metadatos a nivel de página aplicada globalmente en todas las páginas.
+Configuración de metadatos a nivel de página que se aplica globalmente a todas las páginas.
 
 <ResponseField name="metadata.timestamp" type="boolean">
-  Muestra una fecha de última modificación en todas las páginas. Cuando está habilitado, cada página muestra la fecha en que su contenido fue modificado por última vez. El valor predeterminado es `false`.
+  Muestra la fecha de la última modificación en todas las páginas. Cuando está habilitado, cada página muestra la fecha en que se modificó por última vez su contenido. El valor predeterminado es `false`.
 
-  Puedes sobrescribir esta configuración en páginas individuales usando el campo de frontmatter `timestamp`. Consulta [Páginas](/es/organize/pages#last-modified-timestamp) para más detalles.
+  Puedes sobrescribir esta configuración en páginas individuales mediante el campo `timestamp` del frontmatter. Consulta [Pages](/es/organize/pages#last-modified-timestamp) para obtener más información.
 </ResponseField>
 
 ```json docs.json
@@ -93,11 +103,13 @@ Configuración de metadatos a nivel de página aplicada globalmente en todas las
 }
 ```
 
-## Ejemplo
+<div id="example">
+  ## Ejemplo
+</div>
 
 ```json docs.json
 {
-  "description": "Documentación para la API y la plataforma de desarrolladores de Example Co.",
+  "description": "Documentation for Example Co.'s API and developer platform.",
   "seo": {
     "indexing": "navigable",
     "metatags": {
@@ -106,7 +118,7 @@ Configuración de metadatos a nivel de página aplicada globalmente en todas las
     }
   },
   "search": {
-    "prompt": "Buscar en la documentación..."
+    "prompt": "Search the docs..."
   },
   "metadata": {
     "timestamp": true

@@ -18,8 +18,8 @@
   "paths": {
     "/v1/assistant/{domain}/message": {
       "post": {
-        "summary": "Mensaje del assistant v1",
-        "description": "Genera un mensaje de respuesta del assistant para el domain especificado. Compatible con AI SDK v4.",
+        "summary": "Mensaje de Assistant v1",
+        "description": "Genera un mensaje de respuesta del asistente para el dominio especificado. Compatible con AI SDK v4.",
         "parameters": [
           {
             "name": "domain",
@@ -28,7 +28,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El identificador de domain de tu URL `domain.mintlify.app`. Se puede encontrar al final de la URL de tu dashboard. Por ejemplo, en `dashboard.mintlify.com/organization/domain`, el identificador de domain es `domain`."
+            "description": "El identificador de dominio de tu URL `domain.mintlify.app`. Se encuentra al final de la URL de tu panel. Por ejemplo, `dashboard.mintlify.com/organization/domain` tiene `domain` como identificador de dominio."
           }
         ],
         "requestBody": {
@@ -44,12 +44,12 @@
                 "properties": {
                   "fp": {
                     "type": "string",
-                    "description": "Identificador de huella para el seguimiento de sesiones de conversación. Usa “anonymous” para usuarios anónimos o proporciona un identificador de usuario único."
+                    "description": "Identificador de huella digital para rastrear sesiones de conversación. Usa 'anonymous' para usuarios anónimos o proporciona un identificador de usuario único."
                   },
                   "threadId": {
                     "default": null,
                     "type": "string",
-                    "description": "Un identificador opcional que se utiliza para mantener la continuidad de la conversación a lo largo de varios mensajes. Cuando se incluye, permite que el sistema asocie los mensajes posteriores con el mismo hilo de conversación. El threadId se devuelve en la respuesta como event.threadId cuando event.type === 'finish'."
+                    "description": "Identificador opcional que se usa para mantener la continuidad de la conversación entre varios mensajes. Cuando se proporciona, permite que el sistema asocie los mensajes de seguimiento con el mismo hilo de conversación. El threadId se devuelve en la respuesta como event.threadId cuando event.type === 'finish'."
                   },
                   "messages": {
                     "type": "array",
@@ -95,7 +95,7 @@
                         "annotations": {
                           "type": "array",
                           "items": {},
-                          "description": "Array opcional de anotaciones asociadas al mensaje."
+                          "description": "Array opcional de anotaciones para el mensaje."
                         },
                         "parts": {
                           "type": "array",
@@ -363,7 +363,7 @@
                               "url"
                             ]
                           },
-                          "description": "Array opcional de adjuntos experimentales para el mensaje."
+                          "description": "Array opcional de archivos adjuntos experimentales para el mensaje."
                         }
                       },
                       "required": [
@@ -373,12 +373,12 @@
                         "parts"
                       ]
                     },
-                    "description": "Array de mensajes de la conversación. En el frontend, probablemente quieras usar la función handleSubmit del hook useChat del paquete @ai-sdk para añadir los mensajes del usuario y gestionar las respuestas en streaming, en lugar de definir manualmente los objetos de este array, ya que tienen tantos parámetros."
+                    "description": "Array de mensajes de la conversación. En el frontend, probablemente querrás usar la función handleSubmit del hook useChat del paquete @ai-sdk para añadir mensajes de usuario y gestionar respuestas en streaming, en lugar de definir manualmente los objetos de este array, ya que tienen muchos parámetros."
                   },
                   "retrievalPageSize": {
                     "type": "number",
                     "default": 5,
-                    "description": "Número de resultados de búsqueda en la documentación que se utilizarán para generar la respuesta. Valores más altos proporcionan más contexto, pero pueden aumentar el tiempo de respuesta. Recomendado: 5."
+                    "description": "Número de resultados de búsqueda en la documentación que se usarán para generar la respuesta. Los valores más altos proporcionan más contexto, pero pueden aumentar el tiempo de respuesta. Recomendado: 5."
                   },
                   "filter": {
                     "type": "object",
@@ -386,14 +386,14 @@
                     "properties": {
                       "version": {
                         "type": "string",
-                        "description": "Filtro opcional de versión."
+                        "description": "Filtro de versión opcional."
                       },
                       "language": {
                         "type": "string",
-                        "description": "Filtro opcional de idioma."
+                        "description": "Filtro de idioma opcional."
                       }
                     },
-                    "description": "Criterios de filtrado opcionales para la búsqueda."
+                    "description": "Criterios de filtro opcionales para la búsqueda."
                   },
                   "context": {
                     "type": "array",
@@ -406,7 +406,7 @@
                             "code",
                             "textSelection"
                           ],
-                          "description": "El tipo de contexto que se está proporcionando."
+                          "description": "El tipo de contexto que se proporciona."
                         },
                         "value": {
                           "type": "string",
@@ -414,7 +414,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "description": "Ruta opcional al archivo o a la página de origen."
+                          "description": "Ruta opcional al archivo o la página de origen."
                         },
                         "elementId": {
                           "type": "string",
@@ -426,11 +426,11 @@
                         "value"
                       ]
                     },
-                    "description": "Matriz opcional de información contextual que se proporcionará al assistant."
+                    "description": "Array opcional de información contextual para proporcionar al asistente."
                   },
                   "currentPath": {
                     "type": "string",
-                    "description": "La ruta de la página que el usuario está viendo actualmente. Cuando se proporciona, el assistant usa este contexto para ofrecer respuestas más relevantes. Longitud máxima: 200 caracteres."
+                    "description": "La ruta de la página que el usuario está viendo actualmente. Cuando se proporciona, el asistente usa este contexto para ofrecer respuestas más relevantes. Longitud máxima: 200 caracteres."
                   }
                 }
               }
@@ -439,12 +439,12 @@
         },
         "responses": {
           "200": {
-            "description": "Mensaje generado correctamente.",
+            "description": "Mensaje generado correctamente",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "Objeto de respuesta con segmentos de datos en flujo formateados con el estado, los encabezados y el contenido especificados. Para más información, consulta la documentación de AI SDK en [ai-sdk.dev/docs/ai-sdk-ui/streaming-data](https://ai-sdk.dev/docs/ai-sdk-ui/streaming-data). Usa el [hook useChat de AI SDK](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat#usechat) para gestionar el flujo de la respuesta."
+                  "description": "Objeto de respuesta con partes del flujo de datos formateadas con el estado, los encabezados y el contenido especificados. Para obtener más información, consulta la documentación de AI SDK en [ai-sdk.dev/docs/ai-sdk-ui/streaming-data](https://ai-sdk.dev/docs/ai-sdk-ui/streaming-data). Usa el [hook useChat de ai-sdk](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat#usechat) para gestionar el flujo de respuesta."
                 }
               }
             }
@@ -454,8 +454,8 @@
     },
     "/v2/assistant/{domain}/message": {
       "post": {
-        "summary": "Mensaje del assistant",
-        "description": "Genera un mensaje de respuesta del assistant para el domain indicado. Compatible con el SDK de IA v5 o superior.",
+        "summary": "Mensaje de Assistant",
+        "description": "Genera un mensaje de respuesta del asistente para el dominio especificado. Compatible con AI SDK v5+.",
         "parameters": [
           {
             "name": "domain",
@@ -464,7 +464,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El identificador de domain de tu URL, por ejemplo `domain.mintlify.app`. Puedes encontrarlo al final de la URL de tu dashboard. Por ejemplo, en `dashboard.mintlify.com/organization/domain`, el identificador de domain es `domain`."
+            "description": "El identificador de dominio de tu URL `domain.mintlify.app`. Se encuentra al final de la URL de tu panel. Por ejemplo, `dashboard.mintlify.com/organization/domain` tiene como identificador de dominio `domain`."
           }
         ],
         "requestBody": {
@@ -480,12 +480,12 @@
                 "properties": {
                   "fp": {
                     "type": "string",
-                    "description": "Identificador de huella (fingerprint) para realizar el seguimiento de las sesiones de conversación. Usa `anonymous` para usuarios anónimos o proporciona un identificador de usuario único."
+                    "description": "Identificador de huella digital para rastrear sesiones de conversación. Usa `anonymous` para usuarios anónimos o proporciona un identificador de usuario único."
                   },
                   "threadId": {
                     "default": null,
                     "type": "string",
-                    "description": "Un identificador opcional que se utiliza para mantener la continuidad de la conversación a través de varios mensajes. Cuando se incluye, permite que el sistema asocie los mensajes posteriores con el mismo hilo de conversación. El `threadId` se devuelve en la respuesta como `event.threadId` cuando `event.type === 'finish'`."
+                    "description": "Identificador opcional que se usa para mantener la continuidad de la conversación entre varios mensajes. Cuando se proporciona, permite al sistema asociar los mensajes de seguimiento con el mismo hilo de conversación. El `threadId` se devuelve en la respuesta como `event.threadId` cuando `event.type === 'finish'`."
                   },
                   "messages": {
                     "type": "array",
@@ -515,12 +515,12 @@
                             "assistant",
                             "user"
                           ],
-                          "description": "El rol del emisor del mensaje."
+                          "description": "Rol del remitente del mensaje."
                         },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time",
-                          "description": "Marca de tiempo en la que se creó el mensaje."
+                          "description": "Marca de tiempo de creación del mensaje."
                         },
                         "parts": {
                           "type": "array",
@@ -528,7 +528,7 @@
                             "oneOf": [
                               {
                                 "type": "object",
-                                "description": "Segmento de contenido de texto.",
+                                "description": "Parte de contenido de texto.",
                                 "properties": {
                                   "type": {
                                     "type": "string",
@@ -547,7 +547,7 @@
                               },
                               {
                                 "type": "object",
-                                "description": "Segmento de contenido de razonamiento con metadata opcional del proveedor.",
+                                "description": "Parte de contenido de razonamiento con metadatos opcionales específicos del proveedor.",
                                 "properties": {
                                   "type": {
                                     "type": "string",
@@ -560,7 +560,7 @@
                                   },
                                   "providerMetadata": {
                                     "type": "object",
-                                    "description": "Metadata opcional específica del proveedor."
+                                    "description": "Metadatos opcionales específicos del proveedor."
                                   }
                                 },
                                 "required": [
@@ -570,7 +570,7 @@
                               },
                               {
                                 "type": "object",
-                                "description": "Segmento que hace referencia a la URL de origen.",
+                                "description": "Parte de referencia de la URL de origen.",
                                 "properties": {
                                   "type": {
                                     "type": "string",
@@ -589,7 +589,7 @@
                                   },
                                   "providerMetadata": {
                                     "type": "object",
-                                    "description": "Metadata opcional específica del proveedor."
+                                    "description": "Metadatos opcionales específicos del proveedor."
                                   }
                                 },
                                 "required": [
@@ -600,7 +600,7 @@
                               },
                               {
                                 "type": "object",
-                                "description": "Segmento de archivo adjunto.",
+                                "description": "Parte de archivo adjunto.",
                                 "properties": {
                                   "type": {
                                     "type": "string",
@@ -641,11 +641,11 @@
                               }
                             ]
                           },
-                          "description": "Array de partes del mensaje. Cada parte tiene un tipo y campos específicos de ese tipo."
+                          "description": "Matriz de partes del mensaje. Cada parte tiene un tipo y campos específicos de ese tipo."
                         },
                         "metadata": {
                           "type": "object",
-                          "description": "Metadata opcional asociada con el mensaje."
+                          "description": "Metadatos opcionales asociados al mensaje."
                         }
                       },
                       "required": [
@@ -654,12 +654,12 @@
                         "parts"
                       ]
                     },
-                    "description": "Array de mensajes de la conversación. Usa la función handleSubmit del hook useChat del paquete @ai-sdk/react para gestionar los mensajes y las respuestas en streaming."
+                    "description": "Matriz de mensajes de la conversación. Usa la función handleSubmit del hook useChat del paquete @ai-sdk/react para gestionar los mensajes y las respuestas en streaming."
                   },
                   "retrievalPageSize": {
                     "type": "number",
                     "default": 5,
-                    "description": "Número de resultados de búsqueda en la documentación que se utilizarán para generar la respuesta. Valores más altos proporcionan más contexto, pero pueden aumentar el tiempo de respuesta. Recomendado: 5."
+                    "description": "Número de resultados de Búsqueda en la documentación que se usarán para generar la respuesta. Los valores más altos aportan más contexto, pero pueden aumentar el tiempo de respuesta. Recomendado: 5."
                   },
                   "filter": {
                     "type": "object",
@@ -678,7 +678,7 @@
                         "items": {
                           "type": "string"
                         },
-                        "description": "Array opcional de identificadores de grupo para filtrar los resultados."
+                        "description": "Matriz opcional de identificadores de grupo para filtrar los resultados."
                       }
                     },
                     "description": "Criterios de filtrado opcionales para la búsqueda."
@@ -694,7 +694,7 @@
                             "code",
                             "textSelection"
                           ],
-                          "description": "El tipo de contexto que se está proporcionando."
+                          "description": "El tipo de contexto que se proporciona."
                         },
                         "value": {
                           "type": "string",
@@ -702,11 +702,11 @@
                         },
                         "path": {
                           "type": "string",
-                          "description": "Ruta opcional al archivo o página de origen."
+                          "description": "Ruta opcional al archivo o la página de origen."
                         },
                         "elementId": {
                           "type": "string",
-                          "description": "Identificador opcional para el elemento de la interfaz de usuario que contiene el contexto."
+                          "description": "Identificador opcional del elemento de la interfaz de usuario que contiene el contexto."
                         }
                       },
                       "required": [
@@ -714,11 +714,11 @@
                         "value"
                       ]
                     },
-                    "description": "Array opcional de información contextual para proporcionar al assistant."
+                    "description": "Matriz opcional de información contextual para proporcionar al asistente."
                   },
                   "currentPath": {
                     "type": "string",
-                    "description": "La ruta de la página que el usuario está viendo actualmente. Cuando se proporciona, el assistant usa este contexto para ofrecer respuestas más relevantes. Longitud máxima: 200 caracteres."
+                    "description": "La ruta de la página que el usuario está viendo actualmente. Cuando se proporciona, el asistente usa este contexto para ofrecer respuestas más relevantes. Longitud máxima: 200 caracteres."
                   }
                 }
               }
@@ -727,12 +727,12 @@
         },
         "responses": {
           "200": {
-            "description": "Mensaje generado con éxito",
+            "description": "Mensaje generado correctamente",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "Streaming de respuestas compatible con AI SDK v5. Usa el [hook useChat de @ai-sdk/react](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat#usechat) para gestionar el flujo de la respuesta."
+                  "description": "Respuesta en streaming compatible con AI SDK v5. Usa el [hook useChat de @ai-sdk/react](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat#usechat) para gestionar el flujo de respuesta."
                 }
               }
             }
@@ -742,8 +742,8 @@
     },
     "/v1/page/{domain}": {
       "post": {
-        "summary": "Obtener contenido de la página",
-        "description": "Recupera el contenido de texto completo de una página de documentación específica por su ruta. Úsalo después de una búsqueda para obtener el contenido completo de una página coincidente.",
+        "summary": "Obtener el contenido de la página",
+        "description": "Recupera el contenido completo en texto de una página específica de la documentación a partir de su ruta. Usa esto después de una búsqueda para obtener el contenido completo de una página coincidente.",
         "parameters": [
           {
             "name": "domain",
@@ -752,7 +752,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El identificador domain de tu URL `domain.mintlify.app`. Se encuentra al final de la URL de tu dashboard. Por ejemplo, `dashboard.mintlify.com/organization/domain` tiene un identificador domain de `domain`."
+            "description": "El identificador de dominio de tu URL `domain.mintlify.app`. Se encuentra al final de la URL de tu panel. Por ejemplo, `dashboard.mintlify.com/organization/domain` tiene como identificador de dominio `domain`."
           }
         ],
         "requestBody": {
@@ -767,7 +767,7 @@
                 "properties": {
                   "path": {
                     "type": "string",
-                    "description": "El slug o ruta de la página cuyo contenido se desea recuperar. Corresponde al campo `page` devuelto por el endpoint [Search documentation](/es/api/assistant/search)."
+                    "description": "El slug o la ruta de la página cuyo contenido se quiere recuperar. Esto corresponde al campo `page` que devuelve el endpoint [Buscar en la documentación](/api/assistant/search)."
                   }
                 }
               }
@@ -776,7 +776,7 @@
         },
         "responses": {
           "200": {
-            "description": "Contenido de la página recuperado exitosamente",
+            "description": "Contenido de la página recuperado correctamente",
             "content": {
               "application/json": {
                 "schema": {
@@ -796,7 +796,7 @@
             }
           },
           "404": {
-            "description": "Página no encontrada o índice de búsqueda no disponible",
+            "description": "Página no encontrada o no hay ningún índice de búsqueda disponible",
             "content": {
               "application/json": {
                 "schema": {
@@ -822,7 +822,7 @@
           }
         },
         "summary": "Buscar en la documentación",
-        "description": "Realiza búsquedas semánticas y por palabras clave en tu documentación, con filtrado y paginación configurables.",
+        "description": "Realiza búsquedas semánticas y por palabras clave en toda tu documentación con filtros y paginación configurables.",
         "parameters": [
           {
             "name": "domain",
@@ -831,7 +831,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El identificador domain de tu URL `domain.mintlify.app`. Lo puedes encontrar al final de la URL de tu dashboard. Por ejemplo, `dashboard.mintlify.com/organization/domain` tiene un identificador domain de `domain`."
+            "description": "El identificador de dominio de tu URL `domain.mintlify.app`. Puedes encontrarlo al final de la URL de tu panel. Por ejemplo, `dashboard.mintlify.com/organization/domain` tiene `domain` como identificador de dominio."
           }
         ],
         "requestBody": {
@@ -846,24 +846,24 @@
                 "properties": {
                   "query": {
                     "type": "string",
-                    "description": "La búsqueda que se ejecutará en el contenido de tu documentación."
+                    "description": "La consulta de búsqueda que se ejecutará en el contenido de tu documentación."
                   },
                   "pageSize": {
                     "type": "integer",
                     "default": 10,
                     "minimum": 1,
                     "maximum": 50,
-                    "description": "Número de resultados de búsqueda que se mostrarán. Debe estar entre 1 y 50. De forma predeterminada es 10 si no se especifica."
+                    "description": "Número de resultados de búsqueda que se devolverán. Debe estar entre 1 y 50. El valor predeterminado es 10 si no se especifica."
                   },
                   "scoreThreshold": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
-                    "description": "Puntuación mínima de relevancia para los resultados. Solo se devuelven los resultados con una puntuación igual o superior a este umbral. Debe estar entre 0 y 1."
+                    "description": "Puntuación mínima de relevancia de los resultados. Solo se devuelven los resultados con una puntuación igual o superior a este umbral. Debe estar entre 0 y 1."
                   },
                   "filter": {
                     "type": "object",
-                    "description": "Parámetros de filtrado opcionales para restringir los resultados de la búsqueda.",
+                    "description": "Parámetros de filtrado opcionales para acotar los resultados de búsqueda.",
                     "properties": {
                       "version": {
                         "type": "string",
@@ -875,7 +875,7 @@
                       },
                       "tag": {
                         "type": "string",
-                        "description": "Filtrar resultados por etiqueta."
+                        "description": "Filtra los resultados por etiqueta."
                       }
                     }
                   }
@@ -886,7 +886,7 @@
         },
         "responses": {
           "200": {
-            "description": "Resultados de la búsqueda",
+            "description": "Resultados de búsqueda",
             "content": {
               "application/json": {
                 "schema": {
@@ -896,7 +896,7 @@
                     "properties": {
                       "content": {
                         "type": "string",
-                        "description": "El contenido de tu documentación que coincide con la búsqueda."
+                        "description": "El contenido coincidente de tu documentación."
                       },
                       "path": {
                         "type": "string",
@@ -904,7 +904,7 @@
                       },
                       "metadata": {
                         "type": "object",
-                        "description": "Metadata adicional sobre el resultado de la búsqueda."
+                        "description": "Metadatos adicionales sobre el resultado de búsqueda."
                       }
                     }
                   }
@@ -921,7 +921,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "La cabecera Authorization espera un token de tipo Bearer. Usa una clave de API para assistant (con el prefijo `mint_dsc_`). Esta es una clave pública segura para utilizar en código del lado del cliente. Genérala desde la [página de claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard."
+        "description": "El encabezado Authorization espera un token Bearer. Usa una clave de API del asistente (con el prefijo `mint_dsc_`). Es una clave pública segura para usar en código del lado del cliente. Genera una en la [página de claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
       }
     }
   }

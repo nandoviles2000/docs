@@ -1,32 +1,30 @@
 ---
 title: "Plausible"
-description: "Intégrez Plausible Analytics à votre documentation Mintlify pour un suivi des visiteurs léger et respectueux de la vie privée, sans cookies ni bannières de consentement."
-keywords: ["Plausible Analytics", "analytics respectueux de la vie privée", "analytics auto‑hébergés", "configuration du domain"]
+description: "Intégrez Plausible Analytics à votre documentation Mintlify pour un suivi léger des visiteurs, respectueux de la vie privée, sans cookies ni bannières de consentement."
+keywords: ["Plausible Analytics", "analyses respectueuses de la vie privée", "analyses auto-hébergées", "configuration du domaine"]
 ---
 
-Ajoutez le domain de votre site dans `docs.json` pour envoyer des Analytics à Plausible.
+Ajoutez le domaine de votre site à `docs.json` pour envoyer vos données d’analyse à Plausible.
 
 <Info>
-  N’incluez pas `https://` pour le domain ou le serveur.
+  N’incluez pas `https://` dans le domaine ni dans le serveur.
 </Info>
 
 <CodeGroup>
+  ```json Options d’analyses dans docs.json
+  "integrations": {
+      "plausible": {
+          "domain": "obligatoire - le domaine de votre documentation",
+          "server": "facultatif - l’URL de votre serveur Plausible auto-hébergé"
+      }
+  }
+  ```
 
-```json Options d’Analytics dans docs.json
-"integrations": {
-    "plausible": {
-        "domain": "requis - le domain de votre documentation",
-        "server": "optionnel - l’URL de votre serveur Plausible auto‑hébergé"
-    }
-}
-```
-
-```json Exemple
-"integrations": {
-    "plausible": {
-        "domain": "docs.domain.com"
-    }
-}
-```
-
+  ```json Exemple
+  "integrations": {
+      "plausible": {
+          "domain": "docs.domain.com"
+      }
+  }
+  ```
 </CodeGroup>

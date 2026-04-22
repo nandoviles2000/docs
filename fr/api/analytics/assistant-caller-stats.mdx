@@ -1,23 +1,24 @@
 ---
-title: "Récupérer les statistiques d'appels de l'Assistant"
-description: "Récupérez une répartition du nombre de requêtes de l'Assistant par type d'appelant pour une plage de dates donnée."
+title: "Obtenir les statistiques des requêtes de l’assistant par type d’appelant"
+description: "Récupérez le détail du nombre de requêtes adressées à l’assistant
+  par type d’appelant sur une période donnée."
 openapi: /fr/analytics.openapi.json GET /v1/analytics/{projectId}/assistant/caller-stats
-keywords: ["analytics", "assistant", "caller", "stats", "export"]
+keywords: [ "analyses", "assistant", "appelant", "statistiques", "export" ]
 ---
 
 <div id="usage">
   ## Utilisation
 </div>
 
-Utilisez cet endpoint pour voir comment les requêtes de l'Assistant sont réparties entre les différents types d'appelants. La réponse décompose le total des requêtes en :
+Utilisez ce point de terminaison pour voir comment les requêtes adressées à l’assistant se répartissent entre les différents types d’appelant. La réponse ventile le nombre total de requêtes comme suit :
 
-- **web** : Requêtes provenant du site de documentation
-- **api** : Requêtes provenant d'appels API directs
-- **other** : Requêtes provenant d'autres sources (par exemple, intégrations, SDKs)
-- **total** : Somme de tous les types de requêtes
+* **web** : Requêtes provenant du site de documentation
+* **api** : Requêtes provenant d’appels API directs
+* **other** : Requêtes provenant d’autres sources (par exemple, des intégrations, des SDK)
+* **total** : Somme de tous les types de requêtes
 
 <div id="filtering">
   ## Filtrage
 </div>
 
-Filtrez par plage de dates à l'aide des paramètres `dateFrom` et `dateTo`.
+Filtrez par intervalle de dates à l’aide des paramètres `dateFrom` et `dateTo`.

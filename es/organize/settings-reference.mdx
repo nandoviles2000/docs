@@ -1,637 +1,799 @@
 ---
-title: "Referencia del esquema docs.json"
-description: "Referencia completa de todas las propiedades de configuración de `docs.json`, con tipos, valores predeterminados y descripciones."
-keywords: ["docs.json", "schema", "reference", "configuration", "all settings", "properties", "complete"]
+title: "Referencia del esquema de docs.json"
+description: "Referencia completa de todas las propiedades de configuración de docs.json, con tipos, valores predeterminados, descripciones y ejemplos de uso para tu sitio de documentación."
+keywords: ["docs.json", "esquema", "referencia", "configuración", "todos los ajustes", "propiedades", "completa"]
 ---
 
-Los campos obligatorios tienen una insignia <Badge color="red">required</Badge>. Todos los demás campos son opcionales.
+Los campos obligatorios llevan la etiqueta <Badge color="red">obligatorio</Badge>. Todos los demás campos son opcionales.
 
-Para obtener contexto sobre lo que hace cada grupo de ajustes, consulta las páginas de temas:
+Para entender qué hace cada grupo de ajustes, consulta las páginas temáticas:
 
 * [Apariencia y marca](/es/organize/settings-appearance)
 * [Estructura del sitio](/es/organize/settings-structure)
 * [Configuración de la API](/es/organize/settings-api)
 * [Integraciones](/es/organize/settings-integrations)
-* [SEO y búsqueda](/es/organize/settings-seo)
+* [SEO y Búsqueda](/es/organize/settings-seo)
 
-## Referencia rápida
-
-| Propiedad | Tipo | Requerido | Predeterminado |
-|---|---|---|---|
-| `$ref` | string (ruta de archivo) | No | Ninguno |
-| `theme` | string | Sí | Ninguno |
-| `name` | string | Sí | Ninguno |
-| `colors.primary` | string (hex) | Sí | Ninguno |
-| `navigation` | object | Sí | Ninguno |
-| `description` | string | No | Ninguno |
-| `logo` | string u object | No | Ninguno |
-| `favicon` | string u object | No | Ninguno |
-| `appearance.default` | `"system"` \| `"light"` \| `"dark"` | No | `"system"` |
-| `appearance.strict` | boolean | No | `false` |
-| `fonts.family` | string | No | Predeterminado del tema |
-| `icons.library` | `"fontawesome"` \| `"lucide"` \| `"tabler"` | No | `"fontawesome"` |
-| `background.decoration` | `"gradient"` \| `"grid"` \| `"windows"` | No | Ninguno |
-| `styling.eyebrows` | `"section"` \| `"breadcrumbs"` | No | `"section"` |
-| `styling.latex` | boolean | No | Auto-detectado |
-| `styling.codeblocks` | `"system"` \| `"dark"` \| string \| object | No | `"system"` |
-| `thumbnails.appearance` | `"light"` \| `"dark"` | No | Predeterminado del sitio |
-| `navbar.links` | array | No | Ninguno |
-| `navbar.primary` | object | No | Ninguno |
-| `footer.socials` | object | No | Ninguno |
-| `footer.links` | array | No | Ninguno |
-| `banner.content` | string | No | Ninguno |
-| `banner.dismissible` | boolean | No | `false` |
-| `interaction.drilldown` | boolean | No | Predeterminado del tema |
-| `contextual.options` | array | No | Ninguno |
-| `contextual.display` | `"header"` \| `"toc"` | No | `"header"` |
-| `redirects` | array | No | Ninguno |
-| `variables` | object | No | Ninguno |
-| `metadata.timestamp` | boolean | No | `false` |
-| `errors.404.redirect` | boolean | No | `true` |
-| `errors.404.title` | string | No | Ninguno |
-| `errors.404.description` | string | No | Ninguno |
-| `api.openapi` | string o array u object | No | Ninguno |
-| `api.asyncapi` | string o array u object | No | Ninguno |
-| `api.playground.display` | `"interactive"` \| `"simple"` \| `"none"` \| `"auth"` | No | `"interactive"` |
-| `api.playground.proxy` | boolean | No | `true` |
-| `api.playground.credentials` | boolean | No | `false` |
-| `api.params.expanded` | `"all"` \| `"closed"` | No | `"closed"` |
-| `api.url` | `"full"` | No | Ninguno |
-| `api.examples.languages` | array of string | No | Ninguno |
-| `api.examples.defaults` | `"required"` \| `"all"` | No | `"all"` |
-| `api.examples.prefill` | boolean | No | `false` |
-| `api.examples.autogenerate` | boolean | No | `true` |
-| `seo.indexing` | `"navigable"` \| `"all"` | No | `"navigable"` |
-| `seo.metatags` | object | No | Ninguno |
-| `search.prompt` | string | No | Ninguno |
-| `integrations.*` | object | No | Ninguno |
-
-## Referencia completa de propiedades
-
-<div id="ref">
-### `$ref`
+<div id="quick-reference">
+  ## Referencia rápida
 </div>
 
-Carga la configuración desde otro archivo JSON. Usa `$ref` en cualquier nivel de tu `docs.json` para dividir la configuración en múltiples archivos.
+| Propiedad                    | Tipo                                               | Obligatorio | Predeterminado             |
+| ---------------------------- | -------------------------------------------------- | ----------- | -------------------------- |
+| `$ref`                       | string (ruta de archivo)                           | No          | Ninguno                    |
+| `theme`                      | string                                             | Sí          | Ninguno                    |
+| `name`                       | string                                             | Sí          | Ninguno                    |
+| `colors.primary`             | string (hex)                                       | Sí          | Ninguno                    |
+| `navigation`                 | object                                             | Sí          | Ninguno                    |
+| `description`                | string                                             | No          | Ninguno                    |
+| `logo`                       | string u object                                    | No          | Ninguno                    |
+| `favicon`                    | string u object                                    | No          | Ninguno                    |
+| `appearance.default`         | `"system"` | `"light"` | `"dark"`                  | No          | `"system"`                 |
+| `appearance.strict`          | boolean                                            | No          | `false`                    |
+| `fonts.family`               | string                                             | No          | Predeterminado del tema    |
+| `icons.library`              | `"fontawesome"` | `"lucide"` | `"tabler"`          | No          | `"fontawesome"`            |
+| `background.decoration`      | `"gradient"` | `"grid"` | `"windows"`              | No          | Ninguno                    |
+| `styling.eyebrows`           | `"section"` | `"breadcrumbs"`                      | No          | `"section"`                |
+| `styling.latex`              | boolean                                            | No          | Se detecta automáticamente |
+| `styling.codeblocks`         | `"system"` | `"dark"` | string | object            | No          | `"system"`                 |
+| `thumbnails.appearance`      | `"light"` | `"dark"`                               | No          | Predeterminado del sitio   |
+| `navbar.links`               | array                                              | No          | Ninguno                    |
+| `navbar.primary`             | object                                             | No          | Ninguno                    |
+| `footer.socials`             | object                                             | No          | Ninguno                    |
+| `footer.links`               | array                                              | No          | Ninguno                    |
+| `banner.content`             | string                                             | No          | Ninguno                    |
+| `banner.dismissible`         | boolean                                            | No          | `false`                    |
+| `interaction.drilldown`      | boolean                                            | No          | Predeterminado del tema    |
+| `contextual.options`         | array                                              | No          | Ninguno                    |
+| `contextual.display`         | `"header"` | `"toc"`                               | No          | `"header"`                 |
+| `redirects`                  | array                                              | No          | Ninguno                    |
+| `variables`                  | object                                             | No          | Ninguno                    |
+| `metadata.timestamp`         | boolean                                            | No          | `false`                    |
+| `errors.404.redirect`        | boolean                                            | No          | `true`                     |
+| `errors.404.title`           | string                                             | No          | Ninguno                    |
+| `errors.404.description`     | string                                             | No          | Ninguno                    |
+| `api.openapi`                | string, array u object                             | No          | Ninguno                    |
+| `api.asyncapi`               | string, array u object                             | No          | Ninguno                    |
+| `api.playground.display`     | `"interactive"` | `"simple"` | `"none"` | `"auth"` | No          | `"interactive"`            |
+| `api.playground.proxy`       | boolean                                            | No          | `true`                     |
+| `api.playground.credentials` | boolean                                            | No          | `false`                    |
+| `api.params.expanded`        | `"all"` | `"closed"`                               | No          | `"closed"`                 |
+| `api.url`                    | `"full"`                                           | No          | Ninguno                    |
+| `api.examples.languages`     | array de string                                    | No          | Ninguno                    |
+| `api.examples.defaults`      | `"required"` | `"all"`                             | No          | `"all"`                    |
+| `api.examples.prefill`       | boolean                                            | No          | `false`                    |
+| `api.examples.autogenerate`  | boolean                                            | No          | `true`                     |
+| `seo.indexing`               | `"navigable"` | `"all"`                            | No          | `"navigable"`              |
+| `seo.metatags`               | object                                             | No          | Ninguno                    |
+| `search.prompt`              | string                                             | No          | Ninguno                    |
+| `integrations.*`             | object                                             | No          | Ninguno                    |
 
-**Tipo:** string—ruta de archivo relativa a un archivo `.json`
+<div id="full-property-reference">
+  ## Referencia completa de las propiedades
+</div>
 
-- Cuando `$ref` resuelve a un objeto, Mintlify fusiona las claves hermanas del mismo bloque sobre el contenido referenciado, permitiendo que esas claves tengan prioridad sobre las claves coincidentes en la referencia.
-- Cuando `$ref` resuelve a un valor que no es un objeto, como un array, Mintlify ignora las claves hermanas.
-- Los archivos referenciados pueden contener sus propias entradas `$ref`, resueltas de forma relativa a ese archivo.
-- Las rutas deben permanecer dentro de la raíz del proyecto. Las referencias circulares provocan un error de compilación.
+<div id="ref">
+  ### `$ref`
+</div>
+
+Carga la configuración desde otro archivo JSON. Usa `$ref` en cualquier nivel de tu `docs.json` para dividir la configuración entre varios archivos.
+
+**Tipo:** string: ruta relativa a un archivo `.json`
+
+* Cuando `$ref` se resuelve como un objeto, Mintlify fusiona las claves del mismo nivel del mismo bloque sobre el contenido referenciado, lo que permite que esas claves tengan prioridad sobre las claves coincidentes de la referencia.
+* Cuando `$ref` se resuelve como un valor que no es un objeto, como un array, Mintlify ignora cualquier clave del mismo nivel.
+* Los archivos referenciados pueden contener sus propias entradas de `$ref`, que se resuelven de forma relativa a ese archivo.
+* Las rutas deben permanecer dentro de la raíz del proyecto. Las referencias circulares provocan un error de compilación.
 
 Consulta [Dividir la configuración con `$ref`](/es/organize/settings#split-configuration-with-%24ref) para ver ejemplos.
 
----
+***
 
-### `theme` - <Badge color="red">required</Badge>
+### `theme` - <Badge color="red">obligatorio</Badge>
 
 El tema de diseño de tu sitio.
 
 **Tipo:** string
 **Opciones:** `mint`, `maple`, `palm`, `willow`, `linden`, `almond`, `aspen`, `sequoia`, `luma`
 
-Consulta [Temas](/es/customize/themes) para ver previsualizaciones.
+Consulta [Themes](/es/customize/themes) para ver vistas previas.
 
----
+***
 
-### `name` - <Badge color="red">required</Badge>
+### `name` - <Badge color="red">obligatorio</Badge>
 
 El nombre de tu proyecto, organización o producto.
 
 **Tipo:** string
 
----
+***
 
-### `colors` - <Badge color="red">required</Badge>
+### `colors` - <Badge color="red">obligatorio</Badge>
 
-Los colores utilizados en tu documentación.
+Los colores que se usan en tu documentación.
 
 **Tipo:** object
 
-#### `colors.primary`
-<Badge color="red">required</Badge>
+<div id="colorsprimary">
+  #### `colors.primary`
+</div>
 
-El color primario. Generalmente se usa para énfasis en el modo claro.
+<Badge color="red">obligatorio</Badge>
+
+El color primario. Por lo general, se usa para destacar en el modo claro.
+
+**Type:** string—código hexadecimal que coincide con `^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$`
+
+<div id="colorslight">
+  #### `colors.light`
+</div>
+
+El color que se usa para resaltar en el modo oscuro.
 
 **Tipo:** string—código hexadecimal que coincide con `^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$`
 
-#### `colors.light`
+<div id="colorsdark">
+  #### `colors.dark`
+</div>
 
-El color usado para énfasis en el modo oscuro.
-
-**Tipo:** string—código hexadecimal que coincide con `^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$`
-
-#### `colors.dark`
-
-El color utilizado para botones y estados hover en ambos modos.
+El color que se usa para los botones y los estados al pasar el cursor en ambos modos.
 
 **Tipo:** string—código hexadecimal que coincide con `^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$`
 
----
+***
 
-### `navigation` - <Badge color="red">required</Badge>
+### `navigation` - <Badge color="red">obligatorio</Badge>
 
 La estructura de navegación de tu contenido.
 
 **Tipo:** object
 
-Consulta [Navegación](/es/organize/navigation) para obtener documentación completa.
+Consulta [Navegación](/es/organize/navigation) para ver la documentación completa.
 
-#### `navigation.global`
+<div id="navigationglobal">
+  #### `navigation.global`
+</div>
 
-Elementos de navegación globales que aparecen en todas las páginas y configuraciones regionales.
+Elementos de navegación globales que aparecen en todas las páginas y todos los idiomas.
 
-**Tipo:** object
+**Tipo:** objeto
 
-##### `navigation.global.tabs`
+<div id="navigationglobaltabs">
+  ##### `navigation.global.tabs`
+</div>
 
 Pestañas de navegación de nivel superior.
 
-**Tipo:** array of object—cada uno con: `tab` (string, required), `icon` (string), `iconType` (string), `hidden` (boolean), `href` (string uri, required)
+**Tipo:** matriz de objetos; cada uno con: `tab` (string, required), `icon` (string), `iconType` (string), `hidden` (boolean), `href` (string uri, required)
 
-##### `navigation.global.anchors`
+<div id="navigationglobalanchors">
+  ##### `navigation.global.anchors`
+</div>
 
-Enlaces de ancla en la barra lateral.
+Enlaces de anclaje de la barra lateral.
 
-**Tipo:** array of object—cada uno con: `anchor` (string, required), `icon` (string), `iconType` (string), `color.light` (string hex), `color.dark` (string hex), `hidden` (boolean), `href` (string uri, required)
+**Tipo:** matriz de objetos; cada uno con: `anchor` (string, required), `icon` (string), `iconType` (string), `color.light` (string hex), `color.dark` (string hex), `hidden` (boolean), `href` (string uri, required)
 
-##### `navigation.global.dropdowns`
+<div id="navigationglobaldropdowns">
+  ##### `navigation.global.dropdowns`
+</div>
 
 Menús desplegables.
 
-**Tipo:** array of object—cada uno con: `dropdown` (string, required), `icon` (string), `iconType` (string), `hidden` (boolean), `href` (string uri, required)
+**Tipo:** array de objetos; cada uno con: `dropdown` (string, obligatorio), `icon` (string), `iconType` (string), `hidden` (boolean), `href` (string uri, obligatorio)
 
-##### `navigation.global.languages`
+<div id="navigationgloballanguages">
+  ##### `navigation.global.languages`
+</div>
 
-Selector de idioma en la navegación global.
+Selector de idioma en la Navegación global.
 
-**Tipo:** array of object—cada uno con: `language` (string, required), `default` (boolean), `hidden` (boolean), `href` (string uri, required)
+**Tipo:** matriz de objetos; cada uno con: `language` (string, required), `default` (boolean), `hidden` (boolean), `href` (string uri, required)
 
-**Códigos de idioma compatibles:** `ar`, `ca`, `cn`, `cs`, `de`, `en`, `es`, `fr`, `fr-CA`, `he`, `hi`, `hu`, `id`, `it`, `ja`, `jp`, `ko`, `lv`, `nl`, `no`, `pl`, `pt`, `pt-BR`, `ro`, `ru`, `sv`, `tr`, `uk`, `uz`, `vi`, `zh`, `zh-Hans`, `zh-Hant`
+**Códigos de idioma admitidos:** `ar`, `ca`, `cn`, `cs`, `de`, `en`, `es`, `fr`, `fr-CA`, `he`, `hi`, `hu`, `id`, `it`, `ja`, `jp`, `ko`, `lv`, `nl`, `no`, `pl`, `pt`, `pt-BR`, `ro`, `ru`, `sv`, `tr`, `uk`, `uz`, `vi`, `zh`, `zh-Hans`, `zh-Hant`
 
-##### `navigation.global.versions`
+<div id="navigationglobalversions">
+  ##### `navigation.global.versions`
+</div>
 
 Selector de versiones en la navegación global.
 
-**Tipo:** array of object—cada uno con: `version` (string, required, longitud mínima 1), `default` (boolean), `hidden` (boolean), `href` (string uri, required)
+**Tipo:** array de objetos; cada uno con: `version` (string, required, min length 1), `default` (boolean), `hidden` (boolean), `href` (string uri, required)
 
-##### `navigation.global.products`
+<div id="navigationglobalproducts">
+  ##### `navigation.global.products`
+</div>
 
 Selector de productos en la navegación global.
 
-**Tipo:** array of object—cada uno con: `product` (string, required), `description` (string), `icon` (string), `iconType` (string)
+**Tipo:** array de objetos; cada uno con: `product` (string, obligatorio), `description` (string), `icon` (string), `iconType` (string)
 
-#### `navigation.languages`
+<div id="navigationlanguages">
+  #### `navigation.languages`
+</div>
 
-Selector de idioma para sitios multi-idioma. Cada entrada puede incluir sobrescrituras específicas del idioma para `banner`, `footer` y `navbar`.
+Selector de idioma para sitios en varios idiomas. Cada entrada puede incluir personalizaciones específicas del idioma para `banner`, `footer` y `navbar`.
 
-**Tipo:** array of object—cada uno con: `language` (string, required), `default` (boolean), `hidden` (boolean), `banner` (object), `footer` (object), `navbar` (object)
+**Tipo:** matriz de objetos; cada uno con: `language` (string, required), `default` (boolean), `hidden` (boolean), `banner` (object), `footer` (object), `navbar` (object)
 
 **Códigos de idioma compatibles:** `ar`, `ca`, `cn`, `cs`, `de`, `en`, `es`, `fr`, `fr-CA`, `he`, `hi`, `hu`, `id`, `it`, `ja`, `jp`, `ko`, `lv`, `nl`, `no`, `pl`, `pt`, `pt-BR`, `ro`, `ru`, `sv`, `tr`, `uk`, `uz`, `vi`, `zh`, `zh-Hans`, `zh-Hant`
 
-#### `navigation.versions`
+<div id="navigationversions">
+  #### `navigation.versions`
+</div>
 
-Selector de versiones para sitios con múltiples versiones.
+Selector de versiones para sitios con varias versiones.
 
-**Tipo:** array of object—cada uno con: `default` (boolean), `tag` (string)
+**Tipo:** array de objetos; cada objeto con: `default` (boolean), `tag` (string)
 
-#### `navigation.tabs`
+<div id="navigationtabs">
+  #### `navigation.tabs`
+</div>
 
 Pestañas de navegación de nivel superior.
 
-**Tipo:** array of object—consulta `navigation.global.tabs` para la estructura.
+**Tipo:** matriz de objetos; consulta `navigation.global.tabs` para ver la estructura.
 
-#### `navigation.anchors`
+<div id="navigationanchors">
+  #### `navigation.anchors`
+</div>
 
-Enlaces de ancla en la barra lateral.
+Enlaces de anclaje en la barra lateral.
 
-**Tipo:** array of object—consulta `navigation.global.anchors` para la estructura.
+**Tipo:** array de objetos; consulta `navigation.global.anchors` para ver la estructura.
 
-#### `navigation.dropdowns`
+<div id="navigationdropdowns">
+  #### `navigation.dropdowns`
+</div>
 
 Menús desplegables.
 
-**Tipo:** array of object—consulta `navigation.global.dropdowns` para la estructura.
+**Tipo:** matriz de objetos; consulta `navigation.global.dropdowns` para ver la estructura.
 
-#### `navigation.products`
+<div id="navigationproducts">
+  #### `navigation.products`
+</div>
 
 Selector de productos.
 
-**Tipo:** array of object—consulta `navigation.global.products` para la estructura.
+**Tipo:** array de objetos; consulta `navigation.global.products` para ver la estructura.
 
-#### `navigation.groups`
+<div id="navigationgroups">
+  #### `navigation.groups`
+</div>
 
-Grupos para organizar el contenido en secciones etiquetadas.
+Grupos para organizar el contenido en secciones con etiquetas.
 
-**Tipo:** array of object
+**Tipo:** matriz de objetos
 
-#### `navigation.pages`
+<div id="navigationpages">
+  #### `navigation.pages`
+</div>
 
-Páginas individuales en tu documentación.
+Páginas individuales de tu documentación.
 
-**Tipo:** array of string or object
+**Tipo:** matriz de cadenas u objetos
 
-#### `navigation.directory`
+<div id="navigationdirectory">
+  #### `navigation.directory`
+</div>
 
-Diseño de directorio para páginas raíz en grupos de navegación. Se hereda recursivamente; los descendientes pueden sobreescribirlo. Consulta [Listados de directorio](/es/organize/navigation#directory-listings).
+Disposición del directorio para las páginas raíz en los grupos de navegación. Se hereda de forma recursiva; los elementos descendientes pueden anularla. Consulta [Listados de directorios](/es/organize/navigation#directory-listings).
 
-**Tipo:** `"none"` | `"accordion"` | `"card"` — predeterminado `"none"`
+**Tipo:** `"none"` | `"accordion"` | `"card"` — valor predeterminado `"none"`
 
----
+***
 
-### `description`
+<div id="description">
+  ### `description`
+</div>
 
-Descripción del sitio para SEO e indexación con IA.
-
-**Tipo:** string
-
----
-
-### `logo`
-
-Logo del sitio. Proporciona una cadena de ruta o objetos separados para `light` y `dark`.
-
-**Tipo:** string u object
-
-#### `logo.light`
-<Badge color="red">required</Badge> (cuando se usa la forma de objeto)
-
-Ruta al logo para el modo claro. Ejemplo: `/logo/light.svg`.
+Descripción del sitio para SEO y la indexación por IA.
 
 **Tipo:** string
 
-#### `logo.dark`
-<Badge color="red">required</Badge> (cuando se usa la forma de objeto)
+***
 
-Ruta al logo para el modo oscuro. Ejemplo: `/logo/dark.svg`.
+<div id="logo">
+  ### `logo`
+</div>
+
+Logo del sitio. Proporciona una cadena de ruta o los objetos `light` y `dark` por separado.
+
+**Tipo:** string u objeto
+
+<div id="logolight">
+  #### `logo.light`
+</div>
+
+<Badge color="red">obligatorio</Badge> (cuando se usa la forma de objeto)
+
+Ruta al logotipo para el modo claro. Ejemplo: `/logo/light.svg`.
 
 **Tipo:** string
 
-#### `logo.href`
+<div id="logodark">
+  #### `logo.dark`
+</div>
 
-URL a la que redirigir al hacer clic en el logo.
+<Badge color="red">obligatorio</Badge> (si se usa la forma de objeto)
+
+Ruta del logotipo para el modo oscuro. Ejemplo: `/logo/dark.svg`.
+
+**Tipo:** string
+
+<div id="logohref">
+  #### `logo.href`
+</div>
+
+URL a la que se redirige al hacer clic en el logo.
 
 **Tipo:** string (uri)
 
----
+***
 
-### `favicon`
+<div id="favicon">
+  ### `favicon`
+</div>
 
-Favicon del sitio. Se redimensiona automáticamente. Proporciona una cadena de ruta o objetos separados para `light` y `dark`.
+Favicon del sitio. Se redimensiona automáticamente. Proporciona una cadena con la ruta o los objetos `light` y `dark` por separado.
 
-**Tipo:** string u object
+**Tipo:** cadena u objeto
 
-#### `favicon.light`
-<Badge color="red">required</Badge> (cuando se usa la forma de objeto)
+<div id="faviconlight">
+  #### `favicon.light`
+</div>
 
-Ruta al favicon para el modo claro. Ejemplo: `/favicon.png`.
+<Badge color="red">obligatorio</Badge> (cuando se usa la forma de objeto)
 
-**Tipo:** string
-
-#### `favicon.dark`
-<Badge color="red">required</Badge> (cuando se usa la forma de objeto)
-
-Ruta al favicon para el modo oscuro. Ejemplo: `/favicon-dark.png`.
+Ruta del favicon para el modo claro. Ejemplo: `/favicon.png`.
 
 **Tipo:** string
 
----
+<div id="favicondark">
+  #### `favicon.dark`
+</div>
 
-### `appearance`
+<Badge color="red">obligatorio</Badge> (si se usa la forma de objeto)
+
+Ruta del favicon para el modo oscuro. Ejemplo: `/favicon-dark.png`.
+
+**Tipo:** string
+
+***
+
+<div id="appearance">
+  ### `appearance`
+</div>
 
 Configuración del modo claro/oscuro.
 
-**Tipo:** object
+**Tipo:** objeto
 
-#### `appearance.default`
+<div id="appearancedefault">
+  #### `appearance.default`
+</div>
 
 Modo de color predeterminado.
 
 **Tipo:** `"system"` | `"light"` | `"dark"`
 **Predeterminado:** `"system"`
 
-#### `appearance.strict`
+<div id="appearancestrict">
+  #### `appearance.strict`
+</div>
 
 Cuando es `true`, oculta el selector de modo claro/oscuro.
 
 **Tipo:** boolean
 **Predeterminado:** `false`
 
----
+***
 
-### `fonts`
+<div id="fonts">
+  ### `fonts`
+</div>
 
-Tipografías personalizadas. Compatible con [Google Fonts](https://fonts.google.com) y fuentes autoalojadas.
+Fuentes personalizadas. Admite [Google Fonts](https://fonts.google.com) y fuentes autoalojadas.
 
-**Tipo:** object
+**Tipo:** objeto
 
-#### `fonts.family`
-<Badge color="red">required</Badge> (cuando se usa `fonts`)
+<div id="fontsfamily">
+  #### `fonts.family`
+</div>
 
-Nombre de la familia tipográfica. Los nombres de familias de Google Fonts se cargan automáticamente.
+<Badge color="red">obligatorio</Badge> (cuando se usa `fonts`)
+
+Nombre de la familia tipográfica. Los nombres de las familias de Google Fonts se cargan automáticamente.
 
 **Tipo:** string
 
-#### `fonts.weight`
+<div id="fontsweight">
+  #### `fonts.weight`
+</div>
 
-Peso de la fuente. Las fuentes variables admiten valores fraccionarios como `550`.
+Grosor de la fuente. Las fuentes variables admiten valores fraccionarios, como `550`.
 
-**Tipo:** number
+**Type:** number
 
-#### `fonts.source`
+<div id="fontssource">
+  #### `fonts.source`
+</div>
 
-URL a una fuente alojada o ruta a un archivo de fuente local. No es necesario para Google Fonts.
+URL de una fuente alojada o ruta a un archivo de fuente local. No se necesita para Google Fonts.
 
 **Tipo:** string (uri)
 
-#### `fonts.format`
+<div id="fontsformat">
+  #### `fonts.format`
+</div>
 
-Formato del archivo de fuente. Obligatorio cuando se usa `fonts.source`.
+Formato del archivo de fuente. Obligatorio cuando usas `fonts.source`.
 
 **Tipo:** `"woff"` | `"woff2"`
 
-#### `fonts.heading`
+<div id="fontsheading">
+  #### `fonts.heading`
+</div>
 
-Sobrescribe la configuración de fuente para los encabezados. Acepta los mismos campos `family`, `weight`, `source` y `format`.
+Sobrescribe la configuración de fuente de los encabezados. Acepta los mismos campos `family`, `weight`, `source` y `format`.
 
-**Tipo:** object
+**Type:** objeto
 
-#### `fonts.body`
+<div id="fontsbody">
+  #### `fonts.body`
+</div>
 
-Sobrescribe la configuración de fuente para el texto del cuerpo. Acepta los mismos campos `family`, `weight`, `source` y `format`.
+Anula la configuración de fuente del cuerpo del texto. Acepta los mismos campos `family`, `weight`, `source` y `format`.
 
-**Tipo:** object
+**Tipo:** objeto
 
----
+***
 
-### `icons`
+<div id="icons">
+  ### `icons`
+</div>
 
 Configuración de la biblioteca de iconos.
 
 **Tipo:** object
 
-#### `icons.library`
-<Badge color="red">required</Badge>
+<div id="iconslibrary">
+  #### `icons.library`
+</div>
 
-Biblioteca de iconos que se usará en toda tu documentación. Todos los nombres de iconos en tu documentación deben provenir de la biblioteca seleccionada.
+<Badge color="red">obligatorio</Badge>
+
+Biblioteca de iconos que se usará en toda tu documentación. Todos los nombres de iconos de tu documentación deben provenir de la biblioteca seleccionada.
 
 **Tipo:** `"fontawesome"` | `"lucide"` | `"tabler"`
 **Predeterminado:** `"fontawesome"`
 
----
+***
 
-### `background`
+<div id="background">
+  ### `background`
+</div>
 
-Configuración de imagen de fondo, decoración y color.
+Configuración de la imagen de fondo, la decoración y el color.
 
-**Tipo:** object
+**Type:** object
 
-#### `background.decoration`
+<div id="backgrounddecoration">
+  #### `background.decoration`
+</div>
 
-Patrón decorativo de fondo.
+Patrón de fondo decorativo.
 
 **Tipo:** `"gradient"` | `"grid"` | `"windows"`
 
-#### `background.color`
+<div id="backgroundcolor">
+  #### `background.color`
+</div>
 
 Colores de fondo personalizados.
 
-**Tipo:** object
+**Tipo:** objeto
 
-##### `background.color.light`
+<div id="backgroundcolorlight">
+  ##### `background.color.light`
+</div>
 
 Color de fondo para el modo claro.
 
 **Tipo:** string—código hexadecimal que coincide con `^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$`
 
-##### `background.color.dark`
+<div id="backgroundcolordark">
+  ##### `background.color.dark`
+</div>
 
 Color de fondo para el modo oscuro.
 
 **Tipo:** string—código hexadecimal que coincide con `^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$`
 
-#### `background.image`
+<div id="backgroundimage">
+  #### `background.image`
+</div>
 
-Imagen de fondo. Proporciona una cadena de ruta o objetos separados para `light` y `dark`.
+Imagen de fondo. Proporciona una ruta como cadena o define por separado los objetos `light` y `dark`.
 
-**Tipo:** string u object
+**Tipo:** string u objeto
 
-##### `background.image.light`
-<Badge color="red">required</Badge> (cuando se usa la forma de objeto)
+<div id="backgroundimagelight">
+  ##### `background.image.light`
+</div>
+
+<Badge color="red">obligatorio</Badge> (cuando se usa la forma de objeto)
 
 Ruta de la imagen de fondo para el modo claro.
 
 **Tipo:** string
 
-##### `background.image.dark`
-<Badge color="red">required</Badge> (cuando se usa la forma de objeto)
+<div id="backgroundimagedark">
+  ##### `background.image.dark`
+</div>
+
+<Badge color="red">obligatorio</Badge> (cuando se usa la forma de objeto)
 
 Ruta de la imagen de fondo para el modo oscuro.
 
 **Tipo:** string
 
----
+***
 
-### `styling`
+<div id="styling">
+  ### `styling`
+</div>
 
 Controles de estilo visual.
 
 **Tipo:** object
 
-#### `styling.eyebrows`
+<div id="stylingeyebrows">
+  #### `styling.eyebrows`
+</div>
 
-Estilo del eyebrow de la página que se muestra en la parte superior de la página.
+Estilo del encabezado superior que se muestra en la parte superior de la página.
 
 **Tipo:** `"section"` | `"breadcrumbs"`
 **Predeterminado:** `"section"`
 
-#### `styling.latex`
+<div id="stylinglatex">
+  #### `styling.latex`
+</div>
 
-Si se cargan las hojas de estilo de LaTeX. Por defecto, Mintlify auto-detecta el uso de LaTeX.
+Indica si se deben cargar las hojas de estilo de LaTeX. De forma predeterminada, Mintlify detecta automáticamente el uso de LaTeX.
 
-**Tipo:** boolean
+**Type:** boolean
 
-#### `styling.codeblocks`
+<div id="stylingcodeblocks">
+  #### `styling.codeblocks`
+</div>
 
 Configuración del tema de los bloques de código.
 
-**Tipo:** `"system"` | `"dark"` | string (nombre de tema de Shiki) | object
-**Predeterminado:** `"system"`
+**Type:** `"system"` | `"dark"` | string (nombre del tema de Shiki) | object
+**Default:** `"system"`
 
-Cuando es un objeto:
+Si es un objeto:
 
-##### `styling.codeblocks.theme`
+<div id="stylingcodeblockstheme">
+  ##### `styling.codeblocks.theme`
+</div>
 
-Un único nombre de tema de Shiki para ambos modos, o un objeto con nombres de temas de Shiki para `light` y `dark`.
+Un único nombre de tema de Shiki para ambos modos, o un objeto con los nombres de tema de Shiki para `light` y `dark`.
 
-**Tipo:** string u object
+**Type:** string u objeto
 
-##### `styling.codeblocks.languages`
+<div id="stylingcodeblockslanguages">
+  ##### `styling.codeblocks.languages`
+</div>
 
 Configuración personalizada de lenguajes.
 
-**Tipo:** object
+**Tipo:** objeto
 
-###### `styling.codeblocks.languages.custom`
+<div id="stylingcodeblockslanguagescustom">
+  ###### `styling.codeblocks.languages.custom`
+</div>
 
-Rutas a archivos JSON que describen lenguajes personalizados de Shiki en [formato de gramática de TextMate](https://macromates.com/manual/en/language_grammars).
+Rutas a archivos JSON que describen lenguajes personalizados de Shiki en [formato de gramática TextMate](https://macromates.com/manual/en/language_grammars).
 
-**Tipo:** array of string
+**Tipo:** array de cadenas
 
----
+***
 
-### `thumbnails`
+<div id="thumbnails">
+  ### `thumbnails`
+</div>
 
-Personalización de miniaturas para redes sociales.
+Personalización de las miniaturas para redes sociales.
 
-**Tipo:** object
+**Tipo:** objeto
 
-#### `thumbnails.appearance`
+<div id="thumbnailsappearance">
+  #### `thumbnails.appearance`
+</div>
 
-Tema visual para las miniaturas.
+Tema visual de las miniaturas.
 
 **Tipo:** `"light"` | `"dark"`
-**Predeterminado:** Esquema de color del sitio
+**Predeterminado:** Esquema de colores del sitio
 
-#### `thumbnails.background`
+<div id="thumbnailsbackground">
+  #### `thumbnails.background`
+</div>
 
-Imagen de fondo para las miniaturas. Puede ser una ruta relativa o URL absoluta.
+Imagen de fondo de las miniaturas. Puede ser una ruta relativa o una URL absoluta.
 
 **Tipo:** string
 
-#### `thumbnails.fonts`
+<div id="thumbnailsfonts">
+  #### `thumbnails.fonts`
+</div>
 
-Configuración de tipografía para las miniaturas.
+Configuración de fuentes para las miniaturas.
 
 **Tipo:** object
 
-##### `thumbnails.fonts.family`
-<Badge color="red">required</Badge> (cuando se usa `thumbnails.fonts`)
+<div id="thumbnailsfontsfamily">
+  ##### `thumbnails.fonts.family`
+</div>
 
-Nombre de la familia tipográfica. Solo compatible con [Google Fonts](https://fonts.google.com).
+<Badge color="red">obligatorio</Badge> (si usas `thumbnails.fonts`)
 
-**Tipo:** string
+Nombre de la familia tipográfica. Solo admite [Google Fonts](https://fonts.google.com).
 
----
+**Type:** string
 
-### `navbar`
+***
+
+<div id="navbar">
+  ### `navbar`
+</div>
 
 Configuración de la barra de navegación superior.
 
 **Tipo:** object
 
-#### `navbar.links`
+<div id="navbarlinks">
+  #### `navbar.links`
+</div>
 
 Enlaces que se muestran en la barra de navegación.
 
-**Tipo:** array of object—cada uno con:
+**Tipo:** array de objetos, cada uno con:
 
-| Campo | Tipo | Requerido | Descripción |
-|---|---|---|---|
-| `type` | `"github"` \| `"discord"` | No | Tipo de enlace. Omitir para un enlace estándar. |
-| `label` | string | Condicional | Requerido cuando se omite `type`. |
-| `href` | string (uri) | Sí | Destino del enlace. |
-| `icon` | string | No | Nombre del icono, URL, ruta o SVG. |
-| `iconType` | string | No | Solo para estilo de icono de Font Awesome. |
+| Campo      | Tipo                     | Obligatorio | Descripción                                           |
+| ---------- | ------------------------ | ----------- | ----------------------------------------------------- |
+| `type`     | `"github"` | `"discord"` | No          | Tipo de enlace. Omítelo para usar un enlace estándar. |
+| `label`    | string                   | Condicional | Obligatorio cuando se omite `type`.                   |
+| `href`     | string (uri)             | Sí          | Destino del enlace.                                   |
+| `icon`     | string                   | No          | Nombre del icono, URL, ruta o SVG.                    |
+| `iconType` | string                   | No          | Solo para el estilo de icono de Font Awesome.         |
 
-#### `navbar.primary`
+<div id="navbarprimary">
+  #### `navbar.primary`
+</div>
 
-Botón principal de llamada a la acción en la barra de navegación.
-
-**Tipo:** object
-
-| Campo | Tipo | Requerido | Descripción |
-|---|---|---|---|
-| `type` | `"button"` \| `"github"` \| `"discord"` | Sí | Estilo del botón. |
-| `label` | string | Condicional | Requerido cuando `type` es `"button"`. |
-| `href` | string (uri) | Sí | Destino del botón. |
-
----
-
-### `footer`
-
-Contenido del pie de página y enlaces sociales.
+Botón de llamada a la acción principal de la barra de navegación.
 
 **Tipo:** object
 
-#### `footer.socials`
+| Campo   | Tipo                                  | Obligatorio | Descripción                              |
+| ------- | ------------------------------------- | ----------- | ---------------------------------------- |
+| `type`  | `"button"` | `"github"` | `"discord"` | Sí          | Estilo del botón.                        |
+| `label` | string                                | Condicional | Obligatorio cuando `type` es `"button"`. |
+| `href`  | string (uri)                          | Sí          | Destino del botón.                       |
 
-Perfiles de redes sociales. Cada clave es el nombre de una plataforma, cada valor es la URL de tu perfil.
+***
+
+<div id="footer">
+  ### `footer`
+</div>
+
+Contenido del pie de página y enlaces de redes sociales.
 
 **Tipo:** object
 
-**Claves válidas:** `x`, `website`, `facebook`, `youtube`, `discord`, `slack`, `github`, `linkedin`, `instagram`, `hacker-news`, `medium`, `telegram`, `twitter`, `x-twitter`, `earth-americas`, `bluesky`, `threads`, `reddit`, `podcast`
+<div id="footersocials">
+  #### `footer.socials`
+</div>
 
-#### `footer.links`
+Perfiles en redes sociales. Cada clave corresponde al nombre de una plataforma y cada valor es la URL de tu perfil.
+
+**Type:** objeto
+
+**Valid keys:** `x`, `website`, `facebook`, `youtube`, `discord`, `slack`, `github`, `linkedin`, `instagram`, `hacker-news`, `medium`, `telegram`, `twitter`, `x-twitter`, `earth-americas`, `bluesky`, `threads`, `reddit`, `podcast`
+
+<div id="footerlinks">
+  #### `footer.links`
+</div>
 
 Columnas de enlaces en el pie de página. Máximo 4 columnas.
 
-**Tipo:** array of object (máx. 4)—cada uno con: `header` (string), `items` (array of `{ label: string, href: string }`, required)
+**Type:** array de objetos (máx. 4), cada uno con: `header` (string), `items` (array de `{ label: string, href: string }`, obligatorio)
 
----
+***
 
-### `banner`
+<div id="banner">
+  ### `banner`
+</div>
 
-Banner para todo el sitio que se muestra en la parte superior de cada página.
+Banner de todo el sitio que se muestra en la parte superior de todas las páginas.
 
-**Tipo:** object
+**Type:** objeto
 
-#### `banner.content`
-<Badge color="red">required</Badge> (cuando se usa `banner`)
+<div id="bannercontent">
+  #### `banner.content`
+</div>
 
-Texto del banner. Admite formato MDX básico, incluidos enlaces, negrita y cursiva. Los componentes personalizados no son compatibles.
+<Badge color="red">obligatorio</Badge> (al usar `banner`)
 
-**Tipo:** string
+Texto del banner. Admite formato básico de MDX, incluidos enlaces, texto en negrita y en cursiva. No se admiten componentes personalizados.
 
-#### `banner.dismissible`
+**Type:** string
 
-Si se muestra un botón para descartar.
+<div id="bannerdismissible">
+  #### `banner.dismissible`
+</div>
+
+Indica si se debe mostrar un botón para descartarlo.
 
 **Tipo:** boolean
 **Predeterminado:** `false`
 
----
+***
 
-### `interaction`
+<div id="interaction">
+  ### `interaction`
+</div>
 
-Configuración de interacción de navegación.
+Configuración de la interacción de la navegación.
 
-**Tipo:** object
+**Tipo:** objeto
 
-#### `interaction.drilldown`
+<div id="interactiondrilldown">
+  #### `interaction.drilldown`
+</div>
 
-Controla la navegación automática cuando un usuario hace clic en un grupo de navegación. Establécelo en `true` para navegar a la primera página cuando un usuario hace clic en un grupo, `false` para solo expandir/contraer el grupo sin navegar.
+Controla la navegación automática cuando el usuario hace clic en un grupo de navegación. Establécelo en `true` para ir a la primera página cuando haga clic en un grupo, o en `false` para solo expandir o contraer el grupo sin navegar.
 
-**Tipo:** boolean
-**Predeterminado:** Predeterminado del tema
+**Type:** boolean
+**Default:** Valor predeterminado del tema
 
----
+***
 
-### `contextual`
+<div id="contextual">
+  ### `contextual`
+</div>
 
-Menú contextual para acciones de página e integraciones de herramientas de IA.
+Menú contextual para las acciones de la página y las integraciones con herramientas de IA.
 
-**Tipo:** object
+**Tipo:** objeto
 
-#### `contextual.options`
-<Badge color="red">required</Badge>
+<div id="contextualoptions">
+  #### `contextual.options`
+</div>
+
+<Badge color="red">obligatorio</Badge>
 
 Acciones disponibles en el menú contextual. El primer elemento es la acción predeterminada.
 
-**Tipo:** array of `"assistant"` | `"copy"` | `"view"` | `"chatgpt"` | `"claude"` | `"perplexity"` | `"grok"` | `"aistudio"` | `"devin"` | `"windsurf"` | `"mcp"` | `"add-mcp"` | `"cursor"` | `"vscode"` | `"devin-mcp"` | object
+**Tipo:** array de `"assistant"` | `"copy"` | `"view"` | `"chatgpt"` | `"claude"` | `"perplexity"` | `"grok"` | `"aistudio"` | `"devin"` | `"windsurf"` | `"mcp"` | `"add-mcp"` | `"cursor"` | `"vscode"` | `"devin-mcp"` | object
 
 Campos del objeto de opción personalizada:
 
-| Campo | Tipo | Requerido | Descripción |
-|---|---|---|---|
-| `title` | string | Sí | Título visible. |
-| `description` | string | Sí | Texto de descripción. |
-| `icon` | string | No | Nombre del icono, URL, ruta o SVG. |
-| `href` | string u object | Sí | Destino del enlace. Admite marcadores de posición `$page`, `$path`, `$mcp`. |
+| Campo         | Tipo             | Obligatorio | Descripción                                                                      |
+| ------------- | ---------------- | ----------- | -------------------------------------------------------------------------------- |
+| `title`       | string           | Sí          | Título mostrado.                                                                 |
+| `description` | string           | Sí          | Texto de descripción.                                                            |
+| `icon`        | string           | No          | Nombre del icono, URL, ruta o SVG.                                               |
+| `href`        | string or object | Sí          | Destino del enlace. Admite los marcadores de posición `$page`, `$path` y `$mcp`. |
 
-#### `contextual.display`
+<div id="contextualdisplay">
+  #### `contextual.display`
+</div>
 
 Dónde mostrar el menú contextual.
 
@@ -639,277 +801,347 @@ Dónde mostrar el menú contextual.
 **Predeterminado:** `"header"`
 
 <Note>
-  El menú contextual solo está disponible en los despliegues de vista previa y producción.
+  El menú contextual solo está disponible en los despliegues de vista previa y de producción.
 </Note>
 
----
+***
 
-### `redirects`
+<div id="redirects">
+  ### `redirects`
+</div>
 
 Redirecciones para páginas movidas, renombradas o eliminadas.
 
-**Tipo:** array of object—cada uno con:
+**Tipo:** array de objetos, cada uno con:
 
-| Campo | Tipo | Requerido | Descripción |
-|---|---|---|---|
-| `source` | string | Sí | Ruta desde la que redirigir. Ejemplo: `/old-page` |
-| `destination` | string | Sí | Ruta a la que redirigir. Ejemplo: `/new-page` |
-| `permanent` | boolean | No | `true` para 308, `false` para 307. Predeterminado: `true`. |
+| Campo         | Tipo    | Obligatorio | Descripción                                                      |
+| ------------- | ------- | ----------- | ---------------------------------------------------------------- |
+| `source`      | string  | Sí          | Ruta desde la que se redirige. Ejemplo: `/old-page`              |
+| `destination` | string  | Sí          | Ruta a la que se redirige. Ejemplo: `/new-page`                  |
+| `permanent`   | boolean | No          | `true` para 308, `false` para 307. Valor predeterminado: `true`. |
 
----
+***
 
-### `variables`
+<div id="variables">
+  ### `variables`
+</div>
 
-Variables de contenido globales reemplazadas en tiempo de compilación usando la sintaxis `{{variableName}}`.
+Variables de contenido globales que se sustituyen en tiempo de compilación mediante la sintaxis `{{variableName}}`.
 
-**Tipo:** object—pares clave-valor donde las claves son nombres de variables (alfanuméricos y guiones únicamente) y los valores son cadenas de reemplazo.
+**Type:** object—pares clave-valor donde las claves son nombres de variables (solo caracteres alfanuméricos y guiones) y los valores son cadenas de sustitución.
 
----
+***
 
-### `metadata`
+<div id="metadata">
+  ### `metadata`
+</div>
 
-Configuración global de metadatos de página.
+Configuración global de los metadatos de la página.
 
-**Tipo:** object
+**Type:** object
 
-#### `metadata.timestamp`
+<div id="metadatatimestamp">
+  #### `metadata.timestamp`
+</div>
 
-Muestra una fecha de última modificación en todas las páginas.
+Muestra la fecha de última modificación en todas las páginas.
 
-**Tipo:** boolean
-**Predeterminado:** `false`
+**Type:** boolean
+**Default:** `false`
 
----
+***
 
-### `errors`
+<div id="errors">
+  ### `errors`
+</div>
 
-Configuración de páginas de error.
+Configuración de la página de error.
 
-**Tipo:** object
+**Tipo:** objeto
 
-#### `errors.404`
+<div id="errors404">
+  #### `errors.404`
+</div>
 
-Configuración para la página de error 404 "Página no encontrada".
+Configuración de la página de error 404 «Página no encontrada».
 
-**Tipo:** object
+**Tipo:** objeto
 
-##### `errors.404.redirect`
+<div id="errors404redirect">
+  ##### `errors.404.redirect`
+</div>
 
-Si se redirige automáticamente a la página de inicio cuando no se encuentra una página.
+Indica si se redirige automáticamente a la página de inicio cuando no se encuentra una página.
 
-**Tipo:** boolean
-**Predeterminado:** `true`
+**Type:** boolean
+**Default:** `true`
 
-##### `errors.404.title`
+<div id="errors404title">
+  ##### `errors.404.title`
+</div>
 
-Título personalizado para la página 404.
+Título personalizado de la página 404.
 
 **Tipo:** string
 
-##### `errors.404.description`
+<div id="errors404description">
+  ##### `errors.404.description`
+</div>
 
-Descripción personalizada para la página 404. Admite formato MDX, incluidos enlaces, negrita, cursiva y componentes personalizados.
+Descripción personalizada de la página 404. Admite formato MDX, incluidos enlaces, texto en negrita y cursiva, y componentes personalizados.
 
-**Tipo:** string
+**Type:** string
 
----
+***
 
-### `api`
+<div id="api">
+  ### `api`
+</div>
 
-Configuración de documentación de API y área de pruebas.
-
-**Tipo:** object
-
-#### `api.openapi`
-
-Archivos de especificación OpenAPI.
-
-**Tipo:** string | array of string | object con `source` (string) y `directory` (string)
-
-#### `api.asyncapi`
-
-Archivos de especificación AsyncAPI.
-
-**Tipo:** string | array of string | object con `source` (string) y `directory` (string)
-
-#### `api.playground`
-
-Configuración del área de pruebas interactiva.
+Configuración de la documentación de la API y del entorno de pruebas.
 
 **Tipo:** object
 
-##### `api.playground.display`
+<div id="apiopenapi">
+  #### `api.openapi`
+</div>
 
-Modo de visualización del área de pruebas.
+Archivos de especificación de OpenAPI.
+
+**Tipo:** string | array of string | objeto con `source` (string) y `directory` (string)
+
+<div id="apiasyncapi">
+  #### `api.asyncapi`
+</div>
+
+Archivos de especificación de AsyncAPI.
+
+**Type:** string | array of string | object with `source` (string) and `directory` (string)
+
+<div id="apiplayground">
+  #### `api.playground`
+</div>
+
+Configuración del entorno de pruebas interactivo.
+
+**Tipo:** objeto
+
+<div id="apiplaygrounddisplay">
+  ##### `api.playground.display`
+</div>
+
+Modo de visualización del entorno de pruebas.
 
 **Tipo:** `"interactive"` | `"simple"` | `"none"` | `"auth"`
 **Predeterminado:** `"interactive"`
 
-##### `api.playground.proxy`
+<div id="apiplaygroundproxy">
+  ##### `api.playground.proxy`
+</div>
 
-Si se enrutan las solicitudes de API a través de un proxy.
+Indica si las solicitudes a la API deben enrutarse a través de un proxy.
 
 **Tipo:** boolean
 **Predeterminado:** `true`
 
-##### `api.playground.credentials`
+<div id="apiplaygroundcredentials">
+  ##### `api.playground.credentials`
+</div>
 
-Indica si se deben incluir cookies y encabezados de autenticación en las solicitudes cross-origin cuando `proxy` es `false`. No tiene efecto cuando `proxy` es `true`.
+Indica si se deben incluir cookies y encabezados de autenticación en las solicitudes entre orígenes cuando `proxy` es `false`. No tiene efecto cuando `proxy` es `true`.
 
 **Tipo:** boolean
 **Predeterminado:** `false`
 
-#### `api.params`
+<div id="apiparams">
+  #### `api.params`
+</div>
 
-Configuración de visualización de parámetros de API.
+Configuración de visualización de los parámetros de la API.
 
-**Tipo:** object
+**Type:** object
 
-##### `api.params.expanded`
+<div id="apiparamsexpanded">
+  ##### `api.params.expanded`
+</div>
 
-Si se expanden todos los parámetros de forma predeterminada.
+Indica si se expanden todos los parámetros de forma predeterminada.
 
-**Tipo:** `"all"` | `"closed"`
-**Predeterminado:** `"closed"`
+**Type:** `"all"` | `"closed"`
+**Default:** `"closed"`
 
-#### `api.url`
+<div id="apiurl">
+  #### `api.url`
+</div>
 
 Modo de visualización de la URL base.
 
-**Tipo:** `"full"`
-**Predeterminado:** Solo se muestra cuando existen múltiples URLs base.
+**Type:** `"full"`
+**Default:** Solo se muestra cuando hay varias URL base.
 
-#### `api.examples`
+<div id="apiexamples">
+  #### `api.examples`
+</div>
 
-Configuración de ejemplos de código.
+Configuración de los ejemplos de código.
 
-**Tipo:** object
+**Tipo:** objeto
 
-##### `api.examples.languages`
+<div id="apiexampleslanguages">
+  ##### `api.examples.languages`
+</div>
 
-Lenguajes para los fragmentos de código generados automáticamente. Consulta [lenguajes compatibles](/es/api-playground/overview#all-supported-languages).
+Idiomas de los fragmentos de código generados automáticamente. Consulta los [idiomas compatibles](/es/api-playground/overview#all-supported-languages).
 
-**Tipo:** array of string
+**Tipo:** matriz de cadenas
 
-##### `api.examples.defaults`
+<div id="apiexamplesdefaults">
+  ##### `api.examples.defaults`
+</div>
 
-Si se incluyen parámetros opcionales en los ejemplos.
+Indica si se incluyen parámetros opcionales en los ejemplos.
 
 **Tipo:** `"required"` | `"all"`
 **Predeterminado:** `"all"`
 
-##### `api.examples.prefill`
+<div id="apiexamplesprefill">
+  ##### `api.examples.prefill`
+</div>
 
-Si se precargan los campos del área de pruebas con valores de ejemplo de la especificación.
+Si se rellenan previamente los campos del entorno de pruebas con los valores de ejemplo de la especificación.
 
-**Tipo:** boolean
-**Predeterminado:** `false`
+**Type:** boolean
+**Default:** `false`
 
-##### `api.examples.autogenerate`
+<div id="apiexamplesautogenerate">
+  ##### `api.examples.autogenerate`
+</div>
 
-Si se generan muestras de código a partir de especificaciones de API.
+Indica si se deben generar ejemplos de código a partir de especificaciones de API.
 
-**Tipo:** boolean
-**Predeterminado:** `true`
+**Type:** boolean
+**Default:** `true`
 
-#### `api.mdx`
+<div id="apimdx">
+  #### `api.mdx`
+</div>
 
-Configuración para páginas de API creadas a partir de archivos MDX.
+Configuración de las páginas de API creadas a partir de archivos MDX.
 
-**Tipo:** object
+**Tipo:** objeto
 
-##### `api.mdx.auth`
+<div id="apimdxauth">
+  ##### `api.mdx.auth`
+</div>
 
-Configuración de autenticación para solicitudes de API basadas en MDX.
+Configuración de autenticación para solicitudes a la API basadas en MDX.
 
-**Tipo:** object
+**Tipo:** objeto
 
-###### `api.mdx.auth.method`
+<div id="apimdxauthmethod">
+  ###### `api.mdx.auth.method`
+</div>
 
 Método de autenticación.
 
 **Tipo:** `"bearer"` | `"basic"` | `"key"` | `"cobo"`
 
-###### `api.mdx.auth.name`
+<div id="apimdxauthname">
+  ###### `api.mdx.auth.name`
+</div>
 
 Nombre del parámetro de autenticación.
 
 **Tipo:** string
 
-##### `api.mdx.server`
+<div id="apimdxserver">
+  ##### `api.mdx.server`
+</div>
 
-URL base que se antepone a las rutas relativas en el frontmatter `api` a nivel de página. No se usa cuando el frontmatter contiene una URL completa.
+URL base que se antepone a las rutas relativas del frontmatter `api` de la página. No se usa cuando el frontmatter contiene una URL completa.
 
 **Tipo:** string o array
 
----
+***
 
-### `seo`
+<div id="seo">
+  ### `seo`
+</div>
 
-Configuración de optimización para motores de búsqueda.
+Configuración de SEO.
 
-**Tipo:** object
+**Tipo:** objeto
 
-#### `seo.indexing`
+<div id="seoindexing">
+  #### `seo.indexing`
+</div>
 
-Qué páginas deben indexar los motores de búsqueda.
+Qué páginas deben indexar los buscadores.
 
-**Tipo:** `"navigable"` | `"all"`
-**Predeterminado:** `"navigable"`
+**Type:** `"navigable"` | `"all"`
+**Default:** `"navigable"`
 
-#### `seo.metatags`
+<div id="seometatags">
+  #### `seo.metatags`
+</div>
 
-Meta tags personalizadas añadidas a cada página. Pares clave-valor.
+Metaetiquetas personalizadas añadidas a каждой página. Pares clave-valor.
 
-**Tipo:** object
+**Tipo:** objeto
 
----
+***
 
-### `search`
+<div id="search">
+  ### `search`
+</div>
 
-Configuración de la barra de búsqueda.
+Configuración de la barra de Búsqueda.
 
-**Tipo:** object
+**Tipo:** objeto
 
-#### `search.prompt`
+<div id="searchprompt">
+  #### `search.prompt`
+</div>
 
-Texto de marcador de posición en la barra de búsqueda.
+Texto de marcador de posición de la barra de búsqueda.
 
 **Tipo:** string
 
----
+***
 
-### `integrations`
+<div id="integrations">
+  ### `integrations`
+</div>
 
 Integraciones de terceros.
 
 **Tipo:** object
 
-| Propiedad | Tipo | Campo requerido | Descripción |
-|---|---|---|---|
-| `integrations.adobe.launchUrl` | string (uri) | Sí | URL de lanzamiento de Adobe Analytics. |
-| `integrations.amplitude.apiKey` | string | Sí | Clave de API de Amplitude. |
-| `integrations.clarity.projectId` | string | Sí | ID de proyecto de Microsoft Clarity. |
-| `integrations.clearbit.publicApiKey` | string | Sí | Clave de API pública de Clearbit. |
-| `integrations.fathom.siteId` | string | Sí | ID de sitio de Fathom. |
-| `integrations.frontchat.snippetId` | string (mín 6) | Sí | ID de snippet de chat de Front. |
-| `integrations.ga4.measurementId` | string (debe comenzar con `G`) | Sí | ID de medición de Google Analytics 4. |
-| `integrations.gtm.tagId` | string (debe comenzar con `G`) | Sí | ID de contenedor de Google Tag Manager. |
-| `integrations.heap.appId` | string | Sí | ID de app de Heap. |
-| `integrations.hightouch.writeKey` | string | Sí | Write key de Hightouch. |
-| `integrations.hightouch.apiHost` | string | No | Host de API de Hightouch. |
-| `integrations.hotjar.hjid` | string | Sí | ID de sitio de Hotjar. |
-| `integrations.hotjar.hjsv` | string | Sí | Versión de script de Hotjar. |
-| `integrations.intercom.appId` | string (mín 6) | Sí | ID de app de Intercom. |
-| `integrations.logrocket.appId` | string | Sí | ID de app de LogRocket. |
-| `integrations.mixpanel.projectToken` | string | Sí | Token de proyecto de Mixpanel. |
-| `integrations.pirsch.id` | string | Sí | ID de sitio de Pirsch. |
-| `integrations.plausible.domain` | string | Sí | Dominio de Plausible. |
-| `integrations.plausible.server` | string | No | Servidor de Plausible (solo autoalojado). |
-| `integrations.posthog.apiKey` | string (debe comenzar con `phc_`) | Sí | Clave de API de PostHog. |
-| `integrations.posthog.apiHost` | string (uri) | No | Host de API de PostHog (solo autoalojado). |
-| `integrations.posthog.sessionRecording` | boolean | No | Habilitar grabación de sesiones. Predeterminado: `false`. |
-| `integrations.segment.key` | string | Sí | Write key de Segment. |
-| `integrations.telemetry.enabled` | boolean | No | Habilitar telemetría de Mintlify. Cuando es `false`, las funciones de feedback también se deshabilitan. |
-| `integrations.cookies.key` | string | No | Nombre de la clave de cookie. |
-| `integrations.cookies.value` | string | No | Valor de la cookie. |
+| Propiedad                               | Tipo                             | Campo obligatorio | Descripción                                                                                                |
+| --------------------------------------- | -------------------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------- |
+| `integrations.adobe.launchUrl`          | string (uri)                     | Sí                | URL de lanzamiento de Adobe Analytics.                                                                     |
+| `integrations.amplitude.apiKey`         | string                           | Sí                | Clave de API de Amplitude.                                                                                 |
+| `integrations.clarity.projectId`        | string                           | Sí                | ID del proyecto de Microsoft Clarity.                                                                      |
+| `integrations.clearbit.publicApiKey`    | string                           | Sí                | Clave de API pública de Clearbit.                                                                          |
+| `integrations.fathom.siteId`            | string                           | Sí                | ID del sitio de Fathom.                                                                                    |
+| `integrations.frontchat.snippetId`      | string (min 6)                   | Sí                | ID del fragmento de chat de Front.                                                                         |
+| `integrations.ga4.measurementId`        | string (debe empezar por `G`)    | Sí                | ID de medición de Google Analytics 4.                                                                      |
+| `integrations.gtm.tagId`                | string (debe empezar por `G`)    | Sí                | ID del contenedor de Google Tag Manager.                                                                   |
+| `integrations.heap.appId`               | string                           | Sí                | ID de la aplicación de Heap.                                                                               |
+| `integrations.hightouch.writeKey`       | string                           | Sí                | Clave de escritura de Hightouch.                                                                           |
+| `integrations.hightouch.apiHost`        | string                           | No                | Host de la API de Hightouch.                                                                               |
+| `integrations.hotjar.hjid`              | string                           | Sí                | ID del sitio de Hotjar.                                                                                    |
+| `integrations.hotjar.hjsv`              | string                           | Sí                | Versión del script de Hotjar.                                                                              |
+| `integrations.intercom.appId`           | string (min 6)                   | Sí                | ID de la aplicación de Intercom.                                                                           |
+| `integrations.logrocket.appId`          | string                           | Sí                | ID de la aplicación de LogRocket.                                                                          |
+| `integrations.mixpanel.projectToken`    | string                           | Sí                | Token del proyecto de Mixpanel.                                                                            |
+| `integrations.pirsch.id`                | string                           | Sí                | ID del sitio de Pirsch.                                                                                    |
+| `integrations.plausible.domain`         | string                           | Sí                | Dominio de Plausible.                                                                                      |
+| `integrations.plausible.server`         | string                           | No                | Servidor de Plausible (solo para instalaciones autoalojadas).                                              |
+| `integrations.posthog.apiKey`           | string (debe empezar por `phc_`) | Sí                | Clave de API de PostHog.                                                                                   |
+| `integrations.posthog.apiHost`          | string (uri)                     | No                | Host de la API de PostHog (solo para instalaciones autoalojadas).                                          |
+| `integrations.posthog.sessionRecording` | boolean                          | No                | Habilita la grabación de sesiones. Valor predeterminado: `false`.                                          |
+| `integrations.segment.key`              | string                           | Sí                | Clave de escritura de Segment.                                                                             |
+| `integrations.telemetry.enabled`        | boolean                          | No                | Habilita la telemetría de Mintlify. Cuando es `false`, las funciones de comentarios también se desactivan. |
+| `integrations.cookies.key`              | string                           | No                | Nombre de la clave de la cookie.                                                                           |
+| `integrations.cookies.value`            | string                           | No                | Valor de la cookie.                                                                                        |

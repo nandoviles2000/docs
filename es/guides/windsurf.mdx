@@ -1,56 +1,56 @@
 ---
-title: "Escribe documentación con Windsurf"
+title: "Redacta documentación con Windsurf"
 sidebarTitle: "Windsurf"
-description: "Configura Windsurf Cascade con workspace rules y memorias para redactar documentación de Mintlify que siga tu guía de estilo y los estándares de MDX."
-keywords: ["Windsurf", "Cascade", "workspace rules", "documentación con IA", "documentación con Windsurf"]
+description: "Configura Windsurf Cascade con reglas y memorias del espacio de trabajo para redactar documentación de Mintlify que siga tu guía de estilo y los estándares de MDX."
+keywords: ["Windsurf", "Cascade", "reglas del espacio de trabajo", "documentación con IA", "documentación de Windsurf"]
 ---
 
-Convierte Windsurf en un experto en documentación que comprenda tu guía de estilo, tus componentes y el contexto de tu proyecto mediante workspace rules y memories.
+Convierte Windsurf en un experto en documentación que entienda tu guía de estilo, los componentes y el contexto del proyecto mediante reglas y memorias del espacio de trabajo.
 
 <div id="use-windsurf-with-mintlify">
   ## Usa Windsurf con Mintlify
 </div>
 
-El assistant Cascade de IA de Windsurf se puede ajustar para redactar documentación conforme a tus estándares utilizando componentes de Mintlify. Las reglas del espacio de trabajo y las memorias proporcionan contexto persistente sobre tu proyecto, lo que garantiza sugerencias más consistentes de Cascade.
+El asistente de IA Cascade de Windsurf puede ajustarse para redactar documentación según tus estándares mediante componentes de Mintlify. Las reglas del espacio de trabajo y las memorias proporcionan un contexto persistente sobre tu proyecto, lo que garantiza sugerencias más coherentes de Cascade.
 
-* **Reglas del espacio de trabajo**: se almacenan en tu repositorio de documentación y se comparten con tu equipo.
-* **Memorias**: proporcionan contexto individual que se acumula con el tiempo.
+* Las **reglas del espacio de trabajo** se almacenan en tu repositorio de documentación y se comparten con tu equipo.
+* Las **memorias** proporcionan un contexto individual que se va acumulando con el tiempo.
 
-Recomendamos configurar reglas del espacio de trabajo para unificar los estándares de documentación. Puedes desarrollar memorias a medida que trabajas, pero como no se comparten, no son consistentes entre los miembros del equipo.
+Te recomendamos configurar reglas del espacio de trabajo para establecer estándares de documentación compartidos. Puedes desarrollar memorias a medida que trabajas, pero como no se comparten, no son coherentes entre los miembros del equipo.
 
 Crea reglas del espacio de trabajo en el directorio `.windsurf/rules` de tu repositorio de documentación. Consulta [Memories &amp; Rules](https://docs.windsurf.com/windsurf/cascade/memories) en la documentación de Windsurf para obtener más información.
 
 <div id="example-workspace-rule">
-  ## Regla de ejemplo para el espacio de trabajo
+  ## Ejemplo de regla del espacio de trabajo
 </div>
 
-Esta regla proporciona a Cascade contexto sobre los componentes de Mintlify y las mejores prácticas generales de documentación técnica.
+Esta regla proporciona a Cascade contexto sobre los componentes de Mintlify y las prácticas recomendadas generales de escritura técnica.
 
-Puedes usar esta regla de ejemplo tal cual o personalizarla para tu documentación:
+Puedes usar esta regla de ejemplo tal como está o personalizarla para tu documentación:
 
-* **Estándares de redacción**: Actualiza las pautas de lenguaje para alinearlas con tu guía de estilo.
-* **Patrones de componentes**: Agrega componentes específicos del proyecto o modifica los ejemplos existentes.
-* **Ejemplos de código**: Reemplaza los ejemplos genéricos con llamadas y respuestas reales de la API para tu producto.
+* **Estándares de redacción**: Actualiza las pautas de idioma para que se ajusten a tu guía de estilo.
+* **Patrones de componentes**: Agrega componentes específicos de tu proyecto o modifica los ejemplos existentes.
+* **Ejemplos de código**: Sustituye los ejemplos genéricos por llamadas a la API y respuestas reales de tu producto.
 * **Preferencias de estilo y tono**: Ajusta la terminología, el formato y otras reglas.
 
 Guarda tu regla como un archivo `.md` en el directorio `.windsurf/rules` de tu repositorio de documentación.
 
 ````mdx
-# Regla de redacción técnica de Mintlify
+# Regla de escritura técnica de Mintlify
 
 ## Contexto del proyecto
 
 - Este es un proyecto de documentación en la plataforma Mintlify
 - Usamos archivos MDX con frontmatter YAML  
 - La navegación se configura en `docs.json`
-- Seguimos las mejores prácticas de redacción técnica
+- Seguimos las mejores prácticas de escritura técnica
 
-## Estándares de redacción
+## Estándares de escritura
 
-- Usa segunda persona ("tú") para las instrucciones
+- Usa la segunda persona ("tú") para las instrucciones
 - Escribe en voz activa y tiempo presente
-- Comienza los procedimientos con prerrequisitos
-- Incluye resultados esperados para los pasos principales
+- Comienza los procedimientos con los requisitos previos
+- Incluye los resultados esperados para los pasos principales
 - Usa encabezados descriptivos y ricos en palabras clave
 - Mantén las oraciones concisas pero informativas
 
@@ -60,8 +60,8 @@ Cada página debe comenzar con frontmatter:
 
 ```yaml
 ---
-title: "Título claro y específico"
-description: "Descripción concisa para SEO y navegación"
+title: "Clear, specific title"
+description: "Concise description for SEO and navigation"
 ---
 ```
 
@@ -73,16 +73,16 @@ description: "Descripción concisa para SEO y navegación"
 
 ### Llamadas de atención
 
-- `<Note>` para información suplementaria útil
-- `<Warning>` para precauciones importantes y cambios disruptivos
+- `<Note>` para información complementaria útil
+- `<Warning>` para advertencias importantes y cambios disruptivos
 - `<Tip>` para mejores prácticas y consejos de expertos  
 - `<Info>` para información contextual neutral
 - `<Check>` para confirmaciones de éxito
 
 ### Ejemplos de código
 
-- Cuando sea apropiado, incluye ejemplos completos y ejecutables
-- Usa `<CodeGroup>` para ejemplos de múltiples lenguajes
+- Cuando corresponda, incluye ejemplos completos y ejecutables
+- Usa `<CodeGroup>` para ejemplos en múltiples lenguajes
 - Especifica etiquetas de lenguaje en todos los bloques de código
 - Incluye datos realistas, no marcadores de posición
 - Usa `<RequestExample>` y `<ResponseExample>` para documentación de API
@@ -90,44 +90,44 @@ description: "Descripción concisa para SEO y navegación"
 ### Procedimientos
 
 - Usa el componente `<Steps>` para instrucciones secuenciales
-- Incluye pasos de verificación con componentes `<Check>` cuando sea relevante
-- Divide procedimientos complejos en pasos más pequeños
+- Incluye pasos de verificación con componentes `<Check>` cuando sea pertinente
+- Divide los procedimientos complejos en pasos más pequeños
 
-### Organización de contenido
+### Organización del contenido
 
-- Usa `<Tabs>` para contenido específico de plataforma
-- Usa `<Accordion>` para divulgación progresiva
-- Usa `<Card>` y `<CardGroup>` para resaltar contenido
-- Envuelve imágenes en componentes `<Frame>` con texto alternativo descriptivo
+- Usa `<Tabs>` para contenido específico de cada plataforma
+- Usa `<Accordion>` para divulgación progresiva de contenido
+- Usa `<Card>` y `<CardGroup>` para destacar contenido
+- Envuelve las imágenes en componentes `<Frame>` con texto alternativo descriptivo
 
-## Requisitos de documentación de API
+## Requisitos para la documentación de API
 
 - Documenta todos los parámetros con `<ParamField>` 
 - Muestra la estructura de respuesta con `<ResponseField>`
 - Incluye ejemplos tanto de éxito como de error
 - Usa `<Expandable>` para propiedades de objetos anidados
-- Siempre incluye ejemplos de autenticación
+- Incluye siempre ejemplos de autenticación
 
 ## Estándares de calidad
 
 - Prueba todos los ejemplos de código antes de publicar
-- Usa rutas relativas para enlaces internos
+- Usa rutas relativas para los enlaces internos
 - Incluye texto alternativo para todas las imágenes
-- Asegura una jerarquía de encabezados adecuada (comienza con h2)
-- Verifica patrones existentes para mantener consistencia
+- Garantiza una jerarquía de encabezados correcta (comenzar con h2)
+- Verifica los patrones existentes para mantener la coherencia
 ````
 
 <div id="working-with-cascade">
   ## Trabajar con Cascade
 </div>
 
-Una vez que tengas tus reglas configuradas, puedes usar Cascade para asistir en diversas tareas de documentación. Consulta [Cascade](https://docs.windsurf.com/windsurf/cascade) en la documentación de Windsurf para obtener más información.
+Una vez que hayas configurado tus reglas, puedes usar Cascade para ayudarte con distintas tareas de documentación. Consulta [Cascade](https://docs.windsurf.com/windsurf/cascade) en la documentación de Windsurf para obtener más información.
 
 <div id="example-prompts">
-  ### Ejemplos de indicaciones
+  ### Ejemplos de prompts
 </div>
 
-**Redacción de contenido nuevo**:
+**Crear contenido nuevo**:
 
 ```text wrap
 Crea una nueva página que explique cómo autenticarse con nuestra API. Incluye ejemplos de código en JavaScript, Python y cURL.
@@ -136,25 +136,25 @@ Crea una nueva página que explique cómo autenticarse con nuestra API. Incluye 
 **Mejorar el contenido existente**:
 
 ```text wrap
-Revisa esta página y sugiere mejoras para mayor claridad y uso de componentes. Concéntrate en hacer que los pasos sean más fáciles de seguir.
+Review this page and suggest improvements for clarity and component usage. Focus on making the steps easier to follow.
 ```
 
 **Creación de ejemplos de código**:
 
 ```text wrap
-Genera un ejemplo de código completo que muestre el manejo de errores para este endpoint de API. Utiliza datos realistas e incluye las respuestas esperadas.
+Genera un ejemplo de código completo que muestre el manejo de errores para este endpoint de la API. Usa datos realistas e incluye las respuestas esperadas.
 ```
 
-**Mantener la consistencia**:
+**Mantener la coherencia**:
 
 ```text wrap
-Verifica si esta nueva página cumple con nuestros estándares de documentación y sugiere los cambios necesarios.
+Verifica si esta nueva página sigue nuestros estándares de documentación y sugiere los cambios necesarios.
 ```
 
 <div id="enhance-with-mcp-server">
-  ## Mejora con el servidor MCP
+  ## Mejora con MCP server
 </div>
 
-Conecta el servidor MCP de Mintlify a Windsurf para que Cascade pueda buscar en la documentación de Mintlify mientras escribes. Cuando conectas el servidor MCP, Cascade busca en la documentación más reciente de Mintlify para obtener contexto, de modo que no tengas que salir de tu IDE para consultar la documentación.
+Conecta el MCP server de Mintlify a Windsurf para que Cascade pueda buscar en la documentación de Mintlify mientras te ayuda a escribir. Al conectar el MCP server, Cascade busca contexto en la documentación actualizada de Mintlify, para que no tengas que salir de tu IDE para consultarla.
 
 Consulta [Model Context Protocol](/es/ai/model-context-protocol#example%3A-connect-to-the-mintlify-mcp-server) para ver las instrucciones completas de configuración.

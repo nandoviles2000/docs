@@ -21,13 +21,13 @@
   "paths": {
     "/project/update/{projectId}": {
       "post": {
-        "summary": "Lancer la mise à jour",
-        "description": "Mettez en file d’attente une mise à jour de déploiement pour votre projet de documentation. Retourne un identifiant de statut qui peut être utilisé pour suivre la progression de la mise à jour. La mise à jour est déclenchée à partir de la branche de déploiement que vous avez configurée.",
+        "summary": "Déclencher une mise à jour",
+        "description": "Met en file d’attente une mise à jour de déploiement pour votre projet de documentation. Renvoie un ID de statut permettant de suivre la progression de la mise à jour. La mise à jour est déclenchée à partir de votre branche de déploiement configurée.",
         "parameters": [
           {
             "name": "projectId",
             "in": "path",
-            "description": "Identifiant de votre projet. Vous pouvez le copier à partir de la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard.",
+            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page des [clés API](https://dashboard.mintlify.com/settings/organization/api-keys) dans votre tableau de bord.",
             "required": true,
             "schema": {
               "type": "string"
@@ -36,7 +36,7 @@
         ],
         "responses": {
           "202": {
-            "description": "Une réponse réussie",
+            "description": "Réponse réussie",
             "content": {
               "application/json": {
                 "schema": {
@@ -44,7 +44,7 @@
                   "properties": {
                     "statusId": {
                       "type": "string",
-                      "description": "L’identifiant de statut de la mise à jour déclenchée."
+                      "description": "L’ID de statut de la mise à jour déclenchée."
                     }
                   }
                 }
@@ -56,13 +56,13 @@
     },
     "/project/update-status/{statusId}": {
       "get": {
-        "summary": "Obtenir le statut de mise à jour",
-        "description": "Récupérer le statut d’une mise à jour à partir de son identifiant de statut",
+        "summary": "Obtenir le statut de la mise à jour",
+        "description": "Obtenir le statut d’une mise à jour à partir de l’ID de statut",
         "parameters": [
           {
             "name": "statusId",
             "in": "path",
-            "description": "L’identifiant de statut de la mise à jour déclenchée.",
+            "description": "L’ID de statut d’une mise à jour déclenchée.",
             "required": true,
             "schema": {
               "type": "string"
@@ -71,7 +71,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Une réponse réussie",
+            "description": "Réponse réussie",
             "content": {
               "application/json": {
                 "schema": {
@@ -79,19 +79,19 @@
                   "properties": {
                     "_id": {
                       "type": "string",
-                      "description": "L’identifiant de statut de la mise à jour déclenchée."
+                      "description": "L’ID de statut de la mise à jour déclenchée."
                     },
                     "projectId": {
                       "type": "string",
-                      "description": "L’identifiant du projet de documentation."
+                      "description": "L’ID du projet de documentation."
                     },
                     "createdAt": {
                       "type": "string",
-                      "description": "Une valeur ISODate correspondant à la date et à l’heure spécifiées en UTC"
+                      "description": "Une ISODate avec la date et l’heure spécifiées en UTC"
                     },
                     "endedAt": {
                       "type": "string",
-                      "description": "Une valeur ISODate correspondant à la date et à l’heure spécifiées en UTC"
+                      "description": "Une ISODate avec la date et l’heure spécifiées en UTC"
                     },
                     "status": {
                       "type": "string",
@@ -105,11 +105,11 @@
                     },
                     "summary": {
                       "type": "string",
-                      "description": "Récapitulatif de l’état de la mise à jour"
+                      "description": "Résumé du statut de la mise à jour"
                     },
                     "logs": {
                       "type": "array",
-                      "description": "Un tableau de logs.",
+                      "description": "Un tableau de journaux.",
                       "items": {
                         "type": "string"
                       }
@@ -124,7 +124,7 @@
                     },
                     "screenshotLight": {
                       "type": "string",
-                      "description": "Une capture d’écran de la doc."
+                      "description": "Une capture d’écran de la documentation."
                     },
                     "screenshotDark": {
                       "type": "string",
@@ -132,20 +132,20 @@
                     },
                     "author": {
                       "type": "object",
-                      "description": "L'auteur de la mise à jour.",
+                      "description": "L’auteur de la mise à jour.",
                       "nullable": true,
                       "properties": {
                         "name": {
                           "type": "string",
-                          "description": "Le nom de l'auteur."
+                          "description": "Le nom de l’auteur."
                         },
                         "avatarUrl": {
                           "type": "string",
-                          "description": "URL de l'avatar de l'auteur."
+                          "description": "L’URL de l’image d’avatar de l’auteur."
                         },
                         "githubUserId": {
                           "type": "number",
-                          "description": "L'identifiant GitHub de l'auteur."
+                          "description": "L’ID utilisateur GitHub de l’auteur."
                         }
                       }
                     },
@@ -163,7 +163,7 @@
                         },
                         "message": {
                           "type": "string",
-                          "description": "Le message de commit."
+                          "description": "Le message du commit."
                         },
                         "filesChanged": {
                           "type": "object",
@@ -171,7 +171,7 @@
                           "properties": {
                             "added": {
                               "type": "array",
-                              "description": "De nouveaux fichiers ont été ajoutés.",
+                              "description": "Nouveaux fichiers ajoutés.",
                               "items": {
                                 "type": "string"
                               }
@@ -196,7 +196,7 @@
                     },
                     "source": {
                       "type": "string",
-                      "description": "La source du déclencheur de mise à jour.",
+                      "description": "Source du déclencheur de la mise à jour.",
                       "enum": [
                         "internal",
                         "github-app-installation",
@@ -218,12 +218,12 @@
     "/project/preview/{projectId}": {
       "post": {
         "summary": "Déclencher un déploiement de prévisualisation",
-        "description": "Créez ou mettez à jour un déploiement de prévisualisation pour une branche spécifique. Si une prévisualisation existe déjà pour la branche, un redéploiement est déclenché. Retourne un identifiant de statut pour suivre la progression et l'URL de la prévisualisation.",
+        "description": "Créez ou mettez à jour un déploiement de prévisualisation pour une branche spécifique. Si une prévisualisation existe déjà pour cette branche, cela déclenche un nouveau déploiement. Renvoie un ID de statut pour en suivre la progression ainsi que l’URL de prévisualisation.",
         "parameters": [
           {
             "name": "projectId",
             "in": "path",
-            "description": "Identifiant de votre projet. Vous pouvez le copier à partir de la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard.",
+            "description": "L’ID de votre projet. Vous pouvez le copier depuis la page [Clés API](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord.",
             "required": true,
             "schema": {
               "type": "string"
@@ -236,7 +236,9 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["branch"],
+                "required": [
+                  "branch"
+                ],
                 "properties": {
                   "branch": {
                     "type": "string",
@@ -250,7 +252,7 @@
         },
         "responses": {
           "202": {
-            "description": "Déploiement de prévisualisation mis en file d'attente avec succès.",
+            "description": "Déploiement de prévisualisation mis en file d’attente avec succès.",
             "content": {
               "application/json": {
                 "schema": {
@@ -258,11 +260,11 @@
                   "properties": {
                     "statusId": {
                       "type": "string",
-                      "description": "L'identifiant de statut pour suivre le déploiement de prévisualisation. Utilisez-le avec l'endpoint [Get deployment status](/fr/api/update/status)."
+                      "description": "L’ID de statut permettant de suivre le déploiement de prévisualisation. Utilisez-le avec le point de terminaison [Obtenir le statut du déploiement](/api/update/status)."
                     },
                     "previewUrl": {
                       "type": "string",
-                      "description": "L'URL à laquelle le déploiement de prévisualisation est hébergé."
+                      "description": "L’URL à laquelle le déploiement de prévisualisation est hébergé."
                     }
                   }
                 }
@@ -270,7 +272,7 @@
             }
           },
           "400": {
-            "description": "Requête non valide. Le champ `branch` est obligatoire.",
+            "description": "Requête non valide. Le champ `branch` est requis.",
             "content": {
               "application/json": {
                 "schema": {
@@ -308,7 +310,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "L’en-tête Authorization requiert un jeton Bearer. Utilisez une clé d’API administrateur (préfixée par `mint_`). Il s’agit d’une clé secrète utilisée côté serveur. Générez-en une depuis la page [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de votre Dashboard."
+        "description": "L’en-tête Authorization attend un jeton Bearer. Utilisez une clé API administrateur (préfixée par `mint_`). Il s’agit d’une clé secrète côté serveur. Générez-en une depuis la page [Clés API](https://dashboard.mintlify.com/settings/organization/api-keys) de votre tableau de bord."
       }
     }
   }

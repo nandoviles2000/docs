@@ -1,10 +1,10 @@
 ---
 title: "Groupes de code"
-description: "Utilisez le composant CodeGroup pour afficher plusieurs exemples de code dans une interface à onglets et permettre aux lecteurs de comparer les implémentations entre différents langages."
-keywords: ["groupes de code", "code avec onglets", "exemples multilingues", "CodeGroup"]
+description: "Utilisez le composant CodeGroup pour afficher plusieurs exemples de code dans une interface à onglets et permettre aux lecteurs de comparer des implémentations dans différents langages."
+keywords: ["groupes de code", "code à onglets", "exemples multilingues", "CodeGroup"]
 ---
 
-Utilisez le composant `CodeGroup` pour afficher plusieurs blocs de code dans une interface à onglets, permettant aux utilisateurs de comparer des implémentations dans différents langages de programmation ou d’examiner des approches alternatives pour la même tâche.
+Utilisez le composant `CodeGroup` pour afficher plusieurs blocs de code dans une interface à onglets, afin de permettre aux utilisateurs de comparer des implémentations dans différents langages de programmation ou de voir d&#39;autres approches pour une même tâche.
 
 <CodeGroup>
   ```javascript helloWorld.js
@@ -24,15 +24,15 @@ Utilisez le composant `CodeGroup` pour afficher plusieurs blocs de code dans une
   ```
 </CodeGroup>
 
-Les groupes de code héritent de la mise en forme globale de votre fichier `docs.json`. Personnalisez votre thème avec `styling.codeblocks`. Consultez [Paramètres](/fr/organize/settings-appearance#styling) pour les options de configuration.
+Les groupes de code héritent du style global défini dans votre fichier `docs.json`. Personnalisez votre thème à l’aide de `styling.codeblocks`. Consultez [Paramètres](/fr/organize/settings-appearance#styling) pour découvrir les options de configuration.
 
-Les groupes de code se synchronisent automatiquement avec les autres groupes de code et les [onglets](/fr/components/tabs) sur la même page lorsque leurs libellés correspondent. Lorsque vous sélectionnez un langage dans un groupe de code, tous les onglets et groupes de code avec des libellés correspondants se mettent à jour pour afficher le même langage.
+Les groupes de code se synchronisent automatiquement avec les autres groupes de code et les [onglets](/fr/components/tabs) de la même page lorsque leurs libellés correspondent. Lorsque vous sélectionnez un langage dans un groupe de code, tous les onglets et groupes de code portant le même libellé se mettent à jour pour afficher ce langage.
 
 <div id="create-code-groups">
   ## Créer des groupes de code
 </div>
 
-Pour créer un groupe de code, enveloppez plusieurs code blocks avec des balises `<CodeGroup>`. Chaque code block doit inclure un Titre, qui devient le label de l’Onglet.
+Pour créer un groupe de code, entourez plusieurs blocs de code avec les balises `<CodeGroup>`. Chaque bloc de code doit inclure un titre, qui sert de libellé d’onglet.
 
 ````mdx
 <CodeGroup>
@@ -48,7 +48,7 @@ print('Hello World!')
 ```java HelloWorld.java
 class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Bonjour le monde !");
+        System.out.println("Hello, World!");
     }
 }
 ```
@@ -60,7 +60,7 @@ class HelloWorld {
   ## Menu déroulant de langue
 </div>
 
-Vous pouvez remplacer les onglets d’un groupe de code par un menu déroulant pour changer de langue à l’aide de la prop `dropdown`.
+Vous pouvez remplacer les onglets d’un groupe de code par un menu déroulant pour passer d’une langue à l’autre à l’aide de la prop `dropdown`.
 
 <CodeGroup dropdown>
   ```javascript helloWorld.js
@@ -84,17 +84,17 @@ Vous pouvez remplacer les onglets d’un groupe de code par un menu déroulant p
 <CodeGroup dropdown>
 
 ```javascript helloWorld.js
-console.log("Bonjour le monde");
+console.log("Hello World");
 ```
 
 ```python hello_world.py
-print('Bonjour le monde !')
+print('Hello World!')
 ```
 
 ```java HelloWorld.java
 class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Bonjour, le monde !");
+        System.out.println("Hello, World!");
     }
 }
 ```

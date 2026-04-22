@@ -1,20 +1,21 @@
 ---
-title: "Obtenir les requêtes de recherche"
-description: "Récupérez les termes de recherche de la documentation avec les nombres de résultats, les taux de clics et les pages les plus consultées."
+title: "Récupérer les requêtes de recherche"
+description: "Récupérez les termes de recherche dans la documentation avec leur
+  nombre d'occurrences, leur taux de clic et les pages les plus cliquées."
 openapi: /fr/analytics.openapi.json GET /v1/analytics/{projectId}/searches
-keywords: [ "analytics", "recherche", "export", "requêtes", "termes de recherche" ]
+keywords: [ "analyses", "recherche", "export", "requêtes", "termes de recherche" ]
 ---
 
 <div id="usage">
   ## Utilisation
 </div>
 
-Utilisez cet endpoint pour exporter les analyses de recherche de la documentation. Les résultats sont triés par nombre de résultats décroissant, montrant les termes que vos utilisateurs recherchent le plus.
+Utilisez ce point de terminaison pour exporter les données d’analyses de recherche de la documentation. Les résultats sont classés par nombre d’occurrences décroissant, ce qui indique les termes les plus recherchés par vos utilisateurs.
 
-Parcourez les résultats à l'aide du paramètre `nextCursor` renvoyé dans la réponse. Continuez à effectuer des requêtes tant que `nextCursor` n'est pas nul.
+Parcourez les résultats page par page à l’aide du paramètre `nextCursor` renvoyé dans la réponse. Continuez à récupérer les résultats tant que `nextCursor` n’est pas nul.
 
 <div id="filtering">
   ## Filtrage
 </div>
 
-Filtrez les données de recherche par plage de dates à l'aide des paramètres `dateFrom` et `dateTo`.
+Filtrez les données de Recherche par plage de dates à l’aide des paramètres `dateFrom` et `dateTo`.

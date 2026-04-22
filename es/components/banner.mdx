@@ -1,38 +1,38 @@
 ---
 title: "Banner"
-description: "Añade un banner descartable en la parte superior de tu sitio de documentación para mostrar anuncios importantes, notas de lanzamiento o notificaciones."
+description: "Agrega un banner descartable en la parte superior de tu sitio de documentación para mostrar anuncios importantes, notas de la versión o notificaciones."
 keywords: ["banner", "anuncios", "en todo el sitio"]
 ---
 
-Usa banners para mostrar anuncios, actualizaciones o notificaciones importantes en todo tu sitio de documentación. Los banners aparecen en la parte superior de cada página, admiten formato Markdown y puedes hacer que sean descartables. Los banners usan el color definido por la propiedad `colors.dark` en tu `docs.json`.
+Usa banners para mostrar anuncios, actualizaciones o notificaciones importantes en todo tu sitio de documentación. Los banners aparecen en la parte superior de cada página, admiten formato Markdown y puedes hacer que se puedan cerrar. Los banners usan el color definido por la propiedad `colors.dark` en tu `docs.json`.
 
-Para añadir un banner, usa la propiedad `banner` en tu `docs.json`:
+Para agregar un banner, usa la propiedad `banner` en tu `docs.json`:
 
 <CodeGroup>
-  ```json Product announcements wrap
+  ```json Anuncios de producto wrap
   "banner": {
-    "content": "🚀 ¡La versión 2.0 ya está disponible! Consulta nuestro [registro de cambios](/changelog) para más detalles.",
+    "content": "🚀 ¡La versión 2.0 ya está disponible! Consulta nuestro [changelog](/changelog) para obtener más detalles.",
     "dismissible": true 
   }
   ```
 
-  ```json Maintenance notices wrap
+  ```json Avisos de mantenimiento wrap
   "banner": {
     "content": "⚠️ Mantenimiento programado: la API no estará disponible el 15 de diciembre, de 2 a 4 a. m. UTC",
     "dismissible": false
   }
   ```
 
-  ```json Required actions wrap
+  ```json Acciones obligatorias wrap
   "banner": {
-    "content": "**Acción requerida:** migra a nuestra nueva versión antes del 1 de enero. [Guía de migración](/migration)",
+    "content": "**Acción obligatoria:** Migra a nuestra nueva versión antes del 1 de enero. [Guía de migración](/migration)",
     "dismissible": true
   }
   ```
 </CodeGroup>
 
 <Note>
-  También puedes configurar banners por idioma configurando `banner` en `navigation.languages`. Consulta [Banners específicos por idioma](#language-specific-banners).
+  También puedes configurar banners por idioma estableciendo `banner` en `navigation.languages`. Consulta [Banners específicos por idioma](#language-specific-banners).
 </Note>
 
 <div id="properties">
@@ -40,18 +40,18 @@ Para añadir un banner, usa la propiedad `banner` en tu `docs.json`:
 </div>
 
 <ResponseField name="content" type="string" required>
-  El contenido de texto que se muestra en el banner. Admite formato MDX básico, incluyendo enlaces, negrita y cursiva. No se admiten componentes personalizados.
+  El texto que se muestra en el banner. Admite formato MDX básico, como enlaces y texto en negrita o cursiva. No se admiten componentes personalizados.
 </ResponseField>
 
 <ResponseField name="dismissible" type="boolean">
-  Indica si los usuarios pueden cerrar el banner. Cuando es `true`, aparece un botón de cierre. Si un usuario cierra el banner, permanece oculto para él hasta que actualices el contenido del banner. De manera predeterminada, es `false`.
+  Indica si los usuarios pueden cerrar el banner. Cuando es `true`, aparece un botón de cierre. Si un usuario cierra el banner, este permanecerá oculto para él hasta que actualices el contenido del banner. El valor predeterminado es `false`.
 </ResponseField>
 
 <div id="language-specific-banners">
   ## Banners específicos por idioma
 </div>
 
-Configura distintos banners para cada idioma en tu documentación. Define los banners específicos por idioma en el array `navigation.languages` de tu `docs.json`.
+Configura un banner distinto para cada idioma de tu documentación. Define los banners específicos por idioma en la matriz `navigation.languages` de tu `docs.json`.
 
 ```json
 {
@@ -86,17 +86,17 @@ Configura distintos banners para cada idioma en tu documentación. Define los ba
     ]
   },
   "banner": {
-    "content": "🚀 ¡La versión 2.0 ya está disponible!",
+    "content": "🚀 Version 2.0 is now live!",
     "dismissible": true
   }
 }
 ```
 
 <div id="fallback-behavior">
-  ### Comportamiento de respaldo
+  ### Comportamiento alternativo
 </div>
 
-Los banners siguen un orden de prioridad al decidir qué contenido mostrar:
+Los banners siguen un orden de prioridad para determinar qué contenido se muestra:
 
-1. **Banner específico por idioma**: Si el idioma actual tiene una configuración de `banner`, esta tendrá prioridad.
-2. **Banner global**: Si no existe un banner específico por idioma, se muestra el `banner` global.
+1. **Banner específico del idioma**: Si el idioma actual tiene una configuración de `banner`, esta tiene prioridad.
+2. **Banner global**: Si no existe un banner específico del idioma, se muestra el `banner` global.

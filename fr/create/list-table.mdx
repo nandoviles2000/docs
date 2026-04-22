@@ -1,20 +1,20 @@
 ---
 title: "Listes et tableaux"
-description: "Mettez en forme des données structurées dans votre documentation avec des tableaux Markdown, des listes ordonnées et non ordonnées, des structures imbriquées et des cases à cocher."
-keywords: ["ordonnées", "non ordonnées", "tableaux Markdown", "formatage des tableaux"]
+description: "Mettez en forme des données structurées dans votre documentation avec des tableaux Markdown, des listes ordonnées et non ordonnées, des structures imbriquées et des cases à cocher de listes de tâches."
+keywords: ["ordonnées", "non ordonnées", "tableaux Markdown", "mise en forme des tableaux"]
 ---
 
 <div id="lists">
   ## Listes
 </div>
 
-Les listes suivent la [syntaxe Markdown](https://www.markdownguide.org/basic-syntax/#lists-1) officielle.
+Les listes respectent la syntaxe officielle de [Markdown](https://www.markdownguide.org/basic-syntax/#lists-1).
 
 <div id="ordered-list">
-  ### Liste numérotée
+  ### Liste ordonnée
 </div>
 
-Pour créer une liste numérotée, ajoutez des nombres suivis d’un point devant les éléments de la liste.
+Pour créer une liste ordonnée, faites précéder chaque élément d’un numéro suivi d’un point.
 
 1. Premier élément
 2. Deuxième élément
@@ -22,18 +22,17 @@ Pour créer une liste numérotée, ajoutez des nombres suivis d’un point devan
 4. Quatrième élément
 
 ```mdx
-1. Premier élément
-2. Deuxième élément
-3. Troisième élément
-4. Quatrième élément
+1. First item
+2. Second item
+3. Third item
+4. Fourth item
 ```
 
-
 <div id="unordered-list">
-  ### Liste à puces
+  ### Liste non ordonnée
 </div>
 
-Pour créer une liste à puces, ajoutez des tirets (`-`), des astérisques (`*`) ou des signes plus (`+`) avant chaque élément.
+Pour créer une liste non ordonnée, ajoutez des tirets (`-`), des astérisques (`*`) ou des signes plus (`+`) devant les éléments de la liste.
 
 * Premier élément
 * Deuxième élément
@@ -41,18 +40,17 @@ Pour créer une liste à puces, ajoutez des tirets (`-`), des astérisques (`*`)
 * Quatrième élément
 
 ```mdx
-- Premier élément
-- Deuxième élément
-- Troisième élément
-- Quatrième élément
+- First item
+- Second item
+- Third item
+- Fourth item
 ```
-
 
 <div id="nested-list">
   ### Liste imbriquée
 </div>
 
-Indentez les éléments de la liste pour les imbriquer.
+Mettez les éléments de liste en retrait pour les imbriquer.
 
 * Premier élément
 * Deuxième élément
@@ -61,46 +59,44 @@ Indentez les éléments de la liste pour les imbriquer.
 * Troisième élément
 
 ```mdx
-- Premier élément
-- Deuxième élément
-  - Élément supplémentaire
-  - Élément supplémentaire
-- Troisième élément
+- First item
+- Second item
+  - Additional item
+  - Additional item
+- Third item
 ```
 
-
 <div id="tables">
-  ## Tables
+  ## Tableaux
 </div>
 
 Les tableaux suivent la [syntaxe Markdown officielle](https://www.markdownguide.org/extended-syntax/#tables).
 
-Pour ajouter un tableau, utilisez trois tirets ou plus (`---`) pour créer l’en-tête de chaque colonne, et des barres verticales (`|`) pour séparer les colonnes. Pour des raisons de compatibilité, ajoutez également une barre verticale au début et à la fin de chaque ligne.
+Pour ajouter un tableau, utilisez au moins trois traits d’union (`---`) pour créer l’en-tête de chaque colonne, et des barres verticales (`|`) pour séparer les colonnes. Pour des raisons de compatibilité, ajoutez également une barre verticale à chaque extrémité de la ligne.
 
-| Propriété | Description                           |
-| --------- | ------------------------------------- |
-| Nom       | Nom complet de l’utilisateur          |
-| Âge       | Âge indiqué                           |
-| Inscription | Indique si l’utilisateur a rejoint la communauté |
+| Propriété | Description                              |
+| --------- | ---------------------------------------- |
+| Nom       | Nom complet de l’utilisateur             |
+| Âge       | Âge déclaré                              |
+| A rejoint | Si l’utilisateur a rejoint la communauté |
 
 ```mdx
-| Propriété | Description                                    |
-| --------- | ---------------------------------------------- |
-| Nom       | Nom complet de l'utilisateur                  |
-| Âge       | Âge déclaré                                    |
-| Rejoint   | Si l'utilisateur a rejoint la communauté      |
+| Propriété | Description                                  |
+| --------- | -------------------------------------------- |
+| Nom       | Nom complet de l'utilisateur                 |
+| Âge       | Âge déclaré                                  |
+| Rejoint   | Si l'utilisateur a rejoint la communauté     |
 ```
-
 
 <div id="column-alignment">
   ### Alignement des colonnes
 </div>
 
-Utilisez les deux-points dans la ligne de séparation pour définir l’alignement du contenu des colonnes :
+Utilisez des deux-points dans la ligne de séparation pour aligner le contenu des colonnes :
 
 | Aligné à gauche | Centré | Aligné à droite |
 | :-------------- | :----: | --------------: |
-| Gauche          | Centre |          Droite |
+| Gauche          | Centré |          Droite |
 | Texte           |  Texte |           Texte |
 
 ```mdx

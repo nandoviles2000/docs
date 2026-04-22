@@ -1,44 +1,43 @@
 ---
-title: "Étapes"
-description: "Créez des procédures numérotées étape par étape avec le composant steps pour guider les utilisateurs dans des tâches séquentielles, des tutoriels et des flux de configuration."
-keywords: ["séquence", "étapes numérotées", "procédures", "étapes de tutoriel"]
+title: "Steps"
+description: "Créez des procédures numérotées, étape par étape, avec le composant Steps pour guider les utilisateurs à travers des tâches successives, des tutoriels et des flux de travail de configuration."
+keywords: ["séquence", "étapes numérotées", "procédures", "étapes de tutoriels"]
 ---
 
 import IconsOptional from "/snippets/fr/icons-optional.mdx";
 
-Utilisez des étapes pour présenter une série d’actions ou d’événements successifs. Vous pouvez ajouter autant d’étapes que nécessaire.
+Utilisez des étapes pour afficher une série d’actions ou d’événements successifs. Vous pouvez en ajouter autant que nécessaire.
 
 <Steps>
   <Step title="Première étape">
-    Voici des instructions ou un contenu qui s’appliquent uniquement à la première étape.
+    Voici des instructions ou du contenu qui concernent uniquement la première étape.
   </Step>
 
   <Step title="Deuxième étape">
-    Voici des instructions ou un contenu qui s’appliquent uniquement à la deuxième étape.
+    Voici des instructions ou du contenu qui concernent uniquement la deuxième étape.
   </Step>
 
   <Step title="Troisième étape">
-    Voici des instructions ou un contenu qui s’appliquent uniquement à la troisième étape.
+    Voici des instructions ou du contenu qui concernent uniquement la troisième étape.
   </Step>
 </Steps>
 
 ```mdx Steps example
 <Steps>
-  <Step title="Première étape">
-    Voici des instructions ou un contenu qui s'appliquent uniquement à la première étape.
+  <Step title="First Step">
+    These are instructions or content that only pertain to the first step.
   </Step>
-  <Step title="Deuxième étape">
-    Voici des instructions ou un contenu qui s'appliquent uniquement à la deuxième étape.
+  <Step title="Second Step">
+    These are instructions or content that only pertain to the second step.
   </Step>
-  <Step title="Troisième étape">
-    Voici des instructions ou un contenu qui s'appliquent uniquement à la troisième étape.
+  <Step title="Third Step">
+    These are instructions or content that only pertain to the third step.
   </Step>
 </Steps>
 ```
 
-
 <div id="steps-properties">
-  ## Propriétés de Étapes
+  ## Propriétés de Steps
 </div>
 
 <ResponseField name="children" type="ReactElement<StepProps>[]" required>
@@ -46,7 +45,7 @@ Utilisez des étapes pour présenter une série d’actions ou d’événements 
 </ResponseField>
 
 <ResponseField name="titleSize" type="string" default="p">
-  La taille des titres d’étape. Valeurs possibles : `p`, `h2`, `h3` et `h4`.
+  La taille des titres des étapes. Valeurs possibles : `p`, `h2`, `h3` et `h4`.
 </ResponseField>
 
 <div id="individual-step-properties">
@@ -54,11 +53,11 @@ Utilisez des étapes pour présenter une série d’actions ou d’événements 
 </div>
 
 <ResponseField name="title" type="string" required>
-  Le titre est le texte principal de l'étape et s'affiche à côté de l'indicateur.
+  Le titre est le texte principal de l’étape et s’affiche à côté de l’indicateur.
 </ResponseField>
 
 <ResponseField name="children" type="string | ReactNode">
-  Le contenu d'une étape, sous forme de texte brut ou de composants.
+  Le contenu d’une étape, sous forme de texte brut ou de composants.
 </ResponseField>
 
 <IconsOptional />
@@ -68,11 +67,11 @@ Utilisez des étapes pour présenter une série d’actions ou d’événements 
 </ResponseField>
 
 <ResponseField name="titleSize" type="string" default="p">
-  La taille des titres d’étape. Valeurs possibles : `p`, `h2`, `h3` et `h4`.
+  La taille des titres des étapes. Valeurs possibles : `p`, `h2`, `h3` et `h4`.
 </ResponseField>
 
 <ResponseField name="id" type="string">
-  Un ID personnalisé pour l’étape, utilisé pour les liens d’ancrage et la navigation dans la table des matières.
+  Un identifiant personnalisé pour l’étape, utilisé pour les liens d’ancrage et la navigation dans la table des matières.
 </ResponseField>
 
 <ResponseField name="noAnchor" type="boolean" default="false">
