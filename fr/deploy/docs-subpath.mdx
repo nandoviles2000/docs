@@ -1,24 +1,24 @@
 ---
 title: "Vue d’ensemble"
-description: "Hébergez votre documentation Mintlify sur un sous-chemin /docs de votre domaine principal à l’aide de Cloudflare Workers, des réécritures Vercel ou d’un proxy inverse nginx."
+description: "Hébergez votre documentation Mintlify sur le sous-chemin `/docs` de votre domaine principal à l’aide de Cloudflare Workers, de réécritures Vercel ou d’un proxy inverse nginx."
 keywords: ["routage par sous-chemin", "configuration de /docs"]
 ---
 
-Hébergez votre documentation sur un sous-chemin comme `your-domain.com/docs` pour conserver votre documentation sur votre domaine principal, ce qui la rend plus facile à trouver et offre une expérience de marque cohérente à vos utilisateurs.
+Hébergez votre documentation sur un sous-chemin comme `your-domain.com/docs` pour la garder sur votre domaine principal. Elle sera ainsi plus facile à trouver et offrira à vos utilisateurs une expérience de marque cohérente.
 
 <div id="set-up-by-hosting-provider">
-  ## Configuration selon le fournisseur d&#39;hébergement
+  ## Configurer selon votre fournisseur d’hébergement
 </div>
 
-La configuration d’un sous-chemin `/docs` varie selon votre fournisseur d’hébergement. Choisissez votre fournisseur d’hébergement et suivez les instructions de configuration.
+La configuration d’un sous-chemin `/docs` varie selon votre fournisseur d’hébergement. Choisissez le vôtre et suivez les instructions de configuration.
 
-* [Cloudflare](/fr/deploy/cloudflare) : Configurez Cloudflare Workers pour votre domaine afin de servir votre documentation au sous-chemin `/docs`.
-* [AWS Route 53 and CloudFront](/fr/deploy/route53-cloudfront) : Déployez votre documentation au sous-chemin `/docs` à l’aide d’AWS avec le DNS Route 53 et le CDN CloudFront.
-* [Vercel](/fr/deploy/vercel) - Utilisez des réécritures pour déployer votre documentation au sous-chemin `/docs`.
-* [Custom reverse proxy](/fr/deploy/reverse-proxy) - Pour d’autres plateformes d’hébergement, configurez un proxy inverse pour déployer votre documentation au sous-chemin `/docs`.
+* [Cloudflare](/fr/deploy/cloudflare): Configurez Cloudflare Workers pour votre domaine afin de diffuser votre documentation sur le sous-chemin `/docs`.
+* [AWS Route 53 and CloudFront](/fr/deploy/route53-cloudfront): Déployez votre documentation sur le sous-chemin `/docs` à l’aide d’AWS, avec le DNS Route 53 et le CDN CloudFront.
+* [Vercel](/fr/deploy/vercel) - Utilisez des règles de réécriture pour déployer votre documentation sur le sous-chemin `/docs`.
+* [Custom reverse proxy](/fr/deploy/reverse-proxy) - Pour les autres plateformes d’hébergement, configurez un proxy inverse afin de déployer votre documentation sur le sous-chemin `/docs`.
 
 <div id="additional-configuration-for-strict-security-policies">
-  ### Configuration supplémentaire pour des stratégies de sécurité strictes
+  ### Configuration supplémentaire en cas de politiques de sécurité strictes
 </div>
 
-Si vous faites transiter l’intégralité du trafic de votre domaine personnalisé via un proxy, vous devrez peut-être configurer les règles de votre proxy ou de vos pare-feu afin d’ajouter les [headers](/fr/deploy/csp-configuration) appropriés pour que votre documentation s’affiche correctement.
+Si vous faites transiter tout le trafic de votre domaine personnalisé via un proxy, vous devrez peut-être configurer votre proxy ou les règles de votre pare-feu pour ajouter les [en-têtes](/fr/deploy/csp-configuration) appropriés afin que votre documentation s’affiche correctement.

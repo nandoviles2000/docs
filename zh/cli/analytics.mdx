@@ -1,16 +1,16 @@
 ---
 title: "分析你的文档"
-description: "使用 mint analytics 命令直接从终端查看流量、搜索查询、用户反馈和 AI 助手对话。"
+description: "使用 mint analytics 命令，直接在终端中查看流量、搜索查询、用户反馈和 AI 助手对话。"
 keywords: ["mint analytics", "分析", "CLI", "统计", "反馈", "对话"]
 ---
 
-`mint analytics` 命令让你可以从终端访问[文档分析](/zh/optimize/analytics)。这对于通过脚本生成分析报告、将数据导入其他工具以及在不打开仪表板的情况下进行快速检查非常有用。
+`mint analytics` 命令可让你直接在终端中访问[文档分析](/zh/optimize/analytics)。这很适合用脚本生成分析报告、将数据通过管道传给其他工具，以及在不打开仪表板的情况下快速查看。
 
 <div id="prerequisites">
   ## 前提条件
 </div>
 
-你必须登录才能使用分析命令。运行 `mint login` 来使用你的 Mintlify 账户进行身份验证。
+您必须先登录，才能使用分析命令。运行 `mint login`，使用您的 Mintlify 账户完成身份验证。
 
 有关身份验证的详细信息，请参阅[本地预览](/zh/cli/preview#log-in-for-search-and-assistant)。
 
@@ -18,17 +18,17 @@ keywords: ["mint analytics", "分析", "CLI", "统计", "反馈", "对话"]
   ## 查看关键指标
 </div>
 
-显示浏览量、访客数、搜索量、反馈和助手使用情况的摘要：
+显示浏览量、访客数、搜索次数、反馈和助手使用情况概览：
 
 ```bash
 mint analytics stats
 ```
 
-使用选项按日期范围或页面进行筛选：
+使用标志按日期范围或页面进行筛选：
 
-- `--from`：开始日期，格式为 `YYYY-MM-DD`。默认为 7 天前。
-- `--to`：结束日期，格式为 `YYYY-MM-DD`。默认为今天。
-- `--page`：筛选特定页面路径。
+* `--from`：开始日期，格式为 `YYYY-MM-DD`。默认为 7 天前。
+* `--to`：结束日期，格式为 `YYYY-MM-DD`。默认为今天。
+* `--page`：筛选特定页面路径。
 
 ```bash Example analytics stats flags
 mint analytics stats --from 2025-01-01 --to 2025-01-31
@@ -39,16 +39,16 @@ mint analytics stats --page /quickstart
   ## 查看搜索分析
 </div>
 
-查看用户的搜索内容，包括命中次数和点击率：
+查看用户都在搜索什么，以及相应的命中次数和点击率：
 
 ```bash
 mint analytics search
 ```
 
-使用选项按查询字符串或页面筛选：
+使用标志按查询字符串或页面进行筛选：
 
-- `--query`：按搜索查询子字符串筛选。
-- `--page`：筛选特定页面路径。
+* `--query`：按搜索查询中的子字符串进行筛选。
+* `--page`：按特定页面路径进行筛选。
 
 ```bash Example analytics search flags
 mint analytics search --query "authentication"
@@ -66,10 +66,10 @@ mint analytics search --page /api-reference
 mint analytics feedback
 ```
 
-使用选项按页面汇总反馈，或筛选代码片段反馈：
+使用标志按页面汇总反馈，或筛选代码片段的反馈：
 
-- `--type`：按页面或代码片段汇总反馈。默认为页面。
-- `--page`：筛选特定页面路径。
+* `--type`：按页面或代码片段汇总反馈。默认为页面。
+* `--page`：筛选特定的页面路径。
 
 ```bash Example analytics feedback flags
 mint analytics feedback --type page
@@ -80,14 +80,14 @@ mint analytics feedback --type code
   ## 查看助手对话
 </div>
 
-列出 AI 助手的最近对话和对话分类：
+列出 AI 助手中的近期对话及其分类分组：
 
 ```bash
 mint analytics conversation list
 mint analytics conversation buckets list
 ```
 
-每个列表输出都包含每个条目的 ID。将该 ID 传递给相应的 `view` 命令以查看完整详情：
+每个列表输出都会为每个条目附带一个 ID。将该 ID 传给相应的 `view` 命令，即可查看完整详情：
 
 ```bash
 mint analytics conversation view <conversation-id>
@@ -98,7 +98,7 @@ mint analytics conversation buckets view <bucket-id>
   ## 选择输出格式
 </div>
 
-所有分析命令默认使用 `plain` 输出，即制表符分隔，适合导入其他工具。使用 `--format` 更改输出：
+所有分析命令默认采用 `plain` 输出格式，即以制表符分隔，适合通过管道传给其他工具。使用 `--format` 可更改输出格式：
 
 ```bash
 mint analytics stats --format table    # 带颜色的格式化表格
@@ -106,37 +106,37 @@ mint analytics stats --format json     # 原始 JSON
 mint analytics stats --format graph    # 水平条形图
 ```
 
-CLI 会自动检测 AI 代理环境（如 Claude Code 或非交互式终端），并默认使用 JSON 输出。
+CLI 会自动检测 Claude Code 等 AI 智能体环境或非交互式终端，并默认采用 JSON 输出格式。
 
 <div id="set-defaults-with-config">
-  ## 使用 config 设置默认值
+  ## 使用 config 设置默认配置
 </div>
 
-为避免重复输入常用选项，可以使用 `mint config` 设置默认值。配置保存在 `~/.config/mintlify/config.json` 中。
+为避免重复输入常用标志，请使用 `mint config` 设置默认配置。配置会保存在 `~/.config/mintlify/config.json` 中。
 
-当你运行 `mint login` 时，CLI 会设置 `subdomain` 键。如果你有多个部署，CLI 会提示你选择一个。你可以随时使用 `mint config set subdomain <subdomain>` 覆盖默认值。
+运行 `mint login` 时，CLI 会设置 `subdomain` 键。如果你有多个部署，CLI 会提示你选择其中一个。你可以随时使用 `mint config set subdomain <subdomain>` 覆盖该默认值。
 
 可用的配置键：
 
-| 键 | 描述 |
-| --- | --- |
-| `subdomain` | 分析命令的默认子域名。由 `mint login` 命令设置。 |
-| `dateFrom` | 分析查询的默认开始日期（`YYYY-MM-DD`）。 |
-| `dateTo` | 分析查询的默认结束日期（`YYYY-MM-DD`）。 |
+| 键           | 描述                                |
+| ----------- | --------------------------------- |
+| `subdomain` | 分析命令使用的默认子域名。由 `mint login` 命令设置。 |
+| `dateFrom`  | 分析查询的默认开始日期 (`YYYY-MM-DD`)。       |
+| `dateTo`    | 分析查询的默认结束日期 (`YYYY-MM-DD`)。       |
 
 ```bash Example configs
 mint config set subdomain my-docs
 mint config set dateFrom 2025-01-01
 ```
 
-设置后，分析命令会自动使用这些值：
+设置完成后，分析命令会自动使用这些值：
 
 ```bash
-# 使用已配置的子域名和 dateFrom，无需选项
+# 使用已配置的 subdomain 和 dateFrom，无需指定标志
 mint analytics stats
 ```
 
-要查看或清除某个值，请运行：
+如需查看或清除某个值，请运行：
 
 ```bash
 mint config get subdomain

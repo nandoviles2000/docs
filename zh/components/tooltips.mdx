@@ -1,15 +1,15 @@
 ---
 title: "工具提示"
-description: "添加工具提示，在用户悬停在文档中的术语、缩写或技术概念上时显示上下文定义和解释。"
-keywords: ["tooltips", "hover help", "contextual information", "explanatory", "definitions"]
+description: "添加工具提示，让用户在文档中将鼠标悬停在术语、缩写或技术概念上时显示相关定义和说明。"
+keywords: ["工具提示", "悬停帮助", "上下文信息", "说明性", "定义"]
 ---
 
-使用工具提示可在用户将鼠标悬停在文本上时提供额外的上下文或定义。工具提示还可以包含可选的行动呼吁链接。
+使用工具提示，可在用户将鼠标悬停在一段文本上时提供额外的上下文信息或定义。工具提示还可包含可选的行动号召链接。
 
-**示例**: <Tooltip headline="API" tip="应用程序编程接口：一组用于使软件应用彼此通信的协议。" cta="阅读我们的 API 指南" href="/zh/api-reference">API</Tooltip> 文档可帮助开发者了解如何将您的服务集成到他们的系统中。
+**示例**：<Tooltip headline="API" tip="应用程序编程接口：一组用于软件应用程序之间通信的协议。" cta="阅读我们的 API 指南" href="/zh/api-reference">API</Tooltip> 文档可帮助开发者了解如何集成你的服务。
 
 ```mdx Tooltip example wrap
-<Tooltip headline="API" tip="应用程序编程接口：一组用于使软件应用彼此通信的协议。" cta="阅读我们的 API 指南" href="/api-reference">API</Tooltip> 文档可帮助开发者了解如何将您的服务集成到他们的系统中。
+<Tooltip headline="API" tip="Application Programming Interface: a set of protocols for software applications to communicate." cta="Read our API guide" href="/api-reference">API</Tooltip> documentation helps developers understand how to integrate with your service.
 ```
 
 <div id="properties">
@@ -17,17 +17,17 @@ keywords: ["tooltips", "hover help", "contextual information", "explanatory", "d
 </div>
 
 <ResponseField name="tip" type="string" required>
-  悬浮提示中显示的文本。
+  工具提示中显示的文本。
 </ResponseField>
 
 <ResponseField name="headline" type="string">
-  显示在 `tip` 文本之前的文本。
+  显示在 `tip` 文本前面的文本。
 </ResponseField>
 
 <ResponseField name="cta" type="string">
-  悬浮提示内链接的行动呼吁文本。
+  工具提示中链接的行动号召文本。
 </ResponseField>
 
 <ResponseField name="href" type="string">
-  行动呼吁链接的URL。使用 `cta` 时为必填。
+  行动号召链接的 URL。使用 `cta` 时必填。
 </ResponseField>

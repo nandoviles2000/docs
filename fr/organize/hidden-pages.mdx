@@ -1,34 +1,34 @@
 ---
 title: "Pages masquées"
-description: "Masquez des pages de documentation dans la navigation latérale tout en les rendant accessibles par URL directe, recherche ou assistant IA pour des cas d'usage spéciaux."
-keywords: ["masquer dans la navigation", "non répertoriée", "visibilité de la page"]
+description: "Masquez des pages de documentation dans la navigation latérale tout en les laissant accessibles via une URL directe, la recherche ou un assistant IA pour des cas d’usage spécifiques."
+keywords: ["masquer dans la navigation", "non répertorié", "visibilité des pages"]
 ---
 
-Les pages masquées n’apparaissent pas dans la navigation de votre site, mais toute personne connaissant l’URL peut toujours y accéder. Par exemple, si vous créez une page masquée comme `guides/hidden-page.mdx`, les visiteurs peuvent y accéder via `docs.yoursite.com/guides/hidden-page`.
+Les pages masquées n’apparaissent pas dans la navigation de votre site, mais toute personne qui connaît l’URL peut quand même y accéder. Par exemple, si vous créez une page masquée comme `guides/hidden-page.mdx`, les visiteurs peuvent y accéder à l’adresse `docs.yoursite.com/guides/hidden-page`.
 
-Utilisez des pages masquées pour le contenu auquel vous souhaitez que les utilisateurs accèdent ou qu’ils puissent se référer comme contexte pour les outils d’IA, mais que vous ne voulez pas lister dans la navigation.
+Utilisez les pages masquées pour le contenu que vous souhaitez rendre accessible aux utilisateurs ou fournir comme contexte à des outils d’IA, sans l’afficher dans la navigation.
 
-Si votre contenu nécessite un contrôle d’accès strict, vous devez configurer l’[Authentification](/fr/deploy/authentication-setup).
+Si votre contenu nécessite un contrôle d’accès strict, vous devez configurer l’[authentification](/fr/deploy/authentication-setup).
 
-Pour restreindre des pages à des groupes d’utilisateurs spécifiques, configurez le [contrôle d’accès basé sur les groupes](/fr/deploy/authentication-setup#control-access-with-groups).
+Pour restreindre l’accès à des pages à des groupes d’utilisateurs spécifiques, configurez le [contrôle d’accès par groupes](/fr/deploy/authentication-setup#control-access-with-groups).
 
 Consultez un [exemple de page masquée](/fr/organize/hidden-page-example).
 
 <Note>
-  Certains éléments de navigation comme les barres latérales, les menus déroulants et les Onglets peuvent sembler vides ou modifier la mise en page sur les pages masquées.
+  Certains éléments de navigation, comme les barres latérales, les menus déroulants et les onglets, peuvent sembler vides ou voir leur mise en page se décaler sur les pages masquées.
 </Note>
 
 <div id="hide-a-page">
   ## Masquer une page
 </div>
 
-Pour masquer une page, définissez `hidden: true` dans le [frontmatter](/fr/organize/pages) de la page ou retirez-la de votre navigation `docs.json`.
+Pour masquer une page, définissez `hidden: true` dans les [métadonnées d’en-tête](/fr/organize/pages) de la page ou supprimez-la de la navigation définie dans votre `docs.json`.
 
 <div id="set-hidden-true-in-frontmatter">
-  ### Définir `hidden: true` dans le frontmatter
+  ### Définissez `hidden: true` dans les métadonnées d’en-tête
 </div>
 
-Ajoutez `hidden: true` dans le frontmatter d’une page pour la retirer de la navigation affichée tout en la conservant dans votre configuration `docs.json`.
+Ajoutez `hidden: true` aux métadonnées d’en-tête d’une page pour la retirer de la Navigation affichée tout en la conservant dans votre configuration `docs.json`.
 
 ```yaml
 ---
@@ -37,28 +37,28 @@ hidden: true
 ---
 ```
 
-Pour rendre une page visible à nouveau, supprimez entièrement le champ `hidden`. Ne définissez pas `hidden: false` car cela entraîne un comportement indéfini.
+Pour rendre une page de nouveau visible, supprimez entièrement le champ `hidden`. Ne définissez pas `hidden: false`, car cela entraîne un comportement indéfini.
 
 <Note>
-  Les moteurs de recherche ne peuvent pas indexer les pages masquées. Lorsque vous définissez `hidden: true`, la page est automatiquement exclue de l’indexation par les moteurs de recherche, des sitemaps et du contexte IA. Cependant, définir `noindex: true` ne retire **pas** une page de la navigation. Consultez [Désactiver l’indexation](/fr/optimize/seo#disable-indexing) pour plus d’informations.
+  Les moteurs de recherche ne peuvent pas indexer les pages masquées. Lorsque vous définissez `hidden: true`, la page est automatiquement exclue de l’indexation par les moteurs de recherche, des sitemaps et du contexte d’IA. En revanche, définir `noindex: true` ne **masque pas** une page dans la Navigation. Consultez [Désactiver l’indexation](/fr/optimize/seo#disable-indexing) pour en savoir plus.
 </Note>
 
 <div id="remove-the-page-from-navigation">
   ### Retirer la page de la navigation
 </div>
 
-Si vous n’incluez pas une page dans la navigation de votre `docs.json`, elle sera masquée. Cette méthode fonctionne bien pour les pages que vous ne souhaitez pas voir apparaître du tout dans la navigation.
+Si vous n’incluez pas une page dans la navigation de votre `docs.json`, elle sera masquée. Cette méthode convient bien aux pages que vous ne voulez pas voir apparaître du tout dans la navigation.
 
 <div id="hide-a-group-of-pages">
   ## Masquer un groupe de pages
 </div>
 
-Pour masquer un groupe de pages, définissez la propriété `hidden` sur `true` pour le groupe dans votre fichier `docs.json` :
+Pour masquer un groupe de pages, définissez la propriété `hidden` sur `true` pour ce groupe dans votre fichier `docs.json` :
 
 ```json highlight={4}
 "groups": [
   {
-    "group": "Premiers pas",
+    "group": "Getting started",
     "hidden": true,
     "pages": [
       "index",
@@ -75,18 +75,18 @@ Pour masquer un groupe de pages, définissez la propriété `hidden` sur `true` 
 ]
 ```
 
-Dans cet exemple, le groupe « Getting started » est masqué et le groupe « Guides » est visible.
+Dans cet exemple, le groupe `Getting started` est masqué et le groupe `Guides` reste visible.
 
 <div id="hide-a-tab">
   ### Masquer un onglet
 </div>
 
-Pour masquer un onglet, ajoutez la propriété `hidden` pour l’onglet dans votre fichier `docs.json` :
+Pour masquer un onglet, ajoutez la propriété `hidden` à cet onglet dans votre fichier `docs.json` :
 
 ```json highlight={4}
 "tabs": [
   {
-    "tab": "Accueil",
+    "tab": "Home",
     "hidden": true,
     "pages": [
       "index",
@@ -100,7 +100,7 @@ Pour masquer un onglet, ajoutez la propriété `hidden` pour l’onglet dans vot
   ## Recherche, SEO et indexation par l’IA
 </div>
 
-Par défaut, les pages masquées n’apparaissent pas dans l’indexation pour les moteurs de recherche, la recherche interne de votre documentation ou comme contexte pour l’Assistant IA. Pour inclure les pages masquées dans les résultats de recherche et comme contexte pour l’Assistant, ajoutez la propriété `seo` à votre `docs.json` :
+Par défaut, les pages masquées n’apparaissent pas dans l’index des moteurs de recherche, dans la Recherche du site de documentation ni dans le contexte de l’assistant IA. Pour inclure les pages masquées dans les résultats de recherche et le contexte de l’assistant, ajoutez la propriété `seo` à votre `docs.json` :
 
 ```json
 "seo": {
@@ -109,12 +109,12 @@ Par défaut, les pages masquées n’apparaissent pas dans l’indexation pour l
 ```
 
 <div id="understanding-hidden-versus-noindex">
-  ### Comprendre la différence entre `hidden` et `noindex`
+  ### Comprendre `hidden` et `noindex`
 </div>
 
 La relation entre `hidden` et `noindex` est à sens unique :
 
-* **`hidden: true` → applique automatiquement `noindex`** : les pages masquées sont automatiquement exclues des moteurs de recherche, des sitemaps et du contexte de l’IA.
-* **`noindex: true` → n’applique PAS `hidden`** : les pages avec `noindex: true` restent visibles dans la navigation. Cela n’affecte que l’indexation par les moteurs de recherche et le contexte de l’IA.
+* **`hidden: true` → applique automatiquement `noindex`** : les pages masquées sont automatiquement exclues des moteurs de recherche, des sitemaps et du contexte d’IA.
+* **`noindex: true` → n’applique PAS `hidden`** : les pages avec `noindex: true` restent visibles dans la Navigation. Elles n’affectent que l’indexation par les moteurs de recherche et le contexte d’IA.
 
-Pour exclure une page spécifique des moteurs de recherche tout en la gardant visible dans la navigation, ajoutez `noindex: true` à son frontmatter. Pour masquer une page de la navigation et des moteurs de recherche, utilisez `hidden: true`.
+Pour exclure une page précise des moteurs de recherche tout en la laissant visible dans la Navigation, ajoutez `noindex: true` à ses métadonnées d’en-tête. Pour masquer une page dans la Navigation et l’exclure des moteurs de recherche, utilisez `hidden: true`.

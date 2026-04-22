@@ -1,19 +1,19 @@
 ---
-title: "Comment lier efficacement les pages de documentation"
+title: "Comment lier efficacement des pages de documentation"
 sidebarTitle: "Liens"
-description: "Créez des liens internes, des liens d'ancrage et des liens profonds dans votre documentation, et maintenez l'intégrité des liens avec des redirections et des vérifications de liens cassés."
-keywords: ["liens de documentation", "liens internes", "liens d'ancrage", "liens cassés", "liens profonds", "références croisées"]
+description: "Créez des liens internes, des liens d’ancrage et des liens profonds dans votre documentation, et préservez l’intégrité des liens grâce aux redirections et aux vérifications de liens rompus."
+keywords: ["liens de documentation", "liens internes", "liens d’ancrage", "liens rompus", "liens profonds", "références croisées"]
 ---
 
-Les liens connectent votre documentation en un système cohérent. Ils aident les utilisateurs à découvrir du contenu connexe, à naviguer efficacement et à suivre un chemin logique à travers des sujets complexes. Des liens médiocres—texte d'ancrage vague, références croisées manquantes, URLs cassées—rendent la documentation plus difficile à utiliser et nuisent au SEO.
+Les liens transforment votre documentation en un ensemble cohérent. Ils aident les utilisateurs à découvrir des contenus associés, à naviguer efficacement et à suivre un parcours logique à travers des sujets complexes. De mauvais liens — texte d’ancrage vague, références croisées manquantes, URL cassées — rendent la documentation plus difficile à utiliser et nuisent au SEO.
 
-Ce guide explique comment créer différents types de liens dans Mintlify et comment maintenir l'intégrité des liens à mesure que votre documentation évolue.
+Ce guide explique comment créer différents types de liens dans Mintlify et comment préserver leur intégrité à mesure que votre documentation s’étoffe.
 
 <div id="internal-links">
-## Liens internes
+  ## Liens internes
 </div>
 
-Liez vers d'autres pages de votre documentation en utilisant des chemins relatifs à la racine. Les chemins relatifs à la racine commencent à partir de la racine de votre répertoire de documentation et fonctionnent de manière cohérente, quel que soit l'emplacement de la page source dans votre structure de répertoires.
+Créez des liens vers d’autres pages de votre documentation à l’aide de chemins relatifs à la racine. Les chemins relatifs à la racine partent de la racine de votre répertoire de documentation et fonctionnent de manière cohérente, quel que soit l’emplacement de la page source dans votre arborescence de répertoires.
 
 ```mdx
 - [Quickstart guide](/quickstart)
@@ -21,29 +21,29 @@ Liez vers d'autres pages de votre documentation en utilisant des chemins relatif
 - [Custom components](/customize/react-components)
 ```
 
-Évitez les chemins relatifs comme `../api-playground/overview`—ils se cassent lorsque les pages sont déplacées et sont plus difficiles à vérifier lors de la revue.
+Évitez les chemins relatifs comme `../api-playground/overview`—ils ne fonctionnent plus lorsque les pages sont déplacées et sont plus difficiles à repérer lors de la relecture.
 
 <div id="anchor-links">
-## Liens d'ancrage
+  ## Liens d’ancrage
 </div>
 
-Les liens d'ancrage pointent vers des sections spécifiques au sein d'une page. Chaque titre génère automatiquement un ancrage basé sur son texte.
+Les liens d’ancrage renvoient vers des sections précises d’une page. Chaque titre génère automatiquement une ancre à partir de son texte.
 
 <div id="link-to-headers-on-the-same-page">
-### Lier vers des titres sur la même page
+  ### Créer des liens vers les en-têtes de la même page
 </div>
 
-Référencez les titres de la page actuelle en utilisant le symbole dièse :
+Référencez les en-têtes de la page actuelle à l’aide du symbole # :
 
 ```mdx
 [Jump to best practices](#best-practices)
 ```
 
 <div id="link-to-headers-on-other-pages">
-### Lier vers des titres sur d'autres pages
+  ### Créer un lien vers des titres sur d’autres pages
 </div>
 
-Combinez le chemin de la page avec l'ancrage :
+Combinez le chemin de la page avec l’ancre :
 
 ```mdx
 - [Customize your playground](/api-playground/overview#customize-your-playground)
@@ -51,46 +51,46 @@ Combinez le chemin de la page avec l'ancrage :
 ```
 
 <div id="how-mintlify-generates-anchors">
-### Comment Mintlify génère les ancrages
+  ### Comment Mintlify génère les ancres
 </div>
 
-Mintlify crée automatiquement des ancrages à partir du texte des titres en convertissant en minuscules, en remplaçant les espaces par des tirets et en supprimant les caractères spéciaux.
+Mintlify crée automatiquement des ancres à partir du texte des titres en le convertissant en minuscules, en remplaçant les espaces par des traits d’union et en supprimant les caractères spéciaux.
 
-| Texte du titre | Ancrage généré |
-|---|---|
-| `## Getting Started` | `#getting-started` |
+| Texte du titre           | Ancre générée         |
+| ------------------------ | --------------------- |
+| `## Getting Started`     | `#getting-started`    |
 | `### API Authentication` | `#api-authentication` |
-| `#### Step 1: Install` | `#step-1-install` |
+| `#### Step 1: Install`   | `#step-1-install`     |
 
 <Note>
-  Les titres avec la prop `noAnchor` ne génèrent pas de liens d'ancrage. Consultez [Formater le texte](/fr/create/text#disabling-anchor-links) pour plus de détails.
+  Les titres avec la prop `noAnchor` ne génèrent pas de liens d’ancrage. Pour en savoir plus, consultez [Formater le texte](/fr/create/text#disabling-anchor-links).
 </Note>
 
 <div id="custom-anchor-ids">
-### IDs d'ancrage personnalisés
+  ### ID d’ancre personnalisés
 </div>
 
-Remplacez l'ancrage généré automatiquement pour n'importe quel titre en ajoutant `{#custom-id}` au texte du titre :
+Remplacez l’ancre générée automatiquement pour n’importe quel titre en ajoutant `{#custom-id}` au texte du titre :
 
 ```mdx
 ## Configuration options {#config}
 ```
 
-Ce titre est accessible à `#config` au lieu de `#configuration-options`. Les IDs personnalisés maintiennent les liens d'ancrage stables lorsque vous mettez à jour le texte du titre—utile pour les titres vers lesquels vous liez fréquemment. Consultez [Formater le texte](/fr/create/text#custom-heading-ids) pour plus de détails.
+Ce titre est accessible via `#config` au lieu de `#configuration-options`. Les ID personnalisés permettent de conserver des liens d’ancrage stables lorsque vous mettez à jour le texte des titres, ce qui est utile pour les titres vers lesquels vous pointez souvent. Consultez [Mettre en forme le texte](/fr/create/text#custom-heading-ids) pour plus de détails.
 
 <div id="deep-links">
-## Liens profonds
+  ## Liens profonds
 </div>
 
-Les liens profonds pointent vers des états ou des emplacements spécifiques au sein d'une page, pas seulement vers la page elle-même.
+Les liens profonds renvoient à un état ou à un emplacement précis dans une page, et non simplement à la page elle-même.
 
 <div id="accordion-deep-links">
-### Liens profonds d'accordéon
+  ### Liens profonds de l’Accordion
 </div>
 
-Lorsqu'un utilisateur ouvre un accordéon, le hash de l'URL se met à jour pour refléter l'état ouvert. Visiter une URL avec ce hash ouvre automatiquement et fait défiler jusqu'à l'accordéon.
+Lorsque vous ouvrez un Accordion, le hash de l’URL est mis à jour pour refléter son état ouvert. Si vous visitez une URL contenant ce hash, l’Accordion s’ouvre automatiquement et la page défile jusqu’à lui.
 
-Par défaut, le hash est dérivé du `title` de l'accordéon. Utilisez la propriété `id` pour définir un hash personnalisé :
+Par défaut, le hash est généré à partir du `title` de l’Accordion. Utilisez la propriété `id` pour définir un hash personnalisé :
 
 ```mdx
 <Accordion title="Installation steps" id="install">
@@ -98,60 +98,58 @@ Par défaut, le hash est dérivé du `title` de l'accordéon. Utilisez la propri
 </Accordion>
 ```
 
-Cet accordéon est accessible à `#install` au lieu du `#installation-steps` généré automatiquement. Consultez [Accordéons](/fr/components/accordions) pour en savoir plus.
+Cet accordéon est accessible via `#install` au lieu de l’ancre générée automatiquement `#installation-steps`. Consultez [Accordions](/fr/components/accordions) pour en savoir plus.
 
 <div id="api-playground-deep-links">
-### Liens profonds de l'API playground
+  ### Liens profonds vers le bac à sable API
 </div>
 
-Pour ouvrir l'API playground dans un lien, ajoutez `?playground=open` à n'importe quelle URL de page d'endpoint :
+Pour ouvrir directement le bac à sable API depuis un lien, ajoutez `?playground=open` à l’URL de n’importe quelle page de point de terminaison :
 
 ```text
 https://your-docs-url/endpoint-path?playground=open
 ```
 
-L'URL se met à jour lorsque les utilisateurs ouvrent ou ferment le playground. Utilisez les liens profonds du playground dans les conversations de support ou les flux d'intégration pour envoyer les utilisateurs directement vers le playground interactif d'un endpoint. Consultez [API playground](/fr/api-playground/overview#parameter-anchor-links) pour des informations sur les liens d'ancrage de paramètres.
+L’URL se met à jour lorsque les utilisateurs ouvrent ou ferment le bac à sable. Utilisez des liens profonds vers le bac à sable dans les conversations d’assistance ou les parcours d’intégration afin d’envoyer les utilisateurs directement vers le bac à sable interactif d’un point de terminaison. Consultez [bac à sable API](/fr/api-playground/overview#parameter-anchor-links) pour plus d’informations sur les liens d’ancrage des paramètres.
 
 <div id="external-links">
-## Liens externes
+  ## Liens externes
 </div>
 
-Lorsque vous liez vers des ressources externes, rédigez un texte d'ancrage qui rend la destination claire :
+Lorsque vous créez des liens vers des ressources externes, choisissez un texte d’ancrage qui indique clairement la destination :
 
 ```mdx
 See the [OpenAPI specification](https://swagger.io/specification/) in the Swagger documentation for details.
 ```
 
 <div id="best-practices">
-## Bonnes pratiques
+  ## Bonnes pratiques
 </div>
 
 <div id="write-descriptive-anchor-text">
-### Rédigez un texte d'ancrage descriptif
+  ### Rédigez un texte d’ancrage descriptif
 </div>
 
-Le texte d'ancrage doit indiquer aux utilisateurs où ils vont avant qu'ils ne cliquent. Les phrases vagues comme "cliquez ici" ou "en savoir plus" sont également des signaux SEO plus faibles que le texte descriptif.
+Le texte d’ancrage doit indiquer aux utilisateurs où ils seront dirigés avant de cliquer. Les expressions vagues comme « click here » ou « read more » constituent aussi des signaux SEO moins pertinents qu’un texte descriptif.
 
 <CodeGroup>
+  ```mdx Good
+  Voir [Pages masquées](/organize/hidden-pages) pour en savoir plus.
+  [Configurer des domaines personnalisés](/customize/custom-domain)
+  ```
 
-```mdx Good
-See [Hidden pages](/organize/hidden-pages) for more information.
-[Configure custom domains](/customize/custom-domain)
-```
-
-```mdx Avoid
-[Click here](/api-playground/overview)
-[Read more](/deploy/deployments)
-[See this page](/customize/custom-domain)
-```
-
+  ```mdx Avoid
+  [Cliquez ici](/api-playground/overview)
+  [En savoir plus](/deploy/deployments)
+  [Voir cette page](/customize/custom-domain)
+  ```
 </CodeGroup>
 
 <div id="link-prerequisites-explicitly">
-### Liez les prérequis explicitement
+  ### Indiquez explicitement les prérequis
 </div>
 
-Lorsqu'une page suppose des étapes préalables, liez-les en haut plutôt que de supposer que les utilisateurs les trouveront :
+Lorsqu’une page suppose des étapes préalables, ajoutez des liens vers celles-ci en haut de la page, au lieu de supposer que les utilisateurs les trouveront d’eux-mêmes :
 
 ```mdx
 ## Prerequisites
@@ -164,10 +162,10 @@ Before deploying your documentation, ensure you have:
 ```
 
 <div id="build-topic-clusters">
-### Construisez des clusters de sujets
+  ### Créez des groupes thématiques
 </div>
 
-Liez le contenu connexe ensemble pour aider les utilisateurs—et les moteurs de recherche—à comprendre comment votre documentation est organisée :
+Reliez les contenus connexes entre eux pour aider les utilisateurs, ainsi que les moteurs de recherche, à comprendre comment votre documentation est organisée :
 
 ```mdx
 ## Related topics
@@ -178,32 +176,32 @@ Liez le contenu connexe ensemble pour aider les utilisateurs—et les moteurs de
 ```
 
 <div id="check-for-broken-links">
-### Vérifiez les liens cassés
+  ### Vérifiez les liens rompus
 </div>
 
-Exécutez le CLI de Mintlify avant de publier pour détecter les liens internes et externes cassés :
+Exécutez le CLI Mintlify avant de publier pour repérer les liens internes et externes rompus :
 
 ```bash
 mint broken-links
 ```
 
 <div id="update-links-when-reorganizing">
-### Mettez à jour les liens lors d'une réorganisation
+  ### Mettez à jour les liens lors d’une réorganisation
 </div>
 
-Lors du déplacement ou du renommage de pages :
+Lorsque vous déplacez ou renommez des pages :
 
 1. Mettez à jour le chemin de la page dans votre configuration de navigation.
-2. Configurez des redirections de l'ancien chemin vers le nouveau chemin.
-3. Recherchez dans votre documentation les références à l'ancien chemin.
-4. Mettez à jour tous les liens internes pour utiliser le nouveau chemin.
+2. Configurez des redirections de l’ancien chemin vers le nouveau.
+3. Recherchez dans votre documentation les références à l’ancien chemin.
+4. Mettez à jour tous les liens internes afin qu’ils utilisent le nouveau chemin.
 5. Exécutez `mint broken-links` pour vérifier.
 
 <div id="use-redirects-for-moved-content">
-### Utilisez des redirections pour le contenu déplacé
+  ### Utiliser des redirections pour le contenu déplacé
 </div>
 
-Lors du déplacement permanent de contenu, ajoutez des redirections pour éviter les liens cassés pour les utilisateurs qui ont mis en favoris ou partagé les anciennes URLs.
+Lorsque vous déplacez définitivement du contenu, ajoutez des redirections pour éviter les liens rompus pour les utilisateurs qui ont enregistré d’anciennes URL dans leurs favoris ou les ont partagées.
 
 ```json
 {
@@ -216,34 +214,34 @@ Lors du déplacement permanent de contenu, ajoutez des redirections pour éviter
 }
 ```
 
-Consultez [Redirections](/fr/create/redirects) pour plus d'informations.
+Consultez [Redirects](/fr/create/redirects) pour en savoir plus.
 
 <div id="frequently-asked-questions">
-## Questions fréquemment posées
+  ## Questions fréquentes
 </div>
 
 <AccordionGroup>
-<Accordion title="Dois-je utiliser des chemins relatifs à la racine ou des URLs absolues pour les liens internes ?">
-Les chemins relatifs à la racine (commençant par `/`) sont le bon choix pour les liens internes dans Mintlify. Ils fonctionnent de manière cohérente quel que soit l'emplacement de la page source dans votre répertoire, et ils ne se cassent pas si votre domaine de documentation change. Les URLs absolues pour les liens internes créent une fragilité inutile.
-</Accordion>
+  <Accordion title="Dois-je utiliser des URL relatives à la racine ou des URL absolues pour les liens internes ?">
+    Les chemins relatifs à la racine (commençant par `/`) sont le bon choix pour les liens internes dans Mintlify. Ils fonctionnent de manière cohérente, quel que soit l’emplacement de la page contenant le lien dans votre répertoire, et ne se cassent pas si le domaine de votre documentation change. Les URL absolues pour les liens internes introduisent une fragilité inutile.
+  </Accordion>
 
-<Accordion title="Comment maintenir les liens d'ancrage stables lorsque je mets à jour les titres ?">
-Utilisez des IDs d'ancrage personnalisés pour les titres vers lesquels vous liez fréquemment. Ajouter `{#custom-id}` à un titre découple l'ancrage du texte du titre, afin que vous puissiez mettre à jour le texte du titre sans casser les liens qui pointent vers lui. C'est particulièrement utile pour les titres dans les sections de référence à fort trafic où le texte peut nécessiter des ajustements au fil du temps.
-</Accordion>
+  <Accordion title="Comment garder des liens d’ancrage stables lorsque je mets à jour des titres ?">
+    Utilisez des ID d’ancre personnalisés pour les titres vers lesquels vous créez souvent des liens. Ajouter `{#custom-id}` à un titre dissocie l’ancrage du texte du titre, ce qui vous permet de modifier ce dernier sans casser les liens qui pointent vers lui. C’est particulièrement utile pour les titres des sections de référence très consultées, dont le libellé peut devoir être affiné au fil du temps.
+  </Accordion>
 
-<Accordion title="Que se passe-t-il avec les liens mis en favoris lorsque je réorganise ma documentation ?">
-Sans redirections, les liens mis en favoris et partagés deviennent des erreurs 404. Configurez des redirections dans votre `docs.json` chaque fois que vous déplacez ou renommez une page. Les redirections sont peu coûteuses à ajouter et évitent une mauvaise expérience utilisateur pour quiconque a lié vers votre documentation depuis une source externe—articles de blog, réponses Stack Overflow, wikis internes.
-</Accordion>
+  <Accordion title="Que deviennent les liens ajoutés aux favoris lorsque je réorganise ma documentation ?">
+    Sans redirections, les liens enregistrés dans les favoris et les liens partagés deviennent des erreurs 404. Configurez des redirections dans votre `docs.json` chaque fois que vous déplacez ou renommez une page. Les redirections sont simples à ajouter et évitent une mauvaise expérience utilisateur à toute personne ayant créé un lien vers votre documentation depuis une source externe — articles de blog, réponses sur Stack Overflow, wikis internes.
+  </Accordion>
 
-<Accordion title="Combien de liens internes une page devrait-elle contenir ?">
-Liez lorsqu'un concept connexe est véritablement utile à l'utilisateur à ce moment précis—pas pour atteindre un quota. Trop peu de liens laissent les utilisateurs sans contexte ni prochaines étapes. Trop de liens transforment la page en un exercice de navigation qui éloigne les utilisateurs de ce qu'ils essaient de faire. En règle générale, liez la première mention d'un concept ou d'un outil, et ne répétez pas le même lien plusieurs fois sur une seule page.
-</Accordion>
+  <Accordion title="Combien de liens internes une page doit-elle contenir ?">
+    Ajoutez un lien chaque fois qu’un concept connexe est réellement utile à l’utilisateur à ce moment précis, et non pour atteindre un quota. Trop peu de liens privent les utilisateurs de contexte ou de prochaines étapes. Trop de liens transforment la page en parcours de navigation qui détourne les utilisateurs de ce qu’ils essaient de faire. En règle générale, ajoutez un lien à la première mention d’un concept ou d’un outil, et ne répétez pas plusieurs fois le même lien sur une même page.
+  </Accordion>
 </AccordionGroup>
 
 <div id="related-resources">
-## Ressources connexes
+  ## Ressources connexes
 </div>
 
-- [Formater le texte](/fr/create/text) : Options de formatage Markdown incluant les IDs de titres et le comportement des ancrages.
-- [Navigation](/fr/organize/navigation) : Configurez la structure de votre documentation.
-- [Redirections](/fr/create/redirects) : Configurez des redirections pour le contenu déplacé.
+* [Mettre en forme le texte](/fr/create/text) : options de mise en forme Markdown, notamment les ID de titre et le comportement des ancres.
+* [Navigation](/fr/organize/navigation) : configurez la structure de votre documentation.
+* [Redirections](/fr/create/redirects) : configurez des redirections pour le contenu déplacé.

@@ -1,238 +1,240 @@
 ---
 title: "工作流"
-description: "通过定时或事件触发的 agent 任务自动维护文档，包括 cron 计划和基于 webhook 的自动化。"
+description: "通过定时或事件触发的智能体任务（包括 cron 计划和基于 webhook 的自动化）设置自动化文档工作流。"
 keywords: ["automation", "automate", "cron", "auto-update"]
-tag: "测试版"
+tag: "Beta"
 ---
 
 <Info>
-  工作流目前处于测试阶段。在测试期间，所有方案当前均可免费使用。工作流功能、可用性和定价可能会发生变化。
+  工作流目前处于 Beta 阶段。在 Beta 期间，所有套餐均可免费使用。工作流功能、可用性和定价都可能发生变化。
 </Info>
 
-工作流会在预设的计划下，或在存储库发生 push 时自动运行 agent。每个工作流都会为 agent 定义一个提示词，以及一个触发执行的条件。工作流同时支持 GitHub 和 GitLab 存储库。
+工作流可以按计划自动运行智能体，也可以在代码库发生 push 时触发运行。每个工作流都会定义一个供智能体执行的提示词，以及一个触发运行时机的触发条件。工作流同时支持 GitHub 和 GitLab 代码库。
 
-当工作流运行时，agent 会将指定的存储库克隆为上下文，遵循提示词，并执行以下两种操作之一：要么创建一个拉取请求（或 GitLab 的合并请求），要么将更改直接推送到你的部署用分支。
+工作流运行时，智能体会克隆所有指定的代码库作为上下文，按照提示词执行，并创建拉取请求 (PR)  (对于 GitLab，则为合并请求) ，或者直接将更改推送到你的部署分支。
 
-每个工作流每天最多可运行 50 次。运行失败不会计入此限制。
+每个工作流每天最多可运行 50 次。运行失败不计入此限制。
 
 <Tip>
-使用按计划运行的工作流来自动化执行周期性任务，例如发布更新日志或检查语法和写作风格问题。
+  使用按计划运行的工作流，可以自动化处理发布更新日志或检查语法和风格问题等周期性任务。
 
-使用在 push 事件上运行的工作流来自动化执行响应型维护任务，例如更新 API 参考文档，或识别新功能所需的文档更新。
+  使用在 push 事件时运行的工作流，可以自动化处理更新 API 参考或识别新功能所需文档更新等响应式维护任务。
 </Tip>
 
 <div id="create-a-workflow">
-## 创建工作流
+  ## 创建工作流
 </div>
 
-1. 打开 [Workflows](https://dashboard.mintlify.com/products/workflows) 页面。
-2. 点击 **New workflow**。
-3. 配置工作流名称、触发器类型、存储库和计划。
-4. 编写 agent 指令，并选择是否自动合并拉取请求。
-5. 可选：启用 Slack 通知，以便在工作流完成时收到通知。
-6. 点击 **Create workflow**。
+1. 打开 [工作流](https://dashboard.mintlify.com/products/workflows) 页面。
+2. 点击 **新建工作流**。
+3. 配置工作流名称、触发类型、仓库和计划时间。
+4. 编写智能体指令，并选择是否自动合并拉取请求 (PR) 。
+5. 可选：启用 Slack 通知，以便在工作流完成时接收提醒。
+6. 点击 **创建工作流**。
 
 <Frame>
-<img src="/images/agent/new-workflow-light.png" alt="新建工作流的设置页面。" className="block dark:hidden" />
-<img src="/images/agent/new-workflow-dark.png" alt="新建工作流的设置页面。" className="hidden dark:block" />
+  <img src="/images/agent/new-workflow-light.png" alt="新建工作流设置页面。" className="block dark:hidden" />
+
+  <img src="/images/agent/new-workflow-dark.png" alt="新建工作流设置页面。" className="hidden dark:block" />
 </Frame>
 
 <div id="configuration">
-## 配置
+  ## 配置
 </div>
 
-| 字段 | 必填 | 说明 |
-|------|------|------|
-| **Name** | 是 | 在控制台中显示的名称。 |
-| **Trigger** | 是 | 触发器配置。 |
-| **Context** | 否 | 工作流运行时作为参考克隆的存储库。 |
-| **Automerge** | 否 | 默认关闭，此时会打开一个拉取请求以供审查。如果启用，则会打开一个拉取请求并自动将其合并。 |
-| **Notify** | 否 | 通知配置。工作流完成时发送 Slack 消息。 |
+| 字段       | 必填 | 描述                                                   |
+| -------- | -- | ---------------------------------------------------- |
+| **名称**   | 是  | 在仪表板中显示的名称。                                          |
+| **触发器**  | 是  | 触发器配置。                                               |
+| **上下文**  | 否  | 工作流运行时会克隆这些仓库作为参考。                                   |
+| **自动合并** | 否  | 默认为关闭，此时会创建一个拉取请求 (PR) 供审核。启用后，会创建一个拉取请求 (PR) 并自动合并。 |
+| **通知**   | 否  | 通知配置。在工作流完成时发送 Slack 消息。                             |
 
-对于 GitHub 存储库，你必须在上下文或触发器字段中列出的每个存储库上安装 Mintlify GitHub App。请在 Mintlify 控制台的 [GitHub app](https://dashboard.mintlify.com/settings/organization/github-app) 页面中添加新的存储库。
+对于 GitHub 仓库，您必须在 Context 或 Trigger 字段中列出的每个仓库上安装 Mintlify GitHub App。请在 Mintlify 仪表板的 [GitHub app](https://dashboard.mintlify.com/settings/organization/github-app) 页面添加新仓库。
 
-对于 GitLab 存储库，你必须在 Mintlify 控制台的 [GitLab OAuth](https://dashboard.mintlify.com/settings/organization/gitlab-oauth) 页面上连接你的 GitLab 账户。然后添加你想要与工作流一起使用的存储库。你必须在每个项目上至少拥有 Maintainer 角色才能连接 GitLab OAuth。
+对于 GitLab 仓库，您必须先在 Mintlify 仪表板中的 [GitLab OAuth](https://dashboard.mintlify.com/settings/organization/gitlab-oauth) 页面连接您的 GitLab 账户。然后添加要与工作流配合使用的仓库。要连接 GitLab OAuth，您必须至少在每个项目中拥有 Maintainer 角色。
 
 <Frame>
-  <img src="/images/github/app-repos-light.png" alt="GitHub app 页面显示了两个组织已连接的存储库。" className="block dark:hidden" />
-  <img src="/images/github/app-repos-dark.png" alt="GitHub app 页面在深色模式下显示了两个组织已连接的存储库。" className="hidden dark:block" />
+  <img src="/images/github/app-repos-light.png" alt="GitHub app 页面，显示两个组织的已连接仓库。" className="block dark:hidden" />
+
+  <img src="/images/github/app-repos-dark.png" alt="GitHub app 页面在深色模式下显示两个组织的已连接仓库。" className="hidden dark:block" />
 </Frame>
 
 <div id="triggers">
-### 触发器
+  ### 触发器
 </div>
 
-每个工作流必须定义一个触发器。
+每个工作流必须且只能定义一个触发器。
 
 <div id="on-schedule-cron">
-#### 按计划 (cron)
+  #### 按计划 (cron)
 </div>
 
-使用 cron 表达式按固定计划运行工作流。所有计划均使用 UTC 时间运行。
+使用 cron 表达式按固定计划重复运行工作流。所有计划均使用 UTC。
 
-工作流会在预定时间起的 10 分钟内进入队列，并且可能最多需要 10 分钟才能开始运行。
+工作流会在计划时间后的 10 分钟内进入队列，且开始运行最多还可能需要 10 分钟。
 
-该值是一个标准的 5 个字段的 cron 表达式，格式为 `minute hour day-of-month month day-of-week`。可以使用类似 [crontab.guru](https://crontab.guru) 这样的工具来构建和验证调度计划。
+该值为标准的 5 字段 cron 表达式，格式为 `minute hour day-of-month month day-of-week`。使用 [crontab.guru](https://crontab.guru) 等工具来创建并验证计划。
 
-| 表达式 | 计划 |
-|--------|------|
-| `0 9 * * 1` | 每周一 9:00 (UTC) |
-| `0 0 1 * *` | 每个月第一天的 00:00 (UTC，午夜) |
-| `0 8 * * 1-5` | 每个工作日 8:00 (UTC) |
+| 表达式           | 计划              |
+| ------------- | --------------- |
+| `0 9 * * 1`   | 每周一 UTC 上午 9:00 |
+| `0 0 1 * *`   | 每月第一天 UTC 午夜    |
+| `0 8 * * 1-5` | 工作日 UTC 上午 8:00 |
 
 <div id="on-push-events">
-#### 在 push 事件时
+  #### 在 push 事件中
 </div>
 
-当更改被推送到指定存储库或特定 branch 时运行工作流。这包括拉取请求合并和直接推送到该 branch 的操作。
+当变更被推送到特定仓库或分支时，运行工作流。这包括拉取请求 (PR) 合并，以及直接推送到该分支这两种情况。
 
-以 `owner/repo` 格式指定每个存储库。可选指定要监控的 branch。如果你未指定 branch，则工作流会在更改推送到存储库默认 branch 时触发。
+以 `owner/repo` 格式指定每个仓库。你也可以选择指定要监控的分支。如果未指定分支，工作流会在推送到仓库的默认分支时触发。
 
-一个工作流可以监控最多 10 个存储库或 branch 上的推送。
+一个工作流最多可监控 10 个仓库或分支上的推送。
 
 <div id="context-repositories">
-### Context 存储库
+  ### 上下文仓库
 </div>
 
-Context 存储库在工作流运行时为 agent 提供对其他存储库的只读访问权限。当你的提示词需要查看文档存储库之外的代码或内容时，这会很有用。每个工作流最多可以指定五个上下文存储库。
+上下文仓库可在工作流运行时让智能体对其他仓库拥有只读访问权限。当你的提示需要审查文档仓库之外的代码或内容时，这会非常有用。每个工作流最多可指定五个上下文仓库。
 
 <div id="auto-merge-changes">
-### 自动合并更改
+  ### 自动合并更改
 </div>
 
-默认情况下，agent 会为每次工作流运行创建一个拉取请求，以便你在更改上线之前进行审查。启用自动合并可自动合并该拉取请求，无需手动批准。这样一来，你既可以在存储库的拉取请求历史记录中保留更改记录，又能自动完成合并步骤。
+默认情况下，智能体会为每次工作流运行创建一个拉取请求 (PR) ，以便你在更改生效前先进行审核。启用自动合并后，系统会自动合并该拉取请求 (PR) ，无需手动批准。这样既能在仓库的拉取请求历史中保留变更记录，又能自动完成合并这一步骤。
 
 <Note>
-  对于 GitHub 存储库，自动合并要求 Mintlify GitHub 应用对所有针对你部署分支的规则集都拥有绕过权限，包括组织级和仓库级的规则集。请参阅[配置自动合并](/zh/guides/configure-automerge)了解设置说明。
+  对于 GitHub 仓库，自动合并要求 Mintlify GitHub App 对所有以你的部署分支为目标的规则集都拥有绕过权限，包括组织级和仓库级规则集。设置说明请参阅[配置自动合并](/zh/guides/configure-automerge)。
 
-  对于 GitLab 存储库，自动合并使用在 Mintlify 控制台的 [GitLab OAuth](https://dashboard.mintlify.com/settings/organization/gitlab-oauth) 页面上配置的 GitLab OAuth 连接。你必须在每个项目上至少拥有 Maintainer 角色才能连接 GitLab OAuth。
+  对于 GitLab 仓库，自动合并使用你在 Mintlify 仪表板的 [GitLab OAuth](https://dashboard.mintlify.com/settings/organization/gitlab-oauth) 页面上配置的 GitLab OAuth 连接。你必须在每个项目中至少具有 Maintainer 角色，才能连接 GitLab OAuth。
 </Note>
 
 <div id="slack-notifications">
-### Slack 通知
+  ### Slack 通知
 </div>
 
-在工作流完成或失败时发送 Slack 消息。通知内容包括工作流状态、拉取请求链接以及变更摘要。
+在工作流完成或失败时发送 Slack 消息。通知将包含工作流状态、拉取请求 (PR) 链接以及变更摘要。
 
 <Note>
-Slack 通知要求你的组织的 Slack 工作区中已安装 Mintlify Slack 应用。请从你的[控制台](https://dashboard.mintlify.com/products/agent)安装 Slack 应用。
+  Slack 通知要求在您所在组织的 Slack 工作区中安装 Mintlify Slack 应用。请前往您的[仪表板](https://dashboard.mintlify.com/products/agent)安装该 Slack 应用。
 </Note>
 
-在控制台中创建或编辑工作流时，在 **Notify on completion** 开关下启用 Slack 通知：
+在仪表板中创建或编辑工作流时，可在 **Notify on completion** 开关下启用 Slack 通知：
 
-1. 如果你尚未连接 Slack，请点击 **Install Slack app**。
+1. 如果您尚未连接 Slack，请点击 **Install Slack app**。
 2. 点击 **Notify on completion** 开关。
-3. 搜索并选择你想要通知的频道。
-4. 保存你的工作流。
+3. 搜索并选择要通知的频道。
+4. 保存工作流。
 
 <div id="manage-workflows">
-## 管理工作流
+  ## 管理工作流
 </div>
 
-从控制台的 [Workflows](https://dashboard.mintlify.com/products/workflows) 页面编辑、删除、禁用或触发工作流。
+你可以在仪表板的 [工作流](https://dashboard.mintlify.com/products/workflows) 页面中编辑、删除、禁用或触发工作流。
 
 <div id="trigger-a-workflow-manually">
-### 手动触发工作流
+  ### 手动触发工作流
 </div>
 
-你可以按需运行基于 cron 的工作流，无需等待下一个计划时间。手动触发的运行会计入每日运行限制。
+你可以按需运行基于 cron 的工作流，无需等待下一个计划执行时间。手动触发的运行也会计入每日运行次数上限。
 
-1. 前往控制台中的 [Workflows](https://dashboard.mintlify.com/products/workflows) 页面。
-2. 点击 **View workflows** 查看所有工作流。
+1. 前往仪表板中的 [Workflows](https://dashboard.mintlify.com/products/workflows) 页面。
+2. 点击 **View workflows**，查看所有工作流。
 3. 点击你要运行的工作流。
-4. 点击 <Icon icon="play" /> 手动触发工作流按钮来触发工作流。
+4. 点击 <Icon icon="play" /> 手动触发工作流按钮。
 
 <div id="disable-a-workflow">
-### 禁用工作流
+  ### 禁用工作流
 </div>
 
-禁用工作流可以暂时停止其运行，而无需删除它。已禁用的工作流会保留其配置和运行历史，但不会按计划执行，也不会响应推送事件。你无法手动触发已禁用的工作流。
+禁用工作流后，你可以在不删除它的情况下暂时停止其运行。已禁用的工作流会保留其配置和运行历史记录，但不会按计划运行，也不会响应 push 事件。你也无法手动触发已禁用的工作流。
 
-切换工作流状态：
+如需切换工作流状态：
 
-1. 前往控制台中的 [Workflows](https://dashboard.mintlify.com/products/workflows) 页面。
-2. 点击 **View workflows** 查看所有工作流。
-3. 点击你要禁用或启用的工作流。
-4. 点击 **Active** 开关以禁用工作流，或将其打开以启用。
+1. 前往仪表板中的 [Workflows](https://dashboard.mintlify.com/products/workflows) 页面。
+2. 点击 **View workflows**，查看所有工作流。
+3. 点击要禁用或启用的工作流。
+4. 关闭 **Active** 切换开关以禁用工作流，或将其打开以启用工作流。
 5. 点击 **Save changes**。
 
-当你重新启用基于 cron 的工作流时，Mintlify 会从当前时间重新计算下次运行时间。
+重新启用基于 cron 的工作流后，Mintlify 会从当前时间起重新计算下一次运行时间。
 
 <div id="gitlab-setup">
-## GitLab 设置
+  ## GitLab 设置
 </div>
 
-要在工作流中使用 GitLab 存储库，请通过 GitLab OAuth 设置页面上的 GitLab OAuth 集成连接每个项目。你必须连接工作流涉及的所有存储库，包括你的文档存储库以及任何触发或上下文存储库。
+要在工作流中使用 GitLab 仓库，请在 GitLab OAuth 设置页面中，通过 GitLab OAuth 集成连接各个项目。你必须连接工作流会涉及的每个仓库，包括文档仓库以及任何触发仓库或上下文仓库。
 
 <Note>
-  工作流需要 GitLab 付费版本。Agent 使用短期项目访问令牌来访问存储库，而 GitLab 免费版不支持此功能。
+  工作流需要 GitLab 的付费套餐。智能体会使用短时有效的项目访问令牌来访问仓库，而 GitLab 的 Free 套餐不支持这一功能。
 </Note>
 
 <div id="prompts">
-## 提示词
+  ## 提示词
 </div>
 
-有效的提示词会专注于单一任务，并有清晰的预期结果。由于 Agent 的非确定性特性，工作流总会存在一定差异，但你可以通过遵循以下最佳实践来提高工作流输出的一致性。
+有效的提示词应聚焦于单一任务，并以明确的结果为目标。由于智能体具有非确定性，工作流的输出总会存在一定波动，但你可以遵循以下最佳实践来提高输出的一致性。
 
-- 描述你希望 Agent 达成的结果。
-- 包含衡量成功的标准。
-- 指定你希望 Agent 使用的 context。
-- 将复杂任务拆分为步骤或多个工作流。
+* 描述你希望智能体达成的结果。
+* 包含成功标准。
+* 明确你希望智能体使用的上下文。
+* 将复杂任务拆分为多个步骤或多个工作流。
 
 <div id="agent-environment">
-### Agent 环境
+  ### 代理运行环境
 </div>
 
-agent 在隔离的沙箱中运行。编写提示时，只应提及 agent 可用的工具。
+代理在隔离的沙箱中运行。编写提示词时，只能提及代理可用的工具。
 
-- 标准 shell 实用工具 (`grep`、`sed`、`awk`、`curl` 等)
-- `git` 和 GitHub CLI (`gh`)
-- Mintlify CLI (`mint`)
-- Node.js 和 Bun
-- **网络搜索**，用于查找文档之外的最新信息
-- **网页获取**，用于检索和阅读网页内容
+* 标准 shell 实用工具 (`grep`、`sed`、`awk`、`curl` 等)
+* `git` 和 GitHub CLI (`gh`)
+* Mintlify CLI (`mint`)
+* Node.js 和 Bun
+* 用于查找文档之外最新信息的**网络搜索**
+* 用于获取并读取网页内容的**网页获取**
 
-agent 无法在运行时安装额外的软件包或工具。软件包注册表在沙箱中不可访问。
+代理无法在运行时安装额外的软件包或工具。沙箱无法访问包注册表。
 
-要求 agent 运行不可用工具的提示可能会产生意外结果或失败。
+如果提示词要求代理运行不可用的工具，可能会产生意外结果或直接失败。
 
 <div id="example-prompts">
-## 示例提示词
+  ## 示例提示词
 </div>
 
-以下示例提示词展示了常见的工作流模式。在控制台中创建工作流，并将提示词粘贴到指令字段中。
+这些示例提示词演示了常见的工作流模式。在仪表板中创建一个工作流，然后将提示词粘贴到 `instructions` 字段中。
 
 <div id="draft-documentation-for-new-features">
-### 新功能文档草稿
+  ### 为新功能生成文档草稿
 </div>
 
 <Tip>
-  如果你在控制台中使用智能代理建议 (agent suggestions)，此工作流会复现相同的行为。
+  如果你在仪表板中使用智能体建议，这个工作流会复现相同的行为。
 
-  按项目需要对该工作流进行必要修改后添加，即可在为产品添加新功能时自动起草文档。
+  根据项目需求修改并添加此工作流后，当你为产品添加新功能时，系统就会自动生成文档草稿。
 </Tip>
 
-**Trigger:** On push to `your-org/your-product` (main branch)
-**Context repos:** `your-org/your-docs`
+**触发条件：** 推送到 `your-org/your-product` 时 (`main` 分支)
+**上下文仓库：** `your-org/your-docs`
 
 ```text
-Review the diff from the last merged PR in `your-org/your-product`. Identify any new features, APIs, or other changes that require documentation.
+查看 `your-org/your-product` 中最近合并的 PR（拉取请求）的差异。识别所有需要编写文档的新功能、API 或其他变更。
 
-For each new addition, draft documentation updates that explain what it does, when to use it, and how to configure it. Include a code example where relevant.
+针对每项新增内容，起草文档更新，说明其功能、适用场景及配置方法。如有必要，附上代码示例。
 
-Success criteria: After reading any new or updated documentation, users understand what the feature is, if it applies to tasks they do, and how to use it.
+成功标准：用户阅读新增或更新的文档后，能够理解该功能的用途、是否适用于自身的工作任务，以及如何使用。
 
-## Important
+## 重要说明
 
-- Only document changes that affect end users. Skip internal refactors or dependency updates.
-- Match the style and structure of existing docs pages.
+- 仅记录影响最终用户的变更，跳过内部重构或依赖项更新。
+- 保持与现有文档页面一致的风格和结构。
 ```
 
 <div id="style-audit">
-### 样式审查
+  ### 样式审核
 </div>
 
-**Trigger:** On push to `your-org/your-docs` (main branch)
+**触发条件：** 当推送到 `your-org/your-docs` (main 分支) 时
 
 ```text
 Review all MDX files changed in the last merged PR against the style guide at `path/to/style-guide`.
@@ -250,102 +252,102 @@ Success criteria:
 ```
 
 <div id="update-api-reference">
-### 更新 API 参考文档
+  ### Update API 参考
 </div>
 
-**Trigger:** On push to `your-org/your-product` (main branch)
-**Context repos:** `your-org/your-docs`
+**触发条件：** 推送到 `your-org/your-product` (`main` 分支)
+**上下文仓库：** `your-org/your-docs`
 
 ```text
-Review the diff from the last merged PR in `your-org/your-product` for changes to API endpoints, parameters, response shapes, or error codes.
+查看 `your-org/your-product` 中最近合并的 PR 的差异，检查 API endpoint、参数、响应结构或错误码是否有变更。
 
-Update the corresponding API specifications or pages in the docs to reflect the changes. Include updated parameter descriptions, type information, and examples where affected.
+更新文档中对应的 API 规范或页面，以反映上述变更。在受影响处补充更新后的参数描述、类型信息和示例。
 
-Success criteria: All API specifications and pages are up to date with the changes in the product repository.
+成功标准：所有 API 规范和页面均已与产品仓库中的变更保持同步。
 
-## Important
+## 重要说明
 
-- If a parameter or endpoint was removed, mark it as deprecated rather than deleting it unless the code explicitly removes it with no deprecation period.
-- If no API changes were introduced, do nothing.
+- 如果某个参数或 endpoint 被移除，请将其标记为已弃用，而非直接删除——除非代码明确将其移除且未设置任何弃用过渡期。
+- 如果未引入任何 API 变更，则无需进行任何操作。
 ```
 
 <div id="track-translation-lag">
-### 跟踪翻译进度滞后
+  ### 跟踪翻译延迟
 </div>
 
-**Trigger:** Cron schedule `0 9 * * 3`（每周三 9:00 UTC）
+**触发器：**Cron 计划 `0 9 * * 3` (UTC 时间每周三上午 9:00)
 
-将示例语言子目录 (`es/`、`fr/`、`zh/`) 更新为你实际使用的语言子目录。
+将示例语言子目录 (`es/`、`fr/`、`zh/`) 替换为你的实际语言子目录。
 
 ```text
-Compare the English MDX files in the repo against their counterparts in the `es/`, `fr/`, and `zh/` subdirectories. Use git history to identify English files updated more recently than their translations.
+将仓库中的英文 MDX 文件与 `es/`、`fr/` 和 `zh/` 子目录中的对应翻译文件进行比对。使用 git 历史记录找出英文版本比翻译版本更新的文件。
 
-Open a pull request that lists pages that are out of sync, organized by language. For each page, include the date of the last English update and a brief summary of what changed so translators have context on what to update.
+提交一个拉取请求（PR），按语言分类列出不同步的页面。对于每个页面，注明英文版最后更新的日期，并简要说明变更内容，帮助译者了解需要更新哪些内容。
 
-Success criteria: Any discrepancies between the English and translated files are identified and listed in the pull request.
+成功标准：英文文件与翻译文件之间的所有差异均已识别，并列于拉取请求（PR）中。
 
-## Important
+## 重要说明
 
-- If a translated file does not exist, flag it as missing rather than out of sync.
-- Group findings by language, then by how far out of date they are (most stale first).
+- 如果翻译文件不存在，将其标记为缺失，而非不同步。
+- 按语言对结果进行分组，再按滞后程度排序（最滞后的优先）。
 ```
 
 <div id="seo-and-metadata-audit">
-### SEO 和 metadata 审核
+  ### SEO 和元数据审核
 </div>
 
-**Trigger:** Cron schedule `0 9 * * 1`（每周一 9:00 UTC）
+**触发条件：** Cron 计划 `0 9 * * 1` (每周一 UTC 时间上午 9:00)
 
 ```text
-Audit all MDX files in the docs for SEO and metadata quality. Check for:
+审查文档中所有 MDX 文件的 SEO 和元数据质量。检查以下问题：
 
-- Missing or empty `title` frontmatter
-- Titles that are too long (over 60 characters) — long titles are truncated in search result snippets
-- Titles that follow a boilerplate pattern like "PageType - Name" without describing the specific content of the page
-- Missing or empty `description` frontmatter (see OpenAPI pages below — do not treat as missing when an OpenAPI spec supplies the description)
-- Descriptions that are too short (under 130 characters) — short descriptions are frequently ignored by Google in favor of auto-generated snippets
-- Descriptions that are too long (over 160 characters)
-- Pages that share an identical description with other pages — each page needs a unique description
+- 缺失或为空的 `title` frontmatter
+- 标题过长（超过 60 个字符）——过长的标题会在搜索结果摘要中被截断
+- 标题套用"页面类型 - 名称"等模板格式，未能描述页面的具体内容
+- 缺失或为空的 `description` frontmatter（请参阅下方 OpenAPI 页面说明——当 OpenAPI 规范提供描述时，不应视为缺失）
+- 描述过短（少于 130 个字符）——过短的描述通常会被 Google 忽略，转而使用自动生成的摘要
+- 描述过长（超过 160 个字符）
+- 与其他页面使用相同描述的页面——每个页面需要有唯一的描述
 
-Open a pull request with improvements for any issues found.
+针对发现的问题，提交一个包含改进内容的拉取请求（PR）。
 
-When writing titles: be descriptive and specific about what the page covers. Avoid generic patterns like "Overview - Product Name". Target 50-60 characters.
+撰写标题时：具体描述页面所涵盖的内容，避免使用"概述 - 产品名称"等通用格式。目标长度为 50-60 个字符。
 
-When writing descriptions: summarize what the specific page covers in plain language. Include 2-3 terms a user would actually search for. Never reuse the same description across pages. Target 130-155 characters.
+撰写描述时：用简洁的语言概括该页面的具体内容，包含 2-3 个用户实际会搜索的词语，切勿在多个页面中重复使用相同的描述。目标长度为 130-155 个字符。
 
-### Pages with `openapi:` in frontmatter (API reference from spec)
+### frontmatter 中包含 `openapi:` 的页面（来自规范的 API 参考）
 
-The `openapi:` frontmatter value can be either an **operation reference** (e.g., `openapi: GET /users/{id}`) or a **file reference** (e.g., `openapi: ./openapi.yaml`). Only operation references supply per-page `summary` and `description` from the spec.
+`openapi:` frontmatter 的值可以是**操作引用**（例如 `openapi: GET /users/{id}`）或**文件引用**（例如 `openapi: ./openapi.yaml`）。只有操作引用才会从规范中为每个页面提供 `summary` 和 `description`。
 
-For pages with an **operation reference**:
-- Read the referenced OpenAPI spec file to check whether the operation defines a `description`.
-- If the operation **has** a `description`: do not add a `description:` field to frontmatter. If one was incorrectly added, remove it so the metadata comes from the spec.
-- If the operation **has no** `description`: audit `description` frontmatter as normal — add one if missing or fix it if it fails the quality checks.
-- If the operation defines a `summary` and the page has no `title:` frontmatter, treat the title as present — do not add one.
-- Never edit the OpenAPI spec files themselves.
+对于使用**操作引用**的页面：
+- 读取所引用的 OpenAPI 规范文件，检查该操作是否定义了 `description`。
+- 如果该操作**已有** `description`：不要在 frontmatter 中添加 `description:` 字段。如果之前错误地添加了，请将其删除，以便元数据来自规范。
+- 如果该操作**没有** `description`：按常规方式审查 `description` frontmatter——缺失则添加，不符合质量要求则修正。
+- 如果该操作定义了 `summary` 且页面没有 `title:` frontmatter，则视标题为已存在——不要添加。
+- 切勿编辑 OpenAPI 规范文件本身。
 
-For pages with a **file reference**, audit all frontmatter fields as normal.
+对于使用**文件引用**的页面，按常规方式审查所有 frontmatter 字段。
 
-Success criteria:
-- Pages have a unique title under 60 characters that describes the specific content
-- Pages have a unique description between 130 and 160 characters (except for pages where the OpenAPI spec supplies the description)
+成功标准：
+- 页面具有唯一标题，长度不超过 60 个字符，且能描述具体内容
+- 页面具有唯一描述，长度在 130 到 160 个字符之间（OpenAPI 规范提供描述的页面除外）
 
-## Important
+## 重要说明
 
-- Only update frontmatter. Do not change page content or OpenAPI spec files.
-- If all pages have complete and reasonable metadata, do nothing.
+- 仅更新 frontmatter，不得修改页面内容或 OpenAPI 规范文件。
+- 如果所有页面的元数据均完整且合理，则无需执行任何操作。
 ```
 
 <div id="changelog-with-notifications">
-### 带通知的更新日志
+  ### 带通知的变更日志
 </div>
 
-**Trigger:** Cron schedule `0 9 * * 1`（每周一 9:00 UTC）
-**Context repos:** `your-org/your-product`
-**Slack notifications:** `documentation` 频道，`tech-writer` 用户
+**触发条件：** Cron 计划 `0 9 * * 1` (UTC 时间每周一上午 9:00)
+**上下文仓库：** `your-org/your-product`
+**Slack 通知：** `documentation` 频道、`tech-writer` 用户
 
 ```text
-Review all merged PRs in `your-org/your-product` from the past week. Draft a changelog entry summarizing new features, bug fixes, and breaking changes.
+审查过去一周内 `your-org/your-product` 中所有已合并的 PR（拉取请求）。起草一篇变更日志，概述新功能、错误修复和重大变更。
 
-Success criteria: The changelog accurately reflects the week's changes and is ready for review.
+成功标准：变更日志准确反映本周的变更内容，并已准备好供审阅。
 ```

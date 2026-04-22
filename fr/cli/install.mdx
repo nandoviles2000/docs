@@ -1,6 +1,6 @@
 ---
-title: "Installer la CLI"
-description: "Installez la CLI Mintlify pour prévisualiser la documentation localement, tester les modifications en temps réel et détecter les erreurs de compilation avant le déploiement en production."
+title: "Installer le CLI"
+description: "Installez le CLI Mintlify pour prévisualiser la documentation en local, tester les modifications en temps réel et repérer les erreurs de build avant le déploiement en production."
 keywords: ["CLI", "npm", "installer", "Node.js", "pnpm", "mint"]
 ---
 
@@ -8,10 +8,10 @@ keywords: ["CLI", "npm", "installer", "Node.js", "pnpm", "mint"]
   ## Prérequis
 </div>
 
-- [Node.js](https://nodejs.org/en) v20.17.0+ (versions LTS recommandées)
+* [Node.js](https://nodejs.org/en) v20.17.0+ (version LTS recommandée)
 
 <div id="install-the-cli">
-  ## Installer la CLI
+  ## Installez la CLI
 </div>
 
 <CodeGroup>
@@ -28,52 +28,52 @@ keywords: ["CLI", "npm", "installer", "Node.js", "pnpm", "mint"]
   ## Créer un nouveau projet
 </div>
 
-Pour créer un nouveau projet de documentation à partir du modèle de démarrage Mintlify, exécutez la commande suivante :
+Pour créer un nouveau projet de documentation à partir du modèle de base Mintlify, exécutez la commande suivante :
 
 ```bash
 mint new [directory]
 ```
 
-Si vous ne spécifiez pas de répertoire, la CLI vous invite à créer un nouveau sous-répertoire ou à écraser le répertoire actuel.
+Si vous ne spécifiez pas de répertoire, le CLI vous invite à créer un nouveau sous-répertoire ou à remplacer le répertoire actuel.
 
 <Warning>
-  Écraser le répertoire actuel supprime tous les fichiers existants.
+  Remplacer le répertoire actuel supprime tous les fichiers existants.
 </Warning>
 
-| Flag | Description |
-| --- | --- |
-| `--name` | Nom du projet. La CLI le demande s'il n'est pas fourni. |
-| `--theme` | [Thème](/fr/customize/themes) du projet. La CLI le demande s'il n'est pas fourni. |
-| `--template` | Modèle prédéfini. La CLI le demande s'il n'est pas fourni. |
-| `--force` | Écraser le répertoire actuel sans confirmation. |
+| Option       | Description                                                                         |
+| ------------ | ----------------------------------------------------------------------------------- |
+| `--name`     | Nom du projet. Le CLI vous le demande s’il n’est pas fourni.                        |
+| `--theme`    | [Thème](/fr/customize/themes) du projet. Le CLI vous le demande s’il n’est pas fourni. |
+| `--template` | Modèle prédéfini. Le CLI vous le demande s’il n’est pas fourni.                     |
+| `--force`    | Remplace le répertoire actuel sans demander de confirmation.                        |
 
-En mode interactif, la CLI demande si vous souhaitez choisir un thème ou cloner un modèle. Pour ignorer l'invite, passez directement le flag `--template` :
+En mode interactif, le CLI vous demande si vous souhaitez choisir un thème ou cloner un modèle. Pour éviter cette invite, passez directement l’option `--template` :
 
 ```bash
 mint new my-docs --template <template-name>
 ```
 
-Vous pouvez combiner `--template` avec `--theme` pour remplacer le thème par défaut du modèle :
+Vous pouvez combiner `--template` avec `--theme` pour surcharger le thème par défaut du modèle :
 
 ```bash
 mint new my-docs --template <template-name> --theme <theme>
 ```
 
-Consultez les modèles disponibles dans le dépôt [mintlify/templates](https://github.com/mintlify/templates) sur GitHub. En mode interactif, la CLI récupère et affiche automatiquement les modèles disponibles.
+Consultez les modèles disponibles dans le dépôt [mintlify/templates](https://github.com/mintlify/templates) sur GitHub. En mode interactif, le CLI récupère et affiche automatiquement les modèles disponibles.
 
-Dans les environnements non interactifs tels que les pipelines CI/CD ou les agents de codage IA, vous devez fournir les flags `--name` et `--theme`, ou le flag `--template`.
+Dans les environnements non interactifs, comme les pipelines CI/CD ou les agents de programmation IA, vous devez fournir soit les options `--name` et `--theme`, soit l’option `--template`.
 
 <div id="update">
-  ## Mise à jour
+  ## Update
 </div>
 
-Si votre prévisualisation locale n'est pas synchronisée avec votre documentation déployée, mettez à jour la CLI vers la dernière version :
+Si votre aperçu local n’est pas synchronisé avec votre documentation déployée, mettez à jour la CLI vers sa version la plus récente :
 
 ```bash
 mint update
 ```
 
-Si `mint update` n'est pas disponible dans votre version, réinstallez la CLI avec la dernière version :
+Si `mint update` n’est pas disponible dans votre version, réinstallez la CLI avec la version la plus récente :
 
 <CodeGroup>
   ```bash npm
@@ -86,43 +86,47 @@ Si `mint update` n'est pas disponible dans votre version, réinstallez la CLI av
 </CodeGroup>
 
 <div id="formatting">
-  ## Formatage
+  ## Mise en forme
 </div>
 
-Pour la coloration syntaxique et le formatage du code dans les fichiers MDX, nous recommandons les extensions suivantes :
+Pour la coloration syntaxique et la mise en forme du code dans les fichiers MDX, nous vous recommandons d’utiliser les extensions suivantes :
 
-- **Cursor, Windsurf, VS Code** : [Extension MDX pour VS Code](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) et [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- **JetBrains** : [Plugin MDX pour IntelliJ IDEA](https://plugins.jetbrains.com/plugin/14944-mdx) et [Prettier](https://prettier.io/docs/webstorm)
+* **Cursor, Windsurf, VS Code**: [extension MDX pour VS Code](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) et [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+* **JetBrains**: [plugin MDX pour IntelliJ IDEA](https://plugins.jetbrains.com/plugin/14944-mdx) et [Prettier](https://prettier.io/docs/webstorm)
 
 <div id="troubleshooting">
   ## Dépannage
 </div>
 
 <AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
-    Cela peut être dû à une version obsolète de Node.js. Essayez les étapes suivantes :
+  <Accordion title="Erreur : impossible de charger le module &#x22;sharp&#x22; avec le runtime darwin-arm64">
+    Cela peut être dû à une version obsolète de Node.js. Essayez la procédure suivante :
 
-    1. Désinstallez la version actuelle de la CLI mint : `npm uninstall -g mint`
-    2. Mettez à jour vers Node.js v20.17.0+.
-    3. Réinstallez la CLI mint : `npm install -g mint`
+    1. Supprimez la version actuellement installée du CLI mint : `npm uninstall -g mint`
+    2. Mettez à niveau vers Node.js v20.17.0 ou version ultérieure.
+    3. Réinstallez le CLI mint : `npm install -g mint`
   </Accordion>
-  <Accordion title="Problème : une erreur inconnue se produit">
-    **Solution** : Allez à la racine de votre appareil et supprimez le dossier `~/.mintlify`. Ensuite, exécutez à nouveau `mint dev`.
-  </Accordion>
-  <Accordion title="Error: permission denied">
-    Cela est dû au manque de permissions pour installer des packages Node de manière globale.
 
-    **Solution** : Essayez d'exécuter `sudo npm i -g mint`. Lorsque vous y êtes invité, entrez le mot de passe que vous utilisez pour déverrouiller votre ordinateur.
+  <Accordion title="Problème : vous rencontrez une erreur inconnue">
+    **Solution** : Accédez à la racine de votre appareil et supprimez le dossier `~/.mintlify`. Exécutez ensuite `mint dev` à nouveau.
   </Accordion>
-  <Accordion title="La prévisualisation locale ne ressemble pas à la documentation en ligne">
-    Cela est probablement dû à une version obsolète de la CLI.
 
-    **Solution** : Exécutez `mint update` pour obtenir les dernières modifications.
+  <Accordion title="Erreur : permission refusée">
+    Cela signifie que vous ne disposez pas des autorisations nécessaires pour installer des packages Node globalement.
+
+    **Solution** : Essayez d’exécuter `sudo npm i -g mint`. Lorsque vous y êtes invité, saisissez le mot de passe que vous utilisez pour déverrouiller votre ordinateur.
   </Accordion>
-  <Accordion title="Package mintlify versus mint">
-    Si vous rencontrez des problèmes avec le package CLI, exécutez d'abord `npm ls -g` pour voir les packages installés globalement. Si vous n'utilisez pas npm, essayez `which mint` pour localiser l'installation.
 
-    Si vous avez à la fois le package `mint` et le package `mintlify` installés, désinstallez `mintlify` :
+  <Accordion title="L’aperçu local ne ressemble pas à ma documentation sur le web">
+    Cela est probablement dû à une version obsolète du CLI.
+
+    **Solution** : Exécutez `mint update` pour obtenir les dernières modifications.
+  </Accordion>
+
+  <Accordion title="package mintlify versus package mint">
+    Si vous rencontrez des problèmes avec le package CLI, exécutez d’abord `npm ls -g` pour voir quels packages sont installés globalement. Si vous n’utilisez pas npm, essayez `which mint` pour localiser l’installation.
+
+    Si les packages `mint` et `mintlify` sont tous les deux installés, désinstallez `mintlify` :
 
     ```bash
     npm uninstall -g mintlify
@@ -130,9 +134,10 @@ Pour la coloration syntaxique et le formatage du code dans les fichiers MDX, nou
     npm i -g mint
     ```
   </Accordion>
-  <Accordion title="La version du client affiche 'none' après l'installation">
-    Si vous exécutez `mint version` et que la version du client s'affiche comme `none`, la CLI peut ne pas être en mesure de télécharger l'application client en raison d'un pare-feu d'entreprise ou d'un VPN.
 
-    **Solution** : Demandez à votre administrateur informatique d'ajouter `releases.mintlify.com` à la liste d'autorisation de votre réseau.
+  <Accordion title="La version du client affiche 'none' après l’installation">
+    Si vous exécutez `mint version` et que la version du client s’affiche comme `none`, il se peut que le CLI ne parvienne pas à télécharger l’application cliente en raison d’un pare-feu d’entreprise ou d’un VPN.
+
+    **Solution** : Demandez à votre administrateur informatique d’ajouter `releases.mintlify.com` à la liste d’autorisation de votre réseau.
   </Accordion>
 </AccordionGroup>

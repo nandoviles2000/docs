@@ -1,21 +1,21 @@
 ---
-title: "列出代理任务 (v1)"
-description: "已废弃。检索项目的所有代理任务，以便监控活动并跟踪历史任务状态。"
+title: "列出智能体作业（v1）"
+description: "已弃用。获取项目的所有智能体作业，用于监控活动并跟踪历史作业状态。"
 openapi: /zh/admin-openapi.json GET /v1/agent/{projectId}/jobs
-keywords: [ "代理任务", "列表", "监控" ]
-tag: "deprecated"
+keywords: [ "智能体作业", "列出", "监控" ]
+tag: "已弃用"
 ---
 
-<Warning>此端点已废弃。请改用 [v2 获取代理任务](/zh/api/agent/v2/get-agent-job) 端点。</Warning>
+<Warning>此端点已弃用。请改用 [v2 获取智能体作业](/zh/api/agent/v2/get-agent-job) 端点。</Warning>
 
 <div id="usage">
   ## 用法
 </div>
 
-该端点会检索指定 domain 的所有代理任务，概览所有代理活动及其当前状态。适用于监控和管理多个并发或历史代理任务。
+此端点会获取指定域名的所有智能体作业，概览所有智能体活动及其当前状态。这对于监控和管理多个并发或历史智能体作业非常有用。
 
 <div id="response">
   ## 响应
 </div>
 
-使用此端点可获取所有历史代理会话的完整概览。
+使用此端点可全面查看之前的所有智能体会话。

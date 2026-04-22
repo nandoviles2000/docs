@@ -1,16 +1,16 @@
 ---
 title: "颜色"
-description: "使用颜色组件展示带有十六进制值和点击复制功能的色板，适用于设计系统和品牌规范文档。"
+description: "使用 Color 组件展示颜色色板及其十六进制值，并支持点击复制，适用于设计系统和品牌文档。"
 keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", "hsl", "oklch"]
 ---
 
-在文档中使用 Color 组件来展示颜色调色板。以紧凑的网格形式显示颜色，或在带有标签行的表格中进行分组展示。
+使用 Color 组件在文档中展示颜色色板。你可以用紧凑的网格显示颜色，也可以按带标签的行将其组织成表格。
 
 <div id="compact-variant">
-  ## 紧凑样式
+  ## 紧凑变体
 </div>
 
-以简单的网格布局显示颜色及其名称和值。
+以简洁的网格布局显示颜色，并展示颜色名称和值。
 
 <Color variant="compact">
   <Color.Item name="blue-500" value="#3B82F6" />
@@ -31,12 +31,11 @@ keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", 
 </Color>
 ```
 
-
 <div id="table-variant">
-  ## 表格样式
+  ## 表格变体
 </div>
 
-将颜色按标签行进行整理，用于设计系统文档。
+按带标签的行组织颜色，用于设计系统文档。
 
 <Color variant="table">
   <Color.Row title="主色">
@@ -47,7 +46,7 @@ keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", 
     <Color.Item name="primary-700" value="#1D4ED8" />
   </Color.Row>
 
-  <Color.Row title="辅助色">
+  <Color.Row title="次要色">
     <Color.Item name="secondary-500" value="#8B5CF6" />
 
     <Color.Item name="secondary-600" value="#7C3AED" />
@@ -56,24 +55,23 @@ keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", 
 
 ```mdx Table example
 <Color variant="table">
-  <Color.Row title="主色">
+  <Color.Row title="Primary">
     <Color.Item name="primary-500" value="#3B82F6" />
     <Color.Item name="primary-600" value="#2563EB" />
     <Color.Item name="primary-700" value="#1D4ED8" />
   </Color.Row>
-  <Color.Row title="辅助色">
+  <Color.Row title="Secondary">
     <Color.Item name="secondary-500" value="#8B5CF6" />
     <Color.Item name="secondary-600" value="#7C3AED" />
   </Color.Row>
 </Color>
 ```
 
-
 <div id="color-formats">
   ## 颜色格式
 </div>
 
-该组件支持所有 CSS 颜色格式，包括 hex、rgb、rgba、hsl 和 oklch。
+此组件支持所有 CSS 颜色格式，包括 hex、rgb、rgba、hsl 和 oklch。
 
 <Color variant="compact">
   <Color.Item name="hex" value="#FF5733" />
@@ -97,12 +95,11 @@ keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", 
 </Color>
 ```
 
-
 <div id="theme-aware-colors">
-  ## 随主题变化的颜色
+  ## 主题自适应颜色
 </div>
 
-使用包含 `light` 和 `dark` 属性的对象，为浅色和深色模式分别定义不同的颜色。
+使用包含 `light` 和 `dark` 属性的对象，为浅色模式和深色模式定义不同的颜色。
 
 <Color variant="compact">
   <Color.Item name="bg-primary" value={{ light: "#FFFFFF", dark: "#000000" }} />
@@ -120,13 +117,12 @@ keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", 
 </Color>
 ```
 
-
 <div id="properties">
   ## 属性
 </div>
 
 <div id="color">
-  ### 颜色
+  ### Color
 </div>
 
 <ResponseField name="variant" type="string" required>
@@ -142,11 +138,11 @@ keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", 
 </div>
 
 <ResponseField name="title" type="string">
-  颜色行的标签。
+  该颜色行的标签。
 </ResponseField>
 
 <ResponseField name="children" type="Color.Item" required>
-  该行中要显示的颜色项。
+  在该行中显示的颜色项。
 </ResponseField>
 
 <div id="coloritem">
@@ -154,9 +150,9 @@ keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", 
 </div>
 
 <ResponseField name="name" type="string">
-  颜色的名称或标签。
+  颜色的名称或标识。
 </ResponseField>
 
 <ResponseField name="value" type="string | { light: string, dark: string }" required>
-  使用任意 CSS 格式表示的颜色值，或包含 light 和 dark 两种模式值的对象。
+  颜色值可以是任意 CSS 格式，也可以是一个包含浅色模式和深色模式值的对象。
 </ResponseField>

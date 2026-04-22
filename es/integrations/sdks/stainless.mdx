@@ -1,35 +1,35 @@
 ---
 title: "Stainless"
-description: "Muestra ejemplos de código de SDK autogenerados de Stainless en tu área de pruebas de la API con ejemplos con tipado seguro en Python, TypeScript y otros SDK."
-keywords: ["Stainless SDK", "generación de SDK", "bibliotecas de cliente de API", "SDK con tipado seguro"]
+description: "Muestra ejemplos de código de SDK generados automáticamente con Stainless en tu entorno de pruebas de API, con ejemplos con tipado seguro en Python, TypeScript y otros SDK."
+keywords: ["SDK de Stainless", "generación de SDK", "bibliotecas cliente de API", "SDK con tipado seguro"]
 ---
 
 <div id="prerequisites">
   ## Requisitos previos
 </div>
 
-* Contar con una cuenta de [Stainless](https://app.stainless.com).
+* Ten una cuenta en [Stainless](https://app.stainless.com).
 
-<div id="integrate-with-stainless">
+<div id="set-up-the-integration">
   ## Configura la integración
 </div>
 
 <Steps>
   <Step title="Configura la decoración de OpenAPI en Stainless.">
-    En tu archivo de configuración `stainless.yml`, agrega `openapi.code_samples: 'mintlify'`. Consulta la [documentación de Stainless](https://app.stainless.com/docs/guides/integrate-docs) para más información.
+    En tu archivo de configuración `stainless.yml`, agrega `openapi.code_samples: 'mintlify'`. Consulta la [documentación de Stainless](https://app.stainless.com/docs/guides/integrate-docs) para obtener más información.
   </Step>
 
   <Step title="Publica la URL de tu especificación OpenAPI.">
     En tu proyecto de Stainless:
 
-    1. Selecciona la Tab **Release**.
+    1. Selecciona la pestaña **Release**.
     2. Selecciona **Setup OpenAPI publishing**.
-    3. Copia la URL de tu especificación OpenAPI accesible públicamente.
+    3. Copia la URL de tu especificación OpenAPI con acceso público.
 
-    <img src="/images/stainless-public-OpenAPI-spec.png" alt="Página de Release de Stainless con la URL de la especificación OpenAPI resaltada con un recuadro verde." />
+    <img src="/images/stainless-public-OpenAPI-spec.png" alt="Página Release de Stainless con la URL de la especificación OpenAPI resaltada con un recuadro verde." />
   </Step>
 
   <Step title={<>Agrega la URL de tu especificación OpenAPI a tu <code>docs.json</code>.</>}>
-    En tu archivo `docs.json`, agrega la URL de Stainless al campo `openapi`. Consulta [Configuración de OpenAPI](/es/api-playground/openapi-setup) para más información.
+    En tu archivo `docs.json`, agrega la URL de Stainless al campo `openapi`. Consulta [Configuración de OpenAPI](/es/api-playground/openapi-setup) para obtener más información.
   </Step>
 </Steps>

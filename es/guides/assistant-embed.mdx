@@ -1,24 +1,24 @@
 ---
-title: "Crea un assistant dentro de tu aplicación"
-sidebarTitle: "Crea un assistant dentro de la aplicación"
-description: "Crea e incorpora un asistente de documentación dentro de la aplicación que responda preguntas de los usuarios con información citada de tu sitio de documentación de Mintlify."
-keywords: ["assistant embed", "in-app chat", "widget", "chatbot"]
+title: "Tutorial: Crea un asistente de documentación en la aplicación"
+sidebarTitle: "Crea un asistente en la aplicación"
+description: "Crea e integra un asistente de documentación en la aplicación que responda a las preguntas de los usuarios con información citada de tu sitio de documentación de Mintlify."
+keywords: ["asistente integrado", "chat en la aplicación", "widget", "chatbot"]
 ---
 
 <div id="what-you-will-build">
-  ## Lo que construirás
+  ## Lo que vas a crear
 </div>
 
-Un widget reutilizable que integra el [assistant](/es/assistant/index) directamente en tu aplicación. El widget ofrece:
+Un widget reutilizable que integra el [asistente](/es/assistant/index) directamente en tu aplicación. El widget ofrece:
 
 * Un botón flotante que abre un panel de chat al hacer clic
-* Respuestas en tiempo real transmitidas a partir de la información de tu documentación
-* Visualización de mensajes con compatibilidad con Markdown
+* Respuestas en tiempo real basadas en la información de tu documentación
+* Representación de mensajes con compatibilidad con Markdown
 
 Los usuarios pueden usar el widget para obtener ayuda con tu producto sin salir de tu aplicación.
 
 <Frame>
-  <img src="/images/assistant/assistant-embed-demo.gif" alt="Demostración del widget del assistant abriéndose y del usuario escribiendo: How do I get started? Luego el assistant responde." />
+  <img src="/images/assistant/assistant-embed-demo.gif" alt="Demostración de la apertura del widget del asistente y de un usuario escribiendo «¿Cómo empiezo?». Luego, el asistente responde." />
 </Frame>
 
 <div id="prerequisites">
@@ -26,100 +26,97 @@ Los usuarios pueden usar el widget para obtener ayuda con tu producto sin salir 
 </div>
 
 * [Plan Pro o Enterprise de Mintlify](https://mintlify.com/pricing)
-* Tu domain, que aparece al final de la URL de tu dashboard. Por ejemplo, si la URL de tu dashboard es `https://dashboard.mintlify.com/org-name/domain-name`, tu domain es `domain-name`
-* Una [assistant API key](https://dashboard.mintlify.com/settings/organization/api-keys)
-* Node.js v18 o superior y npm instalado
+* Tu nombre de dominio, que aparece al final de la URL de tu panel. Por ejemplo, si la URL de tu panel es `https://dashboard.mintlify.com/org-name/domain-name`, tu nombre de dominio es `domain-name`
+* Una [clave de API del asistente](https://dashboard.mintlify.com/settings/organization/api-keys)
+* Node.js v18 o una versión superior, y npm instalados
 * Conocimientos básicos de React
 
 <div id="get-your-assistant-api-key">
-  ### Obtén tu clave de API del assistant
+  ### Obtén tu clave de API del asistente
 </div>
 
-1. Ve a la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu dashboard.
+1. Ve a la página de [claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) en tu panel.
 2. Haz clic en **Create Assistant API Key**.
-3. Copia la clave de API del assistant (comienza con `mint_dsc_`) y guárdala de forma segura.
+3. Copia la clave de API del asistente (empieza por `mint_dsc_`) y guárdala en un lugar seguro.
 
 <Note>
-  La clave de API del assistant es un token público que puedes usar en el código del frontend. Las llamadas que usen este token se contabilizan en la cuota de mensajes de tu plan y pueden generar cargos por excedente.
+  La clave de API del asistente es un token público que puedes usar en el código del frontend. Las llamadas que usan este token cuentan para el límite de mensajes de tu plan y pueden generar cargos por excederlo.
 </Note>
 
 <div id="set-up-the-example">
-  ## Configurar el ejemplo
+  ## Configura el ejemplo
 </div>
 
-Clona el [repositorio de ejemplo](https://github.com/mintlify/assistant-embed-example) y personalízalo según tus necesidades.
+Clona el [repositorio de ejemplo](https://github.com/mintlify/assistant-embed-example) y adáptalo a tus necesidades.
 
 <Steps>
-<Step title="Clona el repositorio">
+  <Step title="Clona el repositorio">
+    ```bash
+    git clone https://github.com/mintlify/assistant-embed-example.git
+    cd assistant-embed-example
+    ```
+  </Step>
 
-```bash
-git clone https://github.com/mintlify/assistant-embed-example.git
-cd assistant-embed-example
-```
+  <Step title="Elige tu herramienta de desarrollo">
+    El repositorio incluye ejemplos de Next.js y Vite. Elige la herramienta que prefieras.
 
-</Step>
-<Step title="Elige tu herramienta de desarrollo">
-El repositorio incluye ejemplos con Next.js y Vite. Elige la herramienta que prefieras usar.
+    <CodeGroup>
+      ```bash title="Next.js"
+      cd nextjs
+      npm install
+      ```
 
-<CodeGroup>
-```bash title="Next.js"
-cd nextjs
-npm install
-```
+      ```bash title="Vite"
+      cd vite
+      npm install
+      ```
+    </CodeGroup>
+  </Step>
 
-```bash title="Vite"
-cd vite
-npm install
-```
-</CodeGroup>
-</Step>
-<Step title="Configura tu proyecto">
+  <Step title="Configura tu proyecto">
+    Abre `src/config.js` y actualízalo con los datos de tu proyecto de Mintlify.
 
-Abre `src/config.js` y actualiza los detalles de tu proyecto de Mintlify.
+    ```js src/config.js
+    export const ASSISTANT_CONFIG = {
+      domain: 'your-domain',
+      docsURL: 'https://yourdocs.mintlify.app',
+    };
+    ```
 
-```js src/config.js
-export const ASSISTANT_CONFIG = {
-  domain: 'your-domain',
-  docsURL: 'https://yourdocs.mintlify.app',
-};
-```
+    Reemplaza:
 
-Reemplaza:
-- `your-domain` por el domain de tu proyecto de Mintlify que encontrarás al final de la URL de tu dashboard.
-- `https://yourdocs.mintlify.app` por la URL real de tu documentación.
+    * `your-domain` por el dominio de tu proyecto de Mintlify, que encontrarás al final de la URL de tu panel.
+    * `https://yourdocs.mintlify.app` por la URL real de tu documentación.
+  </Step>
 
-</Step>
-<Step title="Agrega tu token de API">
+  <Step title="Agrega tu token de API">
+    Crea un archivo `.env` en la raíz del proyecto.
 
-Crea un archivo `.env` en la raíz del proyecto.
+    ```bash .env
+    VITE_MINTLIFY_TOKEN=mint_dsc_your_token_here
+    ```
 
-```bash .env
-VITE_MINTLIFY_TOKEN=mint_dsc_your_token_here
-```
+    Reemplaza `mint_dsc_your_token_here` por tu clave de API del asistente.
+  </Step>
 
-Reemplaza `mint_dsc_your_token_here` por tu assistant API key.
+  <Step title="Inicia el servidor de desarrollo">
+    ```bash
+    npm run dev
+    ```
 
-</Step>
-<Step title="Inicia el servidor de desarrollo">
-
-```bash
-npm run dev
-```
-
-Abre tu aplicación en un navegador y haz clic en el botón **Ask** para abrir el widget del assistant.
-
-</Step>
+    Abre tu aplicación en el navegador y haz clic en el botón **Ask** para abrir el widget del asistente.
+  </Step>
 </Steps>
 
 <div id="customization-ideas">
-  ## Ideas para personalizar
+  ## Ideas de personalización
 </div>
 
 <div id="source-citations">
   ### Citas de fuentes
 </div>
 
-Extrae y muestra las fuentes de las respuestas del assistant:
+Extrae y muestra las fuentes de las respuestas del asistente:
 
 ```jsx
 const extractSources = (parts) => {
@@ -132,7 +129,7 @@ const extractSources = (parts) => {
     })) || [];
 };
 
-// In your message rendering:
+// En el renderizado de tus mensajes:
 {messages.map((message) => {
   const sources = message.role === 'assistant' ? extractSources(message.parts) : [];
   return (
@@ -140,7 +137,7 @@ const extractSources = (parts) => {
       {/* contenido del mensaje */}
       {sources.length > 0 && (
         <div className="mt-2 text-xs">
-          <p className="font-semibold">Fuentes:</p>
+          <p className="font-semibold">Sources:</p>
           {sources.map((s, i) => (
             <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="text-blue-600">
               {s.title}
@@ -153,21 +150,21 @@ const extractSources = (parts) => {
 })}
 ```
 
-<div id="track-conversation-thread-ids">
+<div id="track-conversation-threads">
   ### Seguimiento de hilos de conversación
 </div>
 
-Almacena los IDs de hilo y las claves de hilo para mantener el historial de conversación entre sesiones.
+Almacena los ID y las claves de los hilos para mantener el historial de la conversación entre sesiones.
 
 Cuando un usuario crea un nuevo hilo de conversación, el servidor devuelve dos valores en los encabezados de la respuesta:
 
-- `X-Thread-Id`: El identificador del hilo
-- `X-Thread-Key`: Una clave secreta para el hilo (solo se devuelve una vez, cuando se crea el hilo)
+* `X-Thread-Id`: El identificador del hilo
+* `X-Thread-Key`: Una clave secreta del hilo (solo se devuelve una vez, cuando se crea el hilo)
 
-Debes capturar y persistir ambos valores en la primera respuesta. En cada mensaje posterior, incluye tanto `threadId` como `threadKey` en el cuerpo de la solicitud. Si envías un `threadId` sin el `threadKey` correspondiente, el servidor devuelve un error `404`.
+Debes capturar y conservar ambos valores en la primera respuesta. En cada mensaje posterior, incluye `threadId` y `threadKey` en el cuerpo de la solicitud. Si envías un `threadId` sin el `threadKey` correspondiente, el servidor devuelve un error `404`.
 
 <Warning>
-  Debes almacenar el encabezado `X-Thread-Key` inmediatamente. El servidor solo lo devuelve cuando se crea un nuevo hilo. No puedes recuperarlo más tarde.
+  Debes almacenar el encabezado `X-Thread-Key` de inmediato. El servidor solo lo devuelve cuando se crea un hilo nuevo. No puedes recuperarlo después.
 </Warning>
 
 ```jsx
@@ -178,7 +175,7 @@ export function AssistantWidget({ domain, docsURL }) {
   const [threadKey, setThreadKey] = useState(null);
 
   useEffect(() => {
-    // Recuperar el ID y la clave del hilo guardados desde localStorage
+    // Recuperar el ID de hilo y la clave guardados en localStorage
     const savedId = localStorage.getItem('assistant-thread-id');
     const savedKey = localStorage.getItem('assistant-thread-key');
     if (savedId && savedKey) {
@@ -220,9 +217,8 @@ export function AssistantWidget({ domain, docsURL }) {
 }
 ```
 
-
 <div id="add-keyboard-shortcuts">
-  ### Añadir atajos de teclado
+  ### Añade atajos de teclado
 </div>
 
 Permite que los usuarios abran el widget y envíen mensajes mediante atajos de teclado:
@@ -230,7 +226,7 @@ Permite que los usuarios abran el widget y envíen mensajes mediante atajos de t
 ```jsx
 useEffect(() => {
   const handleKeyDown = (e) => {
-    // Cmd/Ctrl + Shift + I para alternar el widget
+    // Cmd/Ctrl + Shift + I para mostrar/ocultar el widget
     if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'I') {
       e.preventDefault();
       setIsOpen((prev) => !prev);

@@ -1,108 +1,110 @@
 ---
 title: "Publicar cambios en el editor web"
 sidebarTitle: "Publicar"
-description: "Guarda tu trabajo y publica los cambios en tu sitio de documentación."
-keywords: ["editor", "publicar", "cambios", "branches", "solicitudes de extracción"]
+description: "Guarda borradores, prepara cambios y publica actualizaciones en tu sitio de documentación en producción desde el editor web de Mintlify con un despliegue de un solo clic."
+keywords: ["editor", "publicar", "cambios", "ramas", "solicitudes de extracción (pull requests, PR)"]
 ---
 
 <div id="publishing-workflows">
-  ## Flujos de publicación
+  ## Flujos de trabajo de publicación
 </div>
 
-El editor admite dos flujos de trabajo para publicar actualizaciones de la documentación. El flujo que uses depende de las reglas de protección de branch de tu repositorio y de la branch en la que trabajes.
+El editor admite dos flujos de trabajo para publicar actualizaciones de la documentación. El flujo de trabajo que uses depende de las reglas de protección de ramas de tu repositorio y de la rama en la que trabajes.
 
-**Crear solicitudes de extracción**: Si tu repositorio tiene una regla de protección de branch que requiere solicitudes de extracción antes de que los cambios se puedan fusionar en tu rama de implementación, el editor crea una solicitud de extracción cuando publicas cambios.
+**Crear solicitudes de extracción**: Si tu repositorio tiene una regla de protección de ramas que exige solicitudes de extracción antes de fusionar cambios en la rama de despliegue, el editor crea una solicitud de extracción (pull request, PR) cuando publicas cambios.
 
 <Tip>
-  Cuando creas una solicitud de extracción desde el editor, el agente de Mintlify genera un título y una descripción en función de tus cambios. Puedes editar el título y la descripción generados antes de crear la solicitud de extracción.
+  Cuando creas una solicitud de extracción (pull request, PR) desde el editor, el agente de Mintlify genera un título y una descripción en función de tus cambios. Puedes editar el título y la descripción generados antes de crear la solicitud de extracción (pull request, PR).
 </Tip>
 
-**Publicar directamente**: Si tu repositorio no tiene reglas de protección de branch, tus cambios se fusionan en la rama de implementación y se implementan de inmediato cuando publicas.
+**Publicar directamente**: Si tu repositorio no tiene reglas de protección de ramas, tus cambios se fusionan en la rama de despliegue y se publican de inmediato cuando los publicas.
 
-| Tipo de branch | Protección de branch | Flujo de publicación |
-|-------------|-------------------|------------------------------|
-| <Tooltip headline="Rama de implementación" tip="La branch que publica en tu sitio de documentación en producción, normalmente &quot;main&quot;.">Rama de implementación</Tooltip> | Ninguna | Realiza una confirmación e implementa los cambios |
-| Rama de implementación | Solicitudes de extracción obligatorias | Crea una solicitud de extracción |
-| <Tooltip headline="Branch de funcionalidad" tip="Una branch aislada donde trabajas en actualizaciones antes de fusionarlas en tu rama de implementación.">Branch de funcionalidad</Tooltip> | Ninguna | Fusiona los cambios en la rama de implementación e implementa los cambios |
-| Branch de funcionalidad | Solicitudes de extracción obligatorias | Crea una solicitud de extracción |
+| Tipo de rama                                                                                                                                                                          | Protección de rama                     | Flujo de trabajo de publicación                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ---------------------------------------------------------- |
+| <Tooltip headline="Rama de despliegue" tip="La rama que publica tu sitio de documentación en producción, normalmente 'main'.">Rama de despliegue</Tooltip>                            | Ninguna                                | Confirma y publica los cambios                             |
+| Rama de despliegue                                                                                                                                                                    | Se requieren solicitudes de extracción | Crea una solicitud de extracción                           |
+| <Tooltip headline="Rama de funcionalidad" tip="Una rama aislada en la que trabajas en actualizaciones antes de fusionarlas en tu rama de despliegue.">Rama de funcionalidad</Tooltip> | Ninguna                                | Fusiona los cambios en la rama de despliegue y los publica |
+| Rama de funcionalidad                                                                                                                                                                 | Se requieren solicitudes de extracción | Crea una solicitud de extracción                           |
 
 <Tip>
-  Configura reglas de protección de branch en tu proveedor de Git para requerir solicitudes de extracción. Consulta [Acerca de las ramas protegidas](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) en la documentación de GitHub o [Ramas protegidas](https://docs.gitlab.com/user/project/repository/branches/protected/) en la documentación de GitLab.
+  Configura reglas de protección de ramas en tu proveedor de Git para exigir solicitudes de extracción. Consulta [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) en la documentación de GitHub o [Protected branches](https://docs.gitlab.com/user/project/repository/branches/protected/) en la documentación de GitLab.
 </Tip>
 
 <div id="save-changes">
   ## Guardar cambios
 </div>
 
-A medida que editas, el editor realiza un seguimiento de tus cambios.
+Mientras editas, el editor registra tus cambios.
 
-- Archivos nuevos o eliminados.
-- Ediciones de contenido en las páginas.
-- Cambios en la estructura de navegación.
-- Cargas y organización de archivos multimedia.
-- Actualizaciones de configuración.
+* Archivos nuevos o eliminados.
+* Cambios de contenido en las páginas.
+* Cambios en la estructura de navegación.
+* Carga y organización de contenido multimedia.
+* Actualizaciones de la configuración.
 
-Cuando trabajas en tu rama de implementación, los cambios se guardan automáticamente.
+Cuando trabajas en tu rama de despliegue, los cambios se guardan automáticamente.
 
-<Frame caption="Cambios en una rama de implementación.">
+<Frame caption="Cambios en una rama de despliegue.">
   <img src="/images/editor/toolbar-light.png" alt="Barra de herramientas del editor web que muestra un cambio pendiente." className="block dark:hidden" />
+
   <img src="/images/editor/toolbar-dark.png" alt="Barra de herramientas del editor web que muestra un cambio pendiente." className="hidden dark:block" />
 </Frame>
 
 Cuando trabajas en una rama de funcionalidad, guarda los cambios en la rama.
 
 <Frame caption="Cambios en una rama de funcionalidad.">
-<img src="/images/editor/toolbar-branch-light.png" alt="Barra de herramientas del editor web que muestra un cambio pendiente y el botón Save in branch en una rama de funcionalidad." className="block dark:hidden" />
-<img src="/images/editor/toolbar-branch-dark.png" alt="Barra de herramientas del editor web que muestra un cambio pendiente y el botón Save in branch en una rama de funcionalidad." className="hidden dark:block" />
+  <img src="/images/editor/toolbar-branch-light.png" alt="Barra de herramientas del editor web que muestra un cambio pendiente y el botón Save in branch en una rama de funcionalidad." className="block dark:hidden" />
+
+  <img src="/images/editor/toolbar-branch-dark.png" alt="Barra de herramientas del editor web que muestra un cambio pendiente y el botón Save in branch en una rama de funcionalidad." className="hidden dark:block" />
 </Frame>
 
 Para descartar cambios, haz clic en **Undo changes** junto al nombre de un archivo en el menú desplegable de archivos modificados.
 
 <div id="review-branch-changes">
-  ## Revisar los cambios de una branch
+  ## Revisa los cambios de la rama
 </div>
 
-Cuando trabajas en una branch de funcionalidad, el panel de publicación muestra todos los cambios de archivos entre tu branch y la rama de implementación en **Saved in branch**. Esto incluye los cambios guardados por ti y los de cualquier compañero que trabaje en la misma branch.
+Cuando trabajas en una rama de funcionalidad, el panel de publicación muestra todos los cambios en los archivos entre tu rama y la rama de despliegue en **Guardado en la rama**. Esto incluye los cambios guardados por ti y por cualquier compañero de equipo que trabaje en la misma rama.
 
-Haz clic en un archivo de la lista para abrir una vista de diferencias que muestra los cambios entre la branch y el contenido publicado. Los archivos de documentación se abren en un diff visual, y otros tipos de archivos se abren en un diff de código fuente. Usa esto para revisar el alcance completo de los cambios en una branch antes de publicar.
+Haz clic en un archivo de la lista para abrir una vista de diferencias que muestra los cambios entre la rama y el contenido publicado. Los archivos de documentación se abren en una diferencia visual, y otros tipos de archivo se abren en una diferencia del código fuente. Úsalo para revisar el alcance completo de los cambios de una rama antes de publicar.
 
-Los archivos que no pueden mostrar un diff, como imágenes o archivos eliminados, aparecen en la lista pero no son seleccionables.
+Los archivos que no pueden mostrar una diferencia, como las imágenes o los archivos eliminados, aparecen en la lista, pero no se pueden seleccionar.
 
 <div id="publish-your-changes">
   ## Publica tus cambios
 </div>
 
-Haz clic en **Publish** en la barra de herramientas. Según tu flujo de trabajo, tus cambios se implementan de inmediato o se crea una solicitud de extracción para que la fusiones en tu proveedor de Git. Si estás en una branch de funcionalidad, guarda tus cambios antes de publicar.
+Haz clic en **Publish** en la barra de herramientas. Según tu flujo de trabajo, tus cambios se despliegan de inmediato o crean una solicitud de extracción (pull request, PR) para que la fusiones en tu proveedor de Git. Si estás en una rama de funcionalidad, guarda tus cambios antes de publicar.
 
-Si no hay cambios pendientes o ya hay una solicitud de extracción abierta para la branch actual, no se puede hacer clic en el botón **Publish**.
+Si no hay cambios pendientes o ya hay una solicitud de extracción (pull request, PR) abierta para la rama actual, el botón **Publish** estará deshabilitado.
 
 <Note>
-  Tu sitio de documentación en producción se actualiza después de que Mintlify compila e implementa tus cambios publicados. Esto suele tardar entre 30 segundos y unos pocos minutos. Consulta el estado de implementación de tus cambios en tu [dashboard](https://dashboard.mintlify.com).
+  Tu sitio de documentación en producción se actualiza después de que Mintlify compila y despliega los cambios que publicaste. Esto suele tardar entre 30 segundos y unos minutos. Consulta el estado del despliegue de tus cambios en tu [panel](https://dashboard.mintlify.com).
 </Note>
 
 ## Resolver conflictos
 
-Los conflictos se producen cuando tu branch y la rama de implementación contienen cambios incompatibles en los mismos archivos.
+Los conflictos se producen cuando tu rama y la rama de despliegue contienen cambios incompatibles en los mismos archivos.
 
 <div id="what-causes-conflicts">
-  ### Qué provoca los conflictos
+  ### Qué causa los conflictos
 </div>
 
-Los conflictos se producen cuando intentas fusionar branches con cambios incompatibles en los mismos archivos.
+Los conflictos ocurren cuando intentas fusionar ramas con cambios incompatibles en los mismos archivos.
 
-* Tú y otra persona del equipo modifican las mismas líneas de un archivo en distintas branches.
-* Los archivos se mueven, renombran o eliminan en una branch, pero se modifican de otra forma en otra.
+* Tú y otro miembro del equipo editáis las mismas líneas de un archivo en ramas distintas.
+* Mueves, renombras o eliminas archivos en una rama y los modificas de forma diferente en otra rama.
 
 <div id="resolve-conflicts">
   ### Resolver conflictos
 </div>
 
-El editor muestra advertencias cuando los conflictos impiden realizar operaciones como publicar o cambiar de branch. Para resolverlos, sigue las instrucciones del editor para elegir qué cambios conservar.
+El editor muestra advertencias cuando los conflictos impiden realizar operaciones como publicar o cambiar de rama. Para resolverlos, sigue las instrucciones del editor para elegir qué cambios conservar.
 
 <div id="commit-signing">
-  ## Firma de confirmaciones
+  ## Firma de commits
 </div>
 
-Firma tus confirmaciones con tu cuenta de GitHub al autorizarla en la [configuración de la cuenta](https://dashboard.mintlify.com/settings/account). Sin autorización, la Aplicación de GitHub de Mintlify firma las confirmaciones realizadas en el editor web.
+Firma los commits con tu cuenta de GitHub autorizándola en la [configuración de tu cuenta](https://dashboard.mintlify.com/settings/account). Si no la autorizas, la aplicación de GitHub de Mintlify firma los commits realizados en el editor web.
 
-Asociar las confirmaciones a tu cuenta mantiene un historial preciso de quién hizo cambios en tu documentación.
+Atribuir los commits a tu cuenta permite mantener un historial preciso de quién hizo cambios en tu documentación.

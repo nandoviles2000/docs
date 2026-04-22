@@ -5,9 +5,9 @@
       "include": [
         "./docs.json",
         "./admin-openapi.json",
+        "./analytics.openapi.json",
         "./discovery-openapi.json",
-        "./openapi.json",
-        "./analytics.openapi.json"
+        "./openapi.json"
       ],
       "transform": [
         {
@@ -30,7 +30,8 @@
     },
     "mdx": {
       "include": [
-        "./**/*.mdx"
+        "./**/*.mdx",
+        "./**/*.md"
       ],
       "transform": {
         "match": "^(snippets/)?(.*)$",
@@ -38,7 +39,22 @@
       },
       "exclude": [
         "./[locales]/**/*.mdx",
-        "./snippets/[locales]/**/*.mdx"
+        "./snippets/[locales]/**/*.mdx",
+        "./[locales]/**/*.md",
+        "./snippets/[locales]/**/*.md",
+        "./**/README.md",
+        "./**/LICENSE.md",
+        "./**/COPYING.md",
+        "./**/NOTICE.md",
+        "./**/CHANGELOG.md",
+        "./**/HISTORY.md",
+        "./**/CODE_OF_CONDUCT.md",
+        "./**/CONTRIBUTING.md",
+        "./**/SECURITY.md",
+        "./**/GOVERNANCE.md",
+        "./**/AGENTS.md",
+        "./**/OWNERS.md",
+        "./**/MAINTAINERS.md"
       ]
     }
   },
@@ -56,6 +72,7 @@
           "$.navigation.languages": {
             "type": "array",
             "key": "$.language",
+            "experimentalSort": "localesAlphabetical",
             "include": [
               "$..group",
               "$..tab",
@@ -65,28 +82,27 @@
             ],
             "transform": {
               "$..pages[*]": {
-                "match": "^(.*)$",
+                "match": "^/?(.*)$",
                 "replace": "{locale}/$1"
               },
               "$..root": {
-                "match": "^(.*)$",
+                "match": "^/?(.*)$",
                 "replace": "{locale}/$1"
               }
-            },
-            "experimentalSort": "locales"
+            }
           }
         }
       },
       "./admin-openapi.json": {
         "preset": "openapi"
       },
+      "./analytics.openapi.json": {
+        "preset": "openapi"
+      },
       "./discovery-openapi.json": {
         "preset": "openapi"
       },
       "./openapi.json": {
-        "preset": "openapi"
-      },
-      "./analytics.openapi.json": {
         "preset": "openapi"
       }
     },
@@ -100,6 +116,7 @@
     "experimentalAddHeaderAnchorIds": "mintlify",
     "experimentalClearLocaleDirs": true,
     "mintlify": {
+      "inferTitleFromFilename": true,
       "openapi": {
         "files": [
           "./admin-openapi.json",
@@ -108,6 +125,7 @@
           "./openapi.json"
         ]
       }
-    }
+    },
+    "experimentalLocalizeRelativeAssets": true
   }
 }

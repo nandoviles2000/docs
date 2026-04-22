@@ -1,36 +1,36 @@
 ---
 title: "Registros de auditoría"
-description: "Revisa los registros de auditoría para rastrear las acciones realizadas por los miembros de la organización, incluyendo despliegues, cambios de configuración y actualizaciones de permisos."
-keywords: ["monitoring", "activity tracking", "security", "compliance"]
+description: "Revisa los registros de auditoría para hacer seguimiento de las acciones realizadas por los miembros de la organización, incluidos los despliegues, los cambios de configuración y las actualizaciones de permisos."
+keywords: ["supervisión", "seguimiento de actividad", "seguridad", "cumplimiento"]
 ---
 
 <Info>
   Los registros de auditoría están disponibles en los [planes Enterprise](https://mintlify.com/pricing?ref=audit-logs).
 </Info>
 
-Usa los registros de auditoría para supervisar y hacer un seguimiento de las acciones realizadas por los miembros de tu organización. Los registros de auditoría proporcionan un historial de actividades con fines de seguridad, cumplimiento y resolución de problemas.
+Usa los registros de auditoría para supervisar y hacer seguimiento de las acciones realizadas por los miembros de tu organización. Los registros de auditoría proporcionan un registro de actividades con fines de seguridad, cumplimiento normativo y resolución de problemas.
 
-- **Supervisar la seguridad**: Realiza un seguimiento de los intentos de autenticación y de los cambios de permisos.
-- **Garantizar el cumplimiento**: Mantén registros de todas las actividades de la organización.
-- **Solucionar problemas**: Investiga acciones fallidas y sus causas.
-- **Hacer un seguimiento de los cambios**: Revisa quién realizó cambios específicos y cuándo.
+* **Supervisa la seguridad**: Haz seguimiento de los intentos de autenticación y los cambios de permisos.
+* **Garantiza el cumplimiento**: Mantén registros de todas las actividades de la organización.
+* **Soluciona problemas**: Investiga las acciones fallidas y sus causas.
+* **Haz seguimiento de los cambios**: Revisa quién realizó cambios específicos y cuándo.
 
 <div id="view-audit-logs">
   ## Ver registros de auditoría
 </div>
 
-Accede a la página de [Audit log](https://dashboard.mintlify.com/settings/organization/audit-logs) de tu dashboard para ver los registros de auditoría.
+Ve a la página de [Registro de auditoría](https://dashboard.mintlify.com/settings/organization/audit-logs) de tu panel para consultar los registros de auditoría.
 
-Haz clic en cualquier registro para expandirlo y ver información detallada, incluida:
+Haz clic en cualquier entrada del registro para expandirla y ver información detallada, incluida:
 
-| Campo     | Descripción                                                       |
-| --------- | ----------------------------------------------------------------- |
-| Timestamp | Fecha y hora en que ocurrió la acción                             |
-| Actor     | Dirección de correo electrónico del usuario que realizó la acción |
-| Acción    | Qué acción realizó el usuario                                     |
-| Categoría | Tipo de recurso afectado                                          |
-| Resultado | Si la acción se realizó con éxito o falló                         |
-| Metadata  | Contexto adicional sobre la acción                                |
+| Campo           | Descripción                                                          |
+| --------------- | -------------------------------------------------------------------- |
+| Marca de tiempo | Fecha y hora en que ocurrió la acción                                |
+| Actor           | La dirección de correo electrónico del usuario que realizó la acción |
+| Acción          | La acción que realizó el usuario                                     |
+| Categoría       | Tipo de recurso afectado                                             |
+| Resultado       | Si la acción se completó correctamente o falló                       |
+| Metadatos       | Contexto adicional sobre la acción                                   |
 
 <div id="filter-logs">
   ### Filtrar registros
@@ -38,34 +38,34 @@ Haz clic en cualquier registro para expandirlo y ver información detallada, inc
 
 Filtra los registros de auditoría para encontrar actividades específicas.
 
-**Rango de fechas**: Selecciona un rango de fechas preestablecido para ver registros en un período específico.
+**Intervalo de fechas**: Selecciona un intervalo predefinido para ver los registros de un período específico.
 
 **Categoría**: Filtra los registros por tipo de acción.
 
-| Categoría         | Descripción                                                        |
-|------------------|--------------------------------------------------------------------|
-| Organización     | Actualizaciones de la configuración de la organización y solicitudes de eliminación. |
-| Miembro          | Invitaciones de miembros del equipo, eliminaciones y cambios de rol. |
-| Implementación   | Cambios en la configuración de implementación, incluidos dominios personalizados, autenticación, orígenes de Git y credenciales de cliente MCP. |
-| Implementación de vista previa | Creación de implementaciones de vista previa, actualizaciones y cambios de autenticación. |
-| API key          | Creación y eliminación de API key y discovery API key. |
-| Assistant        | Actualizaciones de la configuración del assistant, como correo de desvío, sitios de búsqueda web y preguntas iniciales. |
-| Exportación PDF  | Generación y eliminación de exportaciones en PDF. |
-| Integración      | Instalaciones y eliminaciones de GitHub, Slack, Linear y Notion. |
-| Facturación      | Actualizaciones de suscripciones, compras de complementos y visualización de facturas. |
-| Cuota            | Cambios en la política de excedentes y en la configuración de alertas. |
-| Usuario          | Configuración de notificaciones de usuarios individuales. |
-| Workflows        | Configuraciones de workflows y gestión de repositorios. |
-| Registro de auditoría | Visualización y exportaciones del registro de auditoría. |
-| Auth             | Intentos de inicio de sesión, cierres de sesión y creación de sesiones. |
+| Categoría                  | Descripción                                                                                                                                   |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Organización               | Actualizaciones de la configuración de la organización y solicitudes de eliminación.                                                          |
+| Miembro                    | Invitaciones, eliminaciones y cambios de rol de los miembros del equipo.                                                                      |
+| Despliegue                 | Cambios en la configuración del despliegue, incluidos dominios personalizados, autenticación, fuentes de Git y credenciales del cliente MCP.  |
+| Despliegue de vista previa | Creación y actualizaciones de despliegues de vista previa, y cambios en la autenticación.                                                     |
+| Clave de API               | Creación y eliminación de claves de API y de claves de API de descubrimiento.                                                                 |
+| Assistant                  | Actualizaciones de la configuración de Assistant, como el correo electrónico de desvío, los sitios de búsqueda web y las preguntas iniciales. |
+| Exportación a PDF          | Generación y eliminación de exportaciones en PDF.                                                                                             |
+| Integración                | Instalaciones y eliminaciones de GitHub, Slack, Linear y Notion.                                                                              |
+| Facturación                | Actualizaciones de suscripciones, compras de complementos y visualización de facturas.                                                        |
+| Cuota                      | Cambios en la política de excedentes y en la configuración de alertas.                                                                        |
+| Usuario                    | Configuración de notificaciones de usuarios individuales.                                                                                     |
+| Flujos de trabajo          | Configuraciones de flujos de trabajo y gestión de repositorios.                                                                               |
+| Registro de auditoría      | Visualización y exportación del registro de auditoría.                                                                                        |
+| Autenticación              | Intentos de inicio de sesión, cierres de sesión y creación de sesiones.                                                                       |
 
 <div id="export-audit-logs">
   ## Exportar registros de auditoría
 </div>
 
-Exporta registros de auditoría a CSV para su análisis, generación de informes de cumplimiento o archivo a largo plazo.
+Exporta los registros de auditoría en CSV para su análisis, informes de cumplimiento o archivado a largo plazo.
 
-1. Dirígete a la página de [Audit log](https://dashboard.mintlify.com/settings/organization/audit-logs) de tu dashboard.
-1. Opcionalmente, aplica filtros para acotar los registros que quieres exportar.
-1. Haz clic en **Export CSV**.
-1. Mintlify te envía un correo electrónico con un enlace de descarga cuando la exportación esté lista.
+1. Ve a la página [registro de auditoría](https://dashboard.mintlify.com/settings/organization/audit-logs) de tu panel.
+2. Si lo deseas, aplica filtros para limitar los registros que quieres exportar.
+3. Haz clic en **Export CSV**.
+4. Mintlify te envía un correo electrónico con un enlace de descarga cuando la exportación está lista.

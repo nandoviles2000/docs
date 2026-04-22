@@ -1,48 +1,52 @@
 ---
-title: "Configurar automerge para aplicaciones GitHub"
-sidebarTitle: "Configurar automerge"
-description: "Configura flujos de trabajo de GitHub para fusionar automáticamente pull requests de Mintlify añadiendo el bot de Mintlify a la lista de exclusión de reglas de tu repositorio."
-keywords: ["automerge", "ruleset", "protección de rama", "bypass"]
+title: "Configurar la fusión automática para GitHub Apps"
+sidebarTitle: "Configurar la fusión automática"
+description: "Configura flujos de trabajo de GitHub para fusionar automáticamente las solicitudes de extracción (pull requests, PR) de Mintlify al añadir el bot de Mintlify a la lista de omisión del conjunto de reglas de tu repositorio."
+keywords: ["fusión automática", "conjunto de reglas", "protección de ramas", "omisión"]
 ---
 
-Agrega la aplicación GitHub de Mintlify a la lista de bypass de un ruleset para que la aplicación pueda crear y fusionar pull requests sin que los requisitos de revisión y verificaciones de estado la bloqueen. Esto te permite configurar [flujos de trabajo](/es/guides/automate-agent) para fusionar automáticamente los cambios a `main`.
+Agrega la GitHub App de Mintlify a la lista de omisión de un conjunto de reglas para que la aplicación pueda crear y fusionar solicitudes de extracción (pull requests, PR) sin que la bloqueen los requisitos de revisión y de comprobación de estado. Esto te permite configurar [flujos de trabajo](/es/guides/automate-agent) para fusionar automáticamente cambios a `main`.
 
 <Note>
-  La aplicación GitHub de Mintlify debe tener permisos de bypass en **todos** los rulesets que apunten a tu rama de implementación, incluyendo los rulesets definidos a nivel de organización y a nivel de repositorio. Si algún ruleset no tiene la entrada de bypass, el flujo de trabajo crea un PR, pero no lo fusiona.
+  La GitHub App de Mintlify debe tener permisos de omisión en **todos** los conjuntos de reglas que se apliquen a tu rama de despliegue, incluidos los conjuntos de reglas definidos tanto a nivel de organización como de repositorio. Si a algún conjunto de reglas le falta la entrada correspondiente en la lista de omisión, el flujo de trabajo crea una PR, pero no la fusiona.
 </Note>
 
 <div id="prerequisites">
   ## Requisitos previos
 </div>
 
-- Acceso de administrador al repositorio (y acceso de administrador a la organización si hay rulesets a nivel de organización)
-- [Aplicación GitHub de Mintlify](/es/deploy/github) instalada en el repositorio
-- Uno o más rulesets que apunten a la rama `main` (a nivel de organización o de repositorio)
+* Acceso de administrador al repositorio (y acceso de administrador a la organización si hay conjuntos de reglas a nivel de la organización)
+* [GitHub App de Mintlify](/es/deploy/github) instalada en el repositorio
+* Uno o más conjuntos de reglas que se apliquen a la rama `main` (a nivel de la organización o del repositorio)
 
 <div id="steps">
   ## Pasos
 </div>
 
-Repite estos pasos para cada ruleset que se aplique a tu rama de implementación. Tanto los rulesets **a nivel de organización** como **a nivel de repositorio**.
+Repite estos pasos para cada conjunto de reglas que se aplique a tu rama de despliegue, tanto los **a nivel de organización** como los **a nivel de repositorio**.
 
 <Steps>
-  <Step title="Navega a los rulesets">
-    - **Rulesets del repositorio**: En GitHub, ve a **Settings** -> **Rules** -> **Rulesets** de tu repositorio.
-    - **Rulesets de la organización**: Ve a **Settings** -> **Rules** -> **Rulesets** de tu organización.
+  <Step title="Ve a los conjuntos de reglas">
+    * **Conjuntos de reglas del repositorio**: En GitHub, ve a **Settings** -&gt; **Rules** -&gt; **Rulesets** en tu repositorio.
+    * **Conjuntos de reglas de la organización**: Ve a **Settings** -&gt; **Rules** -&gt; **Rulesets** en tu organización.
   </Step>
-  <Step title="Selecciona el ruleset">
-    Haz clic en un ruleset que apunte a tu rama de implementación, que normalmente es `main`.
+
+  <Step title="Selecciona el conjunto de reglas">
+    Haz clic en un conjunto de reglas que se aplique a tu rama de despliegue, que normalmente es `main`.
   </Step>
-  <Step title="Agrega la aplicación GitHub de Mintlify a la lista de bypass">
-    1. En **Bypass list**, haz clic en **Add bypass**.
-    2. Busca y selecciona la aplicación GitHub de Mintlify.
-    3. Configura el modo de bypass como **Always**.
+
+  <Step title="Agrega la GitHub App de Mintlify a la lista de omisión">
+    1. En **Lista de omisión**, haz clic en **Add bypass**.
+    2. Busca y selecciona la GitHub App de Mintlify.
+    3. Establece el modo de omisión en **Always**.
   </Step>
+
   <Step title="Guardar">
     Haz clic en **Save changes**.
   </Step>
-  <Step title="Repite para los rulesets restantes">
-    Si tienes rulesets adicionales a nivel de organización o de repositorio que apunten a tu rama de implementación, repite los pasos 2 a 4 para cada uno.
+
+  <Step title="Repite el proceso con los conjuntos de reglas restantes">
+    Si tienes conjuntos de reglas adicionales a nivel de organización o repositorio que se apliquen a tu rama de despliegue, repite los pasos 2–4 para cada uno.
   </Step>
 </Steps>
 
@@ -50,5 +54,5 @@ Repite estos pasos para cada ruleset que se aplique a tu rama de implementación
   ## Verifica la configuración
 </div>
 
-1. **Para colaboradores**: Abre un PR que apunte a `main`. Confirma que aún requiere aprobación y verificaciones de estado exitosas antes de que puedas fusionar.
-2. **Para flujos de trabajo**: Activa un flujo de trabajo con automerge habilitado. Confirma que el flujo de trabajo se ejecuta y fusiona exitosamente un PR.
+1. **Para quienes contribuyen**: Abre una PR dirigida a `main`. Confirma que siga requiriendo aprobación y que las comprobaciones de estado se hayan superado antes de poder fusionarla.
+2. **Para los flujos de trabajo**: Ejecuta un flujo de trabajo con `automerge` habilitado. Confirma que el flujo de trabajo se ejecute y fusione correctamente una PR.

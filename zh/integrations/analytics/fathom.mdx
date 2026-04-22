@@ -1,15 +1,15 @@
 ---
 title: "Fathom"
-description: "将 Fathom Analytics 集成到你的 Mintlify 文档，通过简单的站点 ID 配置实现符合 GDPR、注重隐私的访客跟踪。"
-keywords: ["Fathom Analytics", "注重隐私的分析", "站点 ID", "简洁分析"]
+description: "将 Fathom Analytics 集成到你的 Mintlify 文档中，只需简单设置站点 ID，即可实现注重隐私且符合 GDPR 的访客跟踪。"
+keywords: ["Fathom Analytics", "隐私优先分析", "站点 ID", "简单分析"]
 ---
 
-在你的 `docs.json` 文件中添加以下内容，将分析数据发送到 Fathom。
+将以下内容添加到你的 `docs.json` 文件中，以便将分析数据发送到 Fathom。
 
-你可以在脚本设置中获取 `siteId`。
+你可以在脚本设置中找到 `siteId`。
 
 <CodeGroup>
-  ```json docs.json 中的 Analytics 选项
+  ```json docs.json 中的分析选项
   "integrations": {
       "fathom": {
           "siteId": "required"

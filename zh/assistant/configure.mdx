@@ -1,127 +1,133 @@
 ---
-title: "配置 AI 助手"
-description: "启用或禁用 AI 助手，配置响应处理，添加示例问题，设置机器人防护，并管理计费。"
-keywords: ["assistant", "设置", "转接", "机器人防护", "计费"]
+title: "配置助手"
+description: "启用或禁用助手，配置响应处理，添加引导问题，设置机器人防护，并管理计费。"
+keywords: ["助手", "设置", "问题分流", "机器人防护", "计费"]
 ---
 
-在仪表盘的 [Assistant](https://dashboard.mintlify.com/products/assistant) 页面配置 AI 助手并管理计费。
+在仪表板的 [Assistant](https://dashboard.mintlify.com/products/assistant) 页面上配置助手并管理计费。
 
 <div id="enable-or-disable-the-assistant">
-  ## 启用或禁用 AI 助手
+  ## 启用或禁用助手
 </div>
 
-切换 AI 助手状态以在你的文档站点上启用或禁用 AI 助手。
+切换助手状态，为你的文档站点启用或禁用助手。
 
 <Frame>
-  <img src="/images/assistant/status-light.png" alt="仪表盘中的 AI 助手状态开关。" className="block dark:hidden" />
-  <img src="/images/assistant/status-dark.png" alt="仪表盘中的 AI 助手状态开关。" className="hidden dark:block" />
+  <img src="/images/assistant/status-light.png" alt="仪表板中的助手状态切换开关。" className="block dark:hidden" />
+
+  <img src="/images/assistant/status-dark.png" alt="仪表板中的助手状态切换开关。" className="hidden dark:block" />
 </Frame>
 
 <div id="set-deflection-email">
   ## 设置转接邮箱
 </div>
 
-在"响应处理"部分，启用 AI 助手将无法回答的问题重定向到你的支持团队。
+在“响应处理”部分，启用助手将无法回答的问题转交给你的支持团队。
 
-指定一个电子邮件地址，当 AI 助手无法回答用户的问题时，将此地址提供给用户。你还可以启用一个"联系支持"按钮，使其出现在 AI 助手的聊天面板中。
+指定一个邮箱地址，以便助手在无法回答用户问题时提供给用户。你还可以启用“联系支持”按钮，让它显示在助手聊天面板中。
 
 <Frame>
-  <img src="/images/assistant/deflection-light.png" alt="仪表盘中的 AI 助手转接面板。AI 助手转接已开启，support@mintlify.com 设置为转接邮箱。" className="block dark:hidden" />
-  <img src="/images/assistant/deflection-dark.png" alt="仪表盘中的 AI 助手转接面板。AI 助手转接已开启，support@mintlify.com 设置为转接邮箱。" className="hidden dark:block" />
+  <img src="/images/assistant/deflection-light.png" alt="仪表板中的助手转接面板。助手转接已开启，且 support@mintlify.com 已设置为转接邮箱。" className="block dark:hidden" />
+
+  <img src="/images/assistant/deflection-dark.png" alt="仪表板中的助手转接面板。助手转接已开启，且 support@mintlify.com 已设置为转接邮箱。" className="hidden dark:block" />
 </Frame>
 
 <div id="search-domains">
   ## 搜索域名
 </div>
 
-在"响应处理"部分，配置 AI 助手可以用于网络搜索的域名，以在回答问题时查找额外的上下文。
+在“响应处理”部分中，配置助手可用于 Web 搜索的域名，以便在回答问题时查找更多上下文信息。
 
-- 域名必须是公开可访问的。
-- 不支持需要 JavaScript 加载的域名。
+* 域名必须可公开访问。
+* 不支持依赖 JavaScript 才能加载的域名。
 
 <Frame>
-  <img src="/images/assistant/search-domains-light.png" alt="仪表盘中已启用的 AI 助手搜索域名面板。AI 助手已配置为搜索 mintlify.com/pricing 域名。" className="block dark:hidden" />
-  <img src="/images/assistant/search-domains-dark.png" alt="仪表盘中已启用的 AI 助手搜索域名面板。AI 助手已配置为搜索 mintlify.com/pricing 域名。" className="hidden dark:block" />
+  <img src="/images/assistant/search-domains-light.png" alt="仪表板中已启用助手搜索域名面板。助手已配置为搜索 mintlify.com/pricing 域。" className="block dark:hidden" />
+
+  <img src="/images/assistant/search-domains-dark.png" alt="仪表板中已启用助手搜索域名面板。助手已配置为搜索 mintlify.com/pricing 域。" className="hidden dark:block" />
 </Frame>
 
-要更精确地控制 AI 助手的搜索范围，请使用过滤语法。
+如需更精确地控制助手可搜索的范围，请使用过滤语法。
 
-- **域名级别过滤**
-  - `example.com`：仅在 `example.com` 域名搜索
-  - `docs.example.com`：仅在 `docs.example.com` 子域名搜索
-  - `*.example.com`：在 `example.com` 的所有子域名搜索
-- **路径级别过滤**
-  - `docs.example.com/api`：搜索 `/api` 子路径下的所有页面
-- **多种模式**
-  - 添加多个条目以定位不同站点的不同部分
+* **域名级过滤**
+  * `example.com`: 仅搜索 `example.com` 域
+  * `docs.example.com`: 仅搜索 `docs.example.com` 子域名
+  * `*.example.com`: 搜索 `example.com` 的所有子域名
+* **路径级过滤**
+  * `docs.example.com/api`: 搜索 `/api` 子路径下的所有页面
+* **多个模式**
+  * 添加多个条目，以覆盖网站的不同部分
 
 <div id="add-sample-questions">
   ## 添加示例问题
 </div>
 
-通过添加示例问题帮助用户开始与 AI 助手的对话。
+添加引导问题，帮助用户开始与助手对话。
 
-AI 助手可以根据用户正在查看的页面生成特定于页面的问题，你也可以添加在所有页面上都可用的固定问题。
+助手可以根据用户当前查看的页面生成特定于该页面的问题，或者你也可以添加在所有页面中都可用的固定问题。
 
-你最多可以添加三个示例问题。点击 **Ask AI** 获取基于你文档的推荐问题。
+你最多可以添加三个引导问题。点击 **Ask AI** 可获取基于你的文档推荐的问题。
 
 <Frame>
-  <img src="/images/assistant/search-suggestions-light.png" alt="仪表盘中的搜索建议面板，已启用上下文相关的示例问题。" className="block dark:hidden" />
-  <img src="/images/assistant/search-suggestions-dark.png" alt="仪表盘中的搜索建议面板，已启用上下文相关的示例问题。" className="hidden dark:block" />
+  <img src="/images/assistant/search-suggestions-light.png" alt="仪表板中的搜索建议面板，已启用上下文引导问题。" className="block dark:hidden" />
+
+  <img src="/images/assistant/search-suggestions-dark.png" alt="仪表板中的搜索建议面板，已启用上下文引导问题。" className="hidden dark:block" />
 </Frame>
 
 <div id="bot-protection">
   ## 机器人防护
 </div>
 
-在"机器人防护"部分，启用隐形验证码以保护你的 AI 助手免受自动化滥用。机器人防护注重隐私保护，对几乎所有访客不可见。
+在 Bot Protection 部分中，启用隐形验证码，保护您的助手免受自动化滥用。机器人防护兼顾隐私，且对几乎所有访客都是无感的。
 
 要启用机器人防护：
 
-1. 在仪表盘中进入 [AI 助手设置](https://dashboard.mintlify.com/products/assistant/settings)页面。
-2. 在 **Bot Protection** 部分，开启 **Invisible Captcha**。
+1. 前往仪表板中的 [Assistant 设置](https://dashboard.mintlify.com/products/assistant/settings) 页面。
+2. 在 **Bot Protection** 部分，打开 **Invisible Captcha** 开关。
 
 更改最多需要 10 分钟才能生效。
 
 <Note>
-  如果你使用自定义的 [Content Security Policy 头](/zh/deploy/csp-configuration)，你必须在允许列表中包含 `hcaptcha.com` 和 `*.hcaptcha.com`。
+  如果您使用自定义的[内容安全策略标头](/zh/deploy/csp-configuration)，则必须将 `hcaptcha.com` 和 `*.hcaptcha.com` 加入允许列表。
 </Note>
 
 <div id="manage-billing">
-  ## 管理计费
+  ## 管理账单
 </div>
 
-AI 助手使用分级消息配额。一条消息指用户与 AI 助手的任何交互，只要收到了正确的响应即算一条。如果你有未使用的消息，最多一半的消息配额可以结转到下一个计费周期。例如，如果你有 1,000 条消息配额并使用了 300 条，则 500 条消息会结转到下一个计费周期，使你在下一个计费周期共有 1,500 条消息。
+助手采用层级消息额度。凡是用户与助手的一次交互，只要收到正确回复，就计为一条消息。如果你有未使用的消息，最多可将消息额度的一半结转到下一个计费周期。例如，如果你的消息额度为 1,000 条，且你使用了 300 条，则可将 500 条结转到下一个计费周期，这样你在下一个计费周期内总共可使用 1,500 条消息。
 
-默认情况下，AI 助手允许超额使用。你可以禁用超额以避免超出套餐的额外费用。如果禁用超额后达到消息配额上限，AI 助手将不可用，直到消息配额重置。如果允许超额，超出配额的每条消息会产生超额费用，但根据你的使用情况，偶尔的超额可能比升级到更高套餐更便宜。
+默认情况下，助手允许超额使用。你可以禁用超额使用，以避免因超出当前层级额度而产生额外费用。如果你在禁用超额使用时达到消息额度上限，助手将无法使用，直到消息额度重置。如果你允许超额使用，则每条超出额度的消息都会产生超额费用；不过，具体取决于你的使用情况，偶尔超额使用可能比升级到更高层级更划算。
 
 <div id="change-your-assistant-tier">
-  ### 更改 AI 助手套餐
+  ### 更改您的助手层级
 </div>
 
-AI 助手套餐决定你的月度消息配额和定价。
+助手层级决定您每月的消息额度和价格。
 
-在仪表盘 AI 助手页面的[计费选项卡](https://dashboard.mintlify.com/products/assistant?tab=billing)中查看和更改你当前的套餐。
+您可以在仪表板中助手页面的[账单标签页](https://dashboard.mintlify.com/products/assistant?tab=billing)查看并更改当前层级。
 
-在 **Spending Controls** 部分，从下拉菜单中选择你首选的套餐。
+在 **支出控制** 部分，从下拉菜单中选择您想要的层级。
 
-**升级套餐：**
-- 你的新消息配额立即生效。
-- 你需要支付当前计费周期的按比例差额。
+**升级您的层级：**
 
-**降级套餐：**
-- 你的消息配额立即更新。
-- 价格变更在下一个计费周期开始时生效。
-- 当前套餐的未使用消息**不会**结转。
+* 新的消息额度会立即生效。
+* 您需要按比例补缴当前计费周期的差价。
+
+**降级您的层级：**
+
+* 您的消息额度会立即更新。
+* 价格变更将在下一个计费周期开始时生效。
+* 当前层级中未使用的消息**不会**结转。
 
 <div id="allow-overages">
-  ### 允许超额
+  ### 允许超额使用
 </div>
 
-如果你不想允许超额，请在仪表盘 AI 助手页面的[计费选项卡](https://dashboard.mintlify.com/products/assistant?tab=billing)中的 **Billing Controls** 部分禁用超额。
+如果你想禁止超额使用，请在仪表板的助手页面中，前往 [账单标签页](https://dashboard.mintlify.com/products/assistant?tab=billing) 的 **账单控制** 部分将其关闭。
 
 <div id="set-usage-alerts">
   ### 设置用量提醒
 </div>
 
-在 Billing Controls 部分，设置用量提醒，当达到消息配额的一定百分比时接收电子邮件通知。
+在账单控制部分中，设置用量提醒，以便在消息额度达到某个百分比时接收电子邮件通知。

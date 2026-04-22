@@ -1,13 +1,13 @@
 ---
-title: "Migrer les pages d’API MDX vers la navigation OpenAPI"
+title: "Migrer des pages d’API MDX vers la navigation OpenAPI"
 sidebarTitle: "Migrer de MDX vers OAS"
-description: "Migrer vers la génération OpenAPI automatisée avec une navigation flexible."
-keywords: ["Migration d’API", "Migration OpenAPI", "extension x-mint"]
+description: "Migrez vos pages d’API MDX rédigées manuellement vers une documentation automatisée générée à partir d’OpenAPI, avec une navigation flexible et un regroupement des points de terminaison."
+keywords: ["migration d’API", "migration OpenAPI", "extension x-mint"]
 ---
 
-Si vous utilisez actuellement des pages MDX individuelles pour vos endpoints d’API, vous pouvez migrer vers la génération automatique de pages à partir de votre spécification OpenAPI, tout en conservant la possibilité de personnaliser chaque page individuellement. Cela peut vous aider à réduire le nombre de fichiers à maintenir et à améliorer la cohérence de votre documentation d’API.
+Si vous utilisez actuellement des pages MDX distinctes pour vos points de terminaison d’API, vous pouvez migrer vers la génération automatique de pages à partir de votre spécification OpenAPI tout en conservant la possibilité de personnaliser chaque page. Cela peut vous aider à réduire le nombre de fichiers à gérer et à améliorer la cohérence de votre documentation d’API.
 
-Vous pouvez définir les champs metadata et content pour chaque endpoint dans votre spécification OpenAPI, et organiser les endpoints où vous le souhaitez dans votre navigation.
+Vous pouvez définir des métadonnées et du contenu pour chaque point de terminaison dans votre spécification OpenAPI, et organiser ces points de terminaison où vous le souhaitez dans votre navigation.
 
 <div id="migration-steps">
   ## Étapes de migration
@@ -15,25 +15,25 @@ Vous pouvez définir les champs metadata et content pour chaque endpoint dans vo
 
 <Steps>
   <Step title="Préparez votre spécification OpenAPI.">
-    Assurez-vous que votre spécification OpenAPI est valide et inclut tous les endpoints que vous souhaitez documenter.
+    Assurez-vous que votre spécification OpenAPI est valide et inclut tous les points de terminaison que vous souhaitez documenter.
 
-    Pour chaque endpoint pour lequel vous souhaitez personnaliser les métadonnées ou le contenu, ajoutez l’extension `x-mint` à l’endpoint. Consultez l’[extension x-mint](/fr/api-playground/openapi-setup#customize-your-endpoint-pages) pour plus de détails.
+    Pour chaque point de terminaison dont vous souhaitez personnaliser les métadonnées ou le contenu, ajoutez l’extension `x-mint` au point de terminaison. Consultez [l’extension x-mint](/fr/api-playground/openapi-setup#customize-your-endpoint-pages) pour en savoir plus.
 
-    Pour chaque endpoint que vous souhaitez exclure de votre documentation, ajoutez l’extension `x-hidden` à l’endpoint.
+    Pour chaque point de terminaison que vous souhaitez exclure de votre documentation, ajoutez l’extension `x-hidden` au point de terminaison.
 
     <Info>
-      Validez votre fichier OpenAPI à l’aide de [Swagger Editor](https://editor.swagger.io/) ou de l’[interface en ligne de commande (CLI) Mint](https://www.npmjs.com/package/mint).
+      Validez votre fichier OpenAPI à l’aide de [Swagger Editor](https://editor.swagger.io/) ou de [Mint CLI](https://www.npmjs.com/package/mint).
     </Info>
   </Step>
-  
-  <Step title="Mettez à jour la structure de votre navigation.">
-    Remplacez les références de pages MDX par des endpoints OpenAPI dans votre `docs.json`.
+
+  <Step title="Mettez à jour votre structure de navigation.">
+    Remplacez les références aux pages MDX par des points de terminaison OpenAPI dans votre `docs.json`.
 
     ```json
     "navigation": {
       "groups": [
         {
-          "group": "Référence d’API",
+          "group": "API Reference",
           "openapi": "/path/to/openapi.json",
           "pages": [
             "overview",
@@ -49,22 +49,21 @@ Vous pouvez définir les champs metadata et content pour chaque endpoint dans vo
       ]
     }
     ```
-
   </Step>
 
   <Step title="Supprimez les anciens fichiers MDX.">
-    Après avoir vérifié que votre nouvelle navigation fonctionne correctement, supprimez les fichiers MDX correspondant aux endpoints dont vous n’avez plus besoin.
+    Après avoir vérifié que votre nouvelle navigation fonctionne correctement, supprimez les fichiers MDX des points de terminaison dont vous n’avez plus besoin.
   </Step>
 </Steps>
 
 <div id="navigation-patterns">
-  ## Modèles de navigation
+  ## Types de navigation
 </div>
 
-Vous pouvez personnaliser la manière dont la documentation de votre API apparaît dans votre navigation.
+Vous pouvez personnaliser la façon dont votre documentation d’API apparaît dans la navigation.
 
 <div id="mixed-content-navigation">
-  ### Navigation à contenu mixte
+  ### Navigation mixte
 </div>
 
 Combinez des pages d’API générées automatiquement avec d’autres pages :
@@ -73,7 +72,7 @@ Combinez des pages d’API générées automatiquement avec d’autres pages :
 "navigation": {
   "groups": [
     {
-      "group": "Référence API",
+      "group": "API Reference",
       "openapi": "openapi.json",
       "pages": [
         "api/overview",
@@ -90,7 +89,7 @@ Combinez des pages d’API générées automatiquement avec d’autres pages :
   ### Plusieurs versions d’API
 </div>
 
-Organisez différentes versions d’API à l’aide d’Onglets ou de groups :
+Organisez les différentes versions de l’API à l’aide d’onglets ou de groupes :
 
 ```json
 "navigation": {
@@ -111,10 +110,10 @@ Organisez différentes versions d’API à l’aide d’Onglets ou de groups :
   ## Quand utiliser des pages MDX individuelles
 </div>
 
-Envisagez de conserver des pages MDX individuelles lorsque vous avez besoin de :
+Envisagez de conserver des pages MDX individuelles lorsque vous avez besoin de :
 
-* Contenu très personnalisé et volumineux par endpoint, comme des composants React ou des exemples détaillés.
+* Contenu personnalisé important pour chaque point de terminaison, comme des composants React ou de longs exemples.
 * Mises en page uniques.
-* Approches de documentation expérimentales pour des endpoints spécifiques.
+* Approches de documentation expérimentales pour des points de terminaison spécifiques.
 
-Pour la plupart des cas d’utilisation, la navigation OpenAPI offre une meilleure maintenabilité et une plus grande cohérence.
+Dans la plupart des cas d’usage, la navigation OpenAPI offre une meilleure maintenabilité et une plus grande cohérence.

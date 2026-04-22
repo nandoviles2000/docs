@@ -1,70 +1,90 @@
 ---
 title: "创建帮助中心"
 sidebarTitle: "帮助中心"
-description: "在 Mintlify 上构建自助式帮助中心，帮助客户找到答案，减少支持工单量，并随团队规模扩展。"
-keywords: ["support", "customer", "self-service", "FAQ"]
+description: "在 Mintlify 上构建自助式帮助中心，帮助客户找到答案、减少支持工单数量，并可随着团队发展灵活扩展。"
+keywords: ["支持", "客户", "自助服务", "常见问题"]
 ---
 
-支持中心可以帮助客户解决问题，并查找与你的产品相关的信息。客户如果能自己找到答案，就能更快获得帮助，而你的支持团队也可以把精力集中在需要专业知识的复杂问题上。
+帮助中心可帮助客户排查问题并查找有关您产品的信息。当客户能够自行找到答案时，他们就能更快获得帮助，而您的支持团队也可以专注于需要专业知识的复杂问题。
 
-Mintlify 提供可随客户规模扩展的支持中心基础设施。
+Mintlify 提供可随客户规模增长而扩展的帮助中心基础设施。
 
-* **AI 驱动的搜索**： [assistant](/zh/assistant/index) 使用你的支持内容回答客户问题，因此用户即使不知道应该去哪查，或不知道要搜索的具体术语，也能找到答案。
-* **反馈收集**：内置的[反馈小组件](/zh/optimize/feedback)允许客户为文章评分并报告问题，帮助你改进内容。
-* **Analytics**：跟踪哪些文章被查看、客户提出了哪些问题，以及他们在哪些地方遇到困难。
-* **认证**：使用 [SSO 或 OAuth](/zh/deploy/authentication-setup) 基于客户方案或账户类型展示个性化内容。
+* **AI 搜索**：[Assistant](/zh/assistant/index) 会基于您的支持内容回答客户问题，因此用户即使不清楚该去哪里查找，或不知道该搜索哪些具体术语，也能快速获得答案。
+* **反馈收集**：内置的[反馈组件](/zh/optimize/feedback)可让客户为文章评分并报告问题，以便您改进内容。
+* **分析**：在[分析仪表板](/zh/optimize/analytics)中跟踪哪些文章获得了浏览量、客户提出了哪些问题，以及他们在哪些环节遇到困难。
+* **身份验证**：使用 [SSO 或 OAuth](/zh/deploy/authentication-setup) 根据客户的套餐或账户类型显示个性化内容。
 
-<div id="prerequisites">
-  ## 前置条件
+<div id="start-from-a-template">
+  ## 从模板开始
 </div>
 
-如果你还没有创建 Mintlify 项目，请先查看[快速开始](/zh/quickstart) 来部署你的网站。
+创建新的帮助中心，最快的方式是使用 `mint new --template` 命令。运行该命令，然后选择帮助中心入门模板。
 
-* 针对最常见支持主题的文档内容
-* 在 Mintlify 组织中的管理员权限
-* 用于托管支持中心的 domain
+```bash
+mint new your-help-center-name --template help-center-starter
+```
+
+这会创建一个已为帮助中心预先配置好的新项目，其中包括导航结构、示例页面和目录列表。请查看[在线示例](https://help-center-starter.mintlify.app/)，或浏览[模板源代码](https://github.com/mintlify/templates/tree/main/help-center-starter)。
+
+如果你希望在现有项目中配置帮助中心，请继续执行以下步骤。
+
+<div id="prerequisites">
+  ## 前提条件
+</div>
+
+如果你还没有创建 Mintlify 项目，请参阅[快速入门](/zh/quickstart)来部署你的网站。
+
+* 涵盖最常见支持主题的内容
+* 你的 Mintlify 组织的管理员权限
+* 用于托管帮助中心的域名
 
 <div id="migrate-existing-content">
   ## 迁移现有内容
 </div>
 
-如果你是从头开始创建支持中心，可以直接跳到[规划支持中心结构](#plan-your-support-center-structure)。
+如果你要从零开始创建帮助中心，请直接跳到[规划帮助中心结构](#plan-your-help-center-structure)。
 
 <div id="audit-existing-content">
-  ### 审核现有内容
+  ### 盘点现有内容
 </div>
 
-审查你当前的支持资源，以确定需要迁移的内容。
+查看你当前的支持资源，明确哪些内容需要迁移。
 
-* **帮助文章**：你涵盖了哪些主题？哪些文章的浏览量最高？
-* **常见问题（FAQ）**：有没有适合扩展为完整文章的常见问题？
-* **支持工单**：客户反复咨询哪些问题？这些问题应整理成自助内容。
-* **产品文档**：支持内容和产品文档之间是否有重叠？
+* **帮助文章**：涵盖了哪些主题？哪些文章的浏览量最高？
+* **常见问题**：是否有适合整理成文章的常见问题？
+* **支持工单**：客户反复提出哪些问题？这些内容应整理为可自助查阅的内容。
+* **产品文档**：支持内容与产品文档之间是否存在重叠？
 
 <div id="export-your-existing-content">
   ### 导出现有内容
 </div>
 
-* 将内容导出为 **Markdown**，以最简单的方式迁移到 Mintlify。
-* 如果无法导出为 Markdown，则先导出为 **HTML**，再转换为 Markdown。
-* 导出 **工单数据**，用以识别需要编写文档的常见问题。
+* 导出为 **Markdown**，以最简便的方式迁移到 Mintlify。
+* 如果无法导出为 Markdown，请导出为 **HTML**，再将其转换为 Markdown。
+* 导出**工单数据**，找出需要编写文档说明的常见问题。
 
-<div id="plan-your-support-center-structure">
-  ## 规划支持中心的结构
+<div id="plan-your-help-center-structure">
+  ## 规划帮助中心结构
 </div>
 
-围绕客户问题，而不是产品功能来组织支持中心。客户带着问题和目标而来，因此要以符合他们对产品的理解方式和常见任务的思路来构建内容。
+帮助中心应围绕客户遇到的问题来组织，而不是围绕产品功能。客户带着问题和目标而来，因此你应按照他们理解产品和完成常见任务的方式来组织内容。
 
 <Tip>
-  回顾你的支持工单，了解客户实际在咨询什么。这有助于你为内容划分优先级，并围绕真实问题来组织导航结构。
+  查看支持工单，了解客户实际会问什么。这有助于你确定内容优先级，并围绕真实问题来组织导航。
 </Tip>
 
-```json
+使用 `directory` 属性为导航中的每个分组创建索引页。启用 `directory` 属性后，每个 `root` 页面都会显示同一导航分组中其他页面的目录列表。这样，客户就能先概览各个部分的内容，再点击进入所需的具体页面。
+
+将 `directory` 设置为 `"card"` 可使用横向卡片布局，设置为 `"accordion"` 则显示为列表。除非你在后续层级中明确覆盖，否则该值会沿着导航树向下继承。
+
+```json Example navigation structure
 {
   "navigation": {
+    "directory": "card",
     "groups": [
       {
         "group": "Get Started",
+        "root": "getting-started/index",
         "pages": [
           "getting-started/quick-setup",
           "getting-started/first-steps"
@@ -72,6 +92,7 @@ Mintlify 提供可随客户规模扩展的支持中心基础设施。
       },
       {
         "group": "Account",
+        "root": "account/index",
         "pages": [
           "account/billing",
           "account/plans",
@@ -80,7 +101,8 @@ Mintlify 提供可随客户规模扩展的支持中心基础设施。
         ]
       },
       {
-        "group": "使用产品",
+        "group": "Using the Product",
+        "root": "product/index",
         "pages": [
           "product/feature-one",
           "product/feature-two",
@@ -89,6 +111,7 @@ Mintlify 提供可随客户规模扩展的支持中心基础设施。
       },
       {
         "group": "Troubleshooting",
+        "root": "troubleshooting/index",
         "pages": [
           "troubleshooting/common-errors",
           "troubleshooting/connectivity",
@@ -100,62 +123,62 @@ Mintlify 提供可随客户规模扩展的支持中心基础设施。
 }
 ```
 
-有关更多配置选项，请参见 [Navigation](/zh/organize/navigation)。
+更多配置选项，请参阅[导航](/zh/organize/navigation)和[目录列表](/zh/organize/navigation#directory-listings)。
 
 <div id="write-effective-support-content">
-  ## 撰写高效的支持内容
+  ## 编写高质量的支持内容
 </div>
 
-支持内容应帮助客户快速解决问题。每篇文章都应解答一个具体的问题或解决一个具体的难题。将相关内容进行分组组织，而不是创建信息量过大、篇幅过长的页面。
+支持内容应帮助客户快速解决问题。每篇文章都应回答一个具体问题，或解决一个具体问题。将相关内容归类整理，避免创建信息过多、篇幅过长的页面。
 
 <div id="structure-articles-for-scanning">
-  ### 优化文章结构，便于快速浏览
+  ### 让文章便于快速浏览
 </div>
 
-用户在浏览支持页面时，会快速扫视以寻找自己遇到的具体问题。请使用清晰的标题和简短的段落。
+客户会快速浏览支持页面，寻找与自身具体问题相关的内容。请使用清晰的标题和简短的段落。
 
 ```mdx Example support page
 ---
-title: "修复登录问题"
-description: "排查登录账户时的常见问题"
+title: "Fix login issues"
+description: "Troubleshoot common problems signing in to your account"
 ---
 
-## 重置密码
+## Reset your password
 
-如果您忘记了密码,请从登录页面请求重置链接。
+If you forgot your password, request a reset link from the login page.
 
-1. 前往登录页面。
-2. 选择**忘记密码**。
-3. 输入您的电子邮件地址。
-4. 检查收件箱中的重置链接。
+1. Go to the login page.
+2. Select **Forgot password**.
+3. Enter your email address.
+4. Check your inbox for the reset link.
 
-## 清除浏览器缓存
+## Clear browser cache
 
-旧的缓存数据可能导致登录问题。清除浏览器缓存后重试。
+Old cached data can cause login problems. Clear your browser cache and try again.
 
-## 检查账户状态
+## Check account status
 
-如果您的账户被暂停或停用,登录时会看到错误提示。
-如果您认为这是误操作,请联系支持团队。
+If your account is suspended or deactivated, you'll see an error when logging in.
+Contact support if you believe this is a mistake.
 ```
 
 <div id="include-step-by-step-instructions">
-  ### 包含分步骤的操作说明
+  ### 提供分步说明
 </div>
 
-在说明如何完成某项操作时，请使用编号步骤。
+说明如何完成某项操作时，请使用编号步骤。
 
 <Steps>
   <Step title="前往设置">
-    点击工具栏中的齿轮 icon。
+    点击工具栏中的齿轮图标。
   </Step>
 
   <Step title="选择账单">
-    点击导航菜单中的 **Billing**。
+    点击导航菜单中的 **账单**。
   </Step>
 
-  <Step title="更新支付方式">
-    点击当前支付方式旁的 **Update**，然后输入新的付款信息。
+  <Step title="更新付款方式">
+    点击当前付款方式旁边的 **Update**，然后输入新的付款信息。
   </Step>
 </Steps>
 
@@ -163,39 +186,39 @@ description: "排查登录账户时的常见问题"
   ### 添加视觉辅助内容
 </div>
 
-截图和示意图可以帮助用户确认自己来对了地方。
+截图和示意图可帮助客户确认自己找对了位置。
 
 ```mdx Example screenshot
-![设置页面,账单部分已高亮显示](/images/billing-settings.png)
+![突出显示账单部分的设置页面](/images/billing-settings.png)
 ```
 
 <div id="set-up-the-assistant">
-  ## 设置 AI 助手
+  ## 设置Assistant
 </div>
 
-AI 助手会基于你的支持内容回答客户问题。你可以在[控制台](https://dashboard.mintlify.com/products/assistant/settings)中进行配置。
+Assistant会根据您的支持内容回答客户问题。您可以在[仪表板](https://dashboard.mintlify.com/products/assistant/settings)中进行配置。
 
 <Steps>
   <Step title="添加示例问题">
-    添加客户常问的问题，例如：
+    添加客户经常提出的问题，例如：
 
-    * “如何取消我的订阅？”
-    * “为什么我的付款被拒绝？”
+    * “如何取消订阅？”
+    * “为什么我的付款被拒绝了？”
     * “如何添加团队成员？”
 
-    示例问题会显示为快捷按钮，帮助客户一键获取答案。
+    示例问题会显示为快捷按钮，帮助客户一键获得答案。
   </Step>
 
   <Step title="设置转接邮箱">
-    为 AI 助手无法回答的问题配置支持邮箱。这样可以确保在自助服务不足以解决问题时，客户仍然能够联系到你的团队。
+    为Assistant无法回答的问题配置一个支持邮箱。这样一来，当自助服务无法解决问题时，客户仍然可以联系到您的团队。
   </Step>
 
-  <Step title="审查对话记录">
-    定期检查 AI 助手的对话记录，以识别：
+  <Step title="查看对话">
+    定期查看Assistant对话，以识别：
 
-    * AI 助手无法回答的问题（内容缺口）
-    * 不正确或不完整的回答（需要改进的内容）
-    * 常见问题模式（需要优先处理的内容）
+    * Assistant无法回答的问题 (内容缺口)
+    * 错误或不完整的回答 (需要改进的内容)
+    * 常见提问模式 (需要优先完善的内容)
   </Step>
 </Steps>
 
@@ -203,35 +226,35 @@ AI 助手会基于你的支持内容回答客户问题。你可以在[控制台]
   ## 启用反馈收集
 </div>
 
-反馈可以帮助你了解哪些页面对用户有帮助，哪些页面需要改进。查看[反馈](/zh/optimize/feedback)，了解用户认为哪些页面有帮助、哪些需要改进。阅读所有评论，并根据有价值的反馈更新页面。
+反馈可帮助您了解哪些页面对用户有帮助，哪些页面需要改进。查看[反馈](/zh/optimize/feedback)，了解客户认为哪些页面有帮助，哪些页面还需改进。阅读所有评论，并根据有效反馈更新页面。
 
 <div id="set-up-analytics">
-  ## 配置 Analytics
+  ## 设置分析
 </div>
 
-监控客户如何使用你的支持中心，从而持续优化内容。
+在仪表板中查看[分析](/zh/optimize/analytics)，了解客户如何使用你的帮助中心，并持续优化内容。
 
-* **热门文章**：哪些文章获得最多浏览？确保这些文章内容准确并得到良好维护。
-* **搜索查询**：客户会搜索什么？针对常见却没有结果的搜索创建相应内容。
-* **AI 助手对话**：AI 助手会收到哪些问题？借此识别内容缺口。
+* **热门文章**：哪些文章的浏览量最高？请确保这些文章内容准确，并得到妥善维护。
+* **搜索查询**：客户会搜索哪些内容？针对常见但没有搜索结果的查询创建内容。
+* **Assistant 对话**：Assistant 收到了哪些问题？利用这些信息找出内容缺口。
 
 <div id="restrict-content-by-customer-segment">
-  ## 按客户分群限制内容访问
+  ## 按客户细分限制内容
 </div>
 
-如果有不同的客户等级或产品套餐，可以使用基于分组的访问控制，为各个客户群体展示与其最相关的内容。
+如果您有不同的客户等级或产品方案，可使用基于用户组的访问控制，向各个细分客户群显示相关内容。
 
 <Steps>
-  <Step title="设置认证">
-    配置[认证](/zh/deploy/authentication-setup)，在客户访问支持中心时识别其身份。
+  <Step title="设置身份验证">
+    配置[身份验证](/zh/deploy/authentication-setup)，以便在客户访问您的帮助中心时识别其身份。
   </Step>
 
-  <Step title="配置用户分组">
-    在用户数据中返回分组信息，根据套餐类型、账户状态或其他属性定义客户分群。详情参见[用户数据格式](/zh/deploy/authentication-setup#user-data-format)。
+  <Step title="配置用户组">
+    在用户数据中返回组信息，以便根据方案类型、账户状态或其他属性定义客户细分。详见[用户数据格式](/zh/deploy/authentication-setup#user-data-format)。
   </Step>
 
-  <Step title="按分组为内容打标签">
-    使用 frontmatter 指定每篇文章可见的 groups。
+  <Step title="按组标记内容">
+    使用 frontmatter 指定哪些组可以查看每篇文章。
 
     ```mdx
     ---
@@ -242,39 +265,39 @@ AI 助手会基于你的支持内容回答客户问题。你可以在[控制台]
   </Step>
 </Steps>
 
-<div id="maintain-your-support-center">
-  ## 维护你的支持中心
+<div id="maintain-your-help-center">
+  ## 维护您的帮助中心
 </div>
 
-随着产品变化，支持内容也会过时。建立流程来保持内容的准确性。
+随着产品不断迭代，支持内容也会逐渐过时。请建立相应流程，确保内容始终准确。
 
 <Steps>
-  <Step title="配合产品发布进行更新">
-    当你发布产品变更时，更新受影响的支持文章。把文档更新纳入你的发布流程中。
+  <Step title="随产品发布及时更新">
+    每次发布产品变更时，都要更新受影响的支持文章。将文档更新纳入发布流程。
   </Step>
 
-  <Step title="定期审查反馈">
-    每周查看文章评分和客户反馈。及时处理负面反馈，它通常表明内容令人困惑或存在错误。
+  <Step title="定期查看反馈">
+    每周检查文章评分和客户反馈。及时处理负面反馈，因为这往往表明内容表述不清或存在错误。
   </Step>
 
   <Step title="监控支持工单">
-    如果客户就你的支持中心已涵盖的问题提交工单，调查为什么自助服务没有奏效。文章可能难以找到、不清晰或不完整。
+    如果客户为帮助中心已覆盖的问题提交工单，请排查自助服务为何没有解决问题。相关文章可能难以找到、表述不清，或内容不完整。
   </Step>
 
   <Step title="归档过时内容">
-    删除或归档关于已废弃功能的文章。过时的内容会让客户感到困惑，降低他们对你支持中心的信任。
+    删除或归档与已弃用功能相关的文章。过时内容会让客户感到困惑，并降低他们对帮助中心的信任。
   </Step>
 </Steps>
 
 <div id="next-steps">
-  ## 下一步
+  ## 后续步骤
 </div>
 
-你的支持中心已经可以上线了。部署完成后：
+你的帮助中心已准备好上线。部署后：
 
-1. 在你的产品和网站中添加指向支持中心的链接。
-2. 监控 AI 助手对话和搜索查询，以发现内容缺口。
-3. 每周查看反馈评分并改进评分较低的文章。
-4. 跟踪工单量，以衡量自助服务的有效性。
+1. 在产品和网站中添加指向帮助中心的链接。
+2. 监控Assistant对话和搜索查询，找出内容空白。
+3. 每周查看反馈评分，改进评分较低的文章。
+4. 跟踪工单量，衡量自助服务的效果。
 
-一个优秀的支持中心既能降低支持成本，又能提升客户满意度。投入精力打造能够高效解答常见问题的内容。
+优秀的帮助中心既能降低支持成本，又能提升客户满意度。请投入精力完善内容，有效解答常见问题。

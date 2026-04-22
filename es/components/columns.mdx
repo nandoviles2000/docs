@@ -1,28 +1,28 @@
 ---
-title: "Columnas"
-description: "Organiza tarjetas y otros componentes en un diseño de cuadrícula adaptable multicolumna con el componente columns, incluyendo recuentos de columnas personalizables."
-keywords: ['grupos de tarjetas', 'diseño de cuadrícula', 'diseño multicolumna']
+title: 'Columns'
+description: "Organiza cards y otros componentes en una cuadrícula adaptable de varias columnas con el componente Columns, incluido un número de columnas personalizable."
+keywords: ['grupos de cards', 'diseño de cuadrícula', 'diseño de varias columnas']
 ---
 
-El componente `Columns` te permite organizar contenido en un diseño de cuadrícula adaptable. Se usa con más frecuencia para colocar tarjetas en una cuadrícula, especificando el número de columnas de la cuadrícula. También puedes usar el subcomponente `Column` para envolver contenido arbitrario. Las columnas son adaptables y se ajustan automáticamente en pantallas más pequeñas.
+El componente `Columns` te permite organizar contenido en una cuadrícula adaptable. Se usa sobre todo para colocar cards en una cuadrícula indicando el número de columnas. También puedes usar el subcomponente `Column` para agrupar cualquier tipo de contenido. Las columnas son adaptables y se ajustan automáticamente a pantallas más pequeñas.
 
 <Columns cols={2}>
   <Card title="Primeros pasos" icon="rocket">
     Configura tu proyecto con nuestra guía de inicio rápido.
   </Card>
 
-  <Card title="Referencia de la API" icon="code">
+  <Card title="Referencia de API" icon="code">
     Explora endpoints, parámetros y ejemplos de tu API.
   </Card>
 </Columns>
 
 ```mdx Columns example
 <Columns cols={2}>
-  <Card title="Primeros pasos">
-    Configura tu proyecto con nuestra guía de inicio rápido.
+  <Card title="Get started">
+    Set up your project with our quickstart guide.
   </Card>
-  <Card title="Referencia de la API">
-    Explora endpoints, parámetros y ejemplos de tu API.
+  <Card title="API reference">
+    Explore endpoints, parameters, and examples for your API.
   </Card>
 </Columns>
 ```
@@ -31,27 +31,24 @@ El componente `Columns` te permite organizar contenido en un diseño de cuadríc
   ## Subcomponente Column
 </div>
 
-Usa el componente `Column` para envolver texto o código en columnas individuales. Esto es útil cuando deseas mostrar contenido arbitrario lado a lado, no solo tarjetas u otros componentes.
+Usa el componente `Column` para colocar texto o código en columnas individuales. Esto resulta útil cuando quieres mostrar contenido diverso en paralelo, no solo cards u otros componentes.
 
 <Columns cols={2}>
   <Column>
+    **Instalación**
 
-  **Installation**
-
-  ```bash
-  npm install my-package
-  ```
-
+    ```bash
+    npm install my-package
+    ```
   </Column>
+
   <Column>
+    **Uso**
 
-  **Usage**
-
-  ```javascript
-  import { init } from 'my-package';
-  init();
-  ```
-
+    ```javascript
+    import { init } from 'my-package';
+    init();
+    ```
   </Column>
 </Columns>
 
@@ -59,7 +56,7 @@ Usa el componente `Column` para envolver texto o código en columnas individuale
 <Columns cols={2}>
   <Column>
 
-  **Installation**
+  **Instalación**
 
   ```bash
   npm install my-package
@@ -68,7 +65,7 @@ Usa el componente `Column` para envolver texto o código en columnas individuale
   </Column>
   <Column>
 
-  **Usage**
+  **Uso**
 
   ```javascript
   import { init } from 'my-package';
@@ -84,5 +81,5 @@ Usa el componente `Column` para envolver texto o código en columnas individuale
 </div>
 
 <ResponseField name="cols" type="number" default={2}>
-  El número de columnas por fila. Acepta valores de 1 a 4.
+  La cantidad de columnas por fila. Acepta valores de 1 a 4.
 </ResponseField>

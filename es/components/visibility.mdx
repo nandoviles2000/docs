@@ -1,12 +1,12 @@
 ---
-title: "Visibility"
-description: "Controla qué contenido se muestra en la interfaz web para los lectores humanos y qué contenido se muestra solo en la salida Markdown para agentes de IA."
-keywords: ["visibility", "agents", "humans", "markdown", "AI", "conditional content"]
+title: "Visibilidad"
+description: "Controla qué contenido se muestra en la interfaz web para lectores humanos y qué contenido se muestra solo en la salida Markdown para agentes de IA."
+keywords: ["visibilidad", "agentes", "humanos", "markdown", "IA", "contenido condicional"]
 ---
 
-Usa el componente `Visibility` para mostrar contenido diferente a los humanos que visitan tu sitio y a los agentes de IA que procesan la salida Markdown. Esto te permite personalizar la información para cada audiencia sin mantener páginas separadas.
+Usa el componente `Visibility` para mostrar contenido distinto a las personas que leen tu sitio y a los agentes de IA que procesan la salida Markdown. Esto te permite personalizar la información para cada audiencia sin tener que mantener páginas separadas.
 
-En tu sitio publicado, el contenido marcado con `for="humans"` se renderiza normalmente y el contenido marcado con `for="agents"` se oculta. En las [vistas de página en Markdown](/es/ai/markdown-export) (URLs `.md`), ocurre lo contrario: el contenido para agentes se renderiza en la salida Markdown y el contenido exclusivo para humanos no.
+En tu sitio publicado, el contenido marcado con `for="humans"` se muestra con normalidad y el contenido marcado con `for="agents"` permanece oculto. En las [vistas de página en Markdown](/es/ai/markdown-export) (URL `.md`), ocurre lo contrario: el contenido para agentes se muestra en la salida Markdown y el contenido solo para humanos no se muestra.
 
 <div id="example">
   ## Ejemplo
@@ -19,43 +19,43 @@ En tu sitio publicado, el contenido marcado con `for="humans"` se renderiza norm
 
     Este contenido se muestra normalmente en las páginas estándar de tu sitio.
 
-    Úsalo para un paso como: Haz clic en el botón **Get started** en la esquina superior derecha para crear tu cuenta.
+    Úsalo para un paso como: Haz clic en el botón **Comenzar** en la esquina superior derecha para crear tu cuenta.
 
-    En este ejemplo, las instrucciones orientadas a la interfaz aparecen en la página estándar. Consulta la [versión Markdown de esta página](https://mintlify.com/docs/components/visibility.md) para ver las instrucciones orientadas a la API para agentes.
+    En este ejemplo, las instrucciones orientadas a la interfaz aparecen en la página estándar. Consulta la [versión en Markdown de esta página](https://mintlify.com/docs/components/visibility.md) para ver las instrucciones orientadas a la API para agentes.
   </Note>
 </Visibility>
 
 <Visibility for="agents">
-  > Estás viendo este contenido **en Markdown**.
+  > Estás viendo este contenido **en markdown**.
   >
   > Este contenido solo aparece en la versión Markdown de las páginas.
   >
-  > Úsalo para información que solo usan los agentes, como: Para crear una cuenta, llama a `POST /v1/accounts` con una dirección de correo electrónico válida.
+  > Úsalo para información que solo utilizan los agentes, como: Para crear una cuenta, llama a `POST /v1/accounts` con una dirección de correo electrónico válida.
   >
-  > En este ejemplo, las instrucciones orientadas a la API aparecen en la versión Markdown de la página. Consulta la [página estándar](https://mintlify.com/docs/components/visibility) para ver las instrucciones orientadas a la interfaz para humanos.
+  > En este ejemplo, las instrucciones orientadas a la API aparecen en la versión Markdown de la página. Consulta la [página estándar](https://mintlify.com/docs/components/visibility) para ver las instrucciones orientadas a la interfaz para personas.
 </Visibility>
 ```
 
 <Visibility for="humans">
   <Note>
-    Estás viendo este contenido **en la web**.
+    Estás viendo este contenido **en la versión web**.
 
     Este contenido se muestra normalmente en las páginas estándar de tu sitio.
 
-    Úsalo para un paso como: Haz clic en el botón **Get started** en la esquina superior derecha para crear tu cuenta.
+    Úsalo en un paso como este: Haz clic en el botón **Get started** de la esquina superior derecha para crear tu cuenta.
 
-    En este ejemplo, las instrucciones orientadas a la interfaz aparecen en la página estándar. Consulta la [versión Markdown de esta página](https://mintlify.com/docs/components/visibility.md) para ver las instrucciones orientadas a la API para agentes.
+    En este ejemplo, las instrucciones orientadas a la interfaz de usuario aparecen en la página estándar. Consulta la [versión Markdown de esta página](https://mintlify.com/docs/components/visibility.md) para ver las instrucciones orientadas a la API para los agentes.
   </Note>
 </Visibility>
 
 <Visibility for="agents">
-  > Estás viendo este contenido **en Markdown**.
+  > Estás viendo este contenido **en markdown**.
   >
   > Este contenido solo aparece en la versión Markdown de las páginas.
   >
-  > Úsalo para información que solo usan los agentes, como: Para crear una cuenta, llama a `POST /v1/accounts` con una dirección de correo electrónico válida.
+  > Úsalo para información que solo usan los agentes, por ejemplo: Para crear una cuenta, llama a `POST /v1/accounts` con una dirección de correo electrónico válida.
   >
-  > En este ejemplo, las instrucciones orientadas a la API aparecen en la versión Markdown de la página. Consulta la [página estándar](https://mintlify.com/docs/components/visibility) para ver las instrucciones orientadas a la interfaz para humanos.
+  > En este ejemplo, las instrucciones orientadas a la API aparecen en la versión Markdown de la página. Consulta la [página estándar](https://mintlify.com/docs/components/visibility) para ver las instrucciones orientadas a la interfaz de usuario para las personas.
 </Visibility>
 
 <div id="properties">
@@ -63,8 +63,8 @@ En tu sitio publicado, el contenido marcado con `for="humans"` se renderiza norm
 </div>
 
 <ResponseField name="for" type="string" required>
-  La audiencia del contenido envuelto. Debe ser uno de los siguientes:
+  El público destinatario del contenido envuelto. Debe ser uno de los siguientes:
 
-  - `humans`: Contenido visible en la web y excluido de la salida Markdown
-  - `agents`: Contenido oculto en la web e incluido en la salida Markdown
+  * `humans`: Contenido visible en la web y excluido de la salida en Markdown
+  * `agents`: Contenido oculto en la web e incluido en la salida en Markdown
 </ResponseField>

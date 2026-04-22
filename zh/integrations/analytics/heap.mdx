@@ -1,13 +1,13 @@
 ---
 title: "Heap"
-description: "将 Heap 分析集成到 Mintlify 文档站点，自动捕获用户交互和事件，进行行为分析。"
-keywords: ["Heap Analytics", "自动事件跟踪", "Heap app ID", "用户交互跟踪"]
+description: "将 Heap 分析集成到你的 Mintlify 文档站点中，自动捕获用户交互和事件，以进行行为分析。"
+keywords: ["Heap 分析", "自动事件跟踪", "Heap 应用 ID", "用户交互跟踪"]
 ---
 
-在你的 `docs.json` 文件中添加以下配置，将 Analytics 数据发送到 Heap。
+将以下内容添加到你的 `docs.json` 文件中，以便将分析数据发送到 Heap。
 
 <CodeGroup>
-  ```json docs.json 中的 Analytics 选项
+  ```json docs.json 中的分析选项
   "integrations": {
       "heap": {
           "appId": "required"
@@ -24,16 +24,4 @@ keywords: ["Heap Analytics", "自动事件跟踪", "Heap app ID", "用户交互�
   ```
 </CodeGroup>
 
-将 `1234567890` 替换为你的 Heap app ID。你可以在 [Heap 账户设置](https://heapanalytics.com/app/settings) 中找到它。
-
-## 跟踪事件
-
-Mintlify 会自动跟踪以下用户交互并将其发送到 Heap：
-
-- 页面浏览
-- 搜索查询
-- 反馈提交
-- 上下文菜单交互
-- 导航点击
-
-查看[跟踪事件完整列表](/zh/integrations/analytics/overview#tracked-events)了解发送到分析提供商的所有事件详情。
+将 `1234567890` 替换为你的 Heap 应用 ID。你可以在 [Heap 账户设置](https://heapanalytics.com/app/settings) 中找到它。

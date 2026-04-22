@@ -1,14 +1,14 @@
 ---
 title: "安装 CLI"
-description: "安装 Mintlify CLI 以在本地预览文档、实时测试更改，并在部署到生产环境前捕获构建错误。"
+description: "安装 Mintlify CLI，以便在本地预览文档、实时测试更改，并在部署到生产环境之前发现构建错误。"
 keywords: ["CLI", "npm", "安装", "Node.js", "pnpm", "mint"]
 ---
 
 <div id="prerequisites">
-  ## 前提条件
+  ## 环境要求
 </div>
 
-- [Node.js](https://nodejs.org/en) v20.17.0+（推荐 LTS 版本）
+* [Node.js](https://nodejs.org/en) v20.17.0+ (推荐使用 LTS 版本)
 
 <div id="install-the-cli">
   ## 安装 CLI
@@ -28,52 +28,52 @@ keywords: ["CLI", "npm", "安装", "Node.js", "pnpm", "mint"]
   ## 创建新项目
 </div>
 
-要从 Mintlify 入门模板创建新的文档项目，请运行以下命令：
+要基于 Mintlify 入门模板创建新的文档项目，请运行以下命令：
 
 ```bash
 mint new [directory]
 ```
 
-如果你没有指定目录，CLI 会提示你创建新的子目录或覆盖当前目录。
+如果你未指定目录，CLI 会提示你创建新的子目录，或覆盖当前目录。
 
 <Warning>
-  覆盖当前目录会删除所有现有文件。
+  覆盖当前目录会删除其中所有现有文件。
 </Warning>
 
-| Flag | 描述 |
-| --- | --- |
-| `--name` | 项目名称。如果未提供，CLI 会提示输入。 |
-| `--theme` | 项目[主题](/zh/customize/themes)。如果未提供，CLI 会提示选择。 |
-| `--template` | 预定义模板。如果未提供，CLI 会提示选择。 |
-| `--force` | 无需确认即覆盖当前目录。 |
+| 标志         | 描述                                         |
+| ------------ | ------------------------------------------ |
+| `--name`     | 项目名称。若未提供，CLI 会提示你输入。                      |
+| `--theme`    | 项目[主题](/zh/customize/themes)。若未提供，CLI 会提示你选择。 |
+| `--template` | 预定义模板。若未提供，CLI 会提示你选择。                     |
+| `--force`    | 不经提示直接覆盖当前目录。                              |
 
-在交互模式下，CLI 会询问你是选择主题还是克隆模板。要跳过提示，直接传递 `--template` 选项：
+在交互模式下，CLI 会询问你是要选择主题，还是克隆模板。若要跳过该提示，请直接传入 `--template` 标志：
 
 ```bash
 mint new my-docs --template <template-name>
 ```
 
-你可以将 `--template` 与 `--theme` 组合使用，以覆盖模板的默认主题：
+你可以将 `--template` 与 `--theme` 搭配使用，以覆盖模板的默认主题：
 
 ```bash
 mint new my-docs --template <template-name> --theme <theme>
 ```
 
-在 GitHub 上的 [mintlify/templates](https://github.com/mintlify/templates) 仓库中查看可用模板。在交互模式下，CLI 会自动获取并显示可用模板。
+请在 GitHub 上的 [mintlify/templates](https://github.com/mintlify/templates) 仓库中查看可用模板。在交互模式下，CLI 会自动获取并显示可用模板。
 
-在非交互式环境（如 CI/CD 流水线或 AI 编码代理）中，你必须提供 `--name` 和 `--theme` 选项，或者提供 `--template` 选项。
+在 CI/CD 管道或 AI 编码智能体等非交互式环境中，你必须提供 `--name` 和 `--theme` 标志，或提供 `--template` 标志。
 
 <div id="update">
-  ## 更新
+  ## Update
 </div>
 
-如果你的本地预览与已部署的文档不同步，请将 CLI 更新到最新版本：
+如果本地预览与已部署的文档不同步，请将 CLI 更新到最新版本：
 
 ```bash
 mint update
 ```
 
-如果你的版本中没有 `mint update`，请使用最新版本重新安装 CLI：
+如果你的版本中没有 `mint update`，请重新安装最新版 CLI：
 
 <CodeGroup>
   ```bash npm
@@ -89,38 +89,42 @@ mint update
   ## 格式化
 </div>
 
-对于 MDX 文件中的语法高亮和代码格式化，我们推荐使用以下扩展：
+要在 MDX 文件中实现语法高亮和代码格式化，建议使用以下扩展：
 
-- **Cursor、Windsurf、VS Code**：[MDX VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) 和 [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- **JetBrains**：[MDX IntelliJ IDEA 插件](https://plugins.jetbrains.com/plugin/14944-mdx) 和 [Prettier](https://prettier.io/docs/webstorm)
+* **Cursor, Windsurf, VS Code**：[MDX VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) 和 [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+* **JetBrains**：[MDX IntelliJ IDEA 插件](https://plugins.jetbrains.com/plugin/14944-mdx) 和 [Prettier](https://prettier.io/docs/webstorm)
 
 <div id="troubleshooting">
-  ## 故障排除
+  ## 故障排查
 </div>
 
 <AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
-    这可能是由于 Node.js 版本过旧导致的。请尝试以下步骤：
+  <Accordion title="错误：无法在 darwin-arm64 运行时中加载“sharp”模块">
+    这可能是因为 Node.js 版本过旧。请尝试以下操作：
 
-    1. 卸载当前版本的 mint CLI：`npm uninstall -g mint`
-    2. 升级到 Node.js v20.17.0+。
+    1. 卸载当前安装的 mint CLI：`npm uninstall -g mint`
+    2. 升级到 Node.js v20.17.0 或更高版本。
     3. 重新安装 mint CLI：`npm install -g mint`
   </Accordion>
+
   <Accordion title="问题：遇到未知错误">
-    **解决方案**：前往设备根目录，删除 `~/.mintlify` 文件夹。然后重新运行 `mint dev`。
+    **解决方案**：前往设备根目录，删除 `~/.mintlify` 文件夹。然后再次运行 `mint dev`。
   </Accordion>
-  <Accordion title="Error: permission denied">
+
+  <Accordion title="错误：权限被拒绝">
     这是因为你没有全局安装 Node 包所需的权限。
 
-    **解决方案**：尝试运行 `sudo npm i -g mint`。当提示时，输入你用于解锁电脑的密码。
+    **解决方案**：尝试运行 `sudo npm i -g mint`。出现提示后，输入你用于解锁电脑的密码。
   </Accordion>
-  <Accordion title="本地预览与在线文档不一致">
-    这可能是由于 CLI 版本过旧导致的。
 
-    **解决方案**：运行 `mint update` 获取最新更改。
+  <Accordion title="本地预览与网页上的文档显示不一致">
+    这很可能是因为 CLI 版本过旧。
+
+    **解决方案**：运行 `mint update` 以获取最新更新。
   </Accordion>
+
   <Accordion title="mintlify 与 mint 包">
-    如果你遇到 CLI 包的问题，首先运行 `npm ls -g` 查看全局安装了哪些包。如果你不使用 npm，请尝试 `which mint` 来定位安装位置。
+    如果 CLI 包出现问题，请先运行 `npm ls -g` 查看全局安装了哪些包。如果你不使用 npm，请尝试运行 `which mint` 来定位安装位置。
 
     如果你同时安装了 `mint` 和 `mintlify` 包，请卸载 `mintlify`：
 
@@ -130,9 +134,10 @@ mint update
     npm i -g mint
     ```
   </Accordion>
-  <Accordion title="安装后客户端版本显示 'none'">
-    如果运行 `mint version` 后客户端版本显示为 `none`，可能是 CLI 因企业防火墙或 VPN 而无法下载客户端应用程序。
 
-    **解决方案**：请你的 IT 管理员将 `releases.mintlify.com` 添加到网络允许列表中。
+  <Accordion title="安装后客户端版本显示为“none”">
+    如果你运行 `mint version` 后看到客户端版本显示为 `none`，则 CLI 可能因企业防火墙或 VPN 而无法下载客户端应用。
+
+    **解决方案**：请让 IT 管理员将 `releases.mintlify.com` 添加到网络允许列表中。
   </Accordion>
 </AccordionGroup>

@@ -1,51 +1,51 @@
 ---
 title: "CI 检查"
-description: "在 CI/CD 流水线中自动化文档质量检查，包括失效链接检测、代码检查、语法校验和构建预览。"
+description: "在 CI/CD 流水线中自动执行文档质量检查，包括失效链接检测、lint、语法校验和构建预览。"
 keywords: ["continuous integration", "CI/CD", "checks", "Vale", "linter"]
 ---
 
 <Info>
-  [Pro 和 Enterprise 方案](https://mintlify.com/pricing?ref=docs-ci)包含针对 GitHub 存储库的 CI 检查。
+  [Pro and Enterprise plans](https://mintlify.com/pricing?ref=docs-ci) 包含适用于 GitHub 仓库的 CI 检查功能。
 </Info>
 
-使用 CI 检查对文档进行 lint，捕捉错误并在部署前给出 Warning。Mintlify 的 CI 检查会在指向已配置部署用分支的拉取请求（PR）上运行。
+使用 CI 检查可对文档进行 lint，发现错误，并在部署前收到警告。Mintlify CI 检查会在针对已配置部署分支发起的拉取请求 (PR) 中运行。
 
 <div id="installation">
   ## 安装
 </div>
 
-首先，请按照 [GitHub](/zh/deploy/github) 页面上的步骤进行操作。
+首先，请按照 [GitHub](/zh/deploy/github) 页面中的步骤进行操作。
 
 <Tip>
-  Mintlify GitHub 应用只需要访问存放文档内容的存储库。我们建议仅授予该存储库的访问权限。
+  Mintlify GitHub App 仅需访问存放文档内容的仓库。建议仅向其授予该仓库的访问权限。
 </Tip>
 
 ## 配置
 
-前往控制台的 [附加组件](https://dashboard.mintlify.com/products/addons) 页面，配置在部署中启用的 CI 检查。开启你希望运行的检查。
+前往仪表板中的 [附加组件](https://dashboard.mintlify.com/products/addons) 页面，配置部署时启用的 CI 检查。开启你想运行的检查。
 
-启用检查时，你可以选择以 `Warning` 或 `Blocking` 级别运行。
+启用检查时，你可以选择以 `Warning` 或 `Blocking` 级别运行它们。
 
-* `Warning` 级别的检查即使出现错误或提出建议，也不会标记为失败。
-* `Blocking` 级别的检查如果出现错误或提出建议，则会标记为失败。
+* `Warning` 级别的检查即使存在错误或建议，也不会返回失败状态。
+* `Blocking` 级别的检查如果存在错误或建议，则会返回失败状态。
 
 <div id="available-ci-checks">
-  ## 可用的 CI 检测
+  ## 可用的 CI 检查
 </div>
 
 <div id="broken-links">
   ### 失效链接
 </div>
 
-与[CLI 链接检查器](/zh/cli/commands#mint-broken-links)在本地环境中的工作方式类似，失效链接 CI 检查会自动扫描你的文档内容，查找站点内页面之间的失效内部链接。它不会检查指向其他网站的外部链接。
+与 [CLI 链接检查器](/zh/cli/commands#mint-broken-links) 在本地计算机上的工作方式类似，失效链接 CI 检查会自动扫描文档内容，查找站点内页面之间失效的内部链接。它不会检查指向其他网站的外部链接。
 
-要查看拉取请求中失效链接的详细结果，请点击 **Checks** 选项卡并选择 Mintlify 失效链接检查。结果会列出拉取请求中发现的包含失效链接的文件。
+要查看拉取请求 (PR) 中的失效链接详细结果，请点击 **Checks** 选项卡，然后选择 Mintlify 失效链接检查。结果会列出在该拉取请求 (PR) 中发现失效链接的所有文件。
 
 <div id="vale">
   ### Vale
 </div>
 
-[Vale](https://vale.sh/) 是一款开源的、基于规则的文本风格检查工具（prose linter），支持多种文档类型，包括 Markdown 和 MDX。使用 Vale 可以检查文档中的写作风格和语气是否一致。
+[Vale](https://vale.sh/) 是一款开源的规则式文稿检查工具，支持多种文档类型，包括 Markdown 和 MDX。使用 Vale 可检查文档在风格和语气上的一致性。
 
 Mintlify 支持在 CI 检查中自动运行 Vale，并将结果显示为检查状态。
 
@@ -53,31 +53,31 @@ Mintlify 支持在 CI 检查中自动运行 Vale，并将结果显示为检查�
   #### 配置
 </div>
 
-如果在你的部署的内容根目录中有一个 `.vale.ini` 文件，那么 Vale CI 检查会使用该配置文件以及你在 `stylesPath` 中指定的任何配置文件。
+如果你的部署根内容目录中有 `.vale.ini` 文件，Vale CI 检查会使用该配置文件，以及你指定的 `stylesPath` 中的所有配置文件。
 
-如果你没有 Vale 配置文件，则会自动加载默认配置。
+如果没有 Vale 配置文件，则会自动加载默认配置。
 
 ```mdx Default vale.ini configuration expandable
-# Top level styles
+# 顶级样式
 StylesPath = /app/styles
 MinAlertLevel = suggestion
-# Inline HTML tags to ignore (code/tt for code snippets, img/url for links/images, a for anchor tags)
+# 要忽略的内联 HTML 标签（code/tt 用于代码片段，img/url 用于链接/图片，a 用于锚点标签）
 IgnoredScopes = code, tt, img, url, a
 SkippedScopes = script, style, pre, figure
 
-# Vocabularies
+# 词汇表
 Vocab = Mintlify
 
-# 将 MDX 解析为 MD，以避免与 JSX 产生兼容性问题
+# 将 MDX 解析为 MD，以避免 JSX 解析的脆弱性问题
 [formats]
 mdx = md
 
-# Only match MDX
+# 仅匹配 MDX
 [*.mdx]
 BasedOnStyles = Vale
-Vale.Terms = NO # Enforces really harsh capitalization rules, keep off
+Vale.Terms = NO # 会强制执行非常严格的大小写规则，保持关闭
 
-# Ignore JSX/MDX-specific syntax patterns
+# 忽略 JSX/MDX 特有的语法模式
 # `import ...`, `export ...`
 # `<Component ... />`
 # `<Component>...</Component>`
@@ -87,13 +87,13 @@ TokenIgnores = (?sm)((?:import|export) .+?$), \
 (<[A-Z]\w+>.+?<\/[A-Z]\w+>), \
 \{[^}]*\}
 
-# Exclude multiline JSX and curly braces
+# 排除多行 JSX 和花括号
 # `<Component \n ... />`
 BlockIgnores = (?sm)^(<\w+\n .*\s\/>)$, \
 (?sm)^({.+.*})
 ```
 
-默认的 Vale 词汇列表包含以下词汇。
+Vale 默认词汇表包含以下词语。
 
 ```text Default Vale vocabulary expandable
 Mintlify
@@ -365,11 +365,10 @@ next
 toc
 ```
 
-要在默认配置中添加你自己的词表，请创建一个 `styles/config/vocabularies/Mintlify` 目录，并在其中添加 `accept.txt` 和 `reject.txt` 文件。
+如需在默认配置中添加自定义词汇表，请创建 `styles/config/vocabularies/Mintlify` 目录，并添加 `accept.txt` 和 `reject.txt` 文件。
 
-
-* `accept.txt`: Vale linter 应忽略的词语，例如产品名称或不常见的术语。
-* `reject.txt`: Vale linter 应标记为错误的词语，例如与你文档语气不相符的行话或用词。
+* `accept.txt`：Vale linter 应忽略的词语。例如，产品名称或不常见的术语。
+* `reject.txt`：Vale linter 应标记为错误的词语。例如，术语黑话或不符合文档语气的用词。
 
 ```text Example Vale file structure
 /your-project
@@ -401,45 +400,45 @@ toc
 ```
 
 <Note>
-  出于安全原因，不支持使用绝对路径形式的 `stylesPath`，也不支持包含 `..` 的 `stylesPath`。
+  出于安全考虑，不支持使用绝对 `stylesPath`，也不支持包含 `..` 的 `stylesPath`。
 
-  请使用相对路径，并在你的存储库中包含该 `stylesPath`。
+  请使用相对路径，并将 `stylesPath` 文件包含在你的仓库中。
 </Note>
 
 <div id="packages">
   #### 软件包
 </div>
 
-Vale 支持一系列检查拼写和写作风格错误的[软件包](https://vale.sh/docs/keys/packages)。任何你在存储库中放在正确 `stylesPath` 下的软件包，都会自动安装并随你的 Vale 配置运行。
+Vale 支持一系列用于检查拼写和文风错误的[软件包](https://vale.sh/docs/keys/packages)。只要你将这些软件包按正确的 `stylesPath` 放在代码仓库中，它们就会根据你的 Vale 配置自动安装并运行。
 
-对于未包含在存储库中的软件包，你可以指定来自 [Vale package registry](https://vale.sh/explorer) 的任意软件包，它们会被自动下载并在你的 Vale 配置中使用。
+对于未包含在代码仓库中的软件包，你可以指定 [Vale 软件包注册表](https://vale.sh/explorer)中的任意软件包，它们会自动下载并用于你的 Vale 配置。
 
 <Note>
-  出于安全原因，**不**支持自动下载不来自 [Vale package registry](https://vale.sh/explorer) 的软件包。
+  出于安全原因，不支持自动下载不来自 [Vale 软件包注册表](https://vale.sh/explorer)的 软件包。
 </Note>
 
 <div id="vale-with-mdx">
-  #### 将 Vale 与 `MDX` 搭配使用
+  #### 在 `MDX` 中使用 Vale
 </div>
 
 <Note>
-  对 MDX 的原生支持需要 Vale 3.10.0 或更高版本。使用 `vale --version` 来检查你的 Vale 版本。
+  MDX 原生支持需要 Vale 3.10.0 或更高版本。使用 `vale --version` 检查你的 Vale 版本。
 </Note>
 
-要在 MDX 文件中使用 Vale 的文内注释，请使用 MDX 风格的注释 `{/* ... */}`：
+如需在 MDX 文件中使用 Vale 的文档内注释，请使用 MDX 风格的注释 `{/* ... */}`：
 
 ```mdx
 {/* vale off */}
 
-Vale 忽略此文本
+Vale ignores this text
 
 {/* vale on */}
 ```
 
-Vale 会在 MDX 文件中自动识别并遵守这些注释，无需额外配置。使用注释来跳过你希望 linter 忽略的行或片段。
+Vale 会自动识别并遵循 MDX 文件中的这些注释，无需额外配置。使用注释可跳过你希望 linter 忽略的行或部分内容。
 
 <Warning>
-  不要将 `{/* vale off */}` 或类似的 MDX 表达式注释放在 JSX 组件内，作为位于同级元素之间的直接子元素。例如，在 `<Steps>` 组件内部的两个 `<Step>` 元素之间。
+  不要将 `{/* vale off */}` 或类似的 MDX 表达式注释，作为 JSX 组件的直接子节点放在同级元素之间。例如，不要放在 `<Steps>` 组件内两个 `<Step>` 元素之间。
 
-  请将注释放在某个特定元素的内容内部，或通过重构内容结构来避免需要使用这些注释。
+  请将注释放在特定元素的内容内部，或调整内容结构，以避免使用注释。
 </Warning>

@@ -1,12 +1,14 @@
 ---
 title: "Integraciones"
-description: "Conecta plataformas de analítica, widgets de chat y servicios de terceros a tu sitio de documentación de Mintlify a través de la configuración de integraciones en docs.json."
-keywords: ["integrations", "analytics", "google analytics", "posthog", "segment", "intercom", "hotjar", "mixpanel", "amplitude", "docs.json"]
+description: "Conecta plataformas de analítica, widgets de chat y servicios de terceros a tu sitio de documentación de Mintlify mediante la configuración `integrations` de docs.json."
+keywords: ["integraciones", "analítica", "google analytics", "posthog", "segment", "intercom", "hotjar", "mixpanel", "amplitude", "docs.json"]
 ---
 
-Usa el campo `integrations` en `docs.json` para conectar plataformas de analítica de terceros, herramientas de chat y otros servicios a tu sitio de documentación.
+Usa el campo `integrations` de `docs.json` para conectar plataformas de analítica de terceros, herramientas de chat y otros servicios a tu sitio de documentación.
 
-## Ajustes
+<div id="settings">
+  ## Configuración
+</div>
 
 Configura todas las integraciones como propiedades del objeto `integrations` en tu archivo `docs.json`:
 
@@ -18,20 +20,22 @@ Configura todas las integraciones como propiedades del objeto `integrations` en 
 }
 ```
 
-### Analítica
+<div id="analytics">
+  ### Analítica
+</div>
 
 <ResponseField name="integrations.adobe" type="object">
   Integración con Adobe Analytics.
 
   <Expandable title="integrations.adobe">
     <ResponseField name="launchUrl" type="string (uri)" required>
-      Tu URL de lanzamiento de Adobe Analytics.
+      La URL de lanzamiento de Adobe Analytics.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.amplitude" type="object">
-  Integración con Amplitude Analytics.
+  Integración de analítica con Amplitude.
 
   <Expandable title="integrations.amplitude">
     <ResponseField name="apiKey" type="string" required>
@@ -45,17 +49,17 @@ Configura todas las integraciones como propiedades del objeto `integrations` en 
 
   <Expandable title="integrations.clarity">
     <ResponseField name="projectId" type="string" required>
-      Tu ID de proyecto de Microsoft Clarity.
+      El ID de tu proyecto de Microsoft Clarity.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.fathom" type="object">
-  Integración con Fathom Analytics.
+  Integración de analítica con Fathom.
 
   <Expandable title="integrations.fathom">
     <ResponseField name="siteId" type="string" required>
-      Tu ID de sitio de Fathom.
+      El ID de tu sitio de Fathom.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -75,30 +79,31 @@ Configura todas las integraciones como propiedades del objeto `integrations` en 
 
   <Expandable title="integrations.gtm">
     <ResponseField name="tagId" type="string matching ^G" required>
-      Tu ID de contenedor de Google Tag Manager. Debe comenzar con `G`.
+      El ID de tu contenedor de Google Tag Manager. Debe comenzar con `G`.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.heap" type="object">
-  Integración con Heap Analytics.
+  Integración de analítica con Heap.
 
   <Expandable title="integrations.heap">
     <ResponseField name="appId" type="string" required>
-      Tu ID de aplicación de Heap.
+      El ID de tu aplicación de Heap.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.hightouch" type="object">
-  Integración de activación de datos de Hightouch.
+  Integración de activación de datos con Hightouch.
 
   <Expandable title="integrations.hightouch">
     <ResponseField name="writeKey" type="string" required>
-      Tu write key de Hightouch.
+      Tu clave de escritura de Hightouch.
     </ResponseField>
+
     <ResponseField name="apiHost" type="string">
-      Tu host de API de Hightouch.
+      El host de la API de Hightouch.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -108,10 +113,11 @@ Configura todas las integraciones como propiedades del objeto `integrations` en 
 
   <Expandable title="integrations.hotjar">
     <ResponseField name="hjid" type="string" required>
-      Tu ID de sitio de Hotjar.
+      El ID de tu sitio de Hotjar.
     </ResponseField>
+
     <ResponseField name="hjsv" type="string" required>
-      Tu versión de script de Hotjar.
+      La versión del script de Hotjar.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -121,13 +127,13 @@ Configura todas las integraciones como propiedades del objeto `integrations` en 
 
   <Expandable title="integrations.logrocket">
     <ResponseField name="appId" type="string" required>
-      Tu ID de aplicación de LogRocket.
+      El ID de tu aplicación de LogRocket.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.mixpanel" type="object">
-  Integración con Mixpanel para analítica de producto.
+  Integración de analítica de producto con Mixpanel.
 
   <Expandable title="integrations.mixpanel">
     <ResponseField name="projectToken" type="string" required>
@@ -137,80 +143,87 @@ Configura todas las integraciones como propiedades del objeto `integrations` en 
 </ResponseField>
 
 <ResponseField name="integrations.pirsch" type="object">
-  Integración con Pirsch para analítica respetuosa con la privacidad.
+  Integración de analítica respetuosa con la privacidad con Pirsch.
 
   <Expandable title="integrations.pirsch">
     <ResponseField name="id" type="string" required>
-      Tu ID de sitio de Pirsch.
+      El ID de tu sitio de Pirsch.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.plausible" type="object">
-  Integración con Plausible para analítica respetuosa con la privacidad.
+  Integración de analítica respetuosa con la privacidad con Plausible.
 
   <Expandable title="integrations.plausible">
     <ResponseField name="domain" type="string" required>
       Tu dominio de Plausible.
     </ResponseField>
+
     <ResponseField name="server" type="string">
-      Tu servidor de Plausible, si lo alojas tú mismo.
+      Tu servidor de Plausible, si lo alojas por tu cuenta.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.posthog" type="object">
-  Integración con PostHog para analítica de producto.
+  Integración de analítica de producto con PostHog.
 
   <Expandable title="integrations.posthog">
     <ResponseField name="apiKey" type="string matching ^phc_" required>
       Tu clave de API de PostHog. Debe comenzar con `phc_`.
     </ResponseField>
+
     <ResponseField name="apiHost" type="string (uri)">
-      Tu host de API de PostHog. Requerido si alojas PostHog tú mismo.
+      El host de la API de PostHog. Obligatorio si alojas PostHog por tu cuenta.
     </ResponseField>
+
     <ResponseField name="sessionRecording" type="boolean">
-      Si se habilita la grabación de sesiones. El valor predeterminado es `false`.
+      Indica si se habilita la grabación de sesiones. El valor predeterminado es `false`.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.segment" type="object">
-  Integración con Segment como plataforma de datos de clientes.
+  Integración con la plataforma de datos de clientes de Segment.
 
   <Expandable title="integrations.segment">
     <ResponseField name="key" type="string" required>
-      Tu write key de Segment.
+      Tu clave de escritura de Segment.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Chat y soporte
+<div id="chat-and-support">
+  ### Chat y soporte
+</div>
 
 <ResponseField name="integrations.frontchat" type="object">
-  Integración con el widget de chat de Front.
+  Integración del widget de chat de Front.
 
   <Expandable title="integrations.frontchat">
     <ResponseField name="snippetId" type="string" required>
-      Tu ID de snippet de chat de Front. Longitud mínima: 6.
+      Tu ID del fragmento de chat de Front. Longitud mínima: 6.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="integrations.intercom" type="object">
-  Integración con Intercom para mensajería con clientes.
+  Integración de mensajería para clientes de Intercom.
 
   <Expandable title="integrations.intercom">
     <ResponseField name="appId" type="string" required>
-      Tu ID de aplicación de Intercom. Longitud mínima: 6.
+      Tu ID de la aplicación de Intercom. Longitud mínima: 6.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Enriquecimiento de datos
+<div id="data-enrichment">
+  ### Enriquecimiento de datos
+</div>
 
 <ResponseField name="integrations.clearbit" type="object">
-  Integración con Clearbit para enriquecimiento de datos de visitantes.
+  Integración con Clearbit para el enriquecimiento de datos de visitantes.
 
   <Expandable title="integrations.clearbit">
     <ResponseField name="publicApiKey" type="string" required>
@@ -219,14 +232,16 @@ Configura todas las integraciones como propiedades del objeto `integrations` en 
   </Expandable>
 </ResponseField>
 
-### Configuración de la plataforma
+<div id="platform-settings">
+  ### Configuración de la plataforma
+</div>
 
 <ResponseField name="integrations.telemetry" type="object">
   Configuración de telemetría de Mintlify.
 
   <Expandable title="integrations.telemetry">
     <ResponseField name="enabled" type="boolean">
-      Si se habilita la telemetría de Mintlify. Cuando se establece en `false`, las funciones de feedback también se deshabilitan y no aparecen en las páginas de tu documentación.
+      Si se debe habilitar la telemetría de Mintlify. Cuando se establece en `false`, las funciones de comentarios también se deshabilitan y no aparecen en las páginas de tu documentación.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -236,15 +251,18 @@ Configura todas las integraciones como propiedades del objeto `integrations` en 
 
   <Expandable title="integrations.cookies">
     <ResponseField name="key" type="string">
-      Nombre de la clave de cookie.
+      Nombre de la clave de la cookie.
     </ResponseField>
+
     <ResponseField name="value" type="string">
       Valor de la cookie.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-## Ejemplo
+<div id="example">
+  ## Ejemplo
+</div>
 
 ```json docs.json
 "integrations": {

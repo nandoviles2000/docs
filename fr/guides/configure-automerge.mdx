@@ -1,48 +1,52 @@
 ---
-title: "Configurer l'automerge pour les applications GitHub"
-sidebarTitle: "Configurer l'automerge"
-description: "Configurez des workflows GitHub pour fusionner automatiquement les pull requests Mintlify en ajoutant le bot Mintlify à la liste de contournement du ruleset de votre dépôt."
-keywords: ["automerge", "ruleset", "protection de branche", "bypass"]
+title: "Configurer la fusion automatique pour les applications GitHub"
+sidebarTitle: "Configurer la fusion automatique"
+description: "Configurez des flux de travail GitHub pour fusionner automatiquement les pull requests (PR) Mintlify en ajoutant le bot Mintlify à la liste d’exceptions du ruleset de votre dépôt."
+keywords: ["automerge", "ruleset", "protection de branche", "contournement"]
 ---
 
-Ajoutez l'application GitHub Mintlify à la liste de contournement d'un ensemble de règles pour que l'application puisse créer et fusionner des pull requests sans que les exigences de révision et de vérification de statut ne la bloquent. Cela vous permet de configurer des [workflows](/fr/guides/automate-agent) pour fusionner automatiquement les modifications dans `main`.
+Ajoutez l’application GitHub Mintlify à la liste d’exceptions d’un ruleset afin qu’elle puisse créer et fusionner des pull requests (PR) sans être bloquée par les exigences de révision et de vérification d’état. Cela vous permet de configurer des [flux de travail](/fr/guides/automate-agent) pour fusionner automatiquement les modifications sur `main`.
 
 <Note>
-  L'application GitHub Mintlify doit disposer de permissions de contournement sur **tous** les ensembles de règles ciblant votre branche de déploiement, y compris les ensembles de règles définis au niveau de l'organisation et au niveau du dépôt. Si un ensemble de règles ne contient pas l'entrée de contournement, le workflow crée une PR, mais ne la fusionne pas.
+  L’application GitHub Mintlify doit disposer d’autorisations de contournement sur **chaque** ruleset qui cible votre branche de déploiement, y compris les rulesets définis au niveau de l’organisation et du dépôt. Si un ruleset ne comporte pas cette exception, le flux de travail crée une PR, mais ne la fusionne pas.
 </Note>
 
 <div id="prerequisites">
   ## Prérequis
 </div>
 
-- Accès administrateur au dépôt (et accès administrateur à l'organisation s'il existe des ensembles de règles au niveau de l'organisation)
-- [Application GitHub Mintlify](/fr/deploy/github) installée sur le dépôt
-- Un ou plusieurs ensembles de règles ciblant la branche `main` (au niveau de l'organisation ou du dépôt)
+* Accès administrateur au dépôt (et à l’organisation s’il existe des rulesets au niveau de l’organisation)
+* [Application GitHub de Mintlify](/fr/deploy/github) installée sur le dépôt
+* Un ou plusieurs rulesets ciblant la branche `main` (au niveau de l’organisation ou du dépôt)
 
 <div id="steps">
-  ## Étapes
+  ## Steps
 </div>
 
-Répétez ces étapes pour chaque ensemble de règles qui s'applique à votre branche de déploiement. Tant les ensembles de règles **au niveau de l'organisation** que **au niveau du dépôt**.
+Répétez ces étapes pour chaque ruleset qui s’applique à votre branche de déploiement, aussi bien au **niveau de l’organisation** qu’au **niveau du dépôt**.
 
 <Steps>
-  <Step title="Accédez aux ensembles de règles">
-    - **Ensembles de règles du dépôt** : Sur GitHub, allez dans **Settings** -> **Rules** -> **Rulesets** de votre dépôt.
-    - **Ensembles de règles de l'organisation** : Allez dans **Settings** -> **Rules** -> **Rulesets** de votre organisation.
+  <Step title="Accéder aux rulesets">
+    * **Rulesets du dépôt** : dans GitHub, accédez à **Settings** -&gt; **Rules** -&gt; **Rulesets** de votre dépôt.
+    * **Rulesets de l’organisation** : accédez à **Settings** -&gt; **Rules** -&gt; **Rulesets** de votre organisation.
   </Step>
-  <Step title="Sélectionnez l'ensemble de règles">
-    Cliquez sur un ensemble de règles qui cible votre branche de déploiement, généralement `main`.
+
+  <Step title="Sélectionner le ruleset">
+    Cliquez sur un ruleset qui cible votre branche de déploiement, généralement `main`.
   </Step>
-  <Step title="Ajoutez l'application GitHub Mintlify à la liste de contournement">
+
+  <Step title="Ajouter l’application GitHub Mintlify à la liste d’exceptions">
     1. Sous **Bypass list**, cliquez sur **Add bypass**.
-    2. Recherchez et sélectionnez l'application GitHub Mintlify.
-    3. Définissez le mode de contournement sur **Always**.
+    2. Recherchez l’application GitHub Mintlify, puis sélectionnez-la.
+    3. Définissez le mode d’exception sur **Always**.
   </Step>
+
   <Step title="Enregistrer">
     Cliquez sur **Save changes**.
   </Step>
-  <Step title="Répétez pour les ensembles de règles restants">
-    Si vous avez des ensembles de règles supplémentaires au niveau de l'organisation ou du dépôt qui ciblent votre branche de déploiement, répétez les étapes 2 à 4 pour chacun d'entre eux.
+
+  <Step title="Répéter pour les autres rulesets">
+    Si vous avez d’autres rulesets au niveau de l’organisation ou du dépôt qui ciblent votre branche de déploiement, répétez les étapes 2 à 4 pour chacun d’eux.
   </Step>
 </Steps>
 
@@ -50,5 +54,5 @@ Répétez ces étapes pour chaque ensemble de règles qui s'applique à votre br
   ## Vérifiez la configuration
 </div>
 
-1. **Pour les contributeurs** : Ouvrez une PR ciblant `main`. Confirmez qu'elle nécessite toujours une approbation et des vérifications de statut réussies avant de pouvoir fusionner.
-2. **Pour les workflows** : Déclenchez un workflow avec l'automerge activé. Confirmez que le workflow s'exécute et fusionne avec succès une PR.
+1. **Pour les contributeurs** : ouvrez une PR ciblant `main`. Vérifiez qu’elle nécessite toujours une approbation et la réussite des vérifications d’état avant de pouvoir être fusionnée.
+2. **Pour les flux de travail** : déclenchez un flux de travail avec la fusion automatique activée. Vérifiez qu’il s’exécute et fusionne une PR avec succès.

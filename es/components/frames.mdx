@@ -1,46 +1,46 @@
 ---
 title: "Frames"
-description: "Envuelve imágenes, videos y otros componentes con el componente frame para añadir bordes estilizados, pies de foto y énfasis visual a tu contenido."
-keywords: ["marcos de imagen", "énfasis visual", "leyendas", "borde"]
+description: "Envuelve imágenes, videos y otros componentes con el componente Frame para añadir bordes estilizados, leyendas y énfasis visual a tu contenido."
+keywords: ["Frames de imágenes", "énfasis visual", "leyendas", "borde"]
 ---
 
-Usa marcos para mostrar imágenes, diagramas, videos u otros contenidos visuales con un estilo uniforme y leyendas opcionales. Los Frames centran el contenido y aportan separación visual con respecto al texto circundante.
+Usa Frames para mostrar imágenes, diagramas, videos u otro contenido visual con un estilo uniforme y leyendas opcionales. Los Frames centran el contenido y lo separan visualmente del texto que lo rodea.
 
 <Frame>
-  <img src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg" alt="Fotografía de un lago rodeado de árboles y montañas a lo lejos en el Parque Nacional de Yellowstone." />
+  <img src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg" alt="Fotografía de un lago rodeado de árboles, con montañas a lo lejos, en el Parque Nacional de Yellowstone." />
 </Frame>
 
 <div id="captions">
-  ## Pies de foto
+  ## Leyendas
 </div>
 
-Añade contexto adicional a una imagen con la prop opcional `caption`. Los pies de foto aparecen en el marco situado debajo de la imagen.
+Agrega contexto adicional a una imagen con la prop opcional `caption`. Las leyendas aparecen en el Frame debajo de la imagen.
 
-<Frame caption="El Parque Nacional Yosemite es visitado por más de 3,5 millones de personas cada año.">
+<Frame caption="El Parque Nacional de Yosemite recibe más de 3,5 millones de visitantes cada año.">
   <img src="https://mintlify-assets.b-cdn.net/yosemite.jpg" alt="Fotografía del valle de Yosemite." />
 </Frame>
 
 <div id="markdown-in-captions">
-  ### Markdown en los pies de foto
+  ### Markdown en las leyendas
 </div>
 
-Los pies de foto admiten formato Markdown, incluidos los enlaces y el texto en negrita.
+Las leyendas admiten formato Markdown, incluidos enlaces y texto en negrita.
 
-<Frame caption="Obtén más información sobre el [Parque Nacional Yosemite](https://www.nps.gov/yose/index.htm) y planifica tu visita.">
+<Frame caption="Obtén más información sobre [Yosemite National Park](https://www.nps.gov/yose/index.htm) y planifica tu visita.">
   <img src="https://mintlify-assets.b-cdn.net/yosemite.jpg" alt="Fotografía del valle de Yosemite." />
 </Frame>
 
 <Frame caption="**Importante:** Consulta el [sitio web del parque](https://www.nps.gov/yose/index.htm) para conocer las condiciones actuales.">
-  <img src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg" alt="Fotografía de un lago rodeado de árboles con montañas a lo lejos en el Parque Nacional de Yellowstone." />
+  <img src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg" alt="Fotografía de un lago rodeado de árboles con montañas al fondo en Yellowstone National Park." />
 </Frame>
 
 <div id="hints">
   ## Sugerencias
 </div>
 
-Añade texto que preceda al cuadro usando la prop opcional `hint`. Las sugerencias aparecen sobre el cuadro.
+Añade texto antes del Frame usando la prop opcional `hint`. Las sugerencias aparecen encima del Frame.
 
-<Frame hint="Si planeas visitar el Parque Nacional de Yosemite, obtén tus permisos antes de ir." caption="El Parque Nacional de Yosemite es visitado por más de 3,5 millones de personas cada año.">
+<Frame hint="Si planeas visitar el Parque Nacional de Yosemite, consigue tus permisos antes de ir." caption="Más de 3,5 millones de personas visitan el Parque Nacional de Yosemite cada año.">
   <img src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg" alt="Fotografía de un lago rodeado de árboles con montañas a lo lejos en el Parque Nacional de Yellowstone." />
 </Frame>
 
@@ -48,7 +48,7 @@ Añade texto que preceda al cuadro usando la prop opcional `hint`. Las sugerenci
   ## Videos
 </div>
 
-Cuando colocas un elemento `video` con `autoPlay` dentro de un marco, el marco añade los atributos `playsInline`, `loop` y `muted`.
+Si colocas un elemento `video` con `autoPlay` dentro de un Frame, este añade los atributos `playsInline`, `loop` y `muted`.
 
 ```mdx Video with autoPlay
 <Frame caption="Product demo">
@@ -56,55 +56,54 @@ Cuando colocas un elemento `video` con `autoPlay` dentro de un marco, el marco a
 </Frame>
 ```
 
-Los videos sin `autoPlay` no reciben atributos adicionales de forma predeterminada.
+Los videos sin `autoPlay` no incluyen atributos adicionales de forma predeterminada.
 
 <div id="properties">
   ## Propiedades
 </div>
 
 <ResponseField name="caption" type="string">
-  Texto que aparece como parte del marco, centrado debajo del contenido. Admite formato Markdown, incluidos enlaces y texto en negrita.
+  Texto que aparece como parte del Frame, centrado debajo del contenido. Admite formato Markdown, incluidos enlaces y texto en negrita.
 </ResponseField>
 
 <ResponseField name="hint" type="string">
-  Texto que va antes del marco.
+  Texto que aparece antes del Frame.
 </ResponseField>
 
 <CodeGroup>
+  ```mdx Frame
+  <Frame>
+    <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
+  </Frame>
+  ```
 
-```mdx Frame
-<Frame>
-  <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
-</Frame>
-```
+  ```mdx Frame con leyenda
+  <Frame caption="Texto de la leyenda">
+    <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
+  </Frame>
+  ```
 
-```mdx Frame con un pie de imagen
-<Frame caption="Caption text">
-  <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
-</Frame>
-```
+  ```mdx Frame con Markdown en la leyenda
+  <Frame caption="Visita la [documentación](/docs) para obtener más información">
+    <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
+  </Frame>
+  ```
 
-```mdx Frame con Markdown en el pie de imagen
-<Frame caption="Visit the [documentation](/docs) for more details">
-  <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
-</Frame>
-```
+  ```mdx Frame con texto en negrita y enlaces en la leyenda
+  <Frame caption="**Nota:** Consulta la [guía oficial](https://example.com) para ver las instrucciones de configuración">
+    <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
+  </Frame>
+  ```
 
-```mdx Frame con texto en negrita y enlaces en el pie de imagen
-<Frame caption="**Note:** See the [official guide](https://example.com) for setup instructions">
-  <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
-</Frame>
-```
+  ```mdx Frame con una sugerencia
+  <Frame hint="Texto de sugerencia">
+    <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
+  </Frame>
+  ```
 
-```mdx Frame con una pista
-<Frame hint="Hint text">
-  <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
-</Frame>
-```
-
-```mdx Frame con pista y pie de imagen
-<Frame hint="Hint text" caption="Caption text">
-  <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
-</Frame>
-```
+  ```mdx Frame con sugerencia y leyenda
+  <Frame hint="Texto de sugerencia" caption="Texto de la leyenda">
+    <img src="/path/image.jpg" alt="Texto alternativo descriptivo" />
+  </Frame>
+  ```
 </CodeGroup>

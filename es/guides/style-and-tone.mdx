@@ -1,194 +1,198 @@
 ---
 title: "Cómo escribir documentación técnica"
 sidebarTitle: "Estilo y tono"
-description: "Escribe documentación técnica clara y consistente con orientación práctica sobre voz, estructura, terminología y tono para documentación de desarrolladores y productos."
-keywords: ["redacción técnica", "guía de estilo de documentación", "estándares de escritura", "voz y tono", "documentación técnica"]
+description: "Redacta documentación técnica clara y coherente con orientación práctica sobre voz, estructura, terminología y tono para documentación de producto y para desarrolladores."
+keywords: ["redacción técnica", "guía de estilo de documentación", "estándares de redacción", "voz y tono", "documentación técnica"]
 ---
 
-La buena documentación técnica tiene un solo trabajo: ayudar a los usuarios a lograr un objetivo y volver a su trabajo. Las decisiones de estilo y tono apoyan ese objetivo o se interponen en el camino. Una redacción clara y consistente genera confianza en el usuario. Una redacción inconsistente o poco clara crea fricción y erosiona la confianza en tu producto.
+La buena documentación técnica tiene un solo objetivo: ayudar a los usuarios a alcanzar una meta y retomar su trabajo. Las decisiones de estilo y tono pueden apoyar ese objetivo o entorpecerlo. Una redacción clara y coherente genera confianza en los usuarios. Una redacción incoherente o poco clara genera fricción y erosiona la confianza en tu producto.
 
-Esta guía cubre los principios fundamentales detrás de la redacción técnica efectiva, con orientación práctica sobre cómo aplicarlos.
+Esta guía presenta los principios fundamentales de una redacción técnica eficaz, con orientación práctica sobre cómo aplicarlos.
 
 <div id="write-in-second-person">
-## Escribe en segunda persona
+  ## Escribe en segunda persona
 </div>
 
-Dirígete a los usuarios directamente como "tú". La segunda persona hace que las instrucciones sean más fáciles de seguir y mantiene el enfoque en lo que los usuarios están haciendo en lugar de lo que hace el producto.
+Dirígete directamente a los usuarios como &quot;tú&quot;. La segunda persona hace que las instrucciones sean más fáciles de seguir y mantiene el foco en lo que hacen los usuarios, en lugar de en lo que hace el producto.
 
 ```mdx
-<!-- Segunda persona (preferido) -->
-Puedes configurar el tiempo de espera en tu archivo de configuración.
+<!-- Segunda persona (preferida) -->
+You can configure the timeout in your settings file.
 
 <!-- Tercera persona (evitar) -->
-Los usuarios pueden configurar el tiempo de espera en el archivo de configuración.
+Users can configure the timeout in the settings file.
 ```
 
-La segunda persona también ayuda a detectar la voz pasiva: cuando escribes "tú", te ves obligado a decir quién hace qué.
+La segunda persona también ayuda a detectar la voz pasiva: cuando escribes &quot;tú,&quot; te obliga a decir quién hace qué.
 
 <div id="use-active-voice">
-## Usa la voz activa
+  ## Usa la voz activa
 </div>
 
-La voz activa hace que las oraciones sean más cortas y claras. En la voz pasiva, el sujeto recibe la acción. En la voz activa, el sujeto la realiza.
+La voz activa hace que las frases sean más breves y claras. En la voz pasiva, el sujeto recibe la acción. En la voz activa, el sujeto la realiza.
 
 ```mdx
 <!-- Activa -->
-La API devuelve un error cuando el token expira.
+The API returns an error when the token expires.
 
 <!-- Pasiva -->
-Se devuelve un error cuando el token ha expirado.
+An error is returned when the token has expired.
 ```
 
-La voz pasiva no siempre es incorrecta. Es apropiada cuando el actor es desconocido o no es importante. Pero la voz pasiva como hábito predeterminado hace que la documentación sea más difícil de leer.
+La voz pasiva no siempre es incorrecta. Es adecuada cuando se desconoce quién realiza la acción o cuando no es importante. Pero usar la voz pasiva por defecto hace que la documentación sea más difícil de leer.
 
-Una prueba rápida: si puedes agregar "por zombis" después del verbo, la oración es pasiva. "Se devuelve un error [por zombis]" es pasiva. "La API devuelve [~por zombis~] un error" es activa.
+Una prueba rápida: si puedes añadir &quot;por zombis&quot; después del verbo, la oración está en voz pasiva. &quot;Se devuelve un error [por zombis]&quot; está en voz pasiva. &quot;La API devuelve [~~por zombis~~] un error&quot; está en voz activa.
 
 <div id="keep-sentences-and-paragraphs-short">
-## Mantén las oraciones y los párrafos cortos
+  ## Mantén las frases y los párrafos cortos
 </div>
 
-La documentación se escanea más de lo que se lee. Las oraciones largas y los párrafos densos ralentizan a los usuarios cuando intentan encontrar una respuesta específica.
+La documentación se hojea más de lo que se lee. Las frases largas y los párrafos densos ralentizan a los usuarios cuando intentan encontrar una respuesta concreta.
 
-Directrices:
-- Apunta a oraciones de menos de 25 palabras
-- Una idea por oración
-- De dos a cuatro oraciones por párrafo
-- Divide las listas de pasos con secuencias numeradas, no con prosa continua
+Pautas:
 
-Si una oración necesita múltiples comas o puntos y comas para mantenerse unida, probablemente pueda dividirse en dos oraciones.
+* Procura que las frases tengan menos de 25 palabras
+* Una idea por frase
+* De dos a cuatro frases por párrafo
+* Divide las listas de pasos en secuencias numeradas, no en texto corrido
+
+Si una frase necesita varias comas o puntos y coma para sostenerse, probablemente convenga dividirla en dos.
 
 <div id="use-headings-that-match-user-intent">
-## Usa encabezados que coincidan con la intención del usuario
+  ## Usa encabezados que respondan a la intención del usuario
 </div>
 
-Los encabezados organizan la página tanto para humanos como para motores de búsqueda. Escríbelos para responder la pregunta que un usuario podría tener, no para etiquetar un tema desde la perspectiva del producto.
+Los encabezados organizan la página tanto para las personas como para los motores de búsqueda. Redáctalos para responder a la pregunta que pueda tener un usuario, no para etiquetar un tema desde la perspectiva del producto.
 
 ```mdx
 <!-- Orientado a la intención (mejor) -->
-## Cómo configurar la autenticación
+## How to configure authentication
 
 <!-- Etiqueta de tema (más débil) -->
-## Configuración de autenticación
+## Authentication configuration
 ```
 
-Usa mayúscula solo al inicio de la oración para todos los encabezados ("Primeros pasos", no "Primeros Pasos"). No saltes niveles de encabezado—ve de H2 a H3, no de H2 a H4.
+Usa mayúscula inicial solo en la primera palabra de todos los encabezados (&quot;Primeros pasos,&quot; no &quot;Primeros Pasos&quot;). No te saltes niveles de encabezado: pasa de H2 a H3, no de H2 a H4.
 
-En la documentación de Mintlify, el H1 de la página se genera automáticamente a partir de la propiedad `title:` del frontmatter. No agregues un H1 manual en el cuerpo.
+En la documentación de Mintlify, el H1 de la página se genera automáticamente a partir de la propiedad `title:` del frontmatter. No añadas un H1 manual en el contenido.
 
 <div id="use-consistent-terminology">
-## Usa terminología consistente
+  ## Usa una terminología coherente
 </div>
 
-Elige un término para cada concepto y úsalo en todas partes. Alternar entre "API key", "API token" y "access token" para describir lo mismo obliga a los usuarios a detenerse y preguntarse si te refieres a lo mismo.
+Elige un término para cada concepto y úsalo siempre. Alternar entre &quot;clave de API,&quot; &quot;token de API&quot; y &quot;token de acceso&quot; para referirse a lo mismo obliga a los usuarios a detenerse y preguntarse si realmente estás hablando de lo mismo.
 
-Cuando introduzcas un término por primera vez, defínelo en el lugar en vez de enlazar a otra página.
+Cuando introduzcas un término por primera vez, defínelo ahí mismo en lugar de enlazar a otra parte.
 
 ```mdx
 <!-- Definir en contexto -->
-Cada solicitud requiere una API key—un token único que identifica tu cuenta.
+Each request requires an API key—a unique token that identifies your account.
 
-<!-- No asumas conocimiento previo -->
-Cada solicitud requiere una API key.
+<!-- No asumir conocimiento previo -->
+Each request requires an API key.
 ```
 
-Si tu producto tiene nombres específicos para las cosas (objetos, acciones, elementos de UI), usa esos nombres exactamente como aparecen en el producto. Capitalízalos de forma consistente.
+Si tu producto tiene nombres específicos para ciertos elementos (objetos, acciones o elementos de la interfaz), usa esos nombres exactamente como aparecen en el producto. Escríbelos con mayúsculas de manera coherente.
 
 <div id="calibrate-tone-to-your-audience-and-content-type">
-## Calibra el tono según tu audiencia y tipo de contenido
+  ## Ajusta el tono a tu audiencia y al tipo de contenido
 </div>
 
-El tono debe coincidir con lo que los usuarios intentan hacer. Una guía de primeros pasos para nuevos usuarios se beneficia de un tono más cálido y alentador. Una referencia de API para desarrolladores experimentados se beneficia de la densidad y precisión por encima de la calidez.
+El tono debe corresponderse con lo que los usuarios intentan hacer. Una guía de introducción para usuarios nuevos se beneficia de un tono más cercano y alentador. Una referencia de API para desarrolladores con experiencia se beneficia más de la densidad y la precisión que de la cercanía.
 
 Algunos principios que se aplican a todos los tipos de contenido:
 
-- **Sé directo sin ser brusco.** "Haz clic en Guardar" es mejor que "Por favor haz clic en el botón Guardar cuando estés listo para continuar."
-- **Evita las frases de relleno.** "Vale la pena señalar que", "Con el fin de", "Ten en cuenta que" y "Simplemente" agregan palabras sin agregar significado.
-- **No editorialices.** "Esta es una función poderosa" es una opinión. Documenta lo que hace, no lo impresionante que es.
-- **Usa el vocabulario de tus usuarios.** Si tus usuarios lo llaman "webhook", no lo llames "event callback" en la documentación. Usa la palabra que ya están buscando.
+* **Sé directo sin ser seco.** &quot;Haz clic en Guardar&quot; es mejor que &quot;Haz clic en el botón Guardar cuando estés listo para continuar&quot;.
+* **Evita las frases de relleno.** &quot;Vale la pena señalar que&quot;, &quot;Con el fin de&quot;, &quot;Ten en cuenta que&quot; y &quot;Simplemente&quot; añaden palabras sin añadir significado.
+* **No añadas juicios de valor.** &quot;Esta es una función potente&quot; es una opinión. Documenta lo que hace, no lo impresionante que es.
+* **Usa el vocabulario del usuario.** Si tus usuarios lo llaman &quot;webhook&quot;, no lo llames &quot;callback de evento&quot; en la documentación. Usa la palabra que ya están buscando.
 
 <div id="avoid-common-mistakes">
-## Evita errores comunes
+  ## Evita errores comunes
 </div>
 
 <div id="jargon-and-internal-terminology">
-### Jerga y terminología interna
+  ### Jerga y terminología interna
 </div>
 
-Los equipos desarrollan abreviaturas que los usuarios nunca encuentran. Revisa el contenido nuevo en busca de términos que serían desconocidos para alguien que ve tu producto por primera vez.
+Los equipos desarrollan abreviaturas que los usuarios nunca llegan a ver. Revisa el contenido nuevo para detectar términos que no le resultarían familiares a alguien que ve tu producto por primera vez.
 
 <div id="inconsistent-capitalization">
-### Capitalización inconsistente
+  ### Uso inconsistente de mayúsculas
 </div>
 
-Decide si los nombres de las funciones de tu producto van en mayúsculas ("el Dashboard", "el API Explorer") y aplícalo de forma consistente. La capitalización inconsistente indica falta de atención al detalle.
+Decide si los nombres de las funciones de tu producto se escriben con mayúscula inicial (&quot;el Panel&quot;, &quot;el Explorador de API&quot;) y aplícalo de forma coherente. El uso inconsistente de mayúsculas transmite falta de atención al detalle.
 
 <div id="colloquialisms">
-### Coloquialismos
+  ### Coloquialismos
 </div>
 
-Las frases informales y los modismos son más difíciles de traducir y más difíciles de interpretar para hablantes no nativos de inglés. La documentación que llega a una audiencia internacional se beneficia de un lenguaje simple y directo.
+Las expresiones informales y los modismos son más difíciles de traducir y de entender para quienes no tienen el inglés como lengua materna. La documentación dirigida a una audiencia internacional se beneficia de un lenguaje claro y directo.
 
 <div id="spelling-and-grammar-errors">
-### Errores de ortografía y gramática
+  ### Errores ortográficos y gramaticales
 </div>
 
-Incluso unos pocos errores reducen la credibilidad. Indican que el contenido no ha sido revisado cuidadosamente, lo que hace que los usuarios se pregunten si el contenido técnico es igualmente poco confiable.
+Incluso unos pocos errores reducen la credibilidad. Dan a entender que el contenido no se ha revisado con suficiente cuidado, lo que lleva a los usuarios a preguntarse si el contenido técnico es igual de poco fiable.
 
 <div id="enforce-standards-with-tooling">
-## Aplica estándares con herramientas
+  ## Haz cumplir los estándares con herramientas
 </div>
 
-Los principios de escritura solo perduran si son parte de un flujo de trabajo repetible. Algunas formas de automatizar su cumplimiento:
+Los principios de redacción solo se mantienen si forman parte de un flujo de trabajo repetible. Algunas formas de automatizar su cumplimiento:
 
-- **[Vale](https://vale.sh):** Un linter para prosa que verifica contra reglas de estilo configurables. Puedes escribir reglas que apliquen tu propia terminología, señalen la voz pasiva o detecten errores comunes.
-- **[Verificaciones de CI](/es/deploy/ci):** Ejecuta Vale u otros linters en cada pull request para que los problemas de estilo se detecten antes de que el contenido se fusione.
-- **Guías de estilo existentes:** En lugar de escribir reglas desde cero, comienza con una guía establecida. La [Google Developer Documentation Style Guide](https://developers.google.com/style), la [Microsoft Style Guide](https://learn.microsoft.com/en-us/style-guide/welcome/) y la [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Howtouse) son todas gratuitas y ampliamente utilizadas.
+* **[Vale](https://vale.sh):** Un linter de prosa que comprueba reglas de estilo configurables. Puedes crear reglas para hacer cumplir tu propia terminología, marcar la voz pasiva o detectar errores habituales.
+* **[Comprobaciones de CI](/es/deploy/ci):** Ejecuta Vale u otros linters en cada solicitud de extracción (pull request, PR) para detectar problemas de estilo antes de fusionar el contenido.
+* **Guías de estilo existentes:** En lugar de escribir reglas desde cero, empieza con una guía consolidada. La [Google Developer Documentation Style Guide](https://developers.google.com/style), la [Microsoft Style Guide](https://learn.microsoft.com/en-us/style-guide/welcome/) y la [Splunk Style Guide](https://docs.splunk.com/Documentation/StyleGuide/current/StyleGuide/Howtouse) son gratuitas y se usan ampliamente.
 
 <Tip>
-  Usa un [workflow](/es/agent/workflows) para ejecutar una auditoría de estilo de forma programada o cada vez que se envíen cambios a tu repositorio de documentación.
+  Usa un [flujo de trabajo](/es/agent/workflows) para ejecutar una auditoría de estilo de forma programada o cada vez que se envíen cambios a tu repositorio de documentación.
 </Tip>
 
 <div id="frequently-asked-questions">
-## Preguntas frecuentes
+  ## Preguntas frecuentes
 </div>
 
 <AccordionGroup>
-<Accordion title="¿Qué tan formal debe ser la documentación técnica?">
-Ajusta la formalidad a tu audiencia y contexto de producto. Las herramientas para desarrolladores pueden ser directas y concisas—omite las cortesías y ve directo al código. La documentación para usuarios menos técnicos o productos empresariales a menudo se beneficia de un tono más cálido que anticipe la confusión. En cualquier caso, evita el lenguaje corporativo rígido. "Utilizar" no agrega precisión sobre "usar". Escribe como un colega experto explicaría algo, no como un documento legal lo describiría.
-</Accordion>
+  <Accordion title="¿Qué grado de formalidad debe tener la documentación técnica?">
+    Ajusta el nivel de formalidad a tu audiencia y al contexto del producto. Las herramientas para desarrolladores dirigidas a ingenieros pueden ser directas y concisas: omite las cortesías y ve directo al código. La documentación para usuarios menos técnicos o para productos empresariales suele beneficiarse de un tono más cercano que anticipe las dudas. En cualquier caso, evita el lenguaje corporativo rígido. «Utilizar» no aporta más precisión que «usar». Escribe como lo explicaría un colega con experiencia, no como lo redactaría un documento legal.
+  </Accordion>
 
-<Accordion title="¿Cuándo es aceptable la voz pasiva?">
-Cuando el actor es desconocido, irrelevante, o cuando enfatizar el resultado es más importante que quién lo causa. "La solicitud se valida antes de procesarse" está bien si estás describiendo lo que le sucede a una solicitud, no quién la valida. La voz pasiva se convierte en un problema cuando oculta quién es responsable de una acción que el usuario necesita realizar.
-</Accordion>
+  <Accordion title="¿Cuándo es aceptable la voz pasiva?">
+    Cuando el agente es desconocido, irrelevante o cuando es más importante destacar el resultado que quién lo causa. «La solicitud se valida antes de procesarse» está bien si describes qué le ocurre a una solicitud, no quién la valida. La voz pasiva se convierte en un problema cuando oculta quién es responsable de una acción que el usuario debe realizar.
+  </Accordion>
 
-<Accordion title="¿Debo escribir para principiantes o expertos?">
-Identifica la audiencia principal de cada página y escribe para ella. Una guía de primeros pasos debe asumir un conocimiento previo mínimo. Una referencia de API debe asumir que el lector sabe cómo funcionan las APIs. El error es intentar servir a ambos en la misma página—agregar contexto para principiantes en una página de referencia ralentiza a los expertos, y asumir conocimiento experto en un tutorial pierde a los principiantes. Si realmente tienes dos audiencias distintas, considera tipos de contenido separados para cada una. Consulta [Tipos de contenido](/es/guides/content-types) para orientación.
-</Accordion>
+  <Accordion title="¿Debo escribir para principiantes o para expertos?">
+    Identifica la audiencia principal de cada página y escribe para ella. Una guía de introducción debe asumir un conocimiento previo mínimo. Una referencia de API debe asumir que el lector sabe cómo funcionan las API. El error está en intentar atender a ambos en la misma página: añadir contexto para principiantes en una página de referencia ralentiza a los expertos, y dar por sentado un conocimiento experto en un tutorial deja atrás a los principiantes. Si de verdad tienes dos audiencias distintas, considera crear tipos de contenido separados para cada una. Consulta [Tipos de contenido](/es/guides/content-types) para obtener orientación.
+  </Accordion>
 
-<Accordion title="¿Cómo mantengo la terminología consistente en un sitio de documentación grande?">
-Mantén una lista de terminología—una tabla simple de términos preferidos y términos a evitar. Compártela con todos los que contribuyen a la documentación y revísala durante la revisión. Vale puede aplicarla automáticamente con un archivo de vocabulario personalizado. La inversión en mantener una lista se amortiza rápidamente en ciclos de revisión reducidos y menos quejas de usuarios sobre terminología confusa.
-</Accordion>
+  <Accordion title="¿Cómo mantengo una terminología coherente en un sitio de documentación grande?">
+    Mantén una lista de terminología: una tabla sencilla con los términos preferidos y los términos que deben evitarse. Compártela con todas las personas que contribuyen a la documentación y revísala durante el proceso de revisión. Vale puede aplicarla automáticamente con un archivo de vocabulario personalizado. La inversión en mantener una lista da resultados rápidamente: menos ciclos de revisión y menos quejas de los usuarios por una terminología confusa.
+  </Accordion>
 
-<Accordion title="¿Cuál es la longitud correcta para una página de documentación?">
-Lo suficientemente larga para cubrir el tema completamente, lo suficientemente corta para mantenerse enfocada. Si una página cubre dos tareas distintas, considera dividirla. Si cubre una tarea pero el contenido es escaso, puede que falten detalles importantes. El contenido de referencia puede ser largo y denso—los usuarios lo escanean. El contenido conceptual debe ser más corto—los usuarios lo leen. Consulta [Tipos de contenido](/es/guides/content-types) para más información sobre cómo ajustar la longitud de la página al propósito del contenido.
-</Accordion>
+  <Accordion title="¿Cuál es la longitud adecuada para una página de documentación?">
+    Lo bastante larga como para cubrir el tema por completo y lo bastante breve como para mantener el foco. Si una página cubre dos tareas distintas, considera dividirla. Si cubre una sola tarea pero el contenido es escaso, puede que le falten detalles importantes. El contenido de referencia puede ser largo y denso: los usuarios lo recorren por encima. El contenido conceptual debe ser más breve: los usuarios lo leen. Consulta [Tipos de contenido](/es/guides/content-types) para obtener más información sobre cómo ajustar la longitud de la página al propósito del contenido.
+  </Accordion>
 </AccordionGroup>
 
 <div id="related-pages">
-## Páginas relacionadas
+  ## Páginas relacionadas
 </div>
 
 <CardGroup cols={2}>
   <Card title="Tipos de contenido" icon="folder-tree" href="/es/guides/content-types">
-    Elige el tipo de contenido adecuado para tus objetivos de documentación.
+    Elige el tipo de contenido adecuado para los objetivos de tu documentación.
   </Card>
+
   <Card title="Accesibilidad" icon="person-standing" href="/es/guides/accessibility">
     Haz que tu documentación sea accesible para más usuarios.
   </Card>
+
   <Card title="Formato de texto" icon="case-sensitive" href="/es/create/text">
-    Aprende las opciones de formato y estilo de texto.
+    Conoce las opciones de formato y estilo de texto.
   </Card>
-  <Card title="Mejores prácticas de SEO" icon="search" href="/es/guides/seo">
-    Mejora la descubribilidad de la documentación.
+
+  <Card title="Buenas prácticas de SEO" icon="search" href="/es/guides/seo">
+    Mejora la visibilidad de la documentación.
   </Card>
 </CardGroup>

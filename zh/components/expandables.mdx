@@ -1,19 +1,19 @@
 ---
-title: "可展开项"
-description: "使用可展开组件在 API 文档中切换嵌套对象属性的显示，展示请求和响应对象的子字段。"
-keywords: ["expandables", "nested properties", "expandable fields", "toggle content"]
+title: "可展开内容"
+description: "使用 Expandable 组件在 API 文档中切换嵌套对象属性，显示请求对象和响应对象的子字段。"
+keywords: ["可展开内容", "嵌套属性", "可展开字段", "切换内容"]
 ---
 
-使用可展开项在响应字段中显示或隐藏嵌套内容。它们对在 API 文档中展示复杂对象属性尤其有用。
+使用可展开内容可显示或隐藏响应字段中的嵌套内容。它尤其适合在 API 文档中展示复杂对象属性。
 
-<ResponseField name="user" type="User Object">
-  <Expandable title="properties">
+<ResponseField name="user" type="用户对象">
+  <Expandable title="属性">
     <ResponseField name="full_name" type="string">
       用户的全名
     </ResponseField>
 
     <ResponseField name="is_over_21" type="boolean">
-      用户是否已满 21 岁
+      用户是否年满 21 岁
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -22,25 +22,24 @@ keywords: ["expandables", "nested properties", "expandable fields", "toggle cont
 <ResponseField name="user" type="User Object">
   <Expandable title="properties">
     <ResponseField name="full_name" type="string">
-      用户的全名
+      The full name of the user
     </ResponseField>
 
     <ResponseField name="is_over_21" type="boolean">
-      用户是否已满 21 岁
+      Whether the user is over 21 years old
     </ResponseField>
   </Expandable>
 </ResponseField>
 ```
-
 
 <div id="properties">
   ## 属性
 </div>
 
 <ResponseField name="title" type="string">
-  正在显示的对象名称。
+  你要显示的对象名称。
 </ResponseField>
 
 <ResponseField name="defaultOpen" type="boolean" default="false">
-  设为 `true`，使展开项在页面加载时默认打开。
+  设为 `true`，可使可展开内容在页面加载时默认展开
 </ResponseField>

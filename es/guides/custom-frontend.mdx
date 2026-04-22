@@ -1,38 +1,38 @@
 ---
 title: "Documentación headless con un frontend personalizado"
 sidebarTitle: "Headless / Frontend personalizado"
-description: "Crea un frontend de documentación headless con Astro usando Mintlify para la gestión de contenido, búsqueda con IA y funciones de asistente."
-keywords: ["Astro", "headless", "self-hosted", "custom", "headless docs", "headless CMS"]
+description: "Crea un frontend de documentación headless con Astro mientras usas Mintlify para gestionar contenido, la búsqueda con IA y las funciones del asistente."
+keywords: ["Astro", "headless", "autoalojado", "personalizado", "documentación headless", "CMS headless"]
 ---
 
-El modo headless de Mintlify te permite controlar cómo se ve y se comporta tu documentación mientras usas Mintlify para gestionar tu contenido. En lugar de usar el frontend alojado de Mintlify, puedes crear tu propio frontend personalizado con [Astro](https://astro.build) y renderizar tu contenido MDX y la configuración de `docs.json` como quieras.
+El modo headless de Mintlify te permite controlar el aspecto y el comportamiento de tu documentación mientras usas Mintlify para gestionar el contenido. En lugar de usar el frontend alojado de Mintlify, puedes crear tu propio frontend personalizado con [Astro](https://astro.build) y renderizar tu contenido MDX y la configuración de `docs.json` como quieras.
 
-Este enfoque headless es útil cuando necesitas control total sobre el diseño, la estructura o el comportamiento de tu documentación para que coincida con un sistema de diseño existente o para incrustar la documentación en un sitio más grande, mientras sigues usando Mintlify para la publicación, búsqueda, componentes MDX y funciones de IA.
+Este enfoque headless es útil cuando necesitas control total sobre el diseño, la estructura o el comportamiento de tu documentación para adaptarla a un sistema de diseño existente o integrarla en un sitio más amplio, sin dejar de usar Mintlify para la publicación, la Búsqueda, los componentes MDX y las funciones de IA.
 
-La integración `@mintlify/astro` lee tu configuración de `docs.json` y el contenido MDX en tiempo de compilación, y luego procesa todo en un formato que Astro puede renderizar. Crea tu propio diseño, componentes y estilos sobre esta base.
+La integración `@mintlify/astro` lee la configuración de `docs.json` y el contenido MDX en tiempo de compilación, y después procesa todo en un formato que Astro puede renderizar. A partir de ahí, puedes crear tus propios diseños, componentes y estilos.
 
-Esta guía te guía paso a paso para configurar un proyecto headless de Mintlify con la plantilla inicial y ponerlo en funcionamiento localmente.
+Esta guía te explica cómo configurar un proyecto headless de Mintlify con la plantilla inicial y ejecutarlo localmente.
 
-<Expandable title="Feature availability for headless projects">
-| Feature | Availability | Notes |
-|---------|--------------|-------|
-| Mintlify components | Included | Usa componentes como `<Card>`, `<Steps>` y `<Tabs>` en tus archivos MDX sin importarlos. |
-| Content processing | Included | La integración `@mintlify/astro` lee tu `docs.json` y los archivos MDX y los procesa en tiempo de compilación. |
-| Search | Included | El componente `SearchBar` se conecta a la API de búsqueda de Mintlify usando el subdominio de tu proyecto. |
-| AI assistant | Included | El componente `Assistant` proporciona una interfaz de chat con IA impulsada por tu contenido. Disponible en los [planes Pro y Enterprise](https://mintlify.com/pricing). |
-| Layouts and styling | Custom build | Header, footer, barra lateral, tabla de contenidos, plantillas de página y todo el CSS. La plantilla inicial incluye ejemplos construidos con Tailwind CSS. |
-| Routing and navigation | Custom build | Una ruta comodín de Astro renderiza cada página. Usa `resolvePageData()` y `unwrapNav()` de `@mintlify/astro/helpers` para resolver el estado de navegación desde `docs.json`. |
-| Deployment and hosting | Custom build | Despliega tu sitio de Astro en cualquier proveedor de alojamiento. |
-| SEO | You build | Las meta tags, las etiquetas Open Graph, el sitemap y `robots.txt` son tu responsabilidad. |
-| Third-party integrations | Custom build | Agrega integraciones directamente a tu diseño de Astro. Las herramientas configuradas en `docs.json` para proyectos alojados no aplican en modo headless. |
-| `llms.txt`, `llms-full.txt`, and `skill.md` | Custom build | Para proyectos headless, debes generar y servir estos archivos tú mismo. |
-| Dashboard analytics | Custom build | Si usas el componente `Assistant`, las analíticas de uso del assistant están disponibles en tu dashboard. Para el tráfico de páginas, agrega tu propio proveedor de analíticas a tu diseño de Astro. |
-| Web editor | Not available | Requiere el entorno de renderizado alojado de Mintlify. |
-| Authentication and password protection | Not available | Solo disponible para sitios alojados en un subdominio de Mintlify o un dominio personalizado apuntando a Mintlify. |
-| API playground | Not available | Solo disponible para sitios alojados en la plataforma de Mintlify. |
-| User feedback | Not available | La función de feedback de página es parte de la capa de renderizado alojada de Mintlify. |
-| Preview deployments | Not available | Usa el entorno de vista previa de tu proveedor de alojamiento. |
-| PDF export | Not available | No disponible para proyectos headless. |
+<Expandable title="Disponibilidad de funciones para proyectos headless">
+  | Función                                   | Disponibilidad            | Notas                                                                                                                                                                                        |
+  | ----------------------------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Componentes de Mintlify                   | Incluido                  | Usa componentes como `<Card>`, `<Steps>` y `<Tabs>` en tus archivos MDX sin necesidad de importarlos.                                                                                        |
+  | Procesamiento de contenido                | Incluido                  | La integración `@mintlify/astro` lee tus archivos `docs.json` y MDX, y los procesa en tiempo de compilación.                                                                                 |
+  | Búsqueda                                  | Incluido                  | El componente `SearchBar` se conecta a la API de búsqueda de Mintlify usando el subdominio de tu proyecto.                                                                                   |
+  | Asistente con IA                          | Incluido                  | El componente `Assistant` proporciona una interfaz de chat con IA basada en tu contenido. Disponible en los [planes Pro y Enterprise](https://mintlify.com/pricing).                         |
+  | Diseños y estilos                         | Compilación personalizada | Encabezado, pie de página, barra lateral, tabla de contenido, plantillas de página y todo el CSS. La plantilla inicial incluye ejemplos creados con Tailwind CSS.                            |
+  | Enrutamiento y Navegación                 | Compilación personalizada | Una ruta comodín de Astro renderiza cada página. Usa `resolvePageData()` y `unwrapNav()` de `@mintlify/astro/helpers` para resolver el estado de Navegación a partir de `docs.json`.         |
+  | Despliegue y alojamiento                  | Compilación personalizada | Despliega tu sitio de Astro en cualquier proveedor de alojamiento.                                                                                                                           |
+  | SEO                                       | Tú lo creas               | Generar las metaetiquetas, las etiquetas Open Graph, el mapa del sitio y `robots.txt` es tu responsabilidad.                                                                                 |
+  | Integraciones de terceros                 | Compilación personalizada | Añade integraciones directamente a tu diseño de Astro. Las herramientas configuradas en `docs.json` para proyectos alojados no se aplican en modo headless.                                  |
+  | `llms.txt`, `llms-full.txt` y `skill.md`  | Compilación personalizada | En proyectos headless, debes generar y servir estos archivos.                                                                                                                                |
+  | Analítica del panel                       | Compilación personalizada | Si usas el componente `Assistant`, la analítica de uso del asistente estará disponible en tu panel. Para el tráfico de páginas, añade tu propio proveedor de analítica a tu diseño de Astro. |
+  | Editor web                                | No disponible             | Requiere el entorno de renderizado alojado de Mintlify.                                                                                                                                      |
+  | Autenticación y protección con contraseña | No disponible             | Solo está disponible para sitios alojados en un subdominio de Mintlify o en un dominio personalizado que apunte a Mintlify.                                                                  |
+  | Entorno de pruebas de API                 | No disponible             | Solo está disponible para sitios alojados en la plataforma de Mintlify.                                                                                                                      |
+  | Comentarios de los usuarios               | No disponible             | La función de comentarios de página forma parte de la capa de renderizado alojada de Mintlify.                                                                                               |
+  | Despliegues de vista previa               | No disponible             | Usa el entorno de vista previa de tu proveedor de alojamiento.                                                                                                                               |
+  | Exportación a PDF                         | No disponible             | No está disponible para proyectos headless.                                                                                                                                                  |
 </Expandable>
 
 <div id="prerequisites">
@@ -42,7 +42,7 @@ Esta guía te guía paso a paso para configurar un proyecto headless de Mintlify
 * Una [cuenta de Mintlify](https://dashboard.mintlify.com)
 * Una [cuenta de GitHub](https://github.com)
 * [Node.js](https://nodejs.org) v20.17.0 o posterior (se recomiendan las versiones LTS)
-* Familiaridad con [Astro](https://docs.astro.build)
+* Conocimientos de [Astro](https://docs.astro.build)
 
 <div id="set-up-your-project">
   ## Configura tu proyecto
@@ -50,29 +50,29 @@ Esta guía te guía paso a paso para configurar un proyecto headless de Mintlify
 
 <Steps>
   <Step title="Crea un repositorio a partir de la plantilla inicial">
-    Ve al repositorio [mintlify-astro-starter](https://github.com/mintlify/mintlify-astro-starter) en GitHub y haz clic en **Use this template** para crear un nuevo repositorio en tu cuenta.
+    Ve al repositorio [mintlify-astro-starter](https://github.com/mintlify/mintlify-astro-starter) en GitHub y haz clic en **Use this template** para crear un repositorio nuevo en tu cuenta.
 
-    Clona el repositorio en tu máquina local.
+    Clona el repositorio en tu equipo local.
   </Step>
 
   <Step title="Regístrate en Mintlify">
     Si no tienes una cuenta de Mintlify, regístrate en [dashboard.mintlify.com/signup](https://dashboard.mintlify.com/signup).
   </Step>
 
-  <Step title="Instala la aplicación de GitHub">
-    En la página de [Git settings](https://dashboard.mintlify.com/settings/deployment/git-settings) de tu Dashboard de Mintlify, instala la [Mintlify GitHub app](/es/deploy/github). Si ya tienes instalada la aplicación, desinstálala y vuelve a instalarla para poder conectar tu nuevo repositorio.
+  <Step title="Instala la GitHub App">
+    En la página [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) de tu panel de Mintlify, instala la [Mintlify GitHub App](/es/deploy/github). Si ya la tienes instalada, desinstálala y vuelve a instalarla para que puedas conectar tu nuevo repositorio.
   </Step>
 
   <Step title="Conecta tu repositorio">
-    1. En la página de [Git settings](https://dashboard.mintlify.com/settings/deployment/git-settings), selecciona el repositorio que creaste a partir de la plantilla inicial.
+    1. En la página [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings), selecciona el repositorio que creaste a partir de la plantilla inicial.
     2. Activa el interruptor **Set up as monorepo**.
     3. Introduce `/docs` como la ruta al directorio que contiene tu archivo `docs.json`.
-    4. Haz clic en **Guardar cambios**.
+    4. Haz clic en **Save changes**.
 
     <Frame>
-      <img src="/images/guides/astro/repo-settings-light.png" alt="Configuración del repositorio en la página Git settings." className="block dark:hidden" />
+      <img src="/images/guides/astro/repo-settings-light.png" alt="Configuración del repositorio en la página de Git Settings." className="block dark:hidden" />
 
-      <img src="/images/guides/astro/repo-settings-dark.png" alt="Configuración del repositorio en la página Git settings." className="hidden dark:block" />
+      <img src="/images/guides/astro/repo-settings-dark.png" alt="Configuración del repositorio en la página de Git Settings." className="hidden dark:block" />
     </Frame>
   </Step>
 
@@ -84,9 +84,9 @@ Esta guía te guía paso a paso para configurar un proyecto headless de Mintlify
     PUBLIC_MINTLIFY_ASSISTANT_KEY=your-assistant-api-key
     ```
 
-    Tu subdominio es el nombre de dominio de tu proyecto. Es la parte de la URL de tu dashboard que aparece después del nombre de la organización. Por ejemplo, si la URL de tu dashboard es `https://dashboard.mintlify.com/org-name/domain-name`, tu subdominio es `domain-name`.
+    Tu subdominio es el nombre de dominio de tu proyecto. Es la parte de la URL de tu panel que aparece después del nombre de la organización. Por ejemplo, si la URL de tu panel es `https://dashboard.mintlify.com/org-name/domain-name`, tu subdominio es `domain-name`.
 
-    Si tienes un plan Pro o Enterprise, genera una clave de API del assistant en la página [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard. Esta clave de API del assistant empieza por `mint_dsc_`.
+    Si tienes un plan Pro o Enterprise, genera una clave de API del asistente en la página [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel. La clave de API del asistente empieza por `mint_dsc_`.
   </Step>
 
   <Step title="Inicia el servidor de desarrollo">
@@ -98,7 +98,7 @@ Esta guía te guía paso a paso para configurar un proyecto headless de Mintlify
     npm run dev
     ```
 
-    Tu sitio se estará ejecutando localmente en `http://localhost:4321`.
+    Tu sitio ya se estará ejecutando localmente en `http://localhost:4321`.
   </Step>
 </Steps>
 
@@ -106,13 +106,13 @@ Esta guía te guía paso a paso para configurar un proyecto headless de Mintlify
   ## Cómo funciona
 </div>
 
-La integración conecta tres partes: el sistema de compilación de Astro, el contenido en tu directorio `docs/` y los paquetes de Mintlify que procesan y renderizan ese contenido.
+La integración conecta tres partes: el sistema de compilación de Astro, tu contenido en el directorio `docs/` y los paquetes de Mintlify que procesan y renderizan ese contenido.
 
 <div id="astro-configuration">
   ### Configuración de Astro
 </div>
 
-Configura la integración `mintlify()` en `astro.config.mjs` con la ruta a tu directorio de documentación:
+Configura la integración `mintlify()` en `astro.config.mjs` con la ruta al directorio de tu documentación:
 
 ```javascript astro.config.mjs
 import { defineConfig } from 'astro/config';
@@ -125,64 +125,64 @@ export default defineConfig({
 });
 ```
 
-En tiempo de compilación, la integración lee tu `docs.json` y los archivos MDX desde la ruta `docsDir` y los procesa en `.mintlify/docs/`, donde las colecciones de contenido de Astro los incorporan.
+En el momento de la compilación, la integración lee tus archivos `docs.json` y MDX desde la ruta `docsDir` y los procesa en `.mintlify/docs/`, donde las colecciones de contenido de Astro los recogen.
 
 <div id="content-structure">
   ### Estructura del contenido
 </div>
 
-El contenido de tu documentación está ubicado en el directorio `docs/`, estructurado igual que en cualquier otro proyecto de Mintlify:
+El contenido de tu documentación se encuentra en el directorio `docs/`, organizado de la misma forma que cualquier otro proyecto de Mintlify:
 
 ```text
 docs/
-├── docs.json          # Configuración de navigation y del sitio
-├── index.mdx          # Páginas MDX para contenido
+├── docs.json          # Navegación y configuración del sitio
+├── index.mdx          # Páginas MDX para el contenido
 ├── quickstart.mdx
 └── guides/            # Directorios para organizar páginas
     ├── setup.mdx
     └── troubleshooting.mdx
 ```
 
-Los archivos MDX utilizan el [frontmatter](/es/organize/pages#page-metadata) estándar de Mintlify y pueden usar componentes de Mintlify sin necesidad de importarlos.
+Los archivos MDX usan el [frontmatter](/es/organize/pages#page-metadata) estándar de Mintlify y pueden utilizar componentes de Mintlify sin necesidad de importarlos.
 
 <div id="routing-and-navigation">
   ### Enrutamiento y navegación
 </div>
 
-Una ruta comodín renderiza cada página MDX. El paquete `@mintlify/astro/helpers` proporciona funciones para resolver el estado de la navegación desde tu `docs.json`.
+Una ruta comodín renderiza cada página de MDX. El paquete `@mintlify/astro/helpers` proporciona funciones para determinar el estado de navegación a partir de tu `docs.json`.
 
-* `resolvePageData()`: Devuelve pestañas, navegación de la barra lateral, enlaces de pie de página y anclas para una ruta de página dada.
-* `unwrapNav()`: Aplana el árbol de navegación en una lista para el renderizado de la barra lateral.
+* `resolvePageData()`: Devuelve las pestañas, la navegación de la barra lateral, los enlaces del pie de página y los anclajes para una ruta de página determinada.
+* `unwrapNav()`: Convierte el árbol de navegación en una lista para renderizar la barra lateral.
 
 <div id="layouts-and-styling">
   ### Diseños y estilos
 </div>
 
-Controlas toda la capa de presentación. La plantilla inicial incluye diseños, una barra lateral, una tabla de contenidos y estilos creados con Tailwind CSS, pero puedes reemplazar cualquiera de estos con los tuyos propios.
+Controlas por completo la capa de presentación. La plantilla inicial incluye diseños, una barra lateral, una tabla de contenidos y estilos basados en Tailwind CSS, pero puedes reemplazar cualquiera de estos elementos por los tuyos.
 
 Archivos clave para personalizar:
 
-| Archivo | Función |
-|--------|---------|
-| `src/layouts/Layout.astro` | Diseño HTML raíz |
-| `src/pages/[...slug].astro` | Plantilla de página y carga de datos |
-| `src/components/Header.astro` | Encabezado del sitio |
-| `src/components/Sidebar/` | Navegación de la barra lateral |
-| `src/components/TableOfContents.tsx` | Tabla de contenidos en la página |
-| `src/styles/` | Estilos globales, tipografía y paleta de colores |
+| Archivo                              | Propósito                                         |
+| ------------------------------------ | ------------------------------------------------- |
+| `src/layouts/Layout.astro`           | Diseño HTML principal                             |
+| `src/pages/[...slug].astro`          | Plantilla de página y carga de datos              |
+| `src/components/Header.astro`        | Encabezado del sitio                              |
+| `src/components/Sidebar/`            | Navegación de la barra lateral                    |
+| `src/components/TableOfContents.tsx` | Tabla de contenidos de la página                  |
+| `src/styles/`                        | Estilos globales, tipografía y esquema de colores |
 
 <div id="connect-search-and-assistant">
-  ## Conectar la búsqueda y el assistant
+  ## Conecta la Búsqueda y el asistente
 </div>
 
 <Note>
-  El assistant está disponible en los [planes Pro y Enterprise](https://mintlify.com/pricing).
+  El asistente está disponible en los [planes Pro y Enterprise](https://mintlify.com/pricing).
 </Note>
 
-La plantilla inicial incluye componentes de búsqueda y assistant que se conectan a las API de Mintlify usando las variables de entorno que configuras durante la configuración inicial.
+La plantilla inicial incluye componentes de Búsqueda y asistente que se conectan a las API de Mintlify mediante las variables de entorno que configuras durante la instalación.
 
-* **Search**: El componente `SearchBar` en `src/components/SearchBar.tsx` realiza consultas a la API de búsqueda de Mintlify.
-* **Assistant**: El componente `Assistant` en `src/components/Assistant/` proporciona una interfaz de chat con IA que responde preguntas usando el contenido de tu documentación.
+* **Búsqueda**: El componente `SearchBar` en `src/components/SearchBar.tsx` consulta la API de búsqueda de Mintlify.
+* **Assistant**: El componente `Assistant` en `src/components/Assistant/` ofrece una interfaz de chat con IA que responde preguntas con el contenido de tu documentación.
 
 Ambos requieren las variables de entorno `PUBLIC_MINTLIFY_SUBDOMAIN` y `PUBLIC_MINTLIFY_ASSISTANT_KEY`.
 
@@ -192,6 +192,6 @@ Ambos requieren las variables de entorno `PUBLIC_MINTLIFY_SUBDOMAIN` y `PUBLIC_M
 
 Después de configurar tu proyecto:
 
-1. Reemplaza el contenido inicial en `docs/` con tus propios archivos MDX y la configuración `docs.json`.
+1. Reemplaza el contenido inicial de `docs/` por tus propios archivos MDX y la configuración de `docs.json`.
 2. Personaliza los diseños y estilos para que se ajusten a tu sistema de diseño.
-3. Despliega tu sitio de Astro en tu proveedor de alojamiento preferido.
+3. Despliega tu sitio de Astro en el proveedor de alojamiento que prefieras.

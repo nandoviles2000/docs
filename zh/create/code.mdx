@@ -1,6 +1,6 @@
 ---
 title: "格式化代码"
-description: "在文档中格式化代码，支持语法高亮、行号、差异对比、复制按钮和 MDX 中的交互式代码组功能。"
+description: "在文档中为代码添加语法高亮、行号、差异视图、复制按钮以及 MDX 交互式代码组等功能。"
 keywords: ["代码块", "语法高亮", "代码样式"]
 ---
 
@@ -8,25 +8,25 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ## 添加代码示例
 </div>
 
-你可以添加行内代码片段或代码块。代码块支持用于语法高亮、标题、行高亮、icon 等的元选项，以及更多功能。
+你可以添加内联代码片段或代码块。代码块支持用于语法高亮、标题、行高亮、图标等功能的元数据选项。
 
 <div id="inline-code">
   ### 行内代码
 </div>
 
-要将某个 `word` 或 `phrase` 标记为代码，请用反引号 (`) 将其包裹。
+要将 `word` 或 `phrase` 标记为代码，请用反引号 (`) 将其括起来。
 
 ```mdx
-要将`单词`或`短语`标记为代码,请用反引号(`)将其包围。
+To denote a `word` or `phrase` as code, enclose it in backticks (`).
 ```
 
 <div id="code-blocks">
   ### 代码块
 </div>
 
-使用[围栏代码块](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks)，将代码置于三个反引号内。代码块可复制；如果启用了 AI 助手，用户可以让 AI 解释代码。
+使用[围栏代码块](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks)，即用三个反引号将代码括起来。代码块支持复制；如果你已启用助手，用户还可以让 AI 解释这些代码。
 
-为语法高亮和启用元选项指定编程语言。在语言标识后添加任意元选项，如 title 或 icon。
+指定编程语言以启用语法高亮和元数据选项。在语言后面添加任意元数据选项，例如标题或图标。
 
 <CodeGroup>
   ```java HelloWorld.java example icon=java lines
@@ -52,31 +52,31 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ## 代码块选项
 </div>
 
-在代码块中添加元选项来自定义其展示效果。
+为代码块添加元数据选项，以自定义其显示效果。
 
 <Note>
-  在添加任何其他元选项之前，必须先为代码块指定编程语言。
+  在添加任何其他元数据选项之前，必须先为代码块指定一种编程语言。
 </Note>
 
 <div id="option-syntax">
   ### 选项语法
 </div>
 
-* **字符串和布尔选项**：可以使用 `""`、`''`，或不加引号包裹。
-* **表达式选项**：可以使用 `{}`、`""`，或 `''` 包裹。
+* **字符串和布尔值选项**：用 `""`、`''` 或不加引号括起来。
+* **表达式选项**：用 `{}`、`""` 或 `''` 括起来。
 
 <div id="syntax-highlighting">
   ### 语法高亮
 </div>
 
-在代码块的起始反引号后指定编程语言即可启用语法高亮。
+在代码块起始的反引号后指定编程语言，即可启用语法高亮。
 
-我们使用 [Shiki](https://shiki.style/) 实现语法高亮，支持所有可用语言。完整语言列表请参见 Shiki 文档中的[语言](https://shiki.style/languages)。
+我们使用 [Shiki](https://shiki.style/) 实现语法高亮，并支持所有可用语言。完整列表请参阅 Shiki 文档中的 [languages](https://shiki.style/languages)。
 
-在 `docs.json` 中通过 `styling.codeblocks` 全局自定义代码块主题。可设置 `system` 或 `dark` 等简单主题，或为明暗模式配置自定义的 [Shiki 主题](https://shiki.style/themes)。配置项参见 [Settings](/zh/organize/settings-appearance#styling)。
+你可以通过 `docs.json` 文件中的 `styling.codeblocks` 全局自定义代码块主题。可设置 `system` 或 `dark` 等简单主题，也可以为浅色和深色模式分别配置自定义 [Shiki themes](https://shiki.style/themes)。有关配置选项，请参阅 [Settings](/zh/organize/settings-appearance#styling)。
 
 <CodeGroup>
-  ```java Syntax highlighting example
+  ```java 语法高亮示例
   class HelloWorld {
       public static void main(String[] args) {
           System.out.println("Hello, World!");
@@ -84,8 +84,8 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   }
   ```
 
-  ````mdx Format
-  ```java Syntax highlighting example
+  ````mdx 格式
+  ```java 语法高亮示例
   class HelloWorld {
       public static void main(String[] args) {
           System.out.println("Hello, World!");
@@ -96,26 +96,26 @@ keywords: ["代码块", "语法高亮", "代码样式"]
 </CodeGroup>
 
 <Accordion title="自定义语法高亮主题">
-  如需自定义主题，请在 `docs.json` 中将主题设为 `"css-variables"`，并使用以 `--mint-` 为前缀的 CSS 变量覆盖语法高亮颜色。
+  对于自定义主题，请在 `docs.json` 中将主题设置为 `"css-variables"`，并使用带有 `--mint-` 前缀的 CSS 变量覆盖语法高亮颜色。
 
   可用变量如下：
 
   **基础颜色**
 
-  * `--mint-color-text`: 默认文本颜色
-  * `--mint-color-background`: 背景颜色
+  * `--mint-color-text`：默认文本颜色
+  * `--mint-color-background`：背景颜色
 
   **Token 颜色**
 
-  * `--mint-token-constant`: 常量和字面量
-  * `--mint-token-string`: 字符串值
-  * `--mint-token-comment`: 注释
-  * `--mint-token-keyword`: 关键字
-  * `--mint-token-parameter`: 函数参数
-  * `--mint-token-function`: 函数名
-  * `--mint-token-string-expression`: 字符串表达式
-  * `--mint-token-punctuation`: 标点符号
-  * `--mint-token-link`: 链接
+  * `--mint-token-constant`：常量和字面量
+  * `--mint-token-string`：字符串值
+  * `--mint-token-comment`：注释
+  * `--mint-token-keyword`：关键字
+  * `--mint-token-parameter`：函数参数
+  * `--mint-token-function`：函数名
+  * `--mint-token-string-expression`：字符串表达式
+  * `--mint-token-punctuation`：标点符号
+  * `--mint-token-link`：链接
 
   **ANSI 颜色**
 
@@ -138,7 +138,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
 
   **自定义语法高亮**
 
-  通过提供自定义 TextMate 语法文件，为 Shiki 默认集合中未包含的语言添加语法高亮支持。创建一个遵循 [TextMate 语法格式](https://macromates.com/manual/en/language_grammars) 的 JSON 文件，然后在 `docs.json` 中引用它。你可以在数组中加入更多路径以添加多种自定义语言。
+  你可以通过提供自定义的 TextMate 语法文件，为不在 Shiki 默认语言集中的语言添加语法高亮。先按 [TextMate grammar format](https://macromates.com/manual/en/language_grammars) 创建一个 JSON 文件，再在 `docs.json` 中引用它。你可以通过在数组中添加更多路径来加入多个自定义语言。
 
   ```json docs.json
   {
@@ -157,29 +157,29 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ### Twoslash
 </div>
 
-在 JavaScript 和 TypeScript 代码块中，使用 `twoslash` 可启用交互式类型信息。用户可以像在 IDE 中一样，将鼠标悬停在变量、函数和参数上以查看类型和错误。
+在 JavaScript 和 TypeScript 代码块中，使用 `twoslash` 启用交互式类型信息。用户可以将鼠标悬停在变量、函数和参数上，像在 IDE 中一样查看类型信息和错误。
 
 <CodeGroup>
-  ```ts twoslash Twoslash example
+  ```ts twoslash Twoslash 示例
   type Pet = "cat" | "dog" | "hamster";
 
   function adoptPet(name: string, type: Pet) {
     return `${name} the ${type} is now adopted!`;
   }
 
-  // Hover to see the inferred types
+  // 悬停以查看推断类型
   const message = adoptPet("Mintie", "cat");
   ```
 
-  ````mdx Format
-  ```ts twoslash Twoslash example
+  ````mdx 格式
+  ```ts twoslash Twoslash 示例
   type Pet = "cat" | "dog" | "hamster";
 
   function adoptPet(name: string, type: Pet) {
     return `${name} the ${type} is now adopted!`;
   }
 
-  // Hover to see the inferred types
+  // 悬停以查看推断类型
   const message = adoptPet("Mintie", "cat");
   ```
   ````
@@ -189,12 +189,12 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ### 标题
 </div>
 
-为你的代码示例添加一个标题。将标题放在语言标识符之后。标题可以包含多个单词和文件路径。
+为代码示例添加标题标签。将标题放在语言标识符后面。标题可以包含多个单词和文件路径。
 
-你可以通过两种方式设置标题：
+你可以通过以下两种方式设置标题：
 
-- **内联**：将标题直接放在语言标识符之后。
-- **`title` 属性**：使用 `title="Your title"` 来设置需要特殊字符或显式引号的标题。
+* **行内**：将标题直接放在语言标识符后面。
+* **`title` 属性**：对于需要特殊字符或明确加引号的标题，使用 `title="Your title"`。
 
 <CodeGroup>
   ```javascript Example title
@@ -222,14 +222,14 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ### 图标
 </div>
 
-使用 `icon` 属性为代码块添加图标。参见 [图标](/zh/components/icons) 以查看所有可用选项。
+使用 `icon` 属性为代码块添加图标。所有可用选项请参阅[图标](/zh/components/icons)。
 
 <CodeGroup>
   ```javascript Icon example icon=square-js
   const hello = "world";
   ```
 
-  ````mdx Format
+  ````mdx 格式
   ```javascript Icon example icon="square-js"
   const hello = "world";
   ```
@@ -240,10 +240,10 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ### 行高亮
 </div>
 
-在代码块中，使用 `highlight` 并指定要高亮的行号或行范围来高亮特定行。
+使用 `highlight` 并指定要高亮的行号或范围，即可在代码块中高亮特定行。
 
 <CodeGroup>
-  ```javascript 行高亮示例 {1,2,5}
+  ```javascript Line highlighting example {1,2,5}
   const greeting = "Hello, World!";
   function sayHello() {
     console.log(greeting);
@@ -251,8 +251,8 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   sayHello();
   ```
 
-  ````mdx 格式
-  ```javascript 行高亮示例 highlight={1-2,5}
+  ````mdx Format
+  ```javascript Line highlighting example highlight={1-2,5}
   const greeting = "Hello, World!";
   function sayHello() {
     console.log(greeting);
@@ -263,13 +263,13 @@ keywords: ["代码块", "语法高亮", "代码样式"]
 </CodeGroup>
 
 <div id="line-focusing">
-  ### 行聚焦
+  ### 聚焦行
 </div>
 
-在代码块中使用 `focus` 搭配行号或行范围来突出显示特定行。
+使用包含行号或范围的 `focus`，聚焦代码块中的特定行。
 
 <CodeGroup>
-  ```javascript Line focusing example focus=2,4,5
+  ```javascript 突出显示行示例 focus=2,4,5
   const greeting = "Hello, World!";
   function sayHello() {
     console.log(greeting);
@@ -277,8 +277,8 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   sayHello();
   ```
 
-  ````mdx Format
-  ```javascript Line focusing example focus={2,4-5}
+  ````mdx 格式
+  ```javascript 突出显示行示例 focus={2,4-5}
   const greeting = "Hello, World!";
   function sayHello() {
     console.log(greeting);
@@ -295,7 +295,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
 使用 `lines` 在代码块左侧显示行号。
 
 <CodeGroup>
-  ```javascript Show line numbers example lines
+  ```javascript 显示行号示例 lines
   const greeting = "Hello, World!";
   function sayHello() {
     console.log(greeting);
@@ -303,8 +303,8 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   sayHello();
   ```
 
-  ````mdx Format
-  ```javascript Show line numbers example lines
+  ````mdx 格式
+  ```javascript 显示行号示例 lines
   const greeting = "Hello, World!";
   function sayHello() {
     console.log(greeting);
@@ -318,10 +318,10 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ### 可展开
 </div>
 
-使用 `expandable` 让用户展开或折叠较长的代码块。
+使用 `expandable` 让用户可以展开和折叠较长的代码块。
 
 <CodeGroup>
-  ```python Expandable example expandable
+  ```python 可展开示例 expandable
   from datetime import datetime, timedelta
   from typing import Dict, List, Optional
   from dataclasses import dataclass
@@ -337,7 +337,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   class Library:
       def __init__(self):
           self.books: Dict[str, Book] = {}
-          self.checkouts: Dict[str, List[str]] = {} # patron -> list of ISBNs
+          self.checkouts: Dict[str, List[str]] = {} # 读者 -> ISBN 列表
 
       def add_book(self, book: Book) -> None:
           if book.isbn in self.books:
@@ -375,7 +375,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
           book.checked_out = False
           book.due_date = None
 
-          # Remove from patron's checkouts
+          # 从读者的借阅列表中移除
           for patron, books in self.checkouts.items():
               if isbn in books:
                   books.remove(isbn)
@@ -393,7 +393,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   def main():
       library = Library()
 
-      # Add some books
+      # 添加一些图书
       books = [
           Book("The Hobbit", "J.R.R. Tolkien", "978-0-261-10295-4"),
           Book("1984", "George Orwell", "978-0-452-28423-4"),
@@ -402,7 +402,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
       for book in books:
           library.add_book(book)
 
-      # Checkout and return example
+      # 借阅和归还示例
       library.checkout_book("978-0-261-10295-4", "patron123")
       late_fee = library.return_book("978-0-261-10295-4")
       print(f"Late fee: ${late_fee:.2f}")
@@ -411,8 +411,8 @@ keywords: ["代码块", "语法高亮", "代码样式"]
       main()
   ```
 
-  ````text Format
-  ```python Expandable example expandable
+  ````text 格式
+  ```python 可展开示例 expandable
   from datetime import datetime, timedelta
   from typing import Dict, List, Optional
   from dataclasses import dataclass
@@ -426,10 +426,10 @@ keywords: ["代码块", "语法高亮", "代码样式"]
 </CodeGroup>
 
 <div id="wrap">
-  ### 换行
+  ### 自动换行
 </div>
 
-使用 `wrap` 为长行启用换行。这样可避免水平滚动，并使长行更易读。
+使用 `wrap` 为长行启用自动换行。这可以避免出现水平滚动条，并让长行更易于阅读。
 
 <CodeGroup>
   ```javascript Wrap example wrap
@@ -441,7 +441,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   sayHello();
   ```
 
-  ````mdx Format
+  ````mdx 格式
   ```javascript Wrap example wrap
   const greeting =
     "Hello, World! I am a long line of text that will wrap to the next line.";
@@ -457,19 +457,19 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ### 差异
 </div>
 
-在代码块中直观显示新增或删除的行。新增行会以绿色高亮显示，删除行会以红色高亮显示。
+在代码块中以可视化方式显示新增或删除的行。新增行会以绿色高亮，删除行会以红色高亮。
 
-在行尾的注释中添加 `[!code ++]` 或 `[!code --]`，即可将该行标记为新增或删除。请使用对应语言的注释语法：
+在行尾的注释中添加 `[!code ++]` 或 `[!code --]`，将该行标记为新增或删除。请使用对应语言的注释语法：
 
-| Language | Added | Removed |
-| --- | --- | --- |
-| JavaScript, TypeScript, Java, C, C++, Go, Rust | `// [!code ++]` | `// [!code --]` |
-| Python, Ruby, Bash, YAML | `# [!code ++]` | `# [!code --]` |
-| HTML, XML | `<!-- [!code ++] -->` | `<!-- [!code --] -->` |
-| CSS | `/* [!code ++] */` | `/* [!code --] */` |
-| SQL, Lua | `-- [!code ++]` | `-- [!code --]` |
+| 语言                                             | 新增                    | 删除                    |
+| ---------------------------------------------- | --------------------- | --------------------- |
+| JavaScript, TypeScript, Java, C, C++, Go, Rust | `// [!code ++]`       | `// [!code --]`       |
+| Python, Ruby, Bash, YAML                       | `# [!code ++]`        | `# [!code --]`        |
+| HTML, XML                                      | `<!-- [!code ++] -->` | `<!-- [!code --] -->` |
+| CSS                                            | `/* [!code ++] */`    | `/* [!code --] */`    |
+| SQL, Lua                                       | `-- [!code ++]`       | `-- [!code --]`       |
 
-对于连续的多行，请添加冒号和行数：
+如果有连续多行，请添加冒号和行数：
 
 * `// [!code ++:3]`：将当前行及其后两行标记为新增。
 * `# [!code --:5]`：将当前行及其后四行标记为删除。
@@ -492,7 +492,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   greet()
   ```
 
-  ````text JavaScript format
+  ````text JavaScript 格式
   ```js JavaScript diff lines
   const greeting = "Hello, World!"; // [!code ++]
   function sayHello() {
@@ -503,7 +503,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ```
   ````
 
-  ````text Python format
+  ````text Python 格式
   ```python Python diff lines
   def greet():
       print("Hello, World!")  # [!code --]
@@ -518,7 +518,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
   ## CodeBlock 组件
 </div>
 
-在自定义 React 组件中使用 `<CodeBlock>`，以编程方式渲染与 Markdown 代码块相同样式和功能的代码块。
+在自定义 React 组件中使用 `<CodeBlock>` 组件，以编程方式渲染代码块，并保持与 Markdown 代码块相同的样式和功能。
 
 <div id="props">
   ### 属性
@@ -533,7 +533,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
 </ResponseField>
 
 <ResponseField name="icon" type="string">
-  显示在代码块标题中的 icon。可用选项参见 [图标](/zh/components/icons)。
+  显示在代码块标题中的图标。可用选项请参阅 [图标](/zh/components/icons)。
 </ResponseField>
 
 <ResponseField name="lines" type="boolean">
@@ -541,7 +541,7 @@ keywords: ["代码块", "语法高亮", "代码样式"]
 </ResponseField>
 
 <ResponseField name="wrap" type="boolean">
-  是否对代码块进行换行显示。
+  是否对代码块内容自动换行。
 </ResponseField>
 
 <ResponseField name="expandable" type="boolean">
@@ -549,11 +549,13 @@ keywords: ["代码块", "语法高亮", "代码样式"]
 </ResponseField>
 
 <ResponseField name="highlight" type="string">
-  需要高亮的行。提供数字的字符串化数组。示例：`"[1,3,4,5]"`。
+  要高亮的行。请提供数字数组的字符串形式。例如：
+  `"[1,3,4,5]"`。
 </ResponseField>
 
 <ResponseField name="focus" type="string">
-  需要聚焦的行。提供数字的字符串化数组。示例：`"[1,3,4,5]"`。
+  要聚焦的行。请提供数字数组的字符串形式。例如：
+  `"[1,3,4,5]"`。
 </ResponseField>
 
 <div id="example">

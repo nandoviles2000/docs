@@ -1,16 +1,16 @@
 ---
 title: "Tabs"
-description: "Usa el componente tab para organizar el contenido en paneles intercambiables para mostrar diferentes opciones, versiones de plataforma o ejemplos de idioma."
-keywords: ["tabbed content", "content panels", "switchable content"]
+description: "Usa el componente Tabs para organizar el contenido en paneles intercambiables y mostrar distintas opciones, versiones de plataforma o ejemplos de idiomas."
+keywords: ["contenido en pestañas", "paneles de contenido", "contenido intercambiable"]
 ---
 
-Usa pestañas para organizar el contenido en varios paneles entre los que los usuarios pueden alternar. Puedes agregar cualquier número de pestañas e incluir otros componentes dentro de cada una.
+Usa pestañas para organizar el contenido en varios paneles entre los que los usuarios pueden alternar. Puedes añadir tantas pestañas como quieras e incluir otros componentes dentro de cada una.
 
 <Tabs>
   <Tab title="Primera pestaña">
-    ☝️ Bienvenido al contenido que solo puedes ver dentro de la primera pestaña.
+    ☝️ Te damos la bienvenida al contenido que solo puedes ver dentro de la primera pestaña.
 
-    Puedes agregar cualquier número de componentes dentro de las pestañas. Por ejemplo, un bloque de código:
+    Puedes añadir cualquier cantidad de componentes dentro de las pestañas. Por ejemplo, un bloque de código:
 
     ```java HelloWorld.java
       class HelloWorld {
@@ -24,7 +24,7 @@ Usa pestañas para organizar el contenido en varios paneles entre los que los us
   <Tab title="Segunda pestaña" icon="leaf">
     ✌️ Aquí tienes contenido que solo está dentro de la segunda pestaña.
 
-    ¡Esta tiene un <Icon icon="leaf" />!
+    ¡Esta tiene un icono de <Icon icon="leaf" />!
   </Tab>
 
   <Tab title="Tercera pestaña">
@@ -34,10 +34,10 @@ Usa pestañas para organizar el contenido en varios paneles entre los que los us
 
 ````mdx Tabs example
 <Tabs>
-  <Tab title="Primera pestaña">
-    ☝️ Bienvenido al contenido que solo puedes ver dentro de la primera pestaña.
+  <Tab title="First tab">
+    ☝️ Welcome to the content that you can only see inside the first tab.
 
-    Puedes agregar cualquier número de componentes dentro de las pestañas. Por ejemplo, un bloque de código:
+    You can add any number of components inside of tabs. For example, a code block:
     ```java HelloWorld.java
       class HelloWorld {
           public static void main(String[] args) {
@@ -57,16 +57,16 @@ Usa pestañas para organizar el contenido en varios paneles entre los que los us
 </Tabs>
 ````
 
-Las pestañas con el mismo título se mantienen sincronizadas en toda la página. Por ejemplo, si tienes varios grupos de pestañas que incluyen una pestaña titulada `JavaScript`, al seleccionar `JavaScript` en un grupo de pestañas se selecciona automáticamente `JavaScript` en los demás. Esto ayuda a que los usuarios que eligen un lenguaje o framework una vez vean reflejada esa elección en todas partes. Las pestañas también se sincronizan con los [grupos de código](/es/components/code-groups) que tienen el mismo título.
+Las pestañas con títulos coincidentes se mantienen sincronizadas en toda la página. Por ejemplo, si tienes varios grupos de pestañas que incluyen una pestaña con el título `JavaScript`, al seleccionar `JavaScript` en un grupo de pestañas, se seleccionará automáticamente `JavaScript` en los demás. Esto ayuda a que los usuarios que eligen un lenguaje o framework una sola vez vean esa elección reflejada en todas partes. Las pestañas también se sincronizan con los [grupos de código](/es/components/code-groups) que tienen títulos coincidentes.
 
 Para desactivar la sincronización de pestañas, agrega `sync={false}` a un componente `<Tabs>`.
 
 ```mdx Disable tab sync example
 <Tabs sync={false}>
-  <Tab title="Primera pestaña">
-    Este grupo de pestañas opera de forma independiente.
+  <Tab title="First tab">
+    Este grupo de pestañas funciona de forma independiente.
   </Tab>
-  <Tab title="Segunda pestaña">
+  <Tab title="Second tab">
     Seleccionar pestañas aquí no afectará a otros grupos de pestañas.
   </Tab>
 </Tabs>
@@ -79,33 +79,33 @@ Para desactivar la sincronización de pestañas, agrega `sync={false}` a un comp
 Configura estas propiedades en el componente contenedor `<Tabs>`.
 
 <ResponseField name="defaultTabIndex" type="number" default="0">
-  El índice de la pestaña que se muestra por defecto (basado en cero). Por ejemplo, establécelo en `1` para mostrar la segunda pestaña al cargar la página.
+  El índice de la pestaña que se mostrará de forma predeterminada (empezando en 0). Por ejemplo, establécelo en `1` para mostrar la segunda pestaña al cargar la página.
 </ResponseField>
 
 <ResponseField name="sync" type="boolean" default="true">
-  Cuando es `true`, las pestañas se sincronizan con otras pestañas y grupos de código de la página que tengan el mismo título. Establécelo en `false` para que las pestañas sean independientes.
+  Cuando es `true`, las pestañas se sincronizan con otras pestañas y grupos de código de la página que tengan títulos coincidentes. Establécelo en `false` para que las pestañas sean independientes.
 </ResponseField>
 
 <ResponseField name="borderBottom" type="boolean">
-  Añade un borde inferior y relleno al contenedor de pestañas. Es útil para separar visualmente el contenido con pestañas del resto de la página, especialmente cuando las pestañas contienen contenido de distinta longitud.
+  Añade un borde inferior y espaciado interno al contenedor de pestañas. Resulta útil para separar visualmente el contenido en pestañas del resto de la página, especialmente cuando las pestañas contienen contenido de distinta longitud.
 </ResponseField>
 
 <div id="tab-properties">
   ## Propiedades de Tab
 </div>
 
-Configura estas propiedades en cada componente `<Tab>` individual.
+Configura estas propiedades en cada componente `<Tab>`.
 
 <ResponseField name="title" type="string" required>
-  El título de la pestaña. Los títulos cortos facilitan la navegación. Las pestañas con el mismo título sincronizan sus selecciones.
+  El título de la pestaña. Los títulos cortos facilitan la navegación. Las pestañas con el mismo título sincronizan su selección.
 </ResponseField>
 
 <ResponseField name="id" type="string">
-  Un ID personalizado para la pestaña que se usa para enlaces de anclaje. Si no se proporciona, usa por defecto el mismo valor que `title`.
+  Un ID personalizado para la pestaña que se usa en enlaces de anclaje. Si no se proporciona, usa el mismo valor que `title`.
 </ResponseField>
 
 <ResponseField name="icon" type="string">
-  Un icono de [Font Awesome](https://fontawesome.com/icons), un icono de [Lucide](https://lucide.dev/icons), una URL a un icono o una ruta relativa a un icono.
+  Un icono de [Font Awesome](https://fontawesome.com/icons), un icono de [Lucide](https://lucide.dev/icons), una URL de un icono o la ruta relativa de un icono.
 </ResponseField>
 
 <ResponseField name="iconType" type="string">

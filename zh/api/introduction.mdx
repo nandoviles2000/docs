@@ -1,67 +1,71 @@
 ---
-title: "简介"
-description: "使用 Mintlify REST API 触发部署、嵌入 AI 助手、导出 Analytics 数据，并以编程方式管理文档。"
-keywords: ["REST API", "endpoints", "API keys"]
+title: "介绍"
+description: "使用 Mintlify REST API 触发部署、嵌入 AI 助手、导出分析数据，并通过编程管理文档。"
+keywords: ["REST API", "端点", "API 密钥"]
 ---
 
-Mintlify 的 REST（Representational State Transfer）API 让你可以以编程方式与文档交互、触发更新、嵌入 AI 驱动的聊天体验，并导出 Analytics 数据。
+借助 Mintlify REST (Representational State Transfer) API，您可以通过编程与文档交互、触发更新、嵌入 AI 驱动的聊天体验，并导出分析数据。
 
 <div id="endpoints">
-  ## 端点
+  ## 接口
 </div>
 
-* [Trigger update](/zh/api/update/trigger)：在需要时触发您站点的更新。
-* [Get update status](/zh/api/update/status)：获取某次更新的状态以及与您的文档相关的其他详细信息。
-* [Trigger preview deployment](/zh/api/preview/trigger)：为特定分支创建或更新预览部署。
-* [Create agent job](/zh/api/agent/v2/create-agent-job)：创建一个代理任务以自动编辑您的文档。
-* [Get agent job](/zh/api/agent/v2/get-agent-job)：获取特定代理任务的详细信息和状态。
-* [Send follow-up message](/zh/api/agent/v2/send-message)：向已有的代理任务发送后续消息。
-* [Create assistant message](/zh/api/assistant/create-assistant-message-v2)：将基于您的文档训练的 AI 助手嵌入到任意您选择的应用中。
-* [搜索文档](/zh/api/assistant/search)：搜索您的文档。
-* [获取页面内容](/zh/api/assistant/get-page-content)：检索文档页面的完整文本内容。
-* [获取用户反馈](/zh/api/analytics/feedback)：从您的文档中导出用户反馈。
-* [获取 AI 助手会话](/zh/api/analytics/assistant-conversations)：导出 AI 助手的会话历史。
-* [Get assistant caller stats](/zh/api/analytics/assistant-caller-stats)：获取按调用方类型划分的助手查询次数明细。
+* [触发更新](/zh/api/update/trigger): 在需要时触发站点更新。
+* [获取更新状态](/zh/api/update/status): 获取更新状态以及文档的其他详细信息。
+* [触发预览部署](/zh/api/preview/trigger): 为特定分支创建或更新预览部署。
+* [创建智能体任务](/zh/api/agent/v2/create-agent-job): 创建智能体任务，自动编辑你的文档。
+* [获取智能体任务](/zh/api/agent/v2/get-agent-job): 获取特定智能体任务的详细信息和状态。
+* [发送后续消息](/zh/api/agent/v2/send-message): 向现有智能体任务发送后续消息。
+* [创建助手消息](/zh/api/assistant/create-assistant-message-v2): 将基于你的文档训练的助手嵌入到任意应用中。
+* [搜索文档](/zh/api/assistant/search): 搜索你的文档内容。
+* [获取页面内容](/zh/api/assistant/get-page-content): 获取文档页面的完整文本内容。
+* [获取用户反馈](/zh/api/analytics/feedback): 导出文档中的用户反馈。
+* [按页面获取反馈](/zh/api/analytics/feedback-by-page): 导出按页面汇总的反馈数量。
+* [获取助手对话](/zh/api/analytics/assistant-conversations): 导出 AI 助手的对话历史记录。
+* [获取助手调用方统计信息](/zh/api/analytics/assistant-caller-stats): 按调用方类型获取助手查询次数的细分统计。
+* [获取搜索查询](/zh/api/analytics/searches): 导出文档搜索词和分析数据。
+* [获取页面浏览量](/zh/api/analytics/views): 导出每页和全站的内容浏览量统计。
+* [获取独立访客数](/zh/api/analytics/visitors): 导出每页和全站的独立访客数统计。
 
 <div id="common-use-cases">
   ### 常见用例
 </div>
 
-* **自动化部署**：使用 [Trigger update](/zh/api/update/trigger) 和 [Get update status](/zh/api/update/status)，在设定的时间间隔或当特定事件发生时触发站点更新。
-* **CI/CD 集成**：在代码变更时，将文档更新作为部署流水线的一部分来执行，使用 [Trigger update](/zh/api/update/trigger)。
-* **预览部署**：使用 [Trigger preview deployment](/zh/api/preview/trigger)，在 CI/CD 流水线中以编程方式创建或更新预览部署。
-* **自定义集成**：使用 [Create assistant message](/zh/api/assistant/create-assistant-message-v2)、[Search documentation](/zh/api/assistant/search) 和 [Get page content](/zh/api/assistant/get-page-content)，将 AI 助手嵌入到你的产品、支持门户或内部工具中。
-* **自动化编辑**：使用 agent 任务，以编程方式大规模更新文档，配合 [Create agent job](/zh/api/agent/v2/create-agent-job)、[Get agent job](/zh/api/agent/v2/get-agent-job) 和 [Send follow-up message](/zh/api/agent/v2/send-message)。
-* **Analytics 导出**：使用 [Get user feedback](/zh/api/analytics/feedback)、[Get assistant conversations](/zh/api/analytics/assistant-conversations) 和 [Get assistant caller stats](/zh/api/analytics/assistant-caller-stats)，导出反馈、助手会话和调用方统计数据以进行外部分析。
+* **自动化部署**：使用 [触发更新](/zh/api/update/trigger) 和 [获取更新状态](/zh/api/update/status)，按设定的时间间隔或在事件发生时触发站点更新。
+* **CI/CD 集成**：使用 [触发更新](/zh/api/update/trigger)，在代码发生变更时，将文档更新纳入您的部署流水线。
+* **预览部署**：使用 [触发预览部署](/zh/api/preview/trigger)，在您的 CI/CD 流水线中以编程方式创建或更新预览部署。
+* **自定义集成**：使用 [创建助手消息](/zh/api/assistant/create-assistant-message-v2)、[搜索文档](/zh/api/assistant/search) 和 [获取页面内容](/zh/api/assistant/get-page-content)，将 AI 助手嵌入您的产品、支持门户或内部工具中。
+* **自动化编辑**：使用 [创建智能体任务](/zh/api/agent/v2/create-agent-job)、[获取智能体任务](/zh/api/agent/v2/get-agent-job) 和 [发送后续消息](/zh/api/agent/v2/send-message)，通过智能体任务以编程方式批量更新文档。
+* **分析数据导出**：使用 [获取用户反馈](/zh/api/analytics/feedback)、[按页面获取反馈](/zh/api/analytics/feedback-by-page)、[获取助手对话](/zh/api/analytics/assistant-conversations)、[获取助手调用方统计信息](/zh/api/analytics/assistant-caller-stats)、[获取搜索查询](/zh/api/analytics/searches)、[获取页面浏览量](/zh/api/analytics/views) 和 [获取独立访客数](/zh/api/analytics/visitors)，导出反馈、助手对话、搜索分析、页面浏览量和访客数据，以便进行外部分析。
 
 <div id="authentication">
-  ## 认证
+  ## 身份验证
 </div>
 
-在控制台的 [API keys 页面](https://dashboard.mintlify.com/settings/organization/api-keys)生成 API key。每个 API key 都属于一个组织，你可以在同一组织内的多个部署中使用这些 API key。
+在仪表板的 [API 密钥页面](https://dashboard.mintlify.com/settings/organization/api-keys) 生成 API 密钥。每个 API 密钥都归属于一个组织，你可以在同一组织内的多个部署中使用这些密钥。
 
-每个组织每小时最多可创建 10 个 API key。
+每个组织每小时最多可创建 10 个 API 密钥。
 
 <div id="admin-api-key">
-  ### 管理员 API key
+  ### 管理员 API 密钥
 </div>
 
-使用管理员 API key 对发送到 [Trigger update](/zh/api/update/trigger)、[Get update status](/zh/api/update/status)、[Trigger preview deployment](/zh/api/preview/trigger)、[Create agent job](/zh/api/agent/v2/create-agent-job)、[Get agent job](/zh/api/agent/v2/get-agent-job)、[Send follow-up message](/zh/api/agent/v2/send-message)、[Get user feedback](/zh/api/analytics/feedback)、[Get assistant conversations](/zh/api/analytics/assistant-conversations) 和 [Get assistant caller stats](/zh/api/analytics/assistant-caller-stats) 的请求进行身份验证。
+使用管理员 API 密钥对以下请求进行身份验证：[触发更新](/zh/api/update/trigger)、[获取更新状态](/zh/api/update/status)、[触发预览部署](/zh/api/preview/trigger)、[创建智能体任务](/zh/api/agent/v2/create-agent-job)、[获取智能体任务](/zh/api/agent/v2/get-agent-job)、[发送后续消息](/zh/api/agent/v2/send-message)、[获取用户反馈](/zh/api/analytics/feedback)、[按页面获取反馈](/zh/api/analytics/feedback-by-page)、[获取助手对话](/zh/api/analytics/assistant-conversations)、[获取助手调用方统计信息](/zh/api/analytics/assistant-caller-stats)、[获取搜索查询](/zh/api/analytics/searches)、[获取页面浏览量](/zh/api/analytics/views)以及[获取独立访客数](/zh/api/analytics/visitors)。
 
-管理员 API key 以 `mint_` 前缀开头。
+管理员 API 密钥以 `mint_` 为前缀。
 
-管理员 API key 是一个服务器端密钥。不要在客户端代码中暴露它。
+管理员 API 密钥属于服务器端机密。请勿在客户端代码中暴露它。
 
 <div id="assistant-api-key">
-  ### Assistant API key
+  ### Assistant API 密钥
 </div>
 
-使用 assistant API key 对发往 [Create assistant message](/zh/api/assistant/create-assistant-message-v2)、[Search documentation](/zh/api/assistant/search) 和 [Get page content](/zh/api/assistant/get-page-content) 端点的请求进行认证。
+使用助手 API 密钥对发送到 [创建助手消息](/zh/api/assistant/create-assistant-message-v2)、[搜索文档](/zh/api/assistant/search) 和 [获取页面内容](/zh/api/assistant/get-page-content) 端点的请求进行身份验证。
 
-assistant API key 以 `mint_dsc_` 前缀开头。
+Assistant API 密钥均以 `mint_dsc_` 前缀开头。
 
-assistant API key 是一个公共令牌，你可以在前端代码中引用。
+Assistant API 密钥是一种公开令牌，你可以在前端代码中引用它。
 
 <Note>
-  使用 assistant API token 进行的调用可能会产生费用：可能会消耗你的助手额度，或产生超额费用。
+  使用助手 API 令牌发起调用可能会产生费用：要么消耗你的助手额度，要么产生超额费用。
 </Note>

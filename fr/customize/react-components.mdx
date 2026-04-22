@@ -1,18 +1,18 @@
 ---
 title: "React"
-description: "Créez des éléments interactifs et réutilisables avec des composants React personnalisés dans votre documentation Mintlify en utilisant JSX, l’état et la logique côté client."
-keywords: ["Composants React", "Composants interactifs", "JSX", "Composants personnalisés"]
+description: "Créez des éléments interactifs et réutilisables avec des composants React personnalisés dans votre documentation Mintlify à l’aide de JSX, de l’état et d’une logique côté client."
+keywords: ["composants React", "composants interactifs", "JSX", "composants personnalisés"]
 ---
 
 import { ColorGenerator } from "/snippets/color-generator.jsx";
 
-[Les composants React](https://react.dev) constituent un moyen puissant de créer des éléments interactifs et réutilisables dans votre documentation.
+Les [composants React](https://react.dev) permettent de créer des éléments interactifs et réutilisables dans votre documentation.
 
 <div id="using-react-components">
-  ## Utilisation de composants React
+  ## Utiliser des composants React
 </div>
 
-Vous pouvez créer des composants React directement dans vos fichiers MDX en utilisant les [hooks React](https://react.dev/reference/react/hooks).
+Vous pouvez créer des composants React directement dans vos fichiers MDX à l’aide des [hooks React](https://react.dev/reference/react/hooks).
 
 <div id="example">
   ### Exemple
@@ -21,6 +21,42 @@ Vous pouvez créer des composants React directement dans vos fichiers MDX en uti
 Cet exemple déclare un composant `Counter`, puis l’utilise avec `<Counter />`.
 
 ```mdx
+export const Counter = () => {
+  const [count, setCount] = useState(0)
+
+  const increment = () => setCount(count + 1)
+  const decrement = () => setCount(count - 1)
+
+  return (
+  <div className="flex items-center justify-center">
+      <div className="flex items-center rounded-xl overflow-hidden border border-zinc-950/20 dark:border-white/20">
+        <button
+          onClick={decrement}
+          className="flex items-center justify-center h-8 w-8 text-zinc-950/80 dark:text-white/80 border-r border-zinc-950/20 dark:border-white/20"
+          aria-label="Decrease"
+        >
+          -
+        </button>
+
+        <div className="flex text-sm items-center justify-center h-8 px-6 text-zinc-950/80 dark:text-white/80 font-medium min-w-[4rem] text-center">
+          {count}
+        </div>
+
+        <button
+          onClick={increment}
+          className="flex items-center justify-center h-8 w-8 text-zinc-950/80 dark:text-white/80 border-l border-zinc-950/20 dark:border-white/20"
+          aria-label="Increase"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  )
+}
+
+<Counter />
+```
+
 export const Counter = () => {
   const [count, setCount] = useState(0)
 
@@ -54,43 +90,7 @@ export const Counter = () => {
   )
 }
 
-<Counter />
-```
-
-export const Counter = () => {
-  const [count, setCount] = useState(0)
-
-  const increment = () => setCount(count + 1)
-  const decrement = () => setCount(count - 1)
-
-  return (
-  <div className="flex items-center justify-center">
-      <div className="flex items-center rounded-xl overflow-hidden border border-zinc-950/20 dark:border-white/20">
-        <button
-          onClick={decrement}
-          className="flex items-center justify-center h-8 w-8 text-zinc-950/80 dark:text-white/80 border-r border-zinc-950/20 dark:border-white/20"
-          aria-label="Réduire"
-        >
-          -
-        </button>
-
-        <div className="flex text-sm items-center justify-center h-8 px-6 text-zinc-950/80 dark:text-white/80 font-medium min-w-[4rem] text-center">
-          {count}
-        </div>
-
-        <button
-          onClick={increment}
-          className="flex items-center justify-center h-8 w-8 text-zinc-950/80 dark:text-white/80 border-l border-zinc-950/20 dark:border-white/20"
-          aria-label="Augmenter"
-        >
-          +
-        </button>
-      </div>
-    </div>
-  )
-}
-
-Le compteur est rendu sous la forme d’un composant React interactif.
+Le compteur s’affiche sous la forme d’un composant React interactif.
 
 <Counter />
 
@@ -98,17 +98,19 @@ Le compteur est rendu sous la forme d’un composant React interactif.
   ## Importer des composants
 </div>
 
-Pour importer des composants React dans vos fichiers MDX, les fichiers de composants doivent être placés dans le dossier `/snippets/`. Pour en savoir plus, consultez les [extraits réutilisables](/fr/create/reusable-snippets).
+Pour importer des composants React dans vos fichiers MDX, les fichiers de composants doivent être placés dans le dossier `/snippets/`. Pour en savoir plus, consultez les [snippets réutilisables](/fr/create/reusable-snippets).
 
 <Note>
-  Les imports imbriqués ne sont pas pris en charge. Si un composant React fait référence à d&#39;autres composants, vous devez importer tous les composants directement dans le fichier MDX parent plutôt que d&#39;importer des composants dans des fichiers de composants.
+  Les importations imbriquées ne sont pas prises en charge. Si un composant React fait référence à d&#39;autres composants, vous devez tous les importer directement dans le fichier MDX parent, plutôt que d&#39;importer des composants dans les fichiers de composants.
 </Note>
 
-### Exemple
+<div id="example">
+  ### Exemple
+</div>
 
-Cet exemple déclare un composant `ColorGenerator` qui utilise plusieurs hooks React, puis l&#39;utilise dans un fichier MDX.
+Cet exemple déclare un composant `ColorGenerator` qui utilise plusieurs hooks React, puis l’utilise dans un fichier MDX.
 
-Créez le fichier `color-generator.jsx` dans le dossier `snippets` :
+Créez le fichier `color-generator.jsx` dans le dossier `snippets` :
 
 ```mdx /snippets/color-generator.jsx [expandable]
 export const ColorGenerator = () => {
@@ -130,10 +132,10 @@ export const ColorGenerator = () => {
     navigator.clipboard
       .writeText(color)
       .then(() => {
-        console.log(`${color} copié dans le presse-papiers !`)
+        console.log(`Copied ${color} to clipboard!`)
       })
       .catch((err) => {
-        console.error("Échec de la copie : ", err)
+        console.error("Failed to copy: ", err)
       })
   }
 
@@ -142,7 +144,7 @@ export const ColorGenerator = () => {
       <div className="space-y-4">
         <div className="space-y-2">
           <label className="block text-sm text-zinc-950/70 dark:text-white/70">
-            Teinte : {hue}°
+            Hue: {hue}°
             <input
               type="range"
               min="0"
@@ -164,7 +166,7 @@ export const ColorGenerator = () => {
           </label>
 
           <label className="block text-sm text-zinc-950/70 dark:text-white/70">
-            Saturation : {saturation}%
+            Saturation: {saturation}%
             <input
               type="range"
               min="0"
@@ -182,7 +184,7 @@ export const ColorGenerator = () => {
           </label>
 
           <label className="block text-sm text-zinc-950/70 dark:text-white/70">
-            Luminosité : {lightness}%
+            Lightness: {lightness}%
             <input
               type="range"
               min="0"
@@ -206,7 +208,7 @@ export const ColorGenerator = () => {
               key={idx}
               className="h-16 rounded flex-1 cursor-pointer transition-transform hover:scale-105"
               style={{ backgroundColor: color }}
-              title={`Cliquer pour copier : ${color}`}
+              title={`Click to copy: ${color}`}
               onClick={() => copyToClipboard(color)}
             />
           ))}
@@ -214,7 +216,7 @@ export const ColorGenerator = () => {
 
         <div className="text-sm font-mono text-zinc-950/70 dark:text-white/70">
           <p>
-            Couleur de base : hsl({hue}, {saturation}%, {lightness}%)
+            Base color: hsl({hue}, {saturation}%, {lightness}%)
           </p>
         </div>
       </div>
@@ -231,7 +233,7 @@ import { ColorGenerator } from "/snippets/color-generator.jsx"
 <ColorGenerator />
 ```
 
-Le générateur de couleurs s&#39;affiche sous la forme d’un composant React interactif.
+Le générateur de couleurs s’affiche comme un composant React interactif.
 
 <ColorGenerator />
 
@@ -241,17 +243,17 @@ Le générateur de couleurs s&#39;affiche sous la forme d’un composant React i
 
 <AccordionGroup>
   <Accordion title="Impact du rendu côté client">
-    Les composants à hooks React s’exécutent côté client, ce qui a plusieurs implications :
+    Les composants utilisant des hooks React sont rendus côté client, ce qui a plusieurs implications :
 
-    * **SEO** : Les moteurs de recherche peuvent ne pas indexer entièrement le contenu dynamique.
-    * **Chargement initial** : Les visiteurs peuvent voir un flash de chargement avant que les composants ne s’affichent.
-    * **Accessibilité** : Assurez-vous que les modifications de contenu dynamique sont annoncées aux lecteurs d’écran.
+    * **SEO** : Les moteurs de recherche risquent de ne pas indexer entièrement le contenu dynamique.
+    * **Chargement initial** : Les visiteurs peuvent voir brièvement un indicateur de chargement avant que les composants ne soient rendus.
+    * **Accessibilité** : Assurez-vous que les changements de contenu dynamique sont annoncés aux lecteurs d’écran.
   </Accordion>
 
-  <Accordion title="Bonnes pratiques de performance">
-    * **Optimiser les tableaux de dépendances** : N’incluez que les dépendances nécessaires dans vos tableaux de dépendances `useEffect`.
+  <Accordion title="Bonnes pratiques en matière de performances">
+    * **Optimiser les tableaux de dépendances** : Incluez uniquement les dépendances nécessaires dans les tableaux de dépendances de `useEffect`.
     * **Mémoriser les calculs complexes** : Utilisez `useMemo` ou `useCallback` pour les opérations coûteuses.
-    * **Réduire les re-rendus** : Scindez les gros composants en composants plus petits pour éviter les re-rendus en cascade.
-    * **Chargement différé** : Envisagez le chargement différé des composants complexes pour améliorer le temps de chargement initial de la page.
+    * **Réduire les re-rendus** : Décomposez les composants volumineux en composants plus petits pour éviter les re-rendus en cascade.
+    * **Chargement différé** : Envisagez de charger en différé les composants complexes afin d’améliorer le temps de chargement initial de la page.
   </Accordion>
 </AccordionGroup>

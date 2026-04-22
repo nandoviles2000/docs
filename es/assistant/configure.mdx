@@ -1,127 +1,133 @@
 ---
-title: "Configurar el assistant"
-description: "Habilita o deshabilita el assistant, configura el manejo de respuestas, agrega preguntas iniciales, configura la protección contra bots y administra la facturación."
-keywords: ["assistant", "configuración", "derivación", "protección contra bots", "facturación"]
+title: "Configurar el asistente"
+description: "Activa o desactiva el asistente, configura la gestión de respuestas, añade preguntas de inicio, configura la protección contra bots y administra la facturación."
+keywords: ["assistant", "settings", "deflection", "bot protection", "billing"]
 ---
 
-Configura el assistant y administra la facturación en la página [Assistant](https://dashboard.mintlify.com/products/assistant) de tu dashboard.
+Configura el asistente y administra la facturación en la página [Assistant](https://dashboard.mintlify.com/products/assistant) de tu panel.
 
 <div id="enable-or-disable-the-assistant">
-  ## Habilitar o deshabilitar el assistant
+  ## Activa o desactiva el asistente
 </div>
 
-Activa o desactiva el estado del assistant para habilitar o deshabilitar el assistant en tu sitio de documentación.
+Cambia el estado del asistente para activarlo o desactivarlo en tu sitio de documentación.
 
 <Frame>
-  <img src="/images/assistant/status-light.png" alt="El interruptor de estado del assistant en el dashboard." className="block dark:hidden" />
-  <img src="/images/assistant/status-dark.png" alt="El interruptor de estado del assistant en el dashboard." className="hidden dark:block" />
+  <img src="/images/assistant/status-light.png" alt="El interruptor de estado del asistente en el panel." className="block dark:hidden" />
+
+  <img src="/images/assistant/status-dark.png" alt="El interruptor de estado del asistente en el panel." className="hidden dark:block" />
 </Frame>
 
 <div id="set-deflection-email">
-  ## Configurar correo de derivación
+  ## Configura el correo electrónico de desvío
 </div>
 
-En la sección Manejo de respuestas, habilita el assistant para redirigir preguntas sin respuesta a tu equipo de soporte.
+En la sección Gestión de respuestas, habilita que el asistente redirija las preguntas que no pueda responder a tu equipo de soporte.
 
-Especifica una dirección de correo electrónico para que el assistant la proporcione a los usuarios si no puede responder su pregunta. También puedes habilitar un botón "Contactar soporte" que aparezca en el panel de chat del assistant.
+Especifica una dirección de correo electrónico para que el asistente se la proporcione a los usuarios si no puede responder su pregunta. También puedes habilitar un botón de &quot;Contactar con soporte&quot; para que aparezca en el panel de chat del asistente.
 
 <Frame>
-  <img src="/images/assistant/deflection-light.png" alt="El panel de derivación del assistant en el dashboard. La derivación del assistant está activada y support@mintlify.com está configurado como correo de derivación." className="block dark:hidden" />
-  <img src="/images/assistant/deflection-dark.png" alt="El panel de derivación del assistant en el dashboard. La derivación del assistant está activada y support@mintlify.com está configurado como correo de derivación." className="hidden dark:block" />
+  <img src="/images/assistant/deflection-light.png" alt="El panel de desvío del asistente en el panel. El desvío del asistente está activado y support@mintlify.com está configurado como correo electrónico de desvío." className="block dark:hidden" />
+
+  <img src="/images/assistant/deflection-dark.png" alt="El panel de desvío del asistente en el panel. El desvío del asistente está activado y support@mintlify.com está configurado como correo electrónico de desvío." className="hidden dark:block" />
 </Frame>
 
 <div id="search-domains">
   ## Dominios de búsqueda
 </div>
 
-En la sección Manejo de respuestas, configura los dominios en los que el assistant puede buscar en la web para encontrar contexto adicional al responder preguntas.
+En la sección de gestión de respuestas, configura los dominios que el asistente puede usar para buscar en la web y encontrar contexto adicional al responder preguntas.
 
-- Los dominios deben ser accesibles públicamente.
-- No se admiten dominios que requieran JavaScript para cargar.
+* Los dominios deben ser de acceso público.
+* No se admiten dominios que requieran JavaScript para cargarse.
 
 <Frame>
-  <img src="/images/assistant/search-domains-light.png" alt="El panel de dominios de búsqueda del assistant habilitado en el dashboard. El assistant está configurado para buscar en el dominio mintlify.com/pricing." className="block dark:hidden" />
-  <img src="/images/assistant/search-domains-dark.png" alt="El panel de dominios de búsqueda del assistant habilitado en el dashboard. El assistant está configurado para buscar en el dominio mintlify.com/pricing." className="hidden dark:block" />
+  <img src="/images/assistant/search-domains-light.png" alt="El panel de dominios de búsqueda del asistente, habilitado en el panel. El asistente está configurado para buscar en el dominio mintlify.com/pricing." className="block dark:hidden" />
+
+  <img src="/images/assistant/search-domains-dark.png" alt="El panel de dominios de búsqueda del asistente, habilitado en el panel. El asistente está configurado para buscar en el dominio mintlify.com/pricing." className="hidden dark:block" />
 </Frame>
 
-Para un control más preciso sobre lo que el assistant puede buscar, usa la sintaxis de filtrado.
+Para tener un control más preciso sobre lo que el asistente puede buscar, usa la sintaxis de filtrado.
 
-- **Filtrado a nivel de dominio**
-  - `example.com`: Buscar solo en el dominio `example.com`
-  - `docs.example.com`: Buscar solo en el subdominio `docs.example.com`
-  - `*.example.com`: Buscar en todos los subdominios de `example.com`
-- **Filtrado a nivel de ruta**
-  - `docs.example.com/api`: Buscar en todas las páginas bajo la subruta `/api`
-- **Múltiples patrones**
-  - Agrega múltiples entradas para apuntar a diferentes secciones de sitios
+* **Filtrado a nivel de dominio**
+  * `example.com`: Busca solo en el dominio `example.com`
+  * `docs.example.com`: Busca solo en el subdominio `docs.example.com`
+  * `*.example.com`: Busca en todos los subdominios de `example.com`
+* **Filtrado a nivel de ruta**
+  * `docs.example.com/api`: Busca en todas las páginas de la subruta `/api`
+* **Múltiples patrones**
+  * Agrega varias entradas para abarcar distintas secciones de los sitios
 
 <div id="add-sample-questions">
-  ## Agregar preguntas de ejemplo
+  ## Añadir preguntas iniciales
 </div>
 
-Ayuda a tus usuarios a iniciar conversaciones con el assistant agregando preguntas iniciales.
+Ayuda a tus usuarios a iniciar conversaciones con el asistente añadiendo preguntas iniciales.
 
-El assistant puede generar preguntas específicas de la página basándose en la página que el usuario está viendo, o puedes agregar preguntas persistentes que estén disponibles en todas las páginas.
+El asistente puede generar preguntas específicas para la página según la página que esté viendo el usuario, o puedes añadir preguntas persistentes disponibles en todas las páginas.
 
-Puedes agregar hasta tres preguntas iniciales. Haz clic en **Ask AI** para obtener preguntas recomendadas basadas en tu documentación.
+Puedes añadir hasta tres preguntas iniciales. Haz clic en **Ask AI** para obtener preguntas recomendadas según tu documentación.
 
 <Frame>
-  <img src="/images/assistant/search-suggestions-light.png" alt="El panel de sugerencias de búsqueda en el dashboard con preguntas iniciales contextuales habilitadas." className="block dark:hidden" />
-  <img src="/images/assistant/search-suggestions-dark.png" alt="El panel de sugerencias de búsqueda en el dashboard con preguntas iniciales contextuales habilitadas." className="hidden dark:block" />
+  <img src="/images/assistant/search-suggestions-light.png" alt="El panel de sugerencias de Búsqueda en el panel con preguntas iniciales contextuales habilitadas." className="block dark:hidden" />
+
+  <img src="/images/assistant/search-suggestions-dark.png" alt="El panel de sugerencias de Búsqueda en el panel con preguntas iniciales contextuales habilitadas." className="hidden dark:block" />
 </Frame>
 
 <div id="bot-protection">
   ## Protección contra bots
 </div>
 
-En la sección Protección contra bots, habilita captcha invisible para proteger tu assistant de abusos automatizados. La protección contra bots respeta la privacidad y es invisible para casi todos los visitantes.
+En la sección **Bot Protection**, habilita **Invisible Captcha** para proteger tu asistente frente al abuso automatizado. La protección contra bots respeta la privacidad y es invisible para casi todos los visitantes.
 
 Para habilitar la protección contra bots:
 
-1. Ve a la página de [configuración del Assistant](https://dashboard.mintlify.com/products/assistant/settings) en tu dashboard.
+1. Ve a la página de [configuración de Assistant](https://dashboard.mintlify.com/products/assistant/settings) en tu panel.
 2. En la sección **Bot Protection**, activa **Invisible Captcha**.
 
-Los cambios tardan hasta 10 minutos en propagarse.
+Los cambios pueden tardar hasta 10 minutos en propagarse.
 
 <Note>
-  Si usas [encabezados de Content Security Policy](/es/deploy/csp-configuration) personalizados, debes incluir `hcaptcha.com` y `*.hcaptcha.com` en tu lista de permitidos.
+  Si usas [encabezados personalizados de Content Security Policy](/es/deploy/csp-configuration), debes incluir `hcaptcha.com` y `*.hcaptcha.com` en tu lista de elementos permitidos.
 </Note>
 
 <div id="manage-billing">
-  ## Administrar la facturación
+  ## Gestionar la facturación
 </div>
 
-El assistant usa asignaciones de mensajes por niveles. Un mensaje es cualquier interacción del usuario con el assistant que recibe una respuesta correcta. Si tienes mensajes sin usar, hasta la mitad de tu asignación de mensajes puede transferirse al siguiente ciclo de facturación. Por ejemplo, si tienes una asignación de 1,000 mensajes y usas 300 mensajes, 500 mensajes se transfieren al siguiente ciclo de facturación, dándote un total de 1,500 mensajes para el siguiente ciclo de facturación.
+El asistente usa cuotas de mensajes por plan. Un mensaje es cualquier interacción del usuario con el asistente que reciba una respuesta correcta. Si te sobran mensajes, hasta la mitad de tu cuota de mensajes puede acumularse para el siguiente ciclo de facturación. Por ejemplo, si tienes una cuota de 1,000 mensajes y usas 300, 500 mensajes se acumulan para el siguiente ciclo de facturación, lo que te da un total de 1,500 mensajes en ese ciclo.
 
-Por defecto, el assistant permite excedentes. Puedes deshabilitar los excedentes para evitar incurrir en costos adicionales por uso más allá de tu nivel. Si alcanzas tu asignación de mensajes con los excedentes deshabilitados, el assistant no estará disponible hasta que tu asignación de mensajes se renueve. Si permites excedentes, cada mensaje más allá de tu asignación incurre en un cargo por excedente, pero los excedentes ocasionales pueden ser más baratos que subir a un nivel superior, dependiendo de tu uso.
+De forma predeterminada, el asistente permite cargos por exceso. Puedes desactivar los cargos por exceso para evitar costos adicionales por uso por encima de tu plan. Si alcanzas tu cuota de mensajes con los cargos por exceso desactivados, el asistente no estará disponible hasta que tu cuota se restablezca. Si permites cargos por exceso, cada mensaje que supere tu cuota genera un cargo por exceso, pero los cargos por exceso ocasionales pueden salir más baratos que cambiar a un plan superior, según tu uso.
 
 <div id="change-your-assistant-tier">
-  ### Cambiar tu nivel de assistant
+  ### Cambia el plan de tu asistente
 </div>
 
-Los niveles de assistant determinan tu asignación mensual de mensajes y los precios.
+Los planes de Assistant determinan tu cuota mensual de mensajes y el precio.
 
-Consulta y cambia tu nivel actual en la [pestaña de Facturación](https://dashboard.mintlify.com/products/assistant?tab=billing) de la página del assistant en tu dashboard.
+Consulta y cambia tu plan actual en la [pestaña facturación](https://dashboard.mintlify.com/products/assistant?tab=billing) de la página del asistente en tu panel.
 
-En la sección **Spending Controls**, selecciona tu nivel preferido del menú desplegable.
+En la sección **Spending Controls**, selecciona el plan que prefieras en el menú desplegable.
 
-**Subir de nivel:**
-- Tu nueva asignación de mensajes está disponible inmediatamente.
-- Pagas una diferencia prorrateada por el ciclo de facturación actual.
+**Sube de plan:**
 
-**Bajar de nivel:**
-- Tu asignación de mensajes se actualiza inmediatamente.
-- Los cambios de precio entran en vigor al inicio de tu próximo ciclo de facturación.
-- Los mensajes no utilizados de tu nivel actual **no se** transfieren.
+* Tu nueva cuota de mensajes está disponible de inmediato.
+* Pagas la diferencia prorrateada del ciclo de facturación actual.
+
+**Baja de plan:**
+
+* Tu cuota de mensajes se actualiza de inmediato.
+* Los cambios de precio entran en vigor al inicio de tu próximo ciclo de facturación.
+* Los mensajes no utilizados de tu plan actual **no** se transfieren.
 
 <div id="allow-overages">
-  ### Permitir excedentes
+  ### Permitir cargos por exceso
 </div>
 
-Si deseas no permitir excedentes, deshabilítalos en la sección **Billing Controls** de la [pestaña de Facturación](https://dashboard.mintlify.com/products/assistant?tab=billing) de la página del assistant en tu dashboard.
+Si quieres desactivar los cargos por exceso, desactívalos en la sección **Controles de facturación** de la [pestaña Facturación](https://dashboard.mintlify.com/products/assistant?tab=billing) de la página del asistente en tu panel.
 
 <div id="set-usage-alerts">
-  ### Configurar alertas de uso
+  ### Configura alertas de uso
 </div>
 
-En la sección Billing Controls, configura alertas de uso para recibir un correo electrónico cuando alcances un cierto porcentaje de tu asignación de mensajes.
+En la sección de control de facturación, configura alertas de uso para recibir un correo electrónico cuando alcances cierto porcentaje de tu cuota de mensajes.

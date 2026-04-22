@@ -1,81 +1,81 @@
 ---
-title: "Modèles de contenu de documentation"
+title: "Modèles de contenu pour la documentation"
 sidebarTitle: "Modèles de contenu"
-description: "Copiez et modifiez des modèles MDX prêts à l'emploi pour les guides pratiques, tutoriels, explications conceptuelles et pages de référence d'API dans votre documentation."
+description: "Copiez et modifiez des modèles MDX prêts à l’emploi pour des guides pratiques, des tutoriels, des explications de concepts et des pages de Référence de l’API dans votre documentation."
 keywords: ["modèles de documentation", "modèle de guide pratique", "modèle de tutoriel", "modèle de référence", "modèles MDX"]
 ---
 
-Utilisez ces modèles comme point de départ pour créer votre documentation. Personnalisez-les en fonction de votre documentation et de votre public.
+Utilisez ces modèles comme point de départ pour créer votre documentation. Adaptez-les à votre documentation et à votre public.
 
-1. Copiez le modèle qui correspond à votre type de contenu.
-2. Remplacez les espaces réservés et le contenu d&#39;exemple par votre propre contenu.
-3. Ajustez les sections si nécessaire.
-4. Supprimez les sections qui ne s&#39;appliquent pas.
+1. Copiez le modèle correspondant à votre type de contenu.
+2. Remplacez les espaces réservés et le contenu d’exemple par votre contenu.
+3. Ajustez les sections selon vos besoins.
+4. Supprimez toutes les sections qui ne s’appliquent pas.
 
 <Tip>
-  Vous ne savez pas quel modèle choisir ? Consultez la page sur les [types de contenu](/fr/guides/content-types) pour savoir quand utiliser chacun d&#39;entre eux.
+  Vous ne savez pas quel modèle utiliser ? Consultez les [types de contenu](/fr/guides/content-types) pour savoir quand utiliser chacun d’eux.
 </Tip>
 
 <div id="how-to-guide-template">
   ## Modèle de guide pratique
 </div>
 
-Utilisez des guides pratiques lorsque les utilisateurs doivent accomplir une tâche précise et qu’ils connaissent déjà un minimum votre produit. Les guides pratiques sont orientés vers un objectif et vont droit à la solution.
+Utilisez les guides pratiques lorsque les utilisateurs doivent accomplir une tâche précise et connaissent déjà quelque peu votre produit. Les guides pratiques sont orientés vers un objectif précis et vont droit à la solution.
 
 ````mdx How-to guide template
 ---
-title: "[Les titres doivent commencer par un verbe]"
-description: "[Effectuer une tâche spécifique] pour [atteindre un résultat]."
+title: "[Titles should start with a verb]"
+description: "[Do specific task] to [achieve outcome]."
 ---
 
-Commencez par une brève description de ce que ce guide permet aux utilisateurs d'accomplir.
+Start with a brief statement of what this guide helps users accomplish.
 
-## Prérequis (facultatif)
+## Prerequisites (optional)
 
-Listez uniquement ce qui est nécessaire :
+List only what's necessary:
 
-- Configuration ou paramétrage requis
-- Permissions nécessaires
-- Fonctionnalités associées à configurer au préalable
+- Required setup or configuration
+- Permissions needed
+- Related features that should be configured first
 
-## [Titre orienté action décrivant la tâche]
+## [Action-oriented heading describing the task]
 
-Fournissez des instructions directes pour atteindre l'objectif.
+Provide direct instructions focused on achieving the goal.
 
-1. Ouvrez [emplacement] et accédez à [lieu spécifique]
-2. Cliquez sur [bouton ou option]
-3. Saisissez [informations requises]
-4. Cliquez sur [bouton de confirmation]
+1. Open [location] and navigate to [specific place]
+2. Click [button or option]
+3. Enter [required information]
+4. Click [confirmation button]
 
 ```language
 // Incluez des exemples de code que les utilisateurs peuvent copier et modifier
 ```
 
 <Tip>
-  Incluez des conseils pratiques pour aider les utilisateurs à éviter les erreurs courantes ou à travailler plus efficacement.
+  Include practical tips that help users avoid common mistakes or work more efficiently.
 </Tip>
 
-## Vérifier le résultat (facultatif)
+## Verify the result (optional)
 
-Si la réussite n'est pas évidente, expliquez comment les utilisateurs peuvent confirmer qu'ils ont terminé la tâche avec succès.
+If success is ambiguous, explain how users can confirm they completed the task successfully.
 
-## Dépannage (facultatif)
+## Troubleshooting (optional)
 
-Traitez les problèmes courants que les utilisateurs pourraient rencontrer :
+Address common issues users might encounter:
 
-- **Description du problème** : Solution ou contournement
-- **Un autre problème courant** : Comment le résoudre
+- **Problem description**: Solution or workaround
+- **Another common issue**: How to resolve it
 
-## Tâches associées
+## Related tasks
 
-Ajoutez des liens vers des guides pratiques associés ou les prochaines étapes.
+Link to related how-to guides or next steps.
 ````
 
 <div id="tutorial-template">
   ## Modèle de tutoriel
 </div>
 
-Utilisez les tutoriels lorsque vous souhaitez aider les nouveaux utilisateurs à apprendre en pratiquant. Les tutoriels guident les utilisateurs étape par étape à travers une expérience d&#39;apprentissage complète, avec un résultat clair.
+Utilisez des tutoriels lorsque vous souhaitez aider de nouveaux utilisateurs à apprendre par la pratique. Les tutoriels guident les utilisateurs pas à pas à travers une expérience d’apprentissage complète, avec un objectif clair.
 
 ````mdx Tutorial template
 ---
@@ -128,133 +128,133 @@ Summarize what users learned and suggest logical next steps:
   ## Modèle d’explication
 </div>
 
-Utilisez des explications lorsque les utilisateurs ont besoin de comprendre des concepts, des décisions de conception ou le fonctionnement de fonctionnalités complexes. Les explications fournissent du context et approfondissent la compréhension plutôt que de donner des instructions étape par étape.
+Utilisez des explications lorsque les utilisateurs ont besoin de comprendre des concepts, des choix de conception ou le fonctionnement de fonctionnalités complexes. Les explications apportent du contexte et permettent d’approfondir la compréhension, plutôt que de fournir des instructions étape par étape.
 
 ```mdx Explanation template
 ---
-title: "About [concept or feature]"
-description: "Understand [concept] and how it works within [product or context]."
+title: "À propos de [concept ou fonctionnalité]"
+description: "Comprendre [concept] et son fonctionnement dans [produit ou contexte]."
 ---
 
-Start with a clear statement of what this explanation covers and why understanding it matters.
+Commencez par une déclaration claire de ce que couvre cette explication et pourquoi la comprendre est important.
 
-Define the concept in plain language. Explain what it is, what it does, and why it exists.
+Définissez le concept en langage simple. Expliquez ce que c'est, ce que cela fait et pourquoi cela existe.
 
-Use analogies or comparisons to familiar concepts when helpful.
+Utilisez des analogies ou des comparaisons avec des concepts familiers lorsque cela est utile.
 
-## How [concept] works
+## Fonctionnement de [concept]
 
-Explain the underlying mechanics, architecture, or process.
+Expliquez les mécanismes sous-jacents, l'architecture ou le processus.
 
 <Frame>
-  <img src="/path/to/diagram.png" alt="Diagram showing how [concept] works" />
+  <img src="/path/to/diagram.png" alt="Diagramme illustrant le fonctionnement de [concept]" />
 </Frame>
 
-Break down complex ideas into digestible sections.
+Décomposez les idées complexes en sections faciles à assimiler.
 
-## Why [design decision or approach]
+## Pourquoi [décision de conception ou approche]
 
-Provide context about why things work the way they do.
+Fournissez le contexte expliquant pourquoi les choses fonctionnent de cette façon.
 
-Discuss trade-offs, alternatives that were considered, or constraints that influenced the design.
+Abordez les compromis, les alternatives envisagées ou les contraintes qui ont influencé la conception.
 
 ## Quand utiliser [concept]
 
-Aidez les utilisateurs à comprendre quand ce concept ou cette approche est le plus approprié.
+Aidez les utilisateurs à comprendre dans quels cas ce concept ou cette approche est le plus approprié.
 
-- **Cas d'usage 1** : Quand cette approche est pertinente
-- **Cas d'usage 2** : Un autre scénario où c'est le bon choix
-- **Non recommandé pour** : Situations où les alternatives sont préférables
+- **Cas d'utilisation 1** : Quand cette approche est pertinente
+- **Cas d'utilisation 2** : Un autre scénario où c'est le bon choix
+- **Déconseillé pour** : Les situations où des alternatives sont préférables
 
-## Relationship to other features
+## Relation avec d'autres fonctionnalités
 
-Draw connections to related concepts or features in your product.
+Établissez des liens avec des concepts ou des fonctionnalités connexes de votre produit.
 
-Explain how this concept fits into the broader system or workflow.
+Expliquez comment ce concept s'intègre dans le système global ou le flux de travail.
 
-## Common misconceptions
+## Idées reçues courantes
 
-Address misunderstandings or clarify subtle distinctions.
+Corrigez les malentendus ou clarifiez les distinctions subtiles.
 
-## Further reading
+## Pour aller plus loin
 
-Link to related explanations, tutorials, or reference documentation.
+Ajoutez des liens vers des explications connexes, des tutoriels ou de la documentation de référence.
 ```
 
 <div id="reference-template">
-  ## Modèle de référence
+  ## Modèle de documentation de référence
 </div>
 
-Utilisez la documentation de référence lorsque les utilisateurs doivent rechercher des informations précises sur les fonctionnalités de votre produit. Les documents de référence privilégient la précision, la cohérence et la facilité de consultation rapide.
+Utilisez la documentation de référence lorsque les utilisateurs ont besoin de consulter des informations précises sur les fonctionnalités de votre produit. La documentation de référence privilégie l’exactitude, la cohérence et la facilité de repérage.
 
 ````mdx Reference template
 ---
 title: "Référence [nom de la fonctionnalité ou de l'API]"
-description: "Référence complète des propriétés, paramètres et options de [la fonctionnalité ou de l'API]."
+description: "Référence complète des propriétés, paramètres et options de [fonctionnalité ou API]."
 ---
 
-Provide a one-sentence description of what this feature or API does.
+Fournissez une description en une phrase de ce que fait cette fonctionnalité ou cette API.
 
-## Properties
+## Propriétés
 
 <ParamField body="property1" type="string" required>
-  Brief description of the property.
+  Brève description de la propriété.
 </ParamField>
 
 <ParamField body="property2" type="number">
-  Brief description with default value if applicable.
+  Brève description avec la valeur par défaut, le cas échéant.
 </ParamField>
 
 <ParamField body="property3" type="boolean" default="false">
-  Brief description.
+  Brève description.
 </ParamField>
 
-## Parameters
+## Paramètres
 
 <ParamField body="parameterName" type="string">
-  Description of what this parameter does and when to use it.
+  Description du rôle de ce paramètre et des cas où l'utiliser.
 
 ```language
-// Example showing typical usage
+// Exemple illustrant une utilisation typique
 ```
 </ParamField>
 
 <ParamField body="anotherParameter" type="object">
-  Description of the parameter.
+  Description du paramètre.
 
-  Available options:
+  Options disponibles :
 
-  - `option1`: Description of this option.
-  - `option2`: Description of this option.
+  - `option1` : Description de cette option.
+  - `option2` : Description de cette option.
 </ParamField>
 
-## Examples
+## Exemples
 
-### Basic example
+### Exemple de base
 
 ```language title="Basic usage"
-// Minimal example showing common use case
+// Exemple minimal illustrant un cas d'utilisation courant
 ```
 
-### Advanced example
+### Exemple avancé
 
 ```language title="Advanced configuration"
-// Example with multiple options configured
+// Exemple avec plusieurs options configurées
 ```
 
-## Response
+## Réponse
 
-If documenting an API, describe the response structure.
+Si vous documentez une API, décrivez la structure de la réponse.
 
 <ResponseField name="field1" type="string" required>
-  Description of the response field.
+  Description du champ de réponse.
 </ResponseField>
 
 <ResponseField name="field2" type="number">
-  Description of another response field.
+  Description d'un autre champ de réponse.
 </ResponseField>
 
-Example response:
+Exemple de réponse :
 
 ```json
 {
@@ -263,25 +263,25 @@ Example response:
 }
 ```
 
-## Related references
+## Références associées
 
-Link to related reference documentation.
+Ajoutez des liens vers la documentation de référence associée.
 ````
 
 <div id="related-pages">
-  ## Pages associées
+  ## Pages connexes
 </div>
 
 <CardGroup cols={2}>
   <Card title="Types de contenu" icon="shapes" href="/fr/guides/content-types">
-    Choisissez le bon type de contenu pour atteindre vos objectifs de documentation.
+    Choisissez le type de contenu adapté aux objectifs de votre documentation.
   </Card>
 
   <Card title="Style et ton" icon="pen" href="/fr/guides/style-and-tone">
     Rédigez une documentation efficace avec un style cohérent.
   </Card>
 
-  <Card title="Mettre le texte en forme" icon="text" href="/fr/create/text">
-    Apprenez à mettre le texte en forme et à travailler la présentation du contenu.
+  <Card title="Mise en forme du texte" icon="text" href="/fr/create/text">
+    Découvrez comment mettre en forme le texte et le contenu.
   </Card>
 </CardGroup>

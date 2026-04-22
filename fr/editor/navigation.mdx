@@ -1,16 +1,16 @@
 ---
 title: "Organiser la navigation"
-description: "Organisez la structure de votre site de documentation avec l’éditeur visuel de navigation pour créer des groupes, réordonner les pages et gérer la mise en page de la barre latérale."
-keywords: ["editor", "navigation", "sidebar", "structure"]
+description: "Organisez la structure de votre site de documentation à l’aide de l’éditeur visuel de navigation pour créer des groupes, réorganiser les pages et gérer la disposition de la barre latérale."
+keywords: ["éditeur", "navigation", "barre latérale", "structure"]
 ---
 
-Utilisez la barre latérale de navigation pour organiser votre documentation. Les modifications que vous effectuez dans l’arborescence de navigation de l’éditeur web apparaissent dans la barre latérale de navigation de votre site et sont synchronisées avec votre fichier de configuration `docs.json`.
+Utilisez la barre latérale de navigation pour organiser votre documentation. Les modifications apportées dans l’arborescence de navigation de l’éditeur web apparaissent dans la barre latérale de navigation de votre site et sont synchronisées avec votre fichier de configuration `docs.json`.
 
 <div id="add-navigation-elements">
   ## Ajouter des éléments de navigation
 </div>
 
-Pour ajouter un nouvel élément de navigation, cliquez sur **Add new** en bas de l’arborescence de navigation.
+Pour ajouter un nouvel élément de navigation, cliquez sur **Ajouter** en bas de l’arborescence de navigation.
 
 <Frame>
   <img src="/images/editor/navigation-light.png" alt="Ajouter un nouvel élément de navigation." className="block dark:hidden" />
@@ -18,88 +18,88 @@ Pour ajouter un nouvel élément de navigation, cliquez sur **Add new** en bas d
   <img src="/images/editor/navigation-dark.png" alt="Ajouter un nouvel élément de navigation." className="hidden dark:block" />
 </Frame>
 
-Pour ajouter un élément de navigation imbriqué dans un autre élément, cliquez sur le bouton <Icon icon="plus" /> plus à côté du nom de l’élément de premier niveau.
+Pour ajouter un élément de navigation imbriqué dans un autre élément, cliquez sur le bouton plus <Icon icon="plus" /> à côté du nom de l’élément parent.
 
-Après avoir créé un élément, faites-le glisser-déposer pour le réorganiser ou l’imbriquer dans d’autres éléments. Survolez un élément puis cliquez sur l’icône d’engrenage pour configurer ses propriétés, ou faites un clic droit sur un élément pour accéder à des options supplémentaires comme le dupliquer, le convertir en un autre élément ou le supprimer.
+Après avoir créé un élément, faites-le glisser-déposer pour le réorganiser ou l’imbriquer dans d’autres éléments. Survolez un élément, puis cliquez sur l’icône en forme d’engrenage pour configurer ses propriétés, ou faites un clic droit dessus pour accéder à des options supplémentaires comme le dupliquer, le convertir en un autre élément ou le supprimer.
 
-Pour dissocier les pages d’un groupe ou d’un autre élément de navigation, faites un clic droit puis cliquez sur **Ungroup**. Toutes les pages de l’élément dissocié sont déplacées au niveau racine de votre navigation.
+Pour dissocier les pages d’un groupe ou d’un autre élément de navigation, faites un clic droit, puis cliquez sur **Dissocier**. Toutes les pages contenues dans l’élément dissocié sont déplacées au niveau racine de votre navigation.
 
 <Note>
-  Certains éléments ne peuvent pas être imbriqués dans d’autres éléments. Par exemple, les onglets ne peuvent pas être imbriqués dans les groupes. L’éditeur web vous empêche d’imbriquer des éléments non valides.
+  Certains éléments ne peuvent pas être imbriqués dans d’autres éléments. Par exemple, les onglets ne peuvent pas être imbriqués dans des groupes. L’éditeur web vous empêche d’imbriquer des éléments non valides.
 </Note>
 
 <div id="add-existing-files">
   ### Ajouter des fichiers existants
 </div>
 
-Ajoutez des fichiers à partir de votre référentiel qui ne sont pas encore dans la navigation.
+Ajoutez des fichiers de votre dépôt qui ne figurent pas encore dans la navigation.
 
-1. Cliquez sur le bouton plus, <Icon icon="plus" />, de l&#39;élément de navigation auquel vous souhaitez ajouter le fichier.
+1. Cliquez sur le bouton <Icon icon="plus" /> plus de l’élément de navigation auquel vous souhaitez ajouter le fichier.
 2. Cliquez sur **Ajouter un fichier existant** dans le menu déroulant.
 
 <Frame>
-  <img src="/images/editor/add-existing-file-menu-light.png" alt="Menu « Ajouter un fichier existant » développé." className="block dark:hidden" />
+  <img src="/images/editor/add-existing-file-menu-light.png" alt="Menu Ajouter un fichier existant ouvert." className="block dark:hidden" />
 
-  <img src="/images/editor/add-existing-file-menu-dark.png" alt="Menu « Ajouter un fichier existant » développé." className="hidden dark:block" />
+  <img src="/images/editor/add-existing-file-menu-dark.png" alt="Menu Ajouter un fichier existant ouvert." className="hidden dark:block" />
 </Frame>
 
 <div id="organize-into-sections">
-  ## Organisez en sections
+  ## Organiser en sections
 </div>
 
-Choisissez la structure de navigation adaptée à la portée et au public de votre documentation.
+Choisissez la structure de navigation adaptée à l’ampleur de votre documentation et à votre public.
 
 <div id="when-to-use-pages">
   ### Quand utiliser des pages
 </div>
 
-Utilisez les pages pour les fichiers de documentation individuels. Les pages sont les éléments de base de votre navigation : chaque élément de contenu se trouve sur une page. Ajoutez des pages à votre navigation pour les rendre visibles dans la barre latérale de votre site.
+Utilisez les pages pour les fichiers de documentation individuels. Les pages constituent les éléments de base de votre navigation : tout le contenu se trouve sur une page. Ajoutez des pages à votre navigation pour les afficher dans la barre latérale de votre site.
 
-Les pages peuvent exister au niveau racine, dans des groups, tabs, ancres, menus déroulants ou menus.
+Les pages peuvent se trouver à la racine, dans des groupes, des onglets, des ancres, des menus déroulants ou des menus.
 
-Les fichiers qui ne sont pas inclus dans votre navigation sont [masqués](/fr/organize/hidden-pages) dans votre documentation publiée.
+Les fichiers qui ne sont pas inclus dans votre navigation sont [masqués](/fr/organize/hidden-pages) dans la version publiée de votre documentation.
 
 <div id="when-to-use-groups">
-  ### Quand utiliser les groupes
+  ### Quand utiliser des groupes
 </div>
 
-Utilisez des groupes pour organiser des pages connexes en sections repliables. Les groupes aident les utilisateurs à parcourir la navigation de votre documentation en regroupant des contenus similaires, par exemple en rassemblant toutes les pages liées à l’authentification ou toutes les références de points de terminaison d’API.
+Utilisez les groupes pour organiser des pages connexes en sections repliables. Les groupes aident les utilisateurs à parcourir votre Navigation en regroupant du contenu similaire, par exemple en rassemblant toutes les pages liées à l’authentification ou toutes les références des points de terminaison d’API.
 
-Les groupes peuvent être imbriqués dans d’autres groupes pour créer une organisation hiérarchique. Ils peuvent exister dans des onglets, des ancres, des menus déroulants ou à la racine de la navigation.
+Les groupes peuvent être imbriqués dans d’autres groupes pour créer une organisation hiérarchique. Les groupes peuvent se trouver dans des onglets, des ancres, des menus déroulants ou à la racine.
 
 <div id="when-to-use-tabs">
   ### Quand utiliser les onglets
 </div>
 
-Utilisez des onglets pour créer des sections principales distinctes avec une navigation horizontale en haut de votre site. Les onglets fonctionnent bien lorsque vous avez des sections distinctes comme Référence API, Guides et SDK, entre lesquelles les utilisateurs doivent basculer.
+Utilisez des onglets pour créer des sections principales distinctes avec une navigation horizontale en haut de votre site. Les onglets sont particulièrement adaptés si votre site comporte des espaces distincts, comme la Référence de l’API, les guides et les SDK, entre lesquels les utilisateurs doivent pouvoir naviguer.
 
-Les onglets peuvent contenir des pages, des groupes et des éléments de menu. Configurez les onglets pour ajouter des icônes ou créer des liens vers des ressources externes.
+Les onglets peuvent contenir des pages, des groupes et des éléments de menu. Configurez-les pour ajouter des icônes ou créer des liens vers des ressources externes.
 
 <div id="when-to-use-anchors">
   ### Quand utiliser des ancres
 </div>
 
-Utilisez des ancres pour créer des éléments de navigation persistants en haut de votre barre latérale. Les ancres sont utiles lorsque vous voulez structurer votre contenu ou proposer un accès rapide à des ressources externes sans changer d’onglet.
+Utilisez des ancres pour créer des éléments de navigation persistants en haut de votre barre latérale. Les ancres sont utiles si vous souhaitez organiser votre contenu en sections ou fournir un accès rapide à des ressources externes sans changer d’onglet.
 
-Les ancres peuvent contenir des pages et des groupes, ou pointer vers des URL externes.
+Les ancres peuvent contenir des pages et des groupes, ou renvoyer vers des URL externes.
 
-**Ancres globales :**
+**Ancres globales :**
 
-Créez des ancres globales qui apparaissent sur toutes les pages, quelle que soit la section que les utilisateurs consultent. Les ancres globales doivent pointer vers des URL externes et sont utiles pour des ressources comme des blogs, des pages de statut ou des liens d’assistance.
+Créez des ancres globales qui apparaissent sur toutes les pages, quelle que soit la section consultée par les utilisateurs. Les ancres globales doivent pointer vers des URL externes et sont utiles pour des ressources comme des blogs, des pages de statut ou des liens vers l’assistance.
 
 <div id="when-to-use-dropdowns">
-  ### Quand utiliser les menus déroulants
+  ### Quand utiliser des menus déroulants
 </div>
 
-Utilisez des menus déroulants pour créer un menu repliable en haut de votre barre latérale. Les menus déroulants sont particulièrement adaptés lorsque vous avez plusieurs sections liées que les utilisateurs peuvent souhaiter explorer, sans qu’elles aient besoin d’être constamment visibles comme des onglets.
+Utilisez des menus déroulants pour créer un menu extensible en haut de votre barre latérale. Ils sont particulièrement adaptés si vous avez plusieurs sections liées que les utilisateurs peuvent vouloir explorer, sans qu&#39;elles aient besoin d&#39;être visibles en permanence comme des onglets.
 
-Les menus déroulants peuvent contenir des pages et des groups, ou renvoyer vers des URL externes.
+Les menus déroulants peuvent contenir des pages et des groupes, ou pointer vers des URL externes.
 
 <div id="when-to-use-menus">
   ### Quand utiliser les menus
 </div>
 
-Utilisez des menus pour ajouter des éléments de navigation dans un menu déroulant au sein d’un onglet. Les menus aident les utilisateurs à accéder directement à des pages spécifiques depuis la barre de navigation principale.
+Utilisez les menus pour ajouter des éléments de navigation déroulants dans un onglet. Ils permettent aux utilisateurs d’accéder directement à des pages spécifiques depuis la barre de navigation supérieure.
 
 Les menus peuvent contenir des pages et des groupes.
 
@@ -107,15 +107,15 @@ Les menus peuvent contenir des pages et des groupes.
   ### Quand utiliser les produits
 </div>
 
-Utilisez les produits lorsque vous avez plusieurs offres de produits distinctes qui nécessitent chacune leur propre documentation. Les produits créent un menu de sélection qui permet aux utilisateurs de naviguer entre différents ensembles de documentation produit.
+Utilisez les produits si vous avez plusieurs offres distinctes, chacune nécessitant sa propre documentation. Les produits créent un menu de sélection qui permet aux utilisateurs de passer d’un ensemble de documentation à un autre.
 
-Chaque produit peut avoir sa propre structure de navigation avec des onglets, des pages et des groupes.
+Chaque produit peut avoir sa propre structure de navigation, avec des onglets, des pages et des groupes.
 
 <div id="when-to-use-versions">
   ### Quand utiliser les versions
 </div>
 
-Utilisez les versions lorsque vous maintenez simultanément plusieurs versions de votre documentation, comme v1.0, v2.0 et v3.0 d’une API. Les versions créent un sélecteur qui permet aux utilisateurs de choisir la version qu’ils souhaitent consulter.
+Utilisez les versions lorsque vous gérez simultanément plusieurs versions de votre documentation, comme les versions v1.0, v2.0 et v3.0 d&#39;une API. Les versions créent un menu de sélection qui permet aux utilisateurs de choisir la version qu&#39;ils souhaitent consulter.
 
 Chaque version peut avoir un contenu et une structure de navigation différents.
 
@@ -123,30 +123,30 @@ Chaque version peut avoir un contenu et une structure de navigation différents.
   ### Quand utiliser les langues
 </div>
 
-Utilisez les langues lorsque vous proposez votre documentation dans plusieurs langues. Les langues créent un sélecteur qui permet aux utilisateurs d’afficher la documentation dans leur langue préférée.
+Utilisez les langues lorsque vous proposez une documentation en plusieurs langues. Les langues ajoutent un menu de sélection qui permet aux utilisateurs de consulter la documentation dans la langue de leur choix.
 
 Chaque langue conserve la même structure de navigation, avec un contenu traduit.
 
 <div id="customize-appearance">
-  ## Personnaliser l&#39;apparence
+  ## Personnaliser l’apparence
 </div>
 
-**Ajouter des icônes :**
+**Ajouter des icônes :**
 
 1. Survolez un élément de navigation.
-2. Cliquez sur l&#39;icône d&#39;engrenage.
-3. Cliquez sur le champ icon.
+2. Cliquez sur l’icône d’engrenage.
+3. Cliquez sur le champ de l’icône.
 
-**Ajouter des tags :**
+**Ajouter des tags :**
 
 1. Survolez un élément de navigation.
-2. Cliquez sur l&#39;icône d&#39;engrenage.
-3. Cliquez sur le champ tag.
-4. Saisissez un tag comme &quot;NEW&quot; ou &quot;BETA&quot; pour mettre en avant les éléments importants.
+2. Cliquez sur l’icône d’engrenage.
+3. Cliquez sur le champ Tag.
+4. Saisissez un tag comme &quot;NEW&quot; ou &quot;BETA&quot; pour mettre en évidence les éléments importants.
 
-**Contrôler la visibilité :**
+**Contrôler la visibilité :**
 
-Masquez le contenu d&#39;un élément de navigation sans le supprimer de votre référentiel.
+Masquez le contenu d’un élément de navigation sans le supprimer de votre dépôt.
 
-1. Faites un clic droit sur n&#39;importe quel élément.
-2. Cliquez sur la bascule à côté du label **Hide**.
+1. Cliquez avec le bouton droit sur n’importe quel élément.
+2. Cliquez sur le bouton bascule à côté du libellé **Masquer**.

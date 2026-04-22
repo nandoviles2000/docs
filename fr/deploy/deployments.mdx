@@ -1,26 +1,26 @@
 ---
 title: "Déploiements"
-description: "Gérez les déploiements de documentation dans le tableau de bord Mintlify, notamment l’affichage de l’historique des déploiements, la surveillance de l’état des builds et le dépannage."
-keywords: ["déploiement manuel", "historique des déploiements", "déclencheurs de déploiement", "suppression de déploiement"]
+description: "Gérez les déploiements de votre documentation dans le tableau de bord Mintlify, notamment en consultant l'historique des déploiements, en suivant l'état des builds et en résolvant les problèmes."
+keywords: ["déploiement manuel", "historique des déploiements", "déclencheurs de déploiement", "supprimer un déploiement"]
 ---
 
-Votre site de documentation est automatiquement déployé lorsque vous poussez des modifications vers votre référentiel connecté. Cela requiert que la GitHub App Mintlify soit correctement installée et connectée.
+Votre site de documentation se déploie automatiquement lorsque vous poussez des modifications vers votre dépôt connecté. Cela nécessite que l&#39;application GitHub de Mintlify soit correctement installée et connectée.
 
-Si vos dernières modifications n’apparaissent pas sur votre site en production, vérifiez d’abord que la GitHub App est installée sur le compte ou l’organisation propriétaire de votre référentiel de documentation. Consultez la page [Dépannage GitHub](/fr/deploy/github#troubleshooting) pour en savoir plus.
+Si vos dernières modifications n&#39;apparaissent pas sur votre site en production, vérifiez d&#39;abord que le compte GitHub ou l&#39;organisation propriétaire de votre dépôt de documentation a bien installé l&#39;application GitHub. Consultez [le guide de dépannage GitHub](/fr/deploy/github#troubleshooting) pour plus d&#39;informations.
 
-Si vous avez installé la GitHub App mais que les modifications ne se déploient toujours pas, déclenchez manuellement un déploiement depuis votre Dashboard.
+Si l&#39;application GitHub est installée, mais que les modifications ne se déploient toujours pas, déclenchez manuellement un déploiement depuis votre tableau de bord.
 
 <div id="manually-trigger-a-deployment">
   ## Déclencher manuellement un déploiement
 </div>
 
 <Steps>
-  <Step title="Vérifiez que votre dernier commit a été effectué avec succès.">
-    Assurez-vous que votre dernier commit apparaît dans votre référentiel de documentation et qu’il n’a rencontré aucune erreur.
+  <Step title="Vérifiez que votre dernier commit s’est bien déroulé.">
+    Vérifiez que votre dernier commit apparaît dans votre dépôt de documentation et qu’il n’a généré aucune erreur.
   </Step>
 
   <Step title="Déclenchez manuellement un déploiement.">
-    Accédez à votre [Dashboard](https://dashboard.mintlify.com) et cliquez sur le bouton de déploiement.
+    Accédez à votre [tableau de bord](https://dashboard.mintlify.com), puis sélectionnez le bouton de déploiement.
 
     <Frame>
       <img src="/images/deployments/manual-update-light.png" alt="Le bouton de mise à jour manuelle mis en évidence par un rectangle orange." className="block dark:hidden" />
@@ -34,21 +34,21 @@ Si vous avez installé la GitHub App mais que les modifications ne se déploient
   ## Supprimer un déploiement
 </div>
 
-Vous pouvez supprimer définitivement un déploiement depuis la [Danger zone](https://dashboard.mintlify.com/settings/organization/danger-zone) dans les paramètres de votre Dashboard. Cette action est irréversible et supprimera toutes les données du déploiement, y compris tous les déploiements de prévisualisation associés.
+Vous pouvez supprimer définitivement un déploiement depuis la [zone de danger](https://dashboard.mintlify.com/settings/organization/danger-zone) dans les paramètres de votre tableau de bord. Cette action est irréversible et supprime toutes les données du déploiement, y compris les déploiements de prévisualisation associés.
 
 <Steps>
-  <Step title="Accéder à la Danger zone.">
-    Accédez à la [Danger zone](https://dashboard.mintlify.com/settings/organization/danger-zone) sur la page des paramètres de votre Dashboard.
+  <Step title="Accédez à la zone de danger.">
+    Accédez à la [zone de danger](https://dashboard.mintlify.com/settings/organization/danger-zone) dans la page des paramètres de votre tableau de bord.
   </Step>
 
-  <Step title="Supprimer le déploiement.">
-    1. Dans la section **Delete my deployment**, indiquez une raison de suppression.
-    2. Cliquez sur le bouton de suppression et confirmez que vous souhaitez supprimer le déploiement.
+  <Step title="Supprimez le déploiement.">
+    1. Dans la section **Supprimer mon déploiement**, indiquez la raison de la suppression.
+    2. Cliquez sur le bouton de suppression, puis confirmez que vous souhaitez supprimer le déploiement.
   </Step>
 </Steps>
 
 <Warning>
-  La suppression d&#39;un déploiement est définitive et ne peut pas être annulée. Si vous avez un abonnement actif, vous recevrez un crédit calculé au prorata pour toute période inutilisée restante dans votre cycle de facturation.
+  La suppression d’un déploiement est définitive et ne peut pas être annulée. Si vous avez un abonnement actif, vous recevrez un crédit au prorata pour toute période inutilisée restant sur votre cycle de facturation.
 </Warning>
 
-Si vous avez plusieurs déploiements, vous serez redirigé vers un autre déploiement après la suppression. Si vous supprimez votre seul déploiement, vous serez redirigé vers la page d&#39;accueil de Mintlify. Lorsque vous supprimez un déploiement, l&#39;administrateur de l&#39;organisation reçoit une notification par e-mail confirmant la suppression.
+Si vous avez plusieurs déploiements, vous serez redirigé vers un autre déploiement après la suppression. Si vous supprimez votre seul déploiement, vous serez redirigé vers la page d’accueil de Mintlify. Lorsque vous supprimez un déploiement, l’administrateur de l’organisation reçoit un e-mail confirmant la suppression.

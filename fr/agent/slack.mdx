@@ -1,80 +1,97 @@
 ---
-title: "Ajouter l'agent à Slack"
-description: "Ajoutez l'agent Mintlify à Slack pour créer des mises à jour de documentation à partir des conversations, capturer les connaissances de l'équipe et maintenir les docs à jour."
-keywords: ["Intégration Slack", "Bot Slack", "Collaboration d'équipe", "Intégration de l'agent", "Capture des connaissances"]
+title: "Ajouter l’agent à Slack"
+description: "Ajoutez l’agent Mintlify à Slack pour poser des questions sur votre documentation, créer des mises à jour de documentation à partir de conversations et capitaliser les connaissances de l’équipe."
+keywords: ["intégration Slack", "bot Slack", "collaboration en équipe", "intégration de l’agent", "capitalisation des connaissances"]
 ---
 
 <Note>
-  Si le propriétaire de votre espace de travail Slack exige l'approbation d'un administrateur pour installer des applications, demandez-lui d'approuver l'application Mintlify avant de la connecter.
+  Si le propriétaire de votre espace de travail Slack exige une approbation de l’administrateur pour installer des applications, demandez-lui d’approuver l’application Mintlify avant de le connecter.
 </Note>
 
 <div id="connect-your-slack-workspace">
   ## Connectez votre espace de travail Slack
 </div>
 
-1. Accédez à la page [Agent](https://dashboard.mintlify.com/products/agent) de votre Dashboard.
-2. Dans la section "Agent settings", cliquez sur **Install Slack app**.
-  <Frame>
-    <img src="/images/agent/install-apps-light.png" alt="La section des paramètres d'application avec les boutons d'installation de Slack, Linear et Notion." className="block dark:hidden" />
-    <img src="/images/agent/install-apps-dark.png" alt="La section des paramètres d'application avec les boutons d'installation de Slack, Linear et Notion." className="hidden dark:block" />
-  </Frame>
-3. Suivez les instructions Slack pour installer l'application `mintlify` dans votre espace de travail.
-4. Suivez les instructions Slack pour lier votre compte Mintlify à votre espace de travail Slack.
-5. Vérifiez que l'agent fonctionne et répond lorsque vous :
-   - Envoyez un message direct à l'agent.
-    - Mentionnez l'agent avec `@mintlify` dans un canal.
+1. Accédez à la page [Agent](https://dashboard.mintlify.com/products/agent) dans votre tableau de bord.
+2. Dans la section « Paramètres de l’agent », cliquez sur **Installer l’application Slack**.
+
+<Frame>
+  <img src="/images/agent/install-apps-light.png" alt="La section des paramètres de l’application avec les boutons d’installation de Slack, Linear et Notion." className="block dark:hidden" />
+
+  <img src="/images/agent/install-apps-dark.png" alt="La section des paramètres de l’application avec les boutons d’installation de Slack, Linear et Notion." className="hidden dark:block" />
+</Frame>
+
+3. Suivez les instructions de Slack pour installer l’application `mintlify` dans votre espace de travail.
+4. Suivez les instructions de Slack pour associer votre compte Mintlify à votre espace de travail Slack.
+5. Vérifiez que l’agent fonctionne et répond lorsque vous :
+   * Envoyez un message privé à l’agent.
+   * Mentionnez l’agent avec `@mintlify` dans un canal.
 
 <Tip>
-Si votre organisation dispose de plusieurs déploiements, l'agent vous demande de choisir avec quel déploiement travailler la première fois que vous envoyez une demande.
+  Si votre organisation possède plusieurs déploiements, l’agent vous demande de choisir celui avec lequel travailler la première fois que vous envoyez une requête.
 
-Votre déploiement préféré est propre à votre compte Slack et n'affecte pas
-les autres membres de l'équipe. Vous pouvez passer à un autre déploiement à tout
-moment pendant une conversation en cliquant sur le bouton **Switch deployment** dans
-le message de statut de l'agent dans le fil. L'agent conserve votre historique de
-conversation afin que vous puissiez reprendre là où vous en étiez avec le nouveau
-déploiement.
+  Votre déploiement préféré est propre à votre compte Slack et n’affecte pas
+  les autres membres de l’équipe. Vous pouvez passer à un autre déploiement à tout moment au cours d’une
+  conversation en cliquant sur le bouton **Changer de déploiement** dans le message d’état
+  de l’agent dans le fil. L’agent conserve l’historique de votre conversation afin que vous puissiez
+  reprendre là où vous vous étiez arrêté avec le nouveau déploiement.
 </Tip>
 
 <div id="use-the-agent-in-slack">
-  ## Utiliser l'agent dans Slack
+  ## Utiliser l’agent dans Slack
 </div>
 
-Une fois connecté, vous pouvez :
+Une fois connecté, vous pouvez :
 
-- Envoyer des messages directs à l'agent pour l'utiliser en privé afin de mettre à jour votre documentation.
-- Mentionner `@mintlify` dans un canal pour l'utiliser publiquement et de manière collaborative.
-- Joindre des fichiers et des images directement à vos messages pour que l'agent les analyse et les intègre à votre documentation.
-- Poursuivre les conversations dans des fils pour affiner les modifications.
-- Partager des liens de pull request (demandes de fusion) avec l'agent pour mettre à jour la documentation associée.
+* Envoyer des messages privés à l’agent pour l’utiliser en mode privé.
+* Mentionner `@mintlify` dans un canal pour l’utiliser publiquement et de façon collaborative.
+* Joindre des fichiers et des images directement à vos messages pour que l’agent les analyse et les intègre à votre documentation.
+* Poursuivre la conversation dans des fils pour affiner les modifications ou poser des questions complémentaires.
+* Partager des liens vers des pull request (PR) avec l’agent pour mettre à jour la documentation associée.
+
+<div id="ask-questions-about-your-docs">
+  ## Posez des questions sur votre documentation
+</div>
+
+Posez des questions à l’agent sur votre produit ou votre documentation, et recevez des réponses dans le fil.
+
+* **Nouvelle question** : envoyez un message privé à l’agent ou mentionnez `@mintlify` dans un canal avec votre question.
+* **Fil existant** : répondez dans le fil et mentionnez `@mintlify` avec une question complémentaire.
+
+Exemples de questions :
+
+* &quot;Quelles pages mentionnent la limite de débit de l’API ?&quot;
+* &quot;Comment configurer l’authentification ?&quot;
+* &quot;Comment notre Navigation est-elle structurée ?&quot;
 
 <div id="update-documentation">
   ## Mettre à jour la documentation
 </div>
 
-Utilisez l'agent pour mettre à jour votre documentation au moyen d'une nouvelle demande ou dans un fil existant.
+Utilisez l’agent pour mettre à jour votre documentation à partir d’une nouvelle demande ou dans un fil existant.
 
-- **Nouvelle demande** : Envoyez un message direct à l'agent ou mentionnez `@mintlify` dans un canal avec des instructions sur ce qu'il faut mettre à jour.
-- **Fil existant** : Répondez dans le fil et mentionnez `@mintlify` avec des instructions sur ce qu'il faut mettre à jour.
-- **Avec des pièces jointes** : Téléversez des images, des diagrammes, des fichiers de code ou d'autres documents avec votre message. L'agent les traite automatiquement et les inclut dans votre documentation.
+* **Nouvelle demande** : envoyez un message privé à l’agent ou mentionnez `@mintlify` sur un canal en indiquant ce qu’il faut mettre à jour.
+* **Fil existant** : répondez dans le fil et mentionnez `@mintlify` en indiquant ce qu’il faut mettre à jour.
+* **Avec des pièces jointes** : ajoutez des images, des diagrammes, des fichiers de code ou d’autres documents à votre message. L’agent les traite automatiquement et les intègre à votre documentation.
 
-L'agent lit le contexte de la demande ou du fil et crée une pull request (demande de fusion) dans votre référentiel connecté avec les mises à jour.
+L’agent lit le contexte de la demande ou du fil et crée une pull request (PR) dans votre dépôt connecté avec les mises à jour.
 
 <div id="track-progress-in-real-time">
   ## Suivez la progression en temps réel
 </div>
 
-Pendant que l'agent travaille sur votre demande, il fournit un retour en direct dans le fil Slack.
+Lorsque l’agent apporte des modifications à votre documentation, il fournit des mises à jour en direct dans le fil Slack.
 
-- **Mises à jour de statut** : Un message mis à jour en direct indique ce que l'agent est en train de faire, comme le nombre de fichiers qu'il a recherchés, lus et modifiés.
-- **Progression des tâches** : Lorsque l'agent décompose votre demande en plusieurs tâches, il affiche une liste de contrôle pour que vous puissiez suivre la progression de chacune.
-- **Questions** : Si l'agent a besoin de plus d'informations, il présente des options parmi lesquelles vous pouvez choisir ou vous pouvez répondre dans le fil avec une réponse personnalisée.
-- **Interruptions** : Si vous envoyez un message de suivi pendant que l'agent travaille encore, il arrête la tâche en cours et commence la nouvelle.
-- **Achèvement** : Lorsque l'agent a terminé, il publie un résumé avec un lien vers la pull request (demande de fusion) et un lien pour ouvrir les modifications dans l'éditeur web.
+* **Mises à jour de statut** : un message actualisé en direct indique ce que fait l’agent, par exemple le nombre de fichiers qu’il a recherchés, lus et modifiés.
+* **Progression des tâches** : lorsque l’agent décompose votre demande en plusieurs tâches, il affiche une liste de contrôle afin que vous puissiez suivre l’avancement de chacune.
+* **Questions** : si l’agent a besoin de plus d’informations, il vous propose des options à sélectionner ou vous pouvez répondre dans le fil avec une réponse personnalisée.
+* **Interruptions** : si vous envoyez un message de suivi pendant que l’agent travaille encore, il interrompt la tâche en cours et commence la nouvelle.
+* **Finalisation** : lorsque l’agent a terminé, il publie un récapitulatif avec un lien vers la pull request (PR) et un lien pour ouvrir les modifications dans l’éditeur web.
 
 <div id="best-practices">
   ## Bonnes pratiques
 </div>
 
-- **Soyez précis** : Indiquez exactement à l’agent ce que vous souhaitez documenter et où cela doit être ajouté.
-- **Ajoutez du contexte** : Si un fil de discussion ne contient pas toutes les informations nécessaires, ajoutez des détails supplémentaires dans votre message à l’agent.
-- **Relisez attentivement** : Vous devez toujours relire les pull requests (demandes de fusion) créées par l’agent avant de les fusionner.
+* **Soyez précis** : indiquez clairement à l’agent ce que vous voulez savoir ou modifier, ainsi que l’emplacement concerné.
+* **Ajoutez du contexte** : si un fil ne contient pas toutes les informations nécessaires, ajoutez des détails supplémentaires dans votre message à l’agent.
+* **Vérifiez attentivement** : vous devez toujours examiner les pull requests (PR) créées par l’agent avant de les fusionner.

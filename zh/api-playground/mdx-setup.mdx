@@ -1,18 +1,18 @@
 ---
-title: "手动创建 API 文档页面"
-description: "当你需要完全控制布局时，使用 MDX 文件手动创建 API 参考页面，适用于小型 API、原型开发或自定义文档。"
+title: "手动创建 API 页面"
+description: "当你需要完全掌控小型 API、原型或自定义文档的页面布局时，可使用 MDX 文件手动创建 API 参考页面。"
 keywords: ["API 文档", "端点文档"]
 ---
 
-你可以在独立的 MDX 页面中手动定义各个 API 端点。这种方式适用于小型 API 或原型开发阶段。
+你可以在单独的 MDX 页面中手动定义 API 端点。这种方式适用于小型 API 或原型设计。
 
 <div id="setup">
-  ## 配置
+  ## 设置
 </div>
 
 <Steps>
-  <Step title="配置 API 参数">
-    在你的 `docs.json` 文件中配置基础 URL 和认证方式。
+  <Step title="配置 API 设置">
+    在 `docs.json` 文件中，定义你的基础 URL 和身份验证方式。
 
     ```json Example docs.json
     "api": {
@@ -26,7 +26,7 @@ keywords: ["API 文档", "端点文档"]
     }
     ```
 
-    如果你想隐藏 API 操作台，将 `display` 字段设置为 `none`。在隐藏 API 操作台的情况下，你无需配置任何认证方式。
+    如果你想隐藏 API 操场，请将 `display` 字段设置为 `none`。如果隐藏 API 操场，则无需包含身份验证方法。
 
     ```json
     "api": {
@@ -36,71 +36,71 @@ keywords: ["API 文档", "端点文档"]
     }
     ```
 
-    你可以在 [Settings](/zh/organize/settings-api) 中查看完整的 API 配置列表。
+    可在[设置](/zh/organize/settings-api)中查看 API 配置的完整列表。
   </Step>
 
-  <Step title="创建接口页面">
+  <Step title="创建端点页面">
     为每个端点创建一个 MDX 文件。在 frontmatter 中定义 `title` 和 `api`：
 
     ```mdx
     ---
-    title: '创建新用户'
+    title: 'Create new user'
     api: 'POST /v1/users'
     ---
     ```
 
-    `api` frontmatter 字段可以是完整 URL 或相对路径：
+    `api` frontmatter 字段接受完整 URL 或相对路径：
 
-    * **完整 URL**，例如 `POST https://api.acme.com/v1/users`。对于该端点，会忽略 `docs.json` 中的 `server` 字段。
-    * **相对路径**，例如 `POST /v1/users`。需要在 `docs.json` 中配置 `server` 字段。服务器 URL 会被添加到该路径前面。
+    * **完整 URL**，例如 `POST https://api.acme.com/v1/users`。对于该端点，`docs.json` 中的 `server` 字段会被忽略。
+    * **相对路径**，例如 `POST /v1/users`。需要在 `docs.json` 中提供 `server` 字段。服务器 URL 会加在该路径前面。
 
-    将路径参数用 `{}` 括起来即可指定：
+    将路径参数括在 `{}` 中即可指定它们：
 
     ```bash
     https://api.example.com/v1/endpoint/{userId}
     ```
 
-    要在特定页面上覆盖全局的 playground 显示模式，请在 frontmatter 中添加 `playground`：
+    如需为特定页面覆盖全局 Playground 显示模式，请在 frontmatter 中添加 `playground`：
 
     ```mdx
     ---
-    title: '创建新用户'
+    title: 'Create new user'
     api: 'POST https://api.mintlify.com/user'
     playground: 'none'
     ---
     ```
 
-    Options:
+    选项：
 
-    * `playground: 'interactive'` - 显示交互式 Playground（默认）
-    * `playground: 'simple'` - 显示可复制的端点，不带 Playground
-    * `playground: 'none'` - 完全隐藏 Playground
+    * `playground: 'interactive'` - 显示交互式 playground (默认)
+    * `playground: 'simple'` - 显示可复制的 API 端点，不显示 playground
+    * `playground: 'none'` - 完全隐藏 playground
   </Step>
 
-  <Step title="添加参数与响应">
-    使用[参数和响应字段](/zh/components/fields)为端点的参数和返回值编写文档。
+  <Step title="添加参数和响应">
+    使用[参数和响应字段](/zh/components/fields)来记录端点的参数和返回值。
 
     ```mdx
     <ParamField path="userId" type="string" required>
-      用户的唯一标识符
+      Unique identifier for the user
     </ParamField>
 
     <ParamField body="email" type="string" required>
-      用户的电子邮件地址
+      User's email address
     </ParamField>
 
     <ResponseField name="id" type="string" required>
-      新创建用户的唯一标识符
+      Unique identifier for the newly created user
     </ResponseField>
 
     <ResponseField name="email" type="string" required>
-      用户的电子邮件地址
+      User's email address
     </ResponseField>
     ```
   </Step>
 
-  <Step title="在文档中添加 API 端点">
-    通过更新 `docs.json` 中的 `pages` 字段，将你的接口端点页面添加到导航中：
+  <Step title="将您的 API 端点添加到文档中">
+    更新 `docs.json` 中的 `pages` 字段，将你的 API 端点页面添加到导航中：
 
     ```json docs.json
     "navigation": {
@@ -117,7 +117,7 @@ keywords: ["API 文档", "端点文档"]
               ]
             },
             {
-              "group": "订单",
+              "group": "Orders",
               "pages": [
                 "api-reference/orders/create-order",
                 "api-reference/orders/list-orders"
@@ -129,11 +129,11 @@ keywords: ["API 文档", "端点文档"]
     }
     ```
 
-    每个页面路径都对应于 docs 存储库中的一个 MDX 文件。例如，`api-reference/users/create-user.mdx`。在[导航](/zh/organize/navigation)中了解如何组织你的文档结构。
+    每个页面路径都对应文档仓库中的一个 MDX 文件。例如，`api-reference/users/create-user.mdx`。有关如何组织文档的更多信息，请参阅[导航](/zh/organize/navigation)。
 
     ### 在导航中使用 OpenAPI 端点
 
-    如果你有 OpenAPI 规范文件，你可以在导航中直接引用端点，而无需创建单独的 MDX 文件。通过包含 OpenAPI 文件路径和端点来引用特定端点：
+    如果你有 OpenAPI 规范，就可以直接在导航中引用端点，而无需为每个端点单独创建 MDX 文件。要引用特定端点，请包含 OpenAPI 文件路径和端点：
 
     ```json docs.json
     "navigation": {
@@ -145,11 +145,11 @@ keywords: ["API 文档", "端点文档"]
     }
     ```
 
-    你也可以为某个导航分组设置默认的 OpenAPI 规范，并通过方法和路径引用端点：
+    你还可以为某个导航组设置默认 OpenAPI 规范，并按 HTTP 方法和路径引用端点：
 
     ```json docs.json
     {
-      "group": "API 参考",
+      "group": "API reference",
       "openapi": "/path/to/openapi-v1.json",
       "pages": [
         "overview",
@@ -168,7 +168,7 @@ keywords: ["API 文档", "端点文档"]
     }
     ```
 
-    有关 OpenAPI 集成的更多信息，请参见 [OpenAPI 设置](/zh/api-playground/openapi-setup)。
+    有关 OpenAPI 集成的更多信息，请参阅 [OpenAPI 设置](/zh/api-playground/openapi-setup)。
   </Step>
 </Steps>
 
@@ -176,10 +176,10 @@ keywords: ["API 文档", "端点文档"]
   ## 启用身份验证
 </div>
 
-你可以在 `docs.json` 中设置全局身份验证，或在页面的 frontmatter 中通过 `authMethod` 字段为单个页面进行重写。页面级设置将覆盖全局设置。
+你可以在 `docs.json` 中全局设置身份验证，也可以通过 frontmatter 中的 `authMethod` 字段为单个页面单独设置。页面级设置会覆盖全局设置。
 
 <div id="bearer-token">
-  ### Bearer 令牌
+  ### Bearer Token
 </div>
 
 <CodeGroup>
@@ -193,9 +193,9 @@ keywords: ["API 文档", "端点文档"]
   }
   ```
 
-  ```mdx Page Metadata
+  ```mdx 页面元数据
   ---
-  title: "页面标题"
+  title: "你的页面标题"
   authMethod: "bearer"
   ---
   ```
@@ -216,9 +216,9 @@ keywords: ["API 文档", "端点文档"]
   }
   ```
 
-  ```mdx Page Metadata
+  ```mdx 页面元数据
   ---
-  title: "页面标题"
+  title: "你的页面标题"
   authMethod: "basic"
   ---
   ```
@@ -240,23 +240,23 @@ keywords: ["API 文档", "端点文档"]
   }
   ```
 
-  ```mdx Page Metadata
+  ```mdx 页面元数据
   ---
-  title: "页面标题"
+  title: "你的页面标题"
   authMethod: "key"
   ---
   ```
 </CodeGroup>
 
 <div id="none">
-  ### 无
+  ### None
 </div>
 
-要在特定页面禁用身份验证，请将 `authMethod` 设置为 `none`：
+如需对特定页面禁用身份验证，请将 `authMethod` 设为 `none`：
 
-```mdx Page Metadata
+```mdx 页面元数据
 ---
-title: "您的页面标题"
+title: "Your page title"
 authMethod: "none"
 ---
 ```

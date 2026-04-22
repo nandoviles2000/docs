@@ -1,42 +1,42 @@
 ---
-title: "Solución de problemas"
-description: "Resuelve problemas comunes de configuración del área de pruebas de API, como errores de validación de OpenAPI, endpoints faltantes y problemas de autenticación."
-keywords: ["API troubleshooting", "invalid OpenAPI", "configuration issues"]
+title: "Resolución de problemas"
+description: "Soluciona problemas comunes de configuración del entorno de pruebas de API, incluidos errores de validación de OpenAPI, endpoints ausentes y problemas de autenticación."
+keywords: ["solución de problemas de API", "OpenAPI no válido", "problemas de configuración"]
 ---
 
-Si sus páginas de la API no se muestran correctamente, revise estos problemas de configuración habituales.
+Si tus páginas de API no se muestran correctamente, revisa estos problemas comunes de configuración.
 
 <AccordionGroup>
-  <Accordion title="Todas mis páginas de OpenAPI están completamente en blanco">
-    En este escenario, es probable que Mintlify no pueda encontrar tu documento de OpenAPI
-    o que tu documento de OpenAPI no sea válido.
+  <Accordion title="Todas mis páginas de OpenAPI aparecen completamente en blanco">
+    En este caso, es probable que Mintlify no pueda encontrar tu documento OpenAPI
+    o que tu documento OpenAPI no sea válido.
 
-    Ejecutar `mint dev` localmente debería revelar algunos de estos problemas.
+    Ejecuta `mint dev` de forma local para identificar algunos de estos problemas.
 
-    Para comprobar que tu documento de OpenAPI pasa la validación:
+    Para verificar que tu documento OpenAPI pase la validación:
 
     1. Visita [este validador](https://editor.swagger.io/)
     2. Cambia a la pestaña &quot;Validate text&quot;
-    3. Pega tu documento de OpenAPI
+    3. Pega tu documento OpenAPI
     4. Haz clic en &quot;Validate it!&quot;
 
-    Si el cuadro de texto que aparece abajo tiene un borde verde, tu documento ha superado la validación.
-    Este es exactamente el mismo paquete de validación que utiliza Mintlify para validar documentos de OpenAPI, así que si tu documento
-    pasa la validación aquí, hay muchas probabilidades de que el problema esté en otra parte.
+    Si el cuadro de texto que aparece debajo tiene un borde verde, tu documento ha pasado la validación.
+    Este es exactamente el paquete de validación que usa Mintlify para validar documentos OpenAPI, así que, si tu documento
+    pasa la validación aquí, es muy probable que el problema esté en otro lugar.
 
-    Además, Mintlify no es compatible con OpenAPI 2.0. Si tu documento usa esta versión de la especificación,
+    Además, Mintlify no admite OpenAPI 2.0. Si tu documento usa esta versión de la especificación,
     podrías encontrarte con este problema. Puedes convertir tu documento en [editor.swagger.io](https://editor.swagger.io/) (en Edit &gt; Convert to OpenAPI 3):
 
     <Frame>
-      ![Captura de pantalla de Swagger Editor con el menú Edit desplegado y el elemento de menú "Convert to OpenAPI 3" resaltado.](/images/convert-oas-3.png)
+      ![Captura de pantalla del Swagger Editor con el menú Edit desplegado y la opción de menú "Convert to OpenAPI 3" resaltada.](/images/convert-oas-3.png)
     </Frame>
   </Accordion>
 
-  <Accordion title="Una de mis páginas de OpenAPI está completamente en blanco">
-    Esto suele deberse a un campo `openapi` mal escrito en la metadata de la página. Asegúrate de que
-    el método HTTP y la ruta coincidan exactamente con el método HTTP y la ruta del documento de OpenAPI.
+  <Accordion title="Una de mis páginas de OpenAPI aparece completamente en blanco">
+    Esto suele deberse a que el campo `openapi` está mal escrito en los metadatos de la página. Asegúrate de que
+    el método HTTP y la ruta coincidan exactamente con el método HTTP y la ruta del documento OpenAPI.
 
-    Aquí tienes un ejemplo de cómo puede salir mal:
+    Aquí tienes un ejemplo de cómo esto puede salir mal:
 
     ```mdx get-user.mdx
     ---
@@ -50,9 +50,12 @@ Si sus páginas de la API no se muestran correctamente, revise estos problemas d
         get: ...
     ```
 
-    Observa que la ruta en el campo `openapi` tiene una barra al final, mientras que la ruta en el documento de OpenAPI no la tiene.
+    Ten en cuenta que la ruta del campo `openapi` termina con una barra diagonal, mientras que la ruta en el documento OpenAPI
+    no.
 
-    Otro problema común es un nombre de archivo mal escrito. Si especificas un documento de OpenAPI en particular en el campo `openapi`, asegúrate de que el nombre del archivo sea correcto. Por ejemplo, si tienes dos documentos de OpenAPI `openapi/v1.json` y `openapi/v2.json`, tu metadata podría verse así:
+    Otro problema habitual es un nombre de archivo mal escrito. Si estás especificando un documento OpenAPI concreto
+    en el campo `openapi`, asegúrate de que el nombre de archivo sea correcto. Por ejemplo, si tienes dos documentos OpenAPI
+    `openapi/v1.json` y `openapi/v2.json`, tus metadatos podrían verse así:
 
     ```mdx api-reference/v1/users/get-user.mdx
     ---
@@ -61,26 +64,26 @@ Si sus páginas de la API no se muestran correctamente, revise estos problemas d
     ```
   </Accordion>
 
-  <Accordion title="Las solicitudes del área de pruebas de la API no funcionan">
-    Si tienes un domain personalizado configurado, esto podría deberse a un problema con tu proxy inverso. De forma predeterminada,
-    las solicitudes realizadas a través del área de pruebas de la API comienzan con una solicitud `POST` a la
-    ruta `/_mintlify/api/request` en el sitio de documentación. Si configuras tu proxy inverso para permitir únicamente solicitudes `GET`
-    entonces todas estas solicitudes fallarán. Para solucionarlo, configura tu proxy inverso para
+  <Accordion title="Las solicitudes desde el entorno de pruebas de API no funcionan">
+    Si tienes configurado un dominio personalizado, el problema podría estar en tu proxy inverso. De
+    forma predeterminada, las solicitudes realizadas a través del entorno de pruebas de API comienzan con una solicitud `POST` a la
+    ruta `/_mintlify/api/request` del sitio de documentación. Si configuras tu proxy inverso para permitir solo solicitudes `GET`,
+    todas estas solicitudes fallarán. Para solucionarlo, configura tu proxy inverso para
     permitir solicitudes `POST` a la ruta `/_mintlify/api/request`.
 
-    Como alternativa, si tu proxy inverso impide aceptar solicitudes `POST`, puedes configurar Mintlify para enviar solicitudes directamente a tu backend con el ajuste `api.playground.proxy` en el `docs.json`, como se describe en la [documentación de configuración](/es/organize/settings-api). Al usar esta configuración, deberás configurar CORS en tu servidor, ya que las solicitudes llegarán directamente desde los navegadores de los usuarios en lugar de pasar por tu proxy.
+    Como alternativa, si tu proxy inverso no te permite aceptar solicitudes `POST`, puedes configurar Mintlify para enviar las solicitudes directamente a tu backend con la opción `api.playground.proxy` en `docs.json`, como se describe en la [documentación de configuración](/es/organize/settings-api). Al usar esta configuración, debes configurar CORS en tu servidor, ya que las solicitudes provienen directamente de los navegadores de los usuarios en lugar de pasar por tu proxy.
   </Accordion>
 
-  <Accordion title="Las entradas de navigation de OpenAPI no generan páginas">
-    Si usas una configuración de navigation de OpenAPI, pero las páginas no se generan, revisa estos problemas comunes:
+  <Accordion title="Las entradas de navegación de OpenAPI no generan páginas">
+    Si estás usando una configuración de navegación de OpenAPI, pero las páginas no se generan, revisa estos problemas comunes:
 
-    1. **Falta la especificación de OpenAPI predeterminada**: Asegúrate de tener definido un campo `openapi` en el elemento de navigation:
+    1. **Falta la especificación de OpenAPI predeterminada**: Asegúrate de tener un campo `openapi` configurado para el elemento de navegación:
 
     ```json {5}
     "navigation": {
       "groups": [
         {
-          "group": "Referencia de API",
+          "group": "API reference",
           "openapi": "/path/to/openapi.json",
           "pages": [
             "GET /users",
@@ -91,22 +94,22 @@ Si sus páginas de la API no se muestran correctamente, revise estos problemas d
     }
     ```
 
-    2. **Herencia de la especificación OpenAPI**: Si usas navigation anidada, asegúrate de que los grupos hijos hereden la especificación OpenAPI correcta o definan la suya propia.
+    2. **Herencia de especificaciones OpenAPI**: Si usas Navegación anidada, asegúrate de que los grupos secundarios hereden la especificación OpenAPI correcta o especifiquen la suya.
 
-    3. **Problemas de validación**: Usa `mint validate` para verificar que tu documento OpenAPI sea válido.
+    3. **Problemas de validación**: Usa `mint validate` para comprobar que tu documento OpenAPI sea válido.
   </Accordion>
 
-  <Accordion title="Algunas operaciones de OpenAPI aparecen en navigation, pero otras no">
-    1. **Operaciones ocultas**: Las operaciones marcadas con `x-hidden: true` en tu especificación de OpenAPI no aparecerán en la navigation generada automáticamente.
-    2. **Operaciones no válidas**: Las operaciones con errores de validación en la especificación de OpenAPI pueden omitirse. Revisa tu documento de OpenAPI para detectar errores de sintaxis.
-    3. **Inclusión manual vs. automática**: Si haces referencia a endpoints de una especificación de OpenAPI, solo las operaciones referenciadas explícitamente aparecen en la navigation. No se agregan otras páginas automáticamente. Esto incluye operaciones referenciadas en elementos secundarios de la navigation.
+  <Accordion title="Algunas operaciones de OpenAPI aparecen en la navegación, pero otras no">
+    1. **Operaciones ocultas**: Las operaciones marcadas con `x-hidden: true` en tu especificación OpenAPI no aparecerán en la navegación generada automáticamente.
+    2. **Operaciones no válidas**: Las operaciones con errores de validación en la especificación OpenAPI pueden omitirse. Revisa tu documento OpenAPI para detectar errores de sintaxis.
+    3. **Inclusión manual frente a automática**: Si haces referencia a algún endpoint de una especificación OpenAPI, solo aparecerán en la navegación las operaciones a las que hagas referencia explícitamente. No se añadirá automáticamente ninguna otra página. Esto incluye las operaciones a las que se hace referencia en elementos de navegación secundarios.
   </Accordion>
 
-  <Accordion title="La navigation combinada (páginas de OpenAPI y MDX) no funciona correctamente">
-    Al combinar operaciones de OpenAPI con páginas de documentación estándar en navigation:
+  <Accordion title="La navegación mixta (páginas de OpenAPI y MDX) no funciona correctamente">
+    Al combinar operaciones de OpenAPI con páginas de documentación normales en la navegación:
 
-    1. **Conflictos de archivos**: No puedes tener a la vez un archivo `MDX` y una entrada en navigation para la misma operación. Por ejemplo, si tienes `get-users.mdx`, no incluyas también `"GET /users"` en tu navigation. Si necesitas un archivo que comparta nombre con una operación, usa la extensión `x-mint` del endpoint para que el href apunte a otra ubicación.
-    2. **Resolución de rutas**: Las entradas en navigation que no coincidan con operaciones de OpenAPI se tratan como rutas de archivo. Asegúrate de que tus archivos `MDX` existan en las ubicaciones esperadas.
-    3. **Distinción entre mayúsculas y minúscculas**: La coincidencia de operaciones de OpenAPI distingue mayúsculas y minúsculas. Asegúrate de que los métodos HTTP estén en mayúsculas en las entradas de navigation.
+    1. **Conflictos de archivos**: No puede tener a la vez un archivo `MDX` y una entrada de navegación para la misma operación. Por ejemplo, si tiene `get-users.mdx`, no incluya también `"GET /users"` en la navegación. Si necesita tener un archivo con el mismo nombre que una operación, use la extensión `x-mint` en el endpoint para que el href apunte a una ubicación distinta.
+    2. **Resolución de rutas**: Las entradas de navegación que no coinciden con operaciones de OpenAPI se tratan como rutas de archivo. Asegúrese de que sus archivos `MDX` existan en las ubicaciones esperadas.
+    3. **Distinción entre mayúsculas y minúsculas**: La coincidencia de operaciones de OpenAPI distingue entre mayúsculas y minúsculas. Asegúrese de que los métodos HTTP estén en mayúsculas en las entradas de navegación.
   </Accordion>
 </AccordionGroup>

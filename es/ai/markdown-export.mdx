@@ -1,41 +1,40 @@
 ---
-title: "Exportación de Markdown"
-description: "Exporta versiones limpias en Markdown de tus páginas de documentación para herramientas de IA, integraciones de LLM y flujos de trabajo automatizados."
+title: "Exportación en Markdown"
+description: "Exporta versiones limpias en Markdown de las páginas de tu documentación para herramientas de IA, integraciones con LLM y flujos de trabajo automatizados de procesamiento de contenido."
 keywords: ["markdown", "eficiencia de tokens", "procesamiento de IA"]
 ---
 
 import { PreviewButton } from "/snippets/previewbutton.jsx"
 
-Markdown proporciona texto estructurado que las herramientas de IA pueden procesar de forma más eficiente que HTML, lo que se traduce en respuestas más precisas, tiempos de procesamiento más rápidos y un menor consumo de tokens.
+Markdown proporciona texto estructurado que las herramientas de IA pueden procesar con más eficiencia que HTML, lo que se traduce en mayor precisión en las respuestas, tiempos de procesamiento más rápidos y un menor uso de tokens.
 
 Mintlify genera automáticamente versiones en Markdown de las páginas optimizadas para herramientas de IA e integraciones externas.
 
-
 <div id="md-url-extension">
-  ## Extensión de URL .md
+  ## Extensión `.md` en la URL
 </div>
 
-Añade `.md` a la URL de cualquier página para ver una versión en Markdown.
+Agrega `.md` a la URL de cualquier página para ver una versión en Markdown.
 
-<PreviewButton href="https://mintlify.com/docs/ai/markdown-export.md">Abrir esta página como Markdown</PreviewButton>
+<PreviewButton href="https://mintlify.com/docs/ai/markdown-export.md">Abrir esta página en Markdown</PreviewButton>
 
 <div id="accept-header">
-  ## Encabezado Accept
+  ## Cabecera Accept
 </div>
 
-Envía una solicitud con `Accept: text/markdown` o `Accept: text/plain` a la URL de cualquier página para recibir la versión Markdown en lugar de HTML. Esto es útil para herramientas de IA e integraciones que obtienen contenido de documentación de forma programática.
+Envía una solicitud con `Accept: text/markdown` o `Accept: text/plain` a cualquier URL de página para recibir la versión en Markdown en lugar de HTML. Esto es útil para herramientas de IA e integraciones que obtienen el contenido de la documentación de forma programática.
 
 ```bash
 curl -H "Accept: text/markdown" https://mintlify.com/docs/ai/markdown-export
 ```
 
 <div id="audience-specific-content">
-  ## Contenido específico por audiencia
+  ## Contenido específico para cada audiencia
 </div>
 
 Usa el componente [visibility](/es/components/visibility) para personalizar el contenido para audiencias humanas y de IA.
 
-El contenido envuelto en `<Visibility for="humans">` aparece en la página web, pero no en la salida Markdown. El contenido envuelto en `<Visibility for="agents">` aparece en la salida Markdown, pero no en la página web.
+El contenido incluido en `<Visibility for="humans">` aparece en la página web, pero no en la salida de Markdown. El contenido incluido en `<Visibility for="agents">` aparece en la salida de Markdown, pero no en la página web.
 
 ```mdx
 <Visibility for="humans">
@@ -51,14 +50,14 @@ El contenido envuelto en `<Visibility for="humans">` aparece en la página web, 
   ## Comentarios de agentes
 </div>
 
-Si habilitas los [comentarios de agentes](/es/optimize/feedback#agent-feedback), Mintlify añade un bloque `<AgentInstructions>` a la exportación Markdown de cada página que indica a los agentes cómo enviar comentarios sobre el contenido de la página.
+Si habilitas los [comentarios de agentes](/es/optimize/feedback#agent-feedback), Mintlify añade un bloque `<AgentInstructions>` a la exportación en Markdown de cada página para indicar a los agentes cómo enviar comentarios sobre el contenido de la página.
 
-Los agentes envían comentarios publicando en el endpoint con la ruta de la página y el texto del comentario.
+Los agentes envían comentarios haciendo una solicitud al endpoint con la ruta de la página y el texto del comentario.
 
-Usa los comentarios de agentes para mejorar tus páginas para agentes en función de lo que encuentren incorrecto, desactualizado o confuso.
+Usa los comentarios de agentes para mejorar tus páginas para que los agentes puedan señalar lo que consideren incorrecto, desactualizado o confuso.
 
 <div id="keyboard-shortcut">
   ## Atajo de teclado
 </div>
 
-Pulsa <kbd>Command</kbd> + <kbd>C</kbd> (<kbd>Ctrl</kbd> + <kbd>C</kbd> en Windows) para copiar una página en Markdown al portapapeles.
+Pulsa <kbd>Command</kbd> + <kbd>C</kbd> (<kbd>Ctrl</kbd> + <kbd>C</kbd> en Windows) para copiar una página en formato Markdown al portapapeles.

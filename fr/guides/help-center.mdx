@@ -1,70 +1,90 @@
 ---
-title: "Créer un centre d'aide"
-sidebarTitle: "Centre d'aide"
-description: "Créez un centre d'aide en libre-service sur Mintlify qui aide les clients à trouver des réponses, réduit le volume de tickets de support et évolue avec votre équipe."
-keywords: ["support", "customer", "self-service", "FAQ"]
+title: "Créer un centre d’aide"
+sidebarTitle: "Centre d’aide"
+description: "Créez un centre d’aide en libre-service sur Mintlify qui aide les clients à trouver des réponses, réduit le volume de tickets d’assistance et évolue avec votre équipe."
+keywords: ["assistance", "client", "libre-service", "FAQ"]
 ---
 
-Un centre de support aide les clients à résoudre leurs problèmes et à trouver des informations sur votre produit. Lorsque les clients peuvent trouver eux-mêmes des réponses, ils obtiennent de l&#39;aide plus rapidement et votre équipe de support peut se concentrer sur les problèmes complexes qui nécessitent son expertise.
+Un centre d’aide permet aux clients de résoudre des problèmes et de trouver des informations sur votre produit. Lorsqu’ils peuvent trouver des réponses par eux-mêmes, ils obtiennent de l’aide plus rapidement et votre équipe d’assistance peut se concentrer sur les problèmes complexes qui nécessitent son expertise.
 
-Mintlify fournit une infrastructure de centres de support qui évoluent avec la croissance de votre base de clientèle.
+Mintlify fournit l’infrastructure nécessaire pour créer des centres d’aide qui évoluent avec votre clientèle.
 
-* **Recherche optimisée par l&#39;IA** : L&#39;[assistant](/fr/assistant/index) répond aux questions des clients en utilisant votre contenu d&#39;assistance, afin qu&#39;ils puissent trouver des réponses sans savoir exactement où chercher ni quels termes spécifiques utiliser.
-* **Collecte de retours** : Les [widgets de feedback](/fr/optimize/feedback) intégrés permettent aux clients de noter les articles et de signaler des problèmes afin que vous puissiez améliorer le contenu.
-* **Analytics** : Suivez les articles consultés, les questions posées par les clients et les points sur lesquels ils rencontrent des difficultés.
-* **Authentification** : Utilisez le [SSO ou OAuth](/fr/deploy/authentication-setup) pour afficher un contenu personnalisé en fonction des formules ou types de compte des clients.
+* **Recherche alimentée par l’IA** : L’[assistant](/fr/assistant/index) répond aux questions des clients à partir de votre contenu d’assistance, afin qu’ils puissent obtenir rapidement des réponses sans savoir exactement où chercher ni quels termes utiliser.
+* **Collecte de commentaires** : Les [widgets de retour](/fr/optimize/feedback) intégrés permettent aux clients d’évaluer les articles et de signaler des problèmes afin que vous puissiez améliorer le contenu.
+* **Analyses** : Suivez les articles les plus consultés, les questions que les clients posent et les points sur lesquels ils rencontrent des difficultés dans le [tableau de bord des analyses](/fr/optimize/analytics).
+* **Authentification** : Utilisez le [SSO ou OAuth](/fr/deploy/authentication-setup) pour afficher du contenu personnalisé en fonction de l’abonnement ou du type de compte du client.
+
+<div id="start-from-a-template">
+  ## Partez d’un modèle
+</div>
+
+Le moyen le plus rapide de créer un nouveau centre d’aide consiste à utiliser la commande `mint new --template`. Exécutez-la, puis sélectionnez le modèle de départ pour centre d’aide.
+
+```bash
+mint new your-help-center-name --template help-center-starter
+```
+
+Cela crée un nouveau projet préconfiguré pour un centre d’aide, avec une structure de navigation, des pages d’exemple et des listes de répertoires. Consultez l’[exemple en ligne](https://help-center-starter.mintlify.app/) ou parcourez le [code source du modèle](https://github.com/mintlify/templates/tree/main/help-center-starter).
+
+Si vous préférez configurer un centre d’aide dans un projet existant, suivez les étapes ci-dessous.
 
 <div id="prerequisites">
   ## Prérequis
 </div>
 
-Si vous n&#39;avez pas encore créé de projet Mintlify, consultez le [Guide de démarrage rapide](/fr/quickstart) pour déployer votre site.
+Si vous n’avez pas encore créé de projet Mintlify, consultez le [guide de démarrage rapide](/fr/quickstart) pour déployer votre site.
 
-* Contenu pour vos sujets de support les plus fréquents
-* Accès administrateur à votre organisation Mintlify
-* domain pour héberger votre centre de support
+* Du contenu couvrant vos sujets d’assistance les plus courants
+* Un accès administrateur à votre organisation Mintlify
+* Un domaine pour héberger votre centre d’aide
 
 <div id="migrate-existing-content">
   ## Migrer le contenu existant
 </div>
 
-Si vous créez un centre d&#39;assistance à partir de zéro, passez à [Planifier la structure de votre centre d&#39;assistance](#plan-your-support-center-structure).
+Si vous créez un centre d’aide à partir de zéro, passez à [Planifiez la structure de votre centre d’aide](#plan-your-help-center-structure).
 
 <div id="audit-existing-content">
-  ### Auditer le contenu existant
+  ### Auditez le contenu existant
 </div>
 
-Passez en revue vos ressources de support actuelles pour déterminer quoi migrer.
+Passez en revue vos ressources d’assistance actuelles pour déterminer ce qu’il faut migrer.
 
-* **Articles d’aide** : Quels sujets traitez-vous ? Quels articles enregistrent le plus de consultations ?
-* **FAQ** : Avez-vous des questions fréquemment posées qui devraient être transformées en articles ?
-* **Tickets de support** : Quelles questions les clients posent-ils de manière récurrente ? Celles-ci devraient devenir du contenu en libre-service.
-* **Documentation produit** : Y a-t-il un chevauchement entre le contenu de support et la documentation produit ?
+* **Articles d’aide** : Quels sujets abordez-vous ? Quels articles sont les plus consultés ?
+* **FAQ** : Avez-vous des questions fréquentes qui devraient être transformées en articles ?
+* **Tickets d’assistance** : Quelles questions les clients posent-ils régulièrement ? Elles devraient être couvertes par du contenu en libre-service.
+* **Documentation produit** : Y a-t-il des recoupements entre le contenu d’assistance et la documentation produit ?
 
 <div id="export-your-existing-content">
   ### Exportez votre contenu existant
 </div>
 
-* Exportez au format **Markdown** pour effectuer la migration la plus simple vers Mintlify.
-* Exportez au format **HTML** si Markdown n’est pas disponible, puis convertissez en Markdown.
-* Exportez les **données de tickets** pour identifier les questions récurrentes qui nécessitent une documentation.
+* Exportez au format **Markdown** pour une migration plus simple vers Mintlify.
+* Exportez au format **HTML** si Markdown n&#39;est pas disponible, puis convertissez-le en Markdown.
+* Exportez les **données des tickets** pour identifier les questions fréquentes qui doivent être documentées.
 
-<div id="plan-your-support-center-structure">
-  ## Planifiez la structure de votre centre d&#39;assistance
+<div id="plan-your-help-center-structure">
+  ## Planifiez la structure de votre centre d’aide
 </div>
 
-Organisez votre centre d&#39;assistance autour des problèmes des clients, et non des fonctionnalités du produit. Les clients arrivent avec des questions et des objectifs ; structurez donc le contenu de manière à refléter leur façon de penser votre produit et les tâches courantes.
+Organisez votre centre d’aide autour des problèmes rencontrés par vos clients, et non autour des fonctionnalités du produit. Vos clients arrivent avec des questions et des objectifs précis. Structurez donc le contenu en fonction de leur manière de comprendre votre produit et des tâches les plus courantes.
 
 <Tip>
-  Passez en revue vos tickets d&#39;assistance pour comprendre ce que les clients demandent réellement. Cela vous aide à hiérarchiser le contenu et à structurer la navigation autour de problèmes concrets.
+  Consultez vos tickets d’assistance pour comprendre ce que les clients demandent réellement. Cela vous aide à prioriser le contenu et à structurer la navigation autour de problèmes concrets.
 </Tip>
 
-```json
+Utilisez la propriété `directory` pour créer des pages d’index pour chaque groupe de votre navigation. Lorsque vous utilisez la propriété `directory`, chaque page `root` affiche la liste des autres pages du même groupe de navigation. Les clients disposent ainsi d’une vue d’ensemble du contenu de chaque section, avec des liens vers les pages précises dont ils ont besoin.
+
+Définissez `directory` sur `"card"` pour une mise en page horizontale sous forme de cartes, ou sur `"accordion"` pour une liste. La valeur se propage dans l’arborescence de navigation, sauf si vous la remplacez explicitement à un niveau inférieur.
+
+```json Example navigation structure
 {
   "navigation": {
+    "directory": "card",
     "groups": [
       {
         "group": "Get Started",
+        "root": "getting-started/index",
         "pages": [
           "getting-started/quick-setup",
           "getting-started/first-steps"
@@ -72,6 +92,7 @@ Organisez votre centre d&#39;assistance autour des problèmes des clients, et no
       },
       {
         "group": "Account",
+        "root": "account/index",
         "pages": [
           "account/billing",
           "account/plans",
@@ -80,7 +101,8 @@ Organisez votre centre d&#39;assistance autour des problèmes des clients, et no
         ]
       },
       {
-        "group": "Utilisation du produit",
+        "group": "Using the Product",
+        "root": "product/index",
         "pages": [
           "product/feature-one",
           "product/feature-two",
@@ -89,6 +111,7 @@ Organisez votre centre d&#39;assistance autour des problèmes des clients, et no
       },
       {
         "group": "Troubleshooting",
+        "root": "troubleshooting/index",
         "pages": [
           "troubleshooting/common-errors",
           "troubleshooting/connectivity",
@@ -100,138 +123,138 @@ Organisez votre centre d&#39;assistance autour des problèmes des clients, et no
 }
 ```
 
-Consultez [Navigation](/fr/organize/navigation) pour davantage d’options de configuration.
+Consultez [Navigation](/fr/organize/navigation) et [Liste des répertoires](/fr/organize/navigation#directory-listings) pour découvrir d’autres options de configuration.
 
 <div id="write-effective-support-content">
-  ## Rédiger un contenu d&#39;assistance efficace
+  ## Rédigez un contenu de support efficace
 </div>
 
-Le contenu d&#39;assistance doit aider les clients à résoudre rapidement leurs problèmes. Chaque article doit répondre à une question précise ou résoudre un problème spécifique. Organisez le contenu lié en groupes plutôt que de créer des pages trop longues contenant trop d&#39;informations.
+Le contenu de support doit aider les clients à résoudre rapidement leurs problèmes. Chaque article doit répondre à une question précise ou résoudre un problème précis. Regroupez les contenus connexes au lieu de créer des pages trop longues et trop chargées en informations.
 
 <div id="structure-articles-for-scanning">
-  ### Structurez les articles pour un repérage rapide
+  ### Structurez les articles pour une lecture en diagonale
 </div>
 
-Les utilisateurs parcourent rapidement les pages d’assistance à la recherche de la réponse à un problème précis. Utilisez des titres clairs et des paragraphes courts.
+Les clients parcourent les pages d’assistance pour repérer leur problème précis. Utilisez des titres clairs et des paragraphes courts.
 
 ```mdx Example support page
 ---
-title: "Résoudre les problèmes de connexion"
-description: "Dépanner les problèmes courants de connexion à votre compte"
+title: "Fix login issues"
+description: "Troubleshoot common problems signing in to your account"
 ---
 
-## Réinitialiser votre mot de passe
+## Reset your password
 
-Si vous avez oublié votre mot de passe, demandez un lien de réinitialisation depuis la page de connexion.
+If you forgot your password, request a reset link from the login page.
 
-1. Accédez à la page de connexion.
-2. Sélectionnez **Mot de passe oublié**.
-3. Saisissez votre adresse e-mail.
-4. Vérifiez votre boîte de réception pour le lien de réinitialisation.
+1. Go to the login page.
+2. Select **Forgot password**.
+3. Enter your email address.
+4. Check your inbox for the reset link.
 
-## Vider le cache du navigateur
+## Clear browser cache
 
-Les anciennes données en cache peuvent causer des problèmes de connexion. Videz le cache de votre navigateur et réessayez.
+Old cached data can cause login problems. Clear your browser cache and try again.
 
-## Vérifier le statut du compte
+## Check account status
 
-Si votre compte est suspendu ou désactivé, vous verrez une erreur lors de la connexion.
-Contactez le support si vous pensez qu'il s'agit d'une erreur.
+If your account is suspended or deactivated, you'll see an error when logging in.
+Contact support if you believe this is a mistake.
 ```
 
 <div id="include-step-by-step-instructions">
-  ### Inclure des instructions étape par étape
+  ### Incluez des instructions étape par étape
 </div>
 
-Lorsque vous expliquez comment faire quelque chose, utilisez des étapes numérotées.
+Lorsque vous expliquez comment effectuer une action, utilisez des étapes numérotées.
 
 <Steps>
-  <Step title="Accéder aux paramètres">
-    Cliquez sur l’icône en forme d’engrenage dans la barre d’outils.
+  <Step title="Accédez à « Settings »">
+    Cliquez sur l’icône d’engrenage dans la barre d’outils.
   </Step>
 
-  <Step title="Sélectionner Billing">
+  <Step title="Sélectionnez « Billing »">
     Cliquez sur **Billing** dans le menu de navigation.
   </Step>
 
   <Step title="Mettre à jour le mode de paiement">
-    Cliquez sur **Update** à côté de votre mode de paiement actuel et saisissez les nouvelles informations.
+    Cliquez sur **Update** à côté de votre mode de paiement actuel, puis saisissez les nouvelles informations.
   </Step>
 </Steps>
 
 <div id="add-visual-aids">
-  ### Ajouter des supports visuels
+  ### Ajouter des repères visuels
 </div>
 
-Les captures d’écran et les schémas aident les utilisateurs à vérifier qu’ils se trouvent au bon endroit.
+Les captures d’écran et les schémas aident les utilisateurs à vérifier qu’ils sont au bon endroit.
 
 ```mdx Example screenshot
-![Settings page with billing section highlighted](/images/billing-settings.png)
+![Page des paramètres avec la section de facturation mise en évidence](/images/billing-settings.png)
 ```
 
 <div id="set-up-the-assistant">
-  ## Configurer l&#39;Assistant
+  ## Configurer l’assistant
 </div>
 
-L&#39;Assistant répond aux questions des clients en utilisant votre contenu de support. Configurez-le depuis votre [Dashboard](https://dashboard.mintlify.com/products/assistant/settings).
+L’assistant répond aux questions des clients à partir de votre contenu d’assistance. Configurez-le depuis votre [tableau de bord](https://dashboard.mintlify.com/products/assistant/settings).
 
 <Steps>
   <Step title="Ajouter des exemples de questions">
-    Ajoutez des questions fréquemment posées par les clients, par exemple :
+    Ajoutez les questions fréquentes que posent vos clients, par exemple :
 
-    * « Comment puis-je annuler mon abonnement ? »
-    * « Pourquoi mon paiement a-t-il été refusé ? »
-    * « Comment ajouter des membres à mon équipe ? »
+    * &quot;Comment annuler mon abonnement ?&quot;
+    * &quot;Pourquoi mon paiement a-t-il été refusé ?&quot;
+    * &quot;Comment ajouter des membres à l’équipe ?&quot;
 
-    Les exemples de questions apparaissent sous forme de boutons d’accès rapide, aidant les clients à obtenir des réponses en un clic.
+    Ces exemples de questions s’affichent sous forme de boutons d’accès rapide, pour aider les clients à obtenir des réponses en un clic.
   </Step>
 
-  <Step title="Définir une adresse e-mail de redirection">
-    Configurez une adresse e-mail de support pour les questions auxquelles l’Assistant ne peut pas répondre. Cela garantit que les clients peuvent toujours contacter votre équipe lorsque le libre-service ne suffit pas.
+  <Step title="Définir une adresse e-mail de contact">
+    Configurez une adresse e-mail de support pour les questions auxquelles l’assistant ne peut pas répondre. Vos clients peuvent ainsi toujours joindre votre équipe lorsque le libre-service ne suffit pas.
   </Step>
 
-  <Step title="Analyser les conversations">
-    Consultez régulièrement les conversations de l’Assistant pour identifier :
+  <Step title="Examiner les conversations">
+    Consultez régulièrement les conversations de l’assistant afin d’identifier :
 
-    * Les questions auxquelles l’Assistant ne peut pas répondre (lacunes de contenu)
+    * Les questions auxquelles l’assistant ne peut pas répondre (lacunes de contenu)
     * Les réponses incorrectes ou incomplètes (contenu à améliorer)
-    * Les schémas de questions récurrentes (contenu à prioriser)
+    * Les questions qui reviennent souvent (contenu à prioriser)
   </Step>
 </Steps>
 
 <div id="enable-feedback-collection">
-  ## Activer la collecte de feedback
+  ## Activer la collecte des retours
 </div>
 
-Le feedback vous aide à comprendre quelles pages sont utiles et lesquelles doivent être améliorées. Consultez les [feedback](/fr/optimize/feedback) pour voir quelles pages vos clients trouvent utiles et lesquelles doivent être améliorées. Lisez tous les commentaires et mettez à jour les pages en fonction des retours pertinents.
+Les retours vous aident à comprendre quelles pages sont utiles et lesquelles doivent être améliorées. Consultez les [retours](/fr/optimize/feedback) pour voir quelles pages les clients jugent utiles et lesquelles doivent être améliorées. Lisez tous les commentaires et mettez à jour les pages en fonction des retours pertinents.
 
 <div id="set-up-analytics">
-  ## Configurer Analytics
+  ## Configurer les analyses
 </div>
 
-Surveillez comment vos clients utilisent votre centre d&#39;assistance pour améliorer le contenu au fil du temps.
+Surveillez les [analyses](/fr/optimize/analytics) dans votre tableau de bord pour voir comment les clients utilisent votre centre d’aide et améliorer votre contenu au fil du temps.
 
-* **Articles populaires** : Quels articles sont les plus consultés ? Veillez à ce qu&#39;ils restent exacts et à jour.
-* **Requêtes de recherche** : Que recherchent les clients ? Créez du contenu pour les recherches fréquentes qui ne renvoient aucun résultat.
-* **Conversations avec l&#39;Assistant** : Quelles questions l&#39;Assistant reçoit-il ? Servez-vous-en pour identifier les lacunes dans votre contenu.
+* **Articles populaires** : Quels articles obtiennent le plus de vues ? Veillez à ce qu’ils restent exacts et à jour.
+* **Requêtes de recherche** : Que recherchent les clients ? Créez du contenu pour les recherches fréquentes qui ne renvoient aucun résultat.
+* **Conversations avec l’assistant** : Quelles questions l’assistant reçoit-il ? Appuyez-vous sur ces informations pour repérer les lacunes du contenu.
 
 <div id="restrict-content-by-customer-segment">
-  ## Restreindre le contenu par segment de clientèle
+  ## Restreindre le contenu par segment client
 </div>
 
-Si vous avez différents paliers de clientèle ou offres produit, affichez un contenu pertinent pour chaque segment via un contrôle d&#39;accès basé sur les groupes.
+Si vous avez différents niveaux de service ou forfaits produit, affichez à chaque segment le contenu pertinent grâce à un contrôle d’accès par groupe.
 
 <Steps>
-  <Step title="Configurer l'authentification">
-    Configurez l&#39;[authentification](/fr/deploy/authentication-setup) pour identifier les clients lorsqu&#39;ils visitent votre centre d&#39;assistance.
+  <Step title="Configurer l’authentification">
+    Configurez l’[authentification](/fr/deploy/authentication-setup) pour identifier les clients lorsqu’ils consultent votre centre d’aide.
   </Step>
 
-  <Step title="Configurer les groupes d'utilisateurs">
-    Renvoyez les informations de groupe dans vos données utilisateur pour définir des segments de clients en fonction du type de plan, du statut de compte ou d&#39;autres attributs. Consultez le [format des données utilisateur](/fr/deploy/authentication-setup#user-data-format) pour plus de détails.
+  <Step title="Configurer les groupes d’utilisateurs">
+    Renvoyez les informations de groupe dans les données utilisateur pour définir des segments clients en fonction du type de forfait, du statut du compte ou d’autres attributs. Consultez le [format des données utilisateur](/fr/deploy/authentication-setup#user-data-format) pour en savoir plus.
   </Step>
 
-  <Step title="Baliser le contenu par groupe">
-    Utilisez le frontmatter pour spécifier quels groupes peuvent voir chaque article.
+  <Step title="Associer le contenu à un groupe">
+    Utilisez les métadonnées d’en-tête pour préciser quels groupes peuvent voir chaque article.
 
     ```mdx
     ---
@@ -242,39 +265,39 @@ Si vous avez différents paliers de clientèle ou offres produit, affichez un co
   </Step>
 </Steps>
 
-<div id="maintain-your-support-center">
-  ## Maintenir votre centre d&#39;assistance
+<div id="maintain-your-help-center">
+  ## Maintenez votre centre d’aide à jour
 </div>
 
-Le contenu d&#39;assistance devient obsolète au fur et à mesure que votre produit évolue. Mettez en place des processus pour garantir la précision du contenu.
+Le contenu d’assistance devient obsolète à mesure que votre produit évolue. Mettez en place des processus pour que le contenu reste exact.
 
 <Steps>
-  <Step title="Mettre à jour lors des nouvelles versions du produit">
-    Lorsque vous déployez des évolutions du produit, mettez à jour les articles d&#39;assistance concernés. Intégrez les mises à jour de la documentation à votre processus de mise en production.
+  <Step title="Mettre à jour à chaque nouvelle version">
+    Lorsque vous déployez des changements dans le produit, mettez à jour les articles d’assistance concernés. Intégrez les mises à jour de la documentation à votre processus de publication.
   </Step>
 
   <Step title="Examiner régulièrement les retours">
-    Consultez chaque semaine les évaluations des articles et les retours des clients. Traitez rapidement les retours négatifs. Ils indiquent souvent un contenu confus ou incorrect.
+    Consultez chaque semaine les notes attribuées aux articles et les retours des clients. Traitez rapidement les retours négatifs. Ils signalent souvent un contenu peu clair ou inexact.
   </Step>
 
-  <Step title="Surveiller les tickets d'assistance">
-    Si des clients soumettent des tickets pour des problèmes déjà couverts dans votre centre d&#39;assistance, analysez pourquoi le libre-service n&#39;a pas fonctionné. L&#39;article est peut-être difficile à trouver, peu clair ou incomplet.
+  <Step title="Surveiller les tickets d’assistance">
+    Si des clients créent des tickets pour des problèmes déjà traités dans votre centre d’aide, cherchez pourquoi le libre-service n’a pas fonctionné. Il se peut que l’article soit difficile à trouver, peu clair ou incomplet.
   </Step>
 
   <Step title="Archiver le contenu obsolète">
-    Supprimez ou archivez les articles concernant des fonctionnalités obsolètes. Un contenu obsolète déroute les clients et réduit la confiance dans votre centre d&#39;assistance.
+    Supprimez ou archivez les articles sur des fonctionnalités abandonnées. Un contenu obsolète déroute les clients et réduit leur confiance dans votre centre d’aide.
   </Step>
 </Steps>
 
 <div id="next-steps">
-  ## Prochaines étapes
+  ## Étapes suivantes
 </div>
 
-Votre centre d&#39;assistance est prêt à être lancé. Après le déploiement :
+Votre centre d&#39;aide est prêt à être mis en ligne. Après le déploiement :
 
-1. Ajoutez un lien vers votre centre d&#39;assistance depuis votre produit et votre site web.
-2. Surveillez les conversations de l&#39;Assistant et les requêtes de recherche pour identifier les lacunes de contenu.
-3. Examinez chaque semaine les évaluations et améliorez les articles les moins bien notés.
+1. Ajoutez un lien vers votre centre d&#39;aide depuis votre produit et votre site web.
+2. Surveillez les conversations avec l&#39;assistant et les requêtes de recherche pour repérer les lacunes de contenu.
+3. Passez en revue chaque semaine les évaluations des utilisateurs et améliorez les articles les moins bien notés.
 4. Suivez le volume de tickets pour mesurer l&#39;efficacité du libre-service.
 
-Un bon centre d&#39;assistance réduit les coûts de support tout en améliorant la satisfaction client. Investissez dans un contenu qui répond efficacement aux questions les plus fréquentes.
+Un bon centre d&#39;aide réduit les coûts de support tout en améliorant la satisfaction client. Investissez dans du contenu qui répond efficacement aux questions fréquentes.

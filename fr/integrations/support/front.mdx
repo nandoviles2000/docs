@@ -1,23 +1,21 @@
 ---
 title: "Front"
-description: "Intégrez Front Chat à votre site de documentation Mintlify afin que les visiteurs puissent démarrer des conversations d’assistance directement depuis vos pages de documentation."
-keywords: ["Front Chat", "intégration du widget de chat", "chat ID", "conversations client"]
+description: "Intégrez le chat Front à votre site de documentation Mintlify pour permettre aux visiteurs d’échanger directement avec le support client depuis vos pages de documentation."
+keywords: ["Front Chat", "intégration du widget de chat", "ID de chat", "conversations avec le support client"]
 ---
 
-Ajoutez ce qui suit à votre fichier `docs.json` pour intégrer un widget [Front Chat](https://front.com).
+Ajoutez les éléments suivants à votre fichier `docs.json` pour ajouter un widget [Front Chat](https://front.com).
 
 <CodeGroup>
+  ```json Options d’intégration dans docs.json
+  "integrations": {
+      "frontchat": "CHAT_ID"
+  }
+  ```
 
-```json Options d’intégration dans docs.json
-"integrations": {
-    "frontchat": "CHAT_ID"
-}
-```
-
-```json Exemple
-"integrations": {
-    "frontchat": "1365d046d7c023e9b030ce90d02d093a"
-}
-```
-
+  ```json Exemple
+  "integrations": {
+      "frontchat": "1365d046d7c023e9b030ce90d02d093a"
+  }
+  ```
 </CodeGroup>

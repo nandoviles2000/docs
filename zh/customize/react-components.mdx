@@ -1,26 +1,62 @@
 ---
 title: "React"
-description: "使用 JSX、状态和客户端逻辑，在你的 Mintlify 文档中通过自定义 React 组件构建交互且可复用的元素。"
+description: "使用 JSX、状态和客户端逻辑，在 Mintlify 文档中通过自定义 React 组件构建交互式且可复用的元素。"
 keywords: ["React 组件", "交互式组件", "JSX", "自定义组件"]
 ---
 
 import { ColorGenerator } from "/snippets/color-generator.jsx";
 
-[React 组件](https://react.dev) 是在文档中创建交互式、可复用元素的强大方式。
+[React 组件](https://react.dev) 是在文档中创建交互式和可复用元素的强大方式。
 
 <div id="using-react-components">
   ## 使用 React 组件
 </div>
 
-可以直接在 MDX 文件中使用 [React hooks](https://react.dev/reference/react/hooks) 来构建 React 组件。
+你可以使用 [React hooks](https://react.dev/reference/react/hooks) 直接在 MDX 文件中创建 React 组件。
 
 <div id="example">
   ### 示例
 </div>
 
-本示例先声明一个 `Counter` 组件，然后通过 `<Counter />` 使用它。
+此示例先声明一个 `Counter` 组件，然后通过 `<Counter />` 使用它。
 
 ```mdx
+export const Counter = () => {
+  const [count, setCount] = useState(0)
+
+  const increment = () => setCount(count + 1)
+  const decrement = () => setCount(count - 1)
+
+  return (
+  <div className="flex items-center justify-center">
+      <div className="flex items-center rounded-xl overflow-hidden border border-zinc-950/20 dark:border-white/20">
+        <button
+          onClick={decrement}
+          className="flex items-center justify-center h-8 w-8 text-zinc-950/80 dark:text-white/80 border-r border-zinc-950/20 dark:border-white/20"
+          aria-label="Decrease"
+        >
+          -
+        </button>
+
+        <div className="flex text-sm items-center justify-center h-8 px-6 text-zinc-950/80 dark:text-white/80 font-medium min-w-[4rem] text-center">
+          {count}
+        </div>
+
+        <button
+          onClick={increment}
+          className="flex items-center justify-center h-8 w-8 text-zinc-950/80 dark:text-white/80 border-l border-zinc-950/20 dark:border-white/20"
+          aria-label="Increase"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  )
+}
+
+<Counter />
+```
+
 export const Counter = () => {
   const [count, setCount] = useState(0)
 
@@ -54,43 +90,7 @@ export const Counter = () => {
   )
 }
 
-<Counter />
-```
-
-export const Counter = () => {
-  const [count, setCount] = useState(0)
-
-  const increment = () => setCount(count + 1)
-  const decrement = () => setCount(count - 1)
-
-  return (
-  <div className="flex items-center justify-center">
-      <div className="flex items-center rounded-xl overflow-hidden border border-zinc-950/20 dark:border-white/20">
-        <button
-          onClick={decrement}
-          className="flex items-center justify-center h-8 w-8 text-zinc-950/80 dark:text-white/80 border-r border-zinc-950/20 dark:border-white/20"
-          aria-label="减一"
-        >
-          -
-        </button>
-
-        <div className="flex text-sm items-center justify-center h-8 px-6 text-zinc-950/80 dark:text-white/80 font-medium min-w-[4rem] text-center">
-          {count}
-        </div>
-
-        <button
-          onClick={increment}
-          className="flex items-center justify-center h-8 w-8 text-zinc-950/80 dark:text-white/80 border-l border-zinc-950/20 dark:border-white/20"
-          aria-label="加一"
-        >
-          +
-        </button>
-      </div>
-    </div>
-  )
-}
-
-计数器以交互式 React 组件的形式进行渲染。
+计数器会显示为一个可交互的 React 组件。
 
 <Counter />
 
@@ -98,15 +98,17 @@ export const Counter = () => {
   ## 导入组件
 </div>
 
-要在 MDX 文件中使用 React 组件，组件文件必须放在 `/snippets/` 文件夹中。了解更多关于[可复用片段](/zh/create/reusable-snippets)的内容。
+如需在 MDX 文件中导入 React 组件，组件文件必须位于 `/snippets/` 文件夹中。详细了解[可复用代码片段](/zh/create/reusable-snippets)。
 
 <Note>
-  不支持嵌套导入。如果某个 React 组件引用了其他组件，你必须在父级 MDX 文件中直接导入所有这些组件，而不是在组件文件内部再导入组件。
+  不支持嵌套导入。如果某个 React 组件引用了其他组件，则必须将所有组件直接导入父级 MDX 文件，而不是在组件文件内部导入组件。
 </Note>
 
-### 示例
+<div id="example">
+  ### 示例
+</div>
 
-此示例定义了一个 `ColorGenerator` 组件，它使用了多个 React Hook，然后在一个 MDX 文件中使用该组件。
+本示例声明了一个 `ColorGenerator` 组件，该组件使用了多个 React Hook，随后会在 MDX 文件中使用它。
 
 在 `snippets` 文件夹中创建 `color-generator.jsx` 文件：
 
@@ -130,10 +132,10 @@ export const ColorGenerator = () => {
     navigator.clipboard
       .writeText(color)
       .then(() => {
-        console.log(`已复制 ${color} 到剪贴板！`)
+        console.log(`Copied ${color} to clipboard!`)
       })
       .catch((err) => {
-        console.error("复制失败：", err)
+        console.error("Failed to copy: ", err)
       })
   }
 
@@ -142,7 +144,7 @@ export const ColorGenerator = () => {
       <div className="space-y-4">
         <div className="space-y-2">
           <label className="block text-sm text-zinc-950/70 dark:text-white/70">
-            色相：{hue}°
+            Hue: {hue}°
             <input
               type="range"
               min="0"
@@ -164,7 +166,7 @@ export const ColorGenerator = () => {
           </label>
 
           <label className="block text-sm text-zinc-950/70 dark:text-white/70">
-            饱和度：{saturation}%
+            Saturation: {saturation}%
             <input
               type="range"
               min="0"
@@ -182,7 +184,7 @@ export const ColorGenerator = () => {
           </label>
 
           <label className="block text-sm text-zinc-950/70 dark:text-white/70">
-            明度：{lightness}%
+            Lightness: {lightness}%
             <input
               type="range"
               min="0"
@@ -206,7 +208,7 @@ export const ColorGenerator = () => {
               key={idx}
               className="h-16 rounded flex-1 cursor-pointer transition-transform hover:scale-105"
               style={{ backgroundColor: color }}
-              title={`点击复制：${color}`}
+              title={`Click to copy: ${color}`}
               onClick={() => copyToClipboard(color)}
             />
           ))}
@@ -214,7 +216,7 @@ export const ColorGenerator = () => {
 
         <div className="text-sm font-mono text-zinc-950/70 dark:text-white/70">
           <p>
-            基础颜色：hsl({hue}, {saturation}%, {lightness}%)
+            Base color: hsl({hue}, {saturation}%, {lightness}%)
           </p>
         </div>
       </div>
@@ -223,7 +225,7 @@ export const ColorGenerator = () => {
 }
 ```
 
-导入 `ColorGenerator` 组件，并在一个 MDX 文件中使用：
+导入 `ColorGenerator` 组件，并在 MDX 文件中使用：
 
 ```mdx
 import { ColorGenerator } from "/snippets/color-generator.jsx"
@@ -231,7 +233,7 @@ import { ColorGenerator } from "/snippets/color-generator.jsx"
 <ColorGenerator />
 ```
 
-颜色生成器会呈现为一个交互式 React 组件。
+颜色生成器将呈现为一个交互式 React 组件。
 
 <ColorGenerator />
 
@@ -241,17 +243,17 @@ import { ColorGenerator } from "/snippets/color-generator.jsx"
 
 <AccordionGroup>
   <Accordion title="客户端渲染的影响">
-    React Hook 组件在客户端渲染，这会带来以下影响：
+    使用 React Hook 的组件会在客户端渲染，这会带来一些影响：
 
-    * **SEO (搜索引擎优化)&#x20;**：搜索引擎可能无法完整索引动态内容。
-    * **初始加载**：在组件渲染前，访客可能会看到短暂的加载占位或空白。
-    * **无障碍**：确保动态内容的变更能被屏幕阅读器及时播报。
+    * **SEO**：搜索引擎可能无法完整索引动态内容。
+    * **初始加载**：在组件渲染完成前，访客可能会短暂看到加载状态的内容。
+    * **无障碍**：确保动态内容的变化能够被屏幕阅读器播报。
   </Accordion>
 
   <Accordion title="性能最佳实践">
-    * **优化依赖数组**：在 `useEffect` 的依赖数组中仅包含必要的依赖。
-    * **记忆化复杂计算**：对开销较大的操作使用 `useMemo` 或 `useCallback`。
-    * **减少重复渲染**：将大型组件拆分为更小组件，避免级联式重复渲染。
-    * **懒加载**：考虑对复杂组件进行懒加载，以改善页面的首屏加载时间。
+    * **优化依赖数组**：在 `useEffect` 的依赖数组中只包含必要的依赖项。
+    * **记忆化复杂计算**：对于开销较大的操作，使用 `useMemo` 或 `useCallback`。
+    * **减少重渲染**：将大型组件拆分为更小的组件，以避免连锁重渲染。
+    * **延迟加载**：可以考虑对复杂组件使用延迟加载，以缩短页面初始加载时间。
   </Accordion>
 </AccordionGroup>

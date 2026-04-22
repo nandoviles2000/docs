@@ -1,23 +1,22 @@
 ---
 title: "Vercel"
-description: "Configurez les règles de réécriture Vercel pour diffuser votre documentation Mintlify sur un sous-chemin de votre domaine principal avec une configuration vercel.json pas à pas."
-keywords: ["vercel.json", "déploiement Vercel", "configuration des rewrites", "routage par sous-chemin"]
+description: "Configurez les réécritures Vercel pour diffuser votre documentation Mintlify sur un sous-chemin de votre domaine principal grâce à une configuration pas à pas de vercel.json."
+keywords: ["vercel.json", "déploiement Vercel", "configuration des réécritures", "routage par sous-chemin"]
 ---
 
 import { VercelJsonGenerator } from "/snippets/fr/vercel-json-generator.mdx";
 
-Configurez votre fichier `vercel.json` pour acheminer les requêtes de votre domaine principal vers votre documentation sur un sous-chemin.
-
+Configurez votre fichier `vercel.json` pour faire transiter les requêtes de votre domaine principal vers votre documentation sur un sous-chemin.
 
 <div id="verceljson-file">
-  ## Fichier vercel.json
+  ## Fichier `vercel.json`
 </div>
 
-Le fichier `vercel.json` définit la façon dont votre projet est construit et déployé. Il se trouve à la racine de votre projet et contrôle divers aspects de votre déploiement, notamment le routage, les redirections, les en-têtes et les paramètres de build.
+Le fichier `vercel.json` configure la façon dont votre projet est compilé et déployé. Il se trouve à la racine de votre projet et contrôle différents aspects du déploiement, notamment le routage, les redirections, les en-têtes et les paramètres de compilation.
 
-Nous utilisons la configuration `rewrites` dans votre fichier `vercel.json` pour faire transiter les requêtes de votre domaine principal vers votre documentation via un proxy.
+Nous utilisons la configuration `rewrites` de votre fichier `vercel.json` pour faire transiter les requêtes de votre domaine principal vers votre documentation.
 
-Les réécritures (`rewrites`) font correspondre les requêtes entrantes à différentes destinations sans modifier l'URL dans le navigateur. Quand quelqu’un visite `yoursite.com/docs`, Vercel récupère en interne le contenu depuis `your-subdomain.mintlify.dev/docs`, mais l’utilisateur voit toujours `yoursite.com/docs` dans son navigateur. Cela diffère des redirections, qui envoient les utilisateurs vers une URL complètement différente.
+Les réécritures acheminent les requêtes entrantes vers différentes destinations sans modifier l’URL affichée dans le navigateur. Lorsqu’une personne consulte `yoursite.com/docs`, Vercel récupère en interne le contenu depuis `your-subdomain.mintlify.dev/docs`, mais l’utilisateur voit toujours `yoursite.com/docs` dans son navigateur. Cela diffère des redirections, qui renvoient les utilisateurs vers une autre URL.
 
 <div id="configuration">
   ## Configuration
@@ -27,36 +26,37 @@ Les réécritures (`rewrites`) font correspondre les requêtes entrantes à diff
   ### Héberger sur le sous-chemin `/docs`
 </div>
 
-1. Accédez à la page [Custom domain setup](https://dashboard.mintlify.com/settings/deployment/custom-domain) dans votre Dashboard.
-2. Cliquez sur l’interrupteur **Host at `/docs`** pour l’activer.
-    <Frame>
-      <img alt="Capture d’écran de la page Custom domain setup. L’interrupteur Host at `/docs` est activé et mis en évidence par un rectangle orange." src="/images/subpath/toggle-light.png" className="block dark:hidden" />
-      <img alt="Capture d’écran de la page Custom domain setup. L’interrupteur Host at `/docs` est activé et mis en évidence par un rectangle orange." src="/images/subpath/toggle-dark.png" className="hidden dark:block" />
-    </Frame>
+1. Accédez à [la configuration du domaine personnalisé](https://dashboard.mintlify.com/settings/deployment/custom-domain) dans votre tableau de bord.
+2. Activez l’option **Host at `/docs`**.
+   <Frame>
+     <img alt="Capture d’écran de la page de configuration du domaine personnalisé. L’option Host at `/docs` est activée et mise en évidence par un rectangle orange." src="/images/subpath/toggle-light.png" className="block dark:hidden" />
+
+     <img alt="Capture d’écran de la page de configuration du domaine personnalisé. L’option Host at `/docs` est activée et mise en évidence par un rectangle orange." src="/images/subpath/toggle-dark.png" className="hidden dark:block" />
+   </Frame>
 3. Saisissez votre domaine.
 4. Sélectionnez **Add domain**.
-5. Ajoutez les réécritures suivantes à votre fichier `vercel.json`. Remplacez `[subdomain]` par votre sous-domaine, que vous trouverez à la fin de l’URL de votre Dashboard. Par exemple, `dashboard.mintlify.com/your-organization/your-subdomain` possède un identifiant de domaine `your-subdomain`.
+5. Ajoutez les réécritures suivantes à votre fichier `vercel.json`. Remplacez `[subdomain]` par votre sous-domaine, qui se trouve à la fin de l’URL de votre tableau de bord. Par exemple, `dashboard.mintlify.com/your-organization/your-subdomain` a pour identifiant de domaine `your-subdomain`.
 
-    ```json
-    {
-      "rewrites": [
-        {
-          "source": "/docs",
-          "destination": "https://[subdomain].mintlify.dev/docs"
-        },
-        {
-          "source": "/docs/:match*",
-          "destination": "https://[subdomain].mintlify.dev/docs/:match*"
-        }
-      ]
-    }
-    ```
+   ```json
+   {
+     "rewrites": [
+       {
+         "source": "/docs",
+         "destination": "https://[subdomain].mintlify.dev/docs"
+       },
+       {
+         "source": "/docs/:match*",
+         "destination": "https://[subdomain].mintlify.dev/docs/:match*"
+       }
+     ]
+   }
+   ```
 
-La configuration `rewrites` fait correspondre le sous-chemin `/docs` sur votre domaine au sous-chemin `/docs` sur votre documentation.
+La configuration `rewrites` associe le sous-chemin `/docs` de votre domaine au sous-chemin `/docs` de votre documentation.
 
-- **`source`** : Le modèle de chemin sur votre domaine qui déclenche la réécriture.
-- **`destination`** : L’endroit où la requête doit être transmise en proxy.
-- **`:match*`** : Un joker qui capture tous les segments de chemin après votre sous-chemin.
+* **`source`** : le modèle de chemin sur votre domaine qui déclenche la réécriture.
+* **`destination`** : l’emplacement vers lequel la requête doit être redirigée.
+* **`:match*`** : un caractère générique qui capture tous les segments de chemin après votre sous-chemin.
 
 Pour plus d’informations, consultez [Configuring projects with vercel.json: Rewrites](https://vercel.com/docs/projects/project-configuration#rewrites) dans la documentation Vercel.
 
@@ -64,8 +64,8 @@ Pour plus d’informations, consultez [Configuring projects with vercel.json: Re
   ### Héberger sur un sous-chemin personnalisé
 </div>
 
-Pour utiliser un sous-chemin personnalisé (tout chemin autre que `/docs`), vous devez organiser vos fichiers de documentation dans votre référentiel pour qu'ils correspondent à la structure de votre sous-chemin. Par exemple, si votre documentation est hébergée à l'adresse `yoursite.com/help`, vos fichiers de documentation doivent se trouver dans un répertoire `help/`.
+Pour utiliser un sous-chemin personnalisé (n’importe quel chemin autre que `/docs`), vous devez organiser les fichiers de votre documentation dans votre dépôt de manière à ce qu’ils correspondent à la structure de ce sous-chemin. Par exemple, si votre documentation est hébergée sur `yoursite.com/help`, les fichiers de votre documentation doivent se trouver dans un répertoire `help/`.
 
-Utilisez le générateur ci-dessous pour créer votre configuration de réécritures. Ajoutez les réécritures à votre fichier `vercel.json`.
+Utilisez le générateur ci-dessous pour créer votre configuration de réécriture. Ajoutez ces réécritures à votre fichier `vercel.json`.
 
 <VercelJsonGenerator />

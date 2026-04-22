@@ -1,63 +1,63 @@
 ---
-title: "Avisos"
-description: "Añade componentes de aviso de tipo info, note, tip, check, warning, danger y personalizados para destacar información importante en tu documentación."
-keywords: ["callouts", "notes", "warnings", "info boxes", "tips", "emphasis", "highlight"]
+title: "Callouts"
+description: "Agrega componentes callout de información, notas, consejos, verificaciones, advertencias, peligro y personalizados para resaltar información importante en tu documentación."
+keywords: ["callouts", "notas", "advertencias", "cuadros informativos", "consejos", "énfasis", "destacar"]
 ---
 
 import IconsOptional from "/snippets/es/icons-optional.mdx";
 
-Aplica a los avisos los estilos Note, Advertencia, Información, Sugerencia, Check, Danger, o crea tu propio aviso:
+Da estilo a los callouts como Note, Warning, Info, Tip, Check, Danger, o crea tu propio callout:
 
-<Note>Esto añade una nota en el contenido</Note>
+<Note>Esto añade una nota al contenido</Note>
 
 ```mdx
-<Note>Esto añade una nota en el contenido</Note>
+<Note>This adds a note in the content</Note>
 ```
 
-<Warning>Esto muestra una advertencia a la que debes prestar atención</Warning>
+<Warning>Esto muestra una advertencia para que la tengas en cuenta</Warning>
 
 ```mdx
-<Warning>Esto muestra una advertencia a la que debes prestar atención</Warning>
+<Warning>This raises a warning to watch out for</Warning>
 ```
 
-<Info>Destaca información importante</Info>
+<Info>Esto destaca información importante</Info>
 
 ```mdx
-<Info>Destaca información importante</Info>
+<Info>This draws attention to important information</Info>
 ```
 
-<Tip>Esto sugiere una Sugerencia útil</Tip>
+<Tip>Esto ofrece un consejo útil</Tip>
 
 ```mdx
-<Tip>Esto sugiere una Sugerencia útil</Tip>
+<Tip>This suggests a helpful tip</Tip>
 ```
 
 <Check>Esto nos da un estado marcado</Check>
 
 ```mdx
-<Check>Esto nos da un estado marcado</Check>
+<Check>Esto nos muestra un estado verificado</Check>
 ```
 
-<Danger>Este es un aviso de alerta</Danger>
+<Danger>Este es un callout de peligro</Danger>
 
 ```mdx
-<Danger>Este es un aviso de alerta</Danger>
+<Danger>This is a danger callout</Danger>
 ```
 
-<Callout icon="key" color="#FFC107" iconType="regular"> Este es un aviso personalizado</Callout>
+<Callout icon="key" color="#FFC107" iconType="regular"> Este es un callout personalizado</Callout>
 
 ```mdx wrap
-<Callout icon="key" color="#FFC107" iconType="regular">Este es un aviso personalizado</Callout>
+<Callout icon="key" color="#FFC107" iconType="regular">This is a custom callout</Callout>
 ```
 
 <div id="custom-callout-properties">
-  ## Propiedades de aviso personalizado
+  ## Propiedades personalizadas de los callouts
 </div>
 
-El componente genérico `Callout` admite iconos y colores personalizados. Los avisos con tipo (`Note`, `Warning`, `Info`, `Tip`, `Check`, `Danger`) usan iconos y colores predefinidos y solo aceptan `children`.
+El componente genérico `Callout` admite iconos y colores personalizados. Los callouts con tipo (`Note`, `Warning`, `Info`, `Tip`, `Check`, `Danger`) usan iconos y colores predefinidos y solo aceptan `children`.
 
 <IconsOptional />
 
 <ResponseField name="color" type="string">
-  Color personalizado como código hexadecimal (por ejemplo, `#FFC107`). Establece el borde, el tinte de fondo y el color del texto del aviso.
+  Color personalizado en código hexadecimal (por ejemplo, `#FFC107`). Define el borde, el tono de fondo y el color del texto del callout.
 </ResponseField>

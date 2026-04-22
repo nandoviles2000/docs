@@ -1,20 +1,21 @@
 ---
-title: "Obtenir les vues de page"
-description: "Récupérez le nombre de vues de contenu par page et à l'échelle du site, divisé entre le trafic humain et celui généré par l'IA."
+title: "Récupérer les vues de page"
+description: "Récupérez le nombre de vues du contenu par page et sur l’ensemble
+  du site, ventilé entre trafic humain et trafic IA."
 openapi: /fr/analytics.openapi.json GET /v1/analytics/{projectId}/views
-keywords: [ "analytics", "vues", "vues de page", "trafic", "export" ]
+keywords: [ "analyses", "vues", "vues de page", "trafic", "exportation" ]
 ---
 
 <div id="usage">
   ## Utilisation
 </div>
 
-Utilisez cet endpoint pour exporter les analyses de vues de page. Les résultats incluent les totaux du site et les détails par page, répartis entre le trafic humain et celui de l'IA.
+Utilisez ce point de terminaison pour exporter les analyses des vues de page. Les résultats incluent à la fois des totaux pour l’ensemble du site et une répartition par page, distinguant le trafic humain du trafic IA.
 
-Parcourez les résultats à l'aide de la pagination par décalage. Incrémentez `offset` de `limit` tant que `hasMore` est `true`.
+Parcourez les résultats à l’aide d’une pagination basée sur l’offset. Augmentez `offset` de `limit` tant que `hasMore` vaut `true`.
 
 <div id="filtering">
   ## Filtrage
 </div>
 
-Filtrez les données de vues par plage de dates à l'aide des paramètres `dateFrom` et `dateTo`.
+Filtrez les données de vue par plage de dates à l’aide des paramètres `dateFrom` et `dateTo`.

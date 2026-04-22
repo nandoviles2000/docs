@@ -1,20 +1,20 @@
 ---
 title: "重定向"
-description: "在 docs.json 中配置 URL 重定向，为已移动、重命名或删除的文档页面保护 SEO 排名并防止失效链接。"
-keywords: ["redirects"]
+description: "在 docs.json 中为已移动、重命名或删除的文档页面配置 URL 重定向，以保留 SEO 排名并避免出现失效链接。"
+keywords: ["重定向"]
 ---
 
-当你更改 docs 文件夹中文件的路径时，该页面的 URL 路径也会随之改变。这通常发生在重构文档或更改侧边栏标题时。
+当你更改 docs 文件夹中文件的路径时，该页面的 URL 路径也会随之改变。这种情况可能发生在你重新组织文档结构或更改侧边栏标题时。
 
 <div id="redirects">
-  ## Redirects
+  ## 重定向
 </div>
 
 <Note>
-  重定向**不能**包含像 `path#anchor` 这样的 URL 锚点，或像 `path?query=value` 这样的查询参数。
+  重定向**不能**包含 URL 锚点 (如 `path#anchor`) 或查询参数 (如 `path?query=value`) 。
 </Note>
 
-在 `docs.json` 文件中添加 `redirects` 字段即可设置重定向。
+在 `docs.json` 文件中添加 `redirects` 字段以设置重定向。
 
 ```json
 "redirects": [
@@ -25,9 +25,9 @@ keywords: ["redirects"]
 ]
 ```
 
-该重定向会将 `/source/path` 重定向到 `/destination/path`。
+这会将 `/source/path` 重定向到 `/destination/path`。
 
-默认情况下，重定向为永久重定向 (308)。若要使用临时重定向 (307)，请将 `permanent` 设置为 `false`。
+默认情况下，重定向为永久性 (308)。如需使用临时重定向 (307)，请将 `permanent` 设置为 `false`。
 
 ```json
 "redirects": [
@@ -39,13 +39,13 @@ keywords: ["redirects"]
 ]
 ```
 
-307 和 308 都保留原始请求的 HTTP 方法 (不同于 301 和 302) ，因此适合用于重定向 POST 请求。
+307 和 308 都会保留原始请求的 HTTP 方法 (与 301 和 302 不同) ，因此适合用于重定向 POST 请求。
 
 <div id="wildcard-redirects">
   ### 通配符重定向
 </div>
 
-要匹配通配符路径，请在参数后面使用 `*`。在此示例中，`/beta/:slug*` 可匹配 `/beta/introduction`，并将其重定向到 `/v2/introduction`。
+要匹配通配符路径，请在参数后添加 `*`。在此示例中，`/beta/:slug*` 会匹配 `/beta/introduction`，并将其重定向到 `/v2/introduction`。
 
 ```json
 "redirects": [
@@ -60,7 +60,7 @@ keywords: ["redirects"]
   ### 部分通配符重定向
 </div>
 
-使用部分通配符来匹配以特定前缀开头的 URL 片段。
+使用部分通配符匹配以特定前缀开头的 URL 路径段。
 
 ```json
 "redirects": [
@@ -71,9 +71,9 @@ keywords: ["redirects"]
 ]
 ```
 
-这会匹配任何路径为 `/articles/concepts-` 的 URL，例如 `/articles/concepts-getting-started` 和 `/articles/concepts-overview`，并将它们全部重定向到 `/collections/overview`。
+这会匹配所有带有 `/articles/concepts-` 路径的 URL，例如 `/articles/concepts-getting-started` 和 `/articles/concepts-overview`，并将它们统一重定向到 `/collections/overview`。
 
-你也可以在目标地址中使用捕获到的通配符值进行替换。
+你还可以在目标 URL 中使用捕获到的通配符值进行替换。
 
 ```json
 "redirects": [
@@ -84,13 +84,13 @@ keywords: ["redirects"]
 ]
 ```
 
-该重定向会将 `/old/article-123` 重定向到 `/new/article-123`，并在前缀之后保留捕获到的值。
+这会将 `/old/article-123` 重定向到 `/new/article-123`，并保留前缀后捕获的值。
 
 <div id="avoid-infinite-redirects">
   ### 避免无限重定向
 </div>
 
-为避免出现无限循环，请不要创建路径彼此重定向的循环规则。
+为避免无限循环，请不要创建让路径相互重定向的循环重定向。
 
 ```json
 "redirects": [
@@ -106,10 +106,10 @@ keywords: ["redirects"]
 ```
 
 <div id="check-for-broken-links">
-  ## 检查无效链接
+  ## 检查失效链接
 </div>
 
-使用 [CLI](/zh/cli) 检测无效链接。
+使用 [CLI](/zh/cli) 查找失效链接。
 
 ```bash
 mint broken-links

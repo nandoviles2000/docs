@@ -1,27 +1,25 @@
 ---
 title: "Amplitude"
-description: "Intégrez Amplitude Analytics à votre site de documentation Mintlify pour suivre le comportement des utilisateurs, les pages vues et les métriques d’engagement."
-keywords: ["intégration Amplitude", "clé API Amplitude", "suivi du comportement utilisateur", "analytics produit"]
+description: "Intégrez les analyses Amplitude à votre site de documentation Mintlify pour suivre le comportement des utilisateurs, les pages vues et l’engagement avec le contenu."
+keywords: ["intégration Amplitude", "clé API Amplitude", "suivi du comportement des utilisateurs", "analyses produit"]
 ---
 
-Ajoutez l’extrait suivant à votre fichier `docs.json` pour envoyer des données d’Analytics à Amplitude.
+Ajoutez ce qui suit à votre fichier `docs.json` pour envoyer les données d’analyse à Amplitude.
 
 <CodeGroup>
+  ```json Options d’analyses dans docs.json
+  "integrations": {
+      "amplitude": {
+          "apiKey": "required"
+      }
+  }
+  ```
 
-```json Options d’Analytics dans docs.json
-"integrations": {
-    "amplitude": {
-        "apiKey": "required"
-    }
-}
-```
-
-```json Exemple
-"integrations": {
-    "amplitude": {
-        "apiKey": "76bb138bf3fbf58186XXX00000"
-    }
-}
-```
-
+  ```json Exemple
+  "integrations": {
+      "amplitude": {
+          "apiKey": "76bb138bf3fbf58186XXX00000"
+      }
+  }
+  ```
 </CodeGroup>

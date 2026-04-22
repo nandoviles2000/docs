@@ -1,102 +1,102 @@
 ---
-title: "Cartes"
-description: "Utilisez les composants carte pour créer des conteneurs visuels avec des icônes, des images et des liens qui mettent en avant les points clés et organisent la navigation."
-keywords: ["cartes", "conteneurs visuels"]
+title: "Cards"
+description: "Utilisez les composants Card pour créer des conteneurs visuels avec des icônes, des images et des liens afin de mettre en avant les points clés et de structurer la navigation."
+keywords: ["Cards", "conteneurs visuels"]
 ---
 
 import IconsOptional from "/snippets/fr/icons-optional.mdx";
 
-Utilisez des cartes pour créer des blocs visuels pour votre contenu. Les cartes sont des conteneurs flexibles qui peuvent inclure du texte, des icônes, des images et des liens.
+Utilisez des cartes pour créer des conteneurs visuels pour votre contenu. Les cartes sont des conteneurs flexibles pouvant inclure du texte, des icônes, des images et des liens.
 
 <div id="basic-card">
-  ## Carte simple
+  ## Card de base
 </div>
 
 <Card title="Titre de la carte" icon="text-align-start" href="/fr/components/columns">
-  Voici comment utiliser une carte avec une icône et un lien. En cliquant sur cette carte,
-  vous accédez à la page « Colonnes ».
+  Voici comment utiliser une Card avec une icône et un lien. Lorsque vous cliquez sur cette Card,
+  vous accédez à la page Columns.
 </Card>
 
 ```mdx Card example
-<Card title="Titre de la carte" icon="text-align-start" href="/fr/components/columns">
-  Voici comment utiliser une carte avec une icône et un lien. En cliquant sur cette carte,
-  vous accédez à la page Colonnes.
+<Card title="Card title" icon="text-align-start" href="/components/columns">
+  This is how you use a card with an icon and a link. Clicking on this card
+  brings you to the Columns page.
 </Card>
 ```
 
 <div id="card-variations">
-  ## Variantes de cartes
+  ## Variantes de Card
 </div>
 
-Les cartes proposent plusieurs options de mise en page et de style pour répondre à différents besoins en matière de contenu.
+Les composants Card offrent plusieurs options de mise en page et de style pour s’adapter à différents types de contenu.
 
 <div id="horizontal-layout">
-  ### Disposition horizontale
+  ### Mise en page horizontale
 </div>
 
-Ajoutez la propriété `horizontal` pour afficher les cartes dans une disposition horizontale plus compacte.
+Ajoutez la propriété `horizontal` pour afficher les Cards dans une mise en page horizontale plus compacte.
 
 <Card title="Carte horizontale" icon="text-align-start" horizontal>
-  Voici un exemple de carte horizontale.
+  Voici un exemple de Card horizontale.
 </Card>
 
 ```mdx Horizontal card example
-<Card title="Carte horizontale" icon="text-align-start" horizontal>
-  Voici un exemple de carte horizontale.
+<Card title="Horizontal card" icon="text-align-start" horizontal>
+  This is an example of a horizontal card.
 </Card>
 ```
 
 <div id="image-cards">
-  ### Cartes avec image
+  ### Cards avec image
 </div>
 
-Ajoutez la propriété `img` pour afficher une image en haut de la carte.
+Ajoutez une propriété `img` pour afficher une image en haut de la Card.
 
 <Card title="Carte avec image" img="https://mintlify-assets.b-cdn.net/yosemite.jpg">
-  Voici un exemple de carte avec une image.
+  Voici un exemple de Card avec une image.
 </Card>
 
 ```mdx Image card example
-<Card title="Carte avec image" img="/images/card-with-image.png">
-  Voici un exemple de carte avec une image.
+<Card title="Image card" img="/images/card-with-image.png">
+  This is an example of a card with an image.
 </Card>
 ```
 
 <div id="link-cards-with-custom-ctas">
-  ### Cartes de lien avec CTA personnalisés
+  ### Cards avec lien et CTA personnalisés
 </div>
 
-Vous pouvez personnaliser le texte de l&#39;appel à l&#39;action et contrôler l&#39;affichage d&#39;une flèche. Par défaut, les flèches s&#39;affichent uniquement pour les liens externes.
+Vous pouvez personnaliser le texte de l’appel à l’action et choisir si une flèche s’affiche. Par défaut, les flèches s’affichent uniquement pour les liens externes.
 
-<Card title="Carte de lien" icon="link" href="/fr/components/columns" arrow="true" cta="Cliquez ici">
-  Voici un exemple de carte avec une icône et un lien. En cliquant sur cette carte, vous accédez à la page Colonnes.
+<Card title="Carte avec lien" icon="link" href="/fr/components/columns" arrow="true" cta="Cliquez ici">
+  Voici un exemple de Card avec une icône et un lien. En cliquant sur cette Card, vous accédez à la page Columns.
 </Card>
 
 ```mdx Link card example
 <Card
-  title="Carte avec lien"
+  title="Link card"
   icon="link"
   href="/components/columns"
   arrow="true"
-  cta="Cliquez ici"
+  cta="Click here"
 >
-  Ceci est un exemple de carte avec une icône et un lien. En cliquant sur cette carte, vous accédez à la page Colonnes.
+  This is an example of a card with an icon and a link. Clicking on this card brings you to the Columns page.
 </Card>
 ```
 
-<div id="grouping-cards">
-  ## Regrouper des cartes
+<div id="group-cards">
+  ## Regrouper des Cards
 </div>
 
-Utilisez le [composant Columns](/fr/components/columns) pour organiser plusieurs cartes côte à côte. Le composant Columns prend en charge entre une et quatre colonnes et s’ajuste automatiquement aux écrans plus petits.
+Utilisez le [composant Columns](/fr/components/columns) pour organiser plusieurs Cards côte à côte. Le composant Columns prend en charge d’une à quatre colonnes et s’adapte automatiquement aux écrans plus petits.
 
 <Columns cols={2}>
   <Card title="Première carte" icon="panel-left-close">
-    C’est la première carte.
+    Voici la première Card.
   </Card>
 
   <Card title="Deuxième carte" icon="panel-right-close">
-    C’est la deuxième carte.
+    Voici la deuxième Card.
   </Card>
 </Columns>
 
@@ -105,43 +105,42 @@ Utilisez le [composant Columns](/fr/components/columns) pour organiser plusieurs
   <Card title="First card" icon="panel-left-close">
     This is the first card.
   </Card>
-  <Card title="Deuxième carte" icon="panel-right-close">
-    Ceci est la deuxième carte.
+  <Card title="Second card" icon="panel-right-close">
+    This is the second card.
   </Card>
 </Columns>
 ```
-
 
 <div id="properties">
   ## Propriétés
 </div>
 
 <ResponseField name="title" type="string">
-  Le titre affiché sur la carte.
+  Le titre affiché sur la Card.
 </ResponseField>
 
 <IconsOptional />
 
 <ResponseField name="color" type="string">
-  Couleur de l&#39;icône au format code hexadécimal (par exemple, `#FF6B6B`).
+  Couleur de l’icône au format hexadécimal (par exemple, `#FF6B6B`).
 </ResponseField>
 
 <ResponseField name="href" type="string">
-  URL vers laquelle rediriger lorsque la carte est cliquée.
+  URL de destination lorsque l’utilisateur clique sur la Card.
 </ResponseField>
 
 <ResponseField name="horizontal" type="boolean">
-  Afficher la carte dans une mise en page horizontale compacte.
+  Affiche la Card dans une mise en page horizontale compacte.
 </ResponseField>
 
 <ResponseField name="img" type="string">
-  URL ou chemin local vers une image affichée en haut de la carte.
+  URL ou chemin local d’une image affichée en haut de la Card.
 </ResponseField>
 
 <ResponseField name="cta" type="string">
-  Texte personnalisé pour le bouton d’action.
+  Texte personnalisé du bouton d’action.
 </ResponseField>
 
 <ResponseField name="arrow" type="boolean">
-  Afficher ou masquer l'icône de flèche du lien.
+  Affiche ou masque l’icône de flèche du lien.
 </ResponseField>

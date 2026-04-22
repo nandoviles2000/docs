@@ -1,32 +1,32 @@
 ---
 title: "Types de données complexes"
-description: "Décrivez des API avec des schémas flexibles en utilisant les mots-clés oneOf, anyOf et allOf pour les propriétés optionnelles, le polymorphisme et les formats de données multiples."
+description: "Décrivez des API avec des schémas flexibles à l’aide des mots-clés oneOf, anyOf et allOf pour les propriétés facultatives, le polymorphisme et différents formats de données."
 keywords: ["oneOf", "anyOf", "allOf", "composition de schémas", "schémas polymorphes"]
 ---
 
-Lorsque votre API accepte plusieurs formats de données, comporte des champs conditionnels ou utilise des modèles d’héritage, les mots-clés de composition de schémas d’OpenAPI vous aident à documenter ces structures flexibles. Avec `oneOf`, `anyOf` et `allOf`, vous pouvez décrire des API qui prennent en charge différents types d’entrée ou combinent plusieurs schémas en modèles de données complets.
+Lorsque votre API accepte plusieurs formats de données, comporte des champs conditionnels ou repose sur des mécanismes d’héritage, les mots-clés de composition de schémas d’OpenAPI vous aident à documenter ces structures flexibles. Avec `oneOf`, `anyOf` et `allOf`, vous pouvez décrire des API qui gèrent différents types d’entrée ou combinent plusieurs schémas en modèles de données complets.
 
 <div id="oneof-anyof-allof-keywords">
   ## Mots-clés `oneOf`, `anyOf`, `allOf`
 </div>
 
-Pour les types de données complexes, OpenAPI propose des mots-clés pour combiner des schémas :
+Pour les types de données complexes, OpenAPI fournit des mots-clés permettant de combiner des schémas :
 
-- `allOf` : Combine plusieurs schémas (comme la fusion d’objets ou l’extension d’un schéma de base). Fonctionne comme un opérateur « and ». 
-- `anyOf` : Accepte des données correspondant à l’un des schémas fournis. Fonctionne comme un opérateur « or ».
-- `oneOf` : Accepte des données correspondant exactement à un seul des schémas fournis. Fonctionne comme un opérateur « exclusive-or ».
+* `allOf` : combine plusieurs schémas (par exemple en fusionnant des objets ou en étendant un schéma de base). Fonctionne comme un opérateur `and`.
+* `anyOf` : accepte des données correspondant à l&#39;un des schémas fournis. Fonctionne comme un opérateur `or`.
+* `oneOf` : accepte des données correspondant à exactement un des schémas fournis. Fonctionne comme un opérateur `exclusive-or`.
 
-<Warning>Mintlify traite `oneOf` et `anyOf` de la même manière, car la différence pratique influe rarement sur l’utilisation de l’API.</Warning>
+<Warning>Mintlify traite `oneOf` et `anyOf` de façon identique, car cette différence a rarement un impact concret sur l&#39;utilisation de l&#39;API.</Warning>
 
-Pour des spécifications détaillées de ces mots-clés, consultez la [documentation OpenAPI](https://swagger.io/docs/specification/data-models/oneof-anyof-allof-not/).
+Pour plus d&#39;informations sur les spécifications détaillées de ces mots-clés, consultez la [documentation OpenAPI](https://swagger.io/docs/specification/data-models/oneof-anyof-allof-not/).
 
-<Info>Le mot-clé `not` n’est actuellement pas pris en charge.</Info>
+<Info>Le mot-clé `not` n&#39;est actuellement pas pris en charge.</Info>
 
 <div id="combining-schemas-with-allof">
   ### Combiner des schémas avec `allOf`
 </div>
 
-Lorsque vous utilisez `allOf`, Mintlify applique un prétraitement à votre document OpenAPI afin d’afficher des combinaisons complexes de manière lisible. Par exemple, lorsque vous combinez deux schémas d’objet avec `allOf`, Mintlify fusionne les propriétés des deux en un seul objet. Cela est particulièrement utile lorsque vous exploitez les [components](https://swagger.io/docs/specification/components/) réutilisables d’OpenAPI.
+Lorsque vous utilisez `allOf`, Mintlify effectue un prétraitement de votre document OpenAPI afin d’afficher les combinaisons complexes de façon lisible. Par exemple, lorsque vous combinez deux schémas d’objet avec `allOf`, Mintlify fusionne leurs propriétés en un seul objet. Cela est particulièrement utile lorsque vous tirez parti des [composants](https://swagger.io/docs/specification/components/) réutilisables d’OpenAPI.
 
 ```yaml
 org_with_users:
@@ -36,7 +36,7 @@ org_with_users:
       properties:
         users:
           type: array
-          description: Un tableau contenant tous les utilisateurs de l'organisation
+          description: An array containing all users in the organization
 # ...
 components:
   schemas:
@@ -45,7 +45,7 @@ components:
       properties:
         id:
           type: string
-          description: L'identifiant de l'organisation
+          description: The ID of the organization
 ```
 
 <ParamField body="org_with_users" type="object">
@@ -55,28 +55,28 @@ components:
     </ParamField>
 
     <ParamField body="users" type="object[]">
-      Un tableau contenant l’ensemble des utilisateurs de l’organisation
+      Un tableau contenant tous les utilisateurs de l’organisation
     </ParamField>
   </Expandable>
 </ParamField>
 
 <div id="providing-options-with-oneof-and-anyof">
-  ### Proposer des options avec `oneOf` et `anyOf`
+  ### Présenter des options avec `oneOf` et `anyOf`
 </div>
 
-Lorsque vous utilisez `oneOf` ou `anyOf`, les options s’affichent dans un conteneur à onglets. Indiquez un champ `title` dans chaque sous-schéma pour nommer vos options. Par exemple, voici comment vous pourriez afficher deux types d’adresses de livraison distincts :
+Lorsque vous utilisez `oneOf` ou `anyOf`, les options s’affichent dans un conteneur à onglets. Spécifiez un champ `title` dans chaque sous-schéma pour attribuer un nom à vos options. Par exemple, voici comment afficher deux types différents d’adresses de livraison :
 
 ```yaml
 delivery_address:
   oneOf:
-    - title: StreetAddress
+    - title: Adresse
       type: object
       properties:
         address_line_1:
           type: string
           description: L'adresse postale du destinataire
         # ...
-    - title: POBox
+    - title: Boîte postale
       type: object
       properties:
         box_number:
@@ -88,15 +88,15 @@ delivery_address:
 <ParamField body="delivery_address" type="object">
   <div className="mt-4 rounded-xl border border-gray-100 px-4 pb-4 pt-2 dark:border-white/10">
     <Tabs>
-      <Tab title="StreetAddress">
+      <Tab title="Adresse">
         <ParamField body="address_line_1" type="string">
           L’adresse de la résidence
         </ParamField>
       </Tab>
 
-      <Tab title="POBox">
+      <Tab title="Boîte postale">
         <ParamField body="box_number" type="string">
-          Le numéro de la case postale
+          Le numéro de la boîte postale
         </ParamField>
       </Tab>
     </Tabs>

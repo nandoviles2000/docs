@@ -1,16 +1,16 @@
 ---
-title: "Couleur"
-description: "Affichez des nuanciers avec des valeurs hexadécimales et la possibilité de copier en un clic grâce au composant couleur, pour la documentation des systèmes de design et du branding."
+title: "Color"
+description: "Affichez des nuanciers avec des valeurs hexadécimales et une fonctionnalité de clic pour copier à l’aide du composant Color pour la documentation de votre système de design et de votre identité de marque."
 keywords: ["color", "palette", "colors", "design system", "hex", "rgb", "rgba", "hsl", "oklch"]
 ---
 
-Utilisez le composant Color pour présenter des palettes de couleurs dans votre documentation. Affichez les couleurs dans une grille compacte ou organisez-les dans un tableau avec des lignes nommées.
+Utilisez le composant Color pour présenter des palettes de couleurs dans votre documentation. Affichez les couleurs dans une grille compacte ou organisez-les dans un tableau avec des lignes libellées.
 
 <div id="compact-variant">
   ## Variante compacte
 </div>
 
-Affichez les couleurs dans une grille simple, avec leurs noms et leurs valeurs.
+Affichez les couleurs dans une grille simple présentant les noms et les valeurs des couleurs.
 
 <Color variant="compact">
   <Color.Item name="blue-500" value="#3B82F6" />
@@ -31,12 +31,11 @@ Affichez les couleurs dans une grille simple, avec leurs noms et leurs valeurs.
 </Color>
 ```
 
-
 <div id="table-variant">
   ## Variante en tableau
 </div>
 
-Organisez les couleurs en lignes avec des libellés pour la documentation de votre système de design.
+Organisez les couleurs en lignes libellées pour documenter votre design system.
 
 <Color variant="table">
   <Color.Row title="Primaire">
@@ -56,24 +55,23 @@ Organisez les couleurs en lignes avec des libellés pour la documentation de vot
 
 ```mdx Table example
 <Color variant="table">
-  <Color.Row title="Primaire">
+  <Color.Row title="Primary">
     <Color.Item name="primary-500" value="#3B82F6" />
     <Color.Item name="primary-600" value="#2563EB" />
     <Color.Item name="primary-700" value="#1D4ED8" />
   </Color.Row>
-  <Color.Row title="Secondaire">
+  <Color.Row title="Secondary">
     <Color.Item name="secondary-500" value="#8B5CF6" />
     <Color.Item name="secondary-600" value="#7C3AED" />
   </Color.Row>
 </Color>
 ```
 
-
 <div id="color-formats">
-  ## Formats de couleur
+  ## Formats de couleurs
 </div>
 
-Le composant prend en charge tous les formats de couleur CSS, y compris hex, rgb, rgba, hsl et oklch.
+Le composant prend en charge tous les formats de couleur CSS, notamment hex, rgb, rgba, hsl et oklch.
 
 <Color variant="compact">
   <Color.Item name="hex" value="#FF5733" />
@@ -97,12 +95,11 @@ Le composant prend en charge tous les formats de couleur CSS, y compris hex, rgb
 </Color>
 ```
 
-
 <div id="theme-aware-colors">
-  ## Couleurs adaptées au thème
+  ## Couleurs selon le thème
 </div>
 
-Définissez des couleurs distinctes pour les modes clair et sombre à l&#39;aide d&#39;un objet avec les propriétés `light` et `dark`.
+Définissez des couleurs différentes pour les modes clair et sombre à l’aide d’un objet comportant les propriétés `light` et `dark`.
 
 <Color variant="compact">
   <Color.Item name="bg-primary" value={{ light: "#FFFFFF", dark: "#000000" }} />
@@ -120,21 +117,20 @@ Définissez des couleurs distinctes pour les modes clair et sombre à l&#39;aide
 </Color>
 ```
 
-
 <div id="properties">
   ## Propriétés
 </div>
 
 <div id="color">
-  ### Couleur
+  ### Color
 </div>
 
 <ResponseField name="variant" type="string" required>
-  Style d’affichage de la palette de couleurs. Options : `compact` ou `table`.
+  Style d’affichage de la palette de couleurs. Options : `compact` ou `table`.
 </ResponseField>
 
 <ResponseField name="children" type="Color.Item | Color.Row" required>
-  Éléments ou lignes de couleur à afficher.
+  Éléments de couleur ou lignes à afficher.
 </ResponseField>
 
 <div id="colorrow">
@@ -142,11 +138,11 @@ Définissez des couleurs distinctes pour les modes clair et sombre à l&#39;aide
 </div>
 
 <ResponseField name="title" type="string">
-  Libellé de la ligne de couleurs.
+  Libellé de la rangée de couleurs.
 </ResponseField>
 
 <ResponseField name="children" type="Color.Item" required>
-  Éléments de couleur à afficher dans cette ligne.
+  Éléments de couleur à afficher dans la rangée.
 </ResponseField>
 
 <div id="coloritem">
@@ -154,9 +150,9 @@ Définissez des couleurs distinctes pour les modes clair et sombre à l&#39;aide
 </div>
 
 <ResponseField name="name" type="string">
-  Nom ou label de la couleur.
+  Nom ou libellé de la couleur.
 </ResponseField>
 
 <ResponseField name="value" type="string | { light: string, dark: string }" required>
-  Valeur de la couleur dans n'importe quel format CSS, ou bien un objet contenant des valeurs distinctes pour les modes light et dark.
+  Valeur de la couleur dans n’importe quel format CSS, ou objet contenant les valeurs des modes clair et sombre.
 </ResponseField>

@@ -1,20 +1,20 @@
 ---
 title: "Redirections"
-description: "Configurez des redirections d'URL dans docs.json pour les pages de documentation déplacées, renommées ou supprimées afin de préserver le référencement SEO et d'éviter les liens brisés."
-keywords: ["redirects"]
+description: "Configurez les redirections d’URL dans docs.json pour les pages de documentation déplacées, renommées ou supprimées afin de préserver le référencement SEO et d’éviter les liens rompus."
+keywords: ["redirections"]
 ---
 
-Lorsque vous modifiez le chemin d'un fichier dans votre dossier docs, l'URL de cette page change également. Cela peut se produire lors de la restructuration de votre documentation ou de la modification du titre de la barre latérale.
+Lorsque vous modifiez le chemin d’un fichier dans votre dossier docs, le chemin d’URL de cette page change également. Cela peut se produire lorsque vous réorganisez votre documentation ou modifiez le titre dans la barre latérale.
 
 <div id="redirects">
   ## Redirections
 </div>
 
 <Note>
-  Les redirections **ne peuvent pas** inclure des ancres d&#39;URL telles que `path#anchor` ni des paramètres de requête tels que `path?query=value`.
+  Les redirections **ne peuvent pas** contenir d’ancrages d’URL comme `path#anchor` ni de paramètres de requête comme `path?query=value`.
 </Note>
 
-Configurez des redirections en ajoutant le champ `redirects` à votre fichier `docs.json`.
+Configurez les redirections en ajoutant le champ `redirects` à votre fichier `docs.json`.
 
 ```json
 "redirects": [
@@ -39,14 +39,13 @@ Par défaut, les redirections sont permanentes (308). Pour utiliser une redirect
 ]
 ```
 
-Les codes 307 et 308 conservent tous deux la méthode HTTP de la requête d&#39;origine (contrairement à 301 et 302), ce qui les rend adaptés à la redirection des requêtes POST.
-
+Les codes 307 et 308 conservent la méthode HTTP de la requête d’origine (contrairement à 301 et 302), ce qui les rend adaptés à la redirection des requêtes POST.
 
 <div id="wildcard-redirects">
-  ### Redirections avec joker
+  ### Redirections avec caractère générique
 </div>
 
-Pour faire correspondre un chemin avec joker, utilisez `*` après un paramètre. Dans cet exemple, `/beta/:slug*` correspond à `/beta/introduction` et le redirige vers `/v2/introduction`.
+Pour faire correspondre un chemin avec un caractère générique, utilisez `*` après un paramètre. Dans cet exemple, `/beta/:slug*` correspond à `/beta/introduction` et le redirige vers `/v2/introduction`.
 
 ```json
 "redirects": [
@@ -58,10 +57,10 @@ Pour faire correspondre un chemin avec joker, utilisez `*` après un paramètre.
 ```
 
 <div id="partial-wildcard-redirects">
-  ### Redirections avec jokers partiels
+  ### Redirections avec caractère générique partiel
 </div>
 
-Utilisez des jokers partiels pour faire correspondre les segments d'URL qui commencent par un préfixe donné.
+Utilisez des caractères génériques partiels pour cibler les segments d’URL qui commencent par un préfixe donné.
 
 ```json
 "redirects": [
@@ -72,9 +71,9 @@ Utilisez des jokers partiels pour faire correspondre les segments d'URL qui comm
 ]
 ```
 
-Cela correspond à toutes les URL dont le chemin est `/articles/concepts-`, comme `/articles/concepts-getting-started` et `/articles/concepts-overview`, et les redirige toutes vers `/collections/overview`.
+Cette règle s’applique à toutes les URL dont le chemin est `/articles/concepts-`, comme `/articles/concepts-getting-started` et `/articles/concepts-overview`, et les redirige toutes vers `/collections/overview`.
 
-Vous pouvez également réutiliser la valeur générique capturée dans la destination.
+Vous pouvez également réutiliser la valeur du caractère générique capturée dans la destination.
 
 ```json
 "redirects": [
@@ -88,10 +87,10 @@ Vous pouvez également réutiliser la valeur générique capturée dans la desti
 Cela redirige `/old/article-123` vers `/new/article-123`, tout en conservant la valeur capturée après le préfixe.
 
 <div id="avoid-infinite-redirects">
-  ### Éviter les redirections infinies
+  ### Évitez les redirections infinies
 </div>
 
-Pour éviter les boucles infinies, ne créez pas de redirections circulaires dans lesquelles les chemins se renvoient les uns aux autres.
+Pour éviter les boucles infinies, ne créez pas de redirections circulaires dans lesquelles les chemins se renvoient les uns vers les autres.
 
 ```json
 "redirects": [
@@ -107,10 +106,10 @@ Pour éviter les boucles infinies, ne créez pas de redirections circulaires dan
 ```
 
 <div id="check-for-broken-links">
-  ## Vérifier les liens cassés
+  ## Vérifier les liens rompus
 </div>
 
-Détectez les liens cassés avec la [CLI](/fr/cli).
+Repérez les liens rompus à l’aide de la [CLI](/fr/cli).
 
 ```bash
 mint broken-links

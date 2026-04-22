@@ -1,34 +1,34 @@
 ---
 title: "Analysez votre documentation"
-description: "Utilisez la commande mint analytics pour consulter le trafic, les requêtes de recherche, les retours utilisateurs et les conversations de l'assistant IA directement depuis votre terminal."
-keywords: ["mint analytics", "analytique", "CLI", "statistiques", "retours", "conversations"]
+description: "Utilisez la commande mint analytics pour consulter le trafic, les requêtes de recherche, les retours des utilisateurs et les conversations avec l’assistant IA directement dans votre terminal."
+keywords: ["mint analytics", "analyses", "CLI", "statistiques", "retours", "conversations"]
 ---
 
-La commande `mint analytics` vous donne accès aux [analytiques de votre documentation](/fr/optimize/analytics) depuis le terminal. Cela est utile pour générer des rapports d'analytique via des scripts, acheminer des données vers d'autres outils et effectuer des vérifications rapides sans ouvrir le tableau de bord.
+La commande `mint analytics` vous donne accès aux [analyses de votre documentation](/fr/optimize/analytics) depuis le terminal. C’est utile pour automatiser des rapports d’analyses, transmettre des données à d’autres outils et effectuer des vérifications rapides sans ouvrir le tableau de bord.
 
 <div id="prerequisites">
   ## Prérequis
 </div>
 
-Vous devez vous connecter pour utiliser les commandes d'analytique. Exécutez `mint login` pour vous authentifier avec votre compte Mintlify.
+Vous devez vous connecter pour utiliser les commandes d’analyses. Exécutez `mint login` pour vous authentifier avec votre compte Mintlify.
 
-Consultez [Prévisualisation locale](/fr/cli/preview#log-in-for-search-and-assistant) pour plus de détails sur l'authentification.
+Consultez [Prévisualiser localement](/fr/cli/preview#log-in-for-search-and-assistant) pour plus d’informations sur l’authentification.
 
 <div id="view-key-metrics">
   ## Consulter les métriques clés
 </div>
 
-Affichez un résumé des vues, visiteurs, recherches, retours et utilisation de l'assistant :
+Affichez un récapitulatif des vues, des visiteurs, des recherches, des retours et de l’utilisation de l’assistant :
 
 ```bash
 mint analytics stats
 ```
 
-Utilisez des flags pour filtrer par plage de dates ou page :
+Utilisez les options pour filtrer par plage de dates ou par page :
 
-- `--from` : Date de début au format `YYYY-MM-DD`. Par défaut, 7 jours en arrière.
-- `--to` : Date de fin au format `YYYY-MM-DD`. Par défaut, aujourd'hui.
-- `--page` : Filtrer sur une page spécifique.
+* `--from` : Date de début au format `YYYY-MM-DD`. Par défaut, cette valeur correspond à il y a 7 jours.
+* `--to` : Date de fin au format `YYYY-MM-DD`. Par défaut, cette valeur est définie sur aujourd’hui.
+* `--page` : Filtre sur un chemin de page spécifique.
 
 ```bash Example analytics stats flags
 mint analytics stats --from 2025-01-01 --to 2025-01-31
@@ -36,19 +36,19 @@ mint analytics stats --page /quickstart
 ```
 
 <div id="view-search-analytics">
-  ## Consulter les analytiques de recherche
+  ## Consultez les analyses de la recherche
 </div>
 
-Consultez ce que vos utilisateurs recherchent, avec le nombre de résultats et les taux de clics :
+Découvrez ce que vos utilisateurs recherchent, avec le nombre de résultats et les taux de clic :
 
 ```bash
 mint analytics search
 ```
 
-Utilisez des flags pour filtrer par chaîne de recherche ou par page :
+Utilisez des options pour filtrer par chaîne de requête ou par page :
 
-- `--query` : Filtrer par sous-chaîne de requête de recherche.
-- `--page` : Filtrer sur une page spécifique.
+* `--query` : Filtre par sous-chaîne de la requête de recherche.
+* `--page` : Filtre sur un chemin de page spécifique.
 
 ```bash Example analytics search flags
 mint analytics search --query "authentication"
@@ -60,16 +60,16 @@ mint analytics search --page /api-reference
   ## Consulter les retours
 </div>
 
-Consultez les retours soumis par les utilisateurs sur les pages de votre documentation :
+Consultez les retours envoyés par les utilisateurs sur vos pages de documentation :
 
 ```bash
 mint analytics feedback
 ```
 
-Utilisez des flags pour agréger les retours par page ou filtrer par retours de code :
+Utilisez des options pour agréger les retours par page ou filtrer ceux des extraits de code :
 
-- `--type` : Agréger les retours par page ou extrait de code. Par défaut, page.
-- `--page` : Filtrer sur une page spécifique.
+* `--type` : Agrège les retours par page ou par extrait de code. La valeur par défaut est `page`.
+* `--page` : Filtre sur un chemin de page spécifique.
 
 ```bash Example analytics feedback flags
 mint analytics feedback --type page
@@ -77,17 +77,17 @@ mint analytics feedback --type code
 ```
 
 <div id="view-assistant-conversations">
-  ## Consulter les conversations de l'assistant
+  ## Afficher les conversations de l’assistant
 </div>
 
-Listez les conversations récentes et les catégories de conversations de l'assistant IA :
+Listez les conversations récentes ainsi que les catégories de conversation de l’assistant IA :
 
 ```bash
 mint analytics conversation list
 mint analytics conversation buckets list
 ```
 
-Chaque liste inclut un ID pour chaque entrée. Transmettez cet ID à la commande `view` correspondante pour voir les détails complets :
+La sortie de chaque commande de liste inclut un ID pour chaque entrée. Passez cet ID à la commande `view` correspondante pour afficher tous les détails :
 
 ```bash
 mint analytics conversation view <conversation-id>
@@ -95,48 +95,48 @@ mint analytics conversation buckets view <bucket-id>
 ```
 
 <div id="choose-an-output-format">
-  ## Choisir un format de sortie
+  ## Choisissez un format de sortie
 </div>
 
-Toutes les commandes d'analytique utilisent par défaut la sortie `plain`, séparée par des tabulations et adaptée à l'acheminement vers d'autres outils. Utilisez `--format` pour modifier la sortie :
+Toutes les commandes d’analyses utilisent par défaut la sortie `plain`, avec des champs séparés par des tabulations, ce qui convient au chaînage avec d’autres outils. Utilisez `--format` pour changer le format de sortie :
 
 ```bash
-mint analytics stats --format table    # Tableau mis en forme avec couleurs
+mint analytics stats --format table    # Tableau formaté avec couleurs
 mint analytics stats --format json     # JSON brut
-mint analytics stats --format graph    # Graphique à barres horizontal
+mint analytics stats --format graph    # Graphique à barres horizontales
 ```
 
-La CLI détecte automatiquement les environnements d'agents IA comme Claude Code ou les terminaux non interactifs et utilise par défaut la sortie JSON.
+La CLI détecte automatiquement les environnements d’agent IA, comme Claude Code, ainsi que les terminaux non interactifs, et utilise par défaut le format de sortie JSON.
 
 <div id="set-defaults-with-config">
-  ## Définir des valeurs par défaut avec config
+  ## Définir des valeurs par défaut avec `mint config`
 </div>
 
-Pour éviter de répéter les flags courants, définissez des valeurs par défaut avec `mint config`. La configuration est enregistrée dans `~/.config/mintlify/config.json`.
+Pour éviter de répéter les options courantes, définissez des valeurs par défaut avec `mint config`. La configuration est enregistrée dans `~/.config/mintlify/config.json`.
 
-Lorsque vous exécutez `mint login`, la CLI définit la clé `subdomain`. Si vous avez plusieurs déploiements, la CLI vous invite à en choisir un. Vous pouvez modifier la valeur par défaut à tout moment avec `mint config set subdomain <subdomain>`.
+Lorsque vous exécutez `mint login`, le CLI définit la clé `subdomain`. Si vous avez plusieurs déploiements, le CLI vous invite à en sélectionner un. Vous pouvez remplacer cette valeur par défaut à tout moment avec `mint config set subdomain <subdomain>`.
 
-Clés de configuration disponibles :
+Clés de configuration disponibles :
 
-| Clé | Description |
-| --- | --- |
-| `subdomain` | Sous-domaine par défaut pour les commandes d'analytique. Défini par la commande `mint login`. |
-| `dateFrom` | Date de début par défaut pour les requêtes d'analytique (`YYYY-MM-DD`). |
-| `dateTo` | Date de fin par défaut pour les requêtes d'analytique (`YYYY-MM-DD`). |
+| Clé         | Description                                                                                     |
+| ----------- | ----------------------------------------------------------------------------------------------- |
+| `subdomain` | Sous-domaine par défaut pour les commandes d&#39;analyses. Défini par la commande `mint login`. |
+| `dateFrom`  | Date de début par défaut pour les requêtes d&#39;analyses (`YYYY-MM-DD`).                       |
+| `dateTo`    | Date de fin par défaut pour les requêtes d&#39;analyses (`YYYY-MM-DD`).                         |
 
 ```bash Example configs
 mint config set subdomain my-docs
 mint config set dateFrom 2025-01-01
 ```
 
-Une fois définis, les commandes d'analytique utilisent automatiquement ces valeurs :
+Une fois définies, les commandes d’analyses utilisent automatiquement ces valeurs :
 
 ```bash
-# Utilise le sous-domaine et dateFrom configurés sans flags
+# Utilise le sous-domaine et dateFrom configurés sans indicateurs
 mint analytics stats
 ```
 
-Pour consulter ou effacer une valeur, exécutez :
+Pour afficher ou effacer une valeur, exécutez :
 
 ```bash
 mint config get subdomain

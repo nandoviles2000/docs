@@ -1,32 +1,32 @@
 ---
 title: "复杂数据类型"
-description: "使用 oneOf、anyOf 和 allOf 关键字描述具有灵活 schema 的 API，支持可选属性、多态性和多种数据格式。"
-keywords: ["oneOf", "anyOf", "allOf", "schema composition", "polymorphic schemas"]
+description: "使用 oneOf、anyOf 和 allOf 关键字，为包含可选属性、多态和多种数据格式的 API 描述灵活的 schema。"
+keywords: ["oneOf", "anyOf", "allOf", "schema 组合", "多态 schema"]
 ---
 
-当你的 API 接受多种数据格式、包含条件字段或采用继承模式时，OpenAPI 的 schema 组合关键字可帮助你为这些灵活的结构编写文档。通过 `oneOf`、`anyOf` 和 `allOf`，你可以描述既能处理不同输入类型、又能将多个 schema 组合成完整数据模型的 API。
+当你的 API 接受多种数据格式、包含条件字段或采用继承模式时，OpenAPI 的 schema 组合关键字可以帮助你为这些灵活的数据结构编写文档。借助 `oneOf`、`anyOf` 和 `allOf`，你可以描述能够处理不同输入类型的 API，或将多个 schema 组合成完整的数据模型。
 
 <div id="oneof-anyof-allof-keywords">
   ## `oneOf`, `anyOf`, `allOf` 关键字
 </div>
 
-对于复杂数据类型，OpenAPI 提供了用于组合 schema 的关键字：
+对于复杂数据类型，OpenAPI 提供了可用于组合 schema 的关键字：
 
-- `allOf`：将多个 schema 组合在一起（如合并对象或扩展基础 schema），相当于 `and` 运算符。
-- `anyOf`：接受与任一提供的 schema 匹配的数据，相当于 `or` 运算符。
-- `oneOf`：接受与提供的 schema 中恰好一个匹配的数据，相当于 `exclusive-or` 运算符。
+* `allOf`：将多个 schema 组合在一起 (例如合并对象或扩展基础 schema) ，作用类似于 `and` 运算符。
+* `anyOf`：接受匹配所提供 schema 中任意一个的数据，作用类似于 `or` 运算符。
+* `oneOf`：接受恰好匹配所提供 schema 中一个的数据，作用类似于 `exclusive-or` 运算符。
 
-<Warning>Mintlify 对 `oneOf` 和 `anyOf` 采用相同的处理方式，因为它们在实际使用中很少对 API 产生影响。</Warning>
+<Warning>由于两者在实际使用 API 时的差异很少产生影响，因此 Mintlify 将 `oneOf` 和 `anyOf` 视为相同。</Warning>
 
 有关这些关键字的详细规范，请参阅 [OpenAPI 文档](https://swagger.io/docs/specification/data-models/oneof-anyof-allof-not/)。
 
-<Info>`not` 关键字目前不受支持。</Info>
+<Info>`not` 关键字目前暂不受支持。</Info>
 
 <div id="combining-schemas-with-allof">
-  ### 使用 `allOf` 组合模式（schema）
+  ### 使用 `allOf` 组合 schema
 </div>
 
-当你使用 `allOf` 时，Mintlify 会对你的 OpenAPI 文档进行预处理，以更易读的方式展示复杂的组合。例如，当你用 `allOf` 合并两个对象模式（schema）时，Mintlify 会将两者的属性合并到一个对象中。这在利用 OpenAPI 的可复用[组件](https://swagger.io/docs/specification/components/)时尤其有用。
+当你使用 `allOf` 时，Mintlify 会对 OpenAPI 文档进行一些预处理，以更易读的方式展示复杂的组合。例如，当你用 `allOf` 组合两个对象 schema 时，Mintlify 会将二者的属性合并成一个对象。在利用 OpenAPI 可复用的 [components](https://swagger.io/docs/specification/components/) 时，这一点尤其有用。
 
 ```yaml
 org_with_users:
@@ -51,21 +51,20 @@ components:
 <ParamField body="org_with_users" type="object">
   <Expandable>
     <ParamField body="id" type="string">
-      组织的 ID
+      组织 ID
     </ParamField>
 
     <ParamField body="users" type="object[]">
-      包含该组织所有用户的数组
+      包含该组织中所有用户的数组
     </ParamField>
   </Expandable>
 </ParamField>
-
 
 <div id="providing-options-with-oneof-and-anyof">
   ### 使用 `oneOf` 和 `anyOf` 提供选项
 </div>
 
-当你使用 `oneOf` 或 `anyOf` 时，这些选项显示在一个带标签页的容器中。在每个子模式中指定一个 `title` 字段，为你的选项命名。例如，你可以这样展示两种不同类型的收货地址：
+使用 `oneOf` 或 `anyOf` 时，各个选项会显示在一个 Tab 容器中。在每个子模式中指定 `title` 字段，为选项命名。例如，以下展示了如何显示两种不同类型的配送地址：
 
 ```yaml
 delivery_address:
@@ -82,22 +81,22 @@ delivery_address:
       properties:
         box_number:
           type: string
-          description: 邮政信箱的号码
+          description: 邮政信箱编号
         # ...
 ```
 
 <ParamField body="delivery_address" type="object">
   <div className="mt-4 rounded-xl border border-gray-100 px-4 pb-4 pt-2 dark:border-white/10">
     <Tabs>
-      <Tab title="StreetAddress">
+      <Tab title="街道地址">
         <ParamField body="address_line_1" type="string">
-          住址的街道信息
+          住宅地址中的街道地址
         </ParamField>
       </Tab>
 
-      <Tab title="POBox">
+      <Tab title="邮政信箱">
         <ParamField body="box_number" type="string">
-          邮政信箱号码
+          邮政信箱编号
         </ParamField>
       </Tab>
     </Tabs>

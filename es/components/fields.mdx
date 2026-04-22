@@ -1,16 +1,16 @@
 ---
 title: "Campos"
 description: "Usa los componentes ParamField y ResponseField para documentar los parámetros de solicitud y respuesta de la API con tipos, valores predeterminados y reglas de validación."
-keywords: ["ParamField", "ResponseField", "request parameters", "response documentation"]
+keywords: ["ParamField", "ResponseField", "parámetros de solicitud", "documentación de respuestas"]
 ---
 
-Usa campos para documentar los parámetros y las respuestas de la API. Hay dos tipos de campos: campos de parámetro y campos de respuesta.
+Usa campos para documentar los parámetros y las respuestas de la API. Hay dos tipos de campos: los campos de parámetros y los campos de respuesta.
 
 <div id="parameter-field">
   ## Campo de parámetro
 </div>
 
-Usa el componente `<ParamField>` para definir parámetros de tus API o SDK. Al agregar un `ParamField`, se añade automáticamente un [área de pruebas de la API](/es/api-playground/overview).
+Usa el componente `<ParamField>` para definir parámetros de tus API o SDK. Al agregar un `ParamField`, se añade automáticamente un [entorno de pruebas de API](/es/api-playground/overview).
 
 <ParamField path="param" type="string" required>
   Un ejemplo de campo de parámetro
@@ -18,7 +18,7 @@ Usa el componente `<ParamField>` para definir parámetros de tus API o SDK. Al a
 
 ```mdx
 <ParamField path="param" type="string" required>
-  Un ejemplo de un campo de parámetro
+  An example of a parameter field
 </ParamField>
 ```
 
@@ -27,7 +27,7 @@ Usa el componente `<ParamField>` para definir parámetros de tus API o SDK. Al a
 </div>
 
 <ParamField body="query, path, body, or header" type="string">
-  Indica si el parámetro es de query, ruta, cuerpo o encabezado. Seguido del
+  Indica si el parámetro es de tipo query, path, body o header. Va seguido del
   nombre del parámetro.
 </ParamField>
 
@@ -36,23 +36,23 @@ Usa el componente `<ParamField>` para definir parámetros de tus API o SDK. Al a
 
   Admite `number`, `string`, `boolean`, `object`.
 
-  Define los arreglos con el sufijo `[]`. Por ejemplo, `string[]`.
+  Define arrays con el sufijo `[]`. Por ejemplo, `string[]`.
 </ParamField>
 
 <ParamField body="required" type="boolean">
-  Indica si requieres el parámetro.
+  Indica si el parámetro es obligatorio.
 </ParamField>
 
 <ParamField body="deprecated" type="boolean">
-  Indica si has marcado el parámetro como obsoleto.
+  Indica si el parámetro está obsoleto.
 </ParamField>
 
 <ParamField body="default" type="any">
-  Valor predeterminado que se aplica cuando el valor de la solicitud está vacío.
+  Valor predeterminado que se rellena cuando el valor de la solicitud está vacío
 </ParamField>
 
 <ParamField body="placeholder" type="string">
-  Texto del marcador de posición para la entrada en el entorno de pruebas.
+  Texto de marcador de posición para la entrada en el entorno de pruebas.
 </ParamField>
 
 <ParamField body="children" type="string">
@@ -66,12 +66,12 @@ Usa el componente `<ParamField>` para definir parámetros de tus API o SDK. Al a
 El componente `<ResponseField>` define los valores de retorno de una API.
 
 <ResponseField name="response" type="string" required>
-  Un ejemplo de un campo de respuesta
+  Un ejemplo de campo de respuesta
 </ResponseField>
 
 ```mdx
 <ResponseField name="response" type="string" required>
-  Un ejemplo de campo de respuesta
+  A response field example
 </ResponseField>
 ```
 
@@ -80,23 +80,23 @@ El componente `<ResponseField>` define los valores de retorno de una API.
 </div>
 
 <ResponseField name="name" type="string" required>
-  El nombre del valor de la respuesta.
+  El nombre del valor de respuesta.
 </ResponseField>
 
 <ResponseField name="type" type="string" required>
-  Tipo esperado del valor de la respuesta. Puede ser cualquier cadena arbitraria.
+  El tipo esperado del valor de respuesta. Puede ser cualquier cadena.
 </ResponseField>
 
 <ResponseField name="default" type="string">
-  Valor predeterminado.
+  El valor predeterminado.
 </ResponseField>
 
 <ResponseField name="required" type="boolean">
-  Indica si requieres la respuesta.
+  Indica si el valor de respuesta es obligatorio.
 </ResponseField>
 
 <ResponseField name="deprecated" type="boolean">
-  Indica si has marcado un campo como obsoleto.
+  Indica si un campo está obsoleto.
 </ResponseField>
 
 <ResponseField name="pre" type="string[]">

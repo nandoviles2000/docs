@@ -1,18 +1,18 @@
 ---
-title: "Crear páginas de API manuales"
-description: "Crea páginas de referencia de API manualmente con archivos MDX cuando necesitas control total del diseño para APIs pequeñas, prototipos o documentación personalizada."
-keywords: ["Documentación de API", "Documentación de endpoints"]
+title: "Crear páginas de API manualmente"
+description: "Crea páginas de referencia de API manualmente con archivos MDX cuando necesites un control total del diseño para APIs pequeñas, prototipos o documentación personalizada."
+keywords: ["documentación de API", "documentación de endpoints"]
 ---
 
-Puedes definir endpoints de API manualmente en páginas MDX individuales. Este enfoque es útil para APIs pequeñas o para crear prototipos.
+Puedes definir endpoints de API manualmente en páginas MDX individuales. Este enfoque resulta útil para APIs pequeñas o para prototipos.
 
 <div id="setup">
   ## Configuración
 </div>
 
 <Steps>
-  <Step title="Configura la configuración de la API">
-    En tu archivo `docs.json`, configura tu URL base y el método de autenticación.
+  <Step title="Configura los ajustes de tu API">
+    En tu archivo `docs.json`, define la URL base y el método de autenticación.
 
     ```json Example docs.json
     "api": {
@@ -26,7 +26,7 @@ Puedes definir endpoints de API manualmente en páginas MDX individuales. Este e
     }
     ```
 
-    Si quieres ocultar el área de pruebas de la API, configura el campo `display` como `none`. No necesitas incluir ningún método de autenticación si ocultas el área de pruebas de la API.
+    Si quieres ocultar el entorno de pruebas de API, establece el campo `display` como `none`. No necesitas incluir un método de autenticación si ocultas el entorno de pruebas.
 
     ```json
     "api": {
@@ -36,49 +36,49 @@ Puedes definir endpoints de API manualmente en páginas MDX individuales. Este e
     }
     ```
 
-    Consulta la lista completa de configuraciones de la API en [Settings](/es/organize/settings-api).
+    Encuentra la lista completa de configuraciones de la API en [Settings](/es/organize/settings-api).
   </Step>
 
-  <Step title="Crea las páginas de tus endpoints">
+  <Step title="Crea las páginas para tus endpoints">
     Crea un archivo MDX para cada endpoint. Define `title` y `api` en el frontmatter:
 
     ```mdx
     ---
-    title: 'Crear nuevo usuario'
+    title: 'Create new user'
     api: 'POST /v1/users'
     ---
     ```
 
     El campo `api` del frontmatter acepta una URL completa o una ruta relativa:
 
-    * **URL completa** como `POST https://api.acme.com/v1/users`. El campo `server` en `docs.json` se ignora para ese endpoint.
+    * **URL completa** como `POST https://api.acme.com/v1/users`. El campo `server` de `docs.json` se ignora para ese endpoint.
     * **Ruta relativa** como `POST /v1/users`. Requiere un campo `server` en `docs.json`. La URL del servidor se antepone a la ruta.
 
-    Especifica los parámetros de ruta colocándolos entre `{}`:
+    Especifica los parámetros de la ruta encerrándolos entre `{}`:
 
     ```bash
     https://api.example.com/v1/endpoint/{userId}
     ```
 
-    Para anular el modo de visualización global del playground en una página específica, añade `playground` al frontmatter:
+    Para anular el modo de visualización global del entorno de pruebas en una página específica, agrega `playground` al frontmatter:
 
     ```mdx
     ---
-    title: 'Crear nuevo usuario'
+    title: 'Create new user'
     api: 'POST https://api.mintlify.com/user'
     playground: 'none'
     ---
     ```
 
-    Options:
+    Opciones:
 
-    * `playground: 'interactive'` - Mostrar el playground interactivo (predeterminado)
-    * `playground: 'simple'` - Mostrar un endpoint copiable sin playground
-    * `playground: 'none'` - Ocultar el playground por completo
+    * `playground: 'interactive'` - Muestra el entorno de pruebas interactivo (predeterminado)
+    * `playground: 'simple'` - Muestra un endpoint que se puede copiar, sin entorno de pruebas
+    * `playground: 'none'` - Oculta el entorno de pruebas por completo
   </Step>
 
-  <Step title="Añadir parámetros y respuestas">
-    Utiliza los [campos de parámetros y de respuesta](/es/components/fields) para documentar los parámetros y los valores de retorno de tu endpoint.
+  <Step title="Añade parámetros y respuestas">
+    Usa [campos de parámetros y de respuesta](/es/components/fields) para documentar los parámetros y los valores devueltos de tu endpoint.
 
     ```mdx
     <ParamField path="userId" type="string" required>
@@ -90,7 +90,7 @@ Puedes definir endpoints de API manualmente en páginas MDX individuales. Este e
     </ParamField>
 
     <ResponseField name="id" type="string" required>
-      Identificador único del usuario recién creado
+      Unique identifier for the newly created user
     </ResponseField>
 
     <ResponseField name="email" type="string" required>
@@ -99,14 +99,14 @@ Puedes definir endpoints de API manualmente en páginas MDX individuales. Este e
     ```
   </Step>
 
-  <Step title="Incorpora tus endpoints a tu documentación">
+  <Step title="Añade tus endpoints a tu documentación">
     Agrega las páginas de tus endpoints a la navegación actualizando el campo `pages` en tu `docs.json`:
 
     ```json docs.json
     "navigation": {
       "tabs": [
         {
-          "tab": "Referencia de la API",
+          "tab": "API Reference",
           "groups": [
             {
               "group": "Users",
@@ -129,11 +129,11 @@ Puedes definir endpoints de API manualmente en páginas MDX individuales. Este e
     }
     ```
 
-    Cada ruta de página corresponde a un archivo MDX en tu repositorio de documentación. Por ejemplo, `api-reference/users/create-user.mdx`. Consulta más detalles sobre cómo estructurar tu documentación en [Navigation](/es/organize/navigation).
+    Cada ruta de página corresponde a un archivo MDX en tu repositorio de documentación. Por ejemplo, `api-reference/users/create-user.mdx`. Obtén más información sobre cómo estructurar tu documentación en [Navegación](/es/organize/navigation).
 
-    ### Usar endpoints de OpenAPI en navigation
+    ### Uso de endpoints de OpenAPI en la navegación
 
-    Si tienes una especificación de OpenAPI, puedes hacer referencia a endpoints directamente en tu navigation sin crear archivos MDX individuales. Haz referencia a endpoints específicos incluyendo la ruta del archivo de OpenAPI y el endpoint:
+    Si tienes una especificación OpenAPI, puedes incluir endpoints directamente en tu navegación sin crear archivos MDX individuales. Haz referencia a endpoints específicos incluyendo la ruta del archivo OpenAPI y el endpoint:
 
     ```json docs.json
     "navigation": {
@@ -145,11 +145,11 @@ Puedes definir endpoints de API manualmente en páginas MDX individuales. Este e
     }
     ```
 
-    También puedes definir una especificación de OpenAPI predeterminada para un grupo de navigation y hacer referencia a los endpoints por método y ruta:
+    También puedes establecer una especificación de OpenAPI predeterminada para un grupo de Navegación y hacer referencia a endpoints por método y ruta:
 
     ```json docs.json
     {
-      "group": "Referencia de API",
+      "group": "API reference",
       "openapi": "/path/to/openapi-v1.json",
       "pages": [
         "overview",
@@ -168,7 +168,7 @@ Puedes definir endpoints de API manualmente en páginas MDX individuales. Este e
     }
     ```
 
-    Para más información sobre la integración de OpenAPI, consulta [configuración de OpenAPI](/es/api-playground/openapi-setup).
+    Para obtener más información sobre la integración con OpenAPI, consulta la [configuración de OpenAPI](/es/api-playground/openapi-setup).
   </Step>
 </Steps>
 
@@ -176,10 +176,10 @@ Puedes definir endpoints de API manualmente en páginas MDX individuales. Este e
   ## Habilitar la autenticación
 </div>
 
-Puedes configurar la autenticación de forma global en `docs.json` o anularla en páginas individuales usando el campo `authMethod` en el frontmatter. Un método definido para una página específica reemplaza la configuración global.
+Puedes configurar la autenticación globalmente en `docs.json` o sustituirla en páginas individuales mediante el campo `authMethod` en el frontmatter. Un método específico de una página sustituye la configuración global.
 
 <div id="bearer-token">
-  ### Token de portador
+  ### Token Bearer
 </div>
 
 <CodeGroup>
@@ -195,7 +195,7 @@ Puedes configurar la autenticación de forma global en `docs.json` o anularla en
 
   ```mdx Page Metadata
   ---
-  title: "Título de tu página"
+  title: "Your page title"
   authMethod: "bearer"
   ---
   ```
@@ -218,7 +218,7 @@ Puedes configurar la autenticación de forma global en `docs.json` o anularla en
 
   ```mdx Page Metadata
   ---
-  title: "Título de la página"
+  title: "El título de tu página"
   authMethod: "basic"
   ---
   ```
@@ -249,14 +249,14 @@ Puedes configurar la autenticación de forma global en `docs.json` o anularla en
 </CodeGroup>
 
 <div id="none">
-  ### Ninguno
+  ### Ninguna
 </div>
 
-Para desactivar la autenticación en una página específica, configura `authMethod` como `none`:
+Para desactivar la autenticación en una página específica, establece `authMethod` en `none`:
 
 ```mdx Page Metadata
 ---
-title: "Título de tu página"
+title: "Your page title"
 authMethod: "none"
 ---
 ```

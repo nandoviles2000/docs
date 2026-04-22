@@ -3,7 +3,7 @@
   "info": {
     "title": "Mintlify Analytics Export API",
     "version": "1.0.0",
-    "description": "API para exportar datos de Analytics de la documentación"
+    "description": "API para exportar datos de analítica de la documentación"
   },
   "servers": [
     {
@@ -16,13 +16,13 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "El encabezado Authorization requiere un token Bearer. Usa una clave de API de administrador (con el prefijo `mint_`). Esta es una clave secreta del lado del servidor. Genérala en la [página de claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard."
+        "description": "El encabezado Authorization espera un token Bearer. Usa una clave de API de administrador (con el prefijo `mint_`). Esta es una clave secreta del servidor. Genera una en la [página de claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
       }
     },
     "schemas": {
       "projectId": {
         "type": "string",
-        "description": "Tu ID de proyecto. Puedes copiarlo desde la página [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu dashboard."
+        "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
       },
       "FeedbackResponse": {
         "type": "object",
@@ -33,6 +33,7 @@
             "items": {
               "anyOf": [
                 {
+                  "description": "Se devuelve cuando `source` es `contextual`. Incluye si el usuario consideró útil la página y una dirección de correo electrónico de contacto opcional.",
                   "type": "object",
                   "properties": {
                     "id": {
@@ -55,7 +56,7 @@
                         "string",
                         "null"
                       ],
-                      "description": "Fecha y hora en la que se envió el comentario."
+                      "description": "Marca de tiempo de envío del comentario."
                     },
                     "source": {
                       "type": "string",
@@ -65,7 +66,7 @@
                         "agent",
                         "thumbs_only"
                       ],
-                      "description": "Origen del comentario. `code_snippet` indica un comentario sobre un bloque de código, `contextual` indica un comentario a nivel de página, `agent` indica un comentario enviado por un agente de IA de terceros, `thumbs_only` es un voto de pulgar arriba/abajo."
+                      "description": "Origen del comentario. `code_snippet` es un comentario sobre un bloque de código, `contextual` es un comentario a nivel de página, `agent` es un comentario enviado por un agente de IA de terceros y `thumbs_only` es un voto positivo o negativo."
                     },
                     "status": {
                       "type": "string",
@@ -75,18 +76,18 @@
                         "resolved",
                         "dismissed"
                       ],
-                      "description": "Estado de revisión actual del comentario."
+                      "description": "Estado actual de revisión del comentario."
                     },
                     "helpful": {
                       "type": "boolean",
-                      "description": "Indica si el usuario considera útil el contenido."
+                      "description": "Indica si el usuario consideró útil el contenido."
                     },
                     "contact": {
                       "type": [
                         "string",
                         "null"
                       ],
-                      "description": "Dirección de correo electrónico proporcionada por el usuario para el seguimiento."
+                      "description": "Dirección de correo electrónico que el usuario proporcionó para seguimiento."
                     }
                   },
                   "required": [
@@ -98,10 +99,10 @@
                     "status",
                     "helpful",
                     "contact"
-                  ],
-                  "description": "Se devuelve cuando el origen es `contextual`. Incluye si el usuario encontró útil la página y un correo electrónico de contacto opcional."
+                  ]
                 },
                 {
+                  "description": "Se devuelve cuando `source` es `code_snippet`. Incluye el código, el nombre del archivo y el lenguaje del fragmento al que se refiere el comentario.",
                   "type": "object",
                   "properties": {
                     "id": {
@@ -124,7 +125,7 @@
                         "string",
                         "null"
                       ],
-                      "description": "Fecha y hora en la que se envió el comentario."
+                      "description": "Marca de tiempo de envío del comentario."
                     },
                     "source": {
                       "type": "string",
@@ -134,7 +135,7 @@
                         "agent",
                         "thumbs_only"
                       ],
-                      "description": "Origen del comentario. `code_snippet` indica un comentario sobre un bloque de código, `contextual` indica un comentario a nivel de página, `agent` indica un comentario enviado por un agente de IA de terceros, `thumbs_only` es un voto de pulgar arriba/abajo."
+                      "description": "Origen del comentario. `code_snippet` es un comentario sobre un bloque de código, `contextual` es un comentario a nivel de página, `agent` es un comentario enviado por un agente de IA de terceros y `thumbs_only` es un voto positivo o negativo."
                     },
                     "status": {
                       "type": "string",
@@ -148,14 +149,14 @@
                     },
                     "code": {
                       "type": "string",
-                      "description": "Fragmento de código al que hace referencia el comentario."
+                      "description": "El fragmento de código al que se refiere el comentario."
                     },
                     "filename": {
                       "type": [
                         "string",
                         "null"
                       ],
-                      "description": "Nombre de archivo asociado al fragmento de código."
+                      "description": "Nombre del archivo asociado con el fragmento de código."
                     },
                     "lang": {
                       "type": [
@@ -175,10 +176,10 @@
                     "code",
                     "filename",
                     "lang"
-                  ],
-                  "description": "Se devuelve cuando el origen es `code_snippet`. Incluye el código, nombre de archivo y lenguaje del fragmento al que se refiere el comentario."
+                  ]
                 },
                 {
+                  "description": "Se devuelve cuando `source` es `agent` o `thumbs_only`. Contiene solo los campos básicos del comentario.",
                   "type": "object",
                   "properties": {
                     "id": {
@@ -201,7 +202,7 @@
                         "string",
                         "null"
                       ],
-                      "description": "Marca de tiempo del envío del comentario."
+                      "description": "Marca de tiempo de envío del comentario."
                     },
                     "source": {
                       "type": "string",
@@ -211,7 +212,7 @@
                         "agent",
                         "thumbs_only"
                       ],
-                      "description": "Origen del comentario. `code_snippet` indica un comentario sobre un bloque de código, `contextual` indica un comentario a nivel de página, `agent` indica un comentario enviado por un agente de IA de terceros, `thumbs_only` es un voto de pulgar arriba/abajo."
+                      "description": "Origen del comentario. `code_snippet` indica comentarios sobre un bloque de código, `contextual` indica comentarios a nivel de página, `agent` indica comentarios enviados por un agente de IA de terceros y `thumbs_only` es un voto positivo o negativo."
                     },
                     "status": {
                       "type": "string",
@@ -231,8 +232,7 @@
                     "createdAt",
                     "source",
                     "status"
-                  ],
-                  "description": "Se devuelve cuando el origen es `agent` o `thumbs_only`. Solo contiene los campos base de comentarios."
+                  ]
                 }
               ]
             }
@@ -242,11 +242,11 @@
               "string",
               "null"
             ],
-            "description": "Cursor para recuperar la página siguiente de resultados. Nulo si no hay más resultados."
+            "description": "Cursor para recuperar la siguiente página de resultados. Null si no hay más resultados."
           },
           "hasMore": {
             "type": "boolean",
-            "description": "Indica si hay más resultados después de esta página."
+            "description": "Indica si hay resultados adicionales disponibles después de esta página."
           }
         },
         "required": [
@@ -260,11 +260,11 @@
         "properties": {
           "error": {
             "type": "string",
-            "description": "Mensaje de error que describe lo que salió mal."
+            "description": "Mensaje de error que describe qué salió mal."
           },
           "details": {
             "type": "array",
-            "description": "Detalles adicionales del error.",
+            "description": "Detalles adicionales sobre el error.",
             "items": {
               "type": "object",
               "properties": {
@@ -283,39 +283,12 @@
           "error"
         ]
       },
-      "AssistantCallerStatsResponse": {
-        "type": "object",
-        "properties": {
-          "web": {
-            "type": "number",
-            "description": "Número de consultas del assistant originadas desde la web (sitio de documentación)."
-          },
-          "api": {
-            "type": "number",
-            "description": "Número de consultas del assistant originadas desde llamadas a la API."
-          },
-          "other": {
-            "type": "number",
-            "description": "Número de consultas del assistant desde otras fuentes (por ejemplo, integraciones, SDKs)."
-          },
-          "total": {
-            "type": "number",
-            "description": "Total de consultas del assistant en todos los tipos de origen."
-          }
-        },
-        "required": [
-          "web",
-          "api",
-          "other",
-          "total"
-        ]
-      },
       "AssistantConversationsResponse": {
         "type": "object",
         "properties": {
           "conversations": {
             "type": "array",
-            "description": "Lista de conversaciones del assistant.",
+            "description": "Lista de conversaciones del asistente.",
             "items": {
               "type": "object",
               "properties": {
@@ -325,29 +298,29 @@
                 },
                 "timestamp": {
                   "type": "string",
-                  "description": "Marca de tiempo en la que se produjo la conversación."
+                  "description": "Marca de tiempo de cuando tuvo lugar la conversación."
                 },
                 "query": {
                   "type": "string",
-                  "description": "La pregunta del usuario para el assistant."
+                  "description": "La pregunta del usuario al asistente."
                 },
                 "response": {
                   "type": "string",
-                  "description": "La respuesta del assistant."
+                  "description": "La respuesta del asistente."
                 },
                 "sources": {
                   "type": "array",
-                  "description": "Páginas de la documentación mencionadas en la respuesta.",
+                  "description": "Páginas de documentación a las que se hace referencia en la respuesta.",
                   "items": {
                     "type": "object",
                     "properties": {
                       "title": {
                         "type": "string",
-                        "description": "Título de la página de documentación mencionada."
+                        "description": "Título de la página de documentación a la que se hace referencia."
                       },
                       "url": {
                         "type": "string",
-                        "description": "URL de la página de documentación mencionada."
+                        "description": "URL de la página de documentación a la que se hace referencia."
                       }
                     },
                     "required": [
@@ -361,7 +334,7 @@
                     "string",
                     "null"
                   ],
-                  "description": "Categoría de agrupación asignada automáticamente a la conversación, si corresponde."
+                  "description": "Categoría asignada automáticamente para agrupar la conversación, si corresponde."
                 }
               },
               "required": [
@@ -379,16 +352,295 @@
               "string",
               "null"
             ],
-            "description": "Cursor para obtener la siguiente página de resultados. Es nulo si no hay más resultados."
+            "description": "Cursor para recuperar la siguiente página de resultados. Null si no hay más resultados."
           },
           "hasMore": {
             "type": "boolean",
-            "description": "Indica si hay resultados adicionales más allá de esta página."
+            "description": "Indica si hay resultados adicionales disponibles después de esta página."
           }
         },
         "required": [
           "conversations",
           "nextCursor",
+          "hasMore"
+        ]
+      },
+      "FeedbackGroupedByPageResponse": {
+        "type": "object",
+        "properties": {
+          "feedback": {
+            "type": "array",
+            "description": "Recuentos de comentarios agregados por ruta de página de documentación.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "La ruta de la página de documentación."
+                },
+                "thumbsUp": {
+                  "type": "number",
+                  "description": "Número de comentarios contextuales positivos (pulgar arriba)."
+                },
+                "thumbsDown": {
+                  "type": "number",
+                  "description": "Número de comentarios contextuales negativos (pulgar abajo)."
+                },
+                "code": {
+                  "type": "number",
+                  "description": "Número de comentarios sobre fragmentos de código."
+                },
+                "total": {
+                  "type": "number",
+                  "description": "Total de comentarios de esta página."
+                }
+              },
+              "required": [
+                "path",
+                "thumbsUp",
+                "thumbsDown",
+                "code",
+                "total"
+              ]
+            }
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Indica si hay resultados adicionales disponibles después de esta página."
+          }
+        },
+        "required": [
+          "feedback",
+          "hasMore"
+        ]
+      },
+      "SearchesResponse": {
+        "type": "object",
+        "properties": {
+          "searches": {
+            "type": "array",
+            "description": "Términos de búsqueda ordenados por número de coincidencias de mayor a menor.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "searchQuery": {
+                  "type": "string",
+                  "description": "El término de búsqueda introducido por los usuarios."
+                },
+                "hits": {
+                  "type": "number",
+                  "description": "Número de veces que se buscó este término."
+                },
+                "ctr": {
+                  "type": "number",
+                  "description": "Tasa de clics para este término de búsqueda."
+                },
+                "topClickedPage": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "La ruta del resultado con más clics para esta consulta, si la hay."
+                },
+                "lastSearchedAt": {
+                  "type": "string",
+                  "description": "Marca de tiempo de la última vez que se buscó este término."
+                }
+              },
+              "required": [
+                "searchQuery",
+                "hits",
+                "ctr",
+                "topClickedPage",
+                "lastSearchedAt"
+              ]
+            }
+          },
+          "totalSearches": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Recuento total de eventos de búsqueda en el intervalo de fechas solicitado (suma de todos los accesos, no de consultas únicas)."
+          },
+          "nextCursor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Cursor de paginación opaco para la página siguiente. Null si no hay más resultados."
+          }
+        },
+        "required": [
+          "searches",
+          "totalSearches",
+          "nextCursor"
+        ]
+      },
+      "ViewsTrafficTotals": {
+        "type": "object",
+        "properties": {
+          "human": {
+            "type": "number",
+            "description": "Eventos de visualización de contenido en todo el sitio procedentes de tráfico humano."
+          },
+          "ai": {
+            "type": "number",
+            "description": "Eventos de visualización de contenido en todo el sitio procedentes de tráfico de bots de IA."
+          },
+          "total": {
+            "type": "number",
+            "description": "Eventos de visualización de contenido en todo el sitio."
+          }
+        },
+        "required": [
+          "human",
+          "ai",
+          "total"
+        ]
+      },
+      "ViewsByPageResponse": {
+        "type": "object",
+        "properties": {
+          "totals": {
+            "$ref": "#/components/schemas/ViewsTrafficTotals",
+            "description": "Totales de visualizaciones en todo el sitio para el intervalo de fechas."
+          },
+          "views": {
+            "type": "array",
+            "description": "Recuentos de visualizaciones por página.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "La ruta de la página de documentación."
+                },
+                "human": {
+                  "type": "number",
+                  "description": "Eventos de visualización de contenido en esta ruta procedentes de tráfico humano."
+                },
+                "ai": {
+                  "type": "number",
+                  "description": "Eventos de visualización de contenido en esta ruta procedentes de tráfico de bots de IA."
+                },
+                "total": {
+                  "type": "number",
+                  "description": "Total de eventos de visualización de contenido en esta ruta."
+                }
+              },
+              "required": [
+                "path",
+                "human",
+                "ai",
+                "total"
+              ]
+            }
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Indica si hay resultados adicionales disponibles después de esta página."
+          }
+        },
+        "required": [
+          "totals",
+          "views",
+          "hasMore"
+        ]
+      },
+      "AssistantCallerStatsResponse": {
+        "type": "object",
+        "properties": {
+          "web": {
+            "type": "number",
+            "description": "Número de consultas al asistente originadas en la web (sitio de documentación)."
+          },
+          "api": {
+            "type": "number",
+            "description": "Número de consultas al asistente originadas a través de llamadas a la API."
+          },
+          "other": {
+            "type": "number",
+            "description": "Número de consultas al asistente procedentes de otras fuentes (p. ej., integraciones, SDKs)."
+          },
+          "total": {
+            "type": "number",
+            "description": "Total de consultas al asistente en todos los tipos de origen."
+          }
+        },
+        "required": [
+          "web",
+          "api",
+          "other",
+          "total"
+        ]
+      },
+      "VisitorsTrafficTotals": {
+        "type": "object",
+        "properties": {
+          "human": {
+            "type": "number",
+            "description": "Visitantes únicos en todo el sitio procedentes de tráfico humano."
+          },
+          "ai": {
+            "type": "number",
+            "description": "Visitantes únicos en todo el sitio procedentes de tráfico de bots de IA."
+          },
+          "total": {
+            "type": "number",
+            "description": "Visitantes distintos aproximados en todo el sitio con alguna visualización que cumpla los requisitos (deduplicados entre tráfico humano y de IA)."
+          }
+        },
+        "required": [
+          "human",
+          "ai",
+          "total"
+        ]
+      },
+      "VisitorsByPageResponse": {
+        "type": "object",
+        "properties": {
+          "totals": {
+            "$ref": "#/components/schemas/VisitorsTrafficTotals",
+            "description": "Totales de visitantes únicos en todo el sitio para el intervalo de fechas."
+          },
+          "visitors": {
+            "type": "array",
+            "description": "Recuentos de visitantes por página.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "La ruta de la página de documentación."
+                },
+                "human": {
+                  "type": "number",
+                  "description": "Visitantes únicos procedentes de tráfico humano."
+                },
+                "ai": {
+                  "type": "number",
+                  "description": "Visitantes únicos procedentes de tráfico de bots de IA."
+                },
+                "total": {
+                  "type": "number",
+                  "description": "Visitantes distintos aproximados con alguna visualización que cumpla los requisitos en esta ruta (deduplicados entre tráfico humano y de IA)."
+                }
+              },
+              "required": [
+                "path",
+                "human",
+                "ai",
+                "total"
+              ]
+            }
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "Indica si hay resultados adicionales disponibles después de esta página."
+          }
+        },
+        "required": [
+          "totals",
+          "visitors",
           "hasMore"
         ]
       }
@@ -407,8 +659,8 @@
   "paths": {
     "/v1/analytics/{projectId}/feedback": {
       "get": {
-        "summary": "Obtener comentarios de los usuarios",
-        "description": "Devuelve comentarios de usuarios con paginación y filtrado opcional",
+        "summary": "Obtener comentarios de usuarios",
+        "description": "Devuelve comentarios de usuarios paginados con filtrado opcional.",
         "tags": [
           "Analytics"
         ],
@@ -424,7 +676,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Fecha en formato ISO 8601 o AAAA-MM-DD",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD.",
               "example": "2024-01-01"
             },
             "required": false,
@@ -434,7 +686,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Fecha en formato ISO 8601 o AAAA-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen fechas anteriores, pero no la fecha especificada.",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen fechas anteriores a la fecha especificada, pero no la fecha indicada.",
               "example": "2024-01-01"
             },
             "required": false,
@@ -450,7 +702,7 @@
                 "agent",
                 "thumbs_only"
               ],
-              "description": "Filtrar por el origen de los comentarios"
+              "description": "Filtrar por la fuente de los comentarios"
             },
             "required": false,
             "name": "source",
@@ -489,7 +741,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Datos de comentarios paginados",
+            "description": "Datos de comentarios con paginación",
             "content": {
               "application/json": {
                 "schema": {
@@ -499,7 +751,7 @@
             }
           },
           "400": {
-            "description": "Parámetros de búsqueda no válidos",
+            "description": "Parámetros de consulta no válidos",
             "content": {
               "application/json": {
                 "schema": {
@@ -521,10 +773,10 @@
         }
       }
     },
-    "/v1/analytics/{projectId}/assistant/caller-stats": {
+    "/v1/analytics/{projectId}/feedback/by-page": {
       "get": {
-        "summary": "Obtener estadísticas de llamadas del assistant",
-        "description": "Devuelve un desglose del número de consultas del assistant por tipo de origen (web, API y otros) para el rango de fechas especificado.",
+        "summary": "Obtener comentarios por página",
+        "description": "Devuelve recuentos de comentarios agregados por ruta de página de la documentación (pulgares arriba/abajo para comentarios contextuales, número de fragmentos de código y total por página)",
         "tags": [
           "Analytics"
         ],
@@ -540,7 +792,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Fecha en formato ISO 8601 o AAAA-MM-DD",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD",
               "example": "2024-01-01"
             },
             "required": false,
@@ -550,27 +802,63 @@
           {
             "schema": {
               "type": "string",
-              "description": "Fecha en formato ISO 8601 o AAAA-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen fechas anteriores, pero no la fecha especificada.",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen fechas anteriores a la fecha especificada, pero no la fecha en sí.",
               "example": "2024-01-01"
             },
             "required": false,
             "name": "dateTo",
             "in": "query"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10,
+              "description": "Número máximo de resultados por página"
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "code_snippet",
+                "contextual",
+                "agent",
+                "thumbs_only"
+              ],
+              "description": "Filtrar por la fuente de los comentarios"
+            },
+            "required": false,
+            "name": "source",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Lista de estados separados por comas por los que filtrar"
+            },
+            "required": false,
+            "name": "status",
+            "in": "query"
           }
         ],
         "responses": {
           "200": {
-            "description": "Número de consultas del assistant desglosado por tipo de origen",
+            "description": "Agregados de comentarios por página con indicador de paginación",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AssistantCallerStatsResponse"
+                  "$ref": "#/components/schemas/FeedbackGroupedByPageResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "Parámetros de búsqueda no válidos",
+            "description": "Parámetros de consulta no válidos",
             "content": {
               "application/json": {
                 "schema": {
@@ -594,8 +882,8 @@
     },
     "/v1/analytics/{projectId}/assistant": {
       "get": {
-        "summary": "Obtener conversaciones del assistant",
-        "description": "Devuelve el historial paginado de conversaciones del Asistente de IA",
+        "summary": "Obtener conversaciones del asistente",
+        "description": "Devuelve el historial paginado de conversaciones del asistente de IA",
         "tags": [
           "Analytics"
         ],
@@ -611,7 +899,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Fecha en formato ISO 8601 o AAAA-MM-DD",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD",
               "example": "2024-01-01"
             },
             "required": false,
@@ -621,7 +909,7 @@
           {
             "schema": {
               "type": "string",
-              "description": "Fecha en formato ISO 8601 o AAAA-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen fechas anteriores, pero no la fecha especificada.",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen fechas anteriores a la fecha especificada, pero no la fecha en sí.",
               "example": "2024-01-01"
             },
             "required": false,
@@ -653,7 +941,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Datos de conversación paginados",
+            "description": "Datos de conversaciones con paginación",
             "content": {
               "application/json": {
                 "schema": {
@@ -663,7 +951,358 @@
             }
           },
           "400": {
-            "description": "Parámetros de búsqueda no válidos",
+            "description": "Parámetros de consulta no válidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/{projectId}/assistant/caller-stats": {
+      "get": {
+        "summary": "Obtener estadísticas del origen de las solicitudes del asistente",
+        "description": "Devuelve un desglose del número de consultas del asistente por tipo de origen (web, API y otros) para el intervalo de fechas especificado.",
+        "tags": [
+          "Analytics"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateFrom",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen fechas anteriores a la fecha especificada, pero no la fecha en sí.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateTo",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Número de consultas de Assistant desglosado por tipo de origen",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssistantCallerStatsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de consulta no válidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/{projectId}/searches": {
+      "get": {
+        "summary": "Obtener consultas de búsqueda",
+        "description": "Devuelve términos de búsqueda de la documentación paginados para el intervalo de fechas, ordenados por número de coincidencias de mayor a menor. Cada fila incluye la tasa de clics, la ruta del resultado en el que más se hizo clic para esa consulta (si existe) y la última vez que se buscó el término. `totalSearches` es el número total de eventos de consultas de búsqueda en el mismo intervalo de fechas (la suma de todas las coincidencias, no de las consultas distintas).",
+        "tags": [
+          "Analytics"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateFrom",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen las fechas anteriores a la fecha especificada, pero no la propia fecha.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateTo",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 50,
+              "description": "Número máximo de términos de Búsqueda por página (ordenados por número de coincidencias de mayor a menor)"
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Cursor de paginación opaco de la respuesta anterior"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agregados de términos de Búsqueda con paginación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de consulta o cursor no válidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/{projectId}/views": {
+      "get": {
+        "summary": "Obtener vistas de página",
+        "description": "Devuelve los recuentos de eventos de visualización de contenido por ruta y de todo el sitio, desglosados por tráfico humano y de IA.",
+        "tags": [
+          "Analytics"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateFrom",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen las fechas anteriores a la fecha especificada, pero no la propia fecha.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateTo",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 250,
+              "default": 50,
+              "description": "Número máximo de resultados por página (1-250; valor predeterminado: 50). Incrementa offset en limit mientras hasMore sea true para paginar."
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "description": "Número de filas que se omiten. Usa offset = (page - 1) * limit para el acceso por páginas."
+            },
+            "required": false,
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recuentos de eventos de visualización de contenido de todo el sitio y por ruta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ViewsByPageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de consulta no válidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/{projectId}/visitors": {
+      "get": {
+        "summary": "Obtener visitantes únicos",
+        "description": "Devuelve el número aproximado de visitantes únicos por ruta y de todo el sitio según el tipo de tráfico. El campo `total` se deduplica entre humanos e IA (unión de los ID de visitantes únicos con cualquier visualización de contenido apta).",
+        "tags": [
+          "Analytics"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateFrom",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Fecha en formato ISO 8601 o YYYY-MM-DD. `dateTo` es un límite superior exclusivo. Los resultados incluyen las fechas anteriores a la fecha especificada, pero no la propia fecha.",
+              "example": "2024-01-01"
+            },
+            "required": false,
+            "name": "dateTo",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 250,
+              "default": 50,
+              "description": "Número máximo de resultados por página (1-250; valor predeterminado: 50). Incrementa offset en limit mientras hasMore sea true para paginar."
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "description": "Número de filas que se omiten. Usa offset = (page - 1) * limit para el acceso por páginas."
+            },
+            "required": false,
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Totales de todo el sitio y recuentos de visitantes por ruta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VisitorsByPageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de consulta no válidos",
             "content": {
               "application/json": {
                 "schema": {

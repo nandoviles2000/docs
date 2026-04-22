@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Mintlify Admin API",
-    "description": "Una API de operaciones administrativas, incluidas las actualizaciones de documentación y la gestión de agentes.",
+    "description": "Una API para operaciones administrativas, incluidas las actualizaciones de la documentación y la gestión de agentes.",
     "version": "2.0.0"
   },
   "servers": [
@@ -20,7 +20,7 @@
       "post": {
         "summary": "Crear trabajo del agente (v1)",
         "deprecated": true,
-        "description": "En desuso: usa [v2 create agent job](/api/agent/v2/create-agent-job) en su lugar. Crea un nuevo trabajo del agente que puede generar y editar documentación según los mensajes proporcionados y la información de la branch.",
+        "description": "Obsoleto: usa [v2 create agent job](/api/agent/v2/create-agent-job) en su lugar. Crea un nuevo trabajo del agente que puede generar y editar documentación en función de los mensajes proporcionados y de la información de la rama.",
         "parameters": [
           {
             "name": "projectId",
@@ -29,7 +29,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El ID de tu proyecto. Se puede copiar desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu dashboard."
+            "description": "Tu ID de proyecto. Puedes copiarlo de la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
           }
         ],
         "requestBody": {
@@ -44,7 +44,7 @@
                 "properties": {
                   "branch": {
                     "type": "string",
-                    "description": "El nombre de la branch de Git en la que debe trabajar el agente. Si se omite, el agente genera un nombre de branch a partir del contenido del mensaje."
+                    "description": "El nombre de la rama de Git en la que debe trabajar el agente. Si se omite, el agente genera un nombre de rama según el contenido del mensaje."
                   },
                   "messages": {
                     "type": "array",
@@ -63,7 +63,7 @@
                             "user",
                             "assistant"
                           ],
-                          "description": "El rol del remitente del mensaje. Usa `user` para las instrucciones de la tarea. Usa `system` para agregar instrucciones complementarias que se añaden después del prompt del sistema predeterminado (no lo reemplaza). Usa `assistant` para proporcionar respuestas de ejemplo del assistant para el prompting de pocos ejemplos."
+                          "description": "El rol del remitente del mensaje. Usa `user` para las instrucciones de la tarea. Usa `system` para añadir instrucciones complementarias que se agregan después del prompt del sistema predeterminado (no lo sustituye). Usa `assistant` para proporcionar respuestas de ejemplo del asistente para few-shot prompting."
                         },
                         "content": {
                           "type": "string",
@@ -75,7 +75,7 @@
                   "asDraft": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Controla si la solicitud de extracción se crea en modo borrador o en modo normal. Cuando es true, crea una solicitud de extracción en borrador. Cuando es false (predeterminado), crea una solicitud de extracción regular lista para revisión."
+                    "description": "Controla si la solicitud de extracción (pull request, PR) se crea en modo borrador o no. Cuando es `true`, crea una solicitud de extracción en borrador. Cuando es `false` (valor predeterminado), crea una solicitud de extracción normal lista para revisión."
                   },
                   "model": {
                     "type": "string",
@@ -84,7 +84,7 @@
                       "opus"
                     ],
                     "default": "sonnet",
-                    "description": "El modelo de IA que se usará para el trabajo del agente. Usa `sonnet` para un procesamiento más rápido y rentable. Usa `opus` para un procesamiento más capaz, pero más lento."
+                    "description": "El modelo de IA que se usará para el trabajo del agente. Usa `sonnet` para un procesamiento más rápido y rentable. Usa `opus` para un procesamiento más potente, pero más lento."
                   }
                 }
               }
@@ -93,26 +93,26 @@
         },
         "responses": {
           "200": {
-            "description": "Tarea de agente creada correctamente. Devuelve una respuesta en streaming con Server-Sent Events.",
+            "description": "Trabajo del agente creado correctamente. Devuelve una respuesta en streaming con eventos enviados por el servidor.",
             "headers": {
               "X-Session-Id": {
                 "schema": {
                   "type": "string"
                 },
-                "description": "Identificador único de sesión para la tarea de agente creada."
+                "description": "Identificador único de la sesión para el trabajo del agente creado."
               },
               "X-Branch-Name": {
                 "schema": {
                   "type": "string"
                 },
-                "description": "Nombre de la rama Git donde el agente realiza los cambios."
+                "description": "Nombre de la rama de Git en la que el agente está realizando cambios."
               }
             },
             "content": {
               "text/event-stream": {
                 "schema": {
                   "type": "string",
-                  "description": "Flujo Server-Sent Events que contiene los detalles de ejecución y resultados de la tarea de agente."
+                  "description": "Flujo de eventos enviados por el servidor que contiene los detalles y resultados de la ejecución del trabajo del agente."
                 }
               }
             }
@@ -124,7 +124,7 @@
       "get": {
         "summary": "Obtener trabajo del agente por ID (v1)",
         "deprecated": true,
-        "description": "En desuso: usa [v2 get agent job](/api/agent/v2/get-agent-job) en su lugar. Recupera los detalles y el estado de un trabajo del agente específico a partir de su ID.",
+        "description": "Obsoleto: usa [v2 get agent job](/api/agent/v2/get-agent-job) en su lugar. Recupera los detalles y el estado de un trabajo del agente específico por su ID.",
         "parameters": [
           {
             "name": "projectId",
@@ -133,7 +133,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu dashboard."
+            "description": "Tu ID de proyecto. Puedes copiarlo de la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
           },
           {
             "name": "id",
@@ -155,15 +155,15 @@
                   "properties": {
                     "sessionId": {
                       "type": "string",
-                      "description": "El subdomain al que pertenece esta sesión."
+                      "description": "El subdominio al que pertenece esta sesión."
                     },
                     "subdomain": {
                       "type": "string",
-                      "description": "El subdomain al que pertenece esta sesión."
+                      "description": "El subdominio al que pertenece esta sesión."
                     },
                     "branch": {
                       "type": "string",
-                      "description": "Nombre de la branch de Git en la que se realizaron los cambios.",
+                      "description": "Nombre de la rama de Git donde se realizaron los cambios.",
                       "nullable": true
                     },
                     "haulted": {
@@ -179,11 +179,11 @@
                         "processing",
                         "interrupted"
                       ],
-                      "description": "Motivo de la interrupción de la sesión. `processing` indica que la tarea está en curso. `interrupted` indica que la tarea fue interrumpida manualmente."
+                      "description": "Motivo de la detención de la sesión. `processing` indica que el trabajo sigue en ejecución. `interrupted` indica que el trabajo se interrumpió manualmente."
                     },
                     "pullRequestLink": {
                       "type": "string",
-                      "description": "Enlace a la solicitud de extracción creada."
+                      "description": "Enlace a la solicitud de extracción (pull request, PR) creada."
                     },
                     "messageToUser": {
                       "type": "string",
@@ -250,7 +250,7 @@
       "get": {
         "summary": "Obtener todos los trabajos del agente (v1)",
         "deprecated": true,
-        "description": "En desuso: usa [v2 get agent job](/api/agent/v2/get-agent-job) en su lugar. Recupera todas las tareas del agente para el domain especificado, incluido su estado y sus detalles.",
+        "description": "Obsoleto: usa [v2 get agent job](/api/agent/v2/get-agent-job) en su lugar. Recupera todos los trabajos del agente del dominio especificado, incluidos su estado y detalles.",
         "parameters": [
           {
             "name": "projectId",
@@ -259,7 +259,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu dashboard."
+            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu panel."
           },
           {
             "name": "skip",
@@ -270,7 +270,7 @@
               "minimum": 0,
               "default": 0
             },
-            "description": "Número de resultados a omitir para la paginación."
+            "description": "Número de resultados que se omiten para la paginación."
           },
           {
             "name": "take",
@@ -282,7 +282,7 @@
               "maximum": 100,
               "default": 12
             },
-            "description": "Número de resultados a devolver. Máximo 100."
+            "description": "Número de resultados que se devolverán. Máximo 100."
           }
         ],
         "responses": {
@@ -295,21 +295,21 @@
                   "properties": {
                     "allSessions": {
                       "type": "array",
-                      "description": "Matriz de todas las sesiones del agente para el domain.",
+                      "description": "Array con todas las sesiones del agente del dominio.",
                       "items": {
                         "type": "object",
                         "properties": {
                           "sessionId": {
                             "type": "string",
-                            "description": "El subdomain al que pertenece esta sesión."
+                            "description": "El subdominio al que pertenece esta sesión."
                           },
                           "subdomain": {
                             "type": "string",
-                            "description": "El subdomain al que pertenece esta sesión."
+                            "description": "El subdominio al que pertenece esta sesión."
                           },
                           "branch": {
                             "type": "string",
-                            "description": "Nombre de la branch de Git en la que se realizaron los cambios",
+                            "description": "Nombre de la rama de Git en la que se realizaron los cambios.",
                             "nullable": true
                           },
                           "haulted": {
@@ -325,11 +325,11 @@
                               "processing",
                               "interrupted"
                             ],
-                            "description": "Motivo de la interrupción de la sesión. `processing` indica que la tarea está en curso. `interrupted` indica que la tarea fue interrumpida manualmente."
+                            "description": "Motivo de la detención de la sesión. `processing` indica que el trabajo sigue ejecutándose. `interrupted` indica que el trabajo se interrumpió manualmente."
                           },
                           "pullRequestLink": {
                             "type": "string",
-                            "description": "Enlace a la solicitud de extracción creada."
+                            "description": "Enlace a la solicitud de extracción (pull request, PR) creada."
                           },
                           "messageToUser": {
                             "type": "string",
@@ -382,7 +382,7 @@
                           "createdAt": {
                             "type": "string",
                             "format": "date-time",
-                            "description": "marca de tiempo de creación de la sesión."
+                            "description": "Marca de tiempo de creación de la sesión."
                           }
                         }
                       }
@@ -398,7 +398,7 @@
     "/v2/agent/{projectId}/job": {
       "post": {
         "summary": "Crear trabajo del agente",
-        "description": "Crea un nuevo trabajo del agente que se ejecuta en segundo plano. El trabajo procesa el prompt de forma asíncrona; consulta periódicamente el endpoint get job para seguir el progreso. Si el agente edita archivos correctamente, se crea automáticamente una solicitud de extracción.",
+        "description": "Crea un nuevo trabajo del agente que se ejecuta en segundo plano. El trabajo procesa el prompt de forma asíncrona; consulta periódicamente el endpoint get job para seguir el progreso. Si el agente edita archivos correctamente, se crea automáticamente una solicitud de extracción (pull request, PR).",
         "parameters": [
           {
             "name": "projectId",
@@ -407,7 +407,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu dashboard."
+            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu panel."
           }
         ],
         "requestBody": {
@@ -452,7 +452,7 @@
             }
           },
           "429": {
-            "description": "superar el límite de solicitudes",
+            "description": "Se superó el límite de velocidad",
             "content": {
               "application/json": {
                 "schema": {
@@ -467,7 +467,7 @@
     "/v2/agent/{projectId}/job/{id}": {
       "get": {
         "summary": "Obtener trabajo del agente",
-        "description": "Recupera el estado actual y los detalles de un trabajo del agente. Consulta este endpoint para seguir el progreso del trabajo.",
+        "description": "Recupera el estado actual y los detalles de un trabajo del agente. Consulta este endpoint periódicamente para seguir el progreso del trabajo.",
         "parameters": [
           {
             "name": "projectId",
@@ -476,7 +476,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) en tu dashboard."
+            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
           },
           {
             "name": "id",
@@ -515,7 +515,7 @@
     "/v2/agent/{projectId}/job/{id}/message": {
       "post": {
         "summary": "Enviar mensaje de seguimiento",
-        "description": "Envía un mensaje de seguimiento a un trabajo del agente existente. El mensaje se procesa de forma asíncrona: consulta periódicamente el endpoint get job para seguir el progreso.",
+        "description": "Envía un mensaje de seguimiento a un trabajo del agente existente. El mensaje se procesa de forma asíncrona; consulta periódicamente el endpoint para obtener el trabajo y seguir el progreso.",
         "parameters": [
           {
             "name": "projectId",
@@ -524,7 +524,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard."
+            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
           },
           {
             "name": "id",
@@ -588,7 +588,7 @@
             }
           },
           "429": {
-            "description": "Se superó el límite de solicitudes",
+            "description": "Se superó el límite de velocidad",
             "content": {
               "application/json": {
                 "schema": {
@@ -618,7 +618,7 @@
               "archived",
               "failed"
             ],
-            "description": "Estado actual del trabajo. `active` — el agente está procesando la instrucción en este momento. `completed` — el agente finalizó correctamente y es posible que se haya creado una PR (verificar `prLink`). `archived` — el trabajo se ha archivado. `failed` — el agente encontró un error irrecuperable. Consulte periódicamente hasta que el estado sea `completed`, `archived` o `failed`."
+            "description": "Estado actual del trabajo. `active` — el agente está procesando actualmente el prompt. `completed` — el agente terminó correctamente y es posible que se haya creado una solicitud de extracción (pull request, PR) (consulta `prLink`). `archived` — el trabajo se ha archivado. `failed` — el agente encontró un error irrecuperable. Consulta periódicamente hasta que el estado sea `completed`, `archived` o `failed`."
           },
           "source": {
             "type": "object",
@@ -630,31 +630,31 @@
               },
               "ref": {
                 "type": "string",
-                "description": "branch de Git en la que trabaja el agente.",
+                "description": "Rama de Git en la que está trabajando el agente.",
                 "nullable": true
               }
             }
           },
           "model": {
             "type": "string",
-            "description": "El modelo de IA utilizado para esta tarea."
+            "description": "El modelo de IA utilizado para este trabajo."
           },
           "prLink": {
             "type": "string",
             "format": "uri",
             "example": "https://github.com/org/repo/pull/123",
-            "description": "URL de la solicitud de extracción de GitHub creada por el agente. `null` mientras la tarea siga `active` o si no se ha cambiado ningún archivo. Se completa cuando el agente crea correctamente una PR.",
+            "description": "URL de la solicitud de extracción (pull request, PR) de GitHub creada por el agente. `null` mientras el trabajo siga `active` o si no se modificó ningún archivo. Se completa cuando el agente crea correctamente una PR.",
             "nullable": true
           },
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "description": "Marca de tiempo de creación de la tarea."
+            "description": "Marca de tiempo de cuando se creó el trabajo."
           },
           "archivedAt": {
             "type": "string",
             "format": "date-time",
-            "description": "Marca de tiempo de archivado de la tarea.",
+            "description": "Marca de tiempo de cuando se archivó el trabajo.",
             "nullable": true
           }
         }
@@ -673,7 +673,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "El encabezado Authorization requiere un token de tipo Bearer. Usa una clave de API de administrador (con el prefijo `mint_`). Esta es una clave secreta del lado del servidor. Genera una clave en la [página de claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard."
+        "description": "El encabezado Authorization espera un token Bearer. Usa una API key de administrador (con el prefijo `mint_`). Esta es una clave secreta del lado del servidor. Genera una en la [página de API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
       }
     }
   }

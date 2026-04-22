@@ -1,18 +1,18 @@
 ---
 title: "Envoyer un message de suivi"
-description: "Envoyer un message de suivi à une tâche d’agent existante afin de
+description: "Envoyez un message de suivi à une tâche d’agent existante pour
   fournir des instructions supplémentaires."
 openapi: /fr/admin-openapi.json POST /v2/agent/{projectId}/job/{id}/message
 keywords: [ "tâche d’agent", "message", "suivi", "envoyer" ]
 ---
 
-Envoyez une instruction de suivi à une tâche d’agent existante. Le message est traité de façon asynchrone — interrogez le point de terminaison [récupérer la tâche d’agent](/fr/api/agent/v2/get-agent-job) pour suivre sa progression.
+Envoyez un message de suivi à une tâche d’agent existante. Le message est traité de façon asynchrone : interrogez le point de terminaison [get agent job](/fr/api/agent/v2/get-agent-job) pour suivre sa progression.
 
 <div id="rate-limits">
-  ## Limites de débit
+  ## Limites d&#39;utilisation
 </div>
 
-* 100 utilisations par projet Mintlify par heure
+* 100 utilisations par projet Mintlify et par heure
 
 <div id="usage">
   ## Utilisation

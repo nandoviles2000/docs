@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Mintlify External API",
-    "description": "Una API para gestionar la documentación de Mintlify y acceder a recursos.",
+    "description": "Una API para administrar la documentación de Mintlify y acceder a recursos.",
     "version": "1.0.0"
   },
   "servers": [
@@ -22,12 +22,12 @@
     "/project/update/{projectId}": {
       "post": {
         "summary": "Iniciar actualización",
-        "description": "Pone en cola una actualización de implementación para tu proyecto de documentación. Devuelve un ID de estado que se puede usar para hacer seguimiento del progreso de la actualización. La actualización se activa desde la rama de implementación que tengas configurada.",
+        "description": "Pon en cola una actualización de despliegue para tu proyecto de documentación. Devuelve un ID de estado que puede usarse para seguir el progreso de la actualización. La actualización se activa desde la rama de despliegue que tienes configurada.",
         "parameters": [
           {
             "name": "projectId",
             "in": "path",
-            "description": "El ID de tu proyecto. Puedes copiarlo de la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard.",
+            "description": "Tu ID de proyecto. Puedes copiarlo desde la página de [claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) en tu panel.",
             "required": true,
             "schema": {
               "type": "string"
@@ -36,7 +36,7 @@
         ],
         "responses": {
           "202": {
-            "description": "Una respuesta satisfactoria",
+            "description": "Respuesta correcta",
             "content": {
               "application/json": {
                 "schema": {
@@ -44,7 +44,7 @@
                   "properties": {
                     "statusId": {
                       "type": "string",
-                      "description": "El ID de estado de la actualización que se activó."
+                      "description": "El ID de estado de la actualización iniciada."
                     }
                   }
                 }
@@ -57,12 +57,12 @@
     "/project/update-status/{statusId}": {
       "get": {
         "summary": "Obtener el estado de la actualización",
-        "description": "Obtén el estado de una actualización mediante el ID de estado",
+        "description": "Obtén el estado de una actualización a partir del ID de estado",
         "parameters": [
           {
             "name": "statusId",
             "in": "path",
-            "description": "El identificador de estado de una actualización activada.",
+            "description": "El ID de estado de una actualización iniciada.",
             "required": true,
             "schema": {
               "type": "string"
@@ -71,7 +71,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Una respuesta correcta",
+            "description": "Respuesta correcta",
             "content": {
               "application/json": {
                 "schema": {
@@ -79,15 +79,15 @@
                   "properties": {
                     "_id": {
                       "type": "string",
-                      "description": "El ID de estado de la actualización que se activó."
+                      "description": "El ID de estado de la actualización iniciada."
                     },
                     "projectId": {
                       "type": "string",
-                      "description": "El identificador del proyecto de documentación."
+                      "description": "El ID del proyecto de documentación."
                     },
                     "createdAt": {
                       "type": "string",
-                      "description": "Un ISODate con la fecha y la hora especificadas en UTC"
+                      "description": "Un ISODate con la fecha y hora especificadas en UTC"
                     },
                     "endedAt": {
                       "type": "string",
@@ -109,7 +109,7 @@
                     },
                     "logs": {
                       "type": "array",
-                      "description": "Una matriz de registros.",
+                      "description": "Una lista de registros.",
                       "items": {
                         "type": "string"
                       }
@@ -128,7 +128,7 @@
                     },
                     "screenshotDark": {
                       "type": "string",
-                      "description": "Captura de pantalla de la documentación en modo oscuro."
+                      "description": "Una captura de pantalla de la documentación en modo oscuro."
                     },
                     "author": {
                       "type": "object",
@@ -141,29 +141,29 @@
                         },
                         "avatarUrl": {
                           "type": "string",
-                          "description": "URL de la imagen de avatar del autor."
+                          "description": "La URL de la imagen de avatar del autor."
                         },
                         "githubUserId": {
                           "type": "number",
-                          "description": "El identificador de usuario de GitHub del autor."
+                          "description": "El ID de usuario de GitHub del autor."
                         }
                       }
                     },
                     "commit": {
                       "type": "object",
-                      "description": "Detalles de la confirmación",
+                      "description": "Los detalles del commit",
                       "properties": {
                         "sha": {
                           "type": "string",
-                          "description": "El SHA de la confirmación."
+                          "description": "El SHA del commit."
                         },
                         "ref": {
                           "type": "string",
-                          "description": "La referencia de la confirmación."
+                          "description": "La referencia del commit."
                         },
                         "message": {
                           "type": "string",
-                          "description": "El mensaje de confirmación."
+                          "description": "El mensaje del commit."
                         },
                         "filesChanged": {
                           "type": "object",
@@ -171,21 +171,21 @@
                           "properties": {
                             "added": {
                               "type": "array",
-                              "description": "Se han añadido nuevos archivos.",
+                              "description": "Archivos nuevos añadidos.",
                               "items": {
                                 "type": "string"
                               }
                             },
                             "modified": {
                               "type": "array",
-                              "description": "Archivos existentes que fueron modificados.",
+                              "description": "Archivos existentes que se han modificado.",
                               "items": {
                                 "type": "string"
                               }
                             },
                             "removed": {
                               "type": "array",
-                              "description": "Archivos eliminados.",
+                              "description": "Archivos que se han eliminado.",
                               "items": {
                                 "type": "string"
                               }
@@ -196,7 +196,7 @@
                     },
                     "source": {
                       "type": "string",
-                      "description": "Origen del disparador de la actualización.",
+                      "description": "El origen que desencadena la actualización.",
                       "enum": [
                         "internal",
                         "github-app-installation",
@@ -217,13 +217,13 @@
     },
     "/project/preview/{projectId}": {
       "post": {
-        "summary": "Activar implementación de vista previa",
-        "description": "Crea o actualiza una implementación de vista previa para una rama específica. Si ya existe una vista previa para la rama, se activa una reimplementación. Devuelve un ID de estado para hacer seguimiento del progreso y la URL de la vista previa.",
+        "summary": "Iniciar despliegue de vista previa",
+        "description": "Crea o actualiza un despliegue de vista previa para una rama específica. Si ya existe una vista previa para la rama, se vuelve a desplegar. Devuelve un ID de estado para seguir el progreso y la URL de la vista previa.",
         "parameters": [
           {
             "name": "projectId",
             "in": "path",
-            "description": "El ID de tu proyecto. Puedes copiarlo de la página de [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard.",
+            "description": "El ID de tu proyecto. Puedes copiarlo desde la página de [claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) en tu panel.",
             "required": true,
             "schema": {
               "type": "string"
@@ -236,11 +236,13 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["branch"],
+                "required": [
+                  "branch"
+                ],
                 "properties": {
                   "branch": {
                     "type": "string",
-                    "description": "El nombre de la rama de Git para la cual crear una implementación de vista previa.",
+                    "description": "El nombre de la rama de Git para la que quieres crear un despliegue de vista previa.",
                     "minLength": 1
                   }
                 }
@@ -250,7 +252,7 @@
         },
         "responses": {
           "202": {
-            "description": "Implementación de vista previa puesta en cola correctamente.",
+            "description": "El despliegue de vista previa se ha puesto en cola correctamente.",
             "content": {
               "application/json": {
                 "schema": {
@@ -258,11 +260,11 @@
                   "properties": {
                     "statusId": {
                       "type": "string",
-                      "description": "El ID de estado para hacer seguimiento de la implementación de vista previa. Úsalo con el endpoint [Get deployment status](/es/api/update/status)."
+                      "description": "El ID de estado para seguir el despliegue de vista previa. Úsalo con el endpoint [Obtener el estado del despliegue](/api/update/status)."
                     },
                     "previewUrl": {
                       "type": "string",
-                      "description": "La URL donde se aloja la implementación de vista previa."
+                      "description": "La URL donde está alojado el despliegue de vista previa."
                     }
                   }
                 }
@@ -285,7 +287,7 @@
             }
           },
           "403": {
-            "description": "Las implementaciones de vista previa no están disponibles en tu plan actual.",
+            "description": "Los despliegues de vista previa no están disponibles en tu plan actual.",
             "content": {
               "application/json": {
                 "schema": {
@@ -308,7 +310,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "El encabezado Authorization espera un token de tipo Bearer. Usa una clave de API de administrador (con el prefijo `mint_`). Esta es una clave secreta del lado del servidor. Genera una en la [página de claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu dashboard."
+        "description": "La cabecera Authorization espera un token Bearer. Usa una clave de API de administrador (con el prefijo `mint_`). Esta es una clave secreta del lado del servidor. Genera una en la [página de claves de API](https://dashboard.mintlify.com/settings/organization/api-keys) de tu panel."
       }
     }
   }

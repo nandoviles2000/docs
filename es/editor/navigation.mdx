@@ -1,105 +1,105 @@
 ---
-title: "Organizar la navegación"
-description: "Organiza la estructura de tu sitio de documentación con el editor visual de navegación para crear grupos, reordenar páginas y gestionar el diseño de la barra lateral."
+title: "Organiza la navegación"
+description: "Organiza la estructura de tu sitio de documentación con el editor visual de navegación para crear grupos, reordenar páginas y gestionar la disposición de la barra lateral."
 keywords: ["editor", "navegación", "barra lateral", "estructura"]
 ---
 
-Usa la barra lateral de navegación para organizar tu documentación. Los cambios que realices en el árbol de navegación del editor web aparecerán en la barra lateral de navegación de tu sitio y se sincronizarán con tu archivo de configuración `docs.json`.
+Usa la barra lateral de navegación para organizar tu documentación. Los cambios que hagas en el árbol de navegación del editor web aparecerán en la barra lateral de navegación de tu sitio y se sincronizarán con el archivo de configuración `docs.json`.
 
 <div id="add-navigation-elements">
-  ## Agregar elementos de navegación
+  ## Agrega elementos de navegación
 </div>
 
-Para agregar un nuevo elemento de navegación, haz clic en **Add new** en la parte inferior del árbol de navegación.
+Para agregar un nuevo elemento de navegación, haz clic en **Agregar nuevo** en la parte inferior del árbol de navegación.
 
 <Frame>
-  <img src="/images/editor/navigation-light.png" alt="Agregar nuevo elemento de navegación." className="block dark:hidden" />
+  <img src="/images/editor/navigation-light.png" alt="Agregar un nuevo elemento de navegación." className="block dark:hidden" />
 
-  <img src="/images/editor/navigation-dark.png" alt="Agregar nuevo elemento de navegación." className="hidden dark:block" />
+  <img src="/images/editor/navigation-dark.png" alt="Agregar un nuevo elemento de navegación." className="hidden dark:block" />
 </Frame>
 
-Para agregar un elemento de navegación anidado dentro de otro elemento, haz clic en el botón <Icon icon="plus" /> más junto al nombre del elemento de nivel superior.
+Para agregar un elemento de navegación anidado dentro de otro, haz clic en el botón más <Icon icon="plus" /> junto al nombre del elemento de nivel superior.
 
-Después de crear un elemento, arrástralo y suéltalo para reordenarlo o anidarlo dentro de otros elementos. Sitúa el cursor sobre un elemento y luego haz clic en el icono de engranaje para configurar sus propiedades, o haz clic con el botón derecho en un elemento para acceder a opciones adicionales como duplicar, convertirlo en otro elemento o eliminarlo.
+Después de crear un elemento, arrástralo y suéltalo para reordenarlo o anidarlo dentro de otros elementos. Pasa el cursor sobre un elemento y haz clic en el icono de engranaje para configurar sus propiedades, o haz clic con el botón derecho sobre un elemento para acceder a opciones adicionales, como duplicarlo, convertirlo en otro elemento o eliminarlo.
 
-Para desagrupar páginas dentro de un grupo u otro elemento de navegación, haz clic con el botón derecho y luego en **Ungroup**. Todas las páginas dentro del elemento desagrupado se moverán al nivel raíz de tu navegación.
+Para desagrupar páginas dentro de un grupo u otro elemento de navegación, haz clic con el botón derecho y luego en **Desagrupar**. Todas las páginas del elemento desagrupado se moverán al nivel raíz de la navegación.
 
 <Note>
-  Algunos elementos no pueden anidarse dentro de otros elementos. Por ejemplo, las pestañas no pueden anidarse dentro de grupos. El editor web impide que anides elementos no válidos.
+  Algunos elementos no pueden anidarse dentro de otros. Por ejemplo, las pestañas no pueden anidarse dentro de grupos. El editor web impide anidar elementos no válidos.
 </Note>
 
 <div id="add-existing-files">
   ### Agregar archivos existentes
 </div>
 
-Agrega archivos de tu repositorio que aún no están en la navegación.
+Agrega archivos de tu repositorio que aún no aparezcan en la navegación.
 
-1. Haz clic en el botón más <Icon icon="plus" /> en el elemento de navegación al que quieras agregar el archivo.
-2. Haz clic en **Add existing file** en el menú desplegable.
+1. Haz clic en el botón de más <Icon icon="plus" /> del elemento de navegación al que quieras agregar el archivo.
+2. Haz clic en **Agregar archivo existente** en el menú desplegable.
 
 <Frame>
-  <img src="/images/editor/add-existing-file-menu-light.png" alt="Menú “Add existing file” desplegado." className="block dark:hidden" />
+  <img src="/images/editor/add-existing-file-menu-light.png" alt="Menú «Agregar archivo existente» desplegado." className="block dark:hidden" />
 
-  <img src="/images/editor/add-existing-file-menu-dark.png" alt="Menú “Add existing file” desplegado." className="hidden dark:block" />
+  <img src="/images/editor/add-existing-file-menu-dark.png" alt="Menú «Agregar archivo existente» desplegado." className="hidden dark:block" />
 </Frame>
 
 <div id="organize-into-sections">
-  ## Organiza en secciones
+  ## Organiza el contenido en secciones
 </div>
 
-Elige la estructura de navegación adecuada para el alcance y la audiencia de tu documentación.
+Elige la estructura de navegación adecuada para el alcance y el público de tu documentación.
 
 <div id="when-to-use-pages">
   ### Cuándo usar páginas
 </div>
 
-Usa páginas para archivos de documentación individuales. Las páginas son los componentes básicos de tu navigation: todo el contenido vive en una página. Agrega páginas a tu navigation para hacerlas visibles en la barra lateral de tu sitio.
+Usa páginas para archivos de documentación individuales. Las páginas son los bloques fundamentales de tu navegación: cada contenido se encuentra en una página. Agrega páginas a tu navegación para que sean visibles en la barra lateral de tu sitio.
 
-Las páginas pueden existir en el nivel raíz, dentro de groups, tabs, anchors, dropdowns o menús.
+Las páginas pueden existir en el nivel raíz, dentro de grupos, pestañas, anclas, menús desplegables o menús.
 
-Los archivos que no estén incluidos en tu navigation están [ocultos](/es/organize/hidden-pages) de tu documentación publicada.
+Los archivos que no se incluyan en tu navegación quedan [ocultos](/es/organize/hidden-pages) en tu documentación publicada.
 
 <div id="when-to-use-groups">
   ### Cuándo usar grupos
 </div>
 
-Usa grupos para organizar páginas relacionadas en secciones contraíbles. Los grupos ayudan a los usuarios a explorar la navegación agrupando contenido similar, por ejemplo, todas las páginas relacionadas con Autenticación o todas las referencias de endpoints de la API.
+Usa grupos para organizar páginas relacionadas en secciones plegables. Los grupos ayudan a los usuarios a recorrer la navegación al agrupar contenido similar, como todas las páginas relacionadas con la autenticación o todas las referencias a endpoints de la API.
 
-Los grupos se pueden anidar dentro de otros grupos para crear una organización jerárquica. Los grupos pueden existir dentro de Tabs, anchors, menús desplegables o en el nivel raíz.
+Los grupos pueden anidarse dentro de otros grupos para crear una organización jerárquica. Los grupos pueden estar dentro de pestañas, anclas, menús desplegables o en el nivel raíz.
 
 <div id="when-to-use-tabs">
   ### Cuándo usar pestañas
 </div>
 
-Usa pestañas para crear secciones principales independientes con navegación horizontal en la parte superior de tu sitio. Las pestañas funcionan bien cuando tienes áreas diferenciadas como Referencia de API, Guías y SDKs entre las que los usuarios necesitan cambiar.
+Usa pestañas para crear secciones principales independientes con navegación horizontal en la parte superior de tu sitio. Las pestañas funcionan bien cuando tienes áreas diferenciadas, como la referencia de API, las guías y los SDK, entre las que los usuarios deben alternar.
 
-Las pestañas pueden contener páginas, groups y elementos de menú. Configura las pestañas para agregar iconos o enlazar a recursos externos.
+Las pestañas pueden contener páginas, grupos y elementos de menú. Configura las pestañas para añadir iconos o enlazar a recursos externos.
 
 <div id="when-to-use-anchors">
   ### Cuándo usar anclas
 </div>
 
-Utiliza anclas para crear elementos de navegación persistentes en la parte superior de tu barra lateral. Las anclas son útiles cuando quieres dividir tu contenido en secciones o proporcionar acceso rápido a recursos externos sin cambiar de pestaña.
+Usa anclas para crear elementos de navegación persistentes en la parte superior de la barra lateral. Las anclas son útiles cuando quieres organizar tu contenido en secciones o proporcionar acceso rápido a recursos externos sin cambiar de pestaña.
 
-Las anclas pueden contener páginas y groups, o enlazar a URLs externas.
+Las anclas pueden contener páginas y grupos, o enlazar a URL externas.
 
 **Anclas globales:**
 
-Crea anclas globales que aparezcan en todas las páginas, independientemente de la sección que estén viendo los usuarios. Las anclas globales deben enlazar a URLs externas y son útiles para recursos como blogs, páginas de estado o enlaces de soporte.
+Crea anclas globales que aparezcan en todas las páginas, independientemente de la sección que los usuarios estén viendo. Las anclas globales deben enlazar a URL externas y resultan útiles para recursos como blogs, páginas de estado o enlaces de soporte.
 
 <div id="when-to-use-dropdowns">
   ### Cuándo usar menús desplegables
 </div>
 
-Usa menús desplegables para crear un menú desplegable en la parte superior de la barra lateral. Los menús desplegables funcionan bien cuando tienes varias secciones relacionadas que los usuarios pueden querer explorar, pero que no necesitan estar siempre visibles como las pestañas.
+Usa menús desplegables para crear un menú expandible en la parte superior de la barra lateral. Los menús desplegables son útiles cuando tienes varias secciones relacionadas que los usuarios pueden querer explorar, pero que no necesitan estar siempre visibles, como ocurre con las pestañas.
 
-Los menús desplegables pueden contener páginas y grupos o enlazar a URL externas.
+Los menús desplegables pueden contener páginas y grupos, o enlazar a URL externas.
 
 <div id="when-to-use-menus">
   ### Cuándo usar menús
 </div>
 
-Usa menús para agregar elementos de navegación desplegables dentro de una Tab. Los menús ayudan a los usuarios a navegar directamente a páginas específicas desde la barra de navegación superior.
+Usa menús para añadir elementos desplegables de navegación dentro de una pestaña. Los menús ayudan a los usuarios a ir directamente a páginas específicas desde la barra de navegación superior.
 
 Los menús pueden contener páginas y grupos.
 
@@ -107,46 +107,46 @@ Los menús pueden contener páginas y grupos.
   ### Cuándo usar productos
 </div>
 
-Usa productos cuando tengas varios productos distintos que cada uno necesite su propia documentación. Los productos crean un menú selector que permite a los usuarios navegar entre diferentes conjuntos de documentación de producto.
+Usa productos cuando tengas varias ofertas de productos diferenciadas y cada una necesite su propia documentación. Los productos crean un menú selector que permite a los usuarios navegar entre distintos conjuntos de documentación de cada producto.
 
-Cada producto puede tener su propia estructura de navegación con pestañas, páginas y groups.
+Cada producto puede tener su propia estructura de Navegación con pestañas, páginas y grupos.
 
 <div id="when-to-use-versions">
   ### Cuándo usar versiones
 </div>
 
-Usa versiones cuando mantienes varias versiones de tu documentación simultáneamente, como v1.0, v2.0 y v3.0 de una API. Las versiones crean un menú selector que permite a los usuarios elegir qué versión quieren ver.
+Usa versiones cuando mantengas varias versiones de tu documentación al mismo tiempo, como la v1.0, la v2.0 y la v3.0 de una API. Las versiones crean un menú selector que permite a los usuarios seleccionar qué versión quieren ver.
 
-Cada versión puede tener contenido y una estructura de navegación diferentes.
+Cada versión puede tener contenido y una estructura de Navegación diferentes.
 
 <div id="when-to-use-languages">
   ### Cuándo usar idiomas
 </div>
 
-Usa idiomas cuando ofrezcas documentación en varios idiomas. Los idiomas crean un menú de selección que permite a los usuarios ver la documentación en su idioma preferido.
+Usa idiomas cuando ofrezcas documentación en varios idiomas. Los idiomas crean un menú selector que permite a los usuarios ver la documentación en su idioma preferido.
 
-Cada idioma mantiene la misma estructura de navegación con contenido traducido.
+Cada idioma mantiene la misma estructura de navegación con el contenido traducido.
 
 <div id="customize-appearance">
-  ## Personalizar la apariencia
+  ## Personaliza la apariencia
 </div>
 
-**Agregar iconos:**
+**Añade iconos:**
 
-1. Sitúa el cursor sobre un elemento de navegación.
+1. Pasa el cursor sobre un elemento de navegación.
 2. Haz clic en el icono de engranaje.
-3. Haz clic en el campo icon.
+3. Haz clic en el campo del icono.
 
-**Agregar etiquetas:**
+**Añade etiquetas:**
 
-1. Sitúa el cursor sobre un elemento de navegación.
+1. Pasa el cursor sobre un elemento de navegación.
 2. Haz clic en el icono de engranaje.
-3. Haz clic en el campo tag.
-4. Escribe una etiqueta como &quot;NEW&quot; o &quot;BETA&quot; que resalte elementos importantes.
+3. Haz clic en el campo de la etiqueta.
+4. Introduce una etiqueta como &quot;NEW&quot; o &quot;BETA&quot; para resaltar elementos importantes.
 
-**Controlar la visibilidad:**
+**Controla la visibilidad:**
 
-Oculta el contenido dentro de un elemento de navegación sin eliminarlo de tu repositorio.
+Oculta el contenido de un elemento de navegación sin eliminarlo de tu repositorio.
 
-1. Haz clic con el botón derecho en cualquier elemento.
-2. Haz clic en el interruptor junto a la opción **Hide**.
+1. Haz clic derecho en cualquier elemento.
+2. Haz clic en el interruptor junto a la etiqueta **Hide**.

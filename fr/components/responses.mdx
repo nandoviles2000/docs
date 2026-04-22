@@ -1,10 +1,10 @@
 ---
 title: "Champs de réponse"
-description: "Documentez les champs de réponse d’une API à l’aide du composant ResponseField avec des annotations de type, des descriptions et des indicateurs obligatoire ou facultatif."
+description: "Documentez les champs de réponse d’une API à l’aide du composant ResponseField, avec des annotations de type, des descriptions et des indicateurs obligatoires ou facultatifs."
 keywords: ["sortie d’API", "valeurs de retour", "structure de réponse"]
 ---
 
-Utilisez le composant `<ResponseField>` pour définir les valeurs de retour d’une API. De nombreuses documentations utilisent également `<ResponseField>` sur les pages lorsque vous devez lister les types de certains éléments.
+Utilisez le composant `<ResponseField>` pour définir les valeurs renvoyées par une API. `<ResponseField>` est également souvent utilisé dans la documentation pour lister les types d’un élément.
 
 <ResponseField name="response" type="string" required>
   Exemple de champ de réponse
@@ -12,49 +12,46 @@ Utilisez le composant `<ResponseField>` pour définir les valeurs de retour d’
 
 ```mdx
 <ResponseField name="response" type="string" required>
-  Exemple de champ de réponse
+  A response field example
 </ResponseField>
 ```
 
-
 <div id="props">
-  ## Props
+  ## Propriétés
 </div>
 
 <ResponseField name="name" type="string" required>
-  Nom de la valeur de réponse.
+  Le nom de la valeur de réponse.
 </ResponseField>
 
 <ResponseField name="type" type="string" required>
-  Type attendu de la valeur de réponse — peut être n’importe quelle chaîne.
+  Type attendu pour la valeur de réponse - peut être n&#39;importe quelle chaîne.
 </ResponseField>
 
 <ResponseField name="default" type="string">
-  Valeur par défaut.
+  La valeur par défaut.
 </ResponseField>
 
 <ResponseField name="required" type="boolean">
-  Afficher « required » à côté du nom du champ.
+  Affiche &quot;required&quot; à côté du nom du champ.
 </ResponseField>
 
 <ResponseField name="deprecated" type="boolean">
-  Indique si vous avez marqué un champ comme obsolète.
+  Indique si un champ est obsolète.
 </ResponseField>
 
 <ResponseField name="pre" type="string[]">
-  Étiquettes qui apparaissent avant le nom du champ
+  Libellés qui apparaissent avant le nom du champ
 </ResponseField>
 
 <ResponseField name="post" type="string[]">
-  Étiquettes qui apparaissent après le nom du champ
+  Libellés qui apparaissent après le nom du champ
 </ResponseField>
 
 <RequestExample>
-
-```mdx Response Field Example
-<ResponseField name="response" type="string" required>
-  Exemple de champ de réponse
-</ResponseField>
-```
-
+  ```mdx Exemple de champ de réponse
+  <ResponseField name="response" type="string" required>
+    Exemple de champ de réponse
+  </ResponseField>
+  ```
 </RequestExample>

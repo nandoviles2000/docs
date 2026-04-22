@@ -1,11 +1,11 @@
 ---
 title: "Créer des mises en page personnalisées"
 sidebarTitle: "Mises en page personnalisées"
-description: "Utilisez les modes de page et les composants pour créer des pages de destination, des pages marketing et d'autres mises en page non standard dans votre documentation Mintlify."
-keywords: ["landing page", "page mode", "custom mode", "frame mode", "hero section", "landing pages"]
+description: "Utilisez les modes de page et les composants pour créer des pages d’accueil, des pages marketing et d’autres mises en page non standard dans votre documentation Mintlify."
+keywords: ["page d’accueil", "mode de page", "mode personnalisé", "mode Frame", "section d’en-tête", "pages de destination"]
 ---
 
-Les pages Mintlify utilisent une mise en page standard par défaut, avec une barre latérale, une zone de contenu et une table des matières. Personnalisez cette mise en page avec les [modes de page](/fr/organize/pages#page-mode) pour créer des pages de destination, des vitrines de fonctionnalités ou toute page nécessitant un design unique.
+Par défaut, les pages Mintlify utilisent une mise en page standard avec une barre latérale, une zone de contenu et une table des matières. Personnalisez cette mise en page avec les [modes de page](/fr/organize/pages#page-mode) pour créer des pages d’accueil, des présentations de fonctionnalités ou toute autre page nécessitant un design unique.
 
 Ce guide explique comment utiliser les modes de page, Tailwind CSS et les composants pour créer des mises en page personnalisées.
 
@@ -13,17 +13,17 @@ Ce guide explique comment utiliser les modes de page, Tailwind CSS et les compos
   ## Choisir un mode de page
 </div>
 
-Définissez le champ `mode` dans le frontmatter de votre page pour contrôler quels éléments d'interface apparaissent.
+Définissez le champ `mode` dans les métadonnées d’en-tête de votre page pour déterminer quels éléments d’interface s’affichent.
 
-| Mode | Barre latérale | Table des matières | Pied de page | Support des thèmes | Idéal pour |
-|------|----------------|--------------------|--------------|---------------------|------------|
-| `default` | Oui | Oui | Oui | Tous les thèmes | Pages de documentation standard |
-| `wide` | Oui | Non | Oui | Tous les thèmes | Pages sans titres ou nécessitant plus de largeur |
-| `custom` | Non | Non | Non | Tous les thèmes | Pages de destination, pages marketing ou mises en page plein écran |
-| `frame` | Oui | Non | Modifié | Aspen, Almond, Luma, Sequoia | Contenu personnalisé nécessitant une navigation par barre latérale |
-| `center` | Non | Non | Oui | Mint, Linden, Willow, Maple | Journaux de modifications, expériences de lecture concentrée |
+| Mode      | Barre latérale | Table des matières | Pied de page | Prise en charge des thèmes   | Idéal pour                                                           |
+| --------- | -------------- | ------------------ | ------------ | ---------------------------- | -------------------------------------------------------------------- |
+| `default` | Oui            | Oui                | Oui          | Tous les thèmes              | Pages de documentation standard                                      |
+| `wide`    | Oui            | Non                | Oui          | Tous les thèmes              | Pages sans titres ou nécessitant plus de largeur                     |
+| `custom`  | Non            | Non                | Non          | Tous les thèmes              | Pages d’accueil, pages marketing ou mises en page pleine page        |
+| `frame`   | Oui            | Non                | Modifié      | Aspen, Almond, Luma, Sequoia | Contenu personnalisé nécessitant malgré tout une navigation latérale |
+| `center`  | Non            | Non                | Oui          | Mint, Linden, Willow, Maple  | Changelogs, expériences de lecture plus ciblées                      |
 
-Pour les pages de destination, le mode `custom` offre le plus de contrôle. Il supprime tous les éléments d'interface à l'exception de la barre de navigation supérieure, vous offrant une toile vierge pour construire.
+Pour les pages d’accueil, le mode `custom` vous offre le plus de contrôle. Il supprime tous les éléments d’interface à l’exception de la barre de navigation supérieure, pour vous laisser une page vierge à personnaliser.
 
 ```yaml Example page frontmatter
 ---
@@ -33,16 +33,16 @@ mode: "custom"
 ```
 
 <div id="build-a-landing-page">
-  ## Créer une page de destination
+  ## Créer une page d’accueil
 </div>
 
-Une page de destination typique combine une section hero, des cartes de fonctionnalités et des appels à l'action.
+Une page d’accueil classique combine une section d’en-tête, des cartes de fonctionnalités et des appels à l’action.
 
 <div id="set-up-the-page">
   ### Configurer la page
 </div>
 
-Créez un fichier MDX avec le mode `custom` :
+Créez un fichier MDX en mode `custom` :
 
 ```yaml Example landing page frontmatter
 ---
@@ -53,10 +53,10 @@ mode: "custom"
 ```
 
 <div id="create-a-hero-section">
-  ### Créer une section hero
+  ### Créez une section d’en-tête
 </div>
 
-Utilisez du HTML avec des classes Tailwind CSS pour construire une section hero centrée :
+Utilisez du HTML avec des classes Tailwind CSS pour créer une section d’en-tête centrée :
 
 ```mdx Example hero section
 <div className="px-4 py-16 lg:py-32 max-w-3xl mx-auto text-center">
@@ -70,39 +70,39 @@ Utilisez du HTML avec des classes Tailwind CSS pour construire une section hero 
 ```
 
 <Tip>
-  Incluez des styles pour le mode clair et le mode sombre. Utilisez les classes Tailwind préfixées par `dark:` pour gérer le mode sombre.
+  Prévoyez des styles pour les modes clair et sombre. Utilisez des classes Tailwind préfixées par `dark:` pour gérer le mode sombre.
 </Tip>
 
 <div id="add-navigation-cards">
   ### Ajouter des cartes de navigation
 </div>
 
-Utilisez les composants [Card](/fr/components/cards) et [Columns](/fr/components/columns) pour créer une grille de liens sous la section hero :
+Utilisez les composants [Card](/fr/components/cards) et [Columns](/fr/components/columns) pour créer une grille de liens sous la section d’en-tête :
 
 ```mdx Example navigation cards
 <div className="max-w-4xl mx-auto px-6">
   <Columns cols={2}>
     <Card title="Quickstart" icon="rocket" href="/quickstart">
-      Get up and running in under five minutes.
+      Lancez-vous en moins de cinq minutes.
     </Card>
     <Card title="API reference" icon="code" href="/api-reference">
-      Explore endpoints, parameters, and examples.
+      Explorez les endpoints, les paramètres et les exemples.
     </Card>
     <Card title="Guides" icon="book" href="/guides">
-      Step-by-step tutorials for common tasks.
+      Tutoriels pas à pas pour les tâches courantes.
     </Card>
     <Card title="Components" icon="puzzle" href="/components">
-      Reusable UI components for your docs.
+      Composants d'interface réutilisables pour votre documentation.
     </Card>
   </Columns>
 </div>
 ```
 
 <div id="use-images-with-dark-mode-support">
-  ### Utiliser des images avec support du mode sombre
+  ### Utiliser des images compatibles avec le mode sombre
 </div>
 
-Affichez différentes images pour le mode clair et sombre en utilisant les classes de visibilité de Tailwind :
+Affichez des images différentes pour les modes clair et sombre à l’aide des classes de visibilité de Tailwind :
 
 ```mdx Example images with dark mode support
 <img
@@ -118,10 +118,10 @@ Affichez différentes images pour le mode clair et sombre en utilisant les class
 ```
 
 <div id="use-react-components-for-interactive-layouts">
-  ## Utiliser des composants React pour des mises en page interactives
+  ## Utilisez des composants React pour créer des mises en page interactives
 </div>
 
-Pour des éléments réutilisables ou interactifs, définissez des [composants React](/fr/customize/react-components) directement dans votre fichier MDX :
+Pour les éléments réutilisables ou interactifs, définissez des [composants React](/fr/customize/react-components) directement dans votre fichier MDX :
 
 ```mdx Example React component
 export const FeatureCard = ({ title, description, href }) => (
@@ -150,14 +150,14 @@ export const FeatureCard = ({ title, description, href }) => (
 ```
 
 <Warning>
-  Évitez d'utiliser la propriété `style` sur les éléments HTML. Cela peut provoquer un décalage de la mise en page au chargement de la page. Utilisez des classes Tailwind CSS ou un [fichier CSS personnalisé](/fr/customize/custom-scripts) à la place.
+  Évitez d’utiliser la prop `style` sur les éléments HTML. Cela peut provoquer un saut de mise en page au chargement de la page. Utilisez plutôt des classes Tailwind CSS ou un [fichier CSS personnalisé](/fr/customize/custom-scripts).
 </Warning>
 
 <div id="add-custom-css">
   ## Ajouter du CSS personnalisé
 </div>
 
-Pour les styles que Tailwind ne couvre pas, ajoutez un fichier CSS à votre dépôt. Mintlify applique les fichiers CSS à l'ensemble du site, rendant leurs noms de classes disponibles dans tous les fichiers MDX.
+Pour les styles que Tailwind ne prend pas en charge, ajoutez un fichier CSS à votre dépôt. Mintlify applique les fichiers CSS à l’ensemble du site, ce qui rend leurs noms de classe disponibles dans tous les fichiers MDX.
 
 <Note>
   Les valeurs arbitraires de Tailwind CSS (par exemple, `w-[350px]`) ne sont pas prises en charge. Utilisez un fichier CSS personnalisé pour les valeurs que les classes utilitaires de Tailwind ne couvrent pas.
@@ -176,7 +176,7 @@ Pour les styles que Tailwind ne couvre pas, ajoutez un fichier CSS à votre dép
 }
 ```
 
-Puis référencez la classe dans votre MDX :
+Référencez ensuite la classe dans votre fichier MDX :
 
 ```mdx Example custom CSS usage
 <div className="landing-hero">
@@ -184,15 +184,15 @@ Puis référencez la classe dans votre MDX :
 </div>
 ```
 
-Consultez [Scripts personnalisés](/fr/customize/custom-scripts) pour en savoir plus sur le CSS personnalisé et les sélecteurs CSS disponibles.
+Consultez [Custom scripts](/fr/customize/custom-scripts) pour en savoir plus sur le CSS personnalisé et les sélecteurs CSS disponibles.
 
 <div id="full-example">
   ## Exemple complet
 </div>
 
-Voici une page de destination complète qui combine une section hero avec des cartes de navigation :
+Voici une page d’accueil complète qui associe une section d’en-tête à des cartes de navigation :
 
-````mdx Example landing page
+```mdx Example landing page
 ---
 title: "Documentation"
 description: "Everything you need to build with our platform."
@@ -241,14 +241,14 @@ export const HeroCard = ({ title, description, href, icon }) => (
     href="/sdks"
   />
 </div>
-````
+```
 
 <div id="tips">
   ## Conseils
 </div>
 
-- **Testez en mode clair et sombre.** Prévisualisez votre mise en page personnalisée dans les deux modes pour détecter les styles `dark:` manquants.
-- **Utilisez les classes `max-w-*`** pour limiter la largeur du contenu et garder le texte lisible.
-- **Pensez au responsive.** Utilisez les préfixes responsive de Tailwind (`sm:`, `md:`, `lg:`) pour que votre mise en page fonctionne sur tous les écrans.
-- **Combinez les modes.** Utilisez le mode `custom` pour la page d'accueil de votre documentation et le mode `default` pour le reste. Le mode se définit par page, ce qui permet à différentes pages d'utiliser différentes mises en page.
-- **Vérifiez les décalages de mise en page.** Si des éléments sautent au chargement de la page, remplacez les propriétés `style` en ligne par des classes Tailwind ou du CSS personnalisé.
+* **Testez les modes clair et sombre.** Prévisualisez votre mise en page personnalisée dans les deux modes afin de repérer les styles `dark:` manquants.
+* **Utilisez les classes `max-w-*`** pour limiter la largeur du contenu et conserver un texte lisible.
+* **Veillez à la responsivité.** Utilisez les préfixes responsifs de Tailwind (`sm:`, `md:`, `lg:`) pour que votre mise en page fonctionne sur toutes les tailles d’écran.
+* **Combinez les modes.** Utilisez le mode `custom` pour la page d’accueil de votre documentation et le mode `default` pour tout le reste. Vous définissez le mode pour chaque page, ce qui permet à différentes pages d’utiliser différentes mises en page.
+* **Vérifiez les sauts de mise en page.** Si des éléments se déplacent au chargement de la page, remplacez les props `style` inline par des classes Tailwind ou du CSS personnalisé.

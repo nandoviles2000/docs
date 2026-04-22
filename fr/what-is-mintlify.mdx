@@ -1,27 +1,27 @@
 ---
-title: "Qu'est-ce que Mintlify ?"
-description: "Mintlify est une plateforme de documentation conçue pour les développeurs et l’IA, avec une recherche intelligente, des playgrounds d’API interactifs et des analytiques intégrées."
-keywords: ["vue d'ensemble", "comment ça marche", "architecture"]
+title: "Qu’est-ce que Mintlify ?"
+description: "Mintlify est une plateforme de documentation conçue pour les développeurs et l’IA, avec une recherche intelligente, des bacs à sable API interactifs et des analyses intégrées."
+keywords: ["vue d’ensemble", "fonctionnement", "architecture"]
 ---
 
-Mintlify héberge votre contenu sous la forme d’un site web. Votre contenu se trouve dans un référentiel Git sous forme de fichiers MDX, et Mintlify génère et déploie automatiquement votre site lorsque vous effectuez un push.
+Mintlify héberge votre contenu sous forme de site web. Votre contenu est stocké dans un dépôt Git sous forme de fichiers MDX, et Mintlify génère et déploie automatiquement votre site lorsque vous poussez une modification.
 
 <div id="the-three-parts-of-a-mintlify-project">
   ## Les trois parties d’un projet Mintlify
 </div>
 
-**Votre référentiel** est la source de vérité pour votre documentation. Il contient un fichier MDX pour chaque page et un fichier `docs.json` qui configure la navigation, le thème et les paramètres de votre site. Vous pouvez utiliser votre propre référentiel GitHub ou GitLab, ou laisser Mintlify en créer un pour vous lors de la configuration initiale.
+**Votre dépôt** est la source de référence de votre documentation. Il contient un fichier MDX pour chaque page et un fichier `docs.json` qui configure la navigation, le thème et les paramètres de votre site. Vous pouvez utiliser votre propre dépôt GitHub ou GitLab, ou laisser Mintlify en créer un pour vous lors de l’onboarding.
 
-**Le Tableau de bord Mintlify** se connecte à votre référentiel et vous permet de gérer votre site. Utilisez-le pour surveiller les déploiements, configurer les paramètres, gérer votre équipe et modifier le contenu directement dans le navigateur.
+**Le tableau de bord Mintlify** se connecte à votre dépôt et vous permet de gérer votre site. Utilisez-le pour suivre les déploiements, configurer les paramètres, gérer votre équipe et modifier le contenu directement dans le navigateur.
 
-**Votre site**, propulsé par Mintlify. Mintlify génère votre site à partir de votre référentiel et le déploie par défaut sous une URL en `.mintlify.app`. Lorsque vous êtes prêt, vous pouvez associer un domaine personnalisé à votre site.
+**Votre site**, propulsé par Mintlify. Mintlify génère votre site à partir de votre dépôt et le déploie par défaut à une URL en `.mintlify.app`. Lorsque vous êtes prêt, vous pouvez faire pointer un domaine personnalisé vers votre site.
 
 ```mermaid
 flowchart LR
-    WE["Éditeur web"] --> Repo[("Référentiel Git")]
+    WE["Éditeur web"] --> Repo[("Dépôt Git")]
     Local["Éditeur local"] --> Repo
-    Repo -- "Webhook" --> Build["Mintlify build"]
-    Build --> Site["Site en ligne"]
+    Repo -- "Webhook" --> Build["Build de Mintlify"]
+    Build --> Site["Site en production"]
 ```
 
 <div id="editing-content">
@@ -30,22 +30,22 @@ flowchart LR
 
 Il existe deux façons de modifier votre contenu, et vous pouvez passer librement de l’une à l’autre.
 
-* **Éditeur web** : modifiez et publiez des pages dans votre navigateur. L’éditeur enregistre automatiquement les modifications dans votre référentiel Git via des commits.
-* **CLI et éditeur local** : clonez votre référentiel, exécutez `mint dev` pour prévisualiser votre site en local, puis poussez les modifications pour déployer.
+* **Éditeur web** : Modifiez et publiez des pages dans votre navigateur. L’éditeur crée automatiquement un commit des modifications dans votre dépôt Git.
+* **CLI et éditeur local** : Clonez votre dépôt, exécutez `mint dev` pour prévisualiser votre site en local, puis poussez vos modifications pour les déployer.
 
-Plusieurs membres de l’équipe peuvent utiliser l’un ou l’autre de ces modes de travail en parallèle, en s’appuyant sur des branches Git pour gérer les modifications simultanées. Toute personne pouvant pousser vers votre référentiel peut mettre à jour votre contenu.
+Plusieurs membres de l’équipe peuvent travailler simultanément avec l’une ou l’autre méthode, en utilisant des branches Git pour gérer des modifications en parallèle. Toute personne autorisée à pousser vers votre dépôt peut mettre à jour votre contenu.
 
 <div id="ai-features">
   ## Fonctionnalités d’IA
 </div>
 
-Les fonctionnalités d’IA intégrées aident les personnes et les systèmes d’IA à trouver et à comprendre votre contenu, et vous aident à le maintenir à jour.
+Les fonctionnalités d’IA intégrées aident les utilisateurs et les IA à trouver et à comprendre votre contenu, et vous aident à le maintenir à jour.
 
-L’**Assistant** permet à vos utilisateurs de poser des questions et d’obtenir des réponses sourcées à partir de votre contenu.
+L’**assistant** permet à vos utilisateurs de poser des questions et d’obtenir des réponses accompagnées de citations provenant de votre contenu.
 
-L’**agent** aide votre équipe à créer et à maintenir le contenu en générant des mises à jour à partir de workflows planifiés, de pull requests (demandes de fusion) fusionnées dans votre référentiel de fonctionnalités, ou de fils de discussion Slack.
+L’**agent** aide votre équipe à créer et à maintenir du contenu en générant des mises à jour à partir de flux de travail planifiés, de pull requests (PR) fusionnées dans votre dépôt de fonctionnalités ou de fils de discussion Slack.
 
-Consultez la section [Documentation native à l’IA](/fr/ai-native) pour une vue d’ensemble de toutes les fonctionnalités d’IA.
+Consultez la page [documentation native pour l’IA](/fr/ai-native) pour une vue d’ensemble de toutes les fonctionnalités d’IA.
 
 <div id="next-steps">
   ## Prochaines étapes

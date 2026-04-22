@@ -1,18 +1,18 @@
 ---
 title: "Fathom"
-description: "Integra Fathom Analytics en tu documentación de Mintlify para un seguimiento de visitantes centrado en la privacidad y conforme al RGPD con una sencilla configuración de ID de sitio."
-keywords: ["Fathom Analytics", "analítica centrada en la privacidad", "site ID", "analítica simple"]
+description: "Integra Fathom Analytics con tu documentación de Mintlify para hacer un seguimiento de visitantes centrado en la privacidad y compatible con el RGPD mediante una configuración sencilla del ID del sitio."
+keywords: ["Fathom Analytics", "analítica centrada en la privacidad", "ID del sitio", "analítica sencilla"]
 ---
 
-Agrega lo siguiente a tu archivo `docs.json` para enviar Analytics a Fathom.
+Agrega lo siguiente a tu archivo `docs.json` para enviar datos de analítica a Fathom.
 
 Puedes obtener el `siteId` en la configuración de tu script.
 
 <CodeGroup>
-  ```json Opciones de Analytics en docs.json
+  ```json Opciones de analítica en docs.json
   "integrations": {
       "fathom": {
-          "siteId": "Obligatorio"
+          "siteId": "required"
       }
   }
   ```

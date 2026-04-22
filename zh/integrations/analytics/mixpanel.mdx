@@ -1,10 +1,10 @@
 ---
 title: "Mixpanel"
-description: "将 Mixpanel 集成到你的 Mintlify 文档站点，以跟踪产品分析、用户行为漏斗和内容参与事件。"
+description: "将 Mixpanel 集成到您的 Mintlify 文档站点中，以跟踪产品分析、用户行为漏斗和内容互动事件。"
 keywords: ["Mixpanel 集成", "产品分析", "事件跟踪", "token"]
 ---
 
-在你的 `docs.json` 文件中添加以下配置，将分析数据发送到 Mixpanel。
+将以下内容添加到您的 `docs.json` 文件中，以便将分析数据发送到 Mixpanel。
 
 ```json Analytics options in docs.json
 "integrations": {
@@ -14,8 +14,7 @@ keywords: ["Mixpanel 集成", "产品分析", "事件跟踪", "token"]
 }
 ```
 
-将 `YOUR_MIXPANEL_PROJECT_TOKEN` 替换为你的 Mixpanel 项目 token。你可以在 [Mixpanel 项目设置](https://mixpanel.com/settings/project) 中找到该值。
-
+将 `YOUR_MIXPANEL_PROJECT_TOKEN` 替换为你的 Mixpanel 项目令牌。你可以在 [Mixpanel 项目设置](https://mixpanel.com/settings/project) 中找到该令牌。
 
 <div id="tracked-events">
   ## 跟踪的事件
@@ -23,10 +22,10 @@ keywords: ["Mixpanel 集成", "产品分析", "事件跟踪", "token"]
 
 Mintlify 会自动跟踪以下用户交互：
 
-- 页面访问
-- 搜索查询
-- 反馈提交
-- 上下文菜单交互
-- 导航点击
+* 页面浏览
+* 搜索查询
+* 反馈提交
+* 上下文菜单交互
+* 导航点击
 
-如果你在 Mixpanel 中看不到事件，请确认你的项目 token 是否正确，并检查是否有内容安全策略（CSP）阻止 Mixpanel 脚本运行。
+如果你在 Mixpanel 中看不到事件，请确认项目令牌填写正确，且没有内容安全策略阻止加载 Mixpanel 脚本。

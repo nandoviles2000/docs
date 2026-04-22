@@ -1,36 +1,36 @@
 ---
 title: "管理页面可见性"
-description: "通过隐藏、过滤或整理自动生成的 OpenAPI 页面，控制哪些 API 端点出现在文档导航中。"
+description: "通过隐藏、筛选或组织自动生成的 OpenAPI 页面，控制哪些 API 端点会显示在文档导航中。"
 keywords: ["x-hidden", "x-excluded", "隐藏端点", "页面可见性", "内部端点"]
 ---
 
-对于仅供内部使用的端点、已弃用的操作、测试版功能，或那些应可通过直接 URL 访问但不应通过站点导航被发现的端点，你可以控制哪些 OpenAPI 操作会发布为文档页面，以及它们在导航中的可见性。
+对于仅供内部使用的端点、已弃用的操作、测试版功能，或者应当可通过直接 URL 访问但不应在站点导航中显示的端点，你可以控制哪些 OpenAPI 操作会发布为文档页面，以及它们在导航中的可见性。
 
-如果你的页面是由 OpenAPI 文档自动生成的，请使用 `x-hidden` 和 `x-excluded` 扩展来管理页面可见性。
+如果你的页面是根据 OpenAPI 文档自动生成的，请使用 `x-hidden` 和 `x-excluded` 扩展来管理页面可见性。
 
 <div id="x-hidden">
   ## `x-hidden`
 </div>
 
-`x-hidden` 扩展会为某个端点创建页面，但会将其从导航中隐藏。该页面只能通过直接访问其 URL 来查看。
+`x-hidden` 扩展会为某个端点创建一个页面，但会将其从导航中隐藏。该页面只能通过直接访问其 URL 来打开。
 
 `x-hidden` 的常见用例包括：
 
-- 需要记录但不希望在导航中曝光的端点。
-- 从其他内容中链接到的页面。
-- 面向特定用户的端点。
+* 你想要记录但不在导航中宣传的端点。
+* 你从其他内容链接到的页面。
+* 面向特定用户的端点。
 
 <div id="x-excluded">
   ## `x-excluded`
 </div>
 
-`x-excluded` 扩展会将某个端点从文档中彻底排除。
+`x-excluded` 扩展会将某个端点从您的文档中完全排除。
 
-`x-excluded` 的常见用例包括：
+`x-excluded` 的常见使用场景包括：
 
-- 仅供内部使用的端点。
-- 已废弃且不再希望出现在文档中的端点。
-- 尚未对外公开文档的 Beta 功能。
+* 仅供内部使用的端点。
+* 您不想在文档中列出的已弃用端点。
+* 尚未准备好对外公开的 Beta 功能。
 
 <div id="implementation">
   ## 实现
@@ -38,13 +38,13 @@ keywords: ["x-hidden", "x-excluded", "隐藏端点", "页面可见性", "内部�
 
 在 OpenAPI 规范中，在相应的 HTTP 方法下添加 `x-hidden` 或 `x-excluded` 扩展。
 
-以下示例展示了在 OpenAPI 架构文档中，如何在某个端点和一个 webhook 路径上使用这些属性。
+以下示例展示了如何在 OpenAPI 模式文档中，分别为端点和 webhook 路径使用这两个属性。
 
 ```json Endpoint example {11, 19}
 "paths": {
   "/plants": {
     "get": {
-      "description": "返回商店中的所有植物",
+      "description": "Returns all plants from the store",
       "parameters": { /*...*/ },
       "responses": { /*...*/ }
     }
@@ -52,7 +52,7 @@ keywords: ["x-hidden", "x-excluded", "隐藏端点", "页面可见性", "内部�
   "/hidden_plants": {
     "get": {
       "x-hidden": true,
-      "description": "返回商店中的所有半保密植物",
+      "description": "Returns all somewhat secret plants from the store",
       "parameters": { /*...*/ },
       "responses": { /*...*/ }
     }
@@ -60,7 +60,7 @@ keywords: ["x-hidden", "x-excluded", "隐藏端点", "页面可见性", "内部�
   "/secret_plants": {
     "get": {
       "x-excluded": true,
-      "description": "返回商店中的所有绝密植物（请勿发布此端点！）",
+      "description": "Returns all top secret plants from the store (do not publish this endpoint!)",
       "parameters": { /*...*/ },
       "responses": { /*...*/ }
     }
@@ -72,19 +72,19 @@ keywords: ["x-hidden", "x-excluded", "隐藏端点", "页面可见性", "内部�
 "webhooks": {
   "/plants_hook": {
     "post": {
-      "description": "关于商店新增植物信息的 Webhook",
+      "description": "Webhook for information about a new plant added to the store",
     }
   },
   "/hidden_plants_hook": {
     "post": {
       "x-hidden": true,
-      "description": "关于商店新增植物的部分机密信息的 Webhook"
+      "description": "Webhook for somewhat secret information about a new plant added to the store"
     }
   },
   "/secret_plants_hook": {
     "post": {
       "x-excluded": true,
-      "description": "关于商店新增植物的绝密信息的 Webhook(请勿发布此端点!)"
+      "description": "Webhook for top secret information about a new plant added to the store (do not publish this endpoint!)"
     }
   }
 }

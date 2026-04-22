@@ -1,19 +1,19 @@
 ---
 title: "Ejemplos"
-description: "Muestra ejemplos de código en el panel derecho de la barra lateral en dispositivos de escritorio junto a la documentación de API."
-keywords: ["RequestExample", "ResponseExample", "code examples", "request-response"]
+description: "Muestra ejemplos de código en la barra lateral derecha en dispositivos de escritorio para mostrar ejemplos de solicitudes y respuestas junto con la documentación de la API."
+keywords: ["RequestExample", "ResponseExample", "ejemplos de código", "solicitud-respuesta"]
 ---
 
-Los componentes `<RequestExample>` y `<ResponseExample>` muestran bloques de código en la barra lateral derecha para crear un diseño de dos columnas que mantiene los ejemplos visibles mientras los usuarios se desplazan por tu contenido. Usa estos componentes para la documentación de API, pero funcionan en todas las páginas.
+Los componentes `<RequestExample>` y `<ResponseExample>` muestran bloques de código en la barra lateral derecha para crear un diseño de dos columnas que mantiene los ejemplos visibles mientras los usuarios se desplazan por el contenido. Usa estos componentes para la documentación de la API, aunque funcionan en cualquier página.
 
 Casos de uso comunes:
 
-* Documentación de endpoints de API con ejemplos de solicitud y respuesta
+* Documentación de endpoints de la API con ejemplos de solicitud y respuesta
 * Ejemplos de configuración junto con texto explicativo
-* Fragmentos de código que los usuarios consultan mientras siguen instrucciones
+* Ejemplos de código que los usuarios consultan mientras siguen las instrucciones
 * Ejemplos de antes y después en tutoriales
 
-En dispositivos móviles, los componentes `<RequestExample>` y `<ResponseExample>` se muestran como bloques de código en estilo regular que los usuarios pueden omitir al desplazarse.
+En dispositivos móviles, los componentes `<RequestExample>` y `<ResponseExample>` se muestran como bloques de código normales por los que los usuarios pueden pasar al desplazarse.
 
 <RequestExample>
   ```bash Request
@@ -32,14 +32,14 @@ En dispositivos móviles, los componentes `<RequestExample>` y `<ResponseExample
   ## RequestExample
 </div>
 
-Usa `<RequestExample>` para fijar ejemplos de código en la barra lateral derecha. Este componente funciona de forma similar al componente [CodeGroup](/es/components/code-groups), pero muestra el código en la barra lateral en lugar de en línea.
+Usa `<RequestExample>` para anclar ejemplos de código en la barra lateral derecha. Este componente funciona de forma similar al componente [CodeGroup](/es/components/code-groups), pero muestra el código en la barra lateral en lugar de integrarlo en el contenido.
 
 Puedes incluir varios bloques de código dentro de un solo `<RequestExample>`. Cada bloque de código debe tener un atributo title.
 
 ````mdx RequestExample
 <RequestExample>
 
-```bash Solicitud
+```bash Request
 curl --request POST \
   --url https://dog-api.kinduff.com/api/facts
 ```
@@ -51,12 +51,12 @@ curl --request POST \
   ## ResponseExample
 </div>
 
-El componente `<ResponseExample>` ancla ejemplos de código en la barra lateral derecha, debajo de cualquier contenido `<RequestExample>` en la misma página.
+El componente `<ResponseExample>` fija los ejemplos de código en la barra lateral derecha, debajo de cualquier contenido de `<RequestExample>` en la misma página.
 
 ````mdx ResponseExample
 <ResponseExample>
 
-```json Respuesta
+```json Response
 { "status": "success" }
 ```
 
@@ -70,5 +70,5 @@ El componente `<ResponseExample>` ancla ejemplos de código en la barra lateral 
 Tanto `<RequestExample>` como `<ResponseExample>` aceptan las siguientes propiedades:
 
 <ResponseField name="dropdown" type="boolean">
-  Mostrar un menú desplegable de idiomas para alternar entre bloques de código, en lugar del diseño de pestañas predeterminado.
+  Muestra un menú desplegable de idiomas para alternar entre bloques de código, en lugar del diseño predeterminado con pestañas.
 </ResponseField>

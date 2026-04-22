@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Mintlify Admin API",
-    "description": "用于管理操作的 API，包括文档更新和代理管理。",
+    "description": "用于执行管理操作的 API，包括文档更新和智能体管理。",
     "version": "2.0.0"
   },
   "servers": [
@@ -18,9 +18,9 @@
   "paths": {
     "/v1/agent/{projectId}/job": {
       "post": {
-        "summary": "创建代理任务（v1）",
+        "summary": "创建智能体任务（v1）",
         "deprecated": true,
-        "description": "已废弃：请改用 [v2 create agent job](/api/agent/v2/create-agent-job)。此操作会创建一个新的代理任务，该任务可根据提供的消息和 Git branch 信息生成并编辑文档。",
+        "description": "已弃用：请改用 [v2 create agent job](/api/agent/v2/create-agent-job)。此接口会创建一个新的智能体任务，智能体可根据提供的消息和分支信息生成并编辑文档。",
         "parameters": [
           {
             "name": "projectId",
@@ -29,7 +29,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "你的项目 ID。可从你的控制台中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
+            "description": "您的项目 ID。可从仪表板中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
           }
         ],
         "requestBody": {
@@ -44,11 +44,11 @@
                 "properties": {
                   "branch": {
                     "type": "string",
-                    "description": "代理应处理的 Git branch 名称。如省略，代理会根据消息内容生成一个 branch 名称。"
+                    "description": "智能体应在哪个 Git 分支上工作的分支名称。如省略，智能体会根据消息内容生成分支名称。"
                   },
                   "messages": {
                     "type": "array",
-                    "description": "提供给代理的消息列表。系统始终会自动在前面添加一条默认的系统提示，因此通常只需包含用户消息。",
+                    "description": "提供给智能体的消息列表。系统始终会自动在前面添加默认的 system prompt，因此通常只需包含 user 消息。",
                     "items": {
                       "type": "object",
                       "required": [
@@ -63,11 +63,11 @@
                             "user",
                             "assistant"
                           ],
-                          "description": "消息发送者的角色。对于任务说明，请使用 `user`。使用 `system` 添加补充说明，这些说明会附加在默认系统提示之后（不会替换默认系统提示）。使用 `assistant` 提供用于少样本提示的 AI 助手示例回复。"
+                          "description": "消息发送者的角色。任务说明请使用 `user`。如需添加补充说明，请使用 `system`；这些说明会附加在默认 system prompt 之后（不会替换它）。如需为少样本提示提供助手示例回复，请使用 `assistant`。"
                         },
                         "content": {
                           "type": "string",
-                          "description": "消息的 content。"
+                          "description": "消息内容。"
                         }
                       }
                     }
@@ -75,7 +75,7 @@
                   "asDraft": {
                     "type": "boolean",
                     "default": false,
-                    "description": "控制拉取请求（PR；亦称“合并请求”/Merge Request）是以草稿模式还是非草稿模式创建。为 true 时，会创建草稿拉取请求（PR；亦称“合并请求”/Merge Request）。为 false 时（默认），会创建可供评审的常规拉取请求（PR；亦称“合并请求”/Merge Request）。"
+                    "description": "控制拉取请求（PR）是以草稿还是非草稿模式创建。为 true 时，会创建草稿拉取请求（PR）；为 false（默认）时，会创建可供审查的常规拉取请求（PR）。"
                   },
                   "model": {
                     "type": "string",
@@ -84,7 +84,7 @@
                       "opus"
                     ],
                     "default": "sonnet",
-                    "description": "用于代理任务的 AI 模型。使用 `sonnet` 可获得更快、更具成本效益的处理。使用 `opus` 可获得能力更强但速度较慢的处理。"
+                    "description": "用于智能体任务的 AI 模型。使用 `sonnet` 可获得更快且更具成本效益的处理；使用 `opus` 则能力更强，但处理速度较慢。"
                   }
                 }
               }
@@ -93,26 +93,26 @@
         },
         "responses": {
           "200": {
-            "description": "代理任务创建成功。返回 Server-Sent Events 流式响应。",
+            "description": "智能体任务创建成功。返回采用 Server-Sent Events 的流式响应。",
             "headers": {
               "X-Session-Id": {
                 "schema": {
                   "type": "string"
                 },
-                "description": "已创建的代理任务的唯一会话标识符。"
+                "description": "已创建智能体任务的唯一会话标识符。"
               },
               "X-Branch-Name": {
                 "schema": {
                   "type": "string"
                 },
-                "description": "代理正在进行更改的 Git 分支名称。"
+                "description": "智能体进行更改的 Git 分支名称。"
               }
             },
             "content": {
               "text/event-stream": {
                 "schema": {
                   "type": "string",
-                  "description": "包含代理任务执行详情和结果的 Server-Sent Events 流。"
+                  "description": "包含智能体任务执行详情和结果的 Server-Sent Events 流。"
                 }
               }
             }
@@ -122,9 +122,9 @@
     },
     "/v1/agent/{projectId}/job/{id}": {
       "get": {
-        "summary": "按 ID 获取代理任务（v1）",
+        "summary": "按 ID 获取智能体任务（v1）",
         "deprecated": true,
-        "description": "已废弃：请改用 [v2 get agent job](/api/agent/v2/get-agent-job)。按 ID 检索特定代理任务的详细信息和状态。",
+        "description": "已弃用：请改用 [v2 get agent job](/api/agent/v2/get-agent-job)。此接口会按 ID 检索特定智能体任务的详细信息和状态。",
         "parameters": [
           {
             "name": "projectId",
@@ -133,7 +133,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "你的项目 ID。可从你的控制台中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
+            "description": "您的项目 ID。可从仪表板中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
           },
           {
             "name": "id",
@@ -142,12 +142,12 @@
             "schema": {
               "type": "string"
             },
-            "description": "要检索的代理任务的唯一标识符。"
+            "description": "要检索的智能体任务的唯一标识符。"
           }
         ],
         "responses": {
           "200": {
-            "description": "已成功检索代理任务详细信息",
+            "description": "已成功获取智能体任务详情",
             "content": {
               "application/json": {
                 "schema": {
@@ -155,20 +155,20 @@
                   "properties": {
                     "sessionId": {
                       "type": "string",
-                      "description": "此会话所属的子域。"
+                      "description": "此会话所属的子域名。"
                     },
                     "subdomain": {
                       "type": "string",
-                      "description": "此会话所属的子域。"
+                      "description": "此会话所属的子域名。"
                     },
                     "branch": {
                       "type": "string",
-                      "description": "进行更改的 Git branch 名称。",
+                      "description": "进行更改所用的 Git 分支名称。",
                       "nullable": true
                     },
                     "haulted": {
                       "type": "boolean",
-                      "description": "会话执行是否已中止。"
+                      "description": "该会话执行是否已中止。"
                     },
                     "haultReason": {
                       "type": "string",
@@ -179,11 +179,11 @@
                         "processing",
                         "interrupted"
                       ],
-                      "description": "会话中止的原因。`processing` 表示任务仍在运行。`interrupted` 表示任务被手动中断。"
+                      "description": "会话中止原因。`processing` 表示任务仍在运行中。`interrupted` 表示任务已被手动中断。"
                     },
                     "pullRequestLink": {
                       "type": "string",
-                      "description": "已创建的拉取请求（PR；亦称“合并请求”/Merge Request）链接。"
+                      "description": "已创建的拉取请求（PR）链接。"
                     },
                     "messageToUser": {
                       "type": "string",
@@ -197,7 +197,7 @@
                         "properties": {
                           "content": {
                             "type": "string",
-                            "description": "任务的简要说明。"
+                            "description": "任务的简要描述。"
                           },
                           "status": {
                             "type": "string",
@@ -227,16 +227,16 @@
                     },
                     "userId": {
                       "type": "string",
-                      "description": "创建此会话的用户 ID（如有）"
+                      "description": "创建此会话的用户 ID（如果可用）。"
                     },
                     "title": {
                       "type": "string",
-                      "description": "用于概括代理任务的生成标题"
+                      "description": "概括该智能体任务的自动生成标题。"
                     },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time",
-                      "description": "会话创建时的时间戳。"
+                      "description": "会话的创建时间戳。"
                     }
                   }
                 }
@@ -248,9 +248,9 @@
     },
     "/v1/agent/{projectId}/jobs": {
       "get": {
-        "summary": "获取所有代理任务（v1）",
+        "summary": "获取所有智能体任务（v1）",
         "deprecated": true,
-        "description": "已废弃：请改用 [v2 get agent job](/api/agent/v2/get-agent-job)。检索指定 domain 的所有代理任务，包括其状态和详细信息。",
+        "description": "已弃用：请改用 [v2 get agent job](/api/agent/v2/get-agent-job)。检索指定域名的所有智能体任务，包括其状态和详细信息。",
         "parameters": [
           {
             "name": "projectId",
@@ -259,7 +259,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "你的项目 ID。可从你的控制台中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
+            "description": "你的项目 ID。可从仪表板中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
           },
           {
             "name": "skip",
@@ -270,7 +270,7 @@
               "minimum": 0,
               "default": 0
             },
-            "description": "用于分页的跳过结果数。"
+            "description": "分页时要跳过的结果数。"
           },
           {
             "name": "take",
@@ -282,12 +282,12 @@
               "maximum": 100,
               "default": 12
             },
-            "description": "返回的结果数量。最大 100。"
+            "description": "要返回的结果数。最大为 100。"
           }
         ],
         "responses": {
           "200": {
-            "description": "已成功检索所有代理任务",
+            "description": "已成功检索所有智能体任务",
             "content": {
               "application/json": {
                 "schema": {
@@ -295,26 +295,26 @@
                   "properties": {
                     "allSessions": {
                       "type": "array",
-                      "description": "该 domain 的所有代理会话数组。",
+                      "description": "该域名下所有智能体会话的数组。",
                       "items": {
                         "type": "object",
                         "properties": {
                           "sessionId": {
                             "type": "string",
-                            "description": "此会话所属的子域。"
+                            "description": "此会话所属的子域名。"
                           },
                           "subdomain": {
                             "type": "string",
-                            "description": "此会话所属的子域。"
+                            "description": "此会话所属的子域名。"
                           },
                           "branch": {
                             "type": "string",
-                            "description": "进行更改的 Git branch 名称。",
+                            "description": "进行更改所用的 Git 分支名称。",
                             "nullable": true
                           },
                           "haulted": {
                             "type": "boolean",
-                            "description": "会话执行是否已中止"
+                            "description": "会话执行是否已中止。"
                           },
                           "haultReason": {
                             "type": "string",
@@ -325,15 +325,15 @@
                               "processing",
                               "interrupted"
                             ],
-                            "description": "会话中止的原因。`processing` 表示任务仍在运行。`interrupted` 表示任务被手动中断。"
+                            "description": "会话中止的原因。`processing` 表示任务仍在运行中。`interrupted` 表示任务已被手动中断。"
                           },
                           "pullRequestLink": {
                             "type": "string",
-                            "description": "已创建的拉取请求（PR；亦称“合并请求”/Merge Request）链接"
+                            "description": "已创建的拉取请求（PR）链接。"
                           },
                           "messageToUser": {
                             "type": "string",
-                            "description": "向用户说明会话结果的消息。"
+                            "description": "告知用户会话结果的消息。"
                           },
                           "todos": {
                             "type": "array",
@@ -343,7 +343,7 @@
                               "properties": {
                                 "content": {
                                   "type": "string",
-                                  "description": "任务的简要说明。"
+                                  "description": "任务的简要描述。"
                                 },
                                 "status": {
                                   "type": "string",
@@ -373,16 +373,16 @@
                           },
                           "userId": {
                             "type": "string",
-                            "description": "创建此会话的用户 ID（如有）。"
+                            "description": "创建此会话的用户 ID（如果可用）。"
                           },
                           "title": {
                             "type": "string",
-                            "description": "用于概括代理任务的生成标题"
+                            "description": "概括该智能体任务的自动生成标题。"
                           },
                           "createdAt": {
                             "type": "string",
                             "format": "date-time",
-                            "description": "会话创建时的时间戳。"
+                            "description": "会话的创建时间戳。"
                           }
                         }
                       }
@@ -397,8 +397,8 @@
     },
     "/v2/agent/{projectId}/job": {
       "post": {
-        "summary": "创建代理任务",
-        "description": "创建一个在后台运行的新代理作业。该作业会异步处理提示词——轮询 get job 端点以跟踪进度。如果代理成功编辑文件，则会自动创建拉取请求（PR；亦称“合并请求”/Merge Request）。",
+        "summary": "创建智能体任务",
+        "description": "创建一个在后台运行的新智能体任务。该任务会异步处理提示——请轮询 get job 端点以跟踪进度。如果智能体成功编辑文件，则会自动创建拉取请求（PR）。",
         "parameters": [
           {
             "name": "projectId",
@@ -407,7 +407,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "你的项目 ID。可从你的控制台中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
+            "description": "你的项目 ID。可从仪表板中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
           }
         ],
         "requestBody": {
@@ -423,7 +423,7 @@
                   "prompt": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "供代理执行的指令。"
+                    "description": "要由智能体执行的指令。"
                   }
                 }
               }
@@ -432,7 +432,7 @@
         },
         "responses": {
           "201": {
-            "description": "代理作业创建成功",
+            "description": "智能体任务已成功创建",
             "content": {
               "application/json": {
                 "schema": {
@@ -452,7 +452,7 @@
             }
           },
           "429": {
-            "description": "超出速率限制",
+            "description": "已超出速率限制",
             "content": {
               "application/json": {
                 "schema": {
@@ -466,8 +466,8 @@
     },
     "/v2/agent/{projectId}/job/{id}": {
       "get": {
-        "summary": "获取代理任务",
-        "description": "检索代理作业的当前状态和详细信息。轮询此端点以跟踪作业进度。",
+        "summary": "获取智能体任务",
+        "description": "获取智能体任务的当前状态和详细信息。轮询此端点以跟踪任务进度。",
         "parameters": [
           {
             "name": "projectId",
@@ -476,7 +476,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "你的项目 ID。可从你的控制台中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
+            "description": "你的项目 ID。可在仪表板中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
           },
           {
             "name": "id",
@@ -485,12 +485,12 @@
             "schema": {
               "type": "string"
             },
-            "description": "代理任务的唯一标识符。"
+            "description": "智能体任务的唯一标识符。"
           }
         ],
         "responses": {
           "200": {
-            "description": "代理任务详情",
+            "description": "智能体任务详情",
             "content": {
               "application/json": {
                 "schema": {
@@ -500,7 +500,7 @@
             }
           },
           "404": {
-            "description": "未找到作业",
+            "description": "未找到任务",
             "content": {
               "application/json": {
                 "schema": {
@@ -515,7 +515,7 @@
     "/v2/agent/{projectId}/job/{id}/message": {
       "post": {
         "summary": "发送后续消息",
-        "description": "向现有代理任务发送后续消息。该消息将异步处理——请轮询 get job 端点以跟踪进度。",
+        "description": "向现有智能体任务发送后续消息。该消息会异步处理——轮询 get job 端点以跟踪进度。",
         "parameters": [
           {
             "name": "projectId",
@@ -524,7 +524,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "你的项目 ID。可从你的控制台中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
+            "description": "你的项目 ID。可在仪表板中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面复制。"
           },
           {
             "name": "id",
@@ -533,7 +533,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "要向其发送消息的代理任务的唯一标识符。"
+            "description": "要发送消息到的智能体任务的唯一标识符。"
           }
         ],
         "requestBody": {
@@ -549,7 +549,7 @@
                   "prompt": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "发送给代理的后续指令。"
+                    "description": "发送给智能体的后续指令。"
                   }
                 }
               }
@@ -578,7 +578,7 @@
             }
           },
           "404": {
-            "description": "未找到作业",
+            "description": "未找到任务",
             "content": {
               "application/json": {
                 "schema": {
@@ -588,7 +588,7 @@
             }
           },
           "429": {
-            "description": "超出速率限制",
+            "description": "已超出速率限制",
             "content": {
               "application/json": {
                 "schema": {
@@ -608,7 +608,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "代理任务的唯一标识符。"
+            "description": "智能体任务的唯一标识符。"
           },
           "status": {
             "type": "string",
@@ -618,43 +618,43 @@
               "archived",
               "failed"
             ],
-            "description": "作业的当前状态。`active`——代理当前正在处理提示词。`completed`——代理已成功完成，并且可能已创建 PR（请检查 `prLink`）。`archived`——作业已归档。`failed`——代理遇到了不可恢复的错误。请持续轮询，直到状态变为 `completed`、`archived` 或 `failed`。"
+            "description": "任务的当前状态。`active`——智能体当前正在处理提示。`completed`——智能体已成功完成，并且可能已创建拉取请求（PR）（请检查 `prLink`）。`archived`——任务已归档。`failed`——智能体遇到了不可恢复的错误。轮询直到状态变为 `completed`、`archived` 或 `failed`。"
           },
           "source": {
             "type": "object",
-            "description": "源存储库信息。",
+            "description": "源代码仓库信息。",
             "properties": {
               "repository": {
                 "type": "string",
-                "description": "GitHub 存储库的完整 URL。"
+                "description": "GitHub 仓库的完整 URL。"
               },
               "ref": {
                 "type": "string",
-                "description": "代理正在处理的 Git branch。",
+                "description": "智能体正在处理的 Git 分支。",
                 "nullable": true
               }
             }
           },
           "model": {
             "type": "string",
-            "description": "此作业使用的 AI 模型。"
+            "description": "此任务使用的 AI 模型。"
           },
           "prLink": {
             "type": "string",
             "format": "uri",
             "example": "https://github.com/org/repo/pull/123",
-            "description": "由代理创建的 GitHub 拉取请求（PR；亦称“合并请求”/Merge Request）URL。作业仍处于 `active` 状态或没有文件变更时，该值为 `null`。代理成功创建 PR 后，此字段会被填充。",
+            "description": "由智能体创建的 GitHub 拉取请求（PR）URL。当任务仍处于 `active` 状态或没有文件变更时，该值为 `null`。智能体成功创建 PR 后，此字段会被填充。",
             "nullable": true
           },
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "description": "作业创建时的时间戳。"
+            "description": "任务的创建时间戳。"
           },
           "archivedAt": {
             "type": "string",
             "format": "date-time",
-            "description": "作业归档时的时间戳。",
+            "description": "任务的归档时间戳。",
             "nullable": true
           }
         }
@@ -664,7 +664,7 @@
         "properties": {
           "error": {
             "type": "string",
-            "description": "错误消息。"
+            "description": "错误信息。"
           }
         }
       }
@@ -673,7 +673,7 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "Authorization 头部需要 Bearer 令牌。请使用以 `mint_` 为前缀的管理员 API 密钥。这是服务端使用的机密凭证。你可以在控制台的 [API keys 页面](https://dashboard.mintlify.com/settings/organization/api-keys) 中生成一个。"
+        "description": "Authorization 标头需要 Bearer 令牌。请使用管理员 API 密钥（前缀为 `mint_`）。这是服务器端密钥，请妥善保管。可在仪表板中的 [API keys](https://dashboard.mintlify.com/settings/organization/api-keys) 页面生成。"
       }
     }
   }

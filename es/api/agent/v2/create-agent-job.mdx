@@ -1,20 +1,21 @@
 ---
-title: "Crear tarea de agente"
-description: "Crea una tarea de agente que se ejecuta en segundo plano y crea
-  automáticamente una solicitud de extracción con cambios en la documentación."
+title: "Crear un trabajo de agente"
+description: "Crea un trabajo de agente que se ejecuta en segundo plano y crea
+  automáticamente una solicitud de extracción (pull request, PR) con cambios en
+  la documentación."
 openapi: /es/admin-openapi.json POST /v2/agent/{projectId}/job
-keywords: [ "tarea de agente", "crear", "automatización", "automatizar" ]
+keywords: [ "trabajo de agente", "crear", "automatización", "automatizar" ]
 ---
 
-Este endpoint crea una tarea de agente en segundo plano. La tarea se ejecuta de forma asíncrona; usa el endpoint [get agent job](/es/api/agent/v2/get-agent-job) para consultar las actualizaciones de estado.
+Este endpoint crea un trabajo de agente en segundo plano. El trabajo se ejecuta de forma asíncrona; usa el endpoint [obtener un trabajo de agente](/es/api/agent/v2/get-agent-job) para consultar el estado.
 
-Si el agente edita los archivos correctamente, se crea automáticamente una solicitud de extracción y se rellena el campo `prLink` en la respuesta de la tarea.
+Si el agente edita los archivos correctamente, se crea automáticamente una solicitud de extracción (pull request, PR) y se rellena el campo `prLink` en la respuesta del trabajo.
 
 <div id="rate-limits">
   ## Límites de uso
 </div>
 
-* 100 usos por hora por proyecto de Mintlify
+* 100 usos por proyecto de Mintlify por hora
 
 <div id="usage">
   ## Uso

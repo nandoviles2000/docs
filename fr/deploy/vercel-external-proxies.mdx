@@ -1,39 +1,39 @@
 ---
 title: "Proxies externes avec Vercel"
-description: "Configurez des proxys inverses externes comme Cloudflare ou Nginx devant votre déploiement Vercel pour diffuser la documentation Mintlify sur un sous-chemin personnalisé."
-keywords: ["Vercel", "proxy externe", "CloudFront", "vérification de domaine", "certificats SSL"]
+description: "Configurez des proxies inverses externes comme Cloudflare ou Nginx devant votre déploiement Vercel pour diffuser la documentation Mintlify sur un sous-chemin personnalisé."
+keywords: ["Vercel", "proxy externe", "CloudFront", "vérification du domaine", "certificats SSL"]
 ---
 
-Si vous utilisez un proxy externe comme Cloudflare ou AWS CloudFront devant votre déploiement Vercel, vous devez le configurer correctement afin d’éviter les conflits avec la vérification de domaine de Vercel et l’approvisionnement des certificats SSL.
+Si vous utilisez un proxy externe comme Cloudflare ou AWS CloudFront devant votre déploiement Vercel, vous devez le configurer correctement pour éviter les conflits avec la vérification du domaine de Vercel et la mise à disposition des certificats SSL.
 
-Une mauvaise configuration du proxy peut empêcher Vercel d’approvisionner des certificats SSL Let's Encrypt et entraîner des échecs de vérification de domaine.
+Une configuration incorrecte du proxy peut empêcher Vercel de fournir des certificats SSL Let&#39;s Encrypt et entraîner des échecs de vérification du domaine.
 
-Consultez les [fournisseurs pris en charge](https://vercel.com/guides/how-to-setup-verified-proxy#supported-providers-verified-proxy-lite) dans la documentation Vercel.
+Consultez les [fournisseurs pris en charge](https://vercel.com/guides/how-to-setup-verified-proxy#supported-providers-verified-proxy-lite) dans la documentation de Vercel.
 
 <div id="required-path-allowlist">
-  ## Liste d’autorisation de chemins obligatoire
+  ## Liste d’autorisation des chemins requis
 </div>
 
-Votre proxy externe doit autoriser le trafic vers ces chemins spécifiques sans le bloquer, le rediriger ni le mettre en cache de manière agressive :
+Votre proxy externe doit autoriser le trafic sur ces chemins spécifiques sans le bloquer, le rediriger ni le mettre en cache de manière agressive :
 
-- `/.well-known/acme-challenge/*` - Requis pour la vérification de certificat Let's Encrypt
-- `/.well-known/vercel/*` - Requis pour la vérification de domaine Vercel
-- `/mintlify-assets/_next/static/*` - Requis pour les ressources statiques
+* `/.well-known/acme-challenge/*` - Requis pour la vérification du certificat Let&#39;s Encrypt
+* `/.well-known/vercel/*` - Requis pour la vérification du domaine Vercel
+* `/mintlify-assets/_next/static/*` - Requis pour les ressources statiques
 
-Ces chemins doivent être transmis directement à votre déploiement Vercel sans modification.
+Ces chemins doivent être transmis directement à votre déploiement Vercel, sans modification.
 
 <div id="header-forwarding-requirements">
-  ## Exigences relatives au transfert des en-têtes
+  ## Exigences de transfert de l’en-tête
 </div>
 
-Assurez-vous que votre proxy transfère correctement l’en-tête `HOST`. Sans un transfert correct des en-têtes, les requêtes de vérification échouent.
+Assurez-vous que votre proxy transfère correctement l’en-tête `HOST`. Sans un transfert correct de cet en-tête, les requêtes de vérification échouent.
 
 <div id="testing-your-proxy-setup">
   ## Tester la configuration de votre proxy
 </div>
 
-Pour vérifier que votre proxy est correctement configuré :
+Pour vérifier que votre proxy est correctement configuré :
 
-1. Vérifiez que `https://[yourdomain].com/.well-known/vercel/` renvoie une réponse.
-2. Assurez-vous que les certificats SSL sont correctement provisionnés dans votre dashboard Vercel.
-3. Vérifiez que la vérification du domaine se termine avec succès.
+1. Vérifiez que `https://[yourdomain].com/.well-known/vercel/` renvoie bien une réponse.
+2. Assurez-vous que les certificats SSL sont correctement provisionnés dans votre tableau de bord Vercel.
+3. Vérifiez que la vérification du domaine se termine correctement.

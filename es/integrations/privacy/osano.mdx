@@ -1,10 +1,10 @@
 ---
 title: "Osano"
-description: "Integra Osano en tu sitio de documentación de Mintlify para gestionar banners de consentimiento de cookies, preferencias de privacidad y cumplimiento normativo."
-keywords: ["Integración de Osano", "gestor de consentimiento de cookies", "cumplimiento con el RGPD"]
+description: "Integra Osano con tu sitio de documentación de Mintlify para gestionar los avisos de consentimiento de cookies, las preferencias de privacidad y el cumplimiento normativo."
+keywords: ["integración de Osano", "gestor de consentimiento de cookies", "cumplimiento del RGPD"]
 ---
 
-Añade el consentimiento de cookies de [Osano](https://www.osano.com/) a tu documentación con un [archivo JavaScript personalizado](/es/customize/custom-scripts#custom-javascript) en tu repositorio.
+Añade el consentimiento de cookies de [Osano](https://www.osano.com/) a tu documentación mediante un [archivo JavaScript personalizado](/es/customize/custom-scripts#custom-javascript) en tu repositorio.
 
 <div id="setup">
   ## Configuración
@@ -13,7 +13,7 @@ Añade el consentimiento de cookies de [Osano](https://www.osano.com/) a tu docu
 Crea un archivo `osano.js` en tu repositorio de documentación con el siguiente contenido:
 
 <CodeGroup>
-  ```js Format
+  ```js Formato
   var script = document.createElement("script");
   script.src = "OSANO_SCRIPT_URL";
   document.head.appendChild(script);
@@ -26,29 +26,29 @@ Crea un archivo `osano.js` en tu repositorio de documentación con el siguiente 
   ```
 </CodeGroup>
 
-Reemplaza `OSANO_SCRIPT_URL` con la URL de tu script de Osano. La URL de tu script es el valor de `src` en el fragmento de código que genera Osano. La URL de tu script siempre comienza con `https://cmp.osano.com/` y termina con `/osano.js`.
+Sustituye `OSANO_SCRIPT_URL` por la URL del script de Osano. La URL del script es el valor de `src` en el fragmento de código que genera Osano. La URL del script siempre comienza con `https://cmp.osano.com/` y termina con `/osano.js`.
 
 <div id="troubleshooting">
   ## Solución de problemas
 </div>
 
 <Accordion title="Las páginas no cargan con el modo de cumplimiento Strict">
-  Si tus páginas de documentación no se cargan correctamente al usar el modo de cumplimiento **Strict** de Osano, deberás agregar el domain de Mintlify a tu lista de permitidos para que se carguen las imágenes y otros recursos.
+  Si tus páginas de documentación no se cargan correctamente al usar el modo de cumplimiento **Strict** de Osano, tendrás que añadir el dominio de Mintlify a tu lista de permitidos para que se carguen las imágenes y otros recursos.
 
   <Steps>
     <Step title="Ve a Managed Rules">
-      En tu dashboard de Osano, ve a **Scripts** → **Managed Rules**.
+      En tu panel de Osano, ve a **Scripts** → **Managed Rules**.
     </Step>
 
-    <Step title="Agrega el domain de Mintlify">
-      Agrega `.mintlify.app/` como una regla gestionada.
+    <Step title="Añade el dominio de Mintlify">
+      Añade `.mintlify.app/` como regla administrada.
 
       <Frame>
-        <img src="/images/integrations/osano-managed-rule.png" alt="Regla gestionada de Osano" />
+        <img src="/images/integrations/osano-managed-rule.png" alt="Regla administrada de Osano" />
       </Frame>
 
       <Info>
-        Esto garantiza que todos los recursos servidos por Mintlify (incluidas imágenes, hojas de estilo y otros recursos de documentación) se traten como esenciales y se carguen incluso cuando Osano bloquee contenido de terceros sin categorizar.
+        Esto garantiza que todos los recursos servidos por Mintlify (incluidas las imágenes, las hojas de estilo y otros recursos de la documentación) se traten como esenciales y se carguen incluso cuando Osano bloquee contenido de terceros sin categorizar.
       </Info>
     </Step>
   </Steps>

@@ -1,27 +1,25 @@
 ---
 title: "Segment"
-description: "Intégrez Segment à votre documentation Mintlify pour acheminer les événements d’analyse vers des outils en aval tels que les entrepôts de données, les CRM et les plateformes marketing."
-keywords: ["Intégration Segment", "write key", "diffusion d’événements", "intégration CDP"]
+description: "Intégrez Segment à votre documentation Mintlify pour acheminer les événements d’analyse vers des outils en aval, comme des entrepôts de données, des CRM et des plateformes de marketing."
+keywords: ["intégration Segment", "clé d’écriture", "diffusion d’événements", "intégration CDP"]
 ---
 
-Ajoutez votre write key Segment à votre fichier `docs.json` pour envoyer des données Analytics à Segment.
+Ajoutez votre clé d’écriture Segment à votre fichier `docs.json` pour envoyer vos données d’analyse à Segment.
 
 <CodeGroup>
+  ```json Options d’analyse dans docs.json
+  "integrations": {
+      "segment": {
+          "key": "required",
+      }
+  }
+  ```
 
-```json Options d’Analytics dans docs.json
-"integrations": {
-    "segment": {
-        "key": "required",
-    }
-}
-```
-
-```json Exemple
-"integrations": {
-    "segment": {
-        "key": "nqJxiRG15Y6M594P8Sb8ESEciU3VC2"
-    }
-}
-```
-
+  ```json Exemple
+  "integrations": {
+      "segment": {
+          "key": "nqJxiRG15Y6M594P8Sb8ESEciU3VC2"
+      }
+  }
+  ```
 </CodeGroup>

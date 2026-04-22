@@ -1,41 +1,40 @@
 ---
-title: "Pasos"
-description: "Crea procedimientos numerados paso a paso con el componente steps para guiar a los usuarios a través de tareas secuenciales, tutoriales y flujos de trabajo de configuración."
+title: "Steps"
+description: "Crea procedimientos numerados paso a paso con el componente Steps para guiar a los usuarios en tareas secuenciales, tutoriales y flujos de trabajo de configuración."
 keywords: ["secuencia", "pasos numerados", "procedimientos", "pasos de tutorial"]
 ---
 
 import IconsOptional from "/snippets/es/icons-optional.mdx";
 
-Usa pasos para mostrar una serie de acciones o eventos secuenciales. Puedes agregar tantos pasos como necesites.
+Usa Steps para mostrar una serie de acciones o eventos secuenciales. Puedes añadir tantos pasos como necesites.
 
 <Steps>
   <Step title="Primer paso">
-    Estas son instrucciones o contenido que solo corresponden al primer paso.
+    Estas son instrucciones o contenido que solo se aplican al primer paso.
   </Step>
 
   <Step title="Segundo paso">
-    Estas son instrucciones o contenido que solo corresponden al segundo paso.
+    Estas son instrucciones o contenido que solo se aplican al segundo paso.
   </Step>
 
   <Step title="Tercer paso">
-    Estas son instrucciones o contenido que solo corresponden al tercer paso.
+    Estas son instrucciones o contenido que solo se aplican al tercer paso.
   </Step>
 </Steps>
 
 ```mdx Steps example
 <Steps>
-  <Step title="Primer paso">
-    Estas son instrucciones o contenido que solo corresponden al primer paso.
+  <Step title="First Step">
+    These are instructions or content that only pertain to the first step.
   </Step>
-  <Step title="Segundo paso">
-    Estas son instrucciones o contenido que solo corresponden al segundo paso.
+  <Step title="Second Step">
+    These are instructions or content that only pertain to the second step.
   </Step>
-  <Step title="Tercer paso">
-    Estas son instrucciones o contenido que solo corresponden al tercer paso.
+  <Step title="Third Step">
+    These are instructions or content that only pertain to the third step.
   </Step>
 </Steps>
 ```
-
 
 <div id="steps-properties">
   ## Propiedades de Steps
@@ -46,11 +45,11 @@ Usa pasos para mostrar una serie de acciones o eventos secuenciales. Puedes agre
 </ResponseField>
 
 <ResponseField name="titleSize" type="string" default="p">
-  El tamaño de los títulos de los pasos. Uno de `p`, `h2`, `h3` y `h4`.
+  El tamaño de los títulos de los pasos. Puede ser `p`, `h2`, `h3` o `h4`.
 </ResponseField>
 
 <div id="individual-step-properties">
-  ## Propiedades individuales del paso
+  ## Propiedades de cada paso
 </div>
 
 <ResponseField name="title" type="string" required>
@@ -58,7 +57,7 @@ Usa pasos para mostrar una serie de acciones o eventos secuenciales. Puedes agre
 </ResponseField>
 
 <ResponseField name="children" type="string | ReactNode">
-  El contenido de un paso, ya sea texto sin formato o componentes.
+  El contenido de un paso, ya sea como texto sin formato o como componentes.
 </ResponseField>
 
 <IconsOptional />
@@ -68,13 +67,13 @@ Usa pasos para mostrar una serie de acciones o eventos secuenciales. Puedes agre
 </ResponseField>
 
 <ResponseField name="titleSize" type="string" default="p">
-  el tamaño de los títulos de los paso. uno de `p`, `h2`, `h3` y `h4`.
+  El tamaño de los títulos de los pasos. Puede ser `p`, `h2`, `h3` o `h4`.
 </ResponseField>
 
 <ResponseField name="id" type="string">
-  Un ID personalizado para el paso, usado para enlaces de anclaje y la navegación de la tabla de contenido.
+  Un ID personalizado para el paso, que se usa para enlaces de anclaje y la navegación de la tabla de contenidos.
 </ResponseField>
 
 <ResponseField name="noAnchor" type="boolean" default="false">
-  Si se debe ocultar el enlace de anclaje del paso.
+  Indica si se debe ocultar el enlace de anclaje del paso.
 </ResponseField>

@@ -1,21 +1,21 @@
 ---
-title: "Accordion"
-description: "Utilisez le composant accordion pour afficher et masquer des sections de contenu, organiser les informations connexes et activer la divulgation progressive dans vos docs."
-keywords: ["accordions", "collapsible content", "expandable sections", "progressive disclosure"]
+title: "Accordions"
+description: "Utilisez le composant Accordion pour afficher et masquer des sections de contenu, organiser les informations associées et permettre un affichage progressif dans votre documentation."
+keywords: ["accordions", "contenu repliable", "sections dépliables", "affichage progressif"]
 ---
 
 import IconsOptional from "/snippets/fr/icons-optional.mdx";
 
-Les Accordion permettent aux utilisateurs d’ouvrir et de replier des sections de contenu. Utilisez des Accordion pour la divulgation progressive et pour organiser l’information.
+Les Accordions permettent aux utilisateurs d’ouvrir et de refermer des sections de contenu. Utilisez-les pour révéler progressivement les informations et les organiser.
 
-Lorsque vous ouvrez un Accordion, le hash de l’URL se met à jour, ce qui vous permet de partager des liens directs vers des sections spécifiques de l’Accordion.
+Lorsque vous ouvrez un Accordion, le fragment d’URL est mis à jour, ce qui vous permet de partager des liens directs vers des sections spécifiques de l’Accordion.
 
 <div id="single-accordion">
-  ## Accordéon simple
+  ## Accordion simple
 </div>
 
 <Accordion title="Je suis un Accordion.">
-  Vous pouvez placer n’importe quel contenu ici, y compris d’autres composants, comme du code :
+  Vous pouvez y mettre n’importe quel contenu, y compris d’autres composants, comme du code :
 
   ```java HelloWorld.java
    class HelloWorld {
@@ -28,12 +28,12 @@ Lorsque vous ouvrez un Accordion, le hash de l’URL se met à jour, ce qui vous
 
 ````mdx Accordion example
 <Accordion title="Je suis un Accordion.">
-  Vous pouvez mettre n'importe quel contenu ici, y compris d'autres composants, comme du code :
+  Vous pouvez y mettre n'importe quel contenu, y compris d'autres composants, comme du code :
 
    ```java HelloWorld.java
     class HelloWorld {
         public static void main(String[] args) {
-            System.out.println("Bonjour, le monde !");
+            System.out.println("Hello, World!");
         }
     }
   ```
@@ -41,14 +41,14 @@ Lorsque vous ouvrez un Accordion, le hash de l’URL se met à jour, ce qui vous
 ````
 
 <div id="accordion-groups">
-  ## Groupes d’Accordion
+  ## Groupes d’Accordions
 </div>
 
-Regroupez les Accordions liés avec `<AccordionGroup>`. Cela crée une section cohérente d’Accordions pouvant être développés ou réduits individuellement.
+Regroupez les Accordions associés à l’aide de `<AccordionGroup>`. Cela crée une section cohérente d’Accordions que vous pouvez développer ou réduire individuellement.
 
 <AccordionGroup>
-  <Accordion title="Pour commencer">
-    Vous pouvez placer d’autres composants à l’intérieur des Accordions.
+  <Accordion title="Prise en main">
+    Vous pouvez placer d’autres composants dans des Accordions.
 
     ```java HelloWorld.java
     class HelloWorld {
@@ -60,38 +60,37 @@ Regroupez les Accordions liés avec `<AccordionGroup>`. Cela crée une section c
   </Accordion>
 
   <Accordion title="Fonctionnalités avancées" icon="bot">
-    Ajoutez des icons pour rendre les Accordions plus visibles et faciles à parcourir d’un coup d’œil.
+    Ajoutez des icônes pour rendre les Accordions plus faciles à distinguer visuellement et à parcourir.
   </Accordion>
 
   <Accordion title="Dépannage">
-    Gardez le contenu connexe organisé en groupes.
+    Organisez le contenu associé en groupes.
   </Accordion>
 </AccordionGroup>
 
 ````mdx Accordion Group Example
 <AccordionGroup>
   <Accordion title="Premiers pas">
-    Vous pouvez placer d'autres composants à l'intérieur des Accordion.
+    Vous pouvez placer d'autres composants à l'intérieur des Accordions.
 
     ```java HelloWorld.java
     class HelloWorld {
         public static void main(String[] args) {
-            System.out.println("Bonjour, le monde !");
+            System.out.println("Hello, World!");
         }
     }
     ```
   </Accordion>
 
   <Accordion title="Fonctionnalités avancées" icon="alien-8bit">
-    Ajoutez des icônes pour rendre les accordéons plus visuellement distincts et faciles à parcourir.
+    Ajoutez des icônes pour rendre les Accordions plus distincts visuellement et plus faciles à parcourir.
   </Accordion>
 
   <Accordion title="Dépannage">
-    Organisez le contenu connexe en groupes.
+    Organisez le contenu associé en groupes.
   </Accordion>
 </AccordionGroup>
 ````
-
 
 <div id="properties">
   ## Propriétés
@@ -102,7 +101,7 @@ Regroupez les Accordions liés avec `<AccordionGroup>`. Cela crée une section c
 </ResponseField>
 
 <ResponseField name="description" type="string">
-  Détails sous le titre dans l’aperçu de l’Accordion.
+  Détail affiché sous le titre dans l’aperçu de l’Accordion.
 </ResponseField>
 
 <ResponseField name="defaultOpen" type="boolean" default="false">
@@ -110,7 +109,7 @@ Regroupez les Accordions liés avec `<AccordionGroup>`. Cela crée une section c
 </ResponseField>
 
 <ResponseField name="id" type="string">
-  ID personnalisé pour l’Accordion utilisé pour les liens d’ancrage. S’il est omis, la valeur par défaut est la même que `title`.
+  ID personnalisé de l’Accordion, utilisé pour les liens d’ancrage. S’il n’est pas renseigné, la valeur de `title` est utilisée par défaut.
 </ResponseField>
 
 <IconsOptional />

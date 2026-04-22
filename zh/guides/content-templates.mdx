@@ -1,54 +1,54 @@
 ---
 title: "文档内容模板"
 sidebarTitle: "内容模板"
-description: "复制并修改即用型 MDX 模板，用于在文档中撰写操作指南、教程、概念解释和 API 参考页面。"
+description: "复制并修改可直接使用的 MDX 模板，用于在文档中编写操作指南、教程、概念说明和 API 参考页面。"
 keywords: ["文档模板", "操作指南模板", "教程模板", "参考模板", "MDX 模板"]
 ---
 
-使用这些模板作为创建文档的起点。根据你的文档和受众对模板进行自定义。
+将这些模板作为创建文档的起点。根据你的文档需求和受众对模板进行自定义。
 
-1. 复制与你的内容类型匹配的模板。
+1. 复制与你的内容类型相匹配的模板。
 2. 将占位符和示例内容替换为你的实际内容。
-3. 按需调整各个部分。
-4. 删除任何不适用的部分。
+3. 根据需要调整各个部分。
+4. 删除不适用的部分。
 
 <Tip>
-  不确定该使用哪个模板？阅读 [内容类型](/zh/guides/content-types) 以了解每种模板适用的场景。
+  不确定该用哪个模板？请参阅[内容类型](/zh/guides/content-types)，了解每种模板分别适用于什么场景。
 </Tip>
 
 <div id="how-to-guide-template">
   ## 操作指南模板
 </div>
 
-当用户需要完成某项特定任务且已经对你的产品有一定了解时，应使用操作指南。操作指南以目标为导向，直奔解决方案。
+当用户需要完成某项特定任务，并且已经对你的产品有一定了解时，请使用操作指南。操作指南以目标为导向，直接提供解决方案。
 
 ````mdx How-to guide template
 ---
-title: "[标题应以动词开头]"
-description: "[执行特定任务]以[达成结果]。"
+title: "[Titles should start with a verb]"
+description: "[Do specific task] to [achieve outcome]."
 ---
 
-以简短的陈述开始，说明本指南帮助用户完成什么任务。
+Start with a brief statement of what this guide helps users accomplish.
 
-## 前置条件（可选）
+## Prerequisites (optional)
 
-仅列出必要的内容：
+List only what's necessary:
 
-- 必需的设置或配置
-- 所需的权限
-- 应首先配置的相关功能
+- Required setup or configuration
+- Permissions needed
+- Related features that should be configured first
 
-## [描述任务的行动导向标题]
+## [Action-oriented heading describing the task]
 
-提供专注于实现目标的直接说明。
+Provide direct instructions focused on achieving the goal.
 
-1. 打开[位置]并导航到[特定位置]
-2. 点击[按钮或选项]
-3. 输入[必填信息]
-4. 点击[确认按钮]
+1. Open [location] and navigate to [specific place]
+2. Click [button or option]
+3. Enter [required information]
+4. Click [confirmation button]
 
 ```language
-// Include code examples that users can copy and modify
+// 在此提供可供用户复制和修改的代码示例
 ```
 
 <Tip>
@@ -75,186 +75,186 @@ Link to related how-to guides or next steps.
   ## 教程模板
 </div>
 
-当你希望通过实践操作来帮助新用户学习时，请使用教程。教程会一步步引导用户，完成一个具有清晰结果的完整学习过程。
+当你想通过动手实践帮助新用户学习时，请使用教程。教程会一步一步引导用户完成整个学习过程，并达成明确的学习成果。
 
 ````mdx Tutorial template
 ---
-title: "[动作动词] [具体结果]"
-description: "了解如何通过[方法或途径]实现[具体结果]。"
+title: "[Action verb] [specific outcome]"
+description: "Learn how to [specific outcome] by [method or approach]."
 ---
 
-使用介绍段落说明用户可以期望学到什么，以及完成本教程后他们能做什么。
+Use an introduction paragraph to explain what users can expect to learn and what they can do after completing this tutorial.
 
-## 前提条件
+## Prerequisites
 
-列出用户在开始之前需要具备的条件：
+List what users need before starting:
 
-- 所需知识或技能
-- 工具、账户或权限
-- 时间投入（可选）
+- Required knowledge or skills
+- Tools, accounts, or permissions
+- Time commitment (optional)
 
-## 步骤 1：[第一个操作]
+## Step 1: [First action]
 
-为第一步提供清晰、具体的说明。
+Provide clear, specific instructions for the first step.
 
 ```language
-// Include code examples where helpful
+// 在适当位置添加代码示例
 ```
 
-解释此步骤完成了什么以及为什么重要。
+Explain what this step accomplishes and why it matters.
 
-## 步骤 2：[第二个操作]
+## Step 2: [Second action]
 
-继续按顺序执行基于前面工作的步骤。
+Continue with sequential steps that build on previous work.
 
-指出里程碑和进度标记，让用户知道他们在正确的轨道上。
+Point out milestones and progress markers so users know they're on track.
 
-## 步骤 3：[第三个操作]
+## Step 3: [Third action]
 
-保持步骤专注于具体操作而非理论。
+Keep steps focused on concrete actions rather than theory.
 
-尽量减少用户需要做出的选择。
+Minimize choices that users need to make.
 
-## 后续步骤
+## Next steps
 
-总结用户所学内容并建议合理的后续步骤：
+Summarize what users learned and suggest logical next steps:
 
-- 可尝试的相关教程
-- 常见任务的操作指南
-- 用于深入学习的额外资源
+- Related tutorials to try
+- How-to guides for common tasks
+- Additional resources for deeper learning
 ````
 
 <div id="explanation-template">
   ## 说明模板
 </div>
 
-当用户需要理解概念、设计决策或复杂功能的工作机制时，使用说明类内容。说明类内容用于提供上下文并加深理解，而不是给出一步一步的操作指引。
+当用户需要理解概念、设计决策，或了解复杂功能的工作原理时，请使用说明。说明侧重于提供背景信息并加深理解，而不是给出分步操作指南。
 
 ```mdx Explanation template
 ---
 title: "关于 [概念或功能]"
-description: "了解 [概念] 及其在 [产品或上下文] 中的工作原理。"
+description: "了解 [概念] 及其在 [产品或上下文] 中的工作方式。"
 ---
 
-首先明确说明本文档涵盖的内容以及理解它的重要性。
+首先清晰说明本文的解释范围，以及理解这一内容的重要性。
 
-用通俗易懂的语言定义概念。解释它是什么、有什么作用以及为什么存在。
+用通俗易懂的语言定义该概念，说明它是什么、有何作用，以及为何存在。
 
-必要时使用类比或与熟悉概念的对比来帮助理解。
+必要时，可借助类比或与熟悉概念的对比来辅助说明。
 
 ## [概念] 的工作原理
 
 解释底层机制、架构或流程。
 
 <Frame>
-  <img src="/path/to/diagram.png" alt="显示 [概念] 工作原理的图表" />
+  <img src="/path/to/diagram.png" alt="展示 [概念] 工作原理的示意图" />
 </Frame>
 
-将复杂的概念分解为易于理解的部分。
+将复杂概念拆解为易于理解的小节。
 
-## 为什么采用 [设计决策或方法]
+## 为何采用 [设计决策或方案]
 
-提供关于事物为何以这种方式工作的背景信息。
+说明当前设计方式背后的背景与原因。
 
-讨论权衡取舍、考虑过的替代方案或影响设计的约束条件。
+探讨权衡取舍、曾考虑过的替代方案，以及影响设计的约束条件。
 
 ## 何时使用 [概念]
 
-帮助用户了解何时最适合使用此概念或方法。
+帮助用户了解该概念或方案最适用的场景。
 
-- **用例 1**:适合使用此方法的场景
-- **用例 2**:另一个适合选择此方法的场景
-- **不推荐用于**:替代方案更优的情况
+- **使用场景 1**：适合采用此方案的情况
+- **使用场景 2**：另一个适合此选择的场景
+- **不建议用于**：更适合使用其他方案的情况
 
 ## 与其他功能的关系
 
-建立与产品中相关概念或功能的联系。
+说明该概念与产品中其他相关概念或功能的关联。
 
-解释此概念如何融入更广泛的系统或工作流程。
+说明该概念在整体系统或工作流程中所处的位置。
 
 ## 常见误解
 
-澄清误解或阐明细微差别。
+澄清常见误解或容易混淆的细微差别。
 
 ## 延伸阅读
 
-链接到相关说明、教程或参考文档。
+链接至相关说明、教程或参考文档。
 ```
 
 <div id="reference-template">
   ## 参考模板
 </div>
 
-当用户需要查找产品功能的具体细节时，请使用参考文档。编写参考文档时，应优先考虑其准确性、一致性和便于快速浏览。
+当用户需要查阅产品功能的具体细节时，请使用参考文档。参考文档应优先保证准确性、一致性和易于速览。
 
 ````mdx Reference template
 ---
-title: "[Feature or API name] reference"
-description: "Complete reference for [feature or API] properties, parameters, and options."
+title: "[功能或 API 名称]参考"
+description: "[功能或 API] 属性、参数和选项的完整参考。"
 ---
 
-Provide a one-sentence description of what this feature or API does.
+用一句话描述此功能或 API 的作用。
 
-## Properties
+## 属性
 
 <ParamField body="property1" type="string" required>
-  Brief description of the property.
+  属性的简要描述。
 </ParamField>
 
 <ParamField body="property2" type="number">
-  Brief description with default value if applicable.
+  简要描述（如有默认值，请一并注明）。
 </ParamField>
 
 <ParamField body="property3" type="boolean" default="false">
-  Brief description.
+  简要描述。
 </ParamField>
 
-## Parameters
+## 参数
 
 <ParamField body="parameterName" type="string">
-  Description of what this parameter does and when to use it.
+  描述此参数的作用及适用场景。
 
 ```language
-// Example showing typical usage
+// 展示典型用法的示例
 ```
 </ParamField>
 
 <ParamField body="anotherParameter" type="object">
-  参数的说明。
+  参数说明。
 
-  可用选项:
+  可用选项：
 
-  - `option1`: 此选项的说明。
-  - `option2`: 此选项的说明。
+  - `option1`：此选项的说明。
+  - `option2`：此选项的说明。
 </ParamField>
 
-## Examples
+## 示例
 
-### Basic example
+### 基本示例
 
 ```language title="Basic usage"
-// Minimal example showing common use case
+// 展示常见用例的最简示例
 ```
 
-### Advanced example
+### 高级示例
 
 ```language title="Advanced configuration"
-// Example with multiple options configured
+// 配置多个选项的示例
 ```
 
-## Response
+## 响应
 
-If documenting an API, describe the response structure.
+若为 API 文档，请在此描述响应结构。
 
 <ResponseField name="field1" type="string" required>
-  Description of the response field.
+  响应字段说明。
 </ResponseField>
 
 <ResponseField name="field2" type="number">
-  Description of another response field.
+  另一响应字段的说明。
 </ResponseField>
 
-Example response:
+响应示例：
 
 ```json
 {
@@ -263,9 +263,9 @@ Example response:
 }
 ```
 
-## Related references
+## 相关参考
 
-Link to related reference documentation.
+链接至相关参考文档。
 ````
 
 <div id="related-pages">
@@ -277,11 +277,11 @@ Link to related reference documentation.
     根据文档目标选择合适的内容类型。
   </Card>
 
-  <Card title="风格和语气" icon="pen" href="/zh/guides/style-and-tone">
-    以一致的风格撰写高效的文档。
+  <Card title="风格与语气" icon="pen" href="/zh/guides/style-and-tone">
+    使用统一的风格撰写高质量文档。
   </Card>
 
-  <Card title="格式化文本" icon="text" href="/zh/create/text">
-    了解如何格式化文本并设置内容样式。
+  <Card title="设置文本格式" icon="text" href="/zh/create/text">
+    了解如何设置文本格式并调整内容样式。
   </Card>
 </CardGroup>

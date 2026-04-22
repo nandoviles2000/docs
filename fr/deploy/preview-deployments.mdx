@@ -1,37 +1,37 @@
 ---
-title: "Aperçus de déploiement"
-description: "Obtenez des URL d’aperçu uniques pour chaque pull request afin que les réviseurs puissent voir les modifications de documentation dans un environnement en direct avant la mise en production."
-keywords: ["URL d’aperçu", "aperçus de pull request", "aperçus de branche", "environnements de préproduction"]
+title: "Déploiements de prévisualisation"
+description: "Obtenez des URL de prévisualisation uniques pour chaque pull request (PR) afin que les personnes chargées de la révision puissent voir les modifications de la documentation dans un environnement en ligne avant la mise en production."
+keywords: ["URL de prévisualisation", "prévisualisations de pull request (PR)", "prévisualisations de branche", "environnements de préproduction"]
 ---
 
 <Info>
-  Les aperçus de déploiement sont disponibles avec les [offres Pro et Enterprise](https://mintlify.com/pricing?ref=preview-deployments).
+  Les déploiements de prévisualisation sont disponibles avec les offres [Pro et Enterprise](https://mintlify.com/pricing?ref=preview-deployments).
 </Info>
 
-Les aperçus de déploiement vous permettent de voir à quoi ressemblent les modifications de votre documentation avant la fusion en production. Chaque aperçu crée une URL partageable qui se met automatiquement à jour lorsque vous poussez de nouvelles modifications.
+Les déploiements de prévisualisation vous permettent de voir à quoi ressembleront les modifications de votre documentation avant leur mise en production. Chaque prévisualisation crée une URL partageable qui se met automatiquement à jour lorsque vous envoyez de nouvelles modifications.
 
-Par défaut, les URL d’aperçu sont publiques. Partagez un lien d’aperçu avec toute personne qui doit examiner vos modifications.
+Les URL de prévisualisation sont accessibles publiquement par défaut. Partagez un lien de prévisualisation avec toute personne devant examiner vos modifications.
 
 <div id="create-preview-deployments">
-  ## Créer des déploiements de prévisualisation
+  ## Créez des déploiements de prévisualisation
 </div>
 
-Les déploiements de prévisualisation sont créés automatiquement via des pull requests (demandes de fusion) ou manuellement depuis votre Dashboard.
+Les déploiements de prévisualisation sont créés automatiquement via des pull requests (PR) ou manuellement depuis votre tableau de bord.
 
 <div id="automatic-previews">
   ### Aperçus automatiques
 </div>
 
 <Note>
-  Les aperçus automatiques ne sont créés que pour les pull requests (demandes de fusion) qui ciblent votre [branche de déploiement](/fr/guides/git-concepts#deployment-branch).
+  Les aperçus automatiques sont créés uniquement pour les pull requests (PR) qui ciblent votre [branche de déploiement](/fr/guides/git-concepts#deployment-branch).
 </Note>
 
-Lorsque vous créez une pull request (demande de fusion), le bot Mintlify ajoute automatiquement un lien pour afficher le déploiement de prévisualisation dans votre pull request. L’aperçu est mis à jour chaque fois que vous poussez de nouveaux commits sur la branche.
+Lorsque vous créez une pull request (PR), le bot Mintlify ajoute automatiquement un lien pour consulter le déploiement de prévisualisation dans votre pull request (PR). L’aperçu se met à jour chaque fois que vous poussez de nouveaux commits vers la branche.
 
 <Frame>
-  <img src="/images/previews/preview-deployment-light.png" alt="Lien pour afficher le déploiement dans la chronologie de la pull request" className="block dark:hidden" />
+  <img src="/images/previews/preview-deployment-light.png" alt="Lien pour consulter le déploiement dans la chronologie de la pull request (PR)" className="block dark:hidden" />
 
-  <img src="/images/previews/preview-deployment-dark.png" alt="Lien pour afficher le déploiement dans la chronologie de la pull request" className="hidden dark:block" />
+  <img src="/images/previews/preview-deployment-dark.png" alt="Lien pour consulter le déploiement dans la chronologie de la pull request (PR)" className="hidden dark:block" />
 </Frame>
 
 <div id="manual-previews">
@@ -40,26 +40,26 @@ Lorsque vous créez une pull request (demande de fusion), le bot Mintlify ajoute
 
 Vous pouvez créer manuellement un aperçu pour n’importe quelle branche.
 
-1. Accédez à votre [Dashboard](https://dashboard.mintlify.com/).
+1. Accédez à votre [tableau de bord](https://dashboard.mintlify.com/).
 2. Sélectionnez **Previews**.
 3. Sélectionnez **Create custom preview**.
-4. Entrez le nom de la branche à prévisualiser.
+4. Saisissez le nom de la branche dont vous voulez créer un aperçu.
 5. Sélectionnez **Create preview**.
 
 <div id="api">
   ### API
 </div>
 
-Vous pouvez également créer des déploiements de prévisualisation de manière programmatique en utilisant l'endpoint de l'API [Trigger preview deployment](/fr/api/preview/trigger). Cela est utile pour intégrer la création de prévisualisations dans des pipelines CI/CD ou des outils personnalisés.
+Vous pouvez également créer des déploiements de prévisualisation de manière programmatique à l’aide du point de terminaison de l’API [Trigger preview deployment](/fr/api/preview/trigger). Cela peut être utile pour intégrer la création de prévisualisations à des pipelines CI/CD ou à des outils personnalisés.
 
 <div id="redeploy-a-preview">
   ## Redéployer un aperçu
 </div>
 
-Redéployez un aperçu pour actualiser le contenu ou réessayer après un déploiement ayant échoué.
+Redéployez un aperçu pour actualiser le contenu ou relancer le déploiement après un échec.
 
-1. Sélectionnez l’aperçu dans votre [Dashboard](https://dashboard.mintlify.com/).
-2. Sélectionnez **Redéployer**.
+1. Sélectionnez l’aperçu dans votre [tableau de bord](https://dashboard.mintlify.com/).
+2. Sélectionnez **Redeploy**.
 
 <Frame>
   <img src="/images/previews/redeploy-preview-light.png" alt="Le menu Previews avec le bouton de déploiement mis en évidence par un rectangle orange." className="block dark:hidden" />
@@ -71,59 +71,64 @@ Redéployez un aperçu pour actualiser le contenu ou réessayer après un déplo
   ## Widget d’aperçu
 </div>
 
-Le widget d’aperçu apparaît sur les déploiements de prévisualisation pour vous aider à naviguer et à consulter les pages mises à jour. Le widget se présente sous la forme d’un bouton flottant dans le coin inférieur droit de votre déploiement de prévisualisation.
+Le widget d’aperçu apparaît sur les déploiements de prévisualisation pour vous aider à naviguer et à passer en revue les pages mises à jour. Il prend la forme d’un bouton flottant dans l’angle inférieur droit de votre déploiement de prévisualisation.
 
 <Frame>
-  <img src="/images/previews/widget-light.png" alt="Widget d’aperçu agrandi affichant la liste des fichiers modifiés." className="block dark:hidden" />
+  <img src="/images/previews/widget-light.png" alt="Widget d’aperçu déployé affichant la liste des fichiers modifiés." className="block dark:hidden" />
 
-  <img src="/images/previews/widget-dark.png" alt="Widget d’aperçu agrandi affichant la liste des fichiers modifiés." className="hidden dark:block" />
+  <img src="/images/previews/widget-dark.png" alt="Widget d’aperçu déployé affichant la liste des fichiers modifiés." className="hidden dark:block" />
 </Frame>
 
 1. Cliquez sur le widget pour afficher tous les fichiers ajoutés, modifiés ou supprimés dans l’aperçu.
 2. Cliquez sur un fichier pour voir les modifications sur la page correspondante.
 3. Utilisez la barre de recherche pour filtrer la liste des fichiers modifiés.
-4. Survolez un fichier et cliquez sur l'icône **Ouvrir dans l'éditeur** pour modifier le fichier directement dans l'éditeur web.
+4. Survolez un fichier, puis cliquez sur l’icône **Open in editor** pour le modifier directement dans l’éditeur web.
 
-Le widget apparaît uniquement sur les déploiements de prévisualisation, et non sur votre site en production ni dans vos aperçus locaux.
+Le widget apparaît uniquement sur les déploiements de prévisualisation, pas sur votre site en production ni dans les aperçus locaux.
 
 <div id="restrict-access-to-preview-deployments">
-  ## Restreindre l'accès aux déploiements de prévisualisation
+  ## Restreindre l’accès aux déploiements de prévisualisation
 </div>
 
-Par défaut, les déploiements de prévisualisation sont accessibles publiquement à toute personne disposant de l'URL. Vous pouvez restreindre l'accès en exigeant l'authentification de l'organisation pour tous les aperçus ou en protégeant par mot de passe des aperçus individuels.
+Par défaut, les déploiements de prévisualisation sont accessibles à toute personne disposant de l’URL. Vous pouvez en restreindre l’accès en exigeant une authentification de l’organisation pour toutes les prévisualisations, ou en protégeant chaque prévisualisation individuellement par mot de passe.
 
 <div id="require-organization-authentication">
-  ### Exiger l'authentification de l'organisation
+  ### Exiger l’authentification de l’organisation
 </div>
 
-Restreignez l'accès aux aperçus aux membres authentifiés de votre organisation Mintlify.
+Restreignez l’accès à l’aperçu aux membres authentifiés de votre organisation Mintlify.
 
-1. Accédez à la section **Previews** sur la page [Modules complémentaires](https://dashboard.mintlify.com/products/addons) de votre Dashboard.
-2. Activez ou désactivez l'interrupteur **Preview authentication** pour gérer l'authentification des prévisualisations.
-  <Frame>
-    <img src="/images/previews/preview-auth-light.png" alt="L'interrupteur d'authentification des prévisualisations sur la page Modules complémentaires" className="block dark:hidden" />
-    <img src="/images/previews/preview-auth-dark.png" alt="L'interrupteur d'authentification des prévisualisations sur la page Modules complémentaires" className="hidden dark:block" />
-  </Frame>
+1. Accédez à la section **Previews** de la page [Add-ons](https://dashboard.mintlify.com/products/addons) de votre tableau de bord.
+2. Cliquez sur le bouton bascule **Preview authentication** pour activer ou désactiver l’authentification des aperçus.
+
+<Frame>
+  <img src="/images/previews/preview-auth-light.png" alt="Le bouton bascule Preview authentication sur la page Add-ons" className="block dark:hidden" />
+
+  <img src="/images/previews/preview-auth-dark.png" alt="Le bouton bascule Preview authentication sur la page Add-ons" className="hidden dark:block" />
+</Frame>
 
 <div id="password-protect-an-individual-preview">
-  ### Protéger un aperçu individuel par mot de passe
+  ### Protéger un aperçu spécifique par mot de passe
 </div>
 
 <Info>
   Les aperçus protégés par mot de passe sont disponibles avec les [offres Enterprise](https://mintlify.com/pricing?ref=preview-deployments).
 </Info>
 
-Protégez par mot de passe un aperçu spécifique pour le partager avec des réviseurs externes sans les ajouter à votre organisation Mintlify. Cette option est disponible lors de la création d'un aperçu manuel et n'apparaît pas lorsque l'authentification de l'organisation est déjà activée pour votre déploiement.
+Protégez par mot de passe un aperçu spécifique afin de le partager avec des relecteurs externes sans les ajouter à votre organisation Mintlify. Cette option est disponible lors de la création d’un aperçu manuel et n’apparaît pas lorsque l’authentification de l’organisation est déjà activée pour votre déploiement.
 
-1. Accédez à votre [Dashboard](https://dashboard.mintlify.com/).
+1. Accédez à votre [tableau de bord](https://dashboard.mintlify.com/).
 2. Sélectionnez **Previews**.
 3. Sélectionnez **Create custom preview**.
-4. Entrez le nom de la branche à prévisualiser.
-5. Activez **Make private** et saisissez un mot de passe. Les mots de passe doivent contenir au moins 8 caractères.
-  <Frame>
-    <img src="/images/previews/private-preview-light.png" alt="La fenêtre Créer un aperçu personnalisé avec l'interrupteur Make private activé et un champ de mot de passe." className="block dark:hidden" />
-    <img src="/images/previews/private-preview-dark.png" alt="La fenêtre Créer un aperçu personnalisé avec l'interrupteur Make private activé et un champ de mot de passe." className="hidden dark:block" />
-  </Frame>
+4. Saisissez le nom de la branche que vous souhaitez prévisualiser.
+5. Activez **Make private**, puis saisissez un mot de passe. Les mots de passe doivent contenir au moins 8 caractères.
+
+<Frame>
+  <img src="/images/previews/private-preview-light.png" alt="La fenêtre modale Create a custom preview avec l’option Make private activée et un champ de mot de passe." className="block dark:hidden" />
+
+  <img src="/images/previews/private-preview-dark.png" alt="La fenêtre modale Create a custom preview avec l’option Make private activée et un champ de mot de passe." className="hidden dark:block" />
+</Frame>
+
 6. Sélectionnez **Create preview**.
 
 <div id="troubleshooting-preview-deployments">
@@ -132,11 +137,11 @@ Protégez par mot de passe un aperçu spécifique pour le partager avec des rév
 
 Si votre déploiement de prévisualisation échoue, essayez les étapes de dépannage suivantes.
 
-* **Consulter les journaux de build** : Dans votre [Dashboard](https://dashboard.mintlify.com/), allez dans **Previews** et cliquez sur la prévisualisation en échec. Les journaux de déploiement affichent les erreurs qui ont provoqué l’échec.
-* **Vérifier votre configuration** :
-  * Syntaxe `docs.json` non valide
-  * Chemins de fichiers manquants ou incorrects référencés dans votre navigation
-  * Frontmatter non valide dans les fichiers MDX
-  * Liens d’images cassés ou fichiers d’images manquants
-* **Valider en local** : Exécutez `mint dev` en local pour détecter les erreurs de build avant de pousser vers le référentiel.
-* **Vérifier les changements récents** : Passez en revue les commits les plus récents dans votre branche pour identifier les modifications qui ont entraîné l’échec du build.
+* **Consultez les logs de build** : dans votre [tableau de bord](https://dashboard.mintlify.com/), accédez à **Previews**, puis cliquez sur la prévisualisation en échec. Les logs de déploiement indiquent les erreurs à l’origine de l’échec.
+* **Vérifiez votre configuration** :
+  * Syntaxe `docs.json` invalide
+  * Chemins de fichiers manquants ou incorrects référencés dans la navigation
+  * Métadonnées d’en-tête invalides dans les fichiers MDX
+  * Liens d’image rompus ou fichiers image manquants
+* **Validez en local** : exécutez `mint dev` localement pour détecter les erreurs de build avant de pousser vos modifications vers le dépôt.
+* **Vérifiez les modifications récentes** : examinez les commits les plus récents de votre branche pour identifier les changements à l’origine de l’échec du build.

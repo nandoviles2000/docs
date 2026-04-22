@@ -1,48 +1,48 @@
 ---
 title: "使用场景"
-description: "探索使用 Mintlify agent 自动更新文档、沉淀知识和维护准确文档的实际案例。"
-keywords: ["agent 工作流", "文档工作流", "自动化示例"]
+description: "探索使用 Mintlify 智能体自动化文档更新、沉淀知识并保持文档准确性的实际示例。"
+keywords: ["智能体工作流", "文档工作流", "自动化示例"]
 ---
 
-agent 可以协助完成多种文档相关任务。以下示例展示了几种将 agent 集成到文档流程中的方式。选择一种适合你团队当前工作方式的方案，并根据你的具体需求进行调整。
+智能体可协助完成多种文档任务。以下示例展示了你可以如何将智能体集成到文档流程中。你可以先尝试一种适合团队当前工作方式的方法，再根据具体需求进行调整。
 
 <div id="iterate-on-a-prompt-in-a-slack-thread">
   ## 在 Slack 线程中迭代优化提示词
 </div>
 
-先向 agent 发送提示词，然后在同一条线程中继续使用 `@mintlify` 提及它，以便对其创建的拉取请求 (PR；亦称“合并请求”/Merge Request) 进行细化和迭代。
+先向智能体发送提示词，然后继续在同一线程中使用 `@mintlify` 提及它，以优化并反复调整它创建的拉取请求 (PR) 。
 
-例如：`@mintlify Our quickstart page needs a new section on inviting collaborators`。接着：`@mintlify The new section should be called "Inviting collaborators"`。然后再根据需要继续进行其他迭代。
+例如：`@mintlify Our quickstart page needs a new section on inviting collaborators`。然后发送 `@mintlify The new section should be called "Inviting collaborators"`。之后可继续提出其他修改。
 
 <div id="start-with-the-agent-finish-manually">
-  ## 从助手开始，由你手动完成
+  ## 先让智能体着手，最后手动收尾
 </div>
 
-先向助手发送指令以启动一个项目，然后检出它创建的 branch，在本地环境或 Web 编辑器中完成任务。助手可以帮助你起步，之后你可以接手完成整个任务。
+先提示智能体开始处理项目，然后检出它创建的分支，并在本地环境或网页编辑器中完成任务。智能体可以帮你起个头，之后再由你接手完成剩余工作。
 
-例如：`@mintlify Update the quickstart page to include information about inviting collaborators`，然后检出该 branch，使用你喜欢的方式进行进一步修改。
+例如：`@mintlify Update the quickstart page to include information about inviting collaborators`，然后检出该分支，并用你偏好的方式进行其他必要修改。
 
 <div id="update-docs-when-merging-feature-changes">
   ## 在合并功能变更时更新文档
 </div>
 
-当你合并功能拉取请求 (PR) 时，将该 PR 的链接分享给 agent，让其更新相关文档。
+合并功能拉取请求 (PR) 后，将该 PR 链接分享给智能体，以更新相关文档。
 
-例如：`@mintlify This PR adds a new authentication method. Update the docs to include the new auth flow: [PR link]`.
+例如：`@mintlify 此 PR 新增了一种身份验证方法。请更新文档，加入新的身份验证流程：[PR link]`。
 
 <div id="generate-release-notes-from-a-pull-request">
-  ## 从拉取请求生成发布说明
+  ## 根据拉取请求 (PR) 生成发布说明
 </div>
 
-向智能助手提供特定的拉取请求，让其根据提交历史生成发布说明或更新日志。
+向智能体提供一个特定的拉取请求 (PR) ，让它根据提交历史生成发布说明或变更日志更新。
 
-例如：`@mintlify Generate release notes for this PR: [PR link]`。
+例如：`@mintlify Generate release notes for this PR: [PR link]`.
 
 <div id="address-pull-request-review-feedback">
-  ## 处理拉取请求评审反馈
+  ## 处理拉取请求 (PR) 的评审反馈
 </div>
 
-将拉取请求链接分享给助手，以便处理文档拉取请求中的审阅意见和代码评审反馈。
+将拉取请求 (PR) 链接分享给智能体，让它处理文档拉取请求中的审阅意见和代码评审反馈。
 
 例如：`@mintlify Address the review comments on this PR: [PR link]`。
 
@@ -50,50 +50,50 @@ agent 可以协助完成多种文档相关任务。以下示例展示了几种�
   ## 生成代码示例
 </div>
 
-让智能体在整份文档或特定页面中为各个功能生成代码示例。
+让智能体为整个文档中的功能或特定页面生成代码示例。
 
-例如：`@mintlify Generate a code example to make the authentication method easier to understand`.
+例如：`@mintlify Generate a code example to make the authentication method easier to understand`。
 
 <div id="add-images-or-files-to-your-docs">
   ## 向文档添加图片或文件
 </div>
 
-在向智能体发送指令时，直接在 Slack 消息中附加文件或图片。智能体会处理附件并将其加入到文档中。
+向智能体发出提示时，可直接将文件或图片附加到 Slack 消息中。智能体会处理该附件，并将其加入文档中。
 
-例如：`@mintlify Add this diagram to the architecture overview page`，并在消息中附上该图片。
+例如：`@mintlify Add this diagram to the architecture overview page`，然后将图片附加到该消息中。
 
 <div id="review-existing-content">
-  ## 审查现有内容
+  ## 审核现有内容
 </div>
 
-让助手审查现有内容的技术准确性、写作风格、语法或其他问题。
+让智能体审核现有内容是否存在技术准确性、风格、语法或其他方面的问题。
 
-例如：`@mintlify 请审查 API 限流部分。我们上个月更改了限制。`
+例如：`@mintlify Review the API rate limiting section. We changed limits last month`。
 
 <div id="respond-to-user-feedback">
-  ## 回应用户反馈
+  ## 响应用户反馈
 </div>
 
-根据用户的反馈向助手提问，以便对文档进行有针对性的更新。
+将用户反馈提供给智能体，帮助其对文档进行有针对性的更新。
 
 例如：`@mintlify Users are getting confused by step 3 in the setup guide. What might be making it unclear?`.
 
 <div id="automate-with-workflows">
-  ## 使用工作流实现自动化
+  ## 使用工作流自动化
 </div>
 
-创建工作流，以自动化处理重复性任务和响应式维护任务，例如在你为你的产品添加新功能时撰写更新日志或更新内容。
+创建工作流，自动处理重复性任务和响应式维护工作，例如在为产品添加新功能时编写更新日志或更新内容。
 
-参见 [Workflows](/zh/agent/workflows) 了解更多信息。
+更多信息，请参阅 [工作流](/zh/agent/workflows)。
 
 <div id="automate-with-the-api">
-  ## 使用 API 实现自动化
+  ## 使用 API 自动化
 </div>
 
-将 agent 集成到你现有的自动化工具中，当代码发生变更时自动更新文档、触发内容审查，或在多个代码仓库之间同步文档更新。
+将智能体集成到现有的自动化工具中，以便在代码发生变更时自动更新文档、触发内容审核，或在多个代码仓库之间同步文档更新。
 
-使用 agent 的 API 端点来[创建任务](/zh/api/agent/v2/create-agent-job)、[获取任务状态](/zh/api/agent/v2/get-agent-job)以及[发送消息](/zh/api/agent/v2/send-message)。
+使用智能体端点来[创建作业](/zh/api/agent/v2/create-agent-job)、[获取作业状态](/zh/api/agent/v2/get-agent-job)和[发送消息](/zh/api/agent/v2/send-message)。
 
-通过 API 创建任务时，你可以使用 `asDraft` 参数 (默认为 `false`) 控制拉取请求是否以草稿模式打开。将 `asDraft` 设置为 `true` 以创建草稿拉取请求，或保留默认值以创建非草稿拉取请求，从而在自动化工作流中立即进行审查和合并。
+通过 API 创建作业时，您可以使用 `asDraft` 参数控制拉取请求 (PR) 是否以草稿模式创建 (默认为 `false`) 。将 `asDraft` 设为 `true` 可创建草稿拉取请求 (PR) ；保留默认值则会创建非草稿拉取请求 (PR) ，以便在自动化工作流中立即进行审核和合并。
 
-在[代码合并后自动更新文档](/zh/guides/automate-agent)教程中了解如何设置 API 自动化。
+请参阅[代码合并时自动更新文档](/zh/guides/automate-agent)教程，了解如何设置 API 自动化。

@@ -1,127 +1,133 @@
 ---
-title: "Configurer l'assistant"
-description: "Activez ou désactivez l'assistant, configurez la gestion des réponses, ajoutez des questions de démarrage, configurez la protection contre les bots et gérez la facturation."
-keywords: ["assistant", "paramètres", "redirection", "protection contre les bots", "facturation"]
+title: "Configurer l’assistant"
+description: "Activez ou désactivez l’assistant, configurez le traitement des réponses, ajoutez des questions initiales, mettez en place une protection anti-bot et gérez la facturation."
+keywords: ["assistant", "paramètres", "réduction des demandes", "protection anti-bot", "facturation"]
 ---
 
-Configurez l'assistant et gérez la facturation sur la page [Assistant](https://dashboard.mintlify.com/products/assistant) de votre tableau de bord.
+Configurez l’assistant et gérez la facturation depuis la page [Assistant](https://dashboard.mintlify.com/products/assistant) de votre tableau de bord.
 
 <div id="enable-or-disable-the-assistant">
-  ## Activer ou désactiver l'assistant
+  ## Activer ou désactiver l’assistant
 </div>
 
-Basculez le statut de l'assistant pour l'activer ou le désactiver sur votre site de documentation.
+Utilisez le bouton de bascule de l’assistant pour l’activer ou le désactiver sur votre site de documentation.
 
 <Frame>
-  <img src="/images/assistant/status-light.png" alt="Le bouton de statut de l'assistant dans le tableau de bord." className="block dark:hidden" />
-  <img src="/images/assistant/status-dark.png" alt="Le bouton de statut de l'assistant dans le tableau de bord." className="hidden dark:block" />
+  <img src="/images/assistant/status-light.png" alt="Le bouton de bascule de l’état de l’assistant dans le tableau de bord." className="block dark:hidden" />
+
+  <img src="/images/assistant/status-dark.png" alt="Le bouton de bascule de l’état de l’assistant dans le tableau de bord." className="hidden dark:block" />
 </Frame>
 
 <div id="set-deflection-email">
-  ## Définir l'e-mail de redirection
+  ## Définir l’adresse e-mail de redirection
 </div>
 
-Dans la section Gestion des réponses, activez l'assistant pour rediriger les questions sans réponse vers votre équipe de support.
+Dans la section Response Handling, activez l’option permettant à l’assistant de rediriger les questions sans réponse vers votre équipe de support.
 
-Spécifiez une adresse e-mail que l'assistant communiquera aux utilisateurs s'il ne peut pas répondre à leur question. Vous pouvez également activer un bouton "Contacter le support" qui apparaît dans le panneau de chat de l'assistant.
+Indiquez une adresse e-mail que l’assistant pourra communiquer aux utilisateurs s’il ne peut pas répondre à leur question. Vous pouvez également activer l’affichage d’un bouton « Contacter le support » dans le panneau de chat de l’assistant.
 
 <Frame>
-  <img src="/images/assistant/deflection-light.png" alt="Le panneau de redirection de l'assistant dans le tableau de bord. La redirection de l'assistant est activée et support@mintlify.com est défini comme e-mail de redirection." className="block dark:hidden" />
-  <img src="/images/assistant/deflection-dark.png" alt="Le panneau de redirection de l'assistant dans le tableau de bord. La redirection de l'assistant est activée et support@mintlify.com est défini comme e-mail de redirection." className="hidden dark:block" />
+  <img src="/images/assistant/deflection-light.png" alt="Le panneau de redirection de l’assistant dans le tableau de bord. La redirection de l’assistant est activée et support@mintlify.com est définie comme adresse e-mail de redirection." className="block dark:hidden" />
+
+  <img src="/images/assistant/deflection-dark.png" alt="Le panneau de redirection de l’assistant dans le tableau de bord. La redirection de l’assistant est activée et support@mintlify.com est définie comme adresse e-mail de redirection." className="hidden dark:block" />
 </Frame>
 
 <div id="search-domains">
   ## Domaines de recherche
 </div>
 
-Dans la section Gestion des réponses, configurez les domaines que l'assistant peut utiliser pour effectuer des recherches web afin de trouver un contexte supplémentaire lorsqu'il répond aux questions.
+Dans la section Response Handling, configurez les domaines que l’assistant peut utiliser pour effectuer des recherches sur le web afin d’obtenir davantage de contexte lorsqu’il répond aux questions.
 
-- Les domaines doivent être accessibles publiquement.
-- Les domaines nécessitant JavaScript pour se charger ne sont pas pris en charge.
+* Les domaines doivent être accessibles publiquement.
+* Les domaines dont le chargement nécessite JavaScript ne sont pas pris en charge.
 
 <Frame>
-  <img src="/images/assistant/search-domains-light.png" alt="Le panneau des domaines de recherche de l'assistant activé dans le tableau de bord. L'assistant est configuré pour rechercher sur le domaine mintlify.com/pricing." className="block dark:hidden" />
-  <img src="/images/assistant/search-domains-dark.png" alt="Le panneau des domaines de recherche de l'assistant activé dans le tableau de bord. L'assistant est configuré pour rechercher sur le domaine mintlify.com/pricing." className="hidden dark:block" />
+  <img src="/images/assistant/search-domains-light.png" alt="Le panneau des domaines de recherche de l’assistant est activé dans le tableau de bord. L’assistant est configuré pour rechercher dans le domaine mintlify.com/pricing." className="block dark:hidden" />
+
+  <img src="/images/assistant/search-domains-dark.png" alt="Le panneau des domaines de recherche de l’assistant est activé dans le tableau de bord. L’assistant est configuré pour rechercher dans le domaine mintlify.com/pricing." className="hidden dark:block" />
 </Frame>
 
-Pour un contrôle plus précis sur ce que l'assistant peut rechercher, utilisez la syntaxe de filtrage.
+Pour contrôler plus précisément ce que l’assistant peut rechercher, utilisez une syntaxe de filtrage.
 
-- **Filtrage au niveau du domaine**
-  - `example.com` : Rechercher uniquement sur le domaine `example.com`
-  - `docs.example.com` : Rechercher uniquement sur le sous-domaine `docs.example.com`
-  - `*.example.com` : Rechercher sur tous les sous-domaines de `example.com`
-- **Filtrage au niveau du chemin**
-  - `docs.example.com/api` : Rechercher toutes les pages sous le sous-chemin `/api`
-- **Plusieurs motifs**
-  - Ajoutez plusieurs entrées pour cibler différentes sections de sites
+* **Filtrage au niveau du domaine**
+  * `example.com` : recherchez uniquement dans le domaine `example.com`
+  * `docs.example.com` : recherchez uniquement dans le sous-domaine `docs.example.com`
+  * `*.example.com` : recherchez dans tous les sous-domaines de `example.com`
+* **Filtrage au niveau du chemin**
+  * `docs.example.com/api` : recherchez dans toutes les pages du sous-chemin `/api`
+* **Plusieurs motifs**
+  * Ajoutez plusieurs entrées pour cibler différentes sections de sites
 
 <div id="add-sample-questions">
-  ## Ajouter des questions de démarrage
+  ## Ajouter des questions types
 </div>
 
-Aidez vos utilisateurs à démarrer des conversations avec l'assistant en ajoutant des questions de démarrage.
+Aidez vos utilisateurs à engager la conversation avec l’assistant en ajoutant des questions de départ.
 
-L'assistant peut générer des questions spécifiques à la page en fonction de la page consultée par l'utilisateur, ou vous pouvez ajouter des questions persistantes disponibles sur toutes les pages.
+L’assistant peut générer des questions propres à chaque page en fonction de celle que l’utilisateur consulte, ou vous pouvez ajouter des questions permanentes disponibles sur toutes les pages.
 
-Vous pouvez ajouter jusqu'à trois questions de démarrage. Cliquez sur **Ask AI** pour obtenir des questions recommandées basées sur votre documentation.
+Vous pouvez ajouter jusqu’à trois questions de départ. Cliquez sur **Ask AI** pour obtenir des questions recommandées en fonction de votre documentation.
 
 <Frame>
-  <img src="/images/assistant/search-suggestions-light.png" alt="Le panneau de suggestions de recherche dans le tableau de bord avec les questions de démarrage contextuelles activées." className="block dark:hidden" />
-  <img src="/images/assistant/search-suggestions-dark.png" alt="Le panneau de suggestions de recherche dans le tableau de bord avec les questions de démarrage contextuelles activées." className="hidden dark:block" />
+  <img src="/images/assistant/search-suggestions-light.png" alt="Le panneau de suggestions de recherche dans le tableau de bord, avec les questions de départ contextuelles activées." className="block dark:hidden" />
+
+  <img src="/images/assistant/search-suggestions-dark.png" alt="Le panneau de suggestions de recherche dans le tableau de bord, avec les questions de départ contextuelles activées." className="hidden dark:block" />
 </Frame>
 
 <div id="bot-protection">
   ## Protection contre les bots
 </div>
 
-Dans la section Protection contre les bots, activez le captcha invisible pour protéger votre assistant contre les abus automatisés. La protection contre les bots respecte la vie privée et est invisible pour la quasi-totalité des visiteurs.
+Dans la section Bot Protection, activez le captcha invisible pour protéger votre assistant contre les abus automatisés. Cette protection contre les bots respecte la vie privée et est invisible pour la quasi-totalité des visiteurs.
 
-Pour activer la protection contre les bots :
+Pour activer la protection contre les bots :
 
-1. Accédez à la page [Paramètres de l'assistant](https://dashboard.mintlify.com/products/assistant/settings) dans votre tableau de bord.
-2. Dans la section **Bot Protection**, activez **Invisible Captcha**.
+1. Accédez à la page des [paramètres de l’Assistant](https://dashboard.mintlify.com/products/assistant/settings) dans votre tableau de bord.
+2. Dans la section **Bot Protection**, activez l’option **Invisible Captcha**.
 
-Les modifications prennent jusqu'à 10 minutes pour se propager.
+Les modifications peuvent prendre jusqu’à 10 minutes à se propager.
 
 <Note>
-  Si vous utilisez des [en-têtes Content Security Policy](/fr/deploy/csp-configuration) personnalisés, vous devez inclure `hcaptcha.com` et `*.hcaptcha.com` dans votre liste autorisée.
+  Si vous utilisez des [en-têtes de politique de sécurité du contenu personnalisés](/fr/deploy/csp-configuration), vous devez inclure `hcaptcha.com` et `*.hcaptcha.com` dans votre liste d’autorisations.
 </Note>
 
 <div id="manage-billing">
   ## Gérer la facturation
 </div>
 
-L'assistant utilise des allocations de messages par paliers. Un message correspond à toute interaction utilisateur avec l'assistant qui reçoit une réponse correcte. Si vous avez des messages non utilisés, jusqu'à la moitié de votre allocation de messages peut être reportée au cycle de facturation suivant. Par exemple, si vous avez une allocation de 1 000 messages et que vous en utilisez 300, 500 messages sont reportés au cycle de facturation suivant, ce qui vous donne un total de 1 500 messages pour le cycle suivant.
+L’assistant fonctionne avec des quotas de messages par palier. Un message correspond à toute interaction d’un utilisateur avec l’assistant qui reçoit une réponse valide. Si vous avez des messages inutilisés, jusqu’à la moitié de votre quota peut être reportée sur le cycle de facturation suivant. Par exemple, si vous disposez d’un quota de 1 000 messages et que vous en utilisez 300, 500 messages sont reportés sur le cycle de facturation suivant, ce qui vous donne un total de 1 500 messages pour ce cycle.
 
-Par défaut, l'assistant autorise les dépassements. Vous pouvez désactiver les dépassements pour éviter des coûts supplémentaires liés à une utilisation au-delà de votre palier. Si vous atteignez votre allocation de messages avec les dépassements désactivés, l'assistant est indisponible jusqu'au renouvellement de votre allocation. Si vous autorisez les dépassements, chaque message au-delà de votre allocation entraîne un frais de dépassement, mais des dépassements occasionnels peuvent être moins chers que de passer au palier supérieur selon votre utilisation.
+Par défaut, l’assistant autorise les dépassements. Vous pouvez les désactiver pour éviter des frais supplémentaires liés à une utilisation au-delà de votre palier. Si vous atteignez votre quota de messages alors que les dépassements sont désactivés, l’assistant devient indisponible jusqu’à la réinitialisation de votre quota. Si vous autorisez les dépassements, chaque message au-delà de votre quota entraîne des frais de dépassement. Toutefois, selon votre utilisation, des dépassements occasionnels peuvent coûter moins cher que de passer à un palier supérieur.
 
 <div id="change-your-assistant-tier">
-  ### Changer votre palier d'assistant
+  ### Modifier le palier de votre assistant
 </div>
 
-Les paliers d'assistant déterminent votre allocation mensuelle de messages et la tarification.
+Les paliers d’assistant déterminent votre quota mensuel de messages et votre tarification.
 
-Consultez et modifiez votre palier actuel dans l'[onglet Facturation](https://dashboard.mintlify.com/products/assistant?tab=billing) de la page de l'assistant dans votre tableau de bord.
+Consultez et modifiez votre palier actuel dans l’[onglet Facturation](https://dashboard.mintlify.com/products/assistant?tab=billing) de la page de l’assistant dans votre tableau de bord.
 
-Dans la section **Spending Controls**, sélectionnez votre palier préféré dans le menu déroulant.
+Dans la section **Contrôle des dépenses**, sélectionnez le palier souhaité dans le menu déroulant.
 
-**Passer au palier supérieur :**
-- Votre nouvelle allocation de messages est disponible immédiatement.
-- Vous payez une différence au prorata pour le cycle de facturation en cours.
+**Passer à un palier supérieur :**
 
-**Passer au palier inférieur :**
-- Votre allocation de messages est mise à jour immédiatement.
-- Les changements de tarification prennent effet au début de votre prochain cycle de facturation.
-- Les messages non utilisés de votre palier actuel **ne sont pas** reportés.
+* Votre nouveau quota de messages est disponible immédiatement.
+* Vous payez la différence au prorata pour le cycle de facturation en cours.
+
+**Passer à un palier inférieur :**
+
+* Votre quota de messages est mis à jour immédiatement.
+* Les changements tarifaires prennent effet au début de votre prochain cycle de facturation.
+* Les messages non utilisés de votre palier actuel **ne sont pas** reportés.
 
 <div id="allow-overages">
   ### Autoriser les dépassements
 </div>
 
-Si vous souhaitez interdire les dépassements, désactivez-les dans la section **Billing Controls** de l'[onglet Facturation](https://dashboard.mintlify.com/products/assistant?tab=billing) de la page de l'assistant dans votre tableau de bord.
+Si vous ne souhaitez pas autoriser les dépassements, désactivez-les dans la section **Contrôles de facturation** de l’[onglet Facturation](https://dashboard.mintlify.com/products/assistant?tab=billing) de la page de l’assistant dans votre tableau de bord.
 
 <div id="set-usage-alerts">
-  ### Configurer les alertes d'utilisation
+  ### Définir des alertes de consommation
 </div>
 
-Dans la section Billing Controls, configurez des alertes d'utilisation pour recevoir un e-mail lorsque vous atteignez un certain pourcentage de votre allocation de messages.
+Dans la section Contrôle de facturation, définissez des alertes de consommation pour recevoir un e-mail lorsque vous atteignez un certain pourcentage de votre quota de messages.

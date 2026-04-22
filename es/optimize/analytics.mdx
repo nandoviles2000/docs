@@ -1,121 +1,121 @@
 ---
-title: "Analytics"
-description: "Haz seguimiento de las analíticas de documentación en el panel de Mintlify para entender las vistas de página, tendencias de visitantes, búsquedas y la eficacia del contenido."
-keywords: ["analytics","metrics","page views","traffic","trends","insights"]
+title: "Analítica"
+description: "Haz un seguimiento de la analítica de tu documentación en el panel de Mintlify para entender las vistas de página, las tendencias de visitantes, las búsquedas y la eficacia del contenido."
+keywords: ["analítica","métricas","vistas de página","tráfico","tendencias","información útil"]
 ---
 
-La página de [Analytics](https://dashboard.mintlify.com/products/analytics/v2/) en tu dashboard muestra datos sobre los visitantes de tu documentación, cómo interactúan con el assistant, qué buscan y qué comentarios dejan. Usa esta información para identificar qué páginas aportan más valor a tus usuarios y hacer un seguimiento de las tendencias a lo largo del tiempo.
+La página de [analítica](https://dashboard.mintlify.com/products/analytics/v2/) de tu panel muestra datos sobre los visitantes de tu documentación, cómo interactúan con el asistente, qué buscan y qué comentarios dejan. Usa esta información para identificar qué páginas aportan más valor a tus usuarios y seguir las tendencias a lo largo del tiempo.
 
-También puedes acceder a los datos de analítica desde la terminal con el comando `mint analytics`. Consulta [Analiza tu documentación](/es/cli/analytics) para ver los comandos y opciones disponibles.
+También puedes acceder a los datos de analítica desde la terminal con el comando `mint analytics`. Consulta [Analiza tu documentación](/es/cli/analytics) para ver los comandos y las opciones disponibles.
 
 <div id="filter-by-ai-or-human-visitors">
-  ## Filtrar por visitantes de IA o humanos
+  ## Filtrar por visitantes de IA o visitantes humanos
 </div>
 
-Filtra tus datos de Analytics por fuente de tráfico para analizar por separado el tráfico de agentes de IA y el de visitantes humanos.
+Filtra tus datos de analítica por origen del tráfico para analizar por separado el tráfico de agentes de IA y el de visitantes humanos.
 
 <Frame>
-  <img src="/images/analytics/traffic-filter-light.png" alt="El filtro de fuente de tráfico en la página de Analytics." className="block dark:hidden" />
+  <img src="/images/analytics/traffic-filter-light.png" alt="El filtro de origen del tráfico en la página de analítica." className="block dark:hidden" />
 
-  <img src="/images/analytics/traffic-filter-dark.png" alt="El filtro de fuente de tráfico en la página de Analytics." className="hidden dark:block" />
+  <img src="/images/analytics/traffic-filter-dark.png" alt="El filtro de origen del tráfico en la página de analítica." className="hidden dark:block" />
 </Frame>
 
-Cuando cambias la fuente de tráfico, la página de Analytics solo muestra las métricas relevantes para esa fuente de tráfico. Para el tráfico de IA, la página de Analytics muestra visitantes y búsqueda de MCP. Para el tráfico humano, la página de Analytics muestra visitantes, vistas de página, uso del assistant, búsquedas y comentarios.
+Al cambiar el origen del tráfico, la página de analítica solo muestra las métricas correspondientes a ese origen. Para el tráfico de IA, la página de analítica muestra visitantes y búsquedas de MCP. Para el tráfico humano, la página de analítica muestra visitantes, vistas de página, uso del asistente, búsquedas y comentarios.
 
 <div id="filter-time-period">
-  ## Filtrar periodo de tiempo
+  ## Filtrar por período de tiempo
 </div>
 
-Utiliza el selector de rango para ajustar el periodo de tiempo de los datos mostrados.
+Usa el selector de rango para ajustar el período de tiempo de los datos mostrados.
 
 <Frame>
-  <img src="/images/analytics/range-selector-light.png" alt="El selector de rango se muestra expandido con opciones para ver datos de distintos periodos de tiempo." className="block dark:hidden" />
+  <img src="/images/analytics/range-selector-light.png" alt="El selector de rango desplegado muestra opciones para ver distintos períodos de tiempo de los datos." className="block dark:hidden" />
 
-  <img src="/images/analytics/range-selector-dark.png" alt="El selector de rango se muestra expandido con opciones para ver datos de distintos periodos de tiempo." className="hidden dark:block" />
+  <img src="/images/analytics/range-selector-dark.png" alt="El selector de rango desplegado muestra opciones para ver distintos períodos de tiempo de los datos." className="hidden dark:block" />
 </Frame>
 
 <div id="visitors">
   ## Visitantes
 </div>
 
-La Tab de visitantes muestra un gráfico de barras de visitantes a lo largo del tiempo, una lista de páginas populares y fuentes de referencia.
+La pestaña de visitantes muestra un gráfico de barras con los visitantes a lo largo del tiempo, una lista de páginas populares y las fuentes de referencia.
 
-Revisa las Analytics de tus visitantes para:
+Revisa la analítica de visitantes para:
 
-* **Supervisar las tendencias de tráfico**: Observa los cambios en el tráfico después de actualizaciones o nuevo contenido para entender el impacto de tus cambios.
-* **Identificar páginas populares**: Usa las páginas populares para entender qué contenido es más importante para tus usuarios y así asegurarte de que esté actualizado y sea completo.
-* **Rastrear fuentes de tráfico**: Comprende de dónde vienen tus usuarios para ayudarte a optimizar tu contenido para la audiencia adecuada.
+* **Supervisar las tendencias de tráfico**: Observa los cambios en el tráfico después de actualizaciones o de publicar contenido nuevo para entender el impacto de esos cambios.
+* **Identificar las páginas populares**: Usa las páginas populares para entender qué contenido es más importante para tus usuarios y asegurarte de que esté actualizado y sea completo.
+* **Seguir las fuentes de tráfico**: Entiende de dónde provienen tus usuarios para optimizar tu contenido para la audiencia adecuada.
 
 <div id="top-agents">
   ### Agentes principales
 </div>
 
-Al ver el tráfico de IA, Top agents reemplaza Referrals en la pestaña Visitors. Top agents muestra qué agentes de IA están visitando tu documentación. Usa esta información para ayudarte a determinar:
+Al ver el tráfico de IA, Agentes principales sustituye a las referencias en la pestaña de visitantes. Agentes principales muestra qué agentes de IA visitan tu documentación. Usa esta información para determinar lo siguiente:
 
-* **Distribución de agentes de IA**: Consulta qué plataformas de IA están accediendo a tu documentación para saber qué herramientas prefieren tus usuarios.
+* **Distribución de agentes de IA**: Mira qué plataformas de IA acceden a tu documentación para saber qué herramientas prefieren tus usuarios.
 * **Oportunidades de integración**: Identifica qué plataformas de IA debes priorizar para la optimización y las pruebas.
 * **Patrones de tráfico de IA**: Supervisa qué agentes están más activos y cómo cambia su uso con el tiempo.
 
 <div id="views">
-  ## Views
+  ## Vistas
 </div>
 
-La Tab de vistas muestra un gráfico de barras de las vistas de página a lo largo del tiempo y una lista de tus páginas principales por número de vistas.
+La pestaña Vistas muestra un gráfico de barras con las vistas de página a lo largo del tiempo y una lista de las páginas más vistas según su número de visualizaciones.
 
-Revisa tus Analytics de vistas de página para:
+Revisa la analítica de vistas de tus páginas para:
 
-* **Supervisar la interacción con el contenido**: Haz un seguimiento del total de vistas de página para comprender el uso general de la documentación e identificar tendencias.
-* **Identificar las páginas principales**: Observa qué páginas reciben más vistas para priorizar las actualizaciones y asegurarte de que el contenido con más tráfico siga siendo preciso.
+* **Supervisar la interacción con el contenido**: Haz seguimiento del total de vistas de página para comprender el uso general de la documentación e identificar tendencias.
+* **Identificar las páginas más vistas**: Comprueba qué páginas reciben más visualizaciones para priorizar las actualizaciones y asegurarte de que el contenido con más tráfico siga siendo preciso.
 
 <div id="assistant">
   ## Assistant
 </div>
 
-La pestaña Assistant muestra un gráfico de barras del uso del assistant a lo largo del tiempo, una lista de categorías y el historial de chat.
+La pestaña Assistant muestra un gráfico de barras del uso del asistente a lo largo del tiempo, una lista de categorías y el historial del chat.
 
-Consulta los Analytics de tu assistant para:
+Revisa la analítica del asistente para:
 
-* **Supervisar el uso del assistant**: Observa los cambios en el uso del assistant para entender cómo tus usuarios interactúan con tu contenido.
-* **Identificar las categorías frecuentes**: Usa las categorías con mayor frecuencia de aparición para entender qué temas son más importantes para tus usuarios. Identifica brechas en la cobertura y prioriza las actualizaciones de contenido.
-* **Revisar el historial de chat**: Obtén datos detallados de alta intención sobre cómo tus usuarios perciben tu producto revisando su historial de chat con el assistant. Observa qué términos usan, en qué necesitan ayuda y qué tareas intentan realizar.
+* **Supervisar el uso del asistente**: Observa los cambios en el uso del asistente para entender cómo interactúan tus usuarios con tu contenido.
+* **Identificar categorías frecuentes**: Usa las categorías más frecuentes para entender qué temas son los más importantes para tus usuarios. Detecta lagunas de contenido y prioriza las actualizaciones.
+* **Revisar el historial del chat**: Obtén datos detallados sobre la intención de tus usuarios al revisar su historial del chat con el asistente. Observa qué términos usan, con qué necesitan ayuda y qué tareas intentan completar.
 
 <div id="categories">
   ### Categorías
 </div>
 
-La Tab de categorías usa LLMs para agrupar automáticamente las conversaciones por tema o temática.
+La pestaña de categorías usa LLMs para agrupar automáticamente las conversaciones por tema o temática.
 
 <Frame>
-  <img src="/images/analytics/categories-light.png" alt="La Tab de categorías en la página de Analytics del assistant." className="block dark:hidden" />
+  <img src="/images/analytics/categories-light.png" alt="La pestaña de categorías en la página de analítica del asistente." className="block dark:hidden" />
 
-  <img src="/images/analytics/categories-dark.png" alt="La Tab de categorías en la página de Analytics del assistant." className="hidden dark:block" />
+  <img src="/images/analytics/categories-dark.png" alt="La pestaña de categorías en la página de analítica del asistente." className="hidden dark:block" />
 </Frame>
 
-Usa las categorías para identificar temas comunes, patrones en las necesidades y el comportamiento de los usuarios, y áreas donde la documentación podría necesitar ampliación o aclaración.
+Usa las categorías para identificar temas comunes, patrones en las necesidades y el comportamiento de los usuarios, y áreas en las que la documentación podría necesitar ampliarse o aclararse.
 
-Haz clic en una fila de categoría para expandirla y ver las conversaciones relacionadas agrupadas bajo esa categoría.
+Haz clic en una fila de categoría para expandirla y ver las conversaciones relacionadas agrupadas en esa categoría.
 
-Haz clic en una conversación individual para ver todo el hilo de chat, incluida la pregunta del usuario, la respuesta del assistant y cualquier fuente citada.
+Haz clic en una conversación individual para ver el hilo completo del chat, incluida la pregunta del usuario, la respuesta del asistente y cualquier fuente citada.
 
 <div id="chat-history">
-  ### Historial de chat
+  ### Historial del chat
 </div>
 
-La pestaña Historial de chat muestra registros cronológicos de todas las conversaciones con el assistant.
+La pestaña Historial del chat muestra un registro cronológico de todas las conversaciones del asistente.
 
-Haz clic en cualquier mensaje para ver el hilo de chat completo, incluida la pregunta del usuario, la respuesta del assistant y cualquier fuente citada.
+Haz clic en cualquier mensaje para ver el hilo completo de la conversación, incluida la pregunta del usuario, la respuesta del asistente y las fuentes citadas.
 
 <div id="export-queries">
   ### Exportar consultas
 </div>
 
-Para un análisis más profundo, exporta un archivo CSV con tus consultas, respuestas y fuentes. Usa tus herramientas preferidas para analizar los datos exportados.
+Para analizar tus consultas más a fondo, exporta un archivo CSV con tus consultas, respuestas y fuentes. Usa las herramientas que prefieras para analizar los datos exportados.
 
 <Tip>
-  Ejemplos de indicaciones para el análisis:
+  Ejemplos de prompts de análisis:
 
-  * Enumera las consultas que no tuvieran fuentes citadas.
-  * Encuentra patrones en las interacciones fallidas.
+  * Enumera las consultas en las que no se citaron fuentes.
+  * Identifica patrones en las interacciones fallidas.
 </Tip>
 
 <div id="searches">
@@ -123,37 +123,37 @@ Para un análisis más profundo, exporta un archivo CSV con tus consultas, respu
 </div>
 
 <Note>
-  La métrica de Búsquedas solo está disponible al ver tráfico humano.
+  La métrica de Búsquedas solo está disponible cuando consultas el tráfico humano.
 </Note>
 
-La pestaña Búsquedas muestra un gráfico de barras con las búsquedas a lo largo del tiempo y las consultas específicas.
+La pestaña de búsquedas muestra un gráfico de barras con las búsquedas a lo largo del tiempo y las consultas específicas.
 
-Revisa las métricas de búsqueda para:
+Revisa la analítica de tus búsquedas para:
 
-* **Supervisar las tendencias de búsqueda**: Observa los cambios en las consultas de búsqueda para comprender cómo tus usuarios encuentran tu contenido y sobre qué temas desean obtener información.
-* **Identificar consultas frecuentes**: Utiliza las consultas de búsqueda frecuentes para entender qué temas son más importantes para tus usuarios. Identifica brechas en la cobertura y prioriza las actualizaciones de contenido.
-* **Identificar tasas de clic bajas**: Las tasas de clic (CTR) muestran cuántos usuarios hacen clic en un resultado de búsqueda después de escribir una consulta. Un CTR bajo puede indicar que los resultados de búsqueda no son relevantes para las consultas de los usuarios. Si tienes términos de búsqueda frecuentes con un CTR bajo, plantéate mejorar la relevancia de los resultados de búsqueda añadiendo palabras clave y actualizando tu contenido.
+* **Supervisar las tendencias de búsqueda**: Observa los cambios en las consultas de búsqueda para entender cómo encuentran tu contenido los usuarios y sobre qué temas quieren información.
+* **Identificar consultas frecuentes**: Usa las consultas frecuentes para entender qué temas son más importantes para tus usuarios. Identifica lagunas de contenido y prioriza las actualizaciones.
+* **Identificar tasas de clics bajas**: Las tasas de clics (CTR) muestran cuántos usuarios hacen clic en un resultado de búsqueda después de escribir una consulta. Un CTR bajo puede indicar que los resultados de búsqueda no son relevantes para las consultas de los usuarios. Si tienes términos de búsqueda frecuentes con un CTR bajo, considera mejorar la relevancia de los resultados de búsqueda añadiendo palabras clave y actualizando tu contenido.
 
 <div id="mcp-searches">
-  ## Búsquedas de MCP
+  ## Búsquedas MCP
 </div>
 
 <Note>
-  La métrica de búsquedas de MCP solo está disponible cuando visualizas el tráfico de IA.
+  La métrica Búsquedas MCP solo está disponible al consultar el tráfico de IA.
 </Note>
 
-La pestaña de búsquedas de MCP muestra las interacciones de búsqueda de los agentes de IA a través de Model Context Protocol (MCP). Esta métrica muestra cómo los agentes de IA realizan búsquedas e interactúan con tu documentación.
+La pestaña Búsquedas MCP muestra las interacciones de búsqueda de los agentes de IA a través del Model Context Protocol (MCP). Esta métrica muestra cómo los agentes de IA consultan tu documentación e interactúan con ella.
 
-Revisa las Analytics de tus búsquedas de MCP para:
+Revisa la analítica de búsquedas MCP para:
 
-* **Supervisar la actividad de búsqueda de IA**: Haz un seguimiento de la frecuencia con la que los agentes de IA buscan en tu documentación e identifica tendencias en las búsquedas impulsadas por IA.
-* **Identificar búsquedas frecuentes de IA**: Comprende qué información buscan los agentes de IA para optimizar tu contenido para el consumo por parte de la IA.
-* **Mejorar la capacidad de descubrimiento para la IA**: Usa las búsquedas frecuentes de MCP para identificar vacíos en tu documentación con los que los agentes de IA tienen dificultades para encontrar respuestas.
+* **Supervisar la actividad de búsqueda de IA**: Haz un seguimiento de la frecuencia con la que los agentes de IA buscan en tu documentación e identifica tendencias en las consultas impulsadas por IA.
+* **Identificar consultas comunes de IA**: Comprende qué información buscan los agentes de IA para optimizar tu contenido para el consumo de IA.
+* **Mejorar la capacidad de descubrimiento por parte de la IA**: Usa las consultas frecuentes de búsqueda MCP para identificar vacíos en tu documentación donde a los agentes de IA les cuesta encontrar respuestas.
 
 <div id="feedback">
-  ## Comentarios
+  ## Feedback
 </div>
 
-El Tab de comentarios muestra un gráfico de barras de los comentarios a lo largo del tiempo y comentarios específicos.
+La pestaña Feedback muestra un gráfico de barras con la evolución de los comentarios a lo largo del tiempo y comentarios específicos.
 
-Consulta [Comentarios](/es/optimize/feedback) para obtener más información sobre cómo usar los datos de comentarios para mejorar tu contenido.
+Consulta [Feedback](/es/optimize/feedback) para obtener más información sobre cómo usar los datos de feedback para mejorar tu contenido.

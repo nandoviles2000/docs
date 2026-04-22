@@ -1,10 +1,10 @@
 ---
 title: "Arborescence"
-description: "Utilisez le composant arbre pour afficher des structures hiérarchiques de fichiers et de dossiers avec des nœuds repliables et une mise en évidence de la syntaxe pour les noms de chemin."
-keywords: ["tree", "file tree", "folder structure", "hierarchical navigation", "file system"]
+description: "Utilisez le composant arborescence pour afficher des structures hiérarchiques de fichiers et de dossiers avec des nœuds dépliables/rétractables et une coloration syntaxique des noms de chemin."
+keywords: ["arborescence", "arborescence de fichiers", "structure de dossiers", "navigation hiérarchique", "système de fichiers"]
 ---
 
-Utilisez des composants arborescents pour afficher des structures hiérarchiques comme des systèmes de fichiers, des répertoires de projet ou du contenu imbriqué. Le composant d’arborescence prend en charge la navigation au clavier et les fonctionnalités d’accessibilité.
+Utilisez des composants arborescence pour afficher des structures hiérarchiques, comme des systèmes de fichiers, des répertoires de projet ou du contenu imbriqué. Le composant arborescence prend en charge la navigation au clavier et les fonctionnalités d’accessibilité.
 
 <div id="basic-tree">
   ## Arborescence de base
@@ -46,12 +46,11 @@ Utilisez des composants arborescents pour afficher des structures hiérarchiques
 </Tree>
 ```
 
-
 <div id="nested-folders">
   ## Dossiers imbriqués
 </div>
 
-Créez des structures profondément imbriquées en imbriquant des composants `Tree.Folder` les uns dans les autres.
+Créez des structures profondément imbriquées en plaçant des composants `Tree.Folder` les uns dans les autres.
 
 <Tree>
   <Tree.Folder name="app" defaultOpen>
@@ -100,21 +99,20 @@ Créez des structures profondément imbriquées en imbriquant des composants `Tr
 </Tree>
 ```
 
-
 <div id="keyboard-navigation">
   ## Navigation au clavier
 </div>
 
 Le composant d’arborescence prend en charge la navigation au clavier.
 
-- **Flèches directionnelles** : Parcourir les éléments visibles vers le haut et vers le bas.
-- **Flèche droite** : Développer un dossier fermé ou passer au premier élément enfant d’un dossier ouvert.
-- **Flèche gauche** : Réduire un dossier ouvert ou passer au dossier parent.
-- **Home** : Aller au premier élément de l’arborescence.
-- **End** : Aller au dernier élément visible de l’arborescence.
-- **Entrée/Espace** : Basculer l’état ouvert/fermé d’un dossier.
-- **\*** : Développer tous les dossiers au même niveau.
-- **Recherche par saisie anticipée (type-ahead)** : Taper des caractères pour passer aux éléments qui commencent par ces caractères.
+* **Touches fléchées** : Déplacez-vous vers le haut et vers le bas parmi les éléments visibles.
+* **Flèche droite** : Ouvrez un dossier fermé ou passez au premier élément enfant d’un dossier ouvert.
+* **Flèche gauche** : Fermez un dossier ouvert ou revenez au dossier parent.
+* **Home** : Accédez au premier élément de l’arborescence.
+* **End** : Accédez au dernier élément visible de l’arborescence.
+* **Entrée/Espace** : Ouvrez ou fermez le dossier.
+* ***** : Ouvrez tous les dossiers du même niveau au niveau actuel.
+* **Recherche à la frappe** : Saisissez des caractères pour accéder aux éléments qui commencent par ces caractères.
 
 <div id="properties">
   ## Propriétés
@@ -133,7 +131,7 @@ Le composant d’arborescence prend en charge la navigation au clavier.
 </ResponseField>
 
 <ResponseField name="openable" type="boolean" default="true">
-  Indique si le dossier peut être ouvert et fermé. Réglez cette valeur sur false pour les dossiers non interactifs.
+  Indique si le dossier peut être ouvert et fermé. Définissez cette valeur sur false pour les dossiers non interactifs.
 </ResponseField>
 
 <div id="treefile">
@@ -141,5 +139,5 @@ Le composant d’arborescence prend en charge la navigation au clavier.
 </div>
 
 <ResponseField name="name" type="string" required>
-  Le nom du fichier affiché dans l'arborescence.
+  Le nom du fichier affiché dans l’arborescence.
 </ResponseField>

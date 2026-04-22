@@ -1,81 +1,81 @@
 ---
 title: "Comment créer une documentation accessible"
 sidebarTitle: "Accessibilité"
-description: "Créez une documentation accessible en suivant les directives WCAG avec un HTML sémantique, la navigation au clavier, le texte alternatif et des pratiques de contenu inclusives."
-keywords: ["documentation accessible", "WCAG", "a11y", "lecteurs d'écran", "accessibilité"]
+description: "Créez une documentation accessible en suivant les directives WCAG, avec du HTML sémantique, une navigation au clavier, du texte alternatif et des pratiques de contenu inclusives."
+keywords: ["documentation accessible", "WCAG", "a11y", "lecteurs d’écran", "accessibilité"]
 ---
 
-Lorsque vous créez une documentation accessible, vous privilégiez une conception de contenu qui rend votre documentation utilisable par le plus grand nombre, quel que soit le moyen d’accès ou la manière dont les personnes interagissent avec elle.
+Lorsque vous créez une documentation accessible, vous privilégiez une conception du contenu qui rend votre documentation utilisable par le plus grand nombre, quelle que soit la manière dont les utilisateurs y accèdent et interagissent avec elle.
 
-Une documentation accessible améliore l’expérience utilisateur de toutes et tous. Votre contenu est plus clair, mieux structuré et plus facile à parcourir.
+Une documentation accessible améliore l’expérience utilisateur pour tout le monde. Votre contenu est plus clair, mieux structuré et plus facile à parcourir.
 
-Ce guide présente quelques bonnes pratiques pour créer une documentation accessible, sans prétendre à l’exhaustivité. Considérez l’accessibilité comme un processus continu. Les technologies et les normes évoluent au fil du temps, offrant de nouvelles opportunités d’améliorer la documentation.
+Ce guide présente quelques bonnes pratiques pour créer une documentation accessible, mais il n’est pas exhaustif. Vous devez considérer l’accessibilité comme un processus continu. Les technologies et les normes évoluent au fil du temps, ce qui offre de nouvelles possibilités d’améliorer la documentation.
 
 <div id="what-is-accessibility">
-  ## Qu’est-ce que l’accessibilité ?
+  ## Qu’est-ce que l’accessibilité ?
 </div>
 
-L’accessibilité (parfois abrégée en a11y, pour le nombre de lettres entre la première et la dernière lettre d’« accessibility ») consiste à concevoir et à développer, de manière intentionnelle, des sites web et des outils utilisables par le plus grand nombre. Les personnes ayant un handicap temporaire ou permanent doivent bénéficier du même niveau d’accès aux technologies numériques. Concevoir pour l’accessibilité profite à tout le monde, y compris aux personnes qui consultent votre site web sur mobile ou via des réseaux lents.
+L’accessibilité (parfois abrégée en a11y, en référence au nombre de lettres entre la première et la dernière lettre de « accessibility ») consiste à concevoir et à développer délibérément des sites web et des outils utilisables par le plus grand nombre. Les personnes ayant des handicaps temporaires ou permanents doivent bénéficier du même niveau d’accès aux technologies numériques. Concevoir dans une optique d’accessibilité profite d’ailleurs à tout le monde, y compris aux personnes qui consultent votre site web sur des appareils mobiles ou via des réseaux lents.
 
-Une documentation accessible respecte les normes d’accessibilité du web, principalement les [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/quickref/). Ces directives aident à garantir que votre contenu est perceptible, opérable, compréhensible et robuste.
+Une documentation accessible respecte les normes d’accessibilité Web, principalement les [Règles pour l’accessibilité des contenus Web (WCAG)](https://www.w3.org/WAI/WCAG22/quickref/). Ces directives contribuent à garantir que votre contenu est perceptible, utilisable, compréhensible et robuste.
 
 <div id="getting-started-with-accessibility">
-  ## Premiers pas avec l’accessibilité
+  ## Premiers pas en matière d’accessibilité
 </div>
 
-Rendre votre documentation accessible est un processus. Vous n’avez pas à tout corriger d’un coup et ce n’est pas quelque chose que l’on fait une seule fois.
+Rendre votre documentation accessible est un processus. Vous n’avez pas à tout corriger d’un seul coup, et ce n’est pas quelque chose qu’on fait une seule fois.
 
-Si vous commencez tout juste à mettre en place des pratiques d’accessibilité pour votre documentation, envisagez une approche progressive : commencez par les changements à fort impact, puis étoffez progressivement.
+Si vous commencez tout juste à mettre en place des pratiques d’accessibilité pour votre documentation, adoptez une approche progressive : commencez par les changements à fort impact, puis poursuivez à partir de là.
 
 <div id="first-steps">
   ### Premiers pas
 </div>
 
-Voici trois actions que vous pouvez entreprendre dès maintenant pour améliorer l’accessibilité de votre documentation :
+Voici trois choses que vous pouvez faire dès maintenant pour améliorer l’accessibilité de votre documentation :
 
 1. **Exécutez `mint a11y`** pour identifier les problèmes d’accessibilité dans votre contenu.
-2. **Ajoutez un texte alternatif (alt text)** à toutes les images.
-3. **Vérifiez la hiérarchie des titres** pour garantir un seul H1 par page et des titres qui se suivent dans l’ordre.
+2. **Ajoutez un texte alternatif** à toutes les images.
+3. **Vérifiez la hiérarchie de vos titres** pour vous assurer qu’il n’y a qu’un seul H1 par page et que les titres suivent un ordre logique.
 
 <div id="plan-your-accessibility-work">
-  ### Planifiez votre travail en matière d’accessibilité
+  ### Planifiez votre travail d’accessibilité
 </div>
 
-Le meilleur flux de travail est celui qui convient à votre équipe. Voici une approche possible de l’accessibilité :
+Le meilleur flux de travail est celui qui convient à votre équipe. Voici une façon d’aborder ce travail :
 
-**Phase 1 : Images et structure**
+**Phase 1 : Images et structure**
 
-- Passez en revue toutes les images pour vérifier la présence d’un texte alternatif descriptif.
-- Passez en revue les textes de lien et remplacez les formules génériques comme « cliquez ici ».
-- Corrigez les problèmes de hiérarchie des titres dans l’ensemble de votre documentation.
+* Vérifiez que toutes les images ont un texte alternatif descriptif.
+* Passez en revue le texte des liens et remplacez les expressions génériques comme « cliquez ici ».
+* Corrigez les problèmes de hiérarchie des titres dans l’ensemble de votre documentation.
 
-**Phase 2 : Navigation et médias**
+**Phase 2 : Navigation et médias**
 
-- Testez la navigation au clavier sur votre documentation.
-- Testez la compatibilité avec les lecteurs d’écran.
-- Ajoutez des sous-titres et des transcriptions aux vidéos intégrées.
-- Vérifiez le contraste des couleurs.
+* Testez la navigation au clavier dans votre documentation.
+* Testez la compatibilité avec les lecteurs d’écran.
+* Ajoutez des sous-titres et des transcriptions aux vidéos intégrées.
+* Vérifiez le contraste des couleurs.
 
-**Phase 3 : Intégrez-la à votre flux de travail**
+**Phase 3 : Intégrez cela à votre flux de travail**
 
-- Exécutez `mint a11y` avant de publier un nouveau contenu.
-- Intégrez des vérifications d’accessibilité à votre processus de relecture de contenu.
-- Testez la navigation au clavier lors de l’ajout de fonctionnalités interactives.
-- Vérifiez que les nouveaux liens externes et contenus intégrés incluent des titles et descriptions appropriés.
+* Exécutez `mint a11y` avant de publier du nouveau contenu.
+* Intégrez des vérifications d’accessibilité à votre processus de révision du contenu.
+* Testez la navigation au clavier lorsque vous ajoutez des fonctionnalités interactives.
+* Vérifiez que les nouveaux liens externes et contenus intégrés comportent des titres et des descriptions appropriés.
 
-Commencer modestement et intégrer l’accessibilité à votre flux de travail habituel la rend pérenne. Chaque amélioration aide davantage d’utilisateurs à accéder avec succès à votre documentation.
+En commençant modestement et en intégrant l’accessibilité à votre flux de travail habituel, vous en faites une pratique durable. Chaque amélioration permet à davantage d’utilisateurs d’accéder à votre documentation dans de bonnes conditions.
 
 <div id="structure-your-content">
   ## Structurez votre contenu
 </div>
 
-Un contenu bien structuré est plus facile à parcourir et à comprendre, surtout pour les utilisateurs de lecteurs d’écran qui s’appuient sur les titres pour se déplacer dans les pages, ainsi que pour les personnes qui utilisent la navigation au clavier.
+Un contenu bien structuré est plus facile à parcourir et à comprendre, en particulier pour les utilisateurs de lecteurs d’écran qui s’appuient sur les titres pour naviguer dans les pages et les personnes qui utilisent la navigation au clavier.
 
 <div id="use-proper-heading-hierarchy">
-  ### Utilisez une hiérarchie de titres correcte
+  ### Utiliser une hiérarchie de titres correcte
 </div>
 
-Chaque page doit comporter un seul titre H1, défini par la propriété `title:` dans le frontmatter de la page. Utilisez ensuite les niveaux de titres dans l’ordre sans en sauter. Par exemple, ne passez pas de H2 à H4.
+Chaque page doit comporter un seul titre H1, défini par la propriété `title:` dans les métadonnées d’en-tête de la page. Utilisez ensuite les autres niveaux de titre dans l’ordre, sans en sauter. Par exemple, ne passez pas de H2 à H4.
 
 ```mdx
 <!-- Bon -->
@@ -99,7 +99,7 @@ Chaque page doit comporter un seul titre H1, défini par la propriété `title:`
 ### Autre sous-section (H3)
 ```
 
-Les titres d’un même niveau doivent avoir des noms uniques.
+Les titres de même niveau doivent être uniques.
 
 ```mdx
 <!-- Bon -->
@@ -107,162 +107,156 @@ Les titres d’un même niveau doivent avoir des noms uniques.
 
 ### Rédiger un texte alternatif efficace (H3)
 
-### Utiliser un contraste de couleur approprié (H3)
+### Utiliser un contraste de couleurs approprié (H3)
 
 <!-- Mauvais -->
 ## Conseils d'accessibilité (H2)
 
-### Conseil (H3)
+### Tip (H3)
 
-### Conseil (H3)
+### Tip (H3)
 ```
-
 
 <div id="write-descriptive-link-text">
-  ### Rédigez un texte de lien descriptif
+  ### Rédigez un texte de lien explicite
 </div>
 
-Le texte du lien doit être explicite et refléter la destination. Évitez les formulations vagues comme « cliquez ici » ou « en savoir plus ».
+Le texte du lien doit être explicite et correspondre à sa destination. Évitez les formulations vagues comme &quot;cliquez ici&quot; ou &quot;en savoir plus&quot;.
 
 ```mdx
-<!-- Good -->
-Découvrez comment [configurer votre navigation](/organize/navigation).
+<!-- Bien -->
+Learn how to [configure your navigation](/organize/navigation).
 
 <!-- Relation peu claire entre le texte du lien et la destination -->
-[En savoir plus](/organize/navigation).
+[Learn more](/organize/navigation).
 ```
-
 
 <div id="keep-content-scannable">
-  ### Facilitez le survol du contenu
+  ### Rendez le contenu facile à parcourir
 </div>
 
-- Scindez les longs paragraphes.
-- Utilisez des listes pour les étapes et les options.
-- Mettez en avant les informations avec des encadrés.
+* Aérez les longs paragraphes.
+* Utilisez des listes pour les étapes et les options.
+* Mettez les informations en évidence avec des encadrés.
 
 <div id="use-proper-table-structure">
-  ### Utilisez une structure de tableau appropriée
+  ### Utiliser une structure de tableau correcte
 </div>
 
-N’utilisez les tableaux qu’avec parcimonie et uniquement pour des données tabulaires dont la signification découle des en-têtes de colonnes et de lignes.
+Utilisez les tableaux avec parcimonie, uniquement pour des données tabulaires dont le sens dépend des en-têtes de colonnes et de lignes.
 
-Lorsque vous utilisez des tableaux, incluez des en-têtes afin que les lecteurs d’écran puissent associer les données à la bonne colonne :
+Lorsque vous utilisez des tableaux, ajoutez des en-têtes pour que les lecteurs d’écran puissent associer les données à la bonne colonne :
 
 ```mdx
-| Fonctionnalité | Statut |
-| -------------- | ------ |
-| Recherche | Actif |
-| Analytics | Actif |
+| Feature | Status |
+| ------- | ------ |
+| Search  | Active |
+| Analytics | Active |
 ```
-
 
 <div id="write-descriptive-alt-text">
-  ## Rédiger un texte alternatif descriptif
+  ## Rédigez un texte alternatif descriptif
 </div>
 
-Le texte alternatif rend les images accessibles aux utilisateurs de lecteurs d’écran et s’affiche lorsque les images ne se chargent pas. Les images de votre documentation doivent comporter un texte alternatif qui décrit l’image et précise clairement pourquoi elle est incluse. Même avec un texte alternatif, ne vous fiez pas uniquement aux images pour transmettre des informations. Assurez-vous que votre contenu décrit ce que l’image communique.
+Le texte alternatif rend les images accessibles aux utilisateurs de lecteurs d’écran et s’affiche lorsque les images ne se chargent pas. Les images de votre documentation doivent avoir un texte alternatif qui décrit l’image et explique clairement pourquoi elle est incluse. Même avec un texte alternatif, vous ne devez pas vous appuyer uniquement sur les images pour transmettre des informations. Assurez-vous que votre contenu décrit ce que l’image communique.
 
 <div id="write-effective-alt-text">
-  ### Rédigez un texte alternatif efficace
+  ### Rédiger un texte alternatif efficace
 </div>
 
-* **Soyez précis** : Décrivez ce que montre l’image, pas seulement que c’est une image.
-* **Soyez concis** : Contentez-vous d’une à deux phrases.
-* **Évitez les redondances** : Ne commencez pas par « Image de » car les lecteurs d’écran savent déjà que le texte alternatif est associé à une image. En revanche, incluez des formulations comme « Capture d’écran de » ou « Schéma de » si ce contexte est important pour l’image.
+* **Soyez précis** : Décrivez ce que montre l’image, pas simplement qu’il s’agit d’une image.
+* **Soyez concis** : Limitez-vous à une ou deux phrases.
+* **Évitez les redondances** : Ne commencez pas par &quot;Image de&quot;, car les lecteurs d’écran savent déjà que le texte alternatif est associé à une image. En revanche, vous pouvez inclure des formulations comme &quot;Capture d’écran de&quot; ou &quot;Schéma de&quot; si ce contexte est important pour l’image.
 
 ```mdx
-<!-- Bon -->
-![Capture d'écran du Dashboard montrant trois projets actifs et deux invitations en attente](/images/dashboard.png)
+<!-- Bon exemple -->
+![Screenshot of the dashboard showing three active projects and two pending invitations](/images/dashboard.png)
 
-<!-- Pas utile -->
-![Capture d'écran du Dashboard](/images/dashboard.png)
+<!-- Peu utile -->
+![Dashboard screenshot](/images/dashboard.png)
 ```
-
 
 <div id="add-alt-text-to-images">
-  ### Ajouter un texte alternatif aux images
+  ### Ajouter du texte alternatif aux images
 </div>
 
-Pour les images en Markdown, ajoutez un texte alternatif entre crochets :
+Pour les images en Markdown, incluez un texte alternatif entre crochets :
 
 ```mdx
-![Description de l'image](/path/to/image.png)
+![Description of the image](/path/to/image.png)
 ```
 
-Pour les images HTML, utilisez l’attribut « alt » :
+Pour les images en HTML, utilisez l’attribut `alt` :
 
 ```html
 <img
   src="/images/screenshot.png"
-  alt="Panneau de paramètres avec les options d'accessibilité activées. Les options sont mises en évidence par un rectangle orange."
+  alt="Settings panel with accessibility options enabled. The options are emphasized with an orange rectangle."
 />
 ```
 
-
 <div id="add-titles-to-embedded-content">
-  ### Ajouter des titres au contenu intégré
+  ### Ajoutez des titres au contenu intégré
 </div>
 
-Les iframes et les vidéos intégrées doivent avoir des titres descriptifs :
+Les iframes et les vidéos intégrées doivent comporter des titres explicites :
 
 ```html
 <iframe
   src="https://www.youtube.com/embed/example"
-  title="Tutoriel : Configuration de votre premier site de documentation"
+  title="Tutorial: Setting up your first documentation site"
 ></iframe>
 ```
 
-
 <div id="design-for-readability">
-  ## Concevoir pour la lisibilité
+  ## Concevez pour une bonne lisibilité
 </div>
 
-Les choix de conception visuelle influencent l’accessibilité de votre documentation pour les personnes ayant une basse vision, un daltonisme ou d’autres déficiences visuelles.
+Les choix de conception visuelle influencent le niveau d’accessibilité de votre documentation pour les utilisateurs malvoyants, daltoniens ou atteints d’autres déficiences visuelles.
 
 <div id="ensure-sufficient-color-contrast">
   ### Assurez un contraste de couleurs suffisant
 </div>
 
-Si vous personnalisez les couleurs de votre thème, vérifiez que les taux de contraste respectent les exigences WCAG :
+Si vous personnalisez les couleurs de votre thème, vérifiez que les rapports de contraste respectent les exigences des WCAG :
 
-- Texte courant : taux de contraste minimal de 4,5:1
-- Texte large : taux de contraste minimal de 3:1
-- Éléments interactifs : taux de contraste minimal de 3:1
+* Corps de texte : rapport de contraste minimal de 4,5:1
+* Grand texte : rapport de contraste minimal de 3:1
+* Éléments interactifs : rapport de contraste minimal de 3:1
 
-Testez le mode light et le mode sombre. La commande `mint a11y` vérifie le contraste des couleurs.
+Testez le mode clair et le mode sombre. La commande `mint a11y` vérifie le contraste des couleurs.
 
 <div id="dont-rely-on-color-alone">
   ### Ne vous fiez pas uniquement à la couleur
 </div>
 
-Si vous utilisez la couleur pour transmettre une information, ajoutez également un libellé textuel ou une icône. Par exemple, ne signalez pas les erreurs uniquement avec du texte rouge. Ajoutez une icône d’erreur ou le mot « Erreur ».
+Si vous utilisez la couleur pour transmettre une information, ajoutez aussi un libellé ou une icône. Par exemple, ne signalez pas les erreurs uniquement avec du texte rouge. Incluez une icône d’erreur ou le mot « Erreur ».
 
 <div id="use-clear-concise-language">
   ### Utilisez un langage clair et concis
 </div>
 
-- Rédigez dans un langage simple.
-- Définissez les termes techniques lors de leur première utilisation.
-- Évitez les phrases trop longues.
-- Utilisez la voix active.
+* Écrivez dans un langage simple.
+* Définissez les termes techniques lors de leur première utilisation.
+* Évitez les phrases à rallonge.
+* Utilisez la voix active.
 
 <div id="make-code-examples-accessible">
-  ## Rendre les exemples de code accessibles
+  ## Rendez les exemples de code accessibles
 </div>
 
-Les code blocks sont un élément essentiel de la documentation technique, mais ils nécessitent des considérations d’accessibilité spécifiques pour que les utilisateurs de lecteurs d’écran puissent les comprendre. De manière générale, suivez ces recommandations :
+Les blocs de code sont un élément essentiel de la documentation technique, mais ils nécessitent une attention particulière en matière d’accessibilité pour que les utilisateurs de lecteurs d’écran puissent les comprendre. En règle générale, suivez ces recommandations :
 
-- Divisez les longs exemples de code en sections plus petites et cohérentes.
-- Commentez la logique complexe dans le code.
-- Envisagez de fournir une description textuelle pour les algorithmes complexes.
-- Lors de la présentation d’une arborescence de fichiers, utilisez de vrais code blocks avec des labels de langage plutôt que de l’art ASCII.
+* Divisez les longs exemples de code en blocs plus petits et cohérents.
+* Commentez les parties complexes du code.
+* Envisagez d’ajouter une description textuelle pour les algorithmes complexes.
+* Lorsque vous présentez une structure de fichiers, utilisez de vrais blocs de code avec l’indication du langage plutôt qu’un schéma ASCII.
 
 <div id="specify-the-programming-language">
-  ### Indiquez le langage de programmation
+  ### Précisez le langage de programmation
 </div>
 
-Déclarez toujours la langue pour la coloration syntaxique. Cela aide les lecteurs d’écran à annoncer le contexte du code aux utilisateurs :
+Indiquez toujours la langue pour la coloration syntaxique. Cela permet aux lecteurs d’écran d’annoncer aux utilisateurs le contexte du code :
 
 ````mdx
 ```javascript
@@ -272,12 +266,11 @@ function getUserData(id) {
 ```
 ````
 
-
 <div id="provide-context-around-code">
-  ### Fournir du contexte autour du code
+  ### Ajoutez du contexte au code
 </div>
 
-Fournissez un contexte clair pour les code block :
+Fournissez un contexte clair pour les blocs de code :
 
 ````mdx
 La fonction suivante récupère les données utilisateur depuis l'API :
@@ -288,26 +281,25 @@ function getUserData(id) {
 }
 ```
 
-Cela retourne une promesse qui se résout vers l'objet utilisateur.
+Cela renvoie une promesse qui se résout en l'objet utilisateur.
 ````
-
 
 <div id="video-and-multimedia-accessibility">
   ## Accessibilité des vidéos et des contenus multimédias
 </div>
 
-Les vidéos, animations et autres contenus multimédias doivent être accompagnés d’alternatives textuelles afin que tous les utilisateurs puissent accéder aux informations qu’ils contiennent.
+Les vidéos, les animations et les autres contenus multimédias nécessitent des alternatives textuelles afin que tous les utilisateurs puissent accéder aux informations qu’ils véhiculent.
 
 <div id="add-captions-to-videos">
   ### Ajouter des sous-titres aux vidéos
 </div>
 
-Les sous-titres rendent le contenu vidéo accessible aux personnes sourdes ou malentendantes. Ils aident aussi les utilisateurs dans des environnements sensibles au bruit ainsi que les personnes non natives :
+Les sous-titres rendent le contenu vidéo accessible aux personnes sourdes ou malentendantes. Ils aident aussi les utilisateurs qui se trouvent dans des environnements où le son doit rester discret, ainsi que les personnes dont ce n’est pas la langue maternelle :
 
-- Utilisez des sous-titres pour tout le contenu parlé des vidéos.
-- Incluez les effets sonores pertinents dans les sous-titres.
-- Assurez-vous que les sous-titres sont synchronisés avec l’audio.
-- Utilisez une ponctuation appropriée et identifiez les locuteurs lorsque plusieurs personnes parlent.
+* Utilisez des sous-titres pour tout contenu parlé dans les vidéos.
+* Incluez les effets sonores pertinents dans les sous-titres.
+* Assurez-vous que les sous-titres sont synchronisés avec l’audio.
+* Utilisez une ponctuation appropriée et identifiez les locuteurs lorsque plusieurs personnes parlent.
 
 La plupart des plateformes d’hébergement vidéo permettent d’ajouter des sous-titres. Importez des fichiers de sous-titres ou utilisez des sous-titres générés automatiquement comme point de départ, puis vérifiez leur exactitude.
 
@@ -315,95 +307,93 @@ La plupart des plateformes d’hébergement vidéo permettent d’ajouter des so
   ### Fournir des transcriptions
 </div>
 
-Les transcriptions offrent un autre moyen d’accéder au contenu vidéo. Elles sont consultables par recherche, plus faciles à référencer et accessibles aux lecteurs d’écran :
+Les transcriptions offrent une autre façon d’accéder au contenu vidéo. Elles sont faciles à rechercher, plus faciles à citer et accessibles aux lecteurs d’écran :
 
 ```mdx
 <iframe
   src="https://www.youtube.com/embed/example"
-  title="Tutoriel : Configuration de l'authentification"
+  title="Tutorial: Setting up authentication"
 ></iframe>
 
-<Accordion title="Transcription vidéo">
-Dans ce tutoriel, nous allons voir comment configurer l'authentification...
+<Accordion title="Video transcript">
+In this tutorial, we'll walk through setting up authentication...
 </Accordion>
 ```
 
 Placez les transcriptions à proximité de la vidéo ou fournissez un lien clair pour y accéder.
 
-
 <div id="consider-alternatives-to-video-only-content">
-  ### Envisagez des alternatives au contenu exclusivement vidéo
+  ### Prévoyez des alternatives aux contenus uniquement vidéo
 </div>
 
-Si des informations essentielles ne figurent que dans une vidéo :
+Si des informations essentielles n’apparaissent que dans une vidéo :
 
-- Fournissez les mêmes informations sous forme de texte.
-- Ajoutez des captures d’écran clés avec un texte alternatif descriptif.
-- Rédigez un tutoriel qui couvre la même matière.
+* Fournissez les mêmes informations sous forme de texte.
+* Incluez les captures d’écran importantes avec un texte alternatif descriptif.
+* Créez un tutoriel écrit qui couvre le même contenu.
 
-Ainsi, les utilisateurs qui n’ont pas accès au contenu vidéo peuvent tout de même mener à bien leur tâche.
+Ainsi, les utilisateurs qui ne peuvent pas accéder aux contenus vidéo peuvent tout de même effectuer leur tâche.
 
 <div id="test-your-documentation">
   ## Testez votre documentation
 </div>
 
-Des tests réguliers vous aident à repérer les problèmes d’accessibilité avant que les utilisateurs ne les rencontrent.
+Des tests réguliers vous aident à repérer les problèmes d’accessibilité avant que les utilisateurs n’y soient confrontés.
 
 <div id="check-for-accessibility-issues-with-mint-a11y">
-  ### Vérifiez les problèmes d’accessibilité avec `mint a11y`
+  ### Détectez les problèmes d’accessibilité avec `mint a11y`
 </div>
 
-Utilisez la commande d’interface en ligne de commande (CLI) `mint a11y` pour analyser automatiquement votre documentation à la recherche de problèmes d’accessibilité courants :
+Utilisez la commande CLI `mint a11y` pour analyser automatiquement votre documentation afin d’y détecter les problèmes d’accessibilité courants :
 
 ```bash
 mint a11y
 ```
 
-La commande vérifie :
+La commande vérifie les éléments suivants :
 
-* Texte alternatif manquant pour les images et les vidéos
-* Contraste des couleurs insuffisant
+* L’absence de texte alternatif sur les images et les vidéos.
+* Un contraste de couleurs insuffisant.
 
-Lorsque l’analyse est terminée, passez en revue les problèmes signalés et corrigez-les dans votre objet. Exécutez de nouveau la commande pour valider vos corrections.
+Une fois l’analyse terminée, examinez les problèmes signalés et corrigez-les dans votre contenu. Exécutez de nouveau la commande pour vérifier vos corrections.
 
-Utilisez des indicateurs (flags) pour vérifier des problèmes d’accessibilité spécifiques.
+Utilisez des options pour vérifier des problèmes d’accessibilité spécifiques.
 
 ```bash
-# Check only for missing alt text
+# Vérifier uniquement le texte alternatif manquant
 mint a11y --skip-contrast
 
 # Vérifier uniquement les problèmes de contraste des couleurs
 mint a11y --skip-alt-text
 ```
 
-
 <div id="basic-keyboard-navigation-test">
-  ### Test de base de la navigation au clavier
+  ### Test de navigation de base au clavier
 </div>
 
-Parcourez votre documentation en utilisant uniquement votre clavier :
+Naviguez dans votre documentation à l&#39;aide de votre clavier uniquement :
 
-1. Appuyez sur <kbd>Tab</kbd> pour avancer dans les éléments interactifs.
-2. Appuyez sur <kbd>Shift</kbd> + <kbd>Tab</kbd> pour revenir en arrière.
+1. Appuyez sur <kbd>Tab</kbd> pour passer à l’élément interactif suivant.
+2. Appuyez sur <kbd>Shift</kbd> + <kbd>Tab</kbd> pour revenir à l’élément précédent.
 3. Appuyez sur <kbd>Enter</kbd> pour activer les liens et les boutons.
-4. Vérifiez que tous les éléments interactifs sont accessibles et affichent un indicateur de focus visible.
+4. Vérifiez que tous les éléments interactifs sont accessibles et disposent d’indicateurs visuels de focus.
 
 <div id="go-deeper-with-accessibility-testing">
-  ### Approfondissez vos tests d’accessibilité
+  ### Allez plus loin dans les tests d’accessibilité
 </div>
 
-Pour des évaluations plus complètes :
+Pour des tests plus approfondis :
 
-- **Lecteurs d’écran** : Testez avec [NVDA (Windows)](https://www.nvaccess.org/) ou [VoiceOver (Mac)](https://www.apple.com/accessibility/voiceover/).
-- **Extensions de navigateur** : Installez [axe DevTools](https://www.deque.com/axe/browser-extensions/) ou [WAVE](https://wave.webaim.org/extension/) pour analyser les pages et détecter les problèmes.
-- **Directives WCAG** : Consultez les [Web Content Accessibility Guidelines](https://www.w3.org/WAI/WCAG22/quickref/) pour connaître les normes détaillées.
+* **Lecteurs d’écran** : testez avec [NVDA (Windows)](https://www.nvaccess.org/) ou [VoiceOver (Mac)](https://www.apple.com/accessibility/voiceover/).
+* **Extensions de navigateur** : installez [axe DevTools](https://www.deque.com/axe/browser-extensions/) ou [WAVE](https://wave.webaim.org/extension/) pour repérer les problèmes sur les pages.
+* **Directives WCAG** : consultez les [Web Content Accessibility Guidelines](https://www.w3.org/WAI/WCAG22/quickref/) pour connaître les normes détaillées.
 
 <div id="additional-resources">
   ## Ressources supplémentaires
 </div>
 
-Approfondissez vos connaissances en accessibilité avec ces ressources de confiance :
+Poursuivez votre découverte de l’accessibilité grâce à ces ressources de référence :
 
-- **[WebAIM](https://webaim.org/)** : articles et tutoriels pratiques sur l’accessibilité du web
-- **[The A11y Project](https://www.a11yproject.com/)** : ressources communautaires et liste de vérification sur l’accessibilité
-- **[W3C Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/)** : normes officielles et recommandations en matière d’accessibilité
+* **[WebAIM](https://webaim.org/)**: Articles et tutoriels pratiques sur l’accessibilité du Web
+* **[The A11y Project](https://www.a11yproject.com/)**: Ressources communautaires sur l’accessibilité et liste de vérification
+* **[W3C Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/)**: Normes et recommandations officielles en matière d’accessibilité
